@@ -14,7 +14,7 @@ import NoUnused.Exports
 import NoUnused.Modules
 import NoUnused.Variables
 import NoUnusedPorts
-import Review.Rule exposing (Rule)
+import Review.Rule as Rule exposing (Rule)
 import UseCamelCase
 
 
@@ -36,3 +36,9 @@ config =
     , NoUnusedPorts.rule
     , UseCamelCase.rule UseCamelCase.default
     ]
+        |> List.map
+            (Rule.ignoreErrorsForFiles
+                [ "src/Html/Tailwind.elm"
+                , "src/Svg/Tailwind.elm"
+                ]
+            )
