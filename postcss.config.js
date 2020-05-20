@@ -8,6 +8,7 @@ const elmTailwind = require('postcss-elm-tailwind')(
             , elmModuleName: 'Svg.Tailwind'
             }
         }
+    , nameStyle: 'camel'
     }
 );
 
