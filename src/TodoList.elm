@@ -1,4 +1,7 @@
-module TodoList exposing (Position(..), TodoList, completed, current, fromList, next, remaining, skipped)
+module TodoList exposing (Position(..), TodoList, chooseFromList, complete, completed, current, empty, remaining, skipped)
+
+import Random
+import Random.List
 
 
 type Position
@@ -8,79 +11,86 @@ type Position
     | Skipped
 
 
+type alias Data v =
+    { remaining : List v
+    , completed : List v
+    , skipped : List v
+    }
+
+
 type TodoList v
-    = Todo
-        { current : v
-        , remaining : List v
-        , complete : List v
-        , skipped : List v
-        }
-    | AllDone
-        { complete : List v
-        , skipped : List v
-        }
+    = Ready (Data v)
+    | Todo v (Data v)
 
 
-fromList : List v -> TodoList v
-fromList list =
-    case list of
-        [] ->
-            AllDone { complete = [], skipped = [] }
-
-        first :: rest ->
-            Todo { current = first, remaining = rest, complete = [], skipped = [] }
+empty : TodoList v
+empty =
+    Ready { remaining = [], completed = [], skipped = [] }
 
 
 current : TodoList v -> Maybe v
 current list =
     case list of
-        Todo todo ->
-            Just todo.current
+        Todo item _ ->
+            Just item
 
-        AllDone _ ->
+        Ready _ ->
             Nothing
 
 
 remaining : TodoList v -> List v
 remaining list =
-    case list of
-        Todo todo ->
-            todo.remaining
-
-        AllDone _ ->
-            []
+    list |> getData |> .remaining
 
 
 completed : TodoList v -> List v
 completed list =
-    case list of
-        Todo todo ->
-            todo.complete
-
-        AllDone todo ->
-            todo.complete
+    list |> getData |> .completed
 
 
 skipped : TodoList v -> List v
 skipped list =
+    list |> getData |> .skipped
+
+
+complete : TodoList v -> Random.Generator (TodoList v)
+complete list =
     case list of
-        Todo todo ->
-            todo.skipped
+        Todo item data ->
+            chooseData { data | completed = item :: data.completed }
 
-        AllDone todo ->
-            todo.skipped
+        Ready data ->
+            chooseData data
 
 
-next : TodoList v -> TodoList v
-next list =
+chooseFromList : List v -> Random.Generator (TodoList v)
+chooseFromList list =
+    chooseData { remaining = list, completed = [], skipped = [] }
+
+
+
+--- PRIVATE
+
+
+chooseData : Data v -> Random.Generator (TodoList v)
+chooseData data =
+    Random.List.choose data.remaining
+        |> Random.map
+            (\( maybeItem, rest ) ->
+                case maybeItem of
+                    Nothing ->
+                        Ready data
+
+                    Just item ->
+                        Todo item { data | remaining = rest }
+            )
+
+
+getData : TodoList v -> Data v
+getData list =
     case list of
-        Todo todo ->
-            case todo.remaining of
-                first :: rest ->
-                    Todo { todo | current = first, remaining = rest, complete = todo.current :: todo.complete }
+        Todo _ data ->
+            data
 
-                [] ->
-                    AllDone { complete = todo.current :: todo.complete, skipped = todo.skipped }
-
-        AllDone _ ->
-            list
+        Ready data ->
+            data

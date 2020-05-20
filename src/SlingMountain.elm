@@ -5,6 +5,7 @@ import Html.Attributes as Attr
 import Html.Events as Events
 import Html.Keyed as Keyed
 import Html.Tailwind as TW
+import Random
 import Scenario exposing (Scenario)
 import Svg
 import Svg.Icons as Icons
@@ -22,20 +23,14 @@ type alias Key =
 
 type Msg
     = Complete
+    | GotList (TodoList ( Key, Scenario ))
 
 
 init : List Scenario -> () -> ( Model, Cmd Msg )
 init list _ =
-    ( initialModel list, Cmd.none )
-
-
-initialModel : List Scenario -> Model
-initialModel list =
-    let
-        scenariosWithKeys =
-            list |> withKeys
-    in
-    SlingMountain (TodoList.fromList scenariosWithKeys)
+    ( SlingMountain TodoList.empty
+    , Random.generate GotList (list |> withKeys |> TodoList.chooseFromList)
+    )
 
 
 withKeys : List Scenario -> List ( Key, Scenario )
@@ -51,7 +46,14 @@ update : Msg -> Model -> ( Model, Cmd Msg )
 update msg (SlingMountain model) =
     case msg of
         Complete ->
-            ( SlingMountain (TodoList.next model), Cmd.none )
+            ( SlingMountain model
+            , Random.generate GotList (TodoList.complete model)
+            )
+
+        GotList newTodo ->
+            ( SlingMountain newTodo
+            , Cmd.none
+            )
 
 
 
@@ -71,7 +73,7 @@ viewScenarios (SlingMountain todo) =
     (TodoList.current todo |> viewCurrentScenario)
         :: viewScenarioList
             { position = TodoList.Remaining
-            , heading = ( "heading-remaining", viewHeading "Remaining" )
+            , heading = ( "heading-skipped", viewHeading "Remaining" )
             , scenarios = TodoList.remaining todo
             }
         ++ viewScenarioList
