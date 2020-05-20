@@ -11,7 +11,8 @@
             "elm/html": "1.0.0",
             "elm/random": "1.0.0",
             "elm/svg": "1.0.1",
-            "elm-community/random-extra": "3.1.0"
+            "elm-community/random-extra": "3.1.0",
+            "tricycle/elm-embed-youtube": "1.1.2"
         },
         "indirect": {
             "elm/json": "1.1.3",

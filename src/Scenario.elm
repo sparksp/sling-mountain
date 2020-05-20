@@ -1,13 +1,17 @@
-module Scenario exposing (Scenario, build, mapBody, mapLink, mapTitle, withLink)
+module Scenario exposing (Link(..), Scenario, build, mapBody, mapLink, mapTitle, withLink)
 
 import Html exposing (Html)
+
+
+type Link
+    = Youtube String
 
 
 type Scenario
     = Scenario
         { title : String
         , body : Html Never
-        , link : Maybe String
+        , link : Maybe Link
         }
 
 
@@ -16,7 +20,7 @@ build title body =
     Scenario { title = title, body = body, link = Nothing }
 
 
-withLink : String -> Scenario -> Scenario
+withLink : Link -> Scenario -> Scenario
 withLink link (Scenario scenario) =
     Scenario { scenario | link = Just link }
 
@@ -31,6 +35,6 @@ mapBody mapper (Scenario { body }) =
     mapper body
 
 
-mapLink : (Maybe String -> a) -> Scenario -> a
+mapLink : (Maybe Link -> a) -> Scenario -> a
 mapLink mapper (Scenario { link }) =
     mapper link
