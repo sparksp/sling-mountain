@@ -1,4 +1,4 @@
-module TodoList exposing (Position(..), TodoList, chooseFromList, complete, completed, current, empty, remaining, skipped)
+module TodoList exposing (Position(..), TodoList, chooseFromList, complete, completed, current, empty, pick, remaining, skipped)
 
 import Random
 import Random.List
@@ -11,59 +11,90 @@ type Position
     | Skipped
 
 
-type alias Data v =
-    { remaining : List v
-    , completed : List v
-    , skipped : List v
-    }
+type TodoList comparable v
+    = AllDone
+        { completed : List ( comparable, v )
+        , skipped : List ( comparable, v )
+        }
+    | Todo
+        { current : ( comparable, v )
+        , remaining : List ( comparable, v )
+        , completed : List ( comparable, v )
+        , skipped : List ( comparable, v )
+        }
 
 
-type TodoList v
-    = Ready (Data v)
-    | Todo v (Data v)
-
-
-empty : TodoList v
+empty : TodoList comparable v
 empty =
-    Ready { remaining = [], completed = [], skipped = [] }
+    AllDone { completed = [], skipped = [] }
 
 
-current : TodoList v -> Maybe v
+pick : comparable -> TodoList comparable v -> TodoList comparable v
+pick key list =
+    case list of
+        Todo data ->
+            case find key data.remaining of
+                ( Nothing, _ ) ->
+                    list
+
+                ( Just item, rest ) ->
+                    Todo { data | current = item, remaining = data.current :: rest }
+
+        AllDone _ ->
+            list
+
+
+current : TodoList comparable v -> Maybe ( comparable, v )
 current list =
     case list of
-        Todo item _ ->
-            Just item
+        Todo data ->
+            Just data.current
 
-        Ready _ ->
+        AllDone _ ->
             Nothing
 
 
-remaining : TodoList v -> List v
+remaining : TodoList comparable v -> List ( comparable, v )
 remaining list =
-    list |> getData |> .remaining
+    case list of
+        Todo data ->
+            data.remaining
+
+        AllDone _ ->
+            []
 
 
-completed : TodoList v -> List v
+completed : TodoList comparable v -> List ( comparable, v )
 completed list =
-    list |> getData |> .completed
+    case list of
+        Todo data ->
+            data.completed
+
+        AllDone data ->
+            data.completed
 
 
-skipped : TodoList v -> List v
+skipped : TodoList comparable v -> List ( comparable, v )
 skipped list =
-    list |> getData |> .skipped
+    case list of
+        Todo data ->
+            data.skipped
+
+        AllDone data ->
+            data.skipped
 
 
-complete : TodoList v -> Random.Generator (TodoList v)
+complete : TodoList comparable v -> Random.Generator (TodoList comparable v)
 complete list =
     case list of
-        Todo item data ->
-            chooseData { data | completed = item :: data.completed }
+        Todo data ->
+            chooseData { data | completed = data.current :: data.completed }
 
-        Ready data ->
-            chooseData data
+        AllDone _ ->
+            Random.constant list
 
 
-chooseFromList : List v -> Random.Generator (TodoList v)
+chooseFromList : List ( comparable, v ) -> Random.Generator (TodoList comparable v)
 chooseFromList list =
     chooseData { remaining = list, completed = [], skipped = [] }
 
@@ -72,25 +103,40 @@ chooseFromList list =
 --- PRIVATE
 
 
-chooseData : Data v -> Random.Generator (TodoList v)
+chooseData :
+    { a
+        | remaining : List ( comparable, v )
+        , completed : List ( comparable, v )
+        , skipped : List ( comparable, v )
+    }
+    -> Random.Generator (TodoList comparable v)
 chooseData data =
     Random.List.choose data.remaining
         |> Random.map
             (\( maybeItem, rest ) ->
                 case maybeItem of
                     Nothing ->
-                        Ready data
+                        AllDone { completed = data.completed, skipped = data.skipped }
 
                     Just item ->
-                        Todo item { data | remaining = rest }
+                        Todo { current = item, remaining = rest, completed = data.completed, skipped = data.skipped }
             )
 
 
-getData : TodoList v -> Data v
-getData list =
-    case list of
-        Todo _ data ->
-            data
+find : comparable -> List ( comparable, v ) -> ( Maybe ( comparable, v ), List ( comparable, v ) )
+find search list =
+    List.foldl (finder search) ( Nothing, [] ) list
 
-        Ready data ->
-            data
+
+finder : comparable -> ( comparable, v ) -> ( Maybe ( comparable, v ), List ( comparable, v ) ) -> ( Maybe ( comparable, v ), List ( comparable, v ) )
+finder search ( key, value ) ( found, tested ) =
+    case found of
+        Nothing ->
+            if key == search then
+                ( Just ( key, value ), tested )
+
+            else
+                ( Nothing, ( key, value ) :: tested )
+
+        Just _ ->
+            ( found, ( key, value ) :: tested )

@@ -1,5 +1,6 @@
 module SlingMountain exposing (Model, Msg, init, update, view)
 
+import Browser.Dom as Dom
 import Html exposing (Html)
 import Html.Attributes as Attr
 import Html.Events as Events
@@ -10,11 +11,12 @@ import Scenario exposing (Scenario)
 import Svg
 import Svg.Icons as Icons
 import Svg.Tailwind as STW
+import Task
 import TodoList exposing (TodoList)
 
 
 type Model
-    = SlingMountain (TodoList ( Key, Scenario ))
+    = SlingMountain (TodoList Key Scenario)
 
 
 type alias Key =
@@ -23,7 +25,9 @@ type alias Key =
 
 type Msg
     = Complete
-    | GotList (TodoList ( Key, Scenario ))
+    | Pick Key
+    | GotList (TodoList Key Scenario)
+    | DomResult (Result Dom.Error ())
 
 
 init : List Scenario -> () -> ( Model, Cmd Msg )
@@ -50,10 +54,18 @@ update msg (SlingMountain model) =
             , Random.generate GotList (TodoList.complete model)
             )
 
+        Pick key ->
+            ( SlingMountain (TodoList.pick key model)
+            , Task.attempt DomResult (Dom.setViewport 0 0)
+            )
+
         GotList newTodo ->
             ( SlingMountain newTodo
             , Cmd.none
             )
+
+        DomResult _ ->
+            ( SlingMountain model, Cmd.none )
 
 
 
@@ -97,13 +109,13 @@ viewTitle =
         ]
 
 
-viewHeading : String -> Html Msg
-viewHeading heading =
+viewHeading : String -> Int -> Html Msg
+viewHeading heading count =
     Html.h2 [ TW.mt6, TW.mb3, TW.flex, TW.flexRow, TW.textGray600, TW.fontTitle ]
         [ Html.span [ TW.flex1, TW.borderGray400, TW.borderB, TW.mAuto, TW.mr2 ] []
         , Html.div []
             [ Html.span [ TW.textGray500, TW.textSm ] [ Html.text "#" ]
-            , Html.text heading
+            , Html.text (heading ++ " (" ++ String.fromInt count ++ ")")
             ]
         , Html.span [ TW.flex1, TW.borderGray400, TW.borderB, TW.mAuto, TW.ml2 ] []
         ]
@@ -113,11 +125,11 @@ viewCurrentScenario : Maybe ( Key, Scenario ) -> ( Key, Html Msg )
 viewCurrentScenario maybe =
     case maybe of
         Just ( key, scenario ) ->
-            ( key, viewScenario TodoList.Current scenario )
+            viewScenario TodoList.Current ( key, scenario )
 
         Nothing ->
             ( "all-done"
-            , cardFrame
+            , cardFrame "all-done"
                 [ cardTitle [] { position = TodoList.Completed, onClick = Nothing } "All done!"
                 , cardBody (Html.p [] [ Html.text "Outstanding work, you've finished all the scenarios!" ])
                 ]
@@ -126,7 +138,7 @@ viewCurrentScenario maybe =
 
 viewScenarioList :
     { position : TodoList.Position
-    , heading : ( Key, Html Msg )
+    , heading : ( Key, Int -> Html Msg )
     , scenarios : List ( Key, Scenario )
     }
     -> List ( Key, Html Msg )
@@ -136,12 +148,14 @@ viewScenarioList { position, heading, scenarios } =
             []
 
         _ ->
-            heading :: List.map (viewScenario position |> Tuple.mapSecond) scenarios
+            Tuple.mapSecond (\make -> make (List.length scenarios)) heading
+                :: List.map (viewScenario position) scenarios
 
 
-viewScenario : TodoList.Position -> Scenario -> Html Msg
-viewScenario position scenario =
-    cardFrame
+viewScenario : TodoList.Position -> ( Key, Scenario ) -> ( Key, Html Msg )
+viewScenario position ( key, scenario ) =
+    ( key
+    , cardFrame key
         (case position of
             TodoList.Current ->
                 [ Scenario.mapTitle (cardTitle [] { position = position, onClick = Just Complete }) scenario
@@ -149,14 +163,19 @@ viewScenario position scenario =
                 , Scenario.mapLink cardLink scenario
                 ]
 
+            TodoList.Remaining ->
+                [ Scenario.mapTitle (cardTitle [ TW.textGray600 ] { position = position, onClick = Just (Pick key) }) scenario
+                ]
+
             _ ->
                 [ Scenario.mapTitle (cardTitle [ TW.textGray600 ] { position = position, onClick = Nothing }) scenario
                 ]
         )
+    )
 
 
-cardFrame : List (Html msg) -> Html msg
-cardFrame children =
+cardFrame : Key -> List (Html msg) -> Html msg
+cardFrame key children =
     Html.div
         [ TW.wFull
         , TW.rounded
@@ -164,6 +183,7 @@ cardFrame children =
         , TW.shadowLg
         , TW.bgWhite
         , TW.my3
+        , Attr.id key
         ]
         children
 
