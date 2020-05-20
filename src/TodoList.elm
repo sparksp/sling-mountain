@@ -125,7 +125,7 @@ chooseData data =
 
 find : comparable -> List ( comparable, v ) -> ( Maybe ( comparable, v ), List ( comparable, v ) )
 find search list =
-    List.foldl (finder search) ( Nothing, [] ) list
+    List.foldr (finder search) ( Nothing, [] ) list
 
 
 finder : comparable -> ( comparable, v ) -> ( Maybe ( comparable, v ), List ( comparable, v ) ) -> ( Maybe ( comparable, v ), List ( comparable, v ) )

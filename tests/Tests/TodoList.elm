@@ -143,7 +143,7 @@ pickTest =
             \() ->
                 let
                     initialList =
-                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
+                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ), ( "d", 4 ), ( "e", 5 ) ]
 
                     ( initialTodoList, _ ) =
                         Random.step (TodoList.chooseFromList initialList) (Random.initialSeed 0)
@@ -151,7 +151,7 @@ pickTest =
                 TodoList.pick "a" initialTodoList
                     |> Expect.all
                         [ TodoList.current >> Expect.equal (Just ( "a", 1 ))
-                        , TodoList.remaining >> Expect.equal [ ( "b", 2 ), ( "c", 3 ) ]
+                        , TodoList.remaining >> Expect.equal [ ( "d", 4 ), ( "b", 2 ), ( "c", 3 ), ( "e", 5 ) ]
                         , TodoList.skipped >> Expect.equal []
                         , TodoList.completed >> Expect.equal []
                         ]
