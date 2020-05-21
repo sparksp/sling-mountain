@@ -24,9 +24,18 @@ import TodoList exposing (TodoList)
 type Model
     = Model
         { embed : Embed
+        , showCompleted : Bool
+        , showRemaining : Bool
+        , showSkipped : Bool
         , todo : TodoList Key Scenario
         , width : Int
         }
+
+
+type ShowSection
+    = ShowCompleted
+    | ShowRemaining
+    | ShowSkipped
 
 
 type alias Key =
@@ -41,6 +50,7 @@ type Msg
     | Pick Key
     | Resize
     | SetEmbed Embed
+    | SetShow ( ShowSection, Bool )
 
 
 init : List Scenario -> () -> ( Model, Cmd Msg )
@@ -56,6 +66,9 @@ initialModel =
         { embed = Embed.None
         , todo = TodoList.empty
         , width = 0
+        , showCompleted = False
+        , showRemaining = False
+        , showSkipped = False
         }
 
 
@@ -110,6 +123,15 @@ update msg (Model model) =
         SetEmbed embed ->
             ( Model { model | embed = embed }, Cmd.none )
 
+        SetShow ( ShowCompleted, show ) ->
+            ( Model { model | showCompleted = show }, Cmd.none )
+
+        SetShow ( ShowRemaining, show ) ->
+            ( Model { model | showRemaining = show }, Cmd.none )
+
+        SetShow ( ShowSkipped, show ) ->
+            ( Model { model | showSkipped = show }, Cmd.none )
+
 
 getViewportOfCurrent : TodoList Key v -> Cmd Msg
 getViewportOfCurrent todo =
@@ -163,7 +185,7 @@ currentScenarioTitle todo =
 
 
 viewScenarios : Model -> Html Msg
-viewScenarios (Model { embed, todo, width }) =
+viewScenarios (Model { embed, todo, width, showCompleted, showRemaining, showSkipped }) =
     let
         options =
             { embed = embed, maxWidth = width }
@@ -172,18 +194,21 @@ viewScenarios (Model { embed, todo, width }) =
         :: viewScenarioList
             { options = options
             , position = TodoList.Remaining
+            , show = ( ShowRemaining, showRemaining )
             , heading = ( "heading-skipped", viewHeading "Remaining" )
             , scenarios = TodoList.remaining todo
             }
         ++ viewScenarioList
             { options = options
             , position = TodoList.Completed
+            , show = ( ShowCompleted, showCompleted )
             , heading = ( "heading-completed", viewHeading "Completed" )
             , scenarios = TodoList.completed todo
             }
         ++ viewScenarioList
             { options = options
             , position = TodoList.Skipped
+            , show = ( ShowSkipped, showSkipped )
             , heading = ( "heading-skipped", viewHeading "Skipped" )
             , scenarios = TodoList.skipped todo
             }
@@ -198,13 +223,28 @@ viewTitle =
         ]
 
 
-viewHeading : String -> Int -> Html Msg
-viewHeading heading count =
+viewHeading :
+    String
+    ->
+        { count : Int
+        , show : ( ShowSection, Bool )
+        }
+    -> Html Msg
+viewHeading heading { count, show } =
+    let
+        icon =
+            if Tuple.second show then
+                Icons.chevronDown
+
+            else
+                Icons.chevronUp
+    in
     Html.h2 [ TW.mt6, TW.mb3, TW.flex, TW.flexRow, TW.textGray600, TW.fontTitle ]
         [ Html.span [ TW.flex1, TW.borderGray400, TW.borderB, TW.mAuto, TW.mr2 ] []
-        , Html.div []
+        , Html.button [ TW.flex, TW.flexRow, TW.itemsCenter, Events.onClick (SetShow (Tuple.mapSecond not show)) ]
             [ Html.span [ TW.textGray500, TW.textSm ] [ Html.text "#" ]
             , Html.text (heading ++ " (" ++ String.fromInt count ++ ")")
+            , Html.span [] [ icon [ STW.h4, STW.w4 ] ]
             ]
         , Html.span [ TW.flex1, TW.borderGray400, TW.borderB, TW.mAuto, TW.ml2 ] []
         ]
@@ -228,17 +268,30 @@ viewCurrentScenario options maybe =
 viewScenarioList :
     { options : { a | embed : Embed, maxWidth : Int }
     , position : TodoList.Position
-    , heading : ( Key, Int -> Html Msg )
+    , show : ( ShowSection, Bool )
+    , heading : ( Key, { count : Int, show : ( ShowSection, Bool ) } -> Html Msg )
     , scenarios : List ( Key, Scenario )
     }
     -> List ( Key, Html Msg )
-viewScenarioList { options, position, heading, scenarios } =
-    case scenarios of
-        [] ->
+viewScenarioList { options, position, show, heading, scenarios } =
+    let
+        makeHeading =
+            \make ->
+                make
+                    { count = List.length scenarios
+                    , show = show
+                    }
+    in
+    case ( scenarios, Tuple.second show ) of
+        ( [], _ ) ->
             []
 
-        _ ->
-            Tuple.mapSecond (\make -> make (List.length scenarios)) heading
+        ( _, False ) ->
+            [ Tuple.mapSecond makeHeading heading
+            ]
+
+        ( _, True ) ->
+            Tuple.mapSecond makeHeading heading
                 :: List.map (viewScenario options position) scenarios
 
 

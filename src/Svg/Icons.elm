@@ -1,13 +1,12 @@
 module Svg.Icons exposing
-    ( check, cross
+    ( check
+    , chevronDown
+    , chevronUp
+    , cross
     , todo
     )
 
-{-|
-
-@docs check, cross
-
--}
+{-| -}
 
 import Html exposing (Html)
 import Svg
@@ -23,6 +22,28 @@ check : List (Svg.Attribute msg) -> Html msg
 check attributes =
     svg attributes
         [ Svg.path [ d "M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM6.7 9.29L9 11.6l4.3-4.3 1.4 1.42L9 14.4l-3.7-3.7 1.4-1.42z" ] [] ]
+
+
+{-| Chevron Down
+
+From [zondicons](https://www.zondicons.com/).
+
+-}
+chevronDown : List (Svg.Attribute msg) -> Html msg
+chevronDown attributes =
+    svg attributes
+        [ Svg.path [ d "M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" ] [] ]
+
+
+{-| Chevron Up
+
+From [zondicons](https://www.zondicons.com/).
+
+-}
+chevronUp : List (Svg.Attribute msg) -> Html msg
+chevronUp attributes =
+    svg attributes
+        [ Svg.path [ d "M10.707 7.05L10 6.343 4.343 12l1.414 1.414L10 9.172l4.243 4.242L15.657 12z" ] [] ]
 
 
 {-| Cross (close-outline)
