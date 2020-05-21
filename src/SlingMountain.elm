@@ -232,17 +232,16 @@ viewHeading heading { count, show } =
     let
         icon =
             if Tuple.second show then
-                Icons.chevronDown
+                Icons.chevronRight [ STW.h4, STW.w4, STW.transitionTransform, STW.easeInOut, STW.duration200, STW.transform, STW.rotate90 ]
 
             else
-                Icons.chevronUp
+                Icons.chevronRight [ STW.h4, STW.w4, STW.transitionTransform, STW.easeInOut, STW.duration200, STW.transform ]
     in
     Html.h2 [ TW.mt6, TW.mb3, TW.flex, TW.flexRow, TW.textGray600, TW.fontTitle ]
         [ Html.span [ TW.flex1, TW.borderGray400, TW.borderB, TW.mAuto, TW.mr2 ] []
         , Html.button [ TW.flex, TW.flexRow, TW.itemsCenter, Events.onClick (SetShow (Tuple.mapSecond not show)) ]
-            [ Html.span [ TW.textGray500, TW.textSm ] [ Html.text "#" ]
+            [ Html.span [] [ icon ]
             , Html.text (heading ++ " (" ++ String.fromInt count ++ ")")
-            , Html.span [] [ icon [ STW.h4, STW.w4 ] ]
             ]
         , Html.span [ TW.flex1, TW.borderGray400, TW.borderB, TW.mAuto, TW.ml2 ] []
         ]
