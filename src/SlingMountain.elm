@@ -1,5 +1,6 @@
 module SlingMountain exposing (Model, Msg, init, subscriptions, update, view)
 
+import Browser
 import Browser.Dom as Dom
 import Browser.Events
 import Embed exposing (Embed)
@@ -129,12 +130,36 @@ subscriptions _ =
 --- VIEW
 
 
-view : Model -> Html Msg
+view : Model -> Browser.Document Msg
 view model =
-    Html.div [ TW.flex, TW.flexCol, TW.itemsCenter, TW.mxAuto, TW.p3 ]
-        [ viewTitle
-        , viewScenarios model
+    { title = documentTitle model
+    , body =
+        [ Html.div
+            [ TW.bgGray300
+            , TW.flex
+            , TW.flexCol
+            , TW.itemsCenter
+            , TW.minHScreen
+            , TW.p3
+            ]
+            [ viewTitle
+            , viewScenarios model
+            ]
         ]
+    }
+
+
+documentTitle : Model -> String
+documentTitle (Model { todo }) =
+    currentScenarioTitle todo
+        |> Maybe.map (\title -> title ++ "\u{00A0}#SlingMountain")
+        |> Maybe.withDefault "#SlingMountain"
+
+
+currentScenarioTitle : TodoList Key Scenario -> Maybe String
+currentScenarioTitle todo =
+    TodoList.current todo
+        |> Maybe.map (Tuple.second >> Scenario.mapTitle identity)
 
 
 viewScenarios : Model -> Html Msg

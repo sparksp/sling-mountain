@@ -8,7 +8,7 @@ import SlingMountain
 
 main : Program () SlingMountain.Model SlingMountain.Msg
 main =
-    Browser.element
+    Browser.document
         { init = SlingMountain.init getScenarios
         , update = SlingMountain.update
         , subscriptions = SlingMountain.subscriptions
