@@ -71,7 +71,7 @@ update : Msg -> Model -> ( Model, Cmd Msg )
 update msg (Model model) =
     case msg of
         Complete ->
-            ( Model model
+            ( Model { model | embed = Embed.step model.embed }
             , Random.generate GotList (TodoList.complete model.todo)
             )
 
