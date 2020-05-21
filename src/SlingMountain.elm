@@ -1,9 +1,14 @@
-module SlingMountain exposing (Model, Msg, init, update, view)
+module SlingMountain exposing (Model, Msg, init, subscriptions, update, view)
 
 import Browser.Dom as Dom
+import Browser.Events
+import Embed exposing (Embed)
+import Embed.Youtube
+import Embed.Youtube.Attributes
 import Html exposing (Html)
 import Html.Attributes as Attr
 import Html.Events as Events
+import Html.Events.UnlessKeyed as UnlessKeyed
 import Html.Keyed as Keyed
 import Html.Tailwind as TW
 import Random
@@ -16,7 +21,11 @@ import TodoList exposing (TodoList)
 
 
 type Model
-    = SlingMountain (TodoList Key Scenario)
+    = Model
+        { embed : Embed
+        , todo : TodoList Key Scenario
+        , width : Int
+        }
 
 
 type alias Key =
@@ -25,16 +34,28 @@ type alias Key =
 
 type Msg
     = Complete
-    | Pick Key
-    | GotList (TodoList Key Scenario)
     | DomResult (Result Dom.Error ())
+    | GotList (TodoList Key Scenario)
+    | GotViewport (Result Dom.Error Dom.Viewport)
+    | Pick Key
+    | Resize
+    | SetEmbed Embed
 
 
 init : List Scenario -> () -> ( Model, Cmd Msg )
 init list _ =
-    ( SlingMountain TodoList.empty
+    ( initialModel
     , Random.generate GotList (list |> withKeys |> TodoList.chooseFromList)
     )
+
+
+initialModel : Model
+initialModel =
+    Model
+        { embed = Embed.None
+        , todo = TodoList.empty
+        , width = 0
+        }
 
 
 withKeys : List Scenario -> List ( Key, Scenario )
@@ -47,25 +68,61 @@ withKeys =
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
-update msg (SlingMountain model) =
+update msg (Model model) =
     case msg of
         Complete ->
-            ( SlingMountain model
-            , Random.generate GotList (TodoList.complete model)
+            ( Model model
+            , Random.generate GotList (TodoList.complete model.todo)
             )
 
         Pick key ->
-            ( SlingMountain (TodoList.pick key model)
-            , Task.attempt DomResult (Dom.setViewport 0 0)
+            ( Model
+                { model
+                    | todo = TodoList.pick key model.todo
+                    , embed = Embed.step model.embed
+                }
+            , Cmd.batch
+                [ Task.attempt DomResult (Dom.setViewport 0 0)
+                , Task.attempt GotViewport (Dom.getViewportOf key)
+                ]
             )
 
         GotList newTodo ->
-            ( SlingMountain newTodo
-            , Cmd.none
+            ( Model { model | todo = newTodo }
+            , getViewportOfCurrent newTodo
+            )
+
+        Resize ->
+            ( Model model
+            , getViewportOfCurrent model.todo
             )
 
         DomResult _ ->
-            ( SlingMountain model, Cmd.none )
+            ( Model model, Cmd.none )
+
+        GotViewport (Ok viewport) ->
+            ( Model { model | width = round viewport.scene.width }, Cmd.none )
+
+        GotViewport _ ->
+            ( Model model, Cmd.none )
+
+        SetEmbed embed ->
+            ( Model { model | embed = embed }, Cmd.none )
+
+
+getViewportOfCurrent : TodoList Key v -> Cmd Msg
+getViewportOfCurrent todo =
+    case TodoList.current todo of
+        Just ( key, _ ) ->
+            Task.attempt GotViewport (Dom.getViewportOf key)
+
+        Nothing ->
+            Cmd.none
+
+
+subscriptions : Model -> Sub Msg
+subscriptions _ =
+    Browser.Events.onResize (\_ _ -> Resize)
 
 
 
@@ -81,20 +138,27 @@ view model =
 
 
 viewScenarios : Model -> Html Msg
-viewScenarios (SlingMountain todo) =
-    (TodoList.current todo |> viewCurrentScenario)
+viewScenarios (Model { embed, todo, width }) =
+    let
+        options =
+            { embed = embed, maxWidth = width }
+    in
+    (TodoList.current todo |> viewCurrentScenario options)
         :: viewScenarioList
-            { position = TodoList.Remaining
+            { options = options
+            , position = TodoList.Remaining
             , heading = ( "heading-skipped", viewHeading "Remaining" )
             , scenarios = TodoList.remaining todo
             }
         ++ viewScenarioList
-            { position = TodoList.Completed
+            { options = options
+            , position = TodoList.Completed
             , heading = ( "heading-completed", viewHeading "Completed" )
             , scenarios = TodoList.completed todo
             }
         ++ viewScenarioList
-            { position = TodoList.Skipped
+            { options = options
+            , position = TodoList.Skipped
             , heading = ( "heading-skipped", viewHeading "Skipped" )
             , scenarios = TodoList.skipped todo
             }
@@ -121,11 +185,11 @@ viewHeading heading count =
         ]
 
 
-viewCurrentScenario : Maybe ( Key, Scenario ) -> ( Key, Html Msg )
-viewCurrentScenario maybe =
+viewCurrentScenario : { a | embed : Embed, maxWidth : Int } -> Maybe ( Key, Scenario ) -> ( Key, Html Msg )
+viewCurrentScenario options maybe =
     case maybe of
         Just ( key, scenario ) ->
-            viewScenario TodoList.Current ( key, scenario )
+            viewScenario options TodoList.Current ( key, scenario )
 
         Nothing ->
             ( "all-done"
@@ -137,30 +201,31 @@ viewCurrentScenario maybe =
 
 
 viewScenarioList :
-    { position : TodoList.Position
+    { options : { a | embed : Embed, maxWidth : Int }
+    , position : TodoList.Position
     , heading : ( Key, Int -> Html Msg )
     , scenarios : List ( Key, Scenario )
     }
     -> List ( Key, Html Msg )
-viewScenarioList { position, heading, scenarios } =
+viewScenarioList { options, position, heading, scenarios } =
     case scenarios of
         [] ->
             []
 
         _ ->
             Tuple.mapSecond (\make -> make (List.length scenarios)) heading
-                :: List.map (viewScenario position) scenarios
+                :: List.map (viewScenario options position) scenarios
 
 
-viewScenario : TodoList.Position -> ( Key, Scenario ) -> ( Key, Html Msg )
-viewScenario position ( key, scenario ) =
+viewScenario : { a | embed : Embed, maxWidth : Int } -> TodoList.Position -> ( Key, Scenario ) -> ( Key, Html Msg )
+viewScenario options position ( key, scenario ) =
     ( key
     , cardFrame key
         (case position of
             TodoList.Current ->
                 [ Scenario.mapTitle (cardTitle [] { position = position, onClick = Just Complete }) scenario
                 , Scenario.mapBody (Html.map never >> cardBody) scenario
-                , Scenario.mapLink cardLink scenario
+                , Scenario.mapLink (cardLink options) scenario
                 ]
 
             TodoList.Remaining ->
@@ -224,26 +289,62 @@ cardBody body =
         [ body ]
 
 
-cardLink : Maybe String -> Html msg
-cardLink maybeLink =
+cardLink : { a | embed : Embed, maxWidth : Int } -> Maybe Scenario.Link -> Html Msg
+cardLink options maybeLink =
     case maybeLink of
         Nothing ->
             Html.text ""
 
-        Just link ->
-            Html.div []
-                [ Html.a
-                    [ Attr.href link
-                    , TW.block
-                    , TW.textGray500
-                    , TW.hoverTextGray800
-                    , TW.textBase
-                    , TW.borderT
-                    , TW.px6
-                    , TW.py2
+        Just (Scenario.Youtube youtubeId) ->
+            cardYoutube options youtubeId
+
+
+cardYoutube : { a | embed : Embed, maxWidth : Int } -> String -> Html Msg
+cardYoutube { embed, maxWidth } youtubeId =
+    Embed.map
+        { default = \() -> cardYoutubeButton youtubeId
+        , visible = \() -> cardYoutubeEmbed maxWidth youtubeId
+        }
+        embed
+
+
+cardYoutubeButton : String -> Html Msg
+cardYoutubeButton youtubeId =
+    Html.div [ TW.bgTransparent ]
+        [ Html.a
+            [ UnlessKeyed.onClick (SetEmbed Embed.One)
+            , Attr.href ("https://www.youtube.com/watch?v=" ++ youtubeId)
+            , TW.block
+            , TW.textCenter
+            , TW.borderT
+            , TW.hoverTextGray800
+            , TW.px6
+            , TW.py2
+            , TW.textGray500
+            , TW.wFull
+            ]
+            [ Html.text "View YouTube video."
+            ]
+        ]
+
+
+cardYoutubeEmbed : Int -> String -> Html msg
+cardYoutubeEmbed maxWidth youtubeId =
+    Html.div [ TW.bgBlack, TW.transitionColors, TW.duration300, TW.easeIn ]
+        [ Html.div
+            [ TW.flex
+            , TW.flexCol
+            , TW.itemsCenter
+            , TW.borderT
+            ]
+            [ Embed.Youtube.fromString youtubeId
+                |> Embed.Youtube.attributes
+                    [ Embed.Youtube.Attributes.width maxWidth
+                    , Embed.Youtube.Attributes.height (maxWidth * 288 // 512)
                     ]
-                    [ Html.text "Watch on YouTube." ]
-                ]
+                |> Embed.Youtube.toHtml
+            ]
+        ]
 
 
 positionIcon : TodoList.Position -> List (Svg.Attribute msg) -> Html msg
