@@ -97,18 +97,18 @@ update msg (Model model) =
                 }
             , Cmd.batch
                 [ Task.attempt DomResult (Dom.setViewport 0 0)
-                , Task.attempt GotViewport (Dom.getViewportOf key)
+                , Task.attempt GotViewport (Dom.getViewportOf "current")
                 ]
             )
 
         GotList newTodo ->
             ( Model { model | todo = newTodo }
-            , getViewportOfCurrent newTodo
+            , Task.attempt GotViewport (Dom.getViewportOf "current")
             )
 
         Resize ->
             ( Model model
-            , getViewportOfCurrent model.todo
+            , Task.attempt GotViewport (Dom.getViewportOf "current")
             )
 
         DomResult _ ->
@@ -131,16 +131,6 @@ update msg (Model model) =
 
         SetShow ( ShowSkipped, show ) ->
             ( Model { model | showSkipped = show }, Cmd.none )
-
-
-getViewportOfCurrent : TodoList Key v -> Cmd Msg
-getViewportOfCurrent todo =
-    case TodoList.current todo of
-        Just ( key, _ ) ->
-            Task.attempt GotViewport (Dom.getViewportOf key)
-
-        Nothing ->
-            Cmd.none
 
 
 subscriptions : Model -> Sub Msg
@@ -215,7 +205,7 @@ viewScenarios (Model { embed, todo, width, showCompleted, showRemaining, showSki
 
 viewTitle : Html Msg
 viewTitle =
-    Html.h1 [ TW.text3xl, TW.mdText4xl, TW.mb2, TW.fontTitle ]
+    Html.nav [ TW.text3xl, TW.mdText4xl, TW.mb2, TW.fontTitle ]
         [ Html.span [ TW.textGray700, TW.text2xl, TW.mdText3xl ] [ Html.text "#" ]
         , Html.text "SlingMountain"
         ]
@@ -230,16 +220,31 @@ viewHeading :
     -> Html Msg
 viewHeading heading { count, show } =
     let
+        iconAttr =
+            [ STW.h4
+            , STW.w4
+            , STW.transitionTransform
+            , STW.easeInOut
+            , STW.duration200
+            , STW.transform
+            ]
+
         icon =
             if Tuple.second show then
-                Icons.chevronRight [ STW.h4, STW.w4, STW.transitionTransform, STW.easeInOut, STW.duration200, STW.transform, STW.rotate90 ]
+                Icons.chevronRight (STW.rotate90 :: iconAttr)
 
             else
-                Icons.chevronRight [ STW.h4, STW.w4, STW.transitionTransform, STW.easeInOut, STW.duration200, STW.transform ]
+                Icons.chevronRight iconAttr
     in
     Html.h2 [ TW.mt6, TW.mb3, TW.flex, TW.flexRow, TW.textGray600, TW.fontTitle ]
         [ Html.span [ TW.flex1, TW.borderGray400, TW.borderB, TW.mAuto, TW.mr2 ] []
-        , Html.button [ TW.flex, TW.flexRow, TW.itemsCenter, Events.onClick (SetShow (Tuple.mapSecond not show)) ]
+        , Html.button
+            [ Events.onClick (SetShow (Tuple.mapSecond not show))
+            , TW.flex
+            , TW.flexRow
+            , TW.itemsCenter
+            , TW.hoverTextGray800
+            ]
             [ Html.span [] [ icon ]
             , Html.text (heading ++ " (" ++ String.fromInt count ++ ")")
             ]
@@ -255,7 +260,7 @@ viewCurrentScenario options maybe =
 
         Nothing ->
             ( "all-done"
-            , cardFrame "all-done"
+            , cardFrame CardFrameDefault
                 [ cardTitle [] { position = TodoList.Completed, onClick = Nothing } "All done!"
                 , cardBody (Html.p [] [ Html.text "Outstanding work, you've finished all the scenarios!" ])
                 ]
@@ -295,37 +300,71 @@ viewScenarioList { options, position, show, heading, scenarios } =
 viewScenario : { a | embed : Embed, maxWidth : Int } -> TodoList.Position -> ( Key, Scenario ) -> ( Key, Html Msg )
 viewScenario options position ( key, scenario ) =
     ( key
-    , cardFrame key
-        (case position of
-            TodoList.Current ->
-                [ Scenario.mapTitle (cardTitle [] { position = position, onClick = Just Complete }) scenario
+    , case position of
+        TodoList.Current ->
+            cardFrame CardFramePrimary
+                [ Html.h1 [] [ Scenario.mapTitle (cardTitle [] { position = position, onClick = Just Complete }) scenario ]
                 , Scenario.mapBody (Html.map never >> cardBody) scenario
                 , Scenario.mapLink (cardLink options) scenario
                 ]
 
-            TodoList.Remaining ->
+        TodoList.Remaining ->
+            cardFrame CardFrameActive
                 [ Scenario.mapTitle (cardTitle [ TW.textGray600 ] { position = position, onClick = Just (Pick key) }) scenario
                 ]
 
-            _ ->
+        _ ->
+            cardFrame CardFrameDefault
                 [ Scenario.mapTitle (cardTitle [ TW.textGray600 ] { position = position, onClick = Nothing }) scenario
                 ]
-        )
     )
 
 
-cardFrame : Key -> List (Html msg) -> Html msg
-cardFrame key children =
-    Html.div
-        [ TW.wFull
-        , TW.rounded
-        , TW.overflowHidden
-        , TW.shadowLg
-        , TW.bgWhite
-        , TW.my3
-        , Attr.id key
-        ]
-        children
+type CardFrameStyle
+    = CardFrameDefault
+    | CardFramePrimary
+    | CardFrameActive
+
+
+cardFrame : CardFrameStyle -> List (Html msg) -> Html msg
+cardFrame style children =
+    let
+        baseAttributes =
+            [ TW.bgWhite
+            , TW.my3
+            , TW.overflowHidden
+            , TW.rounded
+            , TW.wFull
+            ]
+
+        ( element, attributes ) =
+            case style of
+                CardFrameDefault ->
+                    ( Html.div
+                    , TW.shadowSm
+                        :: baseAttributes
+                    )
+
+                CardFramePrimary ->
+                    ( Html.main_
+                    , Attr.id "current"
+                        :: TW.shadowLg
+                        :: baseAttributes
+                    )
+
+                CardFrameActive ->
+                    ( Html.div
+                    , TW.shadowSm
+                        :: TW.hoverShadowLg
+                        :: TW.hoverTranslateX1
+                        :: TW.transform
+                        :: TW.transitionAll
+                        :: TW.duration150
+                        :: TW.easeInOut
+                        :: baseAttributes
+                    )
+    in
+    element attributes children
 
 
 cardTitle : List (Html.Attribute msg) -> { position : TodoList.Position, onClick : Maybe msg } -> String -> Html msg
@@ -333,20 +372,25 @@ cardTitle attributes { position, onClick } title =
     let
         titleAttributes =
             [ TW.fontBold
-            , TW.textXl
+            , TW.leading6
             , TW.px6
             , TW.py3
-            , TW.leading6
+            , TW.textXl
             ]
                 ++ attributes
     in
     (case onClick of
         Just msg ->
             Html.button
-                (TW.textLeft :: TW.wFull :: Events.onClick msg :: titleAttributes)
+                (Events.onClick msg
+                    :: TW.textLeft
+                    :: TW.wFull
+                    :: TW.hoverTextGray900
+                    :: titleAttributes
+                )
 
         Nothing ->
-            Html.h2 titleAttributes
+            Html.p titleAttributes
     )
         [ positionIcon position [ STW.h4, STW.w4, STW.floatLeft, STW.mr2, STW.mt1 ]
         , Html.text title
@@ -385,7 +429,7 @@ cardYoutube { embed, maxWidth } youtubeId =
 
 cardYoutubeButton : String -> Html Msg
 cardYoutubeButton youtubeId =
-    Html.div [ TW.bgTransparent ]
+    Html.nav [ TW.bgTransparent ]
         [ Html.a
             [ UnlessKeyed.onClick (SetEmbed Embed.One)
             , Attr.href ("https://www.youtube.com/watch?v=" ++ youtubeId)
@@ -405,7 +449,7 @@ cardYoutubeButton youtubeId =
 
 cardYoutubeEmbed : Int -> String -> Html msg
 cardYoutubeEmbed maxWidth youtubeId =
-    Html.div [ TW.bgBlack, TW.transitionColors, TW.duration300, TW.easeIn ]
+    Html.figure [ TW.bgBlack, TW.transitionColors, TW.duration300, TW.easeIn ]
         [ Html.div
             [ TW.flex
             , TW.flexCol
