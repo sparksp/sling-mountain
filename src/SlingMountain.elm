@@ -157,11 +157,9 @@ view model =
     { title = documentTitle model
     , body =
         [ Html.div
-            [ TW.bgGray300
-            , TW.flex
+            [ TW.flex
             , TW.flexCol
             , TW.itemsCenter
-            , TW.minHScreen
             , TW.p3
             ]
             [ viewTitle
