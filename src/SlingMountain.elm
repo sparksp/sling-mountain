@@ -13,6 +13,7 @@ import Html.Events.UnlessKeyed as UnlessKeyed
 import Html.Keyed as Keyed
 import Html.Tailwind as TW
 import Random
+import SHA1
 import Scenario exposing (Scenario)
 import Svg
 import Svg.Icons as Icons
@@ -74,7 +75,12 @@ initialModel =
 
 withKeys : List Scenario -> List ( Key, Scenario )
 withKeys =
-    List.indexedMap (\i scenario -> ( "s" ++ String.fromInt i, scenario ))
+    List.map
+        (\scenario ->
+            ( Scenario.mapTitle (SHA1.fromString >> SHA1.toBase64) scenario
+            , scenario
+            )
+        )
 
 
 
