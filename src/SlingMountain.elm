@@ -1,4 +1,4 @@
-module SlingMountain exposing (Model, Msg, init, subscriptions, update, view)
+module SlingMountain exposing (Flags, Model, Msg, init, subscriptions, update, view)
 
 import Browser
 import Browser.Dom as Dom
@@ -12,6 +12,9 @@ import Html.Events as Events
 import Html.Events.UnlessKeyed as UnlessKeyed
 import Html.Keyed as Keyed
 import Html.Tailwind as TW
+import Json.Decode as Decode
+import Json.Encode as Encode
+import Ports
 import Random
 import SHA1
 import Scenario exposing (Scenario)
@@ -20,6 +23,10 @@ import Svg.Icons as Icons
 import Svg.Tailwind as STW
 import Task
 import TodoList exposing (TodoList)
+
+
+type alias Flags =
+    Maybe Encode.Value
 
 
 type Model
@@ -54,11 +61,24 @@ type Msg
     | SetShow ( ShowSection, Bool )
 
 
-init : List Scenario -> () -> ( Model, Cmd Msg )
-init list _ =
-    ( initialModel
-    , Random.generate GotList (list |> withKeys |> TodoList.chooseFromList)
-    )
+init : List Scenario -> Flags -> ( Model, Cmd Msg )
+init list maybeTodoJson =
+    let
+        listWithKeys =
+            list |> withKeys
+
+        maybeTodoList =
+            maybeTodoJson
+                |> Maybe.andThen (Decode.decodeValue (TodoList.decoder listWithKeys) >> Result.toMaybe)
+    in
+    case maybeTodoList of
+        Just todoList ->
+            updateTodo todoList ( initialModel, [] )
+
+        Nothing ->
+            ( initialModel
+            , Random.generate GotList (TodoList.chooseFromList listWithKeys)
+            )
 
 
 initialModel : Model
@@ -96,21 +116,18 @@ update msg (Model model) =
             )
 
         Pick key ->
-            ( Model
-                { model
-                    | todo = TodoList.pick key model.todo
-                    , embed = Embed.step model.embed
-                }
-            , Cmd.batch
-                [ Task.attempt DomResult (Dom.setViewport 0 0)
-                , Task.attempt GotViewport (Dom.getViewportOf "current")
-                ]
-            )
+            updateTodo (TodoList.pick key model.todo)
+                ( Model { model | embed = Embed.step model.embed }
+                , [ Task.attempt DomResult (Dom.setViewport 0 0)
+                  , Task.attempt GotViewport (Dom.getViewportOf "current")
+                  ]
+                )
 
         GotList newTodo ->
-            ( Model { model | todo = newTodo }
-            , Task.attempt GotViewport (Dom.getViewportOf "current")
-            )
+            updateTodo newTodo
+                ( Model model
+                , [ Task.attempt GotViewport (Dom.getViewportOf "current") ]
+                )
 
         Resize ->
             ( Model model
@@ -137,6 +154,19 @@ update msg (Model model) =
 
         SetShow ( ShowSkipped, show ) ->
             ( Model { model | showSkipped = show }, Cmd.none )
+
+
+updateTodo : TodoList Key Scenario -> ( Model, List (Cmd Msg) ) -> ( Model, Cmd Msg )
+updateTodo todo ( Model model, cmds ) =
+    ( Model { model | todo = todo }
+    , Cmd.batch (saveScenarios todo :: cmds)
+    )
+
+
+saveScenarios : TodoList Key Scenario -> Cmd Msg
+saveScenarios todo =
+    TodoList.encoder todo
+        |> Ports.storeScenarios
 
 
 subscriptions : Model -> Sub Msg
