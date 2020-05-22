@@ -497,6 +497,7 @@ cardTitle attributes { onClick, position, actions } title =
             Just msg ->
                 Html.button
                     (Events.onClick msg
+                        :: Attr.title "Complete this Scenario"
                         :: TW.hoverTextBlack
                         :: TW.textGray600
                         :: TW.textLeft
