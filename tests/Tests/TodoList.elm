@@ -19,6 +19,7 @@ all =
         , emptyTest
         , encodeTests
         , pickTest
+        , restoreTests
         ]
 
 
@@ -494,6 +495,114 @@ pickTest =
                         , TodoList.remaining >> Expect.equal [ ( "a", 1 ), ( "c", 3 ) ]
                         , TodoList.disabled >> Expect.equal []
                         , TodoList.completed >> Expect.equal []
+                        ]
+        ]
+
+
+restoreTests : Test
+restoreTests =
+    describe "restore"
+        [ test "empty list is empty" <|
+            \() ->
+                TodoList.restore "a" TodoList.empty
+                    |> Expect.equal TodoList.empty
+        , test "with current restores complete to remaining" <|
+            \() ->
+                let
+                    initialList =
+                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
+
+                    ( initialTodoList, initialSeed ) =
+                        -- current = b, remaining = a, c
+                        Random.step (TodoList.chooseFromList initialList) (Random.initialSeed 0)
+
+                    ( finalTodoList, _ ) =
+                        -- current = a, remaining = c, completed = b
+                        Random.step (TodoList.complete initialTodoList) initialSeed
+                in
+                TodoList.restore "b" finalTodoList
+                    |> Expect.all
+                        [ TodoList.current >> Expect.equal (Just ( "a", 1 ))
+                        , TodoList.remaining >> Expect.equal [ ( "b", 2 ), ( "c", 3 ) ]
+                        , TodoList.completed >> Expect.equal []
+                        , TodoList.disabled >> Expect.equal []
+                        ]
+        , test "all done restores complete to current" <|
+            \() ->
+                let
+                    initialList =
+                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
+
+                    ( initialTodoList, initialSeed ) =
+                        -- current = b, remaining = a, c
+                        Random.step (TodoList.chooseFromList initialList) (Random.initialSeed 0)
+
+                    disabledTodoList =
+                        initialTodoList
+                            |> TodoList.disable "a"
+                            |> TodoList.disable "c"
+
+                    ( finalTodoList, _ ) =
+                        -- completed = b, disabled = a, c
+                        Random.step (TodoList.complete disabledTodoList) initialSeed
+                in
+                TodoList.restore "b" finalTodoList
+                    |> Expect.all
+                        [ TodoList.current >> Expect.equal (Just ( "b", 2 ))
+                        , TodoList.remaining >> Expect.equal []
+                        , TodoList.completed >> Expect.equal []
+                        , TodoList.disabled >> Expect.equal [ ( "c", 3 ), ( "a", 1 ) ]
+                        ]
+        , test "with current restores disabled to remaining" <|
+            \() ->
+                let
+                    initialList =
+                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
+
+                    ( initialTodoList, initialSeed ) =
+                        -- current = b, remaining = a, c
+                        Random.step (TodoList.chooseFromList initialList) (Random.initialSeed 0)
+
+                    disabledTodoList =
+                        initialTodoList
+                            |> TodoList.disable "a"
+
+                    ( finalTodoList, _ ) =
+                        -- current = c, completed = b, disabled = a
+                        Random.step (TodoList.complete disabledTodoList) initialSeed
+                in
+                TodoList.restore "a" finalTodoList
+                    |> Expect.all
+                        [ TodoList.current >> Expect.equal (Just ( "c", 3 ))
+                        , TodoList.remaining >> Expect.equal [ ( "a", 1 ) ]
+                        , TodoList.completed >> Expect.equal [ ( "b", 2 ) ]
+                        , TodoList.disabled >> Expect.equal []
+                        ]
+        , test "all done restores disabled to current" <|
+            \() ->
+                let
+                    initialList =
+                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
+
+                    ( initialTodoList, initialSeed ) =
+                        -- current = b, remaining = a, c
+                        Random.step (TodoList.chooseFromList initialList) (Random.initialSeed 0)
+
+                    disabledTodoList =
+                        initialTodoList
+                            |> TodoList.disable "a"
+                            |> TodoList.disable "c"
+
+                    ( finalTodoList, _ ) =
+                        -- completed = b, disabled = a, c
+                        Random.step (TodoList.complete disabledTodoList) initialSeed
+                in
+                TodoList.restore "a" finalTodoList
+                    |> Expect.all
+                        [ TodoList.current >> Expect.equal (Just ( "a", 1 ))
+                        , TodoList.remaining >> Expect.equal []
+                        , TodoList.completed >> Expect.equal [ ( "b", 2 ) ]
+                        , TodoList.disabled >> Expect.equal [ ( "c", 3 ) ]
                         ]
         ]
 

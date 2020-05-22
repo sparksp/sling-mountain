@@ -3,6 +3,7 @@ module Svg.Icons exposing
     , chevronRight
     , cross
     , disable
+    , restore
     , todo
     )
 
@@ -55,6 +56,17 @@ disable : List (Svg.Attribute msg) -> Html msg
 disable attributes =
     svg attributes
         [ Svg.path [ d "M6 2l2-2h4l2 2h4v2H2V2h4zM3 6h14l-1 14H4L3 6zm5 2v10h1V8H8zm3 0v10h1V8h-1z" ] [] ]
+
+
+{-| Restore (reply)
+
+From [zondicons](https://www.zondicons.com/).
+
+-}
+restore : List (Svg.Attribute msg) -> Html msg
+restore attributes =
+    svg attributes
+        [ Svg.path [ d "M15 17v-2.99A4 4 0 0 0 11 10H8v5L2 9l6-6v5h3a6 6 0 0 1 6 6v3h-2z" ] [] ]
 
 
 {-| Todo

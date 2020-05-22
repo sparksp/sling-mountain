@@ -13,6 +13,7 @@ module TodoList exposing
     , encoder
     , pick
     , remaining
+    , restore
     )
 
 import Json.Decode as Decode
@@ -111,6 +112,27 @@ pick key list =
 
         ( Just found, Todo data ) ->
             Todo { data | current = found, remaining = data.current :: data.remaining }
+
+        ( Just found, AllDone data ) ->
+            Todo { current = found, remaining = [], completed = data.completed, disabled = data.disabled }
+
+
+{-| Attempts to return the given item to the remaining list.
+-}
+restore : comparable -> TodoList comparable v -> TodoList comparable v
+restore key list =
+    let
+        findResult =
+            ( Nothing, list )
+                |> findTodoListCompleted key
+                |> findTodoListDisabled key
+    in
+    case findResult of
+        ( Nothing, _ ) ->
+            list
+
+        ( Just found, Todo data ) ->
+            Todo { data | remaining = found :: data.remaining }
 
         ( Just found, AllDone data ) ->
             Todo { current = found, remaining = [], completed = data.completed, disabled = data.disabled }

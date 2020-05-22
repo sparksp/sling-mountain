@@ -54,6 +54,7 @@ type Msg
     = Complete
     | DisableCurrent
     | Disable Key
+    | Restore Key
     | DomResult (Result Dom.Error ())
     | GotFirst (TodoList Key Scenario)
     | GotComplete (TodoList Key Scenario)
@@ -128,6 +129,10 @@ update msg (Model model) =
                 , [ Task.attempt GotViewport (Dom.getViewportOf "current")
                   ]
                 )
+
+        Restore key ->
+            updateAndSaveTodo (TodoList.restore key model.todo)
+                ( Model model, [] )
 
         Pick key ->
             updateAndSaveTodo (TodoList.pick key model.todo)
@@ -316,7 +321,7 @@ viewCurrentScenario options maybe =
         Nothing ->
             ( "all-done"
             , cardFrame CardFrameDefault
-                [ cardTitle [] { position = TodoList.Completed, onClick = Nothing, secondAction = Nothing } "All done!"
+                [ cardTitle [] { position = TodoList.Completed, onClick = Nothing, actions = [] } "All done!"
                 , cardBody (Html.p [] [ Html.text "Outstanding work, you've finished all the scenarios!" ])
                 ]
             )
@@ -363,7 +368,7 @@ viewScenario options position ( key, scenario ) =
                         (cardTitle []
                             { position = position
                             , onClick = Just Complete
-                            , secondAction = Just (disableButton DisableCurrent)
+                            , actions = [ disableButton DisableCurrent ]
                             }
                         )
                         scenario
@@ -372,25 +377,37 @@ viewScenario options position ( key, scenario ) =
                 , Scenario.mapLink (cardLink options) scenario
                 ]
 
+        TodoList.Remaining ->
+            cardFrame CardFrameActive
+                [ Scenario.mapTitle
+                    (cardTitle [ TW.textGray600 ]
+                        { position = position
+                        , onClick = Just (Pick key)
+                        , actions = [ disableButton (Disable key) ]
+                        }
+                    )
+                    scenario
+                ]
+
+        TodoList.Completed ->
+            cardFrame CardFrameActive
+                [ Scenario.mapTitle
+                    (cardTitle [ TW.textGray600 ]
+                        { position = position
+                        , onClick = Just (Pick key)
+                        , actions = [ restoreButton (Restore key), disableButton (Disable key) ]
+                        }
+                    )
+                    scenario
+                ]
+
         TodoList.Disabled ->
             cardFrame CardFrameActive
                 [ Scenario.mapTitle
                     (cardTitle [ TW.textGray600 ]
                         { position = position
                         , onClick = Just (Pick key)
-                        , secondAction = Nothing
-                        }
-                    )
-                    scenario
-                ]
-
-        _ ->
-            cardFrame CardFrameActive
-                [ Scenario.mapTitle
-                    (cardTitle [ TW.textGray600 ]
-                        { position = position
-                        , onClick = Just (Pick key)
-                        , secondAction = Just (disableButton (Disable key))
+                        , actions = [ restoreButton (Restore key), disableIcon ]
                         }
                     )
                     scenario
@@ -450,14 +467,14 @@ cardTitle :
     ->
         { onClick : Maybe msg
         , position : TodoList.Position
-        , secondAction : Maybe (Html msg)
+        , actions : List (Html msg)
         }
     -> String
     -> Html msg
-cardTitle attributes { onClick, position, secondAction } title =
+cardTitle attributes { onClick, position, actions } title =
     let
         buttonPadding =
-            [ TW.px6
+            [ TW.px3
             , TW.py3
             ]
     in
@@ -466,52 +483,70 @@ cardTitle attributes { onClick, position, secondAction } title =
             :: TW.flexRow
             :: TW.fontBold
             :: TW.leading6
+            :: TW.px3
             :: TW.textXl
             :: attributes
         )
-        ([ (case onClick of
-                Just msg ->
-                    Html.button
-                        (Events.onClick msg
-                            :: TW.textLeft
-                            :: TW.wFull
-                            :: TW.textGray600
-                            :: TW.hoverTextBlack
-                            :: buttonPadding
-                        )
+        ((case onClick of
+            Just msg ->
+                Html.button
+                    (Events.onClick msg
+                        :: TW.hoverTextBlack
+                        :: TW.textGray600
+                        :: TW.textLeft
+                        :: TW.wFull
+                        :: buttonPadding
+                    )
 
-                Nothing ->
-                    Html.p buttonPadding
-           )
+            Nothing ->
+                Html.p buttonPadding
+         )
             [ positionIcon position [ STW.h4, STW.w4, STW.floatLeft, STW.mr2, STW.mt1 ]
             , Html.span [ TW.textGray900 ] [ Html.text title ]
             ]
-         ]
-            |> withAction secondAction
+            :: actions
         )
 
 
-withAction : Maybe (Html msg) -> List (Html msg) -> List (Html msg)
-withAction maybeAction list =
-    case maybeAction of
-        Nothing ->
-            list
+disableIcon : Html msg
+disableIcon =
+    Html.div
+        [ Attr.title "This Scenario is disabled"
+        , TW.cursorNotAllowed
+        , TW.flex
+        , TW.flexRow
+        , TW.itemsCenter
+        , TW.px3
+        , TW.py3
+        , TW.textGray600
+        ]
+        [ Icons.disable [ STW.h4, STW.w4 ] ]
 
-        Just action ->
-            list ++ [ action ]
 
-
-disableButton : msg -> Html msg
+disableButton : Msg -> Html Msg
 disableButton onDisable =
     Html.button
         [ Events.onClick onDisable
         , Attr.title "Disable this Scenario"
         , TW.hoverTextBlack
-        , TW.textGray600
-        , TW.px6
+        , TW.px3
         , TW.py3
+        , TW.textGray600
         ]
         [ Icons.disable [ STW.h4, STW.w4 ] ]
+
+
+restoreButton : Msg -> Html Msg
+restoreButton onRestore =
+    Html.button
+        [ Events.onClick onRestore
+        , Attr.title "Restore this Scenario"
+        , TW.hoverTextBlack
+        , TW.px3
+        , TW.py3
+        , TW.textGray600
+        ]
+        [ Icons.restore [ STW.h4, STW.w4 ] ]
 
 
 cardBody : Html msg -> Html msg
