@@ -77,7 +77,11 @@ init list flags =
     in
     case todoListFromFlags of
         Just todoList ->
-            updateAndSaveTodo todoList ( initialModel, [] )
+            updateAndSaveTodo todoList
+                ( initialModel
+                , [ Task.attempt GotViewport (Dom.getViewportOf "current")
+                  ]
+                )
 
         Nothing ->
             ( initialModel
