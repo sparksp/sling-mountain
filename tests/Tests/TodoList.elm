@@ -294,6 +294,52 @@ pickTest =
                         , TodoList.disabled >> Expect.equal []
                         , TodoList.completed >> Expect.equal [ ( "b", 2 ) ]
                         ]
+        , test "picks item with key from disabled" <|
+            \() ->
+                let
+                    initialList =
+                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ), ( "d", 4 ), ( "e", 5 ) ]
+
+                    ( initialTodoList, seed ) =
+                        -- current = d, remaining = a, b, c, e
+                        Random.step (TodoList.chooseFromList initialList) (Random.initialSeed 0)
+
+                    ( completeTodoList, _ ) =
+                        -- current = a, remaining = b, c, e, disabled = d
+                        Random.step (TodoList.disableCurrent initialTodoList) seed
+                in
+                TodoList.pick "d" completeTodoList
+                    |> Expect.all
+                        [ TodoList.current >> Expect.equal (Just ( "d", 4 ))
+                        , TodoList.remaining >> Expect.equal [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ), ( "e", 5 ) ]
+                        , TodoList.disabled >> Expect.equal []
+                        , TodoList.completed >> Expect.equal []
+                        ]
+        , test "picks item with key from all disabled" <|
+            \() ->
+                let
+                    initialList =
+                        [ ( "a", 1 ), ( "b", 2 ) ]
+
+                    ( initialTodoList, intermediateSeed ) =
+                        -- current = a, remaining = b
+                        Random.step (TodoList.chooseFromList initialList) (Random.initialSeed 0)
+
+                    ( intermediateTodoList, seed ) =
+                        -- current = b, disabled = a
+                        Random.step (TodoList.disableCurrent initialTodoList) intermediateSeed
+
+                    ( completeTodoList, _ ) =
+                        -- disabled = a, b
+                        Random.step (TodoList.disableCurrent intermediateTodoList) seed
+                in
+                TodoList.pick "a" completeTodoList
+                    |> Expect.all
+                        [ TodoList.current >> Expect.equal (Just ( "a", 1 ))
+                        , TodoList.remaining >> Expect.equal []
+                        , TodoList.disabled >> Expect.equal [ ( "b", 2 ) ]
+                        , TodoList.completed >> Expect.equal []
+                        ]
         , test "picks item with current key changes nothing" <|
             \() ->
                 let

@@ -224,6 +224,7 @@ findTodoList key todo =
             ( Nothing, todo )
                 |> findTodoListRemaining key
                 |> findTodoListCompleted key
+                |> findTodoListDisabled key
     in
     case findResult of
         ( Nothing, _ ) ->
@@ -271,6 +272,28 @@ findTodoListCompleted key ( maybeFound, todo ) =
             in
             ( Maybe.Extra.or maybeFound maybeCurrent
             , Todo { data | completed = newCompleted }
+            )
+
+
+findTodoListDisabled : comparable -> ( Maybe ( comparable, v ), TodoList comparable v ) -> ( Maybe ( comparable, v ), TodoList comparable v )
+findTodoListDisabled key ( maybeFound, todo ) =
+    case todo of
+        AllDone data ->
+            let
+                ( maybeCurrent, newDisabled ) =
+                    find key data.disabled
+            in
+            ( Maybe.Extra.or maybeFound maybeCurrent
+            , AllDone { data | disabled = newDisabled }
+            )
+
+        Todo data ->
+            let
+                ( maybeCurrent, newDisabled ) =
+                    find key data.disabled
+            in
+            ( Maybe.Extra.or maybeFound maybeCurrent
+            , Todo { data | disabled = newDisabled }
             )
 
 
