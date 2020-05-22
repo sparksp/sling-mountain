@@ -52,12 +52,13 @@ type alias Key =
 
 type Msg
     = Complete
+    | SkipCurrent
     | DisableCurrent
     | Disable Key
     | Restore Key
     | DomResult (Result Dom.Error ())
     | GotFirst (TodoList Key Scenario)
-    | GotComplete (TodoList Key Scenario)
+    | GotTodoList (TodoList Key Scenario)
     | GotViewport (Result Dom.Error Dom.Viewport)
     | Pick Key
     | Resize
@@ -115,12 +116,17 @@ update msg (Model model) =
     case msg of
         Complete ->
             ( Model { model | embed = Embed.step model.embed }
-            , Random.generate GotComplete (TodoList.complete model.todo)
+            , Random.generate GotTodoList (TodoList.complete model.todo)
+            )
+
+        SkipCurrent ->
+            ( Model model
+            , Random.generate GotTodoList (TodoList.skip model.todo)
             )
 
         DisableCurrent ->
             ( Model { model | embed = Embed.step model.embed }
-            , Random.generate GotComplete (TodoList.disableCurrent model.todo)
+            , Random.generate GotTodoList (TodoList.disableCurrent model.todo)
             )
 
         Disable key ->
@@ -147,7 +153,7 @@ update msg (Model model) =
             , Task.attempt GotViewport (Dom.getViewportOf "current")
             )
 
-        GotComplete newTodo ->
+        GotTodoList newTodo ->
             updateAndSaveTodo newTodo
                 ( Model model
                 , [ Task.attempt GotViewport (Dom.getViewportOf "current") ]
@@ -368,7 +374,7 @@ viewScenario options position ( key, scenario ) =
                         (cardTitle []
                             { position = position
                             , onClick = Just Complete
-                            , actions = [ disableButton DisableCurrent ]
+                            , actions = [ skipButton SkipCurrent, disableButton DisableCurrent ]
                             }
                         )
                         scenario
@@ -547,6 +553,19 @@ restoreButton onRestore =
         , TW.textGray600
         ]
         [ Icons.restore [ STW.h4, STW.w4 ] ]
+
+
+skipButton : Msg -> Html Msg
+skipButton onSkip =
+    Html.button
+        [ Events.onClick onSkip
+        , Attr.title "Skip this Scenario"
+        , TW.hoverTextBlack
+        , TW.px3
+        , TW.py3
+        , TW.textGray600
+        ]
+        [ Icons.skip [ STW.h4, STW.w4 ] ]
 
 
 cardBody : Html msg -> Html msg

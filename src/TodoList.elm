@@ -14,6 +14,7 @@ module TodoList exposing
     , pick
     , remaining
     , restore
+    , skip
     )
 
 import Json.Decode as Decode
@@ -51,6 +52,32 @@ empty =
 chooseFromList : List ( comparable, v ) -> Random.Generator (TodoList comparable v)
 chooseFromList list =
     chooseData { remaining = list, completed = [], disabled = [] }
+
+
+skip : TodoList comparable v -> Random.Generator (TodoList comparable v)
+skip list =
+    let
+        keep : ( comparable, v ) -> TodoList comparable v -> TodoList comparable v
+        keep =
+            \value todo ->
+                case todo of
+                    AllDone data ->
+                        Todo
+                            { current = value
+                            , remaining = []
+                            , completed = data.completed
+                            , disabled = data.disabled
+                            }
+
+                    Todo data ->
+                        Todo { data | remaining = value :: data.remaining }
+    in
+    case list of
+        Todo data ->
+            chooseData data |> Random.map (keep data.current)
+
+        AllDone _ ->
+            Random.constant list
 
 
 complete : TodoList comparable v -> Random.Generator (TodoList comparable v)

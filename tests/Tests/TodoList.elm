@@ -1,10 +1,11 @@
 module Tests.TodoList exposing (all)
 
 import Expect
+import Fuzz
 import Json.Decode as Decode
 import Json.Encode as Encode
 import Random
-import Test exposing (Test, describe, test)
+import Test exposing (Test, describe, fuzz, test)
 import TodoList
 
 
@@ -20,6 +21,7 @@ all =
         , encodeTests
         , pickTest
         , restoreTests
+        , skipTest
         ]
 
 
@@ -56,6 +58,98 @@ chooseFromListTest =
                         , TodoList.completed >> Expect.equal []
                         ]
         ]
+
+
+skipTest : Test
+skipTest =
+    describe "skip"
+        [ test "with empty list is empty" <|
+            \() ->
+                let
+                    ( skippedTodoList, _ ) =
+                        Random.step (TodoList.skip TodoList.empty) (Random.initialSeed 0)
+                in
+                skippedTodoList
+                    |> Expect.equal TodoList.empty
+        , test "with all done is not changed" <|
+            \() ->
+                let
+                    initialList =
+                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
+
+                    ( initialTodoList, initialSeed ) =
+                        Random.step (TodoList.chooseFromList initialList) (Random.initialSeed 0)
+
+                    ( remainingTodoList, remainingSeed ) =
+                        Random.step (TodoList.complete initialTodoList) initialSeed
+
+                    ( completeTodoList, completeSeed ) =
+                        Random.step (TodoList.complete remainingTodoList) remainingSeed
+
+                    ( finalTodoList, finalSeed ) =
+                        -- completed = a, b, c
+                        Random.step (TodoList.complete completeTodoList) completeSeed
+
+                    ( skippedTodoList, _ ) =
+                        Random.step (TodoList.skip finalTodoList) finalSeed
+                in
+                skippedTodoList
+                    |> Expect.equal finalTodoList
+        , test "with no remaining is not changed" <|
+            \() ->
+                let
+                    initialList =
+                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
+
+                    ( initialTodoList, initialSeed ) =
+                        Random.step (TodoList.chooseFromList initialList) (Random.initialSeed 0)
+
+                    ( remainingTodoList, remainingSeed ) =
+                        Random.step (TodoList.complete initialTodoList) initialSeed
+
+                    ( completeTodoList, completeSeed ) =
+                        -- current = c, completed = a, b
+                        Random.step (TodoList.complete remainingTodoList) remainingSeed
+
+                    ( skippedTodoList, _ ) =
+                        Random.step (TodoList.skip completeTodoList) completeSeed
+                in
+                skippedTodoList
+                    |> Expect.equal completeTodoList
+        , fuzz Fuzz.int "chooses new current from remaining" <|
+            \seed ->
+                let
+                    initialList =
+                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
+
+                    ( initialTodoList, initialSeed ) =
+                        Random.step (TodoList.chooseFromList initialList) (Random.initialSeed seed)
+
+                    initialCurrent =
+                        TodoList.current initialTodoList
+
+                    ( skippedTodoList, _ ) =
+                        Random.step (TodoList.skip initialTodoList) initialSeed
+                in
+                skippedTodoList
+                    |> Expect.all
+                        [ TodoList.current >> Expect.notEqual Nothing
+                        , TodoList.current >> Expect.notEqual initialCurrent
+                        , TodoList.remaining >> contains initialCurrent >> Expect.true "Remaining must contain initial current"
+                        , TodoList.disabled >> Expect.equal []
+                        , TodoList.completed >> Expect.equal []
+                        ]
+        ]
+
+
+contains : Maybe a -> List a -> Bool
+contains maybeVal list =
+    case maybeVal of
+        Nothing ->
+            False
+
+        Just val ->
+            List.member val list
 
 
 completeTest : Test

@@ -4,6 +4,7 @@ module Svg.Icons exposing
     , cross
     , disable
     , restore
+    , skip
     , todo
     )
 
@@ -67,6 +68,17 @@ restore : List (Svg.Attribute msg) -> Html msg
 restore attributes =
     svg attributes
         [ Svg.path [ d "M15 17v-2.99A4 4 0 0 0 11 10H8v5L2 9l6-6v5h3a6 6 0 0 1 6 6v3h-2z" ] [] ]
+
+
+{-| Skip (fast-forward)
+
+From [zondicons](https://www.zondicons.com/).
+
+-}
+skip : List (Svg.Attribute msg) -> Html msg
+skip attributes =
+    svg attributes
+        [ Svg.path [ d "M1 5l9 5-9 5V5zm9 0l9 5-9 5V5z" ] [] ]
 
 
 {-| Todo
