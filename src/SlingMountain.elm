@@ -53,6 +53,7 @@ type alias Key =
 type Msg
     = Complete
     | DisableCurrent
+    | Disable Key
     | DomResult (Result Dom.Error ())
     | GotFirst (TodoList Key Scenario)
     | GotComplete (TodoList Key Scenario)
@@ -120,6 +121,13 @@ update msg (Model model) =
             ( Model { model | embed = Embed.step model.embed }
             , Random.generate GotComplete (TodoList.disableCurrent model.todo)
             )
+
+        Disable key ->
+            updateAndSaveTodo (TodoList.disable key model.todo)
+                ( Model { model | embed = Embed.step model.embed }
+                , [ Task.attempt GotViewport (Dom.getViewportOf "current")
+                  ]
+                )
 
         Pick key ->
             updateAndSaveTodo (TodoList.pick key model.todo)
@@ -308,7 +316,7 @@ viewCurrentScenario options maybe =
         Nothing ->
             ( "all-done"
             , cardFrame CardFrameDefault
-                [ cardTitle [] { position = TodoList.Completed, onClick = Nothing, onDisable = Nothing } "All done!"
+                [ cardTitle [] { position = TodoList.Completed, onClick = Nothing, secondAction = Nothing } "All done!"
                 , cardBody (Html.p [] [ Html.text "Outstanding work, you've finished all the scenarios!" ])
                 ]
             )
@@ -350,14 +358,42 @@ viewScenario options position ( key, scenario ) =
     , case position of
         TodoList.Current ->
             cardFrame CardFramePrimary
-                [ Html.h1 [] [ Scenario.mapTitle (cardTitle [] { position = position, onClick = Just Complete, onDisable = Just DisableCurrent }) scenario ]
+                [ Html.h1 []
+                    [ Scenario.mapTitle
+                        (cardTitle []
+                            { position = position
+                            , onClick = Just Complete
+                            , secondAction = Just (disableButton DisableCurrent)
+                            }
+                        )
+                        scenario
+                    ]
                 , Scenario.mapBody (Html.map never >> cardBody) scenario
                 , Scenario.mapLink (cardLink options) scenario
                 ]
 
+        TodoList.Disabled ->
+            cardFrame CardFrameActive
+                [ Scenario.mapTitle
+                    (cardTitle [ TW.textGray600 ]
+                        { position = position
+                        , onClick = Just (Pick key)
+                        , secondAction = Nothing
+                        }
+                    )
+                    scenario
+                ]
+
         _ ->
             cardFrame CardFrameActive
-                [ Scenario.mapTitle (cardTitle [ TW.textGray600 ] { position = position, onClick = Just (Pick key), onDisable = Nothing }) scenario
+                [ Scenario.mapTitle
+                    (cardTitle [ TW.textGray600 ]
+                        { position = position
+                        , onClick = Just (Pick key)
+                        , secondAction = Just (disableButton (Disable key))
+                        }
+                    )
+                    scenario
                 ]
     )
 
@@ -413,12 +449,12 @@ cardTitle :
     List (Html.Attribute msg)
     ->
         { onClick : Maybe msg
-        , onDisable : Maybe msg
         , position : TodoList.Position
+        , secondAction : Maybe (Html msg)
         }
     -> String
     -> Html msg
-cardTitle attributes { onClick, onDisable, position } title =
+cardTitle attributes { onClick, position, secondAction } title =
     let
         buttonPadding =
             [ TW.px6
@@ -451,29 +487,31 @@ cardTitle attributes { onClick, onDisable, position } title =
             , Html.span [ TW.textGray900 ] [ Html.text title ]
             ]
          ]
-            |> withDisableButton onDisable
+            |> withAction secondAction
         )
 
 
-withDisableButton : Maybe msg -> List (Html msg) -> List (Html msg)
-withDisableButton maybeOnDisable list =
-    list
-        ++ (case maybeOnDisable of
-                Nothing ->
-                    []
+withAction : Maybe (Html msg) -> List (Html msg) -> List (Html msg)
+withAction maybeAction list =
+    case maybeAction of
+        Nothing ->
+            list
 
-                Just onDisable ->
-                    [ Html.button
-                        [ Events.onClick onDisable
-                        , Attr.title "Disable this Scenario"
-                        , TW.hoverTextBlack
-                        , TW.textGray600
-                        , TW.px6
-                        , TW.py3
-                        ]
-                        [ Icons.close [ STW.h4, STW.w4 ] ]
-                    ]
-           )
+        Just action ->
+            list ++ [ action ]
+
+
+disableButton : msg -> Html msg
+disableButton onDisable =
+    Html.button
+        [ Events.onClick onDisable
+        , Attr.title "Disable this Scenario"
+        , TW.hoverTextBlack
+        , TW.textGray600
+        , TW.px6
+        , TW.py3
+        ]
+        [ Icons.disable [ STW.h4, STW.w4 ] ]
 
 
 cardBody : Html msg -> Html msg

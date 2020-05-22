@@ -6,6 +6,7 @@ module TodoList exposing
     , completed
     , current
     , decoder
+    , disable
     , disableCurrent
     , disabled
     , empty
@@ -76,9 +77,43 @@ disableCurrent list =
             Random.constant list
 
 
+disable : comparable -> TodoList comparable v -> TodoList comparable v
+disable key list =
+    let
+        findResult =
+            ( Nothing, list )
+                |> findTodoListRemaining key
+                |> findTodoListCompleted key
+    in
+    case findResult of
+        ( Nothing, _ ) ->
+            list
+
+        ( Just found, Todo data ) ->
+            Todo { data | disabled = found :: data.disabled }
+
+        ( Just found, AllDone data ) ->
+            AllDone { data | disabled = found :: data.disabled }
+
+
 pick : comparable -> TodoList comparable v -> TodoList comparable v
 pick key list =
-    findTodoList key list
+    let
+        findResult =
+            ( Nothing, list )
+                |> findTodoListRemaining key
+                |> findTodoListCompleted key
+                |> findTodoListDisabled key
+    in
+    case findResult of
+        ( Nothing, _ ) ->
+            list
+
+        ( Just found, Todo data ) ->
+            Todo { data | current = found, remaining = data.current :: data.remaining }
+
+        ( Just found, AllDone data ) ->
+            Todo { current = found, remaining = [], completed = data.completed, disabled = data.disabled }
 
 
 current : TodoList comparable v -> Maybe ( comparable, v )
@@ -215,26 +250,6 @@ findMaybe maybeKey list =
 
         Just key ->
             find key list
-
-
-findTodoList : comparable -> TodoList comparable v -> TodoList comparable v
-findTodoList key todo =
-    let
-        findResult =
-            ( Nothing, todo )
-                |> findTodoListRemaining key
-                |> findTodoListCompleted key
-                |> findTodoListDisabled key
-    in
-    case findResult of
-        ( Nothing, _ ) ->
-            todo
-
-        ( Just found, Todo data ) ->
-            Todo { data | current = found, remaining = data.current :: data.remaining }
-
-        ( Just found, AllDone data ) ->
-            Todo { current = found, remaining = [], completed = data.completed, disabled = data.disabled }
 
 
 findTodoListRemaining : comparable -> ( Maybe ( comparable, v ), TodoList comparable v ) -> ( Maybe ( comparable, v ), TodoList comparable v )

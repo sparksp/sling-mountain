@@ -1,8 +1,8 @@
 module Svg.Icons exposing
     ( check
     , chevronRight
-    , close
     , cross
+    , disable
     , todo
     )
 
@@ -35,17 +35,6 @@ chevronRight attributes =
         [ Svg.path [ d "M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z" ] [] ]
 
 
-{-| Close
-
-From [zondicons](https://www.zondicons.com/).
-
--}
-close : List (Svg.Attribute msg) -> Html msg
-close attributes =
-    svg attributes
-        [ Svg.path [ d "M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z" ] [] ]
-
-
 {-| Cross (close-outline)
 
 From [zondicons](https://www.zondicons.com/).
@@ -55,6 +44,17 @@ cross : List (Svg.Attribute msg) -> Html msg
 cross attributes =
     svg attributes
         [ Svg.path [ d "M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm1.41-1.41A8 8 0 1 0 15.66 4.34 8 8 0 0 0 4.34 15.66zm9.9-8.49L11.41 10l2.83 2.83-1.41 1.41L10 11.41l-2.83 2.83-1.41-1.41L8.59 10 5.76 7.17l1.41-1.41L10 8.59l2.83-2.83 1.41 1.41z" ] [] ]
+
+
+{-| Disable (trash)
+
+From [zondicons](https://www.zondicons.com/).
+
+-}
+disable : List (Svg.Attribute msg) -> Html msg
+disable attributes =
+    svg attributes
+        [ Svg.path [ d "M6 2l2-2h4l2 2h4v2H2V2h4zM3 6h14l-1 14H4L3 6zm5 2v10h1V8H8zm3 0v10h1V8h-1z" ] [] ]
 
 
 {-| Todo
