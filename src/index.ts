@@ -9,9 +9,7 @@ var app = Elm.Main.init({
 });
 
 app.ports.storeScenarios.subscribe(todo => {
-    if (todo.completed.length || todo.skipped.length) {
-        localStorage.setItem('scenario-save', JSON.stringify(todo));
-    }
+    localStorage.setItem('scenario-save', JSON.stringify(todo));
 });
 
 document.body.addEventListener('touchstart', function () { }, false);

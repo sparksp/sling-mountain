@@ -53,7 +53,8 @@ type alias Key =
 type Msg
     = Complete
     | DomResult (Result Dom.Error ())
-    | GotList (TodoList Key Scenario)
+    | GotFirst (TodoList Key Scenario)
+    | GotComplete (TodoList Key Scenario)
     | GotViewport (Result Dom.Error Dom.Viewport)
     | Pick Key
     | Resize
@@ -62,22 +63,21 @@ type Msg
 
 
 init : List Scenario -> Flags -> ( Model, Cmd Msg )
-init list maybeTodoJson =
+init list flags =
     let
         listWithKeys =
-            list |> withKeys
+            withKeys list
 
-        maybeTodoList =
-            maybeTodoJson
-                |> Maybe.andThen (Decode.decodeValue (TodoList.decoder listWithKeys) >> Result.toMaybe)
+        todoListFromFlags =
+            Maybe.andThen (Decode.decodeValue (TodoList.decoder listWithKeys) >> Result.toMaybe) flags
     in
-    case maybeTodoList of
+    case todoListFromFlags of
         Just todoList ->
-            updateTodo todoList ( initialModel, [] )
+            updateAndSaveTodo todoList ( initialModel, [] )
 
         Nothing ->
             ( initialModel
-            , Random.generate GotList (TodoList.chooseFromList listWithKeys)
+            , Random.generate GotFirst (TodoList.chooseFromList listWithKeys)
             )
 
 
@@ -112,19 +112,24 @@ update msg (Model model) =
     case msg of
         Complete ->
             ( Model { model | embed = Embed.step model.embed }
-            , Random.generate GotList (TodoList.complete model.todo)
+            , Random.generate GotComplete (TodoList.complete model.todo)
             )
 
         Pick key ->
-            updateTodo (TodoList.pick key model.todo)
+            updateAndSaveTodo (TodoList.pick key model.todo)
                 ( Model { model | embed = Embed.step model.embed }
                 , [ Task.attempt DomResult (Dom.setViewport 0 0)
                   , Task.attempt GotViewport (Dom.getViewportOf "current")
                   ]
                 )
 
-        GotList newTodo ->
-            updateTodo newTodo
+        GotFirst newTodo ->
+            ( Model { model | todo = newTodo }
+            , Task.attempt GotViewport (Dom.getViewportOf "current")
+            )
+
+        GotComplete newTodo ->
+            updateAndSaveTodo newTodo
                 ( Model model
                 , [ Task.attempt GotViewport (Dom.getViewportOf "current") ]
                 )
@@ -156,10 +161,10 @@ update msg (Model model) =
             ( Model { model | showSkipped = show }, Cmd.none )
 
 
-updateTodo : TodoList Key Scenario -> ( Model, List (Cmd Msg) ) -> ( Model, Cmd Msg )
-updateTodo todo ( Model model, cmds ) =
+updateAndSaveTodo : TodoList Key Scenario -> ( Model, List (Cmd Msg) ) -> ( Model, Cmd Msg )
+updateAndSaveTodo todo ( Model model, cmdList ) =
     ( Model { model | todo = todo }
-    , Cmd.batch (saveScenarios todo :: cmds)
+    , Cmd.batch (saveScenarios todo :: cmdList)
     )
 
 
@@ -344,14 +349,9 @@ viewScenario options position ( key, scenario ) =
                 , Scenario.mapLink (cardLink options) scenario
                 ]
 
-        TodoList.Remaining ->
+        _ ->
             cardFrame CardFrameActive
                 [ Scenario.mapTitle (cardTitle [ TW.textGray600 ] { position = position, onClick = Just (Pick key) }) scenario
-                ]
-
-        _ ->
-            cardFrame CardFrameDefault
-                [ Scenario.mapTitle (cardTitle [ TW.textGray600 ] { position = position, onClick = Nothing }) scenario
                 ]
     )
 

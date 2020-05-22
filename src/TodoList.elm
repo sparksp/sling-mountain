@@ -2,6 +2,7 @@ module TodoList exposing (Position(..), TodoList, chooseFromList, complete, comp
 
 import Json.Decode as Decode
 import Json.Encode as Encode
+import Maybe.Extra
 import Random
 import Random.List
 
@@ -33,17 +34,7 @@ empty =
 
 pick : comparable -> TodoList comparable v -> TodoList comparable v
 pick key list =
-    case list of
-        Todo data ->
-            case find key data.remaining of
-                ( Nothing, _ ) ->
-                    list
-
-                ( Just item, rest ) ->
-                    Todo { data | current = item, remaining = data.current :: rest }
-
-        AllDone _ ->
-            list
+    findTodoList key list
 
 
 current : TodoList comparable v -> Maybe ( comparable, v )
@@ -195,6 +186,63 @@ findMaybe maybeKey list =
 
         Just key ->
             find key list
+
+
+findTodoList : comparable -> TodoList comparable v -> TodoList comparable v
+findTodoList key todo =
+    let
+        findResult =
+            ( Nothing, todo )
+                |> findTodoListRemaining key
+                |> findTodoListCompleted key
+    in
+    case findResult of
+        ( Nothing, _ ) ->
+            todo
+
+        ( Just found, Todo data ) ->
+            Todo { data | current = found, remaining = data.current :: data.remaining }
+
+        ( Just found, AllDone data ) ->
+            Todo { current = found, remaining = [], completed = data.completed, skipped = data.skipped }
+
+
+findTodoListRemaining : comparable -> ( Maybe ( comparable, v ), TodoList comparable v ) -> ( Maybe ( comparable, v ), TodoList comparable v )
+findTodoListRemaining key ( maybeFound, todo ) =
+    case todo of
+        AllDone _ ->
+            ( maybeFound, todo )
+
+        Todo data ->
+            let
+                ( maybeCurrent, newRemaining ) =
+                    find key data.remaining
+            in
+            ( Maybe.Extra.or maybeFound maybeCurrent
+            , Todo { data | remaining = newRemaining }
+            )
+
+
+findTodoListCompleted : comparable -> ( Maybe ( comparable, v ), TodoList comparable v ) -> ( Maybe ( comparable, v ), TodoList comparable v )
+findTodoListCompleted key ( maybeFound, todo ) =
+    case todo of
+        AllDone data ->
+            let
+                ( maybeCurrent, newCompleted ) =
+                    find key data.completed
+            in
+            ( Maybe.Extra.or maybeFound maybeCurrent
+            , AllDone { data | completed = newCompleted }
+            )
+
+        Todo data ->
+            let
+                ( maybeCurrent, newCompleted ) =
+                    find key data.completed
+            in
+            ( Maybe.Extra.or maybeFound maybeCurrent
+            , Todo { data | completed = newCompleted }
+            )
 
 
 partitionListByKeys : List String -> List ( String, v ) -> ( List ( String, v ), List ( String, v ) )
