@@ -1,6 +1,7 @@
 module Svg.Icons exposing
     ( check
     , chevronRight
+    , close
     , cross
     , todo
     )
@@ -32,6 +33,17 @@ chevronRight : List (Svg.Attribute msg) -> Html msg
 chevronRight attributes =
     svg attributes
         [ Svg.path [ d "M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z" ] [] ]
+
+
+{-| Close
+
+From [zondicons](https://www.zondicons.com/).
+
+-}
+close : List (Svg.Attribute msg) -> Html msg
+close attributes =
+    svg attributes
+        [ Svg.path [ d "M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z" ] [] ]
 
 
 {-| Cross (close-outline)

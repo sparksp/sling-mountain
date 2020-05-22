@@ -13,6 +13,7 @@ all =
     describe "TodoList comparable v"
         [ chooseFromListTest
         , completeTest
+        , disableCurrentTest
         , decodeTests
         , emptyTest
         , encodeTests
@@ -36,7 +37,7 @@ chooseFromListTest =
                     |> Expect.all
                         [ TodoList.current >> Expect.equal (Just ( "b", 2 ))
                         , TodoList.remaining >> Expect.equal [ ( "a", 1 ), ( "c", 3 ) ]
-                        , TodoList.skipped >> Expect.equal []
+                        , TodoList.disabled >> Expect.equal []
                         , TodoList.completed >> Expect.equal []
                         ]
         , test "with empty list is empty" <|
@@ -49,7 +50,7 @@ chooseFromListTest =
                     |> Expect.all
                         [ TodoList.current >> Expect.equal Nothing
                         , TodoList.remaining >> Expect.equal []
-                        , TodoList.skipped >> Expect.equal []
+                        , TodoList.disabled >> Expect.equal []
                         , TodoList.completed >> Expect.equal []
                         ]
         ]
@@ -71,7 +72,7 @@ completeTest =
                     |> Expect.all
                         [ TodoList.current >> Expect.equal Nothing
                         , TodoList.remaining >> Expect.equal []
-                        , TodoList.skipped >> Expect.equal []
+                        , TodoList.disabled >> Expect.equal []
                         , TodoList.completed >> Expect.equal []
                         ]
         , test "with current and no remaining moves current to completed" <|
@@ -90,7 +91,7 @@ completeTest =
                     |> Expect.all
                         [ TodoList.current >> Expect.equal Nothing
                         , TodoList.remaining >> Expect.equal []
-                        , TodoList.skipped >> Expect.equal []
+                        , TodoList.disabled >> Expect.equal []
                         , TodoList.completed >> Expect.equal [ ( "a", 1 ) ]
                         ]
         , test "with current and remaining moves current to completed and chooses a new current" <|
@@ -109,8 +110,95 @@ completeTest =
                     |> Expect.all
                         [ TodoList.current >> Expect.equal (Just ( "a", 1 ))
                         , TodoList.remaining >> Expect.equal [ ( "c", 3 ) ]
-                        , TodoList.skipped >> Expect.equal []
+                        , TodoList.disabled >> Expect.equal []
                         , TodoList.completed >> Expect.equal [ ( "b", 2 ) ]
+                        ]
+        ]
+
+
+disableCurrentTest : Test
+disableCurrentTest =
+    describe "disableCurrent"
+        [ test "with empty list is empty" <|
+            \() ->
+                let
+                    ( disabledList, _ ) =
+                        Random.step (TodoList.disableCurrent TodoList.empty) (Random.initialSeed 0)
+                in
+                disabledList
+                    |> Expect.equal TodoList.empty
+        , test "with current and some remaining, disable current and return a random remaining" <|
+            \() ->
+                let
+                    initialList =
+                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ), ( "d", 4 ), ( "e", 5 ) ]
+
+                    ( initialTodoList, initialSeed ) =
+                        -- current = d, remaining = a, b, c, e
+                        Random.step (TodoList.chooseFromList initialList) (Random.initialSeed 0)
+
+                    ( disabledTodoList, disabledSeed ) =
+                        -- current = a, remaining = b, c, e, disabled = d
+                        Random.step (TodoList.disableCurrent initialTodoList) initialSeed
+
+                    ( finalTodoList, _ ) =
+                        -- current = e, remaining = b, c, disabled = a, d
+                        Random.step (TodoList.disableCurrent disabledTodoList) disabledSeed
+                in
+                finalTodoList
+                    |> Expect.all
+                        [ TodoList.current >> Expect.equal (Just ( "e", 5 ))
+                        , TodoList.remaining >> Expect.equal [ ( "b", 2 ), ( "c", 3 ) ]
+                        , TodoList.disabled >> Expect.equal [ ( "a", 1 ), ( "d", 4 ) ]
+                        , TodoList.completed >> Expect.equal []
+                        ]
+        , test "with current and no remaining, the list is all done" <|
+            \() ->
+                let
+                    initialList =
+                        [ ( "a", 1 ), ( "b", 2 ) ]
+
+                    ( initialTodoList, initialSeed ) =
+                        Random.step (TodoList.chooseFromList initialList) (Random.initialSeed 0)
+
+                    ( disabledTodoList, disabledSeed ) =
+                        Random.step (TodoList.disableCurrent initialTodoList) initialSeed
+
+                    ( finalTodoList, _ ) =
+                        -- disabled = a, b
+                        Random.step (TodoList.disableCurrent disabledTodoList) disabledSeed
+                in
+                finalTodoList
+                    |> Expect.all
+                        [ TodoList.current >> Expect.equal Nothing
+                        , TodoList.remaining >> Expect.equal []
+                        , TodoList.disabled >> Expect.equal [ ( "a", 1 ), ( "b", 2 ) ]
+                        , TodoList.completed >> Expect.equal []
+                        ]
+        , test "with no current the list is the same" <|
+            \() ->
+                let
+                    initialList =
+                        [ ( "a", 1 ) ]
+
+                    ( initialTodoList, initialSeed ) =
+                        -- current = a
+                        Random.step (TodoList.chooseFromList initialList) (Random.initialSeed 0)
+
+                    ( completeTodoList, completeSeed ) =
+                        -- completed = a
+                        Random.step (TodoList.complete initialTodoList) initialSeed
+
+                    ( disabledTodoList, _ ) =
+                        -- completed = a
+                        Random.step (TodoList.complete completeTodoList) completeSeed
+                in
+                disabledTodoList
+                    |> Expect.all
+                        [ TodoList.current >> Expect.equal Nothing
+                        , TodoList.remaining >> Expect.equal []
+                        , TodoList.disabled >> Expect.equal []
+                        , TodoList.completed >> Expect.equal [ ( "a", 1 ) ]
                         ]
         ]
 
@@ -124,7 +212,7 @@ emptyTest =
                     |> Expect.all
                         [ TodoList.current >> Expect.equal Nothing
                         , TodoList.remaining >> Expect.equal []
-                        , TodoList.skipped >> Expect.equal []
+                        , TodoList.disabled >> Expect.equal []
                         , TodoList.completed >> Expect.equal []
                         ]
         ]
@@ -140,7 +228,7 @@ pickTest =
                     |> Expect.all
                         [ TodoList.current >> Expect.equal Nothing
                         , TodoList.remaining >> Expect.equal []
-                        , TodoList.skipped >> Expect.equal []
+                        , TodoList.disabled >> Expect.equal []
                         , TodoList.completed >> Expect.equal []
                         ]
         , test "picks item with key from remaining" <|
@@ -157,7 +245,7 @@ pickTest =
                     |> Expect.all
                         [ TodoList.current >> Expect.equal (Just ( "a", 1 ))
                         , TodoList.remaining >> Expect.equal [ ( "d", 4 ), ( "b", 2 ), ( "c", 3 ), ( "e", 5 ) ]
-                        , TodoList.skipped >> Expect.equal []
+                        , TodoList.disabled >> Expect.equal []
                         , TodoList.completed >> Expect.equal []
                         ]
         , test "picks item with key from completed" <|
@@ -178,7 +266,7 @@ pickTest =
                     |> Expect.all
                         [ TodoList.current >> Expect.equal (Just ( "d", 4 ))
                         , TodoList.remaining >> Expect.equal [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ), ( "e", 5 ) ]
-                        , TodoList.skipped >> Expect.equal []
+                        , TodoList.disabled >> Expect.equal []
                         , TodoList.completed >> Expect.equal []
                         ]
         , test "picks item with key from all completed" <|
@@ -203,7 +291,7 @@ pickTest =
                     |> Expect.all
                         [ TodoList.current >> Expect.equal (Just ( "a", 1 ))
                         , TodoList.remaining >> Expect.equal []
-                        , TodoList.skipped >> Expect.equal []
+                        , TodoList.disabled >> Expect.equal []
                         , TodoList.completed >> Expect.equal [ ( "b", 2 ) ]
                         ]
         , test "picks item with current key changes nothing" <|
@@ -220,7 +308,7 @@ pickTest =
                     |> Expect.all
                         [ TodoList.current >> Expect.equal (Just ( "d", 4 ))
                         , TodoList.remaining >> Expect.equal [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ), ( "e", 5 ) ]
-                        , TodoList.skipped >> Expect.equal []
+                        , TodoList.disabled >> Expect.equal []
                         , TodoList.completed >> Expect.equal []
                         ]
         , test "with missing key returns original list" <|
@@ -237,7 +325,7 @@ pickTest =
                     |> Expect.all
                         [ TodoList.current >> Expect.equal (Just ( "b", 2 ))
                         , TodoList.remaining >> Expect.equal [ ( "a", 1 ), ( "c", 3 ) ]
-                        , TodoList.skipped >> Expect.equal []
+                        , TodoList.disabled >> Expect.equal []
                         , TodoList.completed >> Expect.equal []
                         ]
         ]
@@ -246,7 +334,7 @@ pickTest =
 encodeTests : Test
 encodeTests =
     describe "encode"
-        [ test "no completed or skipped are empty arrays" <|
+        [ test "no completed or disabled are empty arrays" <|
             \() ->
                 let
                     initialList =
@@ -258,7 +346,7 @@ encodeTests =
                 in
                 TodoList.encoder initialTodoList
                     |> Encode.encode 0
-                    |> Expect.equal "{\"current\":\"b\",\"completed\":[],\"skipped\":[]}"
+                    |> Expect.equal "{\"current\":\"b\",\"completed\":[],\"disabled\":[]}"
         , test "completed encodes key" <|
             \() ->
                 let
@@ -275,7 +363,7 @@ encodeTests =
                 in
                 TodoList.encoder completeTodoList
                     |> Encode.encode 0
-                    |> Expect.equal "{\"current\":\"a\",\"completed\":[\"b\"],\"skipped\":[]}"
+                    |> Expect.equal "{\"current\":\"a\",\"completed\":[\"b\"],\"disabled\":[]}"
         , test "no current encodes null" <|
             \() ->
                 let
@@ -292,7 +380,7 @@ encodeTests =
                 in
                 TodoList.encoder completeTodoList
                     |> Encode.encode 0
-                    |> Expect.equal "{\"current\":null,\"completed\":[\"a\"],\"skipped\":[]}"
+                    |> Expect.equal "{\"current\":null,\"completed\":[\"a\"],\"disabled\":[]}"
         ]
 
 
@@ -306,14 +394,14 @@ decodeTests =
                         [ ( "a", 1 ), ( "b", 2 ) ]
 
                     json =
-                        "{\"current\":\"a\",\"completed\":[],\"skipped\":[]}"
+                        "{\"current\":\"a\",\"completed\":[],\"disabled\":[]}"
                 in
                 Decode.decodeString (TodoList.decoder initialList) json
                     |> Expect.all
                         [ Result.map TodoList.current >> Expect.equal (Ok (Just ( "a", 1 )))
                         , Result.map TodoList.remaining >> Expect.equal (Ok [ ( "b", 2 ) ])
                         , Result.map TodoList.completed >> Expect.equal (Ok [])
-                        , Result.map TodoList.skipped >> Expect.equal (Ok [])
+                        , Result.map TodoList.disabled >> Expect.equal (Ok [])
                         ]
         , test "with completed" <|
             \() ->
@@ -322,30 +410,30 @@ decodeTests =
                         [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
 
                     json =
-                        "{\"current\":\"a\",\"completed\":[\"b\",\"d\"],\"skipped\":[]}"
+                        "{\"current\":\"a\",\"completed\":[\"b\",\"d\"],\"disabled\":[]}"
                 in
                 Decode.decodeString (TodoList.decoder initialList) json
                     |> Expect.all
                         [ Result.map TodoList.current >> Expect.equal (Ok (Just ( "a", 1 )))
                         , Result.map TodoList.remaining >> Expect.equal (Ok [ ( "c", 3 ) ])
                         , Result.map TodoList.completed >> Expect.equal (Ok [ ( "b", 2 ) ])
-                        , Result.map TodoList.skipped >> Expect.equal (Ok [])
+                        , Result.map TodoList.disabled >> Expect.equal (Ok [])
                         ]
-        , test "with skipped" <|
+        , test "with disabled" <|
             \() ->
                 let
                     initialList =
                         [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
 
                     json =
-                        "{\"current\":\"a\",\"completed\":[],\"skipped\":[\"b\",\"d\"]}"
+                        "{\"current\":\"a\",\"completed\":[],\"disabled\":[\"b\",\"d\"]}"
                 in
                 Decode.decodeString (TodoList.decoder initialList) json
                     |> Expect.all
                         [ Result.map TodoList.current >> Expect.equal (Ok (Just ( "a", 1 )))
                         , Result.map TodoList.remaining >> Expect.equal (Ok [ ( "c", 3 ) ])
                         , Result.map TodoList.completed >> Expect.equal (Ok [])
-                        , Result.map TodoList.skipped >> Expect.equal (Ok [ ( "b", 2 ) ])
+                        , Result.map TodoList.disabled >> Expect.equal (Ok [ ( "b", 2 ) ])
                         ]
         , test "with no current" <|
             \() ->
@@ -354,14 +442,14 @@ decodeTests =
                         [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
 
                     json =
-                        "{\"current\":null,\"completed\":[\"a\",\"b\",\"d\"],\"skipped\":[\"c\",\"e\"]}"
+                        "{\"current\":null,\"completed\":[\"a\",\"b\",\"d\"],\"disabled\":[\"c\",\"e\"]}"
                 in
                 Decode.decodeString (TodoList.decoder initialList) json
                     |> Expect.all
                         [ Result.map TodoList.current >> Expect.equal (Ok Nothing)
                         , Result.map TodoList.remaining >> Expect.equal (Ok [])
                         , Result.map TodoList.completed >> Expect.equal (Ok [ ( "a", 1 ), ( "b", 2 ) ])
-                        , Result.map TodoList.skipped >> Expect.equal (Ok [ ( "c", 3 ) ])
+                        , Result.map TodoList.disabled >> Expect.equal (Ok [ ( "c", 3 ) ])
                         ]
         , test "current no longer in list, gets next remaining" <|
             \() ->
@@ -370,14 +458,14 @@ decodeTests =
                         [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
 
                     json =
-                        "{\"current\":\"d\",\"completed\":[\"a\",\"b\"],\"skipped\":[]}"
+                        "{\"current\":\"d\",\"completed\":[\"a\",\"b\"],\"disabled\":[]}"
                 in
                 Decode.decodeString (TodoList.decoder initialList) json
                     |> Expect.all
                         [ Result.map TodoList.current >> Expect.equal (Ok (Just ( "c", 3 )))
                         , Result.map TodoList.remaining >> Expect.equal (Ok [])
                         , Result.map TodoList.completed >> Expect.equal (Ok [ ( "a", 1 ), ( "b", 2 ) ])
-                        , Result.map TodoList.skipped >> Expect.equal (Ok [])
+                        , Result.map TodoList.disabled >> Expect.equal (Ok [])
                         ]
         , test "no current but items remaining, gets current from remaining" <|
             \() ->
@@ -386,13 +474,13 @@ decodeTests =
                         [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ), ( "y", 25 ), ( "z", 26 ) ]
 
                     json =
-                        "{\"current\":null,\"completed\":[\"a\",\"b\"],\"skipped\":[\"c\"]}"
+                        "{\"current\":null,\"completed\":[\"a\",\"b\"],\"disabled\":[\"c\"]}"
                 in
                 Decode.decodeString (TodoList.decoder initialList) json
                     |> Expect.all
                         [ Result.map TodoList.current >> Expect.equal (Ok (Just ( "y", 25 )))
                         , Result.map TodoList.remaining >> Expect.equal (Ok [ ( "z", 26 ) ])
                         , Result.map TodoList.completed >> Expect.equal (Ok [ ( "a", 1 ), ( "b", 2 ) ])
-                        , Result.map TodoList.skipped >> Expect.equal (Ok [ ( "c", 3 ) ])
+                        , Result.map TodoList.disabled >> Expect.equal (Ok [ ( "c", 3 ) ])
                         ]
         ]
