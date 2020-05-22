@@ -34,7 +34,7 @@ type Model
         { embed : Embed
         , showCompleted : Bool
         , showRemaining : Bool
-        , showSkipped : Bool
+        , showDisabled : Bool
         , todo : TodoList Key Scenario
         , width : Int
         }
@@ -43,7 +43,7 @@ type Model
 type ShowSection
     = ShowCompleted
     | ShowRemaining
-    | ShowSkipped
+    | ShowDisabled
 
 
 type alias Key =
@@ -52,6 +52,9 @@ type alias Key =
 
 type Msg
     = Complete
+    | DisableCurrent
+    | Disable Key
+    | Restore Key
     | DomResult (Result Dom.Error ())
     | GotFirst (TodoList Key Scenario)
     | GotComplete (TodoList Key Scenario)
@@ -89,7 +92,7 @@ initialModel =
         , width = 0
         , showCompleted = False
         , showRemaining = False
-        , showSkipped = False
+        , showDisabled = False
         }
 
 
@@ -114,6 +117,22 @@ update msg (Model model) =
             ( Model { model | embed = Embed.step model.embed }
             , Random.generate GotComplete (TodoList.complete model.todo)
             )
+
+        DisableCurrent ->
+            ( Model { model | embed = Embed.step model.embed }
+            , Random.generate GotComplete (TodoList.disableCurrent model.todo)
+            )
+
+        Disable key ->
+            updateAndSaveTodo (TodoList.disable key model.todo)
+                ( Model { model | embed = Embed.step model.embed }
+                , [ Task.attempt GotViewport (Dom.getViewportOf "current")
+                  ]
+                )
+
+        Restore key ->
+            updateAndSaveTodo (TodoList.restore key model.todo)
+                ( Model model, [] )
 
         Pick key ->
             updateAndSaveTodo (TodoList.pick key model.todo)
@@ -157,8 +176,8 @@ update msg (Model model) =
         SetShow ( ShowRemaining, show ) ->
             ( Model { model | showRemaining = show }, Cmd.none )
 
-        SetShow ( ShowSkipped, show ) ->
-            ( Model { model | showSkipped = show }, Cmd.none )
+        SetShow ( ShowDisabled, show ) ->
+            ( Model { model | showDisabled = show }, Cmd.none )
 
 
 updateAndSaveTodo : TodoList Key Scenario -> ( Model, List (Cmd Msg) ) -> ( Model, Cmd Msg )
@@ -214,7 +233,7 @@ currentScenarioTitle todo =
 
 
 viewScenarios : Model -> Html Msg
-viewScenarios (Model { embed, todo, width, showCompleted, showRemaining, showSkipped }) =
+viewScenarios (Model { embed, todo, width, showCompleted, showRemaining, showDisabled }) =
     let
         options =
             { embed = embed, maxWidth = width }
@@ -224,7 +243,7 @@ viewScenarios (Model { embed, todo, width, showCompleted, showRemaining, showSki
             { options = options
             , position = TodoList.Remaining
             , show = ( ShowRemaining, showRemaining )
-            , heading = ( "heading-skipped", viewHeading "Remaining" )
+            , heading = ( "heading-disabled", viewHeading "Remaining" )
             , scenarios = TodoList.remaining todo
             }
         ++ viewScenarioList
@@ -236,10 +255,10 @@ viewScenarios (Model { embed, todo, width, showCompleted, showRemaining, showSki
             }
         ++ viewScenarioList
             { options = options
-            , position = TodoList.Skipped
-            , show = ( ShowSkipped, showSkipped )
-            , heading = ( "heading-skipped", viewHeading "Skipped" )
-            , scenarios = TodoList.skipped todo
+            , position = TodoList.Disabled
+            , show = ( ShowDisabled, showDisabled )
+            , heading = ( "heading-disabled", viewHeading "Disabled" )
+            , scenarios = TodoList.disabled todo
             }
         |> Keyed.node "div" [ TW.maxWLg, TW.wFull ]
 
@@ -302,7 +321,7 @@ viewCurrentScenario options maybe =
         Nothing ->
             ( "all-done"
             , cardFrame CardFrameDefault
-                [ cardTitle [] { position = TodoList.Completed, onClick = Nothing } "All done!"
+                [ cardTitle [] { position = TodoList.Completed, onClick = Nothing, actions = [] } "All done!"
                 , cardBody (Html.p [] [ Html.text "Outstanding work, you've finished all the scenarios!" ])
                 ]
             )
@@ -344,14 +363,54 @@ viewScenario options position ( key, scenario ) =
     , case position of
         TodoList.Current ->
             cardFrame CardFramePrimary
-                [ Html.h1 [] [ Scenario.mapTitle (cardTitle [] { position = position, onClick = Just Complete }) scenario ]
+                [ Html.h1 []
+                    [ Scenario.mapTitle
+                        (cardTitle []
+                            { position = position
+                            , onClick = Just Complete
+                            , actions = [ disableButton DisableCurrent ]
+                            }
+                        )
+                        scenario
+                    ]
                 , Scenario.mapBody (Html.map never >> cardBody) scenario
                 , Scenario.mapLink (cardLink options) scenario
                 ]
 
-        _ ->
+        TodoList.Remaining ->
             cardFrame CardFrameActive
-                [ Scenario.mapTitle (cardTitle [ TW.textGray600 ] { position = position, onClick = Just (Pick key) }) scenario
+                [ Scenario.mapTitle
+                    (cardTitle [ TW.textGray600 ]
+                        { position = position
+                        , onClick = Just (Pick key)
+                        , actions = [ disableButton (Disable key) ]
+                        }
+                    )
+                    scenario
+                ]
+
+        TodoList.Completed ->
+            cardFrame CardFrameActive
+                [ Scenario.mapTitle
+                    (cardTitle [ TW.textGray600 ]
+                        { position = position
+                        , onClick = Just (Pick key)
+                        , actions = [ restoreButton (Restore key), disableButton (Disable key) ]
+                        }
+                    )
+                    scenario
+                ]
+
+        TodoList.Disabled ->
+            cardFrame CardFrameActive
+                [ Scenario.mapTitle
+                    (cardTitle [ TW.textGray600 ]
+                        { position = position
+                        , onClick = Just (Pick key)
+                        , actions = [ restoreButton (Restore key), disableIcon ]
+                        }
+                    )
+                    scenario
                 ]
     )
 
@@ -403,34 +462,91 @@ cardFrame style children =
     element attributes children
 
 
-cardTitle : List (Html.Attribute msg) -> { position : TodoList.Position, onClick : Maybe msg } -> String -> Html msg
-cardTitle attributes { position, onClick } title =
+cardTitle :
+    List (Html.Attribute msg)
+    ->
+        { onClick : Maybe msg
+        , position : TodoList.Position
+        , actions : List (Html msg)
+        }
+    -> String
+    -> Html msg
+cardTitle attributes { onClick, position, actions } title =
     let
-        titleAttributes =
-            [ TW.fontBold
-            , TW.leading6
-            , TW.px6
+        buttonPadding =
+            [ TW.px3
             , TW.py3
-            , TW.textXl
             ]
-                ++ attributes
     in
-    (case onClick of
-        Just msg ->
-            Html.button
-                (Events.onClick msg
-                    :: TW.textLeft
-                    :: TW.wFull
-                    :: TW.hoverTextGray900
-                    :: titleAttributes
-                )
+    Html.div
+        (TW.flex
+            :: TW.flexRow
+            :: TW.fontBold
+            :: TW.leading6
+            :: TW.px3
+            :: TW.textXl
+            :: attributes
+        )
+        ((case onClick of
+            Just msg ->
+                Html.button
+                    (Events.onClick msg
+                        :: TW.hoverTextBlack
+                        :: TW.textGray600
+                        :: TW.textLeft
+                        :: TW.wFull
+                        :: buttonPadding
+                    )
 
-        Nothing ->
-            Html.p titleAttributes
-    )
-        [ positionIcon position [ STW.h4, STW.w4, STW.floatLeft, STW.mr2, STW.mt1 ]
-        , Html.text title
+            Nothing ->
+                Html.p buttonPadding
+         )
+            [ positionIcon position [ STW.h4, STW.w4, STW.floatLeft, STW.mr2, STW.mt1 ]
+            , Html.span [ TW.textGray900 ] [ Html.text title ]
+            ]
+            :: actions
+        )
+
+
+disableIcon : Html msg
+disableIcon =
+    Html.div
+        [ Attr.title "This Scenario is disabled"
+        , TW.cursorNotAllowed
+        , TW.flex
+        , TW.flexRow
+        , TW.itemsCenter
+        , TW.px3
+        , TW.py3
+        , TW.textGray600
         ]
+        [ Icons.disable [ STW.h4, STW.w4 ] ]
+
+
+disableButton : Msg -> Html Msg
+disableButton onDisable =
+    Html.button
+        [ Events.onClick onDisable
+        , Attr.title "Disable this Scenario"
+        , TW.hoverTextBlack
+        , TW.px3
+        , TW.py3
+        , TW.textGray600
+        ]
+        [ Icons.disable [ STW.h4, STW.w4 ] ]
+
+
+restoreButton : Msg -> Html Msg
+restoreButton onRestore =
+    Html.button
+        [ Events.onClick onRestore
+        , Attr.title "Restore this Scenario"
+        , TW.hoverTextBlack
+        , TW.px3
+        , TW.py3
+        , TW.textGray600
+        ]
+        [ Icons.restore [ STW.h4, STW.w4 ] ]
 
 
 cardBody : Html msg -> Html msg
@@ -511,7 +627,7 @@ positionIcon position =
         TodoList.Remaining ->
             Icons.todo
 
-        TodoList.Skipped ->
+        TodoList.Disabled ->
             Icons.cross
 
         TodoList.Completed ->

@@ -7,7 +7,7 @@ export type Flags = Scenarios
 export type Scenarios = {
     current: string | null
     completed: string[]
-    skipped: string[]
+    disabled: string[]
 }
 
 export type Ports = Elm.Ports<{

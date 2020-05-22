@@ -1,4 +1,20 @@
-module TodoList exposing (Position(..), TodoList, chooseFromList, complete, completed, current, decoder, empty, encoder, pick, remaining, skipped)
+module TodoList exposing
+    ( Position(..)
+    , TodoList
+    , chooseFromList
+    , complete
+    , completed
+    , current
+    , decoder
+    , disable
+    , disableCurrent
+    , disabled
+    , empty
+    , encoder
+    , pick
+    , remaining
+    , restore
+    )
 
 import Json.Decode as Decode
 import Json.Encode as Encode
@@ -11,30 +27,115 @@ type Position
     = Current
     | Remaining
     | Completed
-    | Skipped
+    | Disabled
 
 
 type TodoList comparable v
     = AllDone
         { completed : List ( comparable, v )
-        , skipped : List ( comparable, v )
+        , disabled : List ( comparable, v )
         }
     | Todo
         { current : ( comparable, v )
         , remaining : List ( comparable, v )
         , completed : List ( comparable, v )
-        , skipped : List ( comparable, v )
+        , disabled : List ( comparable, v )
         }
 
 
 empty : TodoList comparable v
 empty =
-    AllDone { completed = [], skipped = [] }
+    AllDone { completed = [], disabled = [] }
+
+
+chooseFromList : List ( comparable, v ) -> Random.Generator (TodoList comparable v)
+chooseFromList list =
+    chooseData { remaining = list, completed = [], disabled = [] }
+
+
+complete : TodoList comparable v -> Random.Generator (TodoList comparable v)
+complete list =
+    case list of
+        Todo data ->
+            chooseData { data | completed = data.current :: data.completed }
+
+        AllDone _ ->
+            Random.constant list
+
+
+disableCurrent : TodoList comparable v -> Random.Generator (TodoList comparable v)
+disableCurrent list =
+    case list of
+        Todo data ->
+            case data.remaining of
+                [] ->
+                    Random.constant (AllDone { completed = data.completed, disabled = data.current :: data.disabled })
+
+                _ ->
+                    chooseData { data | disabled = data.current :: data.disabled }
+
+        AllDone _ ->
+            Random.constant list
+
+
+disable : comparable -> TodoList comparable v -> TodoList comparable v
+disable key list =
+    let
+        findResult =
+            ( Nothing, list )
+                |> findTodoListRemaining key
+                |> findTodoListCompleted key
+    in
+    case findResult of
+        ( Nothing, _ ) ->
+            list
+
+        ( Just found, Todo data ) ->
+            Todo { data | disabled = found :: data.disabled }
+
+        ( Just found, AllDone data ) ->
+            AllDone { data | disabled = found :: data.disabled }
 
 
 pick : comparable -> TodoList comparable v -> TodoList comparable v
 pick key list =
-    findTodoList key list
+    let
+        findResult =
+            ( Nothing, list )
+                |> findTodoListRemaining key
+                |> findTodoListCompleted key
+                |> findTodoListDisabled key
+    in
+    case findResult of
+        ( Nothing, _ ) ->
+            list
+
+        ( Just found, Todo data ) ->
+            Todo { data | current = found, remaining = data.current :: data.remaining }
+
+        ( Just found, AllDone data ) ->
+            Todo { current = found, remaining = [], completed = data.completed, disabled = data.disabled }
+
+
+{-| Attempts to return the given item to the remaining list.
+-}
+restore : comparable -> TodoList comparable v -> TodoList comparable v
+restore key list =
+    let
+        findResult =
+            ( Nothing, list )
+                |> findTodoListCompleted key
+                |> findTodoListDisabled key
+    in
+    case findResult of
+        ( Nothing, _ ) ->
+            list
+
+        ( Just found, Todo data ) ->
+            Todo { data | remaining = found :: data.remaining }
+
+        ( Just found, AllDone data ) ->
+            Todo { current = found, remaining = [], completed = data.completed, disabled = data.disabled }
 
 
 current : TodoList comparable v -> Maybe ( comparable, v )
@@ -67,29 +168,14 @@ completed list =
             data.completed
 
 
-skipped : TodoList comparable v -> List ( comparable, v )
-skipped list =
+disabled : TodoList comparable v -> List ( comparable, v )
+disabled list =
     case list of
         Todo data ->
-            data.skipped
+            data.disabled
 
         AllDone data ->
-            data.skipped
-
-
-complete : TodoList comparable v -> Random.Generator (TodoList comparable v)
-complete list =
-    case list of
-        Todo data ->
-            chooseData { data | completed = data.current :: data.completed }
-
-        AllDone _ ->
-            Random.constant list
-
-
-chooseFromList : List ( comparable, v ) -> Random.Generator (TodoList comparable v)
-chooseFromList list =
-    chooseData { remaining = list, completed = [], skipped = [] }
+            data.disabled
 
 
 
@@ -101,7 +187,7 @@ decoder list =
     Decode.map3 DecoderData
         (Decode.field "current" (Decode.nullable Decode.string))
         (Decode.field "completed" (Decode.list Decode.string))
-        (Decode.field "skipped" (Decode.list Decode.string))
+        (Decode.field "disabled" (Decode.list Decode.string))
         |> Decode.map (fromListWithDecoderData list)
 
 
@@ -123,10 +209,10 @@ encoder todo =
                 |> Encode.object
 
 
-encodeData : { a | completed : List ( String, v ), skipped : List ( String, v ) } -> List ( String, Encode.Value )
+encodeData : { a | completed : List ( String, v ), disabled : List ( String, v ) } -> List ( String, Encode.Value )
 encodeData data =
     [ ( "completed", Encode.list encodeKey data.completed )
-    , ( "skipped", Encode.list encodeKey data.skipped )
+    , ( "disabled", Encode.list encodeKey data.disabled )
     ]
 
 
@@ -143,7 +229,7 @@ chooseData :
     { a
         | remaining : List ( comparable, v )
         , completed : List ( comparable, v )
-        , skipped : List ( comparable, v )
+        , disabled : List ( comparable, v )
     }
     -> Random.Generator (TodoList comparable v)
 chooseData data =
@@ -152,10 +238,10 @@ chooseData data =
             (\( maybeItem, rest ) ->
                 case maybeItem of
                     Nothing ->
-                        AllDone { completed = data.completed, skipped = data.skipped }
+                        AllDone { completed = data.completed, disabled = data.disabled }
 
                     Just item ->
-                        Todo { current = item, remaining = rest, completed = data.completed, skipped = data.skipped }
+                        Todo { current = item, remaining = rest, completed = data.completed, disabled = data.disabled }
             )
 
 
@@ -186,25 +272,6 @@ findMaybe maybeKey list =
 
         Just key ->
             find key list
-
-
-findTodoList : comparable -> TodoList comparable v -> TodoList comparable v
-findTodoList key todo =
-    let
-        findResult =
-            ( Nothing, todo )
-                |> findTodoListRemaining key
-                |> findTodoListCompleted key
-    in
-    case findResult of
-        ( Nothing, _ ) ->
-            todo
-
-        ( Just found, Todo data ) ->
-            Todo { data | current = found, remaining = data.current :: data.remaining }
-
-        ( Just found, AllDone data ) ->
-            Todo { current = found, remaining = [], completed = data.completed, skipped = data.skipped }
 
 
 findTodoListRemaining : comparable -> ( Maybe ( comparable, v ), TodoList comparable v ) -> ( Maybe ( comparable, v ), TodoList comparable v )
@@ -245,6 +312,28 @@ findTodoListCompleted key ( maybeFound, todo ) =
             )
 
 
+findTodoListDisabled : comparable -> ( Maybe ( comparable, v ), TodoList comparable v ) -> ( Maybe ( comparable, v ), TodoList comparable v )
+findTodoListDisabled key ( maybeFound, todo ) =
+    case todo of
+        AllDone data ->
+            let
+                ( maybeCurrent, newDisabled ) =
+                    find key data.disabled
+            in
+            ( Maybe.Extra.or maybeFound maybeCurrent
+            , AllDone { data | disabled = newDisabled }
+            )
+
+        Todo data ->
+            let
+                ( maybeCurrent, newDisabled ) =
+                    find key data.disabled
+            in
+            ( Maybe.Extra.or maybeFound maybeCurrent
+            , Todo { data | disabled = newDisabled }
+            )
+
+
 partitionListByKeys : List String -> List ( String, v ) -> ( List ( String, v ), List ( String, v ) )
 partitionListByKeys keys list =
     List.partition (\( key, _ ) -> List.member key keys) list
@@ -253,7 +342,7 @@ partitionListByKeys keys list =
 type alias DecoderData v =
     { current : Maybe v
     , completed : List v
-    , skipped : List v
+    , disabled : List v
     }
 
 
@@ -266,15 +355,15 @@ fromListWithDecoderData list keys =
         ( completedList, completedRemaining ) =
             partitionListByKeys keys.completed currentRemaining
 
-        ( skippedList, remainingList ) =
-            partitionListByKeys keys.skipped completedRemaining
+        ( disabledList, remainingList ) =
+            partitionListByKeys keys.disabled completedRemaining
     in
     case ( maybeCurrent, remainingList ) of
         ( Nothing, [] ) ->
-            AllDone { completed = completedList, skipped = skippedList }
+            AllDone { completed = completedList, disabled = disabledList }
 
         ( Nothing, first :: rest ) ->
-            Todo { current = first, remaining = rest, completed = completedList, skipped = skippedList }
+            Todo { current = first, remaining = rest, completed = completedList, disabled = disabledList }
 
         ( Just gotCurrent, _ ) ->
-            Todo { current = gotCurrent, remaining = remainingList, completed = completedList, skipped = skippedList }
+            Todo { current = gotCurrent, remaining = remainingList, completed = completedList, disabled = disabledList }
