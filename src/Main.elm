@@ -6,7 +6,7 @@ import Scenario exposing (Scenario)
 import SlingMountain
 
 
-main : Program () SlingMountain.Model SlingMountain.Msg
+main : Program SlingMountain.Flags SlingMountain.Model SlingMountain.Msg
 main =
     Browser.document
         { init = SlingMountain.init getScenarios

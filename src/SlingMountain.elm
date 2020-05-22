@@ -1,4 +1,4 @@
-module SlingMountain exposing (Model, Msg, init, subscriptions, update, view)
+module SlingMountain exposing (Flags, Model, Msg, init, subscriptions, update, view)
 
 import Browser
 import Browser.Dom as Dom
@@ -12,13 +12,21 @@ import Html.Events as Events
 import Html.Events.UnlessKeyed as UnlessKeyed
 import Html.Keyed as Keyed
 import Html.Tailwind as TW
+import Json.Decode as Decode
+import Json.Encode as Encode
+import Ports
 import Random
+import SHA1
 import Scenario exposing (Scenario)
 import Svg
 import Svg.Icons as Icons
 import Svg.Tailwind as STW
 import Task
 import TodoList exposing (TodoList)
+
+
+type alias Flags =
+    Maybe Encode.Value
 
 
 type Model
@@ -45,7 +53,8 @@ type alias Key =
 type Msg
     = Complete
     | DomResult (Result Dom.Error ())
-    | GotList (TodoList Key Scenario)
+    | GotFirst (TodoList Key Scenario)
+    | GotComplete (TodoList Key Scenario)
     | GotViewport (Result Dom.Error Dom.Viewport)
     | Pick Key
     | Resize
@@ -53,11 +62,23 @@ type Msg
     | SetShow ( ShowSection, Bool )
 
 
-init : List Scenario -> () -> ( Model, Cmd Msg )
-init list _ =
-    ( initialModel
-    , Random.generate GotList (list |> withKeys |> TodoList.chooseFromList)
-    )
+init : List Scenario -> Flags -> ( Model, Cmd Msg )
+init list flags =
+    let
+        listWithKeys =
+            withKeys list
+
+        todoListFromFlags =
+            Maybe.andThen (Decode.decodeValue (TodoList.decoder listWithKeys) >> Result.toMaybe) flags
+    in
+    case todoListFromFlags of
+        Just todoList ->
+            updateAndSaveTodo todoList ( initialModel, [] )
+
+        Nothing ->
+            ( initialModel
+            , Random.generate GotFirst (TodoList.chooseFromList listWithKeys)
+            )
 
 
 initialModel : Model
@@ -74,7 +95,12 @@ initialModel =
 
 withKeys : List Scenario -> List ( Key, Scenario )
 withKeys =
-    List.indexedMap (\i scenario -> ( "s" ++ String.fromInt i, scenario ))
+    List.map
+        (\scenario ->
+            ( Scenario.mapTitle (SHA1.fromString >> SHA1.toBase64) scenario
+            , scenario
+            )
+        )
 
 
 
@@ -86,25 +112,27 @@ update msg (Model model) =
     case msg of
         Complete ->
             ( Model { model | embed = Embed.step model.embed }
-            , Random.generate GotList (TodoList.complete model.todo)
+            , Random.generate GotComplete (TodoList.complete model.todo)
             )
 
         Pick key ->
-            ( Model
-                { model
-                    | todo = TodoList.pick key model.todo
-                    , embed = Embed.step model.embed
-                }
-            , Cmd.batch
-                [ Task.attempt DomResult (Dom.setViewport 0 0)
-                , Task.attempt GotViewport (Dom.getViewportOf "current")
-                ]
-            )
+            updateAndSaveTodo (TodoList.pick key model.todo)
+                ( Model { model | embed = Embed.step model.embed }
+                , [ Task.attempt DomResult (Dom.setViewport 0 0)
+                  , Task.attempt GotViewport (Dom.getViewportOf "current")
+                  ]
+                )
 
-        GotList newTodo ->
+        GotFirst newTodo ->
             ( Model { model | todo = newTodo }
             , Task.attempt GotViewport (Dom.getViewportOf "current")
             )
+
+        GotComplete newTodo ->
+            updateAndSaveTodo newTodo
+                ( Model model
+                , [ Task.attempt GotViewport (Dom.getViewportOf "current") ]
+                )
 
         Resize ->
             ( Model model
@@ -131,6 +159,19 @@ update msg (Model model) =
 
         SetShow ( ShowSkipped, show ) ->
             ( Model { model | showSkipped = show }, Cmd.none )
+
+
+updateAndSaveTodo : TodoList Key Scenario -> ( Model, List (Cmd Msg) ) -> ( Model, Cmd Msg )
+updateAndSaveTodo todo ( Model model, cmdList ) =
+    ( Model { model | todo = todo }
+    , Cmd.batch (saveScenarios todo :: cmdList)
+    )
+
+
+saveScenarios : TodoList Key Scenario -> Cmd Msg
+saveScenarios todo =
+    TodoList.encoder todo
+        |> Ports.storeScenarios
 
 
 subscriptions : Model -> Sub Msg
@@ -308,14 +349,9 @@ viewScenario options position ( key, scenario ) =
                 , Scenario.mapLink (cardLink options) scenario
                 ]
 
-        TodoList.Remaining ->
+        _ ->
             cardFrame CardFrameActive
                 [ Scenario.mapTitle (cardTitle [ TW.textGray600 ] { position = position, onClick = Just (Pick key) }) scenario
-                ]
-
-        _ ->
-            cardFrame CardFrameDefault
-                [ Scenario.mapTitle (cardTitle [ TW.textGray600 ] { position = position, onClick = Nothing }) scenario
                 ]
     )
 
