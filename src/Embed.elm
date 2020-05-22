@@ -3,22 +3,27 @@ module Embed exposing (Embed(..), map, step)
 
 type Embed
     = None
-    | One
+    | One String
 
 
 map :
-    { default : () -> a
+    { key : String
+    , default : () -> a
     , visible : () -> a
     }
     -> Embed
     -> a
-map { default, visible } embed =
+map { key, default, visible } embed =
     case embed of
         None ->
             default ()
 
-        One ->
-            visible ()
+        One k ->
+            if k == key then
+                visible ()
+
+            else
+                default ()
 
 
 step : Embed -> Embed

@@ -15,19 +15,24 @@ all =
                         |> Expect.equal Embed.None
             , test "with One it is None" <|
                 \() ->
-                    Embed.step Embed.One
+                    Embed.step (Embed.One "key")
                         |> Expect.equal Embed.None
             ]
         , describe "view"
             [ test "with None calls default" <|
                 \() ->
                     Embed.None
-                        |> Embed.map { default = \() -> "Hide", visible = \() -> "Show" }
+                        |> Embed.map { key = "", default = \() -> "Hide", visible = \() -> "Show" }
                         |> Expect.equal "Hide"
-            , test "with One calls visible" <|
+            , test "with One and wrong key calls default" <|
                 \() ->
-                    Embed.One
-                        |> Embed.map { default = \() -> "Hide", visible = \() -> "Show" }
+                    Embed.One "key"
+                        |> Embed.map { key = "other", default = \() -> "Hide", visible = \() -> "Show" }
+                        |> Expect.equal "Hide"
+            , test "with One and matching key calls visible" <|
+                \() ->
+                    Embed.One "key"
+                        |> Embed.map { key = "key", default = \() -> "Hide", visible = \() -> "Show" }
                         |> Expect.equal "Show"
             ]
         ]
