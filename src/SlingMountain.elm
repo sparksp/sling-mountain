@@ -243,7 +243,7 @@ viewScenarios (Model { embed, todo, width, showCompleted, showRemaining, showDis
             { options = options
             , position = TodoList.Remaining
             , show = ( ShowRemaining, showRemaining )
-            , heading = ( "heading-disabled", viewHeading "Remaining" )
+            , heading = ( "heading-available", viewHeading "Available" )
             , scenarios = TodoList.remaining todo
             }
         ++ viewScenarioList
