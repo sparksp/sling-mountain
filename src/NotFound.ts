@@ -1,6 +1,6 @@
 import * as Elm from 'elm-types'
 
-export type Main = Elm.Document<Flags, Ports>
+export type NotFound = Elm.Document<Flags, Ports>
 
 export type Flags = null
 

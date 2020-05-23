@@ -9,7 +9,6 @@ import Embed.Youtube.Attributes
 import Html exposing (Html)
 import Html.Attributes as Attr
 import Html.Events as Events
-import Html.Events.UnlessKeyed as UnlessKeyed
 import Html.Keyed as Keyed
 import Html.Tailwind as TW
 import Json.Decode as Decode
@@ -18,10 +17,14 @@ import Ports
 import Random
 import SHA1
 import Scenario exposing (Scenario)
-import Svg
 import Svg.Tailwind as STW
 import Task
 import TodoList exposing (TodoList)
+import Ui.Card as Card
+import Ui.Card.Action as Action exposing (Action)
+import Ui.Card.Frame as Frame
+import Ui.Card.Link as Link exposing (Link)
+import Ui.Card.Title as Title
 import Ui.Icons as Icons
 
 
@@ -306,31 +309,29 @@ viewInformationList { options, show } =
     if Tuple.second show then
         [ heading
         , ( "phill-sparks"
-          , cardFrame CardFrameDefault
-                [ cardTitle []
-                    { icon = Icons.info
-                    , onClick = Nothing
-                    , actions =
-                        [ actionLink { icon = Icons.instagram, href = "https://www.instagram.com/sparksphill/", title = "Phill Sparks on Instagram" }
-                        ]
-                    }
-                    "Phill Sparks"
-                , cardBody (Html.p [] [ Html.text "Phill Sparks is a Climbing Instructor based in the Midlands. He built this site to choose random things to practice and to quickly find the videos that explain those techniques." ])
-                , Html.img [ Attr.src "/img/phill-sparks.jpg", Attr.alt "Photo of Phill Sparks standing at the top of a crag, wearing an orange coat and waving." ] []
-                ]
+          , Card.view
+                { frame = Frame.Default
+                , title =
+                    Title.static Icons.info "Phill Sparks"
+                        |> Title.withActions
+                            [ Action.link { icon = Icons.instagram, href = "https://www.instagram.com/sparksphill/", text = "Phill Sparks on Instagram" }
+                            ]
+                , body =
+                    [ Html.p [] [ Html.text "Phill Sparks is a Climbing Instructor based in the Midlands. He built this site to choose random things to practice and to quickly find the videos that explain those techniques." ]
+                    ]
+                , link = Link.image { src = "/img/phill-sparks.jpg", alt = "Photo of Phill Sparks standing at the top of a crag, wearing an orange coat and waving." }
+                }
           )
         , ( "get-in-touch"
-          , cardFrame CardFrameDefault
-                [ cardTitle []
-                    { icon = Icons.inboxCheck
-                    , onClick = Nothing
-                    , actions =
-                        [ actionLink { icon = Icons.bug, href = "https://github.com/sparksp/sling-mountain/issues", title = "Report a bug" }
-                        ]
-                    }
-                    "Get in touch"
-                , cardBody
-                    (Html.div []
+          , Card.view
+                { frame = Frame.Default
+                , title =
+                    Title.static Icons.inboxCheck "Get in touch"
+                        |> Title.withActions
+                            [ Action.link { icon = Icons.bug, href = "https://github.com/sparksp/sling-mountain/issues", text = "Report a bug" }
+                            ]
+                , body =
+                    [ Html.div []
                         [ Html.p [ TW.mb2 ]
                             [ Html.text "Please get in touch with Phill if you have any suggestions for the website. If you find any bugs or typos please "
                             , Html.a [ Attr.href "https://github.com/sparksp/sling-mountain/issues", Attr.title "Report issues on GitHub", TW.hoverTextBlack ] [ Html.text "report them on GitHub" ]
@@ -339,29 +340,30 @@ viewInformationList { options, show } =
                         , Html.p []
                             [ Html.text "Please make sure you head over to YouTube and give a \"like\" to any videos you find useful. You can also leave any questions about the material covered in the video comments." ]
                         ]
-                    )
-                , cardLinkButton { href = "https://phills.me.uk/contact", title = "Send Phill a message." }
-                ]
+                    ]
+                , link = Link.link { href = "https://phills.me.uk/contact", text = "Send Phill a message." }
+                }
           )
         , ( "jb-mountain-skills"
-          , cardFrame CardFrameDefault
-                [ cardTitle []
-                    { icon = Icons.info
-                    , onClick = Nothing
-                    , actions =
-                        [ actionLink { icon = Icons.instagram, href = "https://www.instagram.com/jbmountainskills/", title = "JB Mountain Skills on Instagram" }
-                        ]
-                    }
-                    "JB Mountain Skills"
-                , cardBody (Html.p [] [ Html.text "JB Mountain Skills is a Mountaineering and Climbing Instructor based in North Wales. During 2020 he started producing YouTube videos about Climbing and Mountaineering rope work on his #SlingMountiain at home." ])
-                , cardYoutube options "CEwaEAh2-qE"
-                ]
+          , Card.view
+                { frame = Frame.Default
+                , title =
+                    Title.static Icons.info "JB Mountain Skills"
+                        |> Title.withActions
+                            [ Action.link { icon = Icons.instagram, href = "https://www.instagram.com/jbmountainskills/", text = "JB Mountain Skills on Instagram" }
+                            ]
+                , body =
+                    [ Html.p [] [ Html.text "JB Mountain Skills is a Mountaineering and Climbing Instructor based in North Wales. During 2020 he started producing YouTube videos about Climbing and Mountaineering rope work on his #SlingMountain at home." ]
+                    ]
+                , link = cardYoutube options "CEwaEAh2-qE"
+                }
           )
         , ( "attribution"
-          , cardFrame CardFrameDefault
-                [ cardTitle [] { icon = Icons.bookmarkOutline, onClick = Nothing, actions = [] } "Attribution"
-                , cardBody
-                    (Html.ul []
+          , Card.view
+                { frame = Frame.Default
+                , title = Title.static Icons.bookmarkOutline "Attribution"
+                , body =
+                    [ Html.ul []
                         [ Html.li []
                             [ Icons.chevronRight [ STW.h4, STW.w4, STW.my1, STW.mr1, STW.floatLeft ]
                             , Html.text "Icons designed by "
@@ -386,8 +388,9 @@ viewInformationList { options, show } =
                                 ]
                             ]
                         ]
-                    )
-                ]
+                    ]
+                , link = Link.none
+                }
           )
         , ( "spacing"
           , Html.div [ TW.mb6 ] []
@@ -447,10 +450,14 @@ viewCurrentScenario options maybe =
 
         Nothing ->
             ( "all-done"
-            , cardFrame CardFrameDefault
-                [ cardTitle [] { icon = Icons.check, onClick = Nothing, actions = [] } "All done!"
-                , cardBody (Html.p [] [ Html.text "Outstanding work, you've finished all the scenarios!" ])
-                ]
+            , Card.view
+                { frame = Frame.Default
+                , title = Title.static Icons.check "All done!"
+                , body =
+                    [ Html.p [] [ Html.text "Outstanding work, you've finished all the scenarios!" ]
+                    ]
+                , link = Link.none
+                }
             )
 
 
@@ -489,246 +496,119 @@ viewScenario options position ( key, scenario ) =
     ( key
     , case position of
         TodoList.Current ->
-            cardFrame CardFramePrimary
-                [ Html.h1 []
-                    [ Scenario.mapTitle
-                        (cardTitle []
+            Card.view
+                { frame = Frame.Primary
+                , title =
+                    Scenario.mapTitle
+                        (Title.active
                             { icon = Icons.todo
-                            , onClick = Just Complete
-                            , actions = [ skipButton SkipCurrent, disableButton DisableCurrent ]
+                            , onClick = Complete
                             }
                         )
                         scenario
+                        |> Title.withActions [ skipButton SkipCurrent, disableButton DisableCurrent ]
+                , body =
+                    [ Scenario.mapBody (Html.map never) scenario
                     ]
-                , Scenario.mapBody (Html.map never >> cardBody) scenario
-                , Scenario.mapLink (cardLink options) scenario
-                ]
+                , link = Scenario.mapLink (cardLink options) scenario
+                }
 
         TodoList.Remaining ->
-            cardFrame CardFrameActive
-                [ Scenario.mapTitle
-                    (cardTitle [ TW.textGray600 ]
-                        { icon = Icons.todo
-                        , onClick = Just (Pick key)
-                        , actions = [ disableButton (Disable key) ]
-                        }
-                    )
-                    scenario
-                ]
+            Card.view
+                { frame = Frame.Active
+                , title =
+                    Scenario.mapTitle
+                        (Title.active
+                            { icon = Icons.todo
+                            , onClick = Pick key
+                            }
+                        )
+                        scenario
+                        |> Title.withActions [ disableButton (Disable key) ]
+                , body = []
+                , link = Link.none
+                }
 
         TodoList.Completed ->
-            cardFrame CardFrameActive
-                [ Scenario.mapTitle
-                    (cardTitle [ TW.textGray600 ]
-                        { icon = Icons.check
-                        , onClick = Just (Pick key)
-                        , actions = [ restoreButton (Restore key), disableButton (Disable key) ]
-                        }
-                    )
-                    scenario
-                ]
+            Card.view
+                { frame = Frame.Active
+                , title =
+                    Scenario.mapTitle
+                        (Title.active
+                            { icon = Icons.check
+                            , onClick = Pick key
+                            }
+                        )
+                        scenario
+                        |> Title.withActions [ restoreButton (Restore key), disableButton (Disable key) ]
+                , body = []
+                , link = Link.none
+                }
 
         TodoList.Disabled ->
-            cardFrame CardFrameActive
-                [ Scenario.mapTitle
-                    (cardTitle [ TW.textGray600 ]
-                        { icon = Icons.cross
-                        , onClick = Just (Pick key)
-                        , actions = [ restoreButton (Restore key), disableIcon ]
-                        }
-                    )
-                    scenario
-                ]
+            Card.view
+                { frame = Frame.Active
+                , title =
+                    Scenario.mapTitle
+                        (Title.active
+                            { icon = Icons.cross
+                            , onClick = Pick key
+                            }
+                        )
+                        scenario
+                        |> Title.withActions [ restoreButton (Restore key), disableIcon ]
+                , body = []
+                , link = Link.none
+                }
     )
 
 
-type CardFrameStyle
-    = CardFrameDefault
-    | CardFramePrimary
-    | CardFrameActive
-
-
-cardFrame : CardFrameStyle -> List (Html msg) -> Html msg
-cardFrame style children =
-    let
-        baseAttributes =
-            [ TW.bgWhite
-            , TW.my3
-            , TW.overflowHidden
-            , TW.smRounded
-            , TW.wFull
-            ]
-
-        ( element, attributes ) =
-            case style of
-                CardFrameDefault ->
-                    ( Html.div
-                    , TW.shadowSm
-                        :: baseAttributes
-                    )
-
-                CardFramePrimary ->
-                    ( Html.main_
-                    , Attr.id "current"
-                        :: TW.shadowLg
-                        :: baseAttributes
-                    )
-
-                CardFrameActive ->
-                    ( Html.div
-                    , TW.shadowSm
-                        :: TW.hoverShadowLg
-                        :: TW.hoverTranslateX1
-                        :: TW.transform
-                        :: TW.transitionAll
-                        :: TW.duration150
-                        :: TW.easeInOut
-                        :: baseAttributes
-                    )
-    in
-    element attributes children
-
-
-cardTitle :
-    List (Html.Attribute msg)
-    ->
-        { onClick : Maybe msg
-        , icon : List (Svg.Attribute msg) -> Html msg
-        , actions : List (Html msg)
-        }
-    -> String
-    -> Html msg
-cardTitle attributes { onClick, icon, actions } title =
-    let
-        buttonPadding =
-            [ TW.px3
-            , TW.py3
-            , TW.wFull
-            ]
-    in
-    Html.div
-        (TW.flex
-            :: TW.flexRow
-            :: TW.fontBold
-            :: TW.leading6
-            :: TW.px1
-            :: TW.smPx3
-            :: TW.textXl
-            :: attributes
-        )
-        ((case onClick of
-            Just msg ->
-                Html.button
-                    (Events.onClick msg
-                        :: Attr.title "Complete this Scenario"
-                        :: TW.hoverTextBlack
-                        :: TW.textGray600
-                        :: TW.textLeft
-                        :: buttonPadding
-                    )
-
-            Nothing ->
-                Html.p buttonPadding
-         )
-            [ icon [ STW.h4, STW.w4, STW.floatLeft, STW.mr2, STW.mt1 ]
-            , Html.span [ TW.textGray900 ] [ Html.text title ]
-            ]
-            :: actions
-        )
-
-
-actionLink : { icon : List (Svg.Attribute msg) -> Html msg, href : String, title : String } -> Html msg
-actionLink { icon, href, title } =
-    Html.a
-        [ Attr.title title
-        , Attr.href href
-        , TW.flex
-        , TW.flexRow
-        , TW.hoverTextGray900
-        , TW.itemsCenter
-        , TW.p3
-        , TW.textGray600
-        ]
-        [ icon [ STW.h4, STW.w4 ] ]
-
-
-disableIcon : Html msg
+disableIcon : Action msg
 disableIcon =
-    Html.div
-        [ Attr.title "This Scenario is disabled"
-        , TW.cursorNotAllowed
-        , TW.flex
-        , TW.flexRow
-        , TW.itemsCenter
-        , TW.px3
-        , TW.py3
-        , TW.textGray600
-        ]
-        [ Icons.disable [ STW.h4, STW.w4 ] ]
+    Action.icon
+        { icon = Icons.disable
+        , text = "This Scenario is disabled"
+        }
 
 
-disableButton : Msg -> Html Msg
+disableButton : Msg -> Action Msg
 disableButton onDisable =
-    Html.button
-        [ Events.onClick onDisable
-        , Attr.title "Disable this Scenario"
-        , TW.hoverTextBlack
-        , TW.px3
-        , TW.py3
-        , TW.textGray600
-        ]
-        [ Icons.disable [ STW.h4, STW.w4 ] ]
+    Action.button
+        { icon = Icons.disable
+        , text = "Disable this Scenario"
+        , onClick = onDisable
+        }
 
 
-restoreButton : Msg -> Html Msg
+restoreButton : Msg -> Action Msg
 restoreButton onRestore =
-    Html.button
-        [ Events.onClick onRestore
-        , Attr.title "Restore this Scenario"
-        , TW.hoverTextBlack
-        , TW.px3
-        , TW.py3
-        , TW.textGray600
-        ]
-        [ Icons.restore [ STW.h4, STW.w4 ] ]
+    Action.button
+        { icon = Icons.restore
+        , text = "Restore this Scenario"
+        , onClick = onRestore
+        }
 
 
-skipButton : Msg -> Html Msg
+skipButton : Msg -> Action Msg
 skipButton onSkip =
-    Html.button
-        [ Events.onClick onSkip
-        , Attr.title "Skip this Scenario"
-        , TW.hoverTextBlack
-        , TW.px3
-        , TW.py3
-        , TW.textGray600
-        ]
-        [ Icons.skip [ STW.h4, STW.w4 ] ]
+    Action.button
+        { icon = Icons.skip
+        , text = "Skip this Scenario"
+        , onClick = onSkip
+        }
 
 
-cardBody : Html msg -> Html msg
-cardBody body =
-    Html.div
-        [ TW.textGray700
-        , TW.textBase
-        , TW.px4
-        , TW.smPx6
-        , TW.mb3
-        ]
-        [ body ]
-
-
-cardLink : { a | embed : Embed, maxWidth : Int } -> Maybe Scenario.Link -> Html Msg
-cardLink options maybeLink =
-    case maybeLink of
+cardLink : { a | embed : Embed, maxWidth : Int } -> Maybe Scenario.Link -> Link Msg
+cardLink options link =
+    case link of
         Nothing ->
-            Html.text ""
+            Link.none
 
         Just (Scenario.Youtube youtubeId) ->
             cardYoutube options youtubeId
 
 
-cardYoutube : { a | embed : Embed, maxWidth : Int } -> String -> Html Msg
+cardYoutube : { a | embed : Embed, maxWidth : Int } -> String -> Link Msg
 cardYoutube { embed, maxWidth } youtubeId =
     Embed.map
         { key = youtubeId
@@ -738,60 +618,31 @@ cardYoutube { embed, maxWidth } youtubeId =
         embed
 
 
-cardLinkButton : { href : String, title : String } -> Html Msg
-cardLinkButton { href, title } =
-    Html.nav [ TW.bgTransparent ]
-        [ Html.a
-            [ Attr.href href
-            , Attr.title title
-            , TW.block
-            , TW.textCenter
-            , TW.borderT
-            , TW.hoverTextGray800
-            , TW.px6
-            , TW.py2
-            , TW.textGray500
-            , TW.wFull
-            ]
-            [ Html.text title
-            ]
-        ]
-
-
-cardYoutubeButton : String -> Html Msg
+cardYoutubeButton : String -> Link Msg
 cardYoutubeButton youtubeId =
-    Html.nav [ TW.bgTransparent ]
-        [ Html.a
-            [ UnlessKeyed.onClick (SetEmbed (Embed.One youtubeId))
-            , Attr.href ("https://www.youtube.com/watch?v=" ++ youtubeId)
-            , TW.block
-            , TW.textCenter
-            , TW.borderT
-            , TW.hoverTextGray800
-            , TW.px6
-            , TW.py2
-            , TW.textGray500
-            , TW.wFull
-            ]
-            [ Html.text "View YouTube video."
-            ]
-        ]
+    Link.button
+        { href = "https://www.youtube.com/watch?v=" ++ youtubeId
+        , text = "View YouTube video."
+        , onClick = SetEmbed (Embed.One youtubeId)
+        }
 
 
-cardYoutubeEmbed : Int -> String -> Html msg
+cardYoutubeEmbed : Int -> String -> Link msg
 cardYoutubeEmbed maxWidth youtubeId =
-    Html.figure [ TW.bgBlack, TW.transitionColors, TW.duration300, TW.easeIn ]
-        [ Html.div
-            [ TW.flex
-            , TW.flexCol
-            , TW.itemsCenter
-            , TW.borderT
+    Link.figure
+        { attributes = [ TW.bgBlack, TW.transitionColors, TW.duration300, TW.easeIn ]
+        , content =
+            [ Html.div
+                [ TW.flex
+                , TW.flexCol
+                , TW.itemsCenter
+                ]
+                [ Embed.Youtube.fromString youtubeId
+                    |> Embed.Youtube.attributes
+                        [ Embed.Youtube.Attributes.width maxWidth
+                        , Embed.Youtube.Attributes.height (maxWidth * 288 // 512)
+                        ]
+                    |> Embed.Youtube.toHtml
+                ]
             ]
-            [ Embed.Youtube.fromString youtubeId
-                |> Embed.Youtube.attributes
-                    [ Embed.Youtube.Attributes.width maxWidth
-                    , Embed.Youtube.Attributes.height (maxWidth * 288 // 512)
-                    ]
-                |> Embed.Youtube.toHtml
-            ]
-        ]
+        }
