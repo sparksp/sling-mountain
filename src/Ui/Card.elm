@@ -46,8 +46,8 @@ view ({ frame, body } as card) =
                     ( Html.div
                     , TW.shadowSm
                         :: TW.hoverShadowLg
-                        :: TW.hoverTranslateX1
-                        :: TW.transform
+                        :: TW.smHoverTranslateX1
+                        :: TW.smTransform
                         :: TW.transitionAll
                         :: TW.duration150
                         :: TW.easeInOut

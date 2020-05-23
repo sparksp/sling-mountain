@@ -284,7 +284,7 @@ viewScenarios (Model { embed, todo, width, showCompleted, showRemaining, showDis
             { options = options
             , show = ( ShowInformation, showInformation )
             }
-        |> Keyed.node "div" [ TW.maxWLg, TW.wFull ]
+        |> Keyed.node "div" [ TW.smMaxWLg, TW.wFull ]
 
 
 viewTitle : Html Msg
