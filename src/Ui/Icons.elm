@@ -1,4 +1,4 @@
-module Svg.Icons exposing
+module Ui.Icons exposing
     ( bookmarkOutline
     , bug
     , check

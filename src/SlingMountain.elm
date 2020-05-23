@@ -19,10 +19,10 @@ import Random
 import SHA1
 import Scenario exposing (Scenario)
 import Svg
-import Svg.Icons as Icons
 import Svg.Tailwind as STW
 import Task
 import TodoList exposing (TodoList)
+import Ui.Icons as Icons
 
 
 type alias Flags =

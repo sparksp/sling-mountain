@@ -6,8 +6,8 @@ import Html.Attributes as Attr
 import Html.Events as Events
 import Html.Tailwind as TW
 import Svg
-import Svg.Icons as Icons
 import Svg.Tailwind as STW
+import Ui.Icons as Icons
 
 
 view : {} -> Browser.Document msg
