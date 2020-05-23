@@ -37,40 +37,40 @@ link options =
 
 view : Action msg -> Html msg
 view action =
+    let
+        baseAttributes =
+            [ TW.flex
+            , TW.flexRow
+            , TW.itemsCenter
+            , TW.p3
+            , TW.h6
+            , TW.boxContent
+            , TW.textGray600
+            ]
+    in
     case action of
         Button options ->
             Html.button
-                [ Events.onClick options.onClick
-                , Attr.title options.text
-                , TW.hoverTextBlack
-                , TW.px3
-                , TW.py3
-                , TW.textGray600
-                ]
+                (Events.onClick options.onClick
+                    :: Attr.title options.text
+                    :: TW.hoverTextBlack
+                    :: baseAttributes
+                )
                 [ options.icon [ STW.h4, STW.w4 ] ]
 
         Icon options ->
             Html.div
-                [ Attr.title options.text
-                , TW.cursorNotAllowed
-                , TW.flex
-                , TW.flexRow
-                , TW.itemsCenter
-                , TW.px3
-                , TW.py3
-                , TW.textGray600
-                ]
+                (Attr.title options.text
+                    :: TW.cursorNotAllowed
+                    :: baseAttributes
+                )
                 [ options.icon [ STW.h4, STW.w4 ] ]
 
         Link options ->
             Html.a
-                [ Attr.title options.text
-                , Attr.href options.href
-                , TW.flex
-                , TW.flexRow
-                , TW.hoverTextGray900
-                , TW.itemsCenter
-                , TW.p3
-                , TW.textGray600
-                ]
+                (Attr.title options.text
+                    :: Attr.href options.href
+                    :: TW.hoverTextGray900
+                    :: baseAttributes
+                )
                 [ options.icon [ STW.h4, STW.w4 ] ]

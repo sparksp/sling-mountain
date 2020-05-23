@@ -66,18 +66,19 @@ view title_ =
             , TW.wFull
             ]
     in
-    case title_ of
-        Active { actions, icon, onClick, text } ->
-            Html.div
-                [ TW.flex
-                , TW.flexRow
-                , TW.fontBold
-                , TW.leading6
-                , TW.px1
-                , TW.smPx3
-                , TW.textXl
-                ]
-                (Html.button
+    Html.div
+        [ TW.flex
+        , TW.flexRow
+        , TW.itemsStart
+        , TW.fontBold
+        , TW.leading6
+        , TW.px1
+        , TW.smPx3
+        , TW.textXl
+        ]
+        (case title_ of
+            Active { actions, icon, onClick, text } ->
+                Html.button
                     (Events.onClick onClick
                         :: TW.hoverTextBlack
                         :: TW.textGray600
@@ -88,26 +89,16 @@ view title_ =
                     , Html.span [ TW.textGray900 ] [ Html.text text ]
                     ]
                     :: viewActions actions
-                )
 
-        Static { icon, text, actions } ->
-            Html.div
-                [ TW.flex
-                , TW.flexRow
-                , TW.fontBold
-                , TW.leading6
-                , TW.px1
-                , TW.smPx3
-                , TW.textXl
-                ]
-                (Html.p buttonPadding
+            Static { icon, text, actions } ->
+                Html.p buttonPadding
                     [ Html.span [ TW.textGray900 ]
                         [ icon [ STW.h4, STW.w4, STW.floatLeft, STW.mr2, STW.mt1 ]
                         , Html.span [ TW.textGray900 ] [ Html.text text ]
                         ]
                     ]
                     :: viewActions actions
-                )
+        )
 
 
 
