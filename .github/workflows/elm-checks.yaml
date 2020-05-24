@@ -10,6 +10,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+        with:
+          submodules: recursive
       - name: Get yarn cache directory
         id: yarn-cache-dir
         run: echo "::set-output name=path::$(yarn cache dir)"
@@ -37,6 +39,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+        with:
+          submodules: recursive
       - name: Get yarn cache directory
         id: yarn-cache-dir
         run: echo "::set-output name=path::$(yarn cache dir)"
@@ -64,6 +68,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+        with:
+          submodules: recursive
       - name: Get yarn cache directory
         id: yarn-cache-dir
         run: echo "::set-output name=path::$(yarn cache dir)"
@@ -91,6 +97,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+        with:
+          submodules: recursive
       - uses: actions/cache@v1
         id: npm-cache
         with:
