@@ -1961,9 +1961,9 @@ cross-spawn@7.0.1:
     which "^2.0.1"
 
 cross-spawn@^7.0.1:
-  version "7.0.2"
-  resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-7.0.2.tgz#d0d7dcfa74e89115c7619f4f721a94e1fdb716d6"
-  integrity sha512-PD6G8QG3S4FK/XCGFbEQrDqO2AnMMsy0meR7lerlIOHAAbkuavGU/pOqprrlvfTNjvowivTeBsjebAL0NSoMxw==
+  version "7.0.3"
+  resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-7.0.3.tgz#f73a85b9d5d41d045551c177e2882d4ac85728a6"
+  integrity sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==
   dependencies:
     path-key "^3.1.0"
     shebang-command "^2.0.0"
@@ -2448,10 +2448,10 @@ elm-json@^0.2.6:
   dependencies:
     binwrap "^0.2.2"
 
-elm-review@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/elm-review/-/elm-review-2.0.2.tgz#02f42c491d0d2a1f844c19df375b70edff392967"
-  integrity sha512-5O++3HCshUODnqZLk1GA12Ed2jF6VQO9xqxe7BJJZ6T2jvqsjjdcXQv3+45G48wUo1BwZCR4BjmQTFP6yDeSQQ==
+elm-review@^2.1.0:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/elm-review/-/elm-review-2.1.1.tgz#f8a4ec4cb739535e4749c9c542b82f1e0b450b1e"
+  integrity sha512-fkzUjYCnTEd5A6aZjcuDoo+zYU3jDvIPZKOk8zmz2lZFOoeftDeQwpVfdDFEuTzXiucHUaf13yjry/K1vDmSXQ==
   dependencies:
     chalk "^4.0.0"
     chokidar "^3.3.1"
@@ -2463,9 +2463,9 @@ elm-review@^2.0.2:
     glob "^7.1.4"
     got "^10.7.0"
     minimist "^1.2.0"
-    node-elm-compiler "^5.0.4"
     prompts "^2.2.1"
     strip-ansi "^6.0.0"
+    temp "^0.9.1"
     which "^2.0.2"
     wrap-ansi "^6.2.0"
 
@@ -4202,7 +4202,7 @@ node-addon-api@^1.7.1:
   resolved "https://registry.yarnpkg.com/node-addon-api/-/node-addon-api-1.7.1.tgz#cf813cd69bb8d9100f6bdca6755fc268f54ac492"
   integrity sha512-2+DuKodWvwRTrCfKOeR24KIc5unKjOh8mz17NCzVnHWfjAdDqbfbjqh7gUT+BkXBRQM52+xCHciKWonJ3CbJMQ==
 
-node-elm-compiler@5.0.4, node-elm-compiler@^5.0.4:
+node-elm-compiler@5.0.4:
   version "5.0.4"
   resolved "https://registry.yarnpkg.com/node-elm-compiler/-/node-elm-compiler-5.0.4.tgz#e139c517c4b91f914cccb0a06e3329e3c49d02ac"
   integrity sha512-VQsT8QSierYGkHzRed+b4MnccQVF1+qPHunE8jBoU7jD6YpuRqCDPzEoC2zfyEJS80qVnlMZrqobLnyjzX9lJg==
@@ -6344,7 +6344,7 @@ tar@^4.4.10:
     safe-buffer "^5.1.2"
     yallist "^3.0.3"
 
-temp@0.9.1, temp@^0.9.0:
+temp@0.9.1, temp@^0.9.0, temp@^0.9.1:
   version "0.9.1"
   resolved "https://registry.yarnpkg.com/temp/-/temp-0.9.1.tgz#2d666114fafa26966cd4065996d7ceedd4dd4697"
   integrity sha512-WMuOgiua1xb5R56lE0eH6ivpVmg/lq2OHm4+LtT/xtEtPQ+sz6N3bBM6WZ5FvO1lO4IKIOb43qnhoc4qxP5OeA==

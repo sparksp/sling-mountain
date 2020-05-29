@@ -1,3 +1,4 @@
 [submodule "review"]
 	path = review
 	url = git@github.com:sparksp/elm-review-config.git
+	branch = master
