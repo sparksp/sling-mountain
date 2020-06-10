@@ -45,6 +45,7 @@ button { icon, onClick } text =
         , text = text
         }
 
+
 link : { icon : Icons.Icon msg, href : String } -> String -> Title msg
 link { icon, href } text =
     Link
@@ -53,6 +54,7 @@ link { icon, href } text =
         , href = href
         , text = text
         }
+
 
 static : Icons.Icon msg -> String -> Title msg
 static icon text =
@@ -109,7 +111,7 @@ view title_ =
                     ]
                     :: viewActions actions
 
-            Link { actions, icon, href,  text } ->
+            Link { actions, icon, href, text } ->
                 Html.a
                     (Attr.href href
                         :: TW.hoverTextBlack

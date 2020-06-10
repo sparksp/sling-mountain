@@ -1,6 +1,5 @@
 module Main exposing (main)
 
-import Browser
 import Html
 import Scenario exposing (Scenario)
 import SlingMountain
