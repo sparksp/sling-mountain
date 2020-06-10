@@ -22,6 +22,7 @@ all =
         , pickTest
         , restoreTests
         , skipTest
+        , isCurrentTests
         ]
 
 
@@ -209,6 +210,56 @@ completeTest =
                         , TodoList.disabled >> Expect.equal []
                         , TodoList.completed >> Expect.equal [ ( "b", 2 ) ]
                         ]
+        ]
+
+
+isCurrentTests : Test
+isCurrentTests =
+    describe "isCurrent"
+        [ test "with an empty list is False" <|
+            \() ->
+                TodoList.empty
+                    |> TodoList.isCurrent "key"
+                    |> Expect.equal False
+        , test "with current is True" <|
+            \() ->
+                let
+                    initialList =
+                        [ ( "a", 1 ) ]
+
+                    ( initialTodoList, _ ) =
+                        Random.step (TodoList.chooseFromList initialList) (Random.initialSeed 0)
+                in
+                initialTodoList
+                    |> TodoList.isCurrent "a"
+                    |> Expect.equal True
+        , test "with not current is False" <|
+            \() ->
+                let
+                    initialList =
+                        [ ( "a", 1 ) ]
+
+                    ( initialTodoList, _ ) =
+                        Random.step (TodoList.chooseFromList initialList) (Random.initialSeed 0)
+                in
+                initialTodoList
+                    |> TodoList.isCurrent "b"
+                    |> Expect.equal False
+        , test "with list all complete is False" <|
+            \() ->
+                let
+                    initialList =
+                        [ ( "a", 1 ) ]
+
+                    ( initialTodoList, seed ) =
+                        Random.step (TodoList.chooseFromList initialList) (Random.initialSeed 0)
+
+                    ( completeTodoList, _ ) =
+                        Random.step (TodoList.complete initialTodoList) seed
+                in
+                completeTodoList
+                    |> TodoList.isCurrent "a"
+                    |> Expect.equal False
         ]
 
 

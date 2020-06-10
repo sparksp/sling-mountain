@@ -1,8 +1,9 @@
-module SlingMountain exposing (Flags, Model, Msg, init, subscriptions, update, view)
+module SlingMountain exposing (Flags, Model, Msg, application)
 
 import Browser
 import Browser.Dom as Dom
 import Browser.Events
+import Browser.Navigation as Nav
 import Embed exposing (Embed)
 import Embed.Youtube
 import Embed.Youtube.Attributes
@@ -26,6 +27,7 @@ import Ui.Card.Frame as Frame
 import Ui.Card.Link as Link exposing (Link)
 import Ui.Card.Title as Title
 import Ui.Icons as Icons
+import Url exposing (Url)
 
 
 type alias Flags =
@@ -35,6 +37,7 @@ type alias Flags =
 type Model
     = Model
         { embed : Embed
+        , key : Nav.Key
         , showCompleted : Bool
         , showRemaining : Bool
         , showDisabled : Bool
@@ -69,35 +72,63 @@ type Msg
     | Resize
     | SetEmbed Embed
     | SetShow ( ShowSection, Bool )
+    | LinkClicked Browser.UrlRequest
+    | UrlChanged Url.Url
 
 
-init : List Scenario -> Flags -> ( Model, Cmd Msg )
-init list flags =
+application : List Scenario -> Program Flags Model Msg
+application scenarios =
+    Browser.application
+        { init = init scenarios
+        , update = update
+        , subscriptions = subscriptions
+        , view = view
+        , onUrlRequest = LinkClicked
+        , onUrlChange = UrlChanged
+        }
+
+
+init : List Scenario -> Flags -> Url -> Nav.Key -> ( Model, Cmd Msg )
+init list flags url navKey =
     let
         listWithKeys =
             withKeys list
 
         todoListFromFlags =
             Maybe.andThen (Decode.decodeValue (TodoList.decoder listWithKeys) >> Result.toMaybe) flags
+
+        model =
+            initialModel navKey
     in
-    case todoListFromFlags of
-        Just todoList ->
+    case ( todoListFromFlags, keyFromUrl url ) of
+        ( Just todoList, "" ) ->
             updateAndSaveTodo todoList
-                ( initialModel
+                ( model
                 , [ Task.attempt GotViewport (Dom.getViewportOf "current")
                   ]
                 )
 
-        Nothing ->
-            ( initialModel
+        ( Just todoList, key ) ->
+            updateAndSaveTodo (TodoList.pick key todoList)
+                ( model
+                , [ Task.attempt GotViewport (Dom.getViewportOf "current")
+                  ]
+                )
+
+        ( Nothing, "" ) ->
+            ( model
             , Random.generate GotFirst (TodoList.chooseFromList listWithKeys)
             )
 
+        ( Nothing, key ) ->
+            pick key model
 
-initialModel : Model
-initialModel =
+
+initialModel : Nav.Key -> Model
+initialModel key =
     Model
         { embed = Embed.None
+        , key = key
         , todo = TodoList.empty
         , width = 0
         , showCompleted = False
@@ -151,16 +182,13 @@ update msg (Model model) =
                 ( Model model, [] )
 
         Pick key ->
-            updateAndSaveTodo (TodoList.pick key model.todo)
-                ( Model { model | embed = Embed.step model.embed }
-                , [ Task.attempt DomResult (Dom.setViewport 0 0)
-                  , Task.attempt GotViewport (Dom.getViewportOf "current")
-                  ]
-                )
+            pick key (Model model)
 
         GotFirst newTodo ->
             ( Model { model | todo = newTodo }
-            , Task.attempt GotViewport (Dom.getViewportOf "current")
+            , Cmd.batch
+                [ Task.attempt GotViewport (Dom.getViewportOf "current")
+                ]
             )
 
         GotTodoList newTodo ->
@@ -198,11 +226,53 @@ update msg (Model model) =
         SetShow ( ShowInformation, show ) ->
             ( Model { model | showInformation = show }, Cmd.none )
 
+        LinkClicked (Browser.Internal url) ->
+            ( Model model
+            , Nav.pushUrl model.key (Url.toString url)
+            )
+
+        LinkClicked (Browser.External href) ->
+            ( Model model
+            , Nav.load href
+            )
+
+        UrlChanged url ->
+            case keyFromUrl url of
+                "" ->
+                    ( Model model, Cmd.none )
+
+                key ->
+                    pick key (Model model)
+
+
+pick : String -> Model -> ( Model, Cmd Msg )
+pick key (Model model) =
+    if TodoList.isCurrent key model.todo then
+        ( Model model, Cmd.none )
+
+    else
+        updateAndSaveTodo (TodoList.pick key model.todo)
+            ( Model { model | embed = Embed.step model.embed }
+            , [ Task.attempt DomResult (Dom.setViewport 0 0)
+              , Task.attempt GotViewport (Dom.getViewportOf "current")
+              ]
+            )
+
 
 updateAndSaveTodo : TodoList Key Scenario -> ( Model, List (Cmd Msg) ) -> ( Model, Cmd Msg )
 updateAndSaveTodo todo ( Model model, cmdList ) =
+    let
+        currentKeyUrl =
+            TodoList.current todo
+                |> Maybe.map (Tuple.first >> keyToHref)
+                |> Maybe.withDefault "/"
+    in
     ( Model { model | todo = todo }
-    , Cmd.batch (saveScenarios todo :: cmdList)
+    , Cmd.batch
+        (saveScenarios todo
+            :: Nav.pushUrl model.key currentKeyUrl
+            :: cmdList
+        )
     )
 
 
@@ -500,7 +570,7 @@ viewScenario options position ( key, scenario ) =
                 { frame = Frame.Primary
                 , title =
                     Scenario.mapTitle
-                        (Title.active
+                        (Title.button
                             { icon = Icons.todo
                             , onClick = Complete
                             }
@@ -518,9 +588,9 @@ viewScenario options position ( key, scenario ) =
                 { frame = Frame.Active
                 , title =
                     Scenario.mapTitle
-                        (Title.active
+                        (Title.link
                             { icon = Icons.todo
-                            , onClick = Pick key
+                            , href = keyToHref key
                             }
                         )
                         scenario
@@ -534,9 +604,9 @@ viewScenario options position ( key, scenario ) =
                 { frame = Frame.Active
                 , title =
                     Scenario.mapTitle
-                        (Title.active
+                        (Title.link
                             { icon = Icons.check
-                            , onClick = Pick key
+                            , href = keyToHref key
                             }
                         )
                         scenario
@@ -550,9 +620,9 @@ viewScenario options position ( key, scenario ) =
                 { frame = Frame.Active
                 , title =
                     Scenario.mapTitle
-                        (Title.active
+                        (Title.link
                             { icon = Icons.cross
-                            , onClick = Pick key
+                            , href = keyToHref key
                             }
                         )
                         scenario
@@ -646,3 +716,13 @@ cardYoutubeEmbed maxWidth youtubeId =
                 ]
             ]
         }
+
+
+keyFromUrl : Url -> String
+keyFromUrl url =
+    String.dropLeft 1 url.path
+
+
+keyToHref : String -> String
+keyToHref key =
+    "/" ++ key
