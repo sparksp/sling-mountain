@@ -93,20 +93,22 @@ init list flags url navKey =
         listWithKeys =
             withKeys list
 
+        key =
+            keyFromUrl url
+
         todoListFromFlags =
             Maybe.andThen (Decode.decodeValue (TodoList.decoder listWithKeys) >> Result.toMaybe) flags
+                |> Maybe.map (TodoList.pick key)
 
         model =
             initialModel navKey
-
-        key =
-            keyFromUrl url
     in
     case todoListFromFlags of
         Just todoList ->
-            updateAndSaveTodo (TodoList.pick key todoList)
+            updateAndSaveTodo todoList
                 ( model
                 , [ Task.attempt GotViewport (Dom.getViewportOf "current")
+                  , urlForCurrentTodo todoList |> Nav.replaceUrl navKey
                   ]
                 )
 
@@ -177,13 +179,16 @@ update msg (Model model) =
             ( Model { model | todo = newTodo }
             , Cmd.batch
                 [ Task.attempt GotViewport (Dom.getViewportOf "current")
+                , urlForCurrentTodo newTodo |> Nav.replaceUrl model.key
                 ]
             )
 
         GotTodoList newTodo ->
             updateAndSaveTodo newTodo
                 ( Model model
-                , [ Task.attempt GotViewport (Dom.getViewportOf "current") ]
+                , [ Task.attempt GotViewport (Dom.getViewportOf "current")
+                  , urlForCurrentTodo newTodo |> Nav.pushUrl model.key
+                  ]
                 )
 
         Resize ->
@@ -250,19 +255,19 @@ pick key (Model model) =
 
 updateAndSaveTodo : TodoList Key Scenario -> ( Model, List (Cmd Msg) ) -> ( Model, Cmd Msg )
 updateAndSaveTodo todo ( Model model, cmdList ) =
-    let
-        currentKeyUrl =
-            TodoList.current todo
-                |> Maybe.map (Tuple.first >> keyToHref)
-                |> Maybe.withDefault "/"
-    in
     ( Model { model | todo = todo }
     , Cmd.batch
         (saveScenarios todo
-            :: Nav.pushUrl model.key currentKeyUrl
             :: cmdList
         )
     )
+
+
+urlForCurrentTodo : TodoList Key Scenario -> String
+urlForCurrentTodo todo =
+    TodoList.current todo
+        |> Maybe.map (Tuple.first >> keyToHref)
+        |> Maybe.withDefault "/"
 
 
 saveScenarios : TodoList Key Scenario -> Cmd Msg
