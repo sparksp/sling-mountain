@@ -1,6 +1,5 @@
 module Main exposing (main)
 
-import Browser
 import Html
 import Scenario exposing (Scenario)
 import SlingMountain
@@ -8,12 +7,7 @@ import SlingMountain
 
 main : Program SlingMountain.Flags SlingMountain.Model SlingMountain.Msg
 main =
-    Browser.document
-        { init = SlingMountain.init getScenarios
-        , update = SlingMountain.update
-        , subscriptions = SlingMountain.subscriptions
-        , view = SlingMountain.view
-        }
+    SlingMountain.application getScenarios
 
 
 getScenarios : List Scenario

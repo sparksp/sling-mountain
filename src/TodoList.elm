@@ -11,6 +11,7 @@ module TodoList exposing
     , disabled
     , empty
     , encoder
+    , isCurrent
     , pick
     , remaining
     , restore
@@ -49,9 +50,14 @@ empty =
     AllDone { completed = [], disabled = [] }
 
 
-chooseFromList : List ( comparable, v ) -> Random.Generator (TodoList comparable v)
-chooseFromList list =
-    chooseData { remaining = list, completed = [], disabled = [] }
+chooseFromList : comparable -> List ( comparable, v ) -> Random.Generator (TodoList comparable v)
+chooseFromList key list =
+    case find key list of
+        ( Just found, rest ) ->
+            Random.constant (Todo { current = found, remaining = rest, completed = [], disabled = [] })
+
+        ( Nothing, _ ) ->
+            chooseData { remaining = list, completed = [], disabled = [] }
 
 
 skip : TodoList comparable v -> Random.Generator (TodoList comparable v)
@@ -163,6 +169,16 @@ restore key list =
 
         ( Just found, AllDone data ) ->
             Todo { current = found, remaining = [], completed = data.completed, disabled = data.disabled }
+
+
+isCurrent : comparable -> TodoList comparable v -> Bool
+isCurrent key list =
+    case list of
+        Todo data ->
+            Tuple.first data.current == key
+
+        AllDone _ ->
+            False
 
 
 current : TodoList comparable v -> Maybe ( comparable, v )
