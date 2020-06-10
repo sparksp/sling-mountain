@@ -50,9 +50,14 @@ empty =
     AllDone { completed = [], disabled = [] }
 
 
-chooseFromList : List ( comparable, v ) -> Random.Generator (TodoList comparable v)
-chooseFromList list =
-    chooseData { remaining = list, completed = [], disabled = [] }
+chooseFromList : comparable -> List ( comparable, v ) -> Random.Generator (TodoList comparable v)
+chooseFromList key list =
+    case find key list of
+        ( Just found, rest ) ->
+            Random.constant (Todo { current = found, remaining = rest, completed = [], disabled = [] })
+
+        ( Nothing, _ ) ->
+            chooseData { remaining = list, completed = [], disabled = [] }
 
 
 skip : TodoList comparable v -> Random.Generator (TodoList comparable v)

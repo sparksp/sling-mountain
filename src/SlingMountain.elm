@@ -98,29 +98,22 @@ init list flags url navKey =
 
         model =
             initialModel navKey
-    in
-    case ( todoListFromFlags, keyFromUrl url ) of
-        ( Just todoList, "" ) ->
-            updateAndSaveTodo todoList
-                ( model
-                , [ Task.attempt GotViewport (Dom.getViewportOf "current")
-                  ]
-                )
 
-        ( Just todoList, key ) ->
+        key =
+            keyFromUrl url
+    in
+    case todoListFromFlags of
+        Just todoList ->
             updateAndSaveTodo (TodoList.pick key todoList)
                 ( model
                 , [ Task.attempt GotViewport (Dom.getViewportOf "current")
                   ]
                 )
 
-        ( Nothing, "" ) ->
+        Nothing ->
             ( model
-            , Random.generate GotFirst (TodoList.chooseFromList listWithKeys)
+            , Random.generate GotFirst (TodoList.chooseFromList key listWithKeys)
             )
-
-        ( Nothing, key ) ->
-            pick key model
 
 
 initialModel : Nav.Key -> Model
