@@ -68,7 +68,6 @@ type Msg
     | GotFirst (TodoList Key Scenario)
     | GotTodoList (TodoList Key Scenario)
     | GotViewport (Result Dom.Error Dom.Viewport)
-    | Pick Key
     | Resize
     | SetEmbed Embed
     | SetShow ( ShowSection, Bool )
@@ -180,9 +179,6 @@ update msg (Model model) =
         Restore key ->
             updateAndSaveTodo (TodoList.restore key model.todo)
                 ( Model model, [] )
-
-        Pick key ->
-            pick key (Model model)
 
         GotFirst newTodo ->
             ( Model { model | todo = newTodo }
