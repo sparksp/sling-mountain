@@ -39,6 +39,9 @@ getScenarios =
     , Scenario.build "Clean a Sport Route"
         (Html.p [] [ Html.text "You've finished climbing a sport route - rethread the chains with your rope ready to lower off. Make sure you keep yourself safe and leave nothing behind." ])
         |> Scenario.withLink (Scenario.Youtube "EjDNpYw4l34")
+    , Scenario.build "Clove Hitch 1-handed"
+        (Html.p [] [ Html.text "You're hanging on with two feet and one hand, using your free hand clip a carabiner into your anchor then attach yourself to the carabiner with a clove hitch." ])
+        |> Scenario.withLink (Scenario.Youtube "FrOzX1DDwE8")
     , Scenario.build "Escape - Anchors in reach"
         (Html.p [] [ Html.text "Set up a belay using in reach anchors and your rope. Put your climber on belay. Now escape from the system, assuming your climber has their full weight on the rope." ])
         |> Scenario.withLink (Scenario.Youtube "6s1OR4RycfU")
