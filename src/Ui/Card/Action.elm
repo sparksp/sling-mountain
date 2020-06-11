@@ -35,18 +35,16 @@ link options =
     Link options
 
 
-view : Action msg -> Html msg
-view action =
+view : List (Html.Attribute msg) -> Action msg -> Html msg
+view attributes action =
     let
         baseAttributes =
-            [ TW.flex
-            , TW.flexRow
-            , TW.itemsCenter
-            , TW.p3
-            , TW.h6
-            , TW.boxContent
-            , TW.textGray600
-            ]
+            TW.flex
+                :: TW.flexRow
+                :: TW.itemsCenter
+                :: TW.boxContent
+                :: TW.textGray600
+                :: attributes
     in
     case action of
         Button options ->

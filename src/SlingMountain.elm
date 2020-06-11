@@ -720,10 +720,16 @@ cardYoutube { embed, maxWidth } youtubeId =
 cardYoutubeButton : String -> Link Msg
 cardYoutubeButton youtubeId =
     Link.button
-        { href = "https://www.youtube.com/watch?v=" ++ youtubeId
-        , text = "View YouTube video."
+        { text = "Play YouTube video"
         , onClick = SetEmbed (Embed.One youtubeId)
         }
+        |> Link.withAction
+            (Action.link
+                { href = "https://www.youtube.com/watch?v=" ++ youtubeId
+                , icon = Icons.youtube
+                , text = "View video on YouTube"
+                }
+            )
 
 
 cardYoutubeEmbed : Int -> String -> Link msg

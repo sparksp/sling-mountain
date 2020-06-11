@@ -141,4 +141,4 @@ view title_ =
 
 viewActions : List (Action msg) -> List (Html msg)
 viewActions actions =
-    List.map Action.view actions
+    List.map (Action.view [ TW.p3, TW.h6 ]) actions

@@ -6,17 +6,20 @@ module Ui.Card.Link exposing
     , link
     , none
     , view
+    , withAction
     )
 
 import Html exposing (Html)
 import Html.Attributes as Attr
-import Html.Events.UnlessKeyed as UnlessKeyed
+import Html.Events as Events
 import Html.Tailwind as TW
+import Ui.Card.Action as Action exposing (Action)
 
 
 type Link msg
     = Link { href : String, text : String }
-    | Button { href : String, text : String, onClick : msg }
+    | Action { parent : Link msg, action : Action msg }
+    | Button { text : String, onClick : msg }
     | Figure { attributes : List (Html.Attribute msg), content : List (Html msg) }
     | Image { src : String, alt : String }
     | None
@@ -31,7 +34,7 @@ link options =
     Link options
 
 
-button : { href : String, text : String, onClick : msg } -> Link msg
+button : { text : String, onClick : msg } -> Link msg
 button options =
     Button options
 
@@ -51,49 +54,62 @@ none =
     None
 
 
+withAction : Action msg -> Link msg -> Link msg
+withAction action parent =
+    Action { parent = parent, action = action }
+
+
 
 --- VIEW
 
 
 view : Link msg -> List (Html msg)
 view link_ =
+    viewHelper link_ []
+
+
+viewHelper : Link msg -> List (Html msg) -> List (Html msg)
+viewHelper link_ actions =
     case link_ of
         None ->
-            []
+            actions
 
         Link { href, text } ->
-            [ Html.nav [ TW.bgTransparent, TW.borderT ]
-                [ Html.a
+            [ Html.nav [ TW.bgTransparent, TW.borderT, TW.px3, TW.flex ]
+                (Html.a
                     [ Attr.href href
                     , Attr.title text
                     , TW.block
-                    , TW.textCenter
+                    , TW.flex1
                     , TW.hoverTextGray800
-                    , TW.px6
+                    , TW.px3
                     , TW.py2
                     , TW.textGray500
+                    , TW.textLeft
                     ]
                     [ Html.text text
                     ]
-                ]
+                    :: actions
+                )
             ]
 
-        Button { href, text, onClick } ->
-            [ Html.figure [ TW.bgTransparent, TW.borderT ]
-                [ Html.a
-                    [ UnlessKeyed.onClick onClick
-                    , Attr.href href
+        Button { text, onClick } ->
+            [ Html.figure [ TW.bgTransparent, TW.borderT, TW.px3, TW.flex ]
+                (Html.button
+                    [ Events.onClick onClick
                     , Attr.title text
                     , TW.block
-                    , TW.textCenter
                     , TW.hoverTextGray800
-                    , TW.px6
+                    , TW.px3
                     , TW.py2
                     , TW.textGray500
+                    , TW.wFull
+                    , TW.textLeft
                     ]
                     [ Html.text text
                     ]
-                ]
+                    :: actions
+                )
             ]
 
         Figure { attributes, content } ->
@@ -105,3 +121,6 @@ view link_ =
                 [ Html.img [ Attr.src src, Attr.alt alt ] []
                 ]
             ]
+
+        Action { parent, action } ->
+            viewHelper parent (Action.view [ TW.px3, TW.py2, TW.h6 ] action :: actions)
