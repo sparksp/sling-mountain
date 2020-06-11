@@ -16,6 +16,7 @@ module TodoList exposing
     , remaining
     , restore
     , skip
+    , update
     )
 
 import Json.Decode as Decode
@@ -227,11 +228,14 @@ disabled list =
 
 decoder : List ( String, v ) -> Decode.Decoder (TodoList String v)
 decoder list =
-    Decode.map3 DecoderData
-        (Decode.field "current" (Decode.nullable Decode.string))
-        (Decode.field "completed" (Decode.list Decode.string))
-        (Decode.field "disabled" (Decode.list Decode.string))
+    decoderDataDecoder
         |> Decode.map (fromListWithDecoderData list)
+
+
+update : Decode.Value -> TodoList String v -> Result Decode.Error (TodoList String v)
+update json todo =
+    Decode.decodeValue decoderDataDecoder json
+        |> Result.map (fromTodoWithDecoderData todo)
 
 
 
@@ -389,6 +393,14 @@ type alias DecoderData v =
     }
 
 
+decoderDataDecoder : Decode.Decoder (DecoderData String)
+decoderDataDecoder =
+    Decode.map3 DecoderData
+        (Decode.field "current" (Decode.nullable Decode.string))
+        (Decode.field "completed" (Decode.list Decode.string))
+        (Decode.field "disabled" (Decode.list Decode.string))
+
+
 fromListWithDecoderData : List ( String, v ) -> DecoderData String -> TodoList String v
 fromListWithDecoderData list keys =
     let
@@ -410,3 +422,41 @@ fromListWithDecoderData list keys =
 
         ( Just gotCurrent, _ ) ->
             Todo { current = gotCurrent, remaining = remainingList, completed = completedList, disabled = disabledList }
+
+
+fromTodoWithDecoderData : TodoList String v -> DecoderData String -> TodoList String v
+fromTodoWithDecoderData todo keys =
+    let
+        ( maybeCurrentKey, list ) =
+            case todo of
+                Todo data ->
+                    ( Just (Tuple.first data.current), data.current :: data.remaining ++ data.completed ++ data.disabled )
+
+                AllDone data ->
+                    ( Nothing, data.completed ++ data.disabled )
+    in
+    fromListWithDecoderData list keys
+        |> pickFromRemaining maybeCurrentKey
+
+
+pickFromRemaining : Maybe String -> TodoList String v -> TodoList String v
+pickFromRemaining maybeKey todo =
+    case maybeKey of
+        Nothing ->
+            todo
+
+        Just key ->
+            let
+                findResult =
+                    ( Nothing, todo )
+                        |> findTodoListRemaining key
+            in
+            case findResult of
+                ( Nothing, _ ) ->
+                    todo
+
+                ( Just found, Todo data ) ->
+                    Todo { data | current = found, remaining = data.current :: data.remaining }
+
+                ( Just found, AllDone data ) ->
+                    Todo { current = found, remaining = [], completed = data.completed, disabled = data.disabled }

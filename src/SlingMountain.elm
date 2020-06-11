@@ -44,6 +44,7 @@ type Model
         , showInformation : Bool
         , todo : TodoList Key Scenario
         , width : Int
+        , url : Url
         }
 
 
@@ -68,6 +69,7 @@ type Msg
     | GotFirst (TodoList Key Scenario)
     | GotTodoList (TodoList Key Scenario)
     | GotViewport (Result Dom.Error Dom.Viewport)
+    | GotState Encode.Value
     | Resize
     | SetEmbed Embed
     | SetShow ( ShowSection, Bool )
@@ -101,15 +103,16 @@ init list flags url navKey =
                 |> Maybe.map (TodoList.pick key)
 
         model =
-            initialModel navKey
+            initialModel url navKey
     in
     case todoListFromFlags of
         Just todoList ->
             updateAndSaveTodo todoList
                 ( model
-                , [ Task.attempt GotViewport (Dom.getViewportOf "current")
-                  , urlForCurrentTodo todoList |> Nav.replaceUrl navKey
-                  ]
+                , Cmd.batch
+                    [ Task.attempt GotViewport (Dom.getViewportOf "current")
+                    , replaceUrl navKey url (urlForCurrentTodo todoList)
+                    ]
                 )
 
         Nothing ->
@@ -118,8 +121,8 @@ init list flags url navKey =
             )
 
 
-initialModel : Nav.Key -> Model
-initialModel key =
+initialModel : Url -> Nav.Key -> Model
+initialModel url key =
     Model
         { embed = Embed.None
         , key = key
@@ -129,6 +132,7 @@ initialModel key =
         , showRemaining = False
         , showDisabled = False
         , showInformation = False
+        , url = url
         }
 
 
@@ -167,29 +171,41 @@ update msg (Model model) =
         Disable key ->
             updateAndSaveTodo (TodoList.disable key model.todo)
                 ( Model { model | embed = Embed.step model.embed }
-                , [ Task.attempt GotViewport (Dom.getViewportOf "current")
-                  ]
+                , Cmd.batch
+                    [ Task.attempt GotViewport (Dom.getViewportOf "current")
+                    ]
                 )
 
         Restore key ->
             updateAndSaveTodo (TodoList.restore key model.todo)
-                ( Model model, [] )
+                ( Model model, Cmd.none )
 
         GotFirst newTodo ->
             ( Model { model | todo = newTodo }
             , Cmd.batch
                 [ Task.attempt GotViewport (Dom.getViewportOf "current")
-                , urlForCurrentTodo newTodo |> Nav.replaceUrl model.key
+                , replaceUrl model.key model.url (urlForCurrentTodo newTodo)
                 ]
             )
 
         GotTodoList newTodo ->
             updateAndSaveTodo newTodo
                 ( Model model
-                , [ Task.attempt GotViewport (Dom.getViewportOf "current")
-                  , urlForCurrentTodo newTodo |> Nav.pushUrl model.key
-                  ]
+                , Cmd.batch
+                    [ Task.attempt GotViewport (Dom.getViewportOf "current")
+                    , pushUrl model.key model.url (urlForCurrentTodo newTodo)
+                    ]
                 )
+
+        GotState newState ->
+            case TodoList.update newState model.todo of
+                Ok newTodo ->
+                    ( Model { model | todo = newTodo }
+                    , pushUrl model.key model.url (urlForCurrentTodo newTodo)
+                    )
+
+                Err _ ->
+                    ( Model model, Cmd.none )
 
         Resize ->
             ( Model model
@@ -231,36 +247,41 @@ update msg (Model model) =
             )
 
         UrlChanged url ->
-            case keyFromUrl url of
-                "" ->
-                    ( Model model, Cmd.none )
-
-                key ->
-                    pick key (Model model)
+            pick (keyFromUrl url) (Model { model | url = url })
 
 
 pick : String -> Model -> ( Model, Cmd Msg )
 pick key (Model model) =
-    if TodoList.isCurrent key model.todo then
-        ( Model model, Cmd.none )
+    let
+        newTodo =
+            TodoList.pick key model.todo
+    in
+    updateAndSaveTodo newTodo
+        ( Model { model | embed = Embed.step model.embed }
+        , Cmd.batch
+            [ Task.attempt DomResult (Dom.setViewport 0 0)
+            , Task.attempt GotViewport (Dom.getViewportOf "current")
+            , replaceUrl model.key model.url (urlForCurrentTodo newTodo)
+            ]
+        )
+
+
+replaceUrl : Nav.Key -> Url -> String -> Cmd msg
+replaceUrl navKey currentUrl string =
+    if currentUrl.path /= string then
+        Nav.replaceUrl navKey string
 
     else
-        updateAndSaveTodo (TodoList.pick key model.todo)
-            ( Model { model | embed = Embed.step model.embed }
-            , [ Task.attempt DomResult (Dom.setViewport 0 0)
-              , Task.attempt GotViewport (Dom.getViewportOf "current")
-              ]
-            )
+        Cmd.none
 
 
-updateAndSaveTodo : TodoList Key Scenario -> ( Model, List (Cmd Msg) ) -> ( Model, Cmd Msg )
-updateAndSaveTodo todo ( Model model, cmdList ) =
-    ( Model { model | todo = todo }
-    , Cmd.batch
-        (saveScenarios todo
-            :: cmdList
-        )
-    )
+pushUrl : Nav.Key -> Url -> String -> Cmd msg
+pushUrl navKey currentUrl string =
+    if currentUrl.path /= string then
+        Nav.pushUrl navKey string
+
+    else
+        Cmd.none
 
 
 urlForCurrentTodo : TodoList Key Scenario -> String
@@ -268,6 +289,17 @@ urlForCurrentTodo todo =
     TodoList.current todo
         |> Maybe.map (Tuple.first >> keyToHref)
         |> Maybe.withDefault "/"
+
+
+updateAndSaveTodo : TodoList Key Scenario -> ( Model, Cmd Msg ) -> ( Model, Cmd Msg )
+updateAndSaveTodo todo ( Model model, cmd ) =
+    if model.todo /= todo then
+        ( Model { model | todo = todo }
+        , Cmd.batch [ cmd, saveScenarios todo ]
+        )
+
+    else
+        ( Model model, cmd )
 
 
 saveScenarios : TodoList Key Scenario -> Cmd Msg
@@ -278,7 +310,10 @@ saveScenarios todo =
 
 subscriptions : Model -> Sub Msg
 subscriptions _ =
-    Browser.Events.onResize (\_ _ -> Resize)
+    Sub.batch
+        [ Browser.Events.onResize (\_ _ -> Resize)
+        , Ports.loadScenarios GotState
+        ]
 
 
 
