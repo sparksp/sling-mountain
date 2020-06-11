@@ -60,6 +60,9 @@ getScenarios =
     , Scenario.build "Guide-mode Assisted Hoist"
         (Html.p [] [ Html.text "Set up a sling belay and put your partner on belay using guide mode. They've got a little stuck and need you to hoist them past a couple of moves." ])
         |> Scenario.withLink (Scenario.Youtube "2ZYWfcYRL9s")
+    , Scenario.build "Italian to Clove Hitch"
+        (Html.p [] [ Html.text "Tie an italian hitch on a carabiner then convert it to a clove hitch." ])
+        |> Scenario.withLink (Scenario.Youtube "-2WM_3hTNVE")
     , Scenario.build "Lower past a knot"
         (Html.p [] [ Html.text "You are lowering your partner to the ground - you've joined both of the ropes together so you can get them down in one go. Lower them safely past the knot." ])
         |> Scenario.withLink (Scenario.Youtube "FifPoymPxNc")
