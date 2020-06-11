@@ -36,6 +36,9 @@ getScenarios =
     , Scenario.build "Assisted Hoist"
         (Html.p [] [ Html.text "Your partner is stuck on a move below you and can't get around it. Set up an assisted hoist to give them a boost up." ])
         |> Scenario.withLink (Scenario.Youtube "0EZ1Umt4Kqw")
+    , Scenario.build "Chest Coils"
+        (Html.p [] [ Html.text "Prepare chest coils suitable for scrambling. The coils should be tied off with a hard lock and quite low." ])
+        |> Scenario.withLink (Scenario.Youtube "uFhUa8M0z9Y")
     , Scenario.build "Clean a Sport Route"
         (Html.p [] [ Html.text "You've finished climbing a sport route - rethread the chains with your rope ready to lower off. Make sure you keep yourself safe and leave nothing behind." ])
         |> Scenario.withLink (Scenario.Youtube "EjDNpYw4l34")
