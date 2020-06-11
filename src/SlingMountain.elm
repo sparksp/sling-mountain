@@ -449,12 +449,38 @@ viewInformationList { options, show } =
                 , title =
                     Title.static Icons.info "JB Mountain Skills"
                         |> Title.withActions
-                            [ Action.link { icon = Icons.instagram, href = "https://www.instagram.com/jbmountainskills/", text = "JB Mountain Skills on Instagram" }
+                            [ Action.link
+                                { icon = Icons.instagram
+                                , href = "https://www.instagram.com/jbmountainskills/"
+                                , text = "JB Mountain Skills on Instagram"
+                                }
                             ]
                 , body =
                     [ Html.p [] [ Html.text "JB Mountain Skills is a Mountaineering and Climbing Instructor based in North Wales. During 2020 he started producing YouTube videos about Climbing and Mountaineering rope work on his #SlingMountain at home." ]
                     ]
                 , link = cardYoutube options "CEwaEAh2-qE"
+                }
+          )
+        , ( "peak-climbing-school"
+          , Card.view
+                { frame = Frame.Default
+                , title =
+                    Title.static Icons.info "The Peak Climbing School"
+                        |> Title.withActions
+                            [ Action.link
+                                { icon = Icons.instagram
+                                , href = "https://www.instagram.com/peakclimbingschool/"
+                                , text = "Peak Climbing School on Instagram"
+                                }
+                            ]
+                , body =
+                    [ Html.p [] [ Html.text "The Peak Climbing School specialises in providing professionally run climbing, hill walking and mountaineering training courses in the Peak District and across the UK.  Their short videos are about techniques, hints and tips to help you progress your personal climbing skills." ]
+                    ]
+                , link =
+                    Link.link
+                        { href = "https://www.youtube.com/channel/UCqLWFSN4Be_vBRpF4geGl4A"
+                        , text = "Follow the Peak Climbing School on YouTube"
+                        }
                 }
           )
         , ( "attribution"

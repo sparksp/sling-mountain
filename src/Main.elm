@@ -36,9 +36,15 @@ getScenarios =
     , Scenario.build "Assisted Hoist"
         (Html.p [] [ Html.text "Your partner is stuck on a move below you and can't get around it. Set up an assisted hoist to give them a boost up." ])
         |> Scenario.withLink (Scenario.Youtube "0EZ1Umt4Kqw")
+    , Scenario.build "Chest Coils"
+        (Html.p [] [ Html.text "Prepare chest coils suitable for scrambling. The coils should be tied off with a hard lock and quite low." ])
+        |> Scenario.withLink (Scenario.Youtube "uFhUa8M0z9Y")
     , Scenario.build "Clean a Sport Route"
         (Html.p [] [ Html.text "You've finished climbing a sport route - rethread the chains with your rope ready to lower off. Make sure you keep yourself safe and leave nothing behind." ])
         |> Scenario.withLink (Scenario.Youtube "EjDNpYw4l34")
+    , Scenario.build "Clove Hitch 1-handed"
+        (Html.p [] [ Html.text "You're hanging on with two feet and one hand, using your free hand clip a carabiner into your anchor then attach yourself to the carabiner with a clove hitch." ])
+        |> Scenario.withLink (Scenario.Youtube "FrOzX1DDwE8")
     , Scenario.build "Escape - Anchors in reach"
         (Html.p [] [ Html.text "Set up a belay using in reach anchors and your rope. Put your climber on belay. Now escape from the system, assuming your climber has their full weight on the rope." ])
         |> Scenario.withLink (Scenario.Youtube "6s1OR4RycfU")
@@ -60,6 +66,9 @@ getScenarios =
     , Scenario.build "Guide-mode Assisted Hoist"
         (Html.p [] [ Html.text "Set up a sling belay and put your partner on belay using guide mode. They've got a little stuck and need you to hoist them past a couple of moves." ])
         |> Scenario.withLink (Scenario.Youtube "2ZYWfcYRL9s")
+    , Scenario.build "Italian to Clove Hitch"
+        (Html.p [] [ Html.text "Tie an italian hitch on a carabiner then convert it to a clove hitch." ])
+        |> Scenario.withLink (Scenario.Youtube "-2WM_3hTNVE")
     , Scenario.build "Lower past a knot"
         (Html.p [] [ Html.text "You are lowering your partner to the ground - you've joined both of the ropes together so you can get them down in one go. Lower them safely past the knot." ])
         |> Scenario.withLink (Scenario.Youtube "FifPoymPxNc")
