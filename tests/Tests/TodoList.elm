@@ -23,6 +23,7 @@ all =
         , pickTest
         , restoreTests
         , skipTest
+        , updateTest
         ]
 
 
@@ -920,6 +921,104 @@ decodeTests =
                         , Result.map TodoList.completed >> Expect.equal (Ok [ ( "a", 1 ), ( "b", 2 ) ])
                         , Result.map TodoList.disabled >> Expect.equal (Ok [ ( "c", 3 ) ])
                         ]
+        ]
+
+
+updateTest : Test
+updateTest =
+    describe "update"
+        [ test "on an empty list is empty" <|
+            \() ->
+                let
+                    state =
+                        "{\"current\":null,\"completed\":[],\"disabled\":[]}"
+                in
+                case Decode.decodeString Decode.value state of
+                    Err _ ->
+                        Expect.fail "There was a problem with the test JSON"
+
+                    Ok json ->
+                        TodoList.empty
+                            |> TodoList.update json
+                            |> Expect.equal (Ok TodoList.empty)
+        , test "applies completed and disabled, does not change current" <|
+            \() ->
+                let
+                    initialList =
+                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ), ( "d", 4 ), ( "e", 5 ) ]
+
+                    ( initialTodoList, _ ) =
+                        -- current = d, remaining = a, b, c, e
+                        Random.step (TodoList.chooseFromList "" initialList) (Random.initialSeed 0)
+
+                    state =
+                        "{\"current\":\"b\",\"completed\":[\"a\"],\"disabled\":[\"c\"]}"
+                in
+                case Decode.decodeString Decode.value state of
+                    Err _ ->
+                        Expect.fail "There was a problem with the test JSON"
+
+                    Ok json ->
+                        initialTodoList
+                            |> TodoList.update json
+                            |> Expect.all
+                                [ Result.map TodoList.current >> Expect.equal (Ok (Just ( "d", 4 )))
+                                , Result.map TodoList.remaining >> Expect.equal (Ok [ ( "b", 2 ), ( "e", 5 ) ])
+                                , Result.map TodoList.completed >> Expect.equal (Ok [ ( "a", 1 ) ])
+                                , Result.map TodoList.disabled >> Expect.equal (Ok [ ( "c", 3 ) ])
+                                ]
+        , test "applies completed and disabled, changes current when old current is completed" <|
+            \() ->
+                let
+                    initialList =
+                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ), ( "d", 4 ), ( "e", 5 ) ]
+
+                    ( initialTodoList, _ ) =
+                        -- current = d, remaining = a, b, c, e
+                        Random.step (TodoList.chooseFromList "" initialList) (Random.initialSeed 0)
+
+                    state =
+                        "{\"current\":\"b\",\"completed\":[\"a\",\"d\"],\"disabled\":[\"c\"]}"
+                in
+                case Decode.decodeString Decode.value state of
+                    Err _ ->
+                        Expect.fail "There was a problem with the test JSON"
+
+                    Ok json ->
+                        initialTodoList
+                            |> TodoList.update json
+                            |> Expect.all
+                                [ Result.map TodoList.current >> Expect.equal (Ok (Just ( "b", 2 )))
+                                , Result.map TodoList.remaining >> Expect.equal (Ok [ ( "e", 5 ) ])
+                                , Result.map TodoList.completed >> Expect.equal (Ok [ ( "d", 4 ), ( "a", 1 ) ])
+                                , Result.map TodoList.disabled >> Expect.equal (Ok [ ( "c", 3 ) ])
+                                ]
+        , test "applies completed and disabled, changes current when old current is disabled" <|
+            \() ->
+                let
+                    initialList =
+                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ), ( "d", 4 ), ( "e", 5 ) ]
+
+                    ( initialTodoList, _ ) =
+                        -- current = d, remaining = a, b, c, e
+                        Random.step (TodoList.chooseFromList "" initialList) (Random.initialSeed 0)
+
+                    state =
+                        "{\"current\":\"e\",\"completed\":[\"a\"],\"disabled\":[\"c\",\"d\"]}"
+                in
+                case Decode.decodeString Decode.value state of
+                    Err _ ->
+                        Expect.fail "There was a problem with the test JSON"
+
+                    Ok json ->
+                        initialTodoList
+                            |> TodoList.update json
+                            |> Expect.all
+                                [ Result.map TodoList.current >> Expect.equal (Ok (Just ( "e", 5 )))
+                                , Result.map TodoList.remaining >> Expect.equal (Ok [ ( "b", 2 ) ])
+                                , Result.map TodoList.completed >> Expect.equal (Ok [ ( "a", 1 ) ])
+                                , Result.map TodoList.disabled >> Expect.equal (Ok [ ( "d", 4 ), ( "c", 3 ) ])
+                                ]
         ]
 
 

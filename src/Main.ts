@@ -11,5 +11,6 @@ export type Scenarios = {
 }
 
 export type Ports = Elm.Ports<{
+    loadScenarios: Elm.IncomingPort<Scenarios>
     storeScenarios: Elm.OutgoingPort<Scenarios>
 }>
