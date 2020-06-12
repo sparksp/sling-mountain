@@ -10,12 +10,12 @@ type Link
 type Scenario
     = Scenario
         { title : String
-        , body : Html Never
+        , body : List (Html Never)
         , link : Maybe Link
         }
 
 
-build : String -> Html Never -> Scenario
+build : String -> List (Html Never) -> Scenario
 build title body =
     Scenario { title = title, body = body, link = Nothing }
 
@@ -30,7 +30,7 @@ mapTitle mapper (Scenario { title }) =
     mapper title
 
 
-mapBody : (Html Never -> a) -> Scenario -> a
+mapBody : (List (Html Never) -> a) -> Scenario -> a
 mapBody mapper (Scenario { body }) =
     mapper body
 
