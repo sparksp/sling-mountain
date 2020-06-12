@@ -93,4 +93,7 @@ getScenarios =
     , Scenario.build "Unassisted Hoist"
         (Html.p [] [ Html.text "Your partner unconscious and needs your help! You've already escaped from the system and decided you need to hoist them up to you. Set up a suitable hoist system." ])
         |> Scenario.withLink (Scenario.Youtube "0EZ1Umt4Kqw")
+    , Scenario.build "Y-hang Abseil"
+        (Html.p [] [ Html.text "You've got your injured partner down to a belay ledge and have another pitch still to go. Setup a 'Y' hang abseil to get you both down safely." ])
+        |> Scenario.withLink (Scenario.Youtube "fkrX4dydgeU")
     ]
