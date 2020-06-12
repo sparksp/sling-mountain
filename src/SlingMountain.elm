@@ -633,8 +633,7 @@ viewScenario options position ( key, scenario ) =
                         scenario
                         |> Title.withActions [ skipButton SkipCurrent, disableButton DisableCurrent ]
                 , body =
-                    [ Scenario.mapBody (Html.map never) scenario
-                    ]
+                    Scenario.mapBody (List.map (Html.map never)) scenario
                 , link = Scenario.mapLink (cardLink options) scenario
                 }
 
