@@ -3,8 +3,8 @@ module Ui.Card exposing (Card, view)
 import Html exposing (Html)
 import Html.Attributes as Attr
 import Html.Tailwind as TW
+import Ui.Card.Footer as Footer exposing (Footer)
 import Ui.Card.Frame as Frame exposing (Frame)
-import Ui.Card.Link as Link exposing (Link)
 import Ui.Card.Title as Title exposing (Title)
 
 
@@ -12,7 +12,7 @@ type alias Card msg =
     { frame : Frame
     , title : Title msg
     , body : List (Html msg)
-    , link : Link msg
+    , footer : Footer msg
     }
 
 
@@ -54,7 +54,7 @@ view ({ frame, body } as card) =
                         :: baseAttributes
                     )
     in
-    element attributes (Title.view card.title :: withBody body ++ Link.view card.link)
+    element attributes (Title.view card.title :: withBody body ++ Footer.view card.footer)
 
 
 
