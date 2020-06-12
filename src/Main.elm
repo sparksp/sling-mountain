@@ -45,6 +45,9 @@ getScenarios =
     , Scenario.build "Clove Hitch 1-handed"
         (Html.p [] [ Html.text "You're hanging on with two feet and one hand, using your free hand clip a carabiner into your anchor then attach yourself to the carabiner with a clove hitch." ])
         |> Scenario.withLink (Scenario.Youtube "FrOzX1DDwE8")
+    , Scenario.build "Counter-balance Abseil"
+        (Html.p [] [ Html.text "You've already secured your injured second and escaped from the system, you've been down to stabilise them and have decided that it's best to abseil off. From the belay, setup a counter-balance abseil so that you can get to your partner, and then get them to the next belay." ])
+        |> Scenario.withLink (Scenario.Youtube "fkrX4dydgeU")
     , Scenario.build "Escape - Anchors in reach"
         (Html.p [] [ Html.text "Set up a belay using in reach anchors and your rope. Put your climber on belay. Now escape from the system, assuming your climber has their full weight on the rope." ])
         |> Scenario.withLink (Scenario.Youtube "6s1OR4RycfU")
