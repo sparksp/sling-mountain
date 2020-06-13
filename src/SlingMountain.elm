@@ -23,8 +23,8 @@ import Task
 import TodoList exposing (TodoList)
 import Ui.Card as Card
 import Ui.Card.Action as Action exposing (Action)
+import Ui.Card.Footer as Footer exposing (Footer)
 import Ui.Card.Frame as Frame
-import Ui.Card.Link as Link exposing (Link)
 import Ui.Card.Title as Title
 import Ui.Icons as Icons
 import Url exposing (Url)
@@ -418,7 +418,7 @@ viewInformationList { options, show } =
                 , body =
                     [ Html.p [] [ Html.text "Phill Sparks is a Climbing Instructor based in the Midlands. He built this site to choose random things to practice and to quickly find the videos that explain those techniques." ]
                     ]
-                , link = Link.image { src = "/img/phill-sparks.jpg", alt = "Photo of Phill Sparks standing at the top of a crag, wearing an orange coat and waving." }
+                , footer = Footer.image { src = "/img/phill-sparks.jpg", alt = "Photo of Phill Sparks standing at the top of a crag, wearing an orange coat and waving." }
                 }
           )
         , ( "get-in-touch"
@@ -440,7 +440,7 @@ viewInformationList { options, show } =
                             [ Html.text "Please make sure you head over to YouTube and give a \"like\" to any videos you find useful. You can also leave any questions about the material covered in the video comments." ]
                         ]
                     ]
-                , link = Link.link { href = "https://phills.me.uk/contact", text = "Send Phill a message." }
+                , footer = Footer.link { href = "https://phills.me.uk/contact", text = "Send Phill a message." }
                 }
           )
         , ( "jb-mountain-skills"
@@ -458,7 +458,7 @@ viewInformationList { options, show } =
                 , body =
                     [ Html.p [] [ Html.text "JB Mountain Skills is a Mountaineering and Climbing Instructor based in North Wales. During 2020 he started producing YouTube videos about Climbing and Mountaineering rope work on his #SlingMountain at home." ]
                     ]
-                , link = cardYoutube options "CEwaEAh2-qE"
+                , footer = youtubeFooter options "CEwaEAh2-qE"
                 }
           )
         , ( "peak-climbing-school"
@@ -476,8 +476,8 @@ viewInformationList { options, show } =
                 , body =
                     [ Html.p [] [ Html.text "The Peak Climbing School specialises in providing professionally run climbing, hill walking and mountaineering training courses in the Peak District and across the UK.  Their short videos are about techniques, hints and tips to help you progress your personal climbing skills." ]
                     ]
-                , link =
-                    Link.link
+                , footer =
+                    Footer.link
                         { href = "https://www.youtube.com/channel/UCqLWFSN4Be_vBRpF4geGl4A"
                         , text = "Follow the Peak Climbing School on YouTube"
                         }
@@ -514,7 +514,7 @@ viewInformationList { options, show } =
                             ]
                         ]
                     ]
-                , link = Link.none
+                , footer = Footer.none
                 }
           )
         , ( "spacing"
@@ -581,7 +581,7 @@ viewCurrentScenario options maybe =
                 , body =
                     [ Html.p [] [ Html.text "Outstanding work, you've finished all the scenarios!" ]
                     ]
-                , link = Link.none
+                , footer = Footer.none
                 }
             )
 
@@ -634,7 +634,7 @@ viewScenario options position ( key, scenario ) =
                         |> Title.withActions [ skipButton SkipCurrent, disableButton DisableCurrent ]
                 , body =
                     Scenario.mapBody (List.map (Html.map never)) scenario
-                , link = Scenario.mapLink (cardLink options) scenario
+                , footer = Scenario.mapLink (scenarioFooterLink options) scenario
                 }
 
         TodoList.Remaining ->
@@ -650,7 +650,7 @@ viewScenario options position ( key, scenario ) =
                         scenario
                         |> Title.withActions [ disableButton (Disable key) ]
                 , body = []
-                , link = Link.none
+                , footer = Footer.none
                 }
 
         TodoList.Completed ->
@@ -666,7 +666,7 @@ viewScenario options position ( key, scenario ) =
                         scenario
                         |> Title.withActions [ restoreButton (Restore key), disableButton (Disable key) ]
                 , body = []
-                , link = Link.none
+                , footer = Footer.none
                 }
 
         TodoList.Disabled ->
@@ -682,7 +682,7 @@ viewScenario options position ( key, scenario ) =
                         scenario
                         |> Title.withActions [ restoreButton (Restore key), disableIcon ]
                 , body = []
-                , link = Link.none
+                , footer = Footer.none
                 }
     )
 
@@ -722,33 +722,33 @@ skipButton onSkip =
         }
 
 
-cardLink : { a | embed : Embed, maxWidth : Int } -> Maybe Scenario.Link -> Link Msg
-cardLink options link =
+scenarioFooterLink : { a | embed : Embed, maxWidth : Int } -> Maybe Scenario.Link -> Footer Msg
+scenarioFooterLink options link =
     case link of
         Nothing ->
-            Link.none
+            Footer.none
 
         Just (Scenario.Youtube youtubeId) ->
-            cardYoutube options youtubeId
+            youtubeFooter options youtubeId
 
 
-cardYoutube : { a | embed : Embed, maxWidth : Int } -> String -> Link Msg
-cardYoutube { embed, maxWidth } youtubeId =
+youtubeFooter : { a | embed : Embed, maxWidth : Int } -> String -> Footer Msg
+youtubeFooter { embed, maxWidth } youtubeId =
     Embed.map
         { key = youtubeId
-        , default = \() -> cardYoutubeButton youtubeId
-        , visible = \() -> cardYoutubeEmbed maxWidth youtubeId
+        , default = \() -> youtubeFooterButton youtubeId
+        , visible = \() -> youtubeFooterEmbed maxWidth youtubeId
         }
         embed
 
 
-cardYoutubeButton : String -> Link Msg
-cardYoutubeButton youtubeId =
-    Link.button
+youtubeFooterButton : String -> Footer Msg
+youtubeFooterButton youtubeId =
+    Footer.button
         { text = "Play YouTube video"
         , onClick = SetEmbed (Embed.One youtubeId)
         }
-        |> Link.withAction
+        |> Footer.withAction
             (Action.link
                 { href = "https://www.youtube.com/watch?v=" ++ youtubeId
                 , icon = Icons.youtube
@@ -757,9 +757,9 @@ cardYoutubeButton youtubeId =
             )
 
 
-cardYoutubeEmbed : Int -> String -> Link msg
-cardYoutubeEmbed maxWidth youtubeId =
-    Link.figure
+youtubeFooterEmbed : Int -> String -> Footer msg
+youtubeFooterEmbed maxWidth youtubeId =
+    Footer.figure
         { attributes = [ TW.bgBlack, TW.transitionColors, TW.duration300, TW.easeIn ]
         , content =
             [ Html.div

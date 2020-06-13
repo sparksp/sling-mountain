@@ -1,5 +1,5 @@
-module Ui.Card.Link exposing
-    ( Link
+module Ui.Card.Footer exposing
+    ( Footer
     , button
     , figure
     , image
@@ -16,9 +16,9 @@ import Html.Tailwind as TW
 import Ui.Card.Action as Action exposing (Action)
 
 
-type Link msg
+type Footer msg
     = Link { href : String, text : String }
-    | Action { parent : Link msg, action : Action msg }
+    | Action { parent : Footer msg, action : Action msg }
     | Button { text : String, onClick : msg }
     | Figure { attributes : List (Html.Attribute msg), content : List (Html msg) }
     | Image { src : String, alt : String }
@@ -29,32 +29,32 @@ type Link msg
 --- CONSTRUCTORS
 
 
-link : { href : String, text : String } -> Link msg
+link : { href : String, text : String } -> Footer msg
 link options =
     Link options
 
 
-button : { text : String, onClick : msg } -> Link msg
+button : { text : String, onClick : msg } -> Footer msg
 button options =
     Button options
 
 
-figure : { attributes : List (Html.Attribute msg), content : List (Html msg) } -> Link msg
+figure : { attributes : List (Html.Attribute msg), content : List (Html msg) } -> Footer msg
 figure options =
     Figure options
 
 
-image : { src : String, alt : String } -> Link msg
+image : { src : String, alt : String } -> Footer msg
 image options =
     Image options
 
 
-none : Link msg
+none : Footer msg
 none =
     None
 
 
-withAction : Action msg -> Link msg -> Link msg
+withAction : Action msg -> Footer msg -> Footer msg
 withAction action parent =
     Action { parent = parent, action = action }
 
@@ -63,12 +63,12 @@ withAction action parent =
 --- VIEW
 
 
-view : Link msg -> List (Html msg)
+view : Footer msg -> List (Html msg)
 view link_ =
     viewHelper link_ []
 
 
-viewHelper : Link msg -> List (Html msg) -> List (Html msg)
+viewHelper : Footer msg -> List (Html msg) -> List (Html msg)
 viewHelper link_ actions =
     case link_ of
         None ->
