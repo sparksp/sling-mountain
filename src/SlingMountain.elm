@@ -396,134 +396,132 @@ viewTitle =
 
 viewInformationList : { options : { a | embed : Embed, maxWidth : Int }, show : ( ShowSection, Bool ) } -> List ( String, Html Msg )
 viewInformationList { options, show } =
-    let
-        heading =
-            ( "heading-info"
-            , viewHeading "Information"
-                { count = 4
-                , show = show
-                }
-            )
-    in
-    if Tuple.second show then
-        [ heading
-        , ( "phill-sparks"
-          , Card.view
-                { frame = Frame.Default
-                , title =
-                    Title.static Icons.info "Phill Sparks"
-                        |> Title.withActions
-                            [ Action.link { icon = Icons.instagram, href = "https://www.instagram.com/sparksphill/", text = "Phill Sparks on Instagram" }
-                            ]
-                , body =
-                    [ Html.p [] [ Html.text "Phill Sparks is a Climbing Instructor based in the Midlands. He built this site to choose random things to practice and to quickly find the videos that explain those techniques." ]
-                    ]
-                , footer = Footer.image { src = "/img/phill-sparks.jpg", alt = "Photo of Phill Sparks standing at the top of a crag, wearing an orange coat and waving." }
-                }
+    viewCardList
+        ( "heading-info", { title = "Information", show = show } )
+        [ ( "phill-sparks"
+          , { frame = Frame.Default
+            , title =
+                Title.static Icons.info "Phill Sparks"
+                    |> Title.withActions
+                        [ Action.link { icon = Icons.instagram, href = "https://www.instagram.com/sparksphill/", text = "Phill Sparks on Instagram" }
+                        ]
+            , body =
+                [ Html.p [] [ Html.text "Phill Sparks is a Climbing Instructor based in the Midlands. He built this site to choose random things to practice and to quickly find the videos that explain those techniques." ]
+                ]
+            , footer = Footer.image { src = "/img/phill-sparks.jpg", alt = "Photo of Phill Sparks standing at the top of a crag, wearing an orange coat and waving." }
+            }
           )
         , ( "get-in-touch"
-          , Card.view
-                { frame = Frame.Default
-                , title =
-                    Title.static Icons.inboxCheck "Get in touch"
-                        |> Title.withActions
-                            [ Action.link { icon = Icons.bug, href = "https://github.com/sparksp/sling-mountain/issues", text = "Report a bug" }
-                            ]
-                , body =
-                    [ Html.div []
-                        [ Html.p [ TW.mb2 ]
-                            [ Html.text "Please get in touch with Phill if you have any suggestions for the website. If you find any bugs or typos please "
-                            , Html.a [ Attr.href "https://github.com/sparksp/sling-mountain/issues", Attr.title "Report issues on GitHub", TW.hoverTextBlack ] [ Html.text "report them on GitHub" ]
-                            , Html.text " where you can also find the code for this site."
-                            ]
-                        , Html.p []
-                            [ Html.text "Please make sure you head over to YouTube and give a \"like\" to any videos you find useful. You can also leave any questions about the material covered in the video comments." ]
+          , { frame = Frame.Default
+            , title =
+                Title.static Icons.inboxCheck "Get in touch"
+                    |> Title.withActions
+                        [ Action.link { icon = Icons.bug, href = "https://github.com/sparksp/sling-mountain/issues", text = "Report a bug" }
                         ]
+            , body =
+                [ Html.div []
+                    [ Html.p [ TW.mb2 ]
+                        [ Html.text "Please get in touch with Phill if you have any suggestions for the website. If you find any bugs or typos please "
+                        , Html.a [ Attr.href "https://github.com/sparksp/sling-mountain/issues", Attr.title "Report issues on GitHub", TW.hoverTextBlack ] [ Html.text "report them on GitHub" ]
+                        , Html.text " where you can also find the code for this site."
+                        ]
+                    , Html.p []
+                        [ Html.text "Please make sure you head over to YouTube and give a \"like\" to any videos you find useful. You can also leave any questions about the material covered in the video comments." ]
                     ]
-                , footer = Footer.link { href = "https://phills.me.uk/contact", text = "Send Phill a message." }
-                }
+                ]
+            , footer = Footer.link { href = "https://phills.me.uk/contact", text = "Send Phill a message." }
+            }
           )
         , ( "jb-mountain-skills"
-          , Card.view
-                { frame = Frame.Default
-                , title =
-                    Title.static Icons.info "JB Mountain Skills"
-                        |> Title.withActions
-                            [ Action.link
-                                { icon = Icons.instagram
-                                , href = "https://www.instagram.com/jbmountainskills/"
-                                , text = "JB Mountain Skills on Instagram"
-                                }
-                            ]
-                , body =
-                    [ Html.p [] [ Html.text "JB Mountain Skills is a Mountaineering and Climbing Instructor based in North Wales. During 2020 he started producing YouTube videos about Climbing and Mountaineering rope work on his #SlingMountain at home." ]
-                    ]
-                , footer = youtubeFooter options "CEwaEAh2-qE"
-                }
+          , { frame = Frame.Default
+            , title =
+                Title.static Icons.info "JB Mountain Skills"
+                    |> Title.withActions
+                        [ Action.link
+                            { icon = Icons.instagram
+                            , href = "https://www.instagram.com/jbmountainskills/"
+                            , text = "JB Mountain Skills on Instagram"
+                            }
+                        ]
+            , body =
+                [ Html.p [] [ Html.text "JB Mountain Skills is a Mountaineering and Climbing Instructor based in North Wales. During 2020 he started producing YouTube videos about Climbing and Mountaineering rope work on his #SlingMountain at home." ]
+                ]
+            , footer = youtubeFooter options "CEwaEAh2-qE"
+            }
           )
         , ( "peak-climbing-school"
-          , Card.view
-                { frame = Frame.Default
-                , title =
-                    Title.static Icons.info "The Peak Climbing School"
-                        |> Title.withActions
-                            [ Action.link
-                                { icon = Icons.instagram
-                                , href = "https://www.instagram.com/peakclimbingschool/"
-                                , text = "Peak Climbing School on Instagram"
-                                }
-                            ]
-                , body =
-                    [ Html.p [] [ Html.text "The Peak Climbing School specialises in providing professionally run climbing, hill walking and mountaineering training courses in the Peak District and across the UK.  Their short videos are about techniques, hints and tips to help you progress your personal climbing skills." ]
-                    ]
-                , footer =
-                    Footer.link
-                        { href = "https://www.youtube.com/channel/UCqLWFSN4Be_vBRpF4geGl4A"
-                        , text = "Follow the Peak Climbing School on YouTube"
-                        }
-                }
+          , { frame = Frame.Default
+            , title =
+                Title.static Icons.info "The Peak Climbing School"
+                    |> Title.withActions
+                        [ Action.link
+                            { icon = Icons.instagram
+                            , href = "https://www.instagram.com/peakclimbingschool/"
+                            , text = "Peak Climbing School on Instagram"
+                            }
+                        ]
+            , body =
+                [ Html.p [] [ Html.text "The Peak Climbing School specialises in providing professionally run climbing, hill walking and mountaineering training courses in the Peak District and across the UK.  Their short videos are about techniques, hints and tips to help you progress your personal climbing skills." ]
+                ]
+            , footer =
+                Footer.link
+                    { href = "https://www.youtube.com/channel/UCqLWFSN4Be_vBRpF4geGl4A"
+                    , text = "Follow the Peak Climbing School on YouTube"
+                    }
+            }
           )
         , ( "attribution"
-          , Card.view
-                { frame = Frame.Default
-                , title = Title.static Icons.bookmarkOutline "Attribution"
-                , body =
-                    [ Html.ul []
-                        [ Html.li []
-                            [ Icons.chevronRight [ STW.h4, STW.w4, STW.my1, STW.mr1, STW.floatLeft ]
-                            , Html.text "Icons designed by "
-                            , Html.a
-                                [ Attr.href "https://www.zondicons.com/"
-                                , Attr.title "Zondicons"
-                                , TW.hoverTextBlack
-                                ]
-                                [ Html.text "Steve Schoger from Zondicons"
-                                ]
-                            , Html.text "."
+          , { frame = Frame.Default
+            , title = Title.static Icons.bookmarkOutline "Attribution"
+            , body =
+                [ Html.ul []
+                    [ Html.li []
+                        [ Icons.chevronRight [ STW.h4, STW.w4, STW.my1, STW.mr1, STW.floatLeft ]
+                        , Html.text "Icons designed by "
+                        , Html.a
+                            [ Attr.href "https://www.zondicons.com/"
+                            , Attr.title "Zondicons"
+                            , TW.hoverTextBlack
                             ]
-                        , Html.li []
-                            [ Icons.chevronRight [ STW.h4, STW.w4, STW.my1, STW.mr1, STW.floatLeft ]
-                            , Html.text "Icons designed by "
-                            , Html.a
-                                [ Attr.href "https://www.flaticon.com/authors/pixel-perfect"
-                                , Attr.title "Pixel Perfect"
-                                , TW.hoverTextBlack
-                                ]
-                                [ Html.text "Pixel Perfect from Flaticon."
-                                ]
+                            [ Html.text "Steve Schoger from Zondicons"
+                            ]
+                        , Html.text "."
+                        ]
+                    , Html.li []
+                        [ Icons.chevronRight [ STW.h4, STW.w4, STW.my1, STW.mr1, STW.floatLeft ]
+                        , Html.text "Icons designed by "
+                        , Html.a
+                            [ Attr.href "https://www.flaticon.com/authors/pixel-perfect"
+                            , Attr.title "Pixel Perfect"
+                            , TW.hoverTextBlack
+                            ]
+                            [ Html.text "Pixel Perfect from Flaticon."
                             ]
                         ]
                     ]
-                , footer = Footer.none
-                }
-          )
-        , ( "spacing"
-          , Html.div [ TW.mb6 ] []
+                ]
+            , footer = Footer.none
+            }
           )
         ]
 
-    else
-        [ heading ]
+
+viewCardList : ( String, { title : String, show : ( ShowSection, Bool ) } ) -> List ( String, Card.Card Msg ) -> List ( String, Html Msg )
+viewCardList ( headingKey, { title, show } ) cards =
+    case cards of
+        [] ->
+            []
+
+        _ ->
+            let
+                heading =
+                    ( headingKey, viewHeading title { count = List.length cards, show = show } )
+            in
+            if Tuple.second show then
+                heading :: List.map (Tuple.mapSecond Card.view) cards
+
+            else
+                [ heading ]
 
 
 viewHeading :
