@@ -4,6 +4,7 @@ import Html
 import Html.Tailwind as TW
 import Scenario exposing (Scenario)
 import SlingMountain
+import Html.Attributes
 
 
 main : Program SlingMountain.Flags SlingMountain.Model SlingMountain.Msg
