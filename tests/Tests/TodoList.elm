@@ -23,6 +23,7 @@ all =
         , pickTest
         , restoreTests
         , describe "restoreAllCompleted" restoreAllCompletedTests
+        , describe "restoreAllDisabled" restoreAllDisabledTests
         , skipTest
         , updateTest
         ]
@@ -691,6 +692,69 @@ restoreAllCompletedTests =
                     , TodoList.remaining >> Expect.equal [ ( "a", 1 ) ]
                     , TodoList.completed >> Expect.equal []
                     , TodoList.disabled >> Expect.equal [ ( "b", 2 ) ]
+                    ]
+    ]
+
+
+restoreAllDisabledTests : List Test
+restoreAllDisabledTests =
+    [ test "with empty list is empty" <|
+        \() ->
+            TodoList.empty
+                |> TodoList.restoreAllDisabled
+                |> Expect.equal TodoList.empty
+    , test "with no disabled changes nothing" <|
+        \() ->
+            let
+                ( initialTodoList, _ ) =
+                    [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
+                        -- current = b, remaining = a, c
+                        |> seed 0 (TodoList.chooseFromList "")
+            in
+            initialTodoList
+                |> TodoList.restoreAllDisabled
+                |> Expect.equal initialTodoList
+    , test "with current and disabled, moves disabled to remaining" <|
+        \() ->
+            let
+                ( completeTodoList, _ ) =
+                    [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
+                        -- current = b, remaining = a, c
+                        |> seed 0 (TodoList.chooseFromList "")
+                        -- current = c, remaining = a, disabled = b
+                        |> step TodoList.disableCurrent
+                        -- current = c, completed = a, completed = b
+                        |> step TodoList.complete
+            in
+            completeTodoList
+                |> TodoList.restoreAllDisabled
+                |> Expect.all
+                    [ TodoList.current >> Expect.equal (Just ( "c", 3 ))
+                    , TodoList.remaining >> Expect.equal [ ( "b", 2 ) ]
+                    , TodoList.completed >> Expect.equal [ ( "a", 1 ) ]
+                    , TodoList.disabled >> Expect.equal []
+                    ]
+    , test "with no current, moves first disabled to current and rest to remaining" <|
+        \() ->
+            let
+                ( completeAllTodoList, _ ) =
+                    [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
+                        -- current = b, remaining = a, c
+                        |> seed 0 (TodoList.chooseFromList "")
+                        -- current = c, remaining = a, completed = b
+                        |> step TodoList.complete
+                        -- current = a, completed = b, disabled = c
+                        |> step TodoList.disableCurrent
+                        -- completed = b, disabled = c, a
+                        |> step TodoList.disableCurrent
+            in
+            completeAllTodoList
+                |> TodoList.restoreAllDisabled
+                |> Expect.all
+                    [ TodoList.current >> Expect.equal (Just ( "c", 3 ))
+                    , TodoList.remaining >> Expect.equal [ ( "a", 1 ) ]
+                    , TodoList.completed >> Expect.equal [ ( "b", 2 ) ]
+                    , TodoList.disabled >> Expect.equal []
                     ]
     ]
 

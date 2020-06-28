@@ -16,6 +16,7 @@ module TodoList exposing
     , remaining
     , restore
     , restoreAllCompleted
+    , restoreAllDisabled
     , skip
     , update
     )
@@ -187,7 +188,24 @@ restoreAllCompleted list =
                     list
 
                 head :: rest ->
-                    Todo { current = head, remaining = rest, disabled = data.disabled, completed = [] }
+                    Todo { current = head, remaining = rest, completed = [], disabled = data.disabled }
+
+
+{-| Moves anything disabled to remaining, maintaining existing current if there is one or else using the first disabled.
+-}
+restoreAllDisabled : TodoList comparable v -> TodoList comparable v
+restoreAllDisabled list =
+    case list of
+        Todo data ->
+            Todo { data | remaining = data.remaining ++ data.disabled, disabled = [] }
+
+        AllDone data ->
+            case data.disabled of
+                [] ->
+                    list
+
+                head :: rest ->
+                    Todo { current = head, remaining = rest, completed = data.completed, disabled = [] }
 
 
 isCurrent : comparable -> TodoList comparable v -> Bool

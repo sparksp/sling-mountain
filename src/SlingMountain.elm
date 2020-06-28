@@ -65,7 +65,9 @@ type Msg
     | DisableCurrent
     | Disable Key
     | Restore Key
+    | RestoreAll
     | RestoreAllCompleted
+    | RestoreAllDisabled
     | DomResult (Result Dom.Error ())
     | GotFirst (TodoList Key Scenario)
     | GotTodoList (TodoList Key Scenario)
@@ -181,8 +183,27 @@ update msg (Model model) =
             updateAndSaveTodo (TodoList.restore key model.todo)
                 ( Model model, Cmd.none )
 
+        RestoreAll ->
+            let
+                restoreAllFn =
+                    -- If there's any completed scenarios then restore all
+                    -- completed, otherwise restore all disabled instead.
+                    case TodoList.completed model.todo of
+                        [] ->
+                            TodoList.restoreAllDisabled
+
+                        _ ->
+                            TodoList.restoreAllCompleted
+            in
+            updateAndSaveTodo (restoreAllFn model.todo)
+                ( Model model, Cmd.none )
+
         RestoreAllCompleted ->
             updateAndSaveTodo (TodoList.restoreAllCompleted model.todo)
+                ( Model model, Cmd.none )
+
+        RestoreAllDisabled ->
+            updateAndSaveTodo (TodoList.restoreAllDisabled model.todo)
                 ( Model model, Cmd.none )
 
         GotFirst newTodo ->
@@ -384,7 +405,7 @@ viewScenarios (Model { embed, todo, width, showCompleted, showRemaining, showDis
             , position = TodoList.Disabled
             , show = ( ShowDisabled, showDisabled )
             , heading = ( "heading-disabled", viewHeading "Disabled" )
-            , footer = Nothing
+            , footer = Just viewRestoreAllDisabledButton
             , scenarios = TodoList.disabled todo
             }
         ++ viewInformationList
@@ -586,7 +607,7 @@ viewCurrentScenario options maybe =
                 , title =
                     Title.static Icons.check "All done!"
                         |> Title.withActions
-                            [ restoreAllButton RestoreAllCompleted
+                            [ restoreAllButton RestoreAll
                             ]
                 , body =
                     [ Html.p [] [ Html.text "Outstanding work, you've finished all the scenarios!" ]
@@ -611,6 +632,26 @@ viewRestoreAllCompletedButton =
             , TW.wFull
             ]
             [ Html.text "Restore All Completed Scenarios"
+            ]
+        ]
+    )
+
+
+viewRestoreAllDisabledButton : ( Key, Html Msg )
+viewRestoreAllDisabledButton =
+    ( "restore-all-completed"
+    , Html.div
+        [ TW.flex
+        , TW.flexRow
+        , TW.justifyCenter
+        ]
+        [ Html.button
+            [ Events.onClick RestoreAllDisabled
+            , TW.textGray600
+            , TW.hoverTextGray800
+            , TW.wFull
+            ]
+            [ Html.text "Restore All Disabled Scenarios"
             ]
         ]
     )
