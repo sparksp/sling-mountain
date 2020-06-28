@@ -6,7 +6,7 @@ import Json.Decode as Decode
 import Json.Encode as Encode
 import Random
 import Test exposing (Test, describe, fuzz, test)
-import TodoList
+import TodoList exposing (TodoList)
 
 
 all : Test
@@ -35,7 +35,7 @@ chooseFromListTest =
             \() ->
                 let
                     ( chosenTodoList, _ ) =
-                        Random.step (TodoList.chooseFromList "z" []) (Random.initialSeed 0)
+                        seed 0 (TodoList.chooseFromList "z") []
                 in
                 chosenTodoList
                     |> Expect.all
@@ -47,11 +47,9 @@ chooseFromListTest =
         , test "key not found, random current is chosen, rest are remaining" <|
             \() ->
                 let
-                    initialList =
-                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
-
                     ( chosenTodoList, _ ) =
-                        Random.step (TodoList.chooseFromList "z" initialList) (Random.initialSeed 0)
+                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
+                            |> seed 0 (TodoList.chooseFromList "z")
                 in
                 chosenTodoList
                     |> Expect.all
@@ -63,11 +61,9 @@ chooseFromListTest =
         , fuzz (oneOf [ "a", "b", "c" ]) "with known key current is key, rest are remaining" <|
             \key ->
                 let
-                    initialList =
-                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
-
                     ( chosenTodoList, _ ) =
-                        Random.step (TodoList.chooseFromList key initialList) (Random.initialSeed 0)
+                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
+                            |> seed 0 (TodoList.chooseFromList key)
                 in
                 chosenTodoList
                     |> Expect.all
@@ -86,69 +82,57 @@ skipTest =
             \() ->
                 let
                     ( skippedTodoList, _ ) =
-                        Random.step (TodoList.skip TodoList.empty) (Random.initialSeed 0)
+                        TodoList.empty
+                            |> seed 0 TodoList.skip
                 in
                 skippedTodoList
                     |> Expect.equal TodoList.empty
         , test "with all done is not changed" <|
             \() ->
                 let
-                    initialList =
-                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
-
-                    ( initialTodoList, initialSeed ) =
-                        Random.step (TodoList.chooseFromList "" initialList) (Random.initialSeed 0)
-
-                    ( remainingTodoList, remainingSeed ) =
-                        Random.step (TodoList.complete initialTodoList) initialSeed
-
-                    ( completeTodoList, completeSeed ) =
-                        Random.step (TodoList.complete remainingTodoList) remainingSeed
-
                     ( finalTodoList, finalSeed ) =
-                        -- completed = a, b, c
-                        Random.step (TodoList.complete completeTodoList) completeSeed
+                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
+                            |> seed 0 (TodoList.chooseFromList "")
+                            |> step TodoList.complete
+                            |> step TodoList.complete
+                            -- completed = a, b, c
+                            |> step TodoList.complete
 
                     ( skippedTodoList, _ ) =
-                        Random.step (TodoList.skip finalTodoList) finalSeed
+                        ( finalTodoList, finalSeed )
+                            |> step TodoList.skip
                 in
                 skippedTodoList
                     |> Expect.equal finalTodoList
         , test "with no remaining is not changed" <|
             \() ->
                 let
-                    initialList =
-                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
-
-                    ( initialTodoList, initialSeed ) =
-                        Random.step (TodoList.chooseFromList "" initialList) (Random.initialSeed 0)
-
-                    ( remainingTodoList, remainingSeed ) =
-                        Random.step (TodoList.complete initialTodoList) initialSeed
-
                     ( completeTodoList, completeSeed ) =
-                        -- current = c, completed = a, b
-                        Random.step (TodoList.complete remainingTodoList) remainingSeed
+                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
+                            |> seed 0 (TodoList.chooseFromList "")
+                            |> step TodoList.complete
+                            -- current = c, completed = a, b
+                            |> step TodoList.complete
 
                     ( skippedTodoList, _ ) =
-                        Random.step (TodoList.skip completeTodoList) completeSeed
+                        ( completeTodoList, completeSeed )
+                            |> step TodoList.skip
                 in
                 skippedTodoList
                     |> Expect.equal completeTodoList
         , fuzz Fuzz.int "chooses new current from remaining" <|
-            \seed ->
+            \initialSeed ->
                 let
-                    initialList =
+                    ( initialTodoList, intermediateSeed ) =
                         [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
-
-                    ( initialTodoList, initialSeed ) =
-                        Random.step (TodoList.chooseFromList "" initialList) (Random.initialSeed seed)
+                            |> seed initialSeed (TodoList.chooseFromList "")
 
                     initialCurrent =
                         TodoList.current initialTodoList
 
                     ( skippedTodoList, _ ) =
-                        Random.step (TodoList.skip initialTodoList) initialSeed
+                        ( initialTodoList, intermediateSeed )
+                            |> step TodoList.skip
                 in
                 skippedTodoList
                     |> Expect.all
@@ -161,27 +145,15 @@ skipTest =
         ]
 
 
-contains : Maybe a -> List a -> Bool
-contains maybeVal list =
-    case maybeVal of
-        Nothing ->
-            False
-
-        Just val ->
-            List.member val list
-
-
 completeTest : Test
 completeTest =
     describe "complete"
         [ test "with empty list is empty" <|
             \() ->
                 let
-                    ( initialTodoList, seed ) =
-                        ( TodoList.empty, Random.initialSeed 0 )
-
                     ( completeTodoList, _ ) =
-                        Random.step (TodoList.complete initialTodoList) seed
+                        TodoList.empty
+                            |> seed 0 TodoList.complete
                 in
                 completeTodoList
                     |> Expect.all
@@ -193,14 +165,10 @@ completeTest =
         , test "with current and no remaining moves current to completed" <|
             \() ->
                 let
-                    initialList =
-                        [ ( "a", 1 ) ]
-
-                    ( initialTodoList, seed ) =
-                        Random.step (TodoList.chooseFromList "" initialList) (Random.initialSeed 0)
-
                     ( completeTodoList, _ ) =
-                        Random.step (TodoList.complete initialTodoList) seed
+                        [ ( "a", 1 ) ]
+                            |> seed 0 (TodoList.chooseFromList "")
+                            |> step TodoList.complete
                 in
                 completeTodoList
                     |> Expect.all
@@ -212,14 +180,10 @@ completeTest =
         , test "with current and remaining moves current to completed and chooses a new current" <|
             \() ->
                 let
-                    initialList =
-                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
-
-                    ( initialTodoList, seed ) =
-                        Random.step (TodoList.chooseFromList "" initialList) (Random.initialSeed 0)
-
                     ( completeTodoList, _ ) =
-                        Random.step (TodoList.complete initialTodoList) seed
+                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
+                            |> seed 0 (TodoList.chooseFromList "")
+                            |> step TodoList.complete
                 in
                 completeTodoList
                     |> Expect.all
@@ -242,11 +206,9 @@ isCurrentTests =
         , test "with current is True" <|
             \() ->
                 let
-                    initialList =
-                        [ ( "a", 1 ) ]
-
                     ( initialTodoList, _ ) =
-                        Random.step (TodoList.chooseFromList "" initialList) (Random.initialSeed 0)
+                        [ ( "a", 1 ) ]
+                            |> seed 0 (TodoList.chooseFromList "")
                 in
                 initialTodoList
                     |> TodoList.isCurrent "a"
@@ -254,11 +216,9 @@ isCurrentTests =
         , test "with not current is False" <|
             \() ->
                 let
-                    initialList =
-                        [ ( "a", 1 ) ]
-
                     ( initialTodoList, _ ) =
-                        Random.step (TodoList.chooseFromList "" initialList) (Random.initialSeed 0)
+                        [ ( "a", 1 ) ]
+                            |> seed 0 (TodoList.chooseFromList "")
                 in
                 initialTodoList
                     |> TodoList.isCurrent "b"
@@ -266,14 +226,10 @@ isCurrentTests =
         , test "with list all complete is False" <|
             \() ->
                 let
-                    initialList =
-                        [ ( "a", 1 ) ]
-
-                    ( initialTodoList, seed ) =
-                        Random.step (TodoList.chooseFromList "" initialList) (Random.initialSeed 0)
-
                     ( completeTodoList, _ ) =
-                        Random.step (TodoList.complete initialTodoList) seed
+                        [ ( "a", 1 ) ]
+                            |> seed 0 (TodoList.chooseFromList "")
+                            |> step TodoList.complete
                 in
                 completeTodoList
                     |> TodoList.isCurrent "a"
@@ -288,27 +244,21 @@ disableCurrentTest =
             \() ->
                 let
                     ( disabledList, _ ) =
-                        Random.step (TodoList.disableCurrent TodoList.empty) (Random.initialSeed 0)
+                        seed 0 TodoList.disableCurrent TodoList.empty
                 in
                 disabledList
                     |> Expect.equal TodoList.empty
         , test "with current and some remaining, disable current and return a random remaining" <|
             \() ->
                 let
-                    initialList =
-                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ), ( "d", 4 ), ( "e", 5 ) ]
-
-                    ( initialTodoList, initialSeed ) =
-                        -- current = d, remaining = a, b, c, e
-                        Random.step (TodoList.chooseFromList "" initialList) (Random.initialSeed 0)
-
-                    ( disabledTodoList, disabledSeed ) =
-                        -- current = a, remaining = b, c, e, disabled = d
-                        Random.step (TodoList.disableCurrent initialTodoList) initialSeed
-
                     ( finalTodoList, _ ) =
-                        -- current = e, remaining = b, c, disabled = a, d
-                        Random.step (TodoList.disableCurrent disabledTodoList) disabledSeed
+                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ), ( "d", 4 ), ( "e", 5 ) ]
+                            -- current = d, remaining = a, b, c, e
+                            |> seed 0 (TodoList.chooseFromList "")
+                            -- current = a, remaining = b, c, e, disabled = d
+                            |> step TodoList.disableCurrent
+                            -- current = e, remaining = b, c, disabled = a, d
+                            |> step TodoList.disableCurrent
                 in
                 finalTodoList
                     |> Expect.all
@@ -320,18 +270,12 @@ disableCurrentTest =
         , test "with current and no remaining, the list is all done" <|
             \() ->
                 let
-                    initialList =
-                        [ ( "a", 1 ), ( "b", 2 ) ]
-
-                    ( initialTodoList, initialSeed ) =
-                        Random.step (TodoList.chooseFromList "" initialList) (Random.initialSeed 0)
-
-                    ( disabledTodoList, disabledSeed ) =
-                        Random.step (TodoList.disableCurrent initialTodoList) initialSeed
-
                     ( finalTodoList, _ ) =
-                        -- disabled = a, b
-                        Random.step (TodoList.disableCurrent disabledTodoList) disabledSeed
+                        [ ( "a", 1 ), ( "b", 2 ) ]
+                            |> seed 0 (TodoList.chooseFromList "")
+                            |> step TodoList.disableCurrent
+                            -- disabled = a, b
+                            |> step TodoList.disableCurrent
                 in
                 finalTodoList
                     |> Expect.all
@@ -343,20 +287,14 @@ disableCurrentTest =
         , test "with no current the list is the same" <|
             \() ->
                 let
-                    initialList =
-                        [ ( "a", 1 ) ]
-
-                    ( initialTodoList, initialSeed ) =
-                        -- current = a
-                        Random.step (TodoList.chooseFromList "" initialList) (Random.initialSeed 0)
-
-                    ( completeTodoList, completeSeed ) =
-                        -- completed = a
-                        Random.step (TodoList.complete initialTodoList) initialSeed
-
                     ( disabledTodoList, _ ) =
-                        -- completed = a
-                        Random.step (TodoList.complete completeTodoList) completeSeed
+                        [ ( "a", 1 ) ]
+                            -- current = a
+                            |> seed 0 (TodoList.chooseFromList "")
+                            -- completed = a
+                            |> step TodoList.complete
+                            -- completed = a
+                            |> step TodoList.complete
                 in
                 disabledTodoList
                     |> Expect.all
@@ -379,28 +317,22 @@ disableTest =
             -- should use disableCurrent instead
             \() ->
                 let
-                    initialList =
-                        [ ( "a", 1 ) ]
-
                     ( initialTodoList, _ ) =
-                        -- current = a
-                        Random.step (TodoList.chooseFromList "" initialList) (Random.initialSeed 0)
+                        [ ( "a", 1 ) ]
+                            -- current = a
+                            |> seed 0 (TodoList.chooseFromList "")
                 in
                 TodoList.disable "a" initialTodoList
                     |> Expect.equal initialTodoList
         , test "with key in remaining, disables item" <|
             \() ->
                 let
-                    initialList =
-                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ), ( "d", 4 ), ( "e", 5 ) ]
-
-                    ( initialTodoList, initialSeed ) =
-                        -- current = d, remaining = a, b, c, e
-                        Random.step (TodoList.chooseFromList "" initialList) (Random.initialSeed 0)
-
                     ( completeTodoList, _ ) =
-                        -- current = a, remaining = b, c, e, completed = d
-                        Random.step (TodoList.complete initialTodoList) initialSeed
+                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ), ( "d", 4 ), ( "e", 5 ) ]
+                            -- current = d, remaining = a, b, c, e
+                            |> seed 0 (TodoList.chooseFromList "")
+                            -- current = a, remaining = b, c, e, completed = d
+                            |> step TodoList.complete
                 in
                 completeTodoList
                     |> TodoList.disable "e"
@@ -414,20 +346,14 @@ disableTest =
         , test "with key in completed, disables item" <|
             \() ->
                 let
-                    initialList =
-                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ), ( "d", 4 ), ( "e", 5 ) ]
-
-                    ( initialTodoList, initialSeed ) =
-                        -- current = d, remaining = a, b, c, e
-                        Random.step (TodoList.chooseFromList "" initialList) (Random.initialSeed 0)
-
-                    ( completeTodoList, completeSeed ) =
-                        -- current = a, remaining = b, c, e, completed = d
-                        Random.step (TodoList.complete initialTodoList) initialSeed
-
                     ( finalTodoList, _ ) =
-                        -- current = e, remaining = b, c, completed = a, d
-                        Random.step (TodoList.complete completeTodoList) completeSeed
+                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ), ( "d", 4 ), ( "e", 5 ) ]
+                            -- current = d, remaining = a, b, c, e
+                            |> seed 0 (TodoList.chooseFromList "")
+                            -- current = a, remaining = b, c, e, completed = d
+                            |> step TodoList.complete
+                            -- current = e, remaining = b, c, completed = a, d
+                            |> step TodoList.complete
                 in
                 finalTodoList
                     |> TodoList.disable "d"
@@ -440,21 +366,13 @@ disableTest =
         , test "with key in all completed, disables item" <|
             \() ->
                 let
-                    initialList =
-                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
-
-                    ( initialTodoList, initialSeed ) =
-                        Random.step (TodoList.chooseFromList "" initialList) (Random.initialSeed 0)
-
-                    ( remainingTodoList, remainingSeed ) =
-                        Random.step (TodoList.complete initialTodoList) initialSeed
-
-                    ( completeTodoList, completeSeed ) =
-                        Random.step (TodoList.complete remainingTodoList) remainingSeed
-
                     ( finalTodoList, _ ) =
-                        -- completed = a, b, c
-                        Random.step (TodoList.complete completeTodoList) completeSeed
+                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
+                            |> seed 0 (TodoList.chooseFromList "")
+                            |> step TodoList.complete
+                            |> step TodoList.complete
+                            -- completed = a, b, c
+                            |> step TodoList.complete
                 in
                 finalTodoList
                     |> TodoList.disable "a"
@@ -468,19 +386,14 @@ disableTest =
         , test "with key in disabled, nothing changes" <|
             \() ->
                 let
-                    initialList =
+                    ( finalTodoList, _ ) =
                         [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ), ( "d", 4 ), ( "e", 5 ) ]
-
-                    ( initialTodoList, initialSeed ) =
-                        -- current = d, remaining = a, b, c, e
-                        Random.step (TodoList.chooseFromList "" initialList) (Random.initialSeed 0)
-
-                    ( completeTodoList, _ ) =
-                        -- current = a, remaining = b, c, e, completed = d
-                        Random.step (TodoList.complete initialTodoList) initialSeed
-
-                    finalTodoList =
-                        TodoList.disable "e" completeTodoList
+                            -- current = d, remaining = a, b, c, e
+                            |> seed 0 (TodoList.chooseFromList "")
+                            -- current = a, remaining = b, c, e, completed = d
+                            |> step TodoList.complete
+                            -- current = a, remaining = b, c, completed = d, disabled = e
+                            |> call (TodoList.disable "e")
                 in
                 finalTodoList
                     |> TodoList.disable "e"
@@ -519,12 +432,10 @@ pickTest =
         , test "picks item with key from remaining" <|
             \() ->
                 let
-                    initialList =
-                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ), ( "d", 4 ), ( "e", 5 ) ]
-
                     ( initialTodoList, _ ) =
-                        -- current = d, remaining = a, b, c, e
-                        Random.step (TodoList.chooseFromList "" initialList) (Random.initialSeed 0)
+                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ), ( "d", 4 ), ( "e", 5 ) ]
+                            -- current = d, remaining = a, b, c, e
+                            |> seed 0 (TodoList.chooseFromList "")
                 in
                 TodoList.pick "a" initialTodoList
                     |> Expect.all
@@ -536,16 +447,12 @@ pickTest =
         , test "picks item with key from completed" <|
             \() ->
                 let
-                    initialList =
-                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ), ( "d", 4 ), ( "e", 5 ) ]
-
-                    ( initialTodoList, seed ) =
-                        -- current = d, remaining = a, b, c, e
-                        Random.step (TodoList.chooseFromList "" initialList) (Random.initialSeed 0)
-
                     ( completeTodoList, _ ) =
-                        -- current = a, remaining = b, c, e, completed = d
-                        Random.step (TodoList.complete initialTodoList) seed
+                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ), ( "d", 4 ), ( "e", 5 ) ]
+                            -- current = d, remaining = a, b, c, e
+                            |> seed 0 (TodoList.chooseFromList "")
+                            -- current = a, remaining = b, c, e, completed = d
+                            |> step TodoList.complete
                 in
                 TodoList.pick "d" completeTodoList
                     |> Expect.all
@@ -557,20 +464,14 @@ pickTest =
         , test "picks item with key from all completed" <|
             \() ->
                 let
-                    initialList =
-                        [ ( "a", 1 ), ( "b", 2 ) ]
-
-                    ( initialTodoList, intermediateSeed ) =
-                        -- current = a, remaining = b
-                        Random.step (TodoList.chooseFromList "" initialList) (Random.initialSeed 0)
-
-                    ( intermediateTodoList, seed ) =
-                        -- current = b, completed = a
-                        Random.step (TodoList.complete initialTodoList) intermediateSeed
-
                     ( completeTodoList, _ ) =
-                        -- completed = a, b
-                        Random.step (TodoList.complete intermediateTodoList) seed
+                        [ ( "a", 1 ), ( "b", 2 ) ]
+                            -- current = a, remaining = b
+                            |> seed 0 (TodoList.chooseFromList "")
+                            -- current = b, completed = a
+                            |> step TodoList.complete
+                            -- completed = a, b
+                            |> step TodoList.complete
                 in
                 TodoList.pick "a" completeTodoList
                     |> Expect.all
@@ -582,16 +483,12 @@ pickTest =
         , test "picks item with key from disabled" <|
             \() ->
                 let
-                    initialList =
-                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ), ( "d", 4 ), ( "e", 5 ) ]
-
-                    ( initialTodoList, seed ) =
-                        -- current = d, remaining = a, b, c, e
-                        Random.step (TodoList.chooseFromList "" initialList) (Random.initialSeed 0)
-
                     ( completeTodoList, _ ) =
-                        -- current = a, remaining = b, c, e, disabled = d
-                        Random.step (TodoList.disableCurrent initialTodoList) seed
+                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ), ( "d", 4 ), ( "e", 5 ) ]
+                            -- current = d, remaining = a, b, c, e
+                            |> seed 0 (TodoList.chooseFromList "")
+                            -- current = a, remaining = b, c, e, disabled = d
+                            |> step TodoList.disableCurrent
                 in
                 TodoList.pick "d" completeTodoList
                     |> Expect.all
@@ -603,20 +500,14 @@ pickTest =
         , test "picks item with key from all disabled" <|
             \() ->
                 let
-                    initialList =
-                        [ ( "a", 1 ), ( "b", 2 ) ]
-
-                    ( initialTodoList, intermediateSeed ) =
-                        -- current = a, remaining = b
-                        Random.step (TodoList.chooseFromList "" initialList) (Random.initialSeed 0)
-
-                    ( intermediateTodoList, seed ) =
-                        -- current = b, disabled = a
-                        Random.step (TodoList.disableCurrent initialTodoList) intermediateSeed
-
                     ( completeTodoList, _ ) =
-                        -- disabled = a, b
-                        Random.step (TodoList.disableCurrent intermediateTodoList) seed
+                        [ ( "a", 1 ), ( "b", 2 ) ]
+                            -- current = a, remaining = b
+                            |> seed 0 (TodoList.chooseFromList "")
+                            -- current = b, disabled = a
+                            |> step TodoList.disableCurrent
+                            -- disabled = a, b
+                            |> step TodoList.disableCurrent
                 in
                 TodoList.pick "a" completeTodoList
                     |> Expect.all
@@ -628,12 +519,10 @@ pickTest =
         , test "picks item with current key changes nothing" <|
             \() ->
                 let
-                    initialList =
-                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ), ( "d", 4 ), ( "e", 5 ) ]
-
                     ( initialTodoList, _ ) =
-                        -- current = d, remaining = a, b, c, e
-                        Random.step (TodoList.chooseFromList "" initialList) (Random.initialSeed 0)
+                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ), ( "d", 4 ), ( "e", 5 ) ]
+                            -- current = d, remaining = a, b, c, e
+                            |> seed 0 (TodoList.chooseFromList "")
                 in
                 TodoList.pick "d" initialTodoList
                     |> Expect.all
@@ -645,12 +534,10 @@ pickTest =
         , test "with missing key returns original list" <|
             \() ->
                 let
-                    initialList =
-                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
-
                     ( initialTodoList, _ ) =
-                        -- current = b, remaining = a, c
-                        Random.step (TodoList.chooseFromList "" initialList) (Random.initialSeed 0)
+                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
+                            -- current = b, remaining = a, c
+                            |> seed 0 (TodoList.chooseFromList "")
                 in
                 TodoList.pick "z" initialTodoList
                     |> Expect.all
@@ -672,16 +559,12 @@ restoreTests =
         , test "with current restores complete to remaining" <|
             \() ->
                 let
-                    initialList =
-                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
-
-                    ( initialTodoList, initialSeed ) =
-                        -- current = b, remaining = a, c
-                        Random.step (TodoList.chooseFromList "" initialList) (Random.initialSeed 0)
-
                     ( finalTodoList, _ ) =
-                        -- current = a, remaining = c, completed = b
-                        Random.step (TodoList.complete initialTodoList) initialSeed
+                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
+                            -- current = b, remaining = a, c
+                            |> seed 0 (TodoList.chooseFromList "")
+                            -- current = a, remaining = c, completed = b
+                            |> step TodoList.complete
                 in
                 TodoList.restore "b" finalTodoList
                     |> Expect.all
@@ -693,21 +576,14 @@ restoreTests =
         , test "all done restores complete to current" <|
             \() ->
                 let
-                    initialList =
-                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
-
-                    ( initialTodoList, initialSeed ) =
-                        -- current = b, remaining = a, c
-                        Random.step (TodoList.chooseFromList "" initialList) (Random.initialSeed 0)
-
-                    disabledTodoList =
-                        initialTodoList
-                            |> TodoList.disable "a"
-                            |> TodoList.disable "c"
-
                     ( finalTodoList, _ ) =
-                        -- completed = b, disabled = a, c
-                        Random.step (TodoList.complete disabledTodoList) initialSeed
+                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
+                            -- current = b, remaining = a, c
+                            |> seed 0 (TodoList.chooseFromList "")
+                            |> call (TodoList.disable "a")
+                            |> call (TodoList.disable "c")
+                            -- completed = b, disabled = a, c
+                            |> step TodoList.complete
                 in
                 TodoList.restore "b" finalTodoList
                     |> Expect.all
@@ -719,20 +595,13 @@ restoreTests =
         , test "with current restores disabled to remaining" <|
             \() ->
                 let
-                    initialList =
-                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
-
-                    ( initialTodoList, initialSeed ) =
-                        -- current = b, remaining = a, c
-                        Random.step (TodoList.chooseFromList "" initialList) (Random.initialSeed 0)
-
-                    disabledTodoList =
-                        initialTodoList
-                            |> TodoList.disable "a"
-
                     ( finalTodoList, _ ) =
-                        -- current = c, completed = b, disabled = a
-                        Random.step (TodoList.complete disabledTodoList) initialSeed
+                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
+                            -- current = b, remaining = a, c
+                            |> seed 0 (TodoList.chooseFromList "")
+                            |> call (TodoList.disable "a")
+                            -- current = c, completed = b, disabled = a
+                            |> step TodoList.complete
                 in
                 TodoList.restore "a" finalTodoList
                     |> Expect.all
@@ -744,21 +613,14 @@ restoreTests =
         , test "all done restores disabled to current" <|
             \() ->
                 let
-                    initialList =
-                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
-
-                    ( initialTodoList, initialSeed ) =
-                        -- current = b, remaining = a, c
-                        Random.step (TodoList.chooseFromList "" initialList) (Random.initialSeed 0)
-
-                    disabledTodoList =
-                        initialTodoList
-                            |> TodoList.disable "a"
-                            |> TodoList.disable "c"
-
                     ( finalTodoList, _ ) =
-                        -- completed = b, disabled = a, c
-                        Random.step (TodoList.complete disabledTodoList) initialSeed
+                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
+                            -- current = b, remaining = a, c
+                            |> seed 0 (TodoList.chooseFromList "")
+                            |> call (TodoList.disable "a")
+                            |> call (TodoList.disable "c")
+                            -- completed = b, disabled = a, c
+                            |> step TodoList.complete
                 in
                 TodoList.restore "a" finalTodoList
                     |> Expect.all
@@ -780,12 +642,10 @@ restoreAllCompletedTests =
     , test "with no completed changes nothing" <|
         \() ->
             let
-                initialList =
-                    [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
-
                 ( initialTodoList, _ ) =
-                    -- current = b, remaining = a, c
-                    Random.step (TodoList.chooseFromList "" initialList) (Random.initialSeed 0)
+                    [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
+                        -- current = b, remaining = a, c
+                        |> seed 0 (TodoList.chooseFromList "")
             in
             initialTodoList
                 |> TodoList.restoreAllCompleted
@@ -793,20 +653,14 @@ restoreAllCompletedTests =
     , test "with current and completed, moves completed to remaining" <|
         \() ->
             let
-                initialList =
-                    [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
-
-                ( initialTodoList, initialSeed ) =
-                    -- current = b, remaining = a, c
-                    Random.step (TodoList.chooseFromList "" initialList) (Random.initialSeed 0)
-
-                ( disable1TodoList, disable1Seed ) =
-                    -- current = c, remaining = a, disabled = b
-                    Random.step (TodoList.disableCurrent initialTodoList) initialSeed
-
                 ( complete1TodoList, _ ) =
-                    -- current = c, completed = a, completed = b
-                    Random.step (TodoList.complete disable1TodoList) disable1Seed
+                    [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
+                        -- current = b, remaining = a, c
+                        |> seed 0 (TodoList.chooseFromList "")
+                        -- current = c, remaining = a, disabled = b
+                        |> step TodoList.disableCurrent
+                        -- current = c, completed = a, completed = b
+                        |> step TodoList.complete
             in
             complete1TodoList
                 |> TodoList.restoreAllCompleted
@@ -819,24 +673,16 @@ restoreAllCompletedTests =
     , test "with no current, moves first completed to current and rest to remaining" <|
         \() ->
             let
-                initialList =
-                    [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
-
-                ( initialTodoList, initialSeed ) =
-                    -- current = b, remaining = a, c
-                    Random.step (TodoList.chooseFromList "" initialList) (Random.initialSeed 0)
-
-                ( disable1TodoList, disable1Seed ) =
-                    -- current = a, remaining = c, disabled = b
-                    Random.step (TodoList.disableCurrent initialTodoList) initialSeed
-
-                ( complete1TodoList, complete1Seed ) =
-                    -- current = c, completed = a, disabled = b
-                    Random.step (TodoList.complete disable1TodoList) disable1Seed
-
                 ( completeAllTodoList, _ ) =
-                    -- completed = c, a, disabled = b
-                    Random.step (TodoList.complete complete1TodoList) complete1Seed
+                    [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
+                        -- current = b, remaining = a, c
+                        |> seed 0 (TodoList.chooseFromList "")
+                        -- current = a, remaining = c, disabled = b
+                        |> step TodoList.disableCurrent
+                        -- current = c, completed = a, disabled = b
+                        |> step TodoList.complete
+                        -- completed = c, a, disabled = b
+                        |> step TodoList.complete
             in
             completeAllTodoList
                 |> TodoList.restoreAllCompleted
@@ -855,12 +701,10 @@ encodeTests =
         [ test "no completed or disabled are empty arrays" <|
             \() ->
                 let
-                    initialList =
-                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
-
                     ( initialTodoList, _ ) =
-                        -- current = b, remaining = a, c
-                        Random.step (TodoList.chooseFromList "" initialList) (Random.initialSeed 0)
+                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
+                            -- current = b, remaining = a, c
+                            |> seed 0 (TodoList.chooseFromList "")
                 in
                 TodoList.encoder initialTodoList
                     |> Encode.encode 0
@@ -868,16 +712,12 @@ encodeTests =
         , test "completed encodes key" <|
             \() ->
                 let
-                    initialList =
-                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
-
-                    ( initialTodoList, seed ) =
-                        -- current = b, remaining = a, c
-                        Random.step (TodoList.chooseFromList "" initialList) (Random.initialSeed 0)
-
                     ( completeTodoList, _ ) =
-                        -- current = a, remaining = c, completed = b
-                        Random.step (TodoList.complete initialTodoList) seed
+                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
+                            -- current = b, remaining = a, c
+                            |> seed 0 (TodoList.chooseFromList "")
+                            -- current = a, remaining = c, completed = b
+                            |> step TodoList.complete
                 in
                 TodoList.encoder completeTodoList
                     |> Encode.encode 0
@@ -885,16 +725,12 @@ encodeTests =
         , test "no current encodes null" <|
             \() ->
                 let
-                    initialList =
-                        [ ( "a", 1 ) ]
-
-                    ( initialTodoList, seed ) =
-                        -- current = a
-                        Random.step (TodoList.chooseFromList "" initialList) (Random.initialSeed 0)
-
                     ( completeTodoList, _ ) =
-                        -- completed = a
-                        Random.step (TodoList.complete initialTodoList) seed
+                        [ ( "a", 1 ) ]
+                            -- current = a
+                            |> seed 0 (TodoList.chooseFromList "")
+                            -- completed = a
+                            |> step TodoList.complete
                 in
                 TodoList.encoder completeTodoList
                     |> Encode.encode 0
@@ -1024,12 +860,10 @@ updateTest =
         , test "applies completed and disabled, does not change current" <|
             \() ->
                 let
-                    initialList =
-                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ), ( "d", 4 ), ( "e", 5 ) ]
-
                     ( initialTodoList, _ ) =
-                        -- current = d, remaining = a, b, c, e
-                        Random.step (TodoList.chooseFromList "" initialList) (Random.initialSeed 0)
+                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ), ( "d", 4 ), ( "e", 5 ) ]
+                            -- current = d, remaining = a, b, c, e
+                            |> seed 0 (TodoList.chooseFromList "")
 
                     state =
                         "{\"current\":\"b\",\"completed\":[\"a\"],\"disabled\":[\"c\"]}"
@@ -1050,12 +884,10 @@ updateTest =
         , test "applies completed and disabled, changes current when old current is completed" <|
             \() ->
                 let
-                    initialList =
-                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ), ( "d", 4 ), ( "e", 5 ) ]
-
                     ( initialTodoList, _ ) =
-                        -- current = d, remaining = a, b, c, e
-                        Random.step (TodoList.chooseFromList "" initialList) (Random.initialSeed 0)
+                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ), ( "d", 4 ), ( "e", 5 ) ]
+                            -- current = d, remaining = a, b, c, e
+                            |> seed 0 (TodoList.chooseFromList "")
 
                     state =
                         "{\"current\":\"b\",\"completed\":[\"a\",\"d\"],\"disabled\":[\"c\"]}"
@@ -1076,12 +908,10 @@ updateTest =
         , test "applies completed and disabled, changes current when old current is disabled" <|
             \() ->
                 let
-                    initialList =
-                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ), ( "d", 4 ), ( "e", 5 ) ]
-
                     ( initialTodoList, _ ) =
-                        -- current = d, remaining = a, b, c, e
-                        Random.step (TodoList.chooseFromList "" initialList) (Random.initialSeed 0)
+                        [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ), ( "d", 4 ), ( "e", 5 ) ]
+                            -- current = d, remaining = a, b, c, e
+                            |> seed 0 (TodoList.chooseFromList "")
 
                     state =
                         "{\"current\":\"e\",\"completed\":[\"a\"],\"disabled\":[\"c\",\"d\"]}"
@@ -1103,10 +933,45 @@ updateTest =
 
 
 
---- HELPER
+--- HELPERS
+
+
+contains : Maybe a -> List a -> Bool
+contains maybeVal list =
+    case maybeVal of
+        Nothing ->
+            False
+
+        Just val ->
+            List.member val list
 
 
 oneOf : List a -> Fuzz.Fuzzer a
 oneOf list =
     List.map Fuzz.constant list
         |> Fuzz.oneOf
+
+
+seed :
+    Int
+    -> (a -> Random.Generator (TodoList comparable v))
+    -> a
+    -> ( TodoList comparable v, Random.Seed )
+seed initialSeed fn start =
+    Random.step (fn start) (Random.initialSeed initialSeed)
+
+
+step :
+    (TodoList comparable v -> Random.Generator (TodoList comparable v))
+    -> ( TodoList comparable v, Random.Seed )
+    -> ( TodoList comparable v, Random.Seed )
+step fn ( list, currentSeed ) =
+    Random.step (fn list) currentSeed
+
+
+call :
+    (TodoList comparable v -> TodoList comparable v)
+    -> ( TodoList comparable v, Random.Seed )
+    -> ( TodoList comparable v, Random.Seed )
+call =
+    Tuple.mapFirst
