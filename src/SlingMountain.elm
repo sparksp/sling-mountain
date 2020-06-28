@@ -65,6 +65,7 @@ type Msg
     | DisableCurrent
     | Disable Key
     | Restore Key
+    | RestoreAllCompleted
     | DomResult (Result Dom.Error ())
     | GotFirst (TodoList Key Scenario)
     | GotTodoList (TodoList Key Scenario)
@@ -178,6 +179,10 @@ update msg (Model model) =
 
         Restore key ->
             updateAndSaveTodo (TodoList.restore key model.todo)
+                ( Model model, Cmd.none )
+
+        RestoreAllCompleted ->
+            updateAndSaveTodo (TodoList.restoreAllCompleted model.todo)
                 ( Model model, Cmd.none )
 
         GotFirst newTodo ->
@@ -363,6 +368,7 @@ viewScenarios (Model { embed, todo, width, showCompleted, showRemaining, showDis
             , position = TodoList.Remaining
             , show = ( ShowRemaining, showRemaining )
             , heading = ( "heading-available", viewHeading "Available" )
+            , footer = Nothing
             , scenarios = TodoList.remaining todo
             }
         ++ viewScenarioList
@@ -370,6 +376,7 @@ viewScenarios (Model { embed, todo, width, showCompleted, showRemaining, showDis
             , position = TodoList.Completed
             , show = ( ShowCompleted, showCompleted )
             , heading = ( "heading-completed", viewHeading "Completed" )
+            , footer = Just viewRestoreAllCompletedButton
             , scenarios = TodoList.completed todo
             }
         ++ viewScenarioList
@@ -377,6 +384,7 @@ viewScenarios (Model { embed, todo, width, showCompleted, showRemaining, showDis
             , position = TodoList.Disabled
             , show = ( ShowDisabled, showDisabled )
             , heading = ( "heading-disabled", viewHeading "Disabled" )
+            , footer = Nothing
             , scenarios = TodoList.disabled todo
             }
         ++ viewInformationList
@@ -575,7 +583,11 @@ viewCurrentScenario options maybe =
             ( "all-done"
             , Card.view
                 { frame = Frame.Default
-                , title = Title.static Icons.check "All done!"
+                , title =
+                    Title.static Icons.check "All done!"
+                        |> Title.withActions
+                            [ restoreAllButton RestoreAllCompleted
+                            ]
                 , body =
                     [ Html.p [] [ Html.text "Outstanding work, you've finished all the scenarios!" ]
                     ]
@@ -584,15 +596,36 @@ viewCurrentScenario options maybe =
             )
 
 
+viewRestoreAllCompletedButton : ( Key, Html Msg )
+viewRestoreAllCompletedButton =
+    ( "restore-all-completed"
+    , Html.div
+        [ TW.flex
+        , TW.flexRow
+        , TW.justifyCenter
+        ]
+        [ Html.button
+            [ Events.onClick RestoreAllCompleted
+            , TW.textGray600
+            , TW.hoverTextGray800
+            , TW.wFull
+            ]
+            [ Html.text "Restore All Completed Scenarios"
+            ]
+        ]
+    )
+
+
 viewScenarioList :
     { options : { a | embed : Embed, maxWidth : Int }
     , position : TodoList.Position
     , show : ( ShowSection, Bool )
     , heading : ( Key, { count : Int, show : ( ShowSection, Bool ) } -> Html Msg )
+    , footer : Maybe ( Key, Html Msg )
     , scenarios : List ( Key, Scenario )
     }
     -> List ( Key, Html Msg )
-viewScenarioList { options, position, show, heading, scenarios } =
+viewScenarioList { options, position, show, heading, footer, scenarios } =
     let
         makeHeading =
             \make ->
@@ -610,8 +643,15 @@ viewScenarioList { options, position, show, heading, scenarios } =
             ]
 
         ( _, True ) ->
+            let
+                tail =
+                    footer
+                        |> Maybe.map List.singleton
+                        |> Maybe.withDefault []
+            in
             Tuple.mapSecond makeHeading heading
                 :: List.map (viewScenario options position) scenarios
+                ++ tail
 
 
 viewScenario : { a | embed : Embed, maxWidth : Int } -> TodoList.Position -> ( Key, Scenario ) -> ( Key, Html Msg )
@@ -708,6 +748,15 @@ restoreButton onRestore =
         { icon = Icons.restore
         , text = "Restore this Scenario"
         , onClick = onRestore
+        }
+
+
+restoreAllButton : Msg -> Action Msg
+restoreAllButton onRestoreAll =
+    Action.button
+        { icon = Icons.restoreAll
+        , text = "Restore all scenarios"
+        , onClick = onRestoreAll
         }
 
 
