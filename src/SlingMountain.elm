@@ -68,7 +68,7 @@ type Msg
     | RestoreAll
     | RestoreAllCompleted
     | RestoreAllDisabled
-    | DomResult (Result Dom.Error ())
+    | DomResult
     | GotFirst (TodoList Key Scenario)
     | GotTodoList (TodoList Key Scenario)
     | GotViewport (Result Dom.Error Dom.Viewport)
@@ -238,7 +238,7 @@ update msg (Model model) =
             , Task.attempt GotViewport (Dom.getViewportOf "current")
             )
 
-        DomResult _ ->
+        DomResult ->
             ( Model model, Cmd.none )
 
         GotViewport (Ok viewport) ->
@@ -285,7 +285,7 @@ pick key (Model model) =
     updateAndSaveTodo newTodo
         ( Model { model | embed = Embed.step model.embed }
         , Cmd.batch
-            [ Task.attempt DomResult (Dom.setViewport 0 0)
+            [ Task.attempt (\_ -> DomResult) (Dom.setViewport 0 0)
             , Task.attempt GotViewport (Dom.getViewportOf "current")
             , replaceUrl model.key model.url (urlForCurrentTodo newTodo)
             ]
