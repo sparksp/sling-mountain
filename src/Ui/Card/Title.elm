@@ -97,7 +97,6 @@ view title_ =
         , TW.px1
         , TW.smPx3
         , TW.textXl
-        , TW.leadingNormal
         ]
         (case title_ of
             Button { actions, icon, onClick, text } ->
