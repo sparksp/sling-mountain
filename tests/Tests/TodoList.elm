@@ -128,6 +128,7 @@ skipTest =
                         [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
                             |> seed initialSeed (TodoList.chooseFromList "")
 
+                    initialCurrent : Maybe ( String, number )
                     initialCurrent =
                         TodoList.current initialTodoList
 
@@ -808,9 +809,11 @@ decodeTests =
         [ test "with current" <|
             \() ->
                 let
+                    initialList : List ( String, number )
                     initialList =
                         [ ( "a", 1 ), ( "b", 2 ) ]
 
+                    json : String
                     json =
                         "{\"current\":\"a\",\"completed\":[],\"disabled\":[]}"
                 in
@@ -824,9 +827,11 @@ decodeTests =
         , test "with completed" <|
             \() ->
                 let
+                    initialList : List ( String, number )
                     initialList =
                         [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
 
+                    json : String
                     json =
                         "{\"current\":\"a\",\"completed\":[\"b\",\"d\"],\"disabled\":[]}"
                 in
@@ -840,9 +845,11 @@ decodeTests =
         , test "with disabled" <|
             \() ->
                 let
+                    initialList : List ( String, number )
                     initialList =
                         [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
 
+                    json : String
                     json =
                         "{\"current\":\"a\",\"completed\":[],\"disabled\":[\"b\",\"d\"]}"
                 in
@@ -856,9 +863,11 @@ decodeTests =
         , test "with no current" <|
             \() ->
                 let
+                    initialList : List ( String, number )
                     initialList =
                         [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
 
+                    json : String
                     json =
                         "{\"current\":null,\"completed\":[\"a\",\"b\",\"d\"],\"disabled\":[\"c\",\"e\"]}"
                 in
@@ -872,9 +881,11 @@ decodeTests =
         , test "current no longer in list, gets next remaining" <|
             \() ->
                 let
+                    initialList : List ( String, number )
                     initialList =
                         [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ) ]
 
+                    json : String
                     json =
                         "{\"current\":\"d\",\"completed\":[\"a\",\"b\"],\"disabled\":[]}"
                 in
@@ -888,9 +899,11 @@ decodeTests =
         , test "no current but items remaining, gets current from remaining" <|
             \() ->
                 let
+                    initialList : List ( String, number )
                     initialList =
                         [ ( "a", 1 ), ( "b", 2 ), ( "c", 3 ), ( "y", 25 ), ( "z", 26 ) ]
 
+                    json : String
                     json =
                         "{\"current\":null,\"completed\":[\"a\",\"b\"],\"disabled\":[\"c\"]}"
                 in
@@ -910,6 +923,7 @@ updateTest =
         [ test "on an empty list is empty" <|
             \() ->
                 let
+                    state : String
                     state =
                         "{\"current\":null,\"completed\":[],\"disabled\":[]}"
                 in
@@ -929,6 +943,7 @@ updateTest =
                             -- current = d, remaining = a, b, c, e
                             |> seed 0 (TodoList.chooseFromList "")
 
+                    state : String
                     state =
                         "{\"current\":\"b\",\"completed\":[\"a\"],\"disabled\":[\"c\"]}"
                 in
@@ -953,6 +968,7 @@ updateTest =
                             -- current = d, remaining = a, b, c, e
                             |> seed 0 (TodoList.chooseFromList "")
 
+                    state : String
                     state =
                         "{\"current\":\"b\",\"completed\":[\"a\",\"d\"],\"disabled\":[\"c\"]}"
                 in
@@ -977,6 +993,7 @@ updateTest =
                             -- current = d, remaining = a, b, c, e
                             |> seed 0 (TodoList.chooseFromList "")
 
+                    state : String
                     state =
                         "{\"current\":\"e\",\"completed\":[\"a\"],\"disabled\":[\"c\",\"d\"]}"
                 in

@@ -81,6 +81,7 @@ withActions actions title =
 view : Title msg -> Html msg
 view title_ =
     let
+        buttonPadding : List (Html.Attribute msg)
         buttonPadding =
             [ TW.px3
             , TW.py3
