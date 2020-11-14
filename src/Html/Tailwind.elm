@@ -6,8 +6,21 @@ module Html.Tailwind exposing
     , alignTextBottom
     , alignTextTop
     , alignTop
+    , animateBounce
+    , animateNone
+    , animatePing
+    , animatePulse
+    , animateSpin
     , antialiased
     , appearanceNone
+    , autoColsAuto
+    , autoColsFr
+    , autoColsMax
+    , autoColsMin
+    , autoRowsAuto
+    , autoRowsFr
+    , autoRowsMax
+    , autoRowsMin
     , bgAuto
     , bgBlack
     , bgBlue100
@@ -21,10 +34,22 @@ module Html.Tailwind exposing
     , bgBlue900
     , bgBottom
     , bgCenter
+    , bgClipBorder
+    , bgClipContent
+    , bgClipPadding
+    , bgClipText
     , bgContain
     , bgCover
     , bgCurrent
     , bgFixed
+    , bgGradientToB
+    , bgGradientToBl
+    , bgGradientToBr
+    , bgGradientToL
+    , bgGradientToR
+    , bgGradientToT
+    , bgGradientToTl
+    , bgGradientToTr
     , bgGray100
     , bgGray200
     , bgGray300
@@ -57,6 +82,7 @@ module Html.Tailwind exposing
     , bgLeftTop
     , bgLocal
     , bgNoRepeat
+    , bgNone
     , bgOpacity0
     , bgOpacity100
     , bgOpacity25
@@ -289,25 +315,6 @@ module Html.Tailwind exposing
     , colEnd8
     , colEnd9
     , colEndAuto
-    , colGap0
-    , colGap1
-    , colGap10
-    , colGap12
-    , colGap16
-    , colGap2
-    , colGap20
-    , colGap24
-    , colGap3
-    , colGap32
-    , colGap4
-    , colGap40
-    , colGap48
-    , colGap5
-    , colGap56
-    , colGap6
-    , colGap64
-    , colGap8
-    , colGapPx
     , colSpan1
     , colSpan10
     , colSpan11
@@ -320,6 +327,7 @@ module Html.Tailwind exposing
     , colSpan7
     , colSpan8
     , colSpan9
+    , colSpanFull
     , colStart1
     , colStart10
     , colStart11
@@ -339,7 +347,9 @@ module Html.Tailwind exposing
     , contentBetween
     , contentCenter
     , contentEnd
+    , contentEvenly
     , contentStart
+    , contents
     , cursorAuto
     , cursorDefault
     , cursorMove
@@ -355,6 +365,7 @@ module Html.Tailwind exposing
     , delay500
     , delay700
     , delay75
+    , diagonalFractions
     , divideBlack
     , divideBlue100
     , divideBlue200
@@ -366,6 +377,9 @@ module Html.Tailwind exposing
     , divideBlue800
     , divideBlue900
     , divideCurrent
+    , divideDashed
+    , divideDotted
+    , divideDouble
     , divideGray100
     , divideGray200
     , divideGray300
@@ -393,6 +407,7 @@ module Html.Tailwind exposing
     , divideIndigo700
     , divideIndigo800
     , divideIndigo900
+    , divideNone
     , divideOpacity0
     , divideOpacity100
     , divideOpacity25
@@ -434,6 +449,7 @@ module Html.Tailwind exposing
     , divideRed700
     , divideRed800
     , divideRed900
+    , divideSolid
     , divideTeal100
     , divideTeal200
     , divideTeal300
@@ -707,14 +723,117 @@ module Html.Tailwind exposing
     , focusFontNormal
     , focusFontSemibold
     , focusFontThin
+    , focusFromBlack
+    , focusFromBlue100
+    , focusFromBlue200
+    , focusFromBlue300
+    , focusFromBlue400
+    , focusFromBlue500
+    , focusFromBlue600
+    , focusFromBlue700
+    , focusFromBlue800
+    , focusFromBlue900
+    , focusFromCurrent
+    , focusFromGray100
+    , focusFromGray200
+    , focusFromGray300
+    , focusFromGray400
+    , focusFromGray500
+    , focusFromGray600
+    , focusFromGray700
+    , focusFromGray800
+    , focusFromGray900
+    , focusFromGreen100
+    , focusFromGreen200
+    , focusFromGreen300
+    , focusFromGreen400
+    , focusFromGreen500
+    , focusFromGreen600
+    , focusFromGreen700
+    , focusFromGreen800
+    , focusFromGreen900
+    , focusFromIndigo100
+    , focusFromIndigo200
+    , focusFromIndigo300
+    , focusFromIndigo400
+    , focusFromIndigo500
+    , focusFromIndigo600
+    , focusFromIndigo700
+    , focusFromIndigo800
+    , focusFromIndigo900
+    , focusFromOrange100
+    , focusFromOrange200
+    , focusFromOrange300
+    , focusFromOrange400
+    , focusFromOrange500
+    , focusFromOrange600
+    , focusFromOrange700
+    , focusFromOrange800
+    , focusFromOrange900
+    , focusFromPink100
+    , focusFromPink200
+    , focusFromPink300
+    , focusFromPink400
+    , focusFromPink500
+    , focusFromPink600
+    , focusFromPink700
+    , focusFromPink800
+    , focusFromPink900
+    , focusFromPurple100
+    , focusFromPurple200
+    , focusFromPurple300
+    , focusFromPurple400
+    , focusFromPurple500
+    , focusFromPurple600
+    , focusFromPurple700
+    , focusFromPurple800
+    , focusFromPurple900
+    , focusFromRed100
+    , focusFromRed200
+    , focusFromRed300
+    , focusFromRed400
+    , focusFromRed500
+    , focusFromRed600
+    , focusFromRed700
+    , focusFromRed800
+    , focusFromRed900
+    , focusFromTeal100
+    , focusFromTeal200
+    , focusFromTeal300
+    , focusFromTeal400
+    , focusFromTeal500
+    , focusFromTeal600
+    , focusFromTeal700
+    , focusFromTeal800
+    , focusFromTeal900
+    , focusFromTransparent
+    , focusFromWhite
+    , focusFromYellow100
+    , focusFromYellow200
+    , focusFromYellow300
+    , focusFromYellow400
+    , focusFromYellow500
+    , focusFromYellow600
+    , focusFromYellow700
+    , focusFromYellow800
+    , focusFromYellow900
     , focusLineThrough
+    , focusNegRotate1
+    , focusNegRotate12
     , focusNegRotate180
+    , focusNegRotate2
+    , focusNegRotate3
     , focusNegRotate45
+    , focusNegRotate6
     , focusNegRotate90
+    , focusNegSkewX1
     , focusNegSkewX12
+    , focusNegSkewX2
     , focusNegSkewX3
     , focusNegSkewX6
+    , focusNegSkewY1
     , focusNegSkewY12
+    , focusNegSkewY2
     , focusNegSkewY3
     , focusNegSkewY6
     , focusNegTranslateX1
@@ -764,7 +883,9 @@ module Html.Tailwind exposing
     , focusOpacity25
     , focusOpacity50
     , focusOpacity75
+    , focusOutlineBlack
     , focusOutlineNone
+    , focusOutlineWhite
     , focusPlaceholderBlackFocus
     , focusPlaceholderBlue100Focus
     , focusPlaceholderBlue200Focus
@@ -865,8 +986,13 @@ module Html.Tailwind exposing
     , focusPlaceholderYellow800Focus
     , focusPlaceholderYellow900Focus
     , focusRotate0
+    , focusRotate1
+    , focusRotate12
     , focusRotate180
+    , focusRotate2
+    , focusRotate3
     , focusRotate45
+    , focusRotate6
     , focusRotate90
     , focusScale0
     , focusScale100
@@ -909,11 +1035,15 @@ module Html.Tailwind exposing
     , focusShadowXl
     , focusShadowXs
     , focusSkewX0
+    , focusSkewX1
     , focusSkewX12
+    , focusSkewX2
     , focusSkewX3
     , focusSkewX6
     , focusSkewY0
+    , focusSkewY1
     , focusSkewY12
+    , focusSkewY2
     , focusSkewY3
     , focusSkewY6
     , focusSrOnly
@@ -1016,6 +1146,100 @@ module Html.Tailwind exposing
     , focusTextYellow700
     , focusTextYellow800
     , focusTextYellow900
+    , focusToBlack
+    , focusToBlue100
+    , focusToBlue200
+    , focusToBlue300
+    , focusToBlue400
+    , focusToBlue500
+    , focusToBlue600
+    , focusToBlue700
+    , focusToBlue800
+    , focusToBlue900
+    , focusToCurrent
+    , focusToGray100
+    , focusToGray200
+    , focusToGray300
+    , focusToGray400
+    , focusToGray500
+    , focusToGray600
+    , focusToGray700
+    , focusToGray800
+    , focusToGray900
+    , focusToGreen100
+    , focusToGreen200
+    , focusToGreen300
+    , focusToGreen400
+    , focusToGreen500
+    , focusToGreen600
+    , focusToGreen700
+    , focusToGreen800
+    , focusToGreen900
+    , focusToIndigo100
+    , focusToIndigo200
+    , focusToIndigo300
+    , focusToIndigo400
+    , focusToIndigo500
+    , focusToIndigo600
+    , focusToIndigo700
+    , focusToIndigo800
+    , focusToIndigo900
+    , focusToOrange100
+    , focusToOrange200
+    , focusToOrange300
+    , focusToOrange400
+    , focusToOrange500
+    , focusToOrange600
+    , focusToOrange700
+    , focusToOrange800
+    , focusToOrange900
+    , focusToPink100
+    , focusToPink200
+    , focusToPink300
+    , focusToPink400
+    , focusToPink500
+    , focusToPink600
+    , focusToPink700
+    , focusToPink800
+    , focusToPink900
+    , focusToPurple100
+    , focusToPurple200
+    , focusToPurple300
+    , focusToPurple400
+    , focusToPurple500
+    , focusToPurple600
+    , focusToPurple700
+    , focusToPurple800
+    , focusToPurple900
+    , focusToRed100
+    , focusToRed200
+    , focusToRed300
+    , focusToRed400
+    , focusToRed500
+    , focusToRed600
+    , focusToRed700
+    , focusToRed800
+    , focusToRed900
+    , focusToTeal100
+    , focusToTeal200
+    , focusToTeal300
+    , focusToTeal400
+    , focusToTeal500
+    , focusToTeal600
+    , focusToTeal700
+    , focusToTeal800
+    , focusToTeal900
+    , focusToTransparent
+    , focusToWhite
+    , focusToYellow100
+    , focusToYellow200
+    , focusToYellow300
+    , focusToYellow400
+    , focusToYellow500
+    , focusToYellow600
+    , focusToYellow700
+    , focusToYellow800
+    , focusToYellow900
     , focusTranslateX0
     , focusTranslateX1
     , focusTranslateX10
@@ -1059,6 +1283,100 @@ module Html.Tailwind exposing
     , focusTranslateYFull
     , focusTranslateYPx
     , focusUnderline
+    , focusViaBlack
+    , focusViaBlue100
+    , focusViaBlue200
+    , focusViaBlue300
+    , focusViaBlue400
+    , focusViaBlue500
+    , focusViaBlue600
+    , focusViaBlue700
+    , focusViaBlue800
+    , focusViaBlue900
+    , focusViaCurrent
+    , focusViaGray100
+    , focusViaGray200
+    , focusViaGray300
+    , focusViaGray400
+    , focusViaGray500
+    , focusViaGray600
+    , focusViaGray700
+    , focusViaGray800
+    , focusViaGray900
+    , focusViaGreen100
+    , focusViaGreen200
+    , focusViaGreen300
+    , focusViaGreen400
+    , focusViaGreen500
+    , focusViaGreen600
+    , focusViaGreen700
+    , focusViaGreen800
+    , focusViaGreen900
+    , focusViaIndigo100
+    , focusViaIndigo200
+    , focusViaIndigo300
+    , focusViaIndigo400
+    , focusViaIndigo500
+    , focusViaIndigo600
+    , focusViaIndigo700
+    , focusViaIndigo800
+    , focusViaIndigo900
+    , focusViaOrange100
+    , focusViaOrange200
+    , focusViaOrange300
+    , focusViaOrange400
+    , focusViaOrange500
+    , focusViaOrange600
+    , focusViaOrange700
+    , focusViaOrange800
+    , focusViaOrange900
+    , focusViaPink100
+    , focusViaPink200
+    , focusViaPink300
+    , focusViaPink400
+    , focusViaPink500
+    , focusViaPink600
+    , focusViaPink700
+    , focusViaPink800
+    , focusViaPink900
+    , focusViaPurple100
+    , focusViaPurple200
+    , focusViaPurple300
+    , focusViaPurple400
+    , focusViaPurple500
+    , focusViaPurple600
+    , focusViaPurple700
+    , focusViaPurple800
+    , focusViaPurple900
+    , focusViaRed100
+    , focusViaRed200
+    , focusViaRed300
+    , focusViaRed400
+    , focusViaRed500
+    , focusViaRed600
+    , focusViaRed700
+    , focusViaRed800
+    , focusViaRed900
+    , focusViaTeal100
+    , focusViaTeal200
+    , focusViaTeal300
+    , focusViaTeal400
+    , focusViaTeal500
+    , focusViaTeal600
+    , focusViaTeal700
+    , focusViaTeal800
+    , focusViaTeal900
+    , focusViaTransparent
+    , focusViaWhite
+    , focusViaYellow100
+    , focusViaYellow200
+    , focusViaYellow300
+    , focusViaYellow400
+    , focusViaYellow500
+    , focusViaYellow600
+    , focusViaYellow700
+    , focusViaYellow800
+    , focusViaYellow900
     , fontBlack
     , fontBold
     , fontExtrabold
@@ -1072,6 +1390,100 @@ module Html.Tailwind exposing
     , fontSerif
     , fontThin
     , fontTitle
+    , fromBlack
+    , fromBlue100
+    , fromBlue200
+    , fromBlue300
+    , fromBlue400
+    , fromBlue500
+    , fromBlue600
+    , fromBlue700
+    , fromBlue800
+    , fromBlue900
+    , fromCurrent
+    , fromGray100
+    , fromGray200
+    , fromGray300
+    , fromGray400
+    , fromGray500
+    , fromGray600
+    , fromGray700
+    , fromGray800
+    , fromGray900
+    , fromGreen100
+    , fromGreen200
+    , fromGreen300
+    , fromGreen400
+    , fromGreen500
+    , fromGreen600
+    , fromGreen700
+    , fromGreen800
+    , fromGreen900
+    , fromIndigo100
+    , fromIndigo200
+    , fromIndigo300
+    , fromIndigo400
+    , fromIndigo500
+    , fromIndigo600
+    , fromIndigo700
+    , fromIndigo800
+    , fromIndigo900
+    , fromOrange100
+    , fromOrange200
+    , fromOrange300
+    , fromOrange400
+    , fromOrange500
+    , fromOrange600
+    , fromOrange700
+    , fromOrange800
+    , fromOrange900
+    , fromPink100
+    , fromPink200
+    , fromPink300
+    , fromPink400
+    , fromPink500
+    , fromPink600
+    , fromPink700
+    , fromPink800
+    , fromPink900
+    , fromPurple100
+    , fromPurple200
+    , fromPurple300
+    , fromPurple400
+    , fromPurple500
+    , fromPurple600
+    , fromPurple700
+    , fromPurple800
+    , fromPurple900
+    , fromRed100
+    , fromRed200
+    , fromRed300
+    , fromRed400
+    , fromRed500
+    , fromRed600
+    , fromRed700
+    , fromRed800
+    , fromRed900
+    , fromTeal100
+    , fromTeal200
+    , fromTeal300
+    , fromTeal400
+    , fromTeal500
+    , fromTeal600
+    , fromTeal700
+    , fromTeal800
+    , fromTeal900
+    , fromTransparent
+    , fromWhite
+    , fromYellow100
+    , fromYellow200
+    , fromYellow300
+    , fromYellow400
+    , fromYellow500
+    , fromYellow600
+    , fromYellow700
+    , fromYellow800
+    , fromYellow900
     , gap0
     , gap1
     , gap10
@@ -1091,6 +1503,44 @@ module Html.Tailwind exposing
     , gap64
     , gap8
     , gapPx
+    , gapX0
+    , gapX1
+    , gapX10
+    , gapX12
+    , gapX16
+    , gapX2
+    , gapX20
+    , gapX24
+    , gapX3
+    , gapX32
+    , gapX4
+    , gapX40
+    , gapX48
+    , gapX5
+    , gapX56
+    , gapX6
+    , gapX64
+    , gapX8
+    , gapXPx
+    , gapY0
+    , gapY1
+    , gapY10
+    , gapY12
+    , gapY16
+    , gapY2
+    , gapY20
+    , gapY24
+    , gapY3
+    , gapY32
+    , gapY4
+    , gapY40
+    , gapY48
+    , gapY5
+    , gapY56
+    , gapY6
+    , gapY64
+    , gapY8
+    , gapYPx
     , grid
     , gridCols1
     , gridCols10
@@ -1346,14 +1796,117 @@ module Html.Tailwind exposing
     , hoverFontNormal
     , hoverFontSemibold
     , hoverFontThin
+    , hoverFromBlack
+    , hoverFromBlue100
+    , hoverFromBlue200
+    , hoverFromBlue300
+    , hoverFromBlue400
+    , hoverFromBlue500
+    , hoverFromBlue600
+    , hoverFromBlue700
+    , hoverFromBlue800
+    , hoverFromBlue900
+    , hoverFromCurrent
+    , hoverFromGray100
+    , hoverFromGray200
+    , hoverFromGray300
+    , hoverFromGray400
+    , hoverFromGray500
+    , hoverFromGray600
+    , hoverFromGray700
+    , hoverFromGray800
+    , hoverFromGray900
+    , hoverFromGreen100
+    , hoverFromGreen200
+    , hoverFromGreen300
+    , hoverFromGreen400
+    , hoverFromGreen500
+    , hoverFromGreen600
+    , hoverFromGreen700
+    , hoverFromGreen800
+    , hoverFromGreen900
+    , hoverFromIndigo100
+    , hoverFromIndigo200
+    , hoverFromIndigo300
+    , hoverFromIndigo400
+    , hoverFromIndigo500
+    , hoverFromIndigo600
+    , hoverFromIndigo700
+    , hoverFromIndigo800
+    , hoverFromIndigo900
+    , hoverFromOrange100
+    , hoverFromOrange200
+    , hoverFromOrange300
+    , hoverFromOrange400
+    , hoverFromOrange500
+    , hoverFromOrange600
+    , hoverFromOrange700
+    , hoverFromOrange800
+    , hoverFromOrange900
+    , hoverFromPink100
+    , hoverFromPink200
+    , hoverFromPink300
+    , hoverFromPink400
+    , hoverFromPink500
+    , hoverFromPink600
+    , hoverFromPink700
+    , hoverFromPink800
+    , hoverFromPink900
+    , hoverFromPurple100
+    , hoverFromPurple200
+    , hoverFromPurple300
+    , hoverFromPurple400
+    , hoverFromPurple500
+    , hoverFromPurple600
+    , hoverFromPurple700
+    , hoverFromPurple800
+    , hoverFromPurple900
+    , hoverFromRed100
+    , hoverFromRed200
+    , hoverFromRed300
+    , hoverFromRed400
+    , hoverFromRed500
+    , hoverFromRed600
+    , hoverFromRed700
+    , hoverFromRed800
+    , hoverFromRed900
+    , hoverFromTeal100
+    , hoverFromTeal200
+    , hoverFromTeal300
+    , hoverFromTeal400
+    , hoverFromTeal500
+    , hoverFromTeal600
+    , hoverFromTeal700
+    , hoverFromTeal800
+    , hoverFromTeal900
+    , hoverFromTransparent
+    , hoverFromWhite
+    , hoverFromYellow100
+    , hoverFromYellow200
+    , hoverFromYellow300
+    , hoverFromYellow400
+    , hoverFromYellow500
+    , hoverFromYellow600
+    , hoverFromYellow700
+    , hoverFromYellow800
+    , hoverFromYellow900
     , hoverLineThrough
+    , hoverNegRotate1
+    , hoverNegRotate12
     , hoverNegRotate180
+    , hoverNegRotate2
+    , hoverNegRotate3
     , hoverNegRotate45
+    , hoverNegRotate6
     , hoverNegRotate90
+    , hoverNegSkewX1
     , hoverNegSkewX12
+    , hoverNegSkewX2
     , hoverNegSkewX3
     , hoverNegSkewX6
+    , hoverNegSkewY1
     , hoverNegSkewY12
+    , hoverNegSkewY2
     , hoverNegSkewY3
     , hoverNegSkewY6
     , hoverNegTranslateX1
@@ -1403,8 +1956,13 @@ module Html.Tailwind exposing
     , hoverOpacity50
     , hoverOpacity75
     , hoverRotate0
+    , hoverRotate1
+    , hoverRotate12
     , hoverRotate180
+    , hoverRotate2
+    , hoverRotate3
     , hoverRotate45
+    , hoverRotate6
     , hoverRotate90
     , hoverScale0
     , hoverScale100
@@ -1447,11 +2005,15 @@ module Html.Tailwind exposing
     , hoverShadowXl
     , hoverShadowXs
     , hoverSkewX0
+    , hoverSkewX1
     , hoverSkewX12
+    , hoverSkewX2
     , hoverSkewX3
     , hoverSkewX6
     , hoverSkewY0
+    , hoverSkewY1
     , hoverSkewY12
+    , hoverSkewY2
     , hoverSkewY3
     , hoverSkewY6
     , hoverTextBlack
@@ -1553,6 +2115,100 @@ module Html.Tailwind exposing
     , hoverTextYellow700
     , hoverTextYellow800
     , hoverTextYellow900
+    , hoverToBlack
+    , hoverToBlue100
+    , hoverToBlue200
+    , hoverToBlue300
+    , hoverToBlue400
+    , hoverToBlue500
+    , hoverToBlue600
+    , hoverToBlue700
+    , hoverToBlue800
+    , hoverToBlue900
+    , hoverToCurrent
+    , hoverToGray100
+    , hoverToGray200
+    , hoverToGray300
+    , hoverToGray400
+    , hoverToGray500
+    , hoverToGray600
+    , hoverToGray700
+    , hoverToGray800
+    , hoverToGray900
+    , hoverToGreen100
+    , hoverToGreen200
+    , hoverToGreen300
+    , hoverToGreen400
+    , hoverToGreen500
+    , hoverToGreen600
+    , hoverToGreen700
+    , hoverToGreen800
+    , hoverToGreen900
+    , hoverToIndigo100
+    , hoverToIndigo200
+    , hoverToIndigo300
+    , hoverToIndigo400
+    , hoverToIndigo500
+    , hoverToIndigo600
+    , hoverToIndigo700
+    , hoverToIndigo800
+    , hoverToIndigo900
+    , hoverToOrange100
+    , hoverToOrange200
+    , hoverToOrange300
+    , hoverToOrange400
+    , hoverToOrange500
+    , hoverToOrange600
+    , hoverToOrange700
+    , hoverToOrange800
+    , hoverToOrange900
+    , hoverToPink100
+    , hoverToPink200
+    , hoverToPink300
+    , hoverToPink400
+    , hoverToPink500
+    , hoverToPink600
+    , hoverToPink700
+    , hoverToPink800
+    , hoverToPink900
+    , hoverToPurple100
+    , hoverToPurple200
+    , hoverToPurple300
+    , hoverToPurple400
+    , hoverToPurple500
+    , hoverToPurple600
+    , hoverToPurple700
+    , hoverToPurple800
+    , hoverToPurple900
+    , hoverToRed100
+    , hoverToRed200
+    , hoverToRed300
+    , hoverToRed400
+    , hoverToRed500
+    , hoverToRed600
+    , hoverToRed700
+    , hoverToRed800
+    , hoverToRed900
+    , hoverToTeal100
+    , hoverToTeal200
+    , hoverToTeal300
+    , hoverToTeal400
+    , hoverToTeal500
+    , hoverToTeal600
+    , hoverToTeal700
+    , hoverToTeal800
+    , hoverToTeal900
+    , hoverToTransparent
+    , hoverToWhite
+    , hoverToYellow100
+    , hoverToYellow200
+    , hoverToYellow300
+    , hoverToYellow400
+    , hoverToYellow500
+    , hoverToYellow600
+    , hoverToYellow700
+    , hoverToYellow800
+    , hoverToYellow900
     , hoverTranslateX0
     , hoverTranslateX1
     , hoverTranslateX10
@@ -1596,6 +2252,100 @@ module Html.Tailwind exposing
     , hoverTranslateYFull
     , hoverTranslateYPx
     , hoverUnderline
+    , hoverViaBlack
+    , hoverViaBlue100
+    , hoverViaBlue200
+    , hoverViaBlue300
+    , hoverViaBlue400
+    , hoverViaBlue500
+    , hoverViaBlue600
+    , hoverViaBlue700
+    , hoverViaBlue800
+    , hoverViaBlue900
+    , hoverViaCurrent
+    , hoverViaGray100
+    , hoverViaGray200
+    , hoverViaGray300
+    , hoverViaGray400
+    , hoverViaGray500
+    , hoverViaGray600
+    , hoverViaGray700
+    , hoverViaGray800
+    , hoverViaGray900
+    , hoverViaGreen100
+    , hoverViaGreen200
+    , hoverViaGreen300
+    , hoverViaGreen400
+    , hoverViaGreen500
+    , hoverViaGreen600
+    , hoverViaGreen700
+    , hoverViaGreen800
+    , hoverViaGreen900
+    , hoverViaIndigo100
+    , hoverViaIndigo200
+    , hoverViaIndigo300
+    , hoverViaIndigo400
+    , hoverViaIndigo500
+    , hoverViaIndigo600
+    , hoverViaIndigo700
+    , hoverViaIndigo800
+    , hoverViaIndigo900
+    , hoverViaOrange100
+    , hoverViaOrange200
+    , hoverViaOrange300
+    , hoverViaOrange400
+    , hoverViaOrange500
+    , hoverViaOrange600
+    , hoverViaOrange700
+    , hoverViaOrange800
+    , hoverViaOrange900
+    , hoverViaPink100
+    , hoverViaPink200
+    , hoverViaPink300
+    , hoverViaPink400
+    , hoverViaPink500
+    , hoverViaPink600
+    , hoverViaPink700
+    , hoverViaPink800
+    , hoverViaPink900
+    , hoverViaPurple100
+    , hoverViaPurple200
+    , hoverViaPurple300
+    , hoverViaPurple400
+    , hoverViaPurple500
+    , hoverViaPurple600
+    , hoverViaPurple700
+    , hoverViaPurple800
+    , hoverViaPurple900
+    , hoverViaRed100
+    , hoverViaRed200
+    , hoverViaRed300
+    , hoverViaRed400
+    , hoverViaRed500
+    , hoverViaRed600
+    , hoverViaRed700
+    , hoverViaRed800
+    , hoverViaRed900
+    , hoverViaTeal100
+    , hoverViaTeal200
+    , hoverViaTeal300
+    , hoverViaTeal400
+    , hoverViaTeal500
+    , hoverViaTeal600
+    , hoverViaTeal700
+    , hoverViaTeal800
+    , hoverViaTeal900
+    , hoverViaTransparent
+    , hoverViaWhite
+    , hoverViaYellow100
+    , hoverViaYellow200
+    , hoverViaYellow300
+    , hoverViaYellow400
+    , hoverViaYellow500
+    , hoverViaYellow600
+    , hoverViaYellow700
+    , hoverViaYellow800
+    , hoverViaYellow900
     , inline
     , inlineBlock
     , inlineFlex
@@ -1618,6 +2368,16 @@ module Html.Tailwind exposing
     , justifyCenter
     , justifyEnd
     , justifyEvenly
+    , justifyItemsAuto
+    , justifyItemsCenter
+    , justifyItemsEnd
+    , justifyItemsStart
+    , justifyItemsStretch
+    , justifySelfAuto
+    , justifySelfCenter
+    , justifySelfEnd
+    , justifySelfStart
+    , justifySelfStretch
     , justifyStart
     , leading10
     , leading3
@@ -1642,8 +2402,21 @@ module Html.Tailwind exposing
     , lgAlignTextBottom
     , lgAlignTextTop
     , lgAlignTop
+    , lgAnimateBounce
+    , lgAnimateNone
+    , lgAnimatePing
+    , lgAnimatePulse
+    , lgAnimateSpin
     , lgAntialiased
     , lgAppearanceNone
+    , lgAutoColsAuto
+    , lgAutoColsFr
+    , lgAutoColsMax
+    , lgAutoColsMin
+    , lgAutoRowsAuto
+    , lgAutoRowsFr
+    , lgAutoRowsMax
+    , lgAutoRowsMin
     , lgBgAuto
     , lgBgBlack
     , lgBgBlue100
@@ -1657,10 +2430,22 @@ module Html.Tailwind exposing
     , lgBgBlue900
     , lgBgBottom
     , lgBgCenter
+    , lgBgClipBorder
+    , lgBgClipContent
+    , lgBgClipPadding
+    , lgBgClipText
     , lgBgContain
     , lgBgCover
     , lgBgCurrent
     , lgBgFixed
+    , lgBgGradientToB
+    , lgBgGradientToBl
+    , lgBgGradientToBr
+    , lgBgGradientToL
+    , lgBgGradientToR
+    , lgBgGradientToT
+    , lgBgGradientToTl
+    , lgBgGradientToTr
     , lgBgGray100
     , lgBgGray200
     , lgBgGray300
@@ -1693,6 +2478,7 @@ module Html.Tailwind exposing
     , lgBgLeftTop
     , lgBgLocal
     , lgBgNoRepeat
+    , lgBgNone
     , lgBgOpacity0
     , lgBgOpacity100
     , lgBgOpacity25
@@ -1924,25 +2710,6 @@ module Html.Tailwind exposing
     , lgColEnd8
     , lgColEnd9
     , lgColEndAuto
-    , lgColGap0
-    , lgColGap1
-    , lgColGap10
-    , lgColGap12
-    , lgColGap16
-    , lgColGap2
-    , lgColGap20
-    , lgColGap24
-    , lgColGap3
-    , lgColGap32
-    , lgColGap4
-    , lgColGap40
-    , lgColGap48
-    , lgColGap5
-    , lgColGap56
-    , lgColGap6
-    , lgColGap64
-    , lgColGap8
-    , lgColGapPx
     , lgColSpan1
     , lgColSpan10
     , lgColSpan11
@@ -1955,6 +2722,7 @@ module Html.Tailwind exposing
     , lgColSpan7
     , lgColSpan8
     , lgColSpan9
+    , lgColSpanFull
     , lgColStart1
     , lgColStart10
     , lgColStart11
@@ -1969,11 +2737,14 @@ module Html.Tailwind exposing
     , lgColStart8
     , lgColStart9
     , lgColStartAuto
+    , lgContainer
     , lgContentAround
     , lgContentBetween
     , lgContentCenter
     , lgContentEnd
+    , lgContentEvenly
     , lgContentStart
+    , lgContents
     , lgCursorAuto
     , lgCursorDefault
     , lgCursorMove
@@ -1989,6 +2760,7 @@ module Html.Tailwind exposing
     , lgDelay500
     , lgDelay700
     , lgDelay75
+    , lgDiagonalFractions
     , lgDivideBlack
     , lgDivideBlue100
     , lgDivideBlue200
@@ -2000,6 +2772,9 @@ module Html.Tailwind exposing
     , lgDivideBlue800
     , lgDivideBlue900
     , lgDivideCurrent
+    , lgDivideDashed
+    , lgDivideDotted
+    , lgDivideDouble
     , lgDivideGray100
     , lgDivideGray200
     , lgDivideGray300
@@ -2027,6 +2802,7 @@ module Html.Tailwind exposing
     , lgDivideIndigo700
     , lgDivideIndigo800
     , lgDivideIndigo900
+    , lgDivideNone
     , lgDivideOpacity0
     , lgDivideOpacity100
     , lgDivideOpacity25
@@ -2068,6 +2844,7 @@ module Html.Tailwind exposing
     , lgDivideRed700
     , lgDivideRed800
     , lgDivideRed900
+    , lgDivideSolid
     , lgDivideTeal100
     , lgDivideTeal200
     , lgDivideTeal300
@@ -2341,14 +3118,117 @@ module Html.Tailwind exposing
     , lgFocusFontNormal
     , lgFocusFontSemibold
     , lgFocusFontThin
+    , lgFocusFromBlack
+    , lgFocusFromBlue100
+    , lgFocusFromBlue200
+    , lgFocusFromBlue300
+    , lgFocusFromBlue400
+    , lgFocusFromBlue500
+    , lgFocusFromBlue600
+    , lgFocusFromBlue700
+    , lgFocusFromBlue800
+    , lgFocusFromBlue900
+    , lgFocusFromCurrent
+    , lgFocusFromGray100
+    , lgFocusFromGray200
+    , lgFocusFromGray300
+    , lgFocusFromGray400
+    , lgFocusFromGray500
+    , lgFocusFromGray600
+    , lgFocusFromGray700
+    , lgFocusFromGray800
+    , lgFocusFromGray900
+    , lgFocusFromGreen100
+    , lgFocusFromGreen200
+    , lgFocusFromGreen300
+    , lgFocusFromGreen400
+    , lgFocusFromGreen500
+    , lgFocusFromGreen600
+    , lgFocusFromGreen700
+    , lgFocusFromGreen800
+    , lgFocusFromGreen900
+    , lgFocusFromIndigo100
+    , lgFocusFromIndigo200
+    , lgFocusFromIndigo300
+    , lgFocusFromIndigo400
+    , lgFocusFromIndigo500
+    , lgFocusFromIndigo600
+    , lgFocusFromIndigo700
+    , lgFocusFromIndigo800
+    , lgFocusFromIndigo900
+    , lgFocusFromOrange100
+    , lgFocusFromOrange200
+    , lgFocusFromOrange300
+    , lgFocusFromOrange400
+    , lgFocusFromOrange500
+    , lgFocusFromOrange600
+    , lgFocusFromOrange700
+    , lgFocusFromOrange800
+    , lgFocusFromOrange900
+    , lgFocusFromPink100
+    , lgFocusFromPink200
+    , lgFocusFromPink300
+    , lgFocusFromPink400
+    , lgFocusFromPink500
+    , lgFocusFromPink600
+    , lgFocusFromPink700
+    , lgFocusFromPink800
+    , lgFocusFromPink900
+    , lgFocusFromPurple100
+    , lgFocusFromPurple200
+    , lgFocusFromPurple300
+    , lgFocusFromPurple400
+    , lgFocusFromPurple500
+    , lgFocusFromPurple600
+    , lgFocusFromPurple700
+    , lgFocusFromPurple800
+    , lgFocusFromPurple900
+    , lgFocusFromRed100
+    , lgFocusFromRed200
+    , lgFocusFromRed300
+    , lgFocusFromRed400
+    , lgFocusFromRed500
+    , lgFocusFromRed600
+    , lgFocusFromRed700
+    , lgFocusFromRed800
+    , lgFocusFromRed900
+    , lgFocusFromTeal100
+    , lgFocusFromTeal200
+    , lgFocusFromTeal300
+    , lgFocusFromTeal400
+    , lgFocusFromTeal500
+    , lgFocusFromTeal600
+    , lgFocusFromTeal700
+    , lgFocusFromTeal800
+    , lgFocusFromTeal900
+    , lgFocusFromTransparent
+    , lgFocusFromWhite
+    , lgFocusFromYellow100
+    , lgFocusFromYellow200
+    , lgFocusFromYellow300
+    , lgFocusFromYellow400
+    , lgFocusFromYellow500
+    , lgFocusFromYellow600
+    , lgFocusFromYellow700
+    , lgFocusFromYellow800
+    , lgFocusFromYellow900
     , lgFocusLineThrough
+    , lgFocusNegRotate1
+    , lgFocusNegRotate12
     , lgFocusNegRotate180
+    , lgFocusNegRotate2
+    , lgFocusNegRotate3
     , lgFocusNegRotate45
+    , lgFocusNegRotate6
     , lgFocusNegRotate90
+    , lgFocusNegSkewX1
     , lgFocusNegSkewX12
+    , lgFocusNegSkewX2
     , lgFocusNegSkewX3
     , lgFocusNegSkewX6
+    , lgFocusNegSkewY1
     , lgFocusNegSkewY12
+    , lgFocusNegSkewY2
     , lgFocusNegSkewY3
     , lgFocusNegSkewY6
     , lgFocusNegTranslateX1
@@ -2398,7 +3278,9 @@ module Html.Tailwind exposing
     , lgFocusOpacity25
     , lgFocusOpacity50
     , lgFocusOpacity75
+    , lgFocusOutlineBlack
     , lgFocusOutlineNone
+    , lgFocusOutlineWhite
     , lgFocusPlaceholderBlackFocus
     , lgFocusPlaceholderBlue100Focus
     , lgFocusPlaceholderBlue200Focus
@@ -2499,8 +3381,13 @@ module Html.Tailwind exposing
     , lgFocusPlaceholderYellow800Focus
     , lgFocusPlaceholderYellow900Focus
     , lgFocusRotate0
+    , lgFocusRotate1
+    , lgFocusRotate12
     , lgFocusRotate180
+    , lgFocusRotate2
+    , lgFocusRotate3
     , lgFocusRotate45
+    , lgFocusRotate6
     , lgFocusRotate90
     , lgFocusScale0
     , lgFocusScale100
@@ -2543,11 +3430,15 @@ module Html.Tailwind exposing
     , lgFocusShadowXl
     , lgFocusShadowXs
     , lgFocusSkewX0
+    , lgFocusSkewX1
     , lgFocusSkewX12
+    , lgFocusSkewX2
     , lgFocusSkewX3
     , lgFocusSkewX6
     , lgFocusSkewY0
+    , lgFocusSkewY1
     , lgFocusSkewY12
+    , lgFocusSkewY2
     , lgFocusSkewY3
     , lgFocusSkewY6
     , lgFocusSrOnly
@@ -2650,6 +3541,100 @@ module Html.Tailwind exposing
     , lgFocusTextYellow700
     , lgFocusTextYellow800
     , lgFocusTextYellow900
+    , lgFocusToBlack
+    , lgFocusToBlue100
+    , lgFocusToBlue200
+    , lgFocusToBlue300
+    , lgFocusToBlue400
+    , lgFocusToBlue500
+    , lgFocusToBlue600
+    , lgFocusToBlue700
+    , lgFocusToBlue800
+    , lgFocusToBlue900
+    , lgFocusToCurrent
+    , lgFocusToGray100
+    , lgFocusToGray200
+    , lgFocusToGray300
+    , lgFocusToGray400
+    , lgFocusToGray500
+    , lgFocusToGray600
+    , lgFocusToGray700
+    , lgFocusToGray800
+    , lgFocusToGray900
+    , lgFocusToGreen100
+    , lgFocusToGreen200
+    , lgFocusToGreen300
+    , lgFocusToGreen400
+    , lgFocusToGreen500
+    , lgFocusToGreen600
+    , lgFocusToGreen700
+    , lgFocusToGreen800
+    , lgFocusToGreen900
+    , lgFocusToIndigo100
+    , lgFocusToIndigo200
+    , lgFocusToIndigo300
+    , lgFocusToIndigo400
+    , lgFocusToIndigo500
+    , lgFocusToIndigo600
+    , lgFocusToIndigo700
+    , lgFocusToIndigo800
+    , lgFocusToIndigo900
+    , lgFocusToOrange100
+    , lgFocusToOrange200
+    , lgFocusToOrange300
+    , lgFocusToOrange400
+    , lgFocusToOrange500
+    , lgFocusToOrange600
+    , lgFocusToOrange700
+    , lgFocusToOrange800
+    , lgFocusToOrange900
+    , lgFocusToPink100
+    , lgFocusToPink200
+    , lgFocusToPink300
+    , lgFocusToPink400
+    , lgFocusToPink500
+    , lgFocusToPink600
+    , lgFocusToPink700
+    , lgFocusToPink800
+    , lgFocusToPink900
+    , lgFocusToPurple100
+    , lgFocusToPurple200
+    , lgFocusToPurple300
+    , lgFocusToPurple400
+    , lgFocusToPurple500
+    , lgFocusToPurple600
+    , lgFocusToPurple700
+    , lgFocusToPurple800
+    , lgFocusToPurple900
+    , lgFocusToRed100
+    , lgFocusToRed200
+    , lgFocusToRed300
+    , lgFocusToRed400
+    , lgFocusToRed500
+    , lgFocusToRed600
+    , lgFocusToRed700
+    , lgFocusToRed800
+    , lgFocusToRed900
+    , lgFocusToTeal100
+    , lgFocusToTeal200
+    , lgFocusToTeal300
+    , lgFocusToTeal400
+    , lgFocusToTeal500
+    , lgFocusToTeal600
+    , lgFocusToTeal700
+    , lgFocusToTeal800
+    , lgFocusToTeal900
+    , lgFocusToTransparent
+    , lgFocusToWhite
+    , lgFocusToYellow100
+    , lgFocusToYellow200
+    , lgFocusToYellow300
+    , lgFocusToYellow400
+    , lgFocusToYellow500
+    , lgFocusToYellow600
+    , lgFocusToYellow700
+    , lgFocusToYellow800
+    , lgFocusToYellow900
     , lgFocusTranslateX0
     , lgFocusTranslateX1
     , lgFocusTranslateX10
@@ -2693,6 +3678,100 @@ module Html.Tailwind exposing
     , lgFocusTranslateYFull
     , lgFocusTranslateYPx
     , lgFocusUnderline
+    , lgFocusViaBlack
+    , lgFocusViaBlue100
+    , lgFocusViaBlue200
+    , lgFocusViaBlue300
+    , lgFocusViaBlue400
+    , lgFocusViaBlue500
+    , lgFocusViaBlue600
+    , lgFocusViaBlue700
+    , lgFocusViaBlue800
+    , lgFocusViaBlue900
+    , lgFocusViaCurrent
+    , lgFocusViaGray100
+    , lgFocusViaGray200
+    , lgFocusViaGray300
+    , lgFocusViaGray400
+    , lgFocusViaGray500
+    , lgFocusViaGray600
+    , lgFocusViaGray700
+    , lgFocusViaGray800
+    , lgFocusViaGray900
+    , lgFocusViaGreen100
+    , lgFocusViaGreen200
+    , lgFocusViaGreen300
+    , lgFocusViaGreen400
+    , lgFocusViaGreen500
+    , lgFocusViaGreen600
+    , lgFocusViaGreen700
+    , lgFocusViaGreen800
+    , lgFocusViaGreen900
+    , lgFocusViaIndigo100
+    , lgFocusViaIndigo200
+    , lgFocusViaIndigo300
+    , lgFocusViaIndigo400
+    , lgFocusViaIndigo500
+    , lgFocusViaIndigo600
+    , lgFocusViaIndigo700
+    , lgFocusViaIndigo800
+    , lgFocusViaIndigo900
+    , lgFocusViaOrange100
+    , lgFocusViaOrange200
+    , lgFocusViaOrange300
+    , lgFocusViaOrange400
+    , lgFocusViaOrange500
+    , lgFocusViaOrange600
+    , lgFocusViaOrange700
+    , lgFocusViaOrange800
+    , lgFocusViaOrange900
+    , lgFocusViaPink100
+    , lgFocusViaPink200
+    , lgFocusViaPink300
+    , lgFocusViaPink400
+    , lgFocusViaPink500
+    , lgFocusViaPink600
+    , lgFocusViaPink700
+    , lgFocusViaPink800
+    , lgFocusViaPink900
+    , lgFocusViaPurple100
+    , lgFocusViaPurple200
+    , lgFocusViaPurple300
+    , lgFocusViaPurple400
+    , lgFocusViaPurple500
+    , lgFocusViaPurple600
+    , lgFocusViaPurple700
+    , lgFocusViaPurple800
+    , lgFocusViaPurple900
+    , lgFocusViaRed100
+    , lgFocusViaRed200
+    , lgFocusViaRed300
+    , lgFocusViaRed400
+    , lgFocusViaRed500
+    , lgFocusViaRed600
+    , lgFocusViaRed700
+    , lgFocusViaRed800
+    , lgFocusViaRed900
+    , lgFocusViaTeal100
+    , lgFocusViaTeal200
+    , lgFocusViaTeal300
+    , lgFocusViaTeal400
+    , lgFocusViaTeal500
+    , lgFocusViaTeal600
+    , lgFocusViaTeal700
+    , lgFocusViaTeal800
+    , lgFocusViaTeal900
+    , lgFocusViaTransparent
+    , lgFocusViaWhite
+    , lgFocusViaYellow100
+    , lgFocusViaYellow200
+    , lgFocusViaYellow300
+    , lgFocusViaYellow400
+    , lgFocusViaYellow500
+    , lgFocusViaYellow600
+    , lgFocusViaYellow700
+    , lgFocusViaYellow800
+    , lgFocusViaYellow900
     , lgFontBlack
     , lgFontBold
     , lgFontExtrabold
@@ -2706,6 +3785,100 @@ module Html.Tailwind exposing
     , lgFontSerif
     , lgFontThin
     , lgFontTitle
+    , lgFromBlack
+    , lgFromBlue100
+    , lgFromBlue200
+    , lgFromBlue300
+    , lgFromBlue400
+    , lgFromBlue500
+    , lgFromBlue600
+    , lgFromBlue700
+    , lgFromBlue800
+    , lgFromBlue900
+    , lgFromCurrent
+    , lgFromGray100
+    , lgFromGray200
+    , lgFromGray300
+    , lgFromGray400
+    , lgFromGray500
+    , lgFromGray600
+    , lgFromGray700
+    , lgFromGray800
+    , lgFromGray900
+    , lgFromGreen100
+    , lgFromGreen200
+    , lgFromGreen300
+    , lgFromGreen400
+    , lgFromGreen500
+    , lgFromGreen600
+    , lgFromGreen700
+    , lgFromGreen800
+    , lgFromGreen900
+    , lgFromIndigo100
+    , lgFromIndigo200
+    , lgFromIndigo300
+    , lgFromIndigo400
+    , lgFromIndigo500
+    , lgFromIndigo600
+    , lgFromIndigo700
+    , lgFromIndigo800
+    , lgFromIndigo900
+    , lgFromOrange100
+    , lgFromOrange200
+    , lgFromOrange300
+    , lgFromOrange400
+    , lgFromOrange500
+    , lgFromOrange600
+    , lgFromOrange700
+    , lgFromOrange800
+    , lgFromOrange900
+    , lgFromPink100
+    , lgFromPink200
+    , lgFromPink300
+    , lgFromPink400
+    , lgFromPink500
+    , lgFromPink600
+    , lgFromPink700
+    , lgFromPink800
+    , lgFromPink900
+    , lgFromPurple100
+    , lgFromPurple200
+    , lgFromPurple300
+    , lgFromPurple400
+    , lgFromPurple500
+    , lgFromPurple600
+    , lgFromPurple700
+    , lgFromPurple800
+    , lgFromPurple900
+    , lgFromRed100
+    , lgFromRed200
+    , lgFromRed300
+    , lgFromRed400
+    , lgFromRed500
+    , lgFromRed600
+    , lgFromRed700
+    , lgFromRed800
+    , lgFromRed900
+    , lgFromTeal100
+    , lgFromTeal200
+    , lgFromTeal300
+    , lgFromTeal400
+    , lgFromTeal500
+    , lgFromTeal600
+    , lgFromTeal700
+    , lgFromTeal800
+    , lgFromTeal900
+    , lgFromTransparent
+    , lgFromWhite
+    , lgFromYellow100
+    , lgFromYellow200
+    , lgFromYellow300
+    , lgFromYellow400
+    , lgFromYellow500
+    , lgFromYellow600
+    , lgFromYellow700
+    , lgFromYellow800
+    , lgFromYellow900
     , lgGap0
     , lgGap1
     , lgGap10
@@ -2725,6 +3898,44 @@ module Html.Tailwind exposing
     , lgGap64
     , lgGap8
     , lgGapPx
+    , lgGapX0
+    , lgGapX1
+    , lgGapX10
+    , lgGapX12
+    , lgGapX16
+    , lgGapX2
+    , lgGapX20
+    , lgGapX24
+    , lgGapX3
+    , lgGapX32
+    , lgGapX4
+    , lgGapX40
+    , lgGapX48
+    , lgGapX5
+    , lgGapX56
+    , lgGapX6
+    , lgGapX64
+    , lgGapX8
+    , lgGapXPx
+    , lgGapY0
+    , lgGapY1
+    , lgGapY10
+    , lgGapY12
+    , lgGapY16
+    , lgGapY2
+    , lgGapY20
+    , lgGapY24
+    , lgGapY3
+    , lgGapY32
+    , lgGapY4
+    , lgGapY40
+    , lgGapY48
+    , lgGapY5
+    , lgGapY56
+    , lgGapY6
+    , lgGapY64
+    , lgGapY8
+    , lgGapYPx
     , lgGrid
     , lgGridCols1
     , lgGridCols10
@@ -2980,14 +4191,117 @@ module Html.Tailwind exposing
     , lgHoverFontNormal
     , lgHoverFontSemibold
     , lgHoverFontThin
+    , lgHoverFromBlack
+    , lgHoverFromBlue100
+    , lgHoverFromBlue200
+    , lgHoverFromBlue300
+    , lgHoverFromBlue400
+    , lgHoverFromBlue500
+    , lgHoverFromBlue600
+    , lgHoverFromBlue700
+    , lgHoverFromBlue800
+    , lgHoverFromBlue900
+    , lgHoverFromCurrent
+    , lgHoverFromGray100
+    , lgHoverFromGray200
+    , lgHoverFromGray300
+    , lgHoverFromGray400
+    , lgHoverFromGray500
+    , lgHoverFromGray600
+    , lgHoverFromGray700
+    , lgHoverFromGray800
+    , lgHoverFromGray900
+    , lgHoverFromGreen100
+    , lgHoverFromGreen200
+    , lgHoverFromGreen300
+    , lgHoverFromGreen400
+    , lgHoverFromGreen500
+    , lgHoverFromGreen600
+    , lgHoverFromGreen700
+    , lgHoverFromGreen800
+    , lgHoverFromGreen900
+    , lgHoverFromIndigo100
+    , lgHoverFromIndigo200
+    , lgHoverFromIndigo300
+    , lgHoverFromIndigo400
+    , lgHoverFromIndigo500
+    , lgHoverFromIndigo600
+    , lgHoverFromIndigo700
+    , lgHoverFromIndigo800
+    , lgHoverFromIndigo900
+    , lgHoverFromOrange100
+    , lgHoverFromOrange200
+    , lgHoverFromOrange300
+    , lgHoverFromOrange400
+    , lgHoverFromOrange500
+    , lgHoverFromOrange600
+    , lgHoverFromOrange700
+    , lgHoverFromOrange800
+    , lgHoverFromOrange900
+    , lgHoverFromPink100
+    , lgHoverFromPink200
+    , lgHoverFromPink300
+    , lgHoverFromPink400
+    , lgHoverFromPink500
+    , lgHoverFromPink600
+    , lgHoverFromPink700
+    , lgHoverFromPink800
+    , lgHoverFromPink900
+    , lgHoverFromPurple100
+    , lgHoverFromPurple200
+    , lgHoverFromPurple300
+    , lgHoverFromPurple400
+    , lgHoverFromPurple500
+    , lgHoverFromPurple600
+    , lgHoverFromPurple700
+    , lgHoverFromPurple800
+    , lgHoverFromPurple900
+    , lgHoverFromRed100
+    , lgHoverFromRed200
+    , lgHoverFromRed300
+    , lgHoverFromRed400
+    , lgHoverFromRed500
+    , lgHoverFromRed600
+    , lgHoverFromRed700
+    , lgHoverFromRed800
+    , lgHoverFromRed900
+    , lgHoverFromTeal100
+    , lgHoverFromTeal200
+    , lgHoverFromTeal300
+    , lgHoverFromTeal400
+    , lgHoverFromTeal500
+    , lgHoverFromTeal600
+    , lgHoverFromTeal700
+    , lgHoverFromTeal800
+    , lgHoverFromTeal900
+    , lgHoverFromTransparent
+    , lgHoverFromWhite
+    , lgHoverFromYellow100
+    , lgHoverFromYellow200
+    , lgHoverFromYellow300
+    , lgHoverFromYellow400
+    , lgHoverFromYellow500
+    , lgHoverFromYellow600
+    , lgHoverFromYellow700
+    , lgHoverFromYellow800
+    , lgHoverFromYellow900
     , lgHoverLineThrough
+    , lgHoverNegRotate1
+    , lgHoverNegRotate12
     , lgHoverNegRotate180
+    , lgHoverNegRotate2
+    , lgHoverNegRotate3
     , lgHoverNegRotate45
+    , lgHoverNegRotate6
     , lgHoverNegRotate90
+    , lgHoverNegSkewX1
     , lgHoverNegSkewX12
+    , lgHoverNegSkewX2
     , lgHoverNegSkewX3
     , lgHoverNegSkewX6
+    , lgHoverNegSkewY1
     , lgHoverNegSkewY12
+    , lgHoverNegSkewY2
     , lgHoverNegSkewY3
     , lgHoverNegSkewY6
     , lgHoverNegTranslateX1
@@ -3037,8 +4351,13 @@ module Html.Tailwind exposing
     , lgHoverOpacity50
     , lgHoverOpacity75
     , lgHoverRotate0
+    , lgHoverRotate1
+    , lgHoverRotate12
     , lgHoverRotate180
+    , lgHoverRotate2
+    , lgHoverRotate3
     , lgHoverRotate45
+    , lgHoverRotate6
     , lgHoverRotate90
     , lgHoverScale0
     , lgHoverScale100
@@ -3081,11 +4400,15 @@ module Html.Tailwind exposing
     , lgHoverShadowXl
     , lgHoverShadowXs
     , lgHoverSkewX0
+    , lgHoverSkewX1
     , lgHoverSkewX12
+    , lgHoverSkewX2
     , lgHoverSkewX3
     , lgHoverSkewX6
     , lgHoverSkewY0
+    , lgHoverSkewY1
     , lgHoverSkewY12
+    , lgHoverSkewY2
     , lgHoverSkewY3
     , lgHoverSkewY6
     , lgHoverTextBlack
@@ -3187,6 +4510,100 @@ module Html.Tailwind exposing
     , lgHoverTextYellow700
     , lgHoverTextYellow800
     , lgHoverTextYellow900
+    , lgHoverToBlack
+    , lgHoverToBlue100
+    , lgHoverToBlue200
+    , lgHoverToBlue300
+    , lgHoverToBlue400
+    , lgHoverToBlue500
+    , lgHoverToBlue600
+    , lgHoverToBlue700
+    , lgHoverToBlue800
+    , lgHoverToBlue900
+    , lgHoverToCurrent
+    , lgHoverToGray100
+    , lgHoverToGray200
+    , lgHoverToGray300
+    , lgHoverToGray400
+    , lgHoverToGray500
+    , lgHoverToGray600
+    , lgHoverToGray700
+    , lgHoverToGray800
+    , lgHoverToGray900
+    , lgHoverToGreen100
+    , lgHoverToGreen200
+    , lgHoverToGreen300
+    , lgHoverToGreen400
+    , lgHoverToGreen500
+    , lgHoverToGreen600
+    , lgHoverToGreen700
+    , lgHoverToGreen800
+    , lgHoverToGreen900
+    , lgHoverToIndigo100
+    , lgHoverToIndigo200
+    , lgHoverToIndigo300
+    , lgHoverToIndigo400
+    , lgHoverToIndigo500
+    , lgHoverToIndigo600
+    , lgHoverToIndigo700
+    , lgHoverToIndigo800
+    , lgHoverToIndigo900
+    , lgHoverToOrange100
+    , lgHoverToOrange200
+    , lgHoverToOrange300
+    , lgHoverToOrange400
+    , lgHoverToOrange500
+    , lgHoverToOrange600
+    , lgHoverToOrange700
+    , lgHoverToOrange800
+    , lgHoverToOrange900
+    , lgHoverToPink100
+    , lgHoverToPink200
+    , lgHoverToPink300
+    , lgHoverToPink400
+    , lgHoverToPink500
+    , lgHoverToPink600
+    , lgHoverToPink700
+    , lgHoverToPink800
+    , lgHoverToPink900
+    , lgHoverToPurple100
+    , lgHoverToPurple200
+    , lgHoverToPurple300
+    , lgHoverToPurple400
+    , lgHoverToPurple500
+    , lgHoverToPurple600
+    , lgHoverToPurple700
+    , lgHoverToPurple800
+    , lgHoverToPurple900
+    , lgHoverToRed100
+    , lgHoverToRed200
+    , lgHoverToRed300
+    , lgHoverToRed400
+    , lgHoverToRed500
+    , lgHoverToRed600
+    , lgHoverToRed700
+    , lgHoverToRed800
+    , lgHoverToRed900
+    , lgHoverToTeal100
+    , lgHoverToTeal200
+    , lgHoverToTeal300
+    , lgHoverToTeal400
+    , lgHoverToTeal500
+    , lgHoverToTeal600
+    , lgHoverToTeal700
+    , lgHoverToTeal800
+    , lgHoverToTeal900
+    , lgHoverToTransparent
+    , lgHoverToWhite
+    , lgHoverToYellow100
+    , lgHoverToYellow200
+    , lgHoverToYellow300
+    , lgHoverToYellow400
+    , lgHoverToYellow500
+    , lgHoverToYellow600
+    , lgHoverToYellow700
+    , lgHoverToYellow800
+    , lgHoverToYellow900
     , lgHoverTranslateX0
     , lgHoverTranslateX1
     , lgHoverTranslateX10
@@ -3230,6 +4647,100 @@ module Html.Tailwind exposing
     , lgHoverTranslateYFull
     , lgHoverTranslateYPx
     , lgHoverUnderline
+    , lgHoverViaBlack
+    , lgHoverViaBlue100
+    , lgHoverViaBlue200
+    , lgHoverViaBlue300
+    , lgHoverViaBlue400
+    , lgHoverViaBlue500
+    , lgHoverViaBlue600
+    , lgHoverViaBlue700
+    , lgHoverViaBlue800
+    , lgHoverViaBlue900
+    , lgHoverViaCurrent
+    , lgHoverViaGray100
+    , lgHoverViaGray200
+    , lgHoverViaGray300
+    , lgHoverViaGray400
+    , lgHoverViaGray500
+    , lgHoverViaGray600
+    , lgHoverViaGray700
+    , lgHoverViaGray800
+    , lgHoverViaGray900
+    , lgHoverViaGreen100
+    , lgHoverViaGreen200
+    , lgHoverViaGreen300
+    , lgHoverViaGreen400
+    , lgHoverViaGreen500
+    , lgHoverViaGreen600
+    , lgHoverViaGreen700
+    , lgHoverViaGreen800
+    , lgHoverViaGreen900
+    , lgHoverViaIndigo100
+    , lgHoverViaIndigo200
+    , lgHoverViaIndigo300
+    , lgHoverViaIndigo400
+    , lgHoverViaIndigo500
+    , lgHoverViaIndigo600
+    , lgHoverViaIndigo700
+    , lgHoverViaIndigo800
+    , lgHoverViaIndigo900
+    , lgHoverViaOrange100
+    , lgHoverViaOrange200
+    , lgHoverViaOrange300
+    , lgHoverViaOrange400
+    , lgHoverViaOrange500
+    , lgHoverViaOrange600
+    , lgHoverViaOrange700
+    , lgHoverViaOrange800
+    , lgHoverViaOrange900
+    , lgHoverViaPink100
+    , lgHoverViaPink200
+    , lgHoverViaPink300
+    , lgHoverViaPink400
+    , lgHoverViaPink500
+    , lgHoverViaPink600
+    , lgHoverViaPink700
+    , lgHoverViaPink800
+    , lgHoverViaPink900
+    , lgHoverViaPurple100
+    , lgHoverViaPurple200
+    , lgHoverViaPurple300
+    , lgHoverViaPurple400
+    , lgHoverViaPurple500
+    , lgHoverViaPurple600
+    , lgHoverViaPurple700
+    , lgHoverViaPurple800
+    , lgHoverViaPurple900
+    , lgHoverViaRed100
+    , lgHoverViaRed200
+    , lgHoverViaRed300
+    , lgHoverViaRed400
+    , lgHoverViaRed500
+    , lgHoverViaRed600
+    , lgHoverViaRed700
+    , lgHoverViaRed800
+    , lgHoverViaRed900
+    , lgHoverViaTeal100
+    , lgHoverViaTeal200
+    , lgHoverViaTeal300
+    , lgHoverViaTeal400
+    , lgHoverViaTeal500
+    , lgHoverViaTeal600
+    , lgHoverViaTeal700
+    , lgHoverViaTeal800
+    , lgHoverViaTeal900
+    , lgHoverViaTransparent
+    , lgHoverViaWhite
+    , lgHoverViaYellow100
+    , lgHoverViaYellow200
+    , lgHoverViaYellow300
+    , lgHoverViaYellow400
+    , lgHoverViaYellow500
+    , lgHoverViaYellow600
+    , lgHoverViaYellow700
+    , lgHoverViaYellow800
+    , lgHoverViaYellow900
     , lgInline
     , lgInlineBlock
     , lgInlineFlex
@@ -3252,6 +4763,16 @@ module Html.Tailwind exposing
     , lgJustifyCenter
     , lgJustifyEnd
     , lgJustifyEvenly
+    , lgJustifyItemsAuto
+    , lgJustifyItemsCenter
+    , lgJustifyItemsEnd
+    , lgJustifyItemsStart
+    , lgJustifyItemsStretch
+    , lgJustifySelfAuto
+    , lgJustifySelfCenter
+    , lgJustifySelfEnd
+    , lgJustifySelfStart
+    , lgJustifySelfStretch
     , lgJustifyStart
     , lgLeading10
     , lgLeading3
@@ -3270,6 +4791,7 @@ module Html.Tailwind exposing
     , lgLeft0
     , lgLeftAuto
     , lgLineThrough
+    , lgLiningNums
     , lgListDecimal
     , lgListDisc
     , lgListInside
@@ -3565,13 +5087,22 @@ module Html.Tailwind exposing
     , lgNegMy64
     , lgNegMy8
     , lgNegMyPx
+    , lgNegRotate1
+    , lgNegRotate12
     , lgNegRotate180
+    , lgNegRotate2
+    , lgNegRotate3
     , lgNegRotate45
+    , lgNegRotate6
     , lgNegRotate90
+    , lgNegSkewX1
     , lgNegSkewX12
+    , lgNegSkewX2
     , lgNegSkewX3
     , lgNegSkewX6
+    , lgNegSkewY1
     , lgNegSkewY12
+    , lgNegSkewY2
     , lgNegSkewY3
     , lgNegSkewY6
     , lgNegSpaceX1
@@ -3652,6 +5183,7 @@ module Html.Tailwind exposing
     , lgNegTranslateYPx
     , lgNoUnderline
     , lgNormalCase
+    , lgNormalNums
     , lgNotItalic
     , lgNotSrOnly
     , lgObjectBottom
@@ -3668,6 +5200,7 @@ module Html.Tailwind exposing
     , lgObjectRightTop
     , lgObjectScaleDown
     , lgObjectTop
+    , lgOldstyleNums
     , lgOpacity0
     , lgOpacity100
     , lgOpacity25
@@ -3688,6 +5221,7 @@ module Html.Tailwind exposing
     , lgOrderFirst
     , lgOrderLast
     , lgOrderNone
+    , lgOrdinal
     , lgOriginBottom
     , lgOriginBottomLeft
     , lgOriginBottomRight
@@ -3697,7 +5231,9 @@ module Html.Tailwind exposing
     , lgOriginTop
     , lgOriginTopLeft
     , lgOriginTopRight
+    , lgOutlineBlack
     , lgOutlineNone
+    , lgOutlineWhite
     , lgOverflowAuto
     , lgOverflowHidden
     , lgOverflowScroll
@@ -3710,6 +5246,15 @@ module Html.Tailwind exposing
     , lgOverflowYHidden
     , lgOverflowYScroll
     , lgOverflowYVisible
+    , lgOverscrollAuto
+    , lgOverscrollContain
+    , lgOverscrollNone
+    , lgOverscrollXAuto
+    , lgOverscrollXContain
+    , lgOverscrollXNone
+    , lgOverscrollYAuto
+    , lgOverscrollYContain
+    , lgOverscrollYNone
     , lgP0
     , lgP1
     , lgP10
@@ -3767,6 +5312,23 @@ module Html.Tailwind exposing
     , lgPl64
     , lgPl8
     , lgPlPx
+    , lgPlaceContentAround
+    , lgPlaceContentBetween
+    , lgPlaceContentCenter
+    , lgPlaceContentEnd
+    , lgPlaceContentEvenly
+    , lgPlaceContentStart
+    , lgPlaceContentStretch
+    , lgPlaceItemsAuto
+    , lgPlaceItemsCenter
+    , lgPlaceItemsEnd
+    , lgPlaceItemsStart
+    , lgPlaceItemsStretch
+    , lgPlaceSelfAuto
+    , lgPlaceSelfCenter
+    , lgPlaceSelfEnd
+    , lgPlaceSelfStart
+    , lgPlaceSelfStretch
     , lgPlaceholderBlack
     , lgPlaceholderBlue100
     , lgPlaceholderBlue200
@@ -3887,6 +5449,7 @@ module Html.Tailwind exposing
     , lgPr64
     , lgPr8
     , lgPrPx
+    , lgProportionalNums
     , lgPt0
     , lgPt1
     , lgPt10
@@ -3952,63 +5515,95 @@ module Html.Tailwind exposing
     , lgRight0
     , lgRightAuto
     , lgRotate0
+    , lgRotate1
+    , lgRotate12
     , lgRotate180
+    , lgRotate2
+    , lgRotate3
     , lgRotate45
+    , lgRotate6
     , lgRotate90
     , lgRounded
+    , lgRounded2xl
+    , lgRounded3xl
     , lgRoundedB
+    , lgRoundedB2xl
+    , lgRoundedB3xl
     , lgRoundedBFull
     , lgRoundedBLg
     , lgRoundedBMd
     , lgRoundedBNone
     , lgRoundedBSm
+    , lgRoundedBXl
     , lgRoundedBl
+    , lgRoundedBl2xl
+    , lgRoundedBl3xl
     , lgRoundedBlFull
     , lgRoundedBlLg
     , lgRoundedBlMd
     , lgRoundedBlNone
     , lgRoundedBlSm
+    , lgRoundedBlXl
     , lgRoundedBr
+    , lgRoundedBr2xl
+    , lgRoundedBr3xl
     , lgRoundedBrFull
     , lgRoundedBrLg
     , lgRoundedBrMd
     , lgRoundedBrNone
     , lgRoundedBrSm
+    , lgRoundedBrXl
     , lgRoundedFull
     , lgRoundedL
+    , lgRoundedL2xl
+    , lgRoundedL3xl
     , lgRoundedLFull
     , lgRoundedLLg
     , lgRoundedLMd
     , lgRoundedLNone
     , lgRoundedLSm
+    , lgRoundedLXl
     , lgRoundedLg
     , lgRoundedMd
     , lgRoundedNone
     , lgRoundedR
+    , lgRoundedR2xl
+    , lgRoundedR3xl
     , lgRoundedRFull
     , lgRoundedRLg
     , lgRoundedRMd
     , lgRoundedRNone
     , lgRoundedRSm
+    , lgRoundedRXl
     , lgRoundedSm
     , lgRoundedT
+    , lgRoundedT2xl
+    , lgRoundedT3xl
     , lgRoundedTFull
     , lgRoundedTLg
     , lgRoundedTMd
     , lgRoundedTNone
     , lgRoundedTSm
+    , lgRoundedTXl
     , lgRoundedTl
+    , lgRoundedTl2xl
+    , lgRoundedTl3xl
     , lgRoundedTlFull
     , lgRoundedTlLg
     , lgRoundedTlMd
     , lgRoundedTlNone
     , lgRoundedTlSm
+    , lgRoundedTlXl
     , lgRoundedTr
+    , lgRoundedTr2xl
+    , lgRoundedTr3xl
     , lgRoundedTrFull
     , lgRoundedTrLg
     , lgRoundedTrMd
     , lgRoundedTrNone
     , lgRoundedTrSm
+    , lgRoundedTrXl
+    , lgRoundedXl
     , lgRowAuto
     , lgRowEnd1
     , lgRowEnd2
@@ -4018,31 +5613,13 @@ module Html.Tailwind exposing
     , lgRowEnd6
     , lgRowEnd7
     , lgRowEndAuto
-    , lgRowGap0
-    , lgRowGap1
-    , lgRowGap10
-    , lgRowGap12
-    , lgRowGap16
-    , lgRowGap2
-    , lgRowGap20
-    , lgRowGap24
-    , lgRowGap3
-    , lgRowGap32
-    , lgRowGap4
-    , lgRowGap40
-    , lgRowGap48
-    , lgRowGap5
-    , lgRowGap56
-    , lgRowGap6
-    , lgRowGap64
-    , lgRowGap8
-    , lgRowGapPx
     , lgRowSpan1
     , lgRowSpan2
     , lgRowSpan3
     , lgRowSpan4
     , lgRowSpan5
     , lgRowSpan6
+    , lgRowSpanFull
     , lgRowStart1
     , lgRowStart2
     , lgRowStart3
@@ -4103,13 +5680,18 @@ module Html.Tailwind exposing
     , lgShadowXl
     , lgShadowXs
     , lgSkewX0
+    , lgSkewX1
     , lgSkewX12
+    , lgSkewX2
     , lgSkewX3
     , lgSkewX6
     , lgSkewY0
+    , lgSkewY1
     , lgSkewY12
+    , lgSkewY2
     , lgSkewY3
     , lgSkewY6
+    , lgSlashedZero
     , lgSpaceX0
     , lgSpaceX1
     , lgSpaceX10
@@ -4151,6 +5733,7 @@ module Html.Tailwind exposing
     , lgSpaceYPx
     , lgSpaceYReverse
     , lgSrOnly
+    , lgStackedFractions
     , lgStatic
     , lgSticky
     , lgStroke0
@@ -4169,6 +5752,7 @@ module Html.Tailwind exposing
     , lgTableHeaderGroup
     , lgTableRow
     , lgTableRowGroup
+    , lgTabularNums
     , lgText2xl
     , lgText3xl
     , lgText4xl
@@ -4282,6 +5866,100 @@ module Html.Tailwind exposing
     , lgTextYellow700
     , lgTextYellow800
     , lgTextYellow900
+    , lgToBlack
+    , lgToBlue100
+    , lgToBlue200
+    , lgToBlue300
+    , lgToBlue400
+    , lgToBlue500
+    , lgToBlue600
+    , lgToBlue700
+    , lgToBlue800
+    , lgToBlue900
+    , lgToCurrent
+    , lgToGray100
+    , lgToGray200
+    , lgToGray300
+    , lgToGray400
+    , lgToGray500
+    , lgToGray600
+    , lgToGray700
+    , lgToGray800
+    , lgToGray900
+    , lgToGreen100
+    , lgToGreen200
+    , lgToGreen300
+    , lgToGreen400
+    , lgToGreen500
+    , lgToGreen600
+    , lgToGreen700
+    , lgToGreen800
+    , lgToGreen900
+    , lgToIndigo100
+    , lgToIndigo200
+    , lgToIndigo300
+    , lgToIndigo400
+    , lgToIndigo500
+    , lgToIndigo600
+    , lgToIndigo700
+    , lgToIndigo800
+    , lgToIndigo900
+    , lgToOrange100
+    , lgToOrange200
+    , lgToOrange300
+    , lgToOrange400
+    , lgToOrange500
+    , lgToOrange600
+    , lgToOrange700
+    , lgToOrange800
+    , lgToOrange900
+    , lgToPink100
+    , lgToPink200
+    , lgToPink300
+    , lgToPink400
+    , lgToPink500
+    , lgToPink600
+    , lgToPink700
+    , lgToPink800
+    , lgToPink900
+    , lgToPurple100
+    , lgToPurple200
+    , lgToPurple300
+    , lgToPurple400
+    , lgToPurple500
+    , lgToPurple600
+    , lgToPurple700
+    , lgToPurple800
+    , lgToPurple900
+    , lgToRed100
+    , lgToRed200
+    , lgToRed300
+    , lgToRed400
+    , lgToRed500
+    , lgToRed600
+    , lgToRed700
+    , lgToRed800
+    , lgToRed900
+    , lgToTeal100
+    , lgToTeal200
+    , lgToTeal300
+    , lgToTeal400
+    , lgToTeal500
+    , lgToTeal600
+    , lgToTeal700
+    , lgToTeal800
+    , lgToTeal900
+    , lgToTransparent
+    , lgToWhite
+    , lgToYellow100
+    , lgToYellow200
+    , lgToYellow300
+    , lgToYellow400
+    , lgToYellow500
+    , lgToYellow600
+    , lgToYellow700
+    , lgToYellow800
+    , lgToYellow900
     , lgTop0
     , lgTopAuto
     , lgTrackingNormal
@@ -4344,6 +6022,100 @@ module Html.Tailwind exposing
     , lgTruncate
     , lgUnderline
     , lgUppercase
+    , lgViaBlack
+    , lgViaBlue100
+    , lgViaBlue200
+    , lgViaBlue300
+    , lgViaBlue400
+    , lgViaBlue500
+    , lgViaBlue600
+    , lgViaBlue700
+    , lgViaBlue800
+    , lgViaBlue900
+    , lgViaCurrent
+    , lgViaGray100
+    , lgViaGray200
+    , lgViaGray300
+    , lgViaGray400
+    , lgViaGray500
+    , lgViaGray600
+    , lgViaGray700
+    , lgViaGray800
+    , lgViaGray900
+    , lgViaGreen100
+    , lgViaGreen200
+    , lgViaGreen300
+    , lgViaGreen400
+    , lgViaGreen500
+    , lgViaGreen600
+    , lgViaGreen700
+    , lgViaGreen800
+    , lgViaGreen900
+    , lgViaIndigo100
+    , lgViaIndigo200
+    , lgViaIndigo300
+    , lgViaIndigo400
+    , lgViaIndigo500
+    , lgViaIndigo600
+    , lgViaIndigo700
+    , lgViaIndigo800
+    , lgViaIndigo900
+    , lgViaOrange100
+    , lgViaOrange200
+    , lgViaOrange300
+    , lgViaOrange400
+    , lgViaOrange500
+    , lgViaOrange600
+    , lgViaOrange700
+    , lgViaOrange800
+    , lgViaOrange900
+    , lgViaPink100
+    , lgViaPink200
+    , lgViaPink300
+    , lgViaPink400
+    , lgViaPink500
+    , lgViaPink600
+    , lgViaPink700
+    , lgViaPink800
+    , lgViaPink900
+    , lgViaPurple100
+    , lgViaPurple200
+    , lgViaPurple300
+    , lgViaPurple400
+    , lgViaPurple500
+    , lgViaPurple600
+    , lgViaPurple700
+    , lgViaPurple800
+    , lgViaPurple900
+    , lgViaRed100
+    , lgViaRed200
+    , lgViaRed300
+    , lgViaRed400
+    , lgViaRed500
+    , lgViaRed600
+    , lgViaRed700
+    , lgViaRed800
+    , lgViaRed900
+    , lgViaTeal100
+    , lgViaTeal200
+    , lgViaTeal300
+    , lgViaTeal400
+    , lgViaTeal500
+    , lgViaTeal600
+    , lgViaTeal700
+    , lgViaTeal800
+    , lgViaTeal900
+    , lgViaTransparent
+    , lgViaWhite
+    , lgViaYellow100
+    , lgViaYellow200
+    , lgViaYellow300
+    , lgViaYellow400
+    , lgViaYellow500
+    , lgViaYellow600
+    , lgViaYellow700
+    , lgViaYellow800
+    , lgViaYellow900
     , lgVisible
     , lgW0
     , lgW1
@@ -4406,6 +6178,7 @@ module Html.Tailwind exposing
     , lgZ50
     , lgZAuto
     , lineThrough
+    , liningNums
     , listDecimal
     , listDisc
     , listInside
@@ -4477,8 +6250,21 @@ module Html.Tailwind exposing
     , mdAlignTextBottom
     , mdAlignTextTop
     , mdAlignTop
+    , mdAnimateBounce
+    , mdAnimateNone
+    , mdAnimatePing
+    , mdAnimatePulse
+    , mdAnimateSpin
     , mdAntialiased
     , mdAppearanceNone
+    , mdAutoColsAuto
+    , mdAutoColsFr
+    , mdAutoColsMax
+    , mdAutoColsMin
+    , mdAutoRowsAuto
+    , mdAutoRowsFr
+    , mdAutoRowsMax
+    , mdAutoRowsMin
     , mdBgAuto
     , mdBgBlack
     , mdBgBlue100
@@ -4492,10 +6278,22 @@ module Html.Tailwind exposing
     , mdBgBlue900
     , mdBgBottom
     , mdBgCenter
+    , mdBgClipBorder
+    , mdBgClipContent
+    , mdBgClipPadding
+    , mdBgClipText
     , mdBgContain
     , mdBgCover
     , mdBgCurrent
     , mdBgFixed
+    , mdBgGradientToB
+    , mdBgGradientToBl
+    , mdBgGradientToBr
+    , mdBgGradientToL
+    , mdBgGradientToR
+    , mdBgGradientToT
+    , mdBgGradientToTl
+    , mdBgGradientToTr
     , mdBgGray100
     , mdBgGray200
     , mdBgGray300
@@ -4528,6 +6326,7 @@ module Html.Tailwind exposing
     , mdBgLeftTop
     , mdBgLocal
     , mdBgNoRepeat
+    , mdBgNone
     , mdBgOpacity0
     , mdBgOpacity100
     , mdBgOpacity25
@@ -4759,25 +6558,6 @@ module Html.Tailwind exposing
     , mdColEnd8
     , mdColEnd9
     , mdColEndAuto
-    , mdColGap0
-    , mdColGap1
-    , mdColGap10
-    , mdColGap12
-    , mdColGap16
-    , mdColGap2
-    , mdColGap20
-    , mdColGap24
-    , mdColGap3
-    , mdColGap32
-    , mdColGap4
-    , mdColGap40
-    , mdColGap48
-    , mdColGap5
-    , mdColGap56
-    , mdColGap6
-    , mdColGap64
-    , mdColGap8
-    , mdColGapPx
     , mdColSpan1
     , mdColSpan10
     , mdColSpan11
@@ -4790,6 +6570,7 @@ module Html.Tailwind exposing
     , mdColSpan7
     , mdColSpan8
     , mdColSpan9
+    , mdColSpanFull
     , mdColStart1
     , mdColStart10
     , mdColStart11
@@ -4804,11 +6585,14 @@ module Html.Tailwind exposing
     , mdColStart8
     , mdColStart9
     , mdColStartAuto
+    , mdContainer
     , mdContentAround
     , mdContentBetween
     , mdContentCenter
     , mdContentEnd
+    , mdContentEvenly
     , mdContentStart
+    , mdContents
     , mdCursorAuto
     , mdCursorDefault
     , mdCursorMove
@@ -4824,6 +6608,7 @@ module Html.Tailwind exposing
     , mdDelay500
     , mdDelay700
     , mdDelay75
+    , mdDiagonalFractions
     , mdDivideBlack
     , mdDivideBlue100
     , mdDivideBlue200
@@ -4835,6 +6620,9 @@ module Html.Tailwind exposing
     , mdDivideBlue800
     , mdDivideBlue900
     , mdDivideCurrent
+    , mdDivideDashed
+    , mdDivideDotted
+    , mdDivideDouble
     , mdDivideGray100
     , mdDivideGray200
     , mdDivideGray300
@@ -4862,6 +6650,7 @@ module Html.Tailwind exposing
     , mdDivideIndigo700
     , mdDivideIndigo800
     , mdDivideIndigo900
+    , mdDivideNone
     , mdDivideOpacity0
     , mdDivideOpacity100
     , mdDivideOpacity25
@@ -4903,6 +6692,7 @@ module Html.Tailwind exposing
     , mdDivideRed700
     , mdDivideRed800
     , mdDivideRed900
+    , mdDivideSolid
     , mdDivideTeal100
     , mdDivideTeal200
     , mdDivideTeal300
@@ -5176,14 +6966,117 @@ module Html.Tailwind exposing
     , mdFocusFontNormal
     , mdFocusFontSemibold
     , mdFocusFontThin
+    , mdFocusFromBlack
+    , mdFocusFromBlue100
+    , mdFocusFromBlue200
+    , mdFocusFromBlue300
+    , mdFocusFromBlue400
+    , mdFocusFromBlue500
+    , mdFocusFromBlue600
+    , mdFocusFromBlue700
+    , mdFocusFromBlue800
+    , mdFocusFromBlue900
+    , mdFocusFromCurrent
+    , mdFocusFromGray100
+    , mdFocusFromGray200
+    , mdFocusFromGray300
+    , mdFocusFromGray400
+    , mdFocusFromGray500
+    , mdFocusFromGray600
+    , mdFocusFromGray700
+    , mdFocusFromGray800
+    , mdFocusFromGray900
+    , mdFocusFromGreen100
+    , mdFocusFromGreen200
+    , mdFocusFromGreen300
+    , mdFocusFromGreen400
+    , mdFocusFromGreen500
+    , mdFocusFromGreen600
+    , mdFocusFromGreen700
+    , mdFocusFromGreen800
+    , mdFocusFromGreen900
+    , mdFocusFromIndigo100
+    , mdFocusFromIndigo200
+    , mdFocusFromIndigo300
+    , mdFocusFromIndigo400
+    , mdFocusFromIndigo500
+    , mdFocusFromIndigo600
+    , mdFocusFromIndigo700
+    , mdFocusFromIndigo800
+    , mdFocusFromIndigo900
+    , mdFocusFromOrange100
+    , mdFocusFromOrange200
+    , mdFocusFromOrange300
+    , mdFocusFromOrange400
+    , mdFocusFromOrange500
+    , mdFocusFromOrange600
+    , mdFocusFromOrange700
+    , mdFocusFromOrange800
+    , mdFocusFromOrange900
+    , mdFocusFromPink100
+    , mdFocusFromPink200
+    , mdFocusFromPink300
+    , mdFocusFromPink400
+    , mdFocusFromPink500
+    , mdFocusFromPink600
+    , mdFocusFromPink700
+    , mdFocusFromPink800
+    , mdFocusFromPink900
+    , mdFocusFromPurple100
+    , mdFocusFromPurple200
+    , mdFocusFromPurple300
+    , mdFocusFromPurple400
+    , mdFocusFromPurple500
+    , mdFocusFromPurple600
+    , mdFocusFromPurple700
+    , mdFocusFromPurple800
+    , mdFocusFromPurple900
+    , mdFocusFromRed100
+    , mdFocusFromRed200
+    , mdFocusFromRed300
+    , mdFocusFromRed400
+    , mdFocusFromRed500
+    , mdFocusFromRed600
+    , mdFocusFromRed700
+    , mdFocusFromRed800
+    , mdFocusFromRed900
+    , mdFocusFromTeal100
+    , mdFocusFromTeal200
+    , mdFocusFromTeal300
+    , mdFocusFromTeal400
+    , mdFocusFromTeal500
+    , mdFocusFromTeal600
+    , mdFocusFromTeal700
+    , mdFocusFromTeal800
+    , mdFocusFromTeal900
+    , mdFocusFromTransparent
+    , mdFocusFromWhite
+    , mdFocusFromYellow100
+    , mdFocusFromYellow200
+    , mdFocusFromYellow300
+    , mdFocusFromYellow400
+    , mdFocusFromYellow500
+    , mdFocusFromYellow600
+    , mdFocusFromYellow700
+    , mdFocusFromYellow800
+    , mdFocusFromYellow900
     , mdFocusLineThrough
+    , mdFocusNegRotate1
+    , mdFocusNegRotate12
     , mdFocusNegRotate180
+    , mdFocusNegRotate2
+    , mdFocusNegRotate3
     , mdFocusNegRotate45
+    , mdFocusNegRotate6
     , mdFocusNegRotate90
+    , mdFocusNegSkewX1
     , mdFocusNegSkewX12
+    , mdFocusNegSkewX2
     , mdFocusNegSkewX3
     , mdFocusNegSkewX6
+    , mdFocusNegSkewY1
     , mdFocusNegSkewY12
+    , mdFocusNegSkewY2
     , mdFocusNegSkewY3
     , mdFocusNegSkewY6
     , mdFocusNegTranslateX1
@@ -5233,7 +7126,9 @@ module Html.Tailwind exposing
     , mdFocusOpacity25
     , mdFocusOpacity50
     , mdFocusOpacity75
+    , mdFocusOutlineBlack
     , mdFocusOutlineNone
+    , mdFocusOutlineWhite
     , mdFocusPlaceholderBlackFocus
     , mdFocusPlaceholderBlue100Focus
     , mdFocusPlaceholderBlue200Focus
@@ -5334,8 +7229,13 @@ module Html.Tailwind exposing
     , mdFocusPlaceholderYellow800Focus
     , mdFocusPlaceholderYellow900Focus
     , mdFocusRotate0
+    , mdFocusRotate1
+    , mdFocusRotate12
     , mdFocusRotate180
+    , mdFocusRotate2
+    , mdFocusRotate3
     , mdFocusRotate45
+    , mdFocusRotate6
     , mdFocusRotate90
     , mdFocusScale0
     , mdFocusScale100
@@ -5378,11 +7278,15 @@ module Html.Tailwind exposing
     , mdFocusShadowXl
     , mdFocusShadowXs
     , mdFocusSkewX0
+    , mdFocusSkewX1
     , mdFocusSkewX12
+    , mdFocusSkewX2
     , mdFocusSkewX3
     , mdFocusSkewX6
     , mdFocusSkewY0
+    , mdFocusSkewY1
     , mdFocusSkewY12
+    , mdFocusSkewY2
     , mdFocusSkewY3
     , mdFocusSkewY6
     , mdFocusSrOnly
@@ -5485,6 +7389,100 @@ module Html.Tailwind exposing
     , mdFocusTextYellow700
     , mdFocusTextYellow800
     , mdFocusTextYellow900
+    , mdFocusToBlack
+    , mdFocusToBlue100
+    , mdFocusToBlue200
+    , mdFocusToBlue300
+    , mdFocusToBlue400
+    , mdFocusToBlue500
+    , mdFocusToBlue600
+    , mdFocusToBlue700
+    , mdFocusToBlue800
+    , mdFocusToBlue900
+    , mdFocusToCurrent
+    , mdFocusToGray100
+    , mdFocusToGray200
+    , mdFocusToGray300
+    , mdFocusToGray400
+    , mdFocusToGray500
+    , mdFocusToGray600
+    , mdFocusToGray700
+    , mdFocusToGray800
+    , mdFocusToGray900
+    , mdFocusToGreen100
+    , mdFocusToGreen200
+    , mdFocusToGreen300
+    , mdFocusToGreen400
+    , mdFocusToGreen500
+    , mdFocusToGreen600
+    , mdFocusToGreen700
+    , mdFocusToGreen800
+    , mdFocusToGreen900
+    , mdFocusToIndigo100
+    , mdFocusToIndigo200
+    , mdFocusToIndigo300
+    , mdFocusToIndigo400
+    , mdFocusToIndigo500
+    , mdFocusToIndigo600
+    , mdFocusToIndigo700
+    , mdFocusToIndigo800
+    , mdFocusToIndigo900
+    , mdFocusToOrange100
+    , mdFocusToOrange200
+    , mdFocusToOrange300
+    , mdFocusToOrange400
+    , mdFocusToOrange500
+    , mdFocusToOrange600
+    , mdFocusToOrange700
+    , mdFocusToOrange800
+    , mdFocusToOrange900
+    , mdFocusToPink100
+    , mdFocusToPink200
+    , mdFocusToPink300
+    , mdFocusToPink400
+    , mdFocusToPink500
+    , mdFocusToPink600
+    , mdFocusToPink700
+    , mdFocusToPink800
+    , mdFocusToPink900
+    , mdFocusToPurple100
+    , mdFocusToPurple200
+    , mdFocusToPurple300
+    , mdFocusToPurple400
+    , mdFocusToPurple500
+    , mdFocusToPurple600
+    , mdFocusToPurple700
+    , mdFocusToPurple800
+    , mdFocusToPurple900
+    , mdFocusToRed100
+    , mdFocusToRed200
+    , mdFocusToRed300
+    , mdFocusToRed400
+    , mdFocusToRed500
+    , mdFocusToRed600
+    , mdFocusToRed700
+    , mdFocusToRed800
+    , mdFocusToRed900
+    , mdFocusToTeal100
+    , mdFocusToTeal200
+    , mdFocusToTeal300
+    , mdFocusToTeal400
+    , mdFocusToTeal500
+    , mdFocusToTeal600
+    , mdFocusToTeal700
+    , mdFocusToTeal800
+    , mdFocusToTeal900
+    , mdFocusToTransparent
+    , mdFocusToWhite
+    , mdFocusToYellow100
+    , mdFocusToYellow200
+    , mdFocusToYellow300
+    , mdFocusToYellow400
+    , mdFocusToYellow500
+    , mdFocusToYellow600
+    , mdFocusToYellow700
+    , mdFocusToYellow800
+    , mdFocusToYellow900
     , mdFocusTranslateX0
     , mdFocusTranslateX1
     , mdFocusTranslateX10
@@ -5528,6 +7526,100 @@ module Html.Tailwind exposing
     , mdFocusTranslateYFull
     , mdFocusTranslateYPx
     , mdFocusUnderline
+    , mdFocusViaBlack
+    , mdFocusViaBlue100
+    , mdFocusViaBlue200
+    , mdFocusViaBlue300
+    , mdFocusViaBlue400
+    , mdFocusViaBlue500
+    , mdFocusViaBlue600
+    , mdFocusViaBlue700
+    , mdFocusViaBlue800
+    , mdFocusViaBlue900
+    , mdFocusViaCurrent
+    , mdFocusViaGray100
+    , mdFocusViaGray200
+    , mdFocusViaGray300
+    , mdFocusViaGray400
+    , mdFocusViaGray500
+    , mdFocusViaGray600
+    , mdFocusViaGray700
+    , mdFocusViaGray800
+    , mdFocusViaGray900
+    , mdFocusViaGreen100
+    , mdFocusViaGreen200
+    , mdFocusViaGreen300
+    , mdFocusViaGreen400
+    , mdFocusViaGreen500
+    , mdFocusViaGreen600
+    , mdFocusViaGreen700
+    , mdFocusViaGreen800
+    , mdFocusViaGreen900
+    , mdFocusViaIndigo100
+    , mdFocusViaIndigo200
+    , mdFocusViaIndigo300
+    , mdFocusViaIndigo400
+    , mdFocusViaIndigo500
+    , mdFocusViaIndigo600
+    , mdFocusViaIndigo700
+    , mdFocusViaIndigo800
+    , mdFocusViaIndigo900
+    , mdFocusViaOrange100
+    , mdFocusViaOrange200
+    , mdFocusViaOrange300
+    , mdFocusViaOrange400
+    , mdFocusViaOrange500
+    , mdFocusViaOrange600
+    , mdFocusViaOrange700
+    , mdFocusViaOrange800
+    , mdFocusViaOrange900
+    , mdFocusViaPink100
+    , mdFocusViaPink200
+    , mdFocusViaPink300
+    , mdFocusViaPink400
+    , mdFocusViaPink500
+    , mdFocusViaPink600
+    , mdFocusViaPink700
+    , mdFocusViaPink800
+    , mdFocusViaPink900
+    , mdFocusViaPurple100
+    , mdFocusViaPurple200
+    , mdFocusViaPurple300
+    , mdFocusViaPurple400
+    , mdFocusViaPurple500
+    , mdFocusViaPurple600
+    , mdFocusViaPurple700
+    , mdFocusViaPurple800
+    , mdFocusViaPurple900
+    , mdFocusViaRed100
+    , mdFocusViaRed200
+    , mdFocusViaRed300
+    , mdFocusViaRed400
+    , mdFocusViaRed500
+    , mdFocusViaRed600
+    , mdFocusViaRed700
+    , mdFocusViaRed800
+    , mdFocusViaRed900
+    , mdFocusViaTeal100
+    , mdFocusViaTeal200
+    , mdFocusViaTeal300
+    , mdFocusViaTeal400
+    , mdFocusViaTeal500
+    , mdFocusViaTeal600
+    , mdFocusViaTeal700
+    , mdFocusViaTeal800
+    , mdFocusViaTeal900
+    , mdFocusViaTransparent
+    , mdFocusViaWhite
+    , mdFocusViaYellow100
+    , mdFocusViaYellow200
+    , mdFocusViaYellow300
+    , mdFocusViaYellow400
+    , mdFocusViaYellow500
+    , mdFocusViaYellow600
+    , mdFocusViaYellow700
+    , mdFocusViaYellow800
+    , mdFocusViaYellow900
     , mdFontBlack
     , mdFontBold
     , mdFontExtrabold
@@ -5541,6 +7633,100 @@ module Html.Tailwind exposing
     , mdFontSerif
     , mdFontThin
     , mdFontTitle
+    , mdFromBlack
+    , mdFromBlue100
+    , mdFromBlue200
+    , mdFromBlue300
+    , mdFromBlue400
+    , mdFromBlue500
+    , mdFromBlue600
+    , mdFromBlue700
+    , mdFromBlue800
+    , mdFromBlue900
+    , mdFromCurrent
+    , mdFromGray100
+    , mdFromGray200
+    , mdFromGray300
+    , mdFromGray400
+    , mdFromGray500
+    , mdFromGray600
+    , mdFromGray700
+    , mdFromGray800
+    , mdFromGray900
+    , mdFromGreen100
+    , mdFromGreen200
+    , mdFromGreen300
+    , mdFromGreen400
+    , mdFromGreen500
+    , mdFromGreen600
+    , mdFromGreen700
+    , mdFromGreen800
+    , mdFromGreen900
+    , mdFromIndigo100
+    , mdFromIndigo200
+    , mdFromIndigo300
+    , mdFromIndigo400
+    , mdFromIndigo500
+    , mdFromIndigo600
+    , mdFromIndigo700
+    , mdFromIndigo800
+    , mdFromIndigo900
+    , mdFromOrange100
+    , mdFromOrange200
+    , mdFromOrange300
+    , mdFromOrange400
+    , mdFromOrange500
+    , mdFromOrange600
+    , mdFromOrange700
+    , mdFromOrange800
+    , mdFromOrange900
+    , mdFromPink100
+    , mdFromPink200
+    , mdFromPink300
+    , mdFromPink400
+    , mdFromPink500
+    , mdFromPink600
+    , mdFromPink700
+    , mdFromPink800
+    , mdFromPink900
+    , mdFromPurple100
+    , mdFromPurple200
+    , mdFromPurple300
+    , mdFromPurple400
+    , mdFromPurple500
+    , mdFromPurple600
+    , mdFromPurple700
+    , mdFromPurple800
+    , mdFromPurple900
+    , mdFromRed100
+    , mdFromRed200
+    , mdFromRed300
+    , mdFromRed400
+    , mdFromRed500
+    , mdFromRed600
+    , mdFromRed700
+    , mdFromRed800
+    , mdFromRed900
+    , mdFromTeal100
+    , mdFromTeal200
+    , mdFromTeal300
+    , mdFromTeal400
+    , mdFromTeal500
+    , mdFromTeal600
+    , mdFromTeal700
+    , mdFromTeal800
+    , mdFromTeal900
+    , mdFromTransparent
+    , mdFromWhite
+    , mdFromYellow100
+    , mdFromYellow200
+    , mdFromYellow300
+    , mdFromYellow400
+    , mdFromYellow500
+    , mdFromYellow600
+    , mdFromYellow700
+    , mdFromYellow800
+    , mdFromYellow900
     , mdGap0
     , mdGap1
     , mdGap10
@@ -5560,6 +7746,44 @@ module Html.Tailwind exposing
     , mdGap64
     , mdGap8
     , mdGapPx
+    , mdGapX0
+    , mdGapX1
+    , mdGapX10
+    , mdGapX12
+    , mdGapX16
+    , mdGapX2
+    , mdGapX20
+    , mdGapX24
+    , mdGapX3
+    , mdGapX32
+    , mdGapX4
+    , mdGapX40
+    , mdGapX48
+    , mdGapX5
+    , mdGapX56
+    , mdGapX6
+    , mdGapX64
+    , mdGapX8
+    , mdGapXPx
+    , mdGapY0
+    , mdGapY1
+    , mdGapY10
+    , mdGapY12
+    , mdGapY16
+    , mdGapY2
+    , mdGapY20
+    , mdGapY24
+    , mdGapY3
+    , mdGapY32
+    , mdGapY4
+    , mdGapY40
+    , mdGapY48
+    , mdGapY5
+    , mdGapY56
+    , mdGapY6
+    , mdGapY64
+    , mdGapY8
+    , mdGapYPx
     , mdGrid
     , mdGridCols1
     , mdGridCols10
@@ -5815,14 +8039,117 @@ module Html.Tailwind exposing
     , mdHoverFontNormal
     , mdHoverFontSemibold
     , mdHoverFontThin
+    , mdHoverFromBlack
+    , mdHoverFromBlue100
+    , mdHoverFromBlue200
+    , mdHoverFromBlue300
+    , mdHoverFromBlue400
+    , mdHoverFromBlue500
+    , mdHoverFromBlue600
+    , mdHoverFromBlue700
+    , mdHoverFromBlue800
+    , mdHoverFromBlue900
+    , mdHoverFromCurrent
+    , mdHoverFromGray100
+    , mdHoverFromGray200
+    , mdHoverFromGray300
+    , mdHoverFromGray400
+    , mdHoverFromGray500
+    , mdHoverFromGray600
+    , mdHoverFromGray700
+    , mdHoverFromGray800
+    , mdHoverFromGray900
+    , mdHoverFromGreen100
+    , mdHoverFromGreen200
+    , mdHoverFromGreen300
+    , mdHoverFromGreen400
+    , mdHoverFromGreen500
+    , mdHoverFromGreen600
+    , mdHoverFromGreen700
+    , mdHoverFromGreen800
+    , mdHoverFromGreen900
+    , mdHoverFromIndigo100
+    , mdHoverFromIndigo200
+    , mdHoverFromIndigo300
+    , mdHoverFromIndigo400
+    , mdHoverFromIndigo500
+    , mdHoverFromIndigo600
+    , mdHoverFromIndigo700
+    , mdHoverFromIndigo800
+    , mdHoverFromIndigo900
+    , mdHoverFromOrange100
+    , mdHoverFromOrange200
+    , mdHoverFromOrange300
+    , mdHoverFromOrange400
+    , mdHoverFromOrange500
+    , mdHoverFromOrange600
+    , mdHoverFromOrange700
+    , mdHoverFromOrange800
+    , mdHoverFromOrange900
+    , mdHoverFromPink100
+    , mdHoverFromPink200
+    , mdHoverFromPink300
+    , mdHoverFromPink400
+    , mdHoverFromPink500
+    , mdHoverFromPink600
+    , mdHoverFromPink700
+    , mdHoverFromPink800
+    , mdHoverFromPink900
+    , mdHoverFromPurple100
+    , mdHoverFromPurple200
+    , mdHoverFromPurple300
+    , mdHoverFromPurple400
+    , mdHoverFromPurple500
+    , mdHoverFromPurple600
+    , mdHoverFromPurple700
+    , mdHoverFromPurple800
+    , mdHoverFromPurple900
+    , mdHoverFromRed100
+    , mdHoverFromRed200
+    , mdHoverFromRed300
+    , mdHoverFromRed400
+    , mdHoverFromRed500
+    , mdHoverFromRed600
+    , mdHoverFromRed700
+    , mdHoverFromRed800
+    , mdHoverFromRed900
+    , mdHoverFromTeal100
+    , mdHoverFromTeal200
+    , mdHoverFromTeal300
+    , mdHoverFromTeal400
+    , mdHoverFromTeal500
+    , mdHoverFromTeal600
+    , mdHoverFromTeal700
+    , mdHoverFromTeal800
+    , mdHoverFromTeal900
+    , mdHoverFromTransparent
+    , mdHoverFromWhite
+    , mdHoverFromYellow100
+    , mdHoverFromYellow200
+    , mdHoverFromYellow300
+    , mdHoverFromYellow400
+    , mdHoverFromYellow500
+    , mdHoverFromYellow600
+    , mdHoverFromYellow700
+    , mdHoverFromYellow800
+    , mdHoverFromYellow900
     , mdHoverLineThrough
+    , mdHoverNegRotate1
+    , mdHoverNegRotate12
     , mdHoverNegRotate180
+    , mdHoverNegRotate2
+    , mdHoverNegRotate3
     , mdHoverNegRotate45
+    , mdHoverNegRotate6
     , mdHoverNegRotate90
+    , mdHoverNegSkewX1
     , mdHoverNegSkewX12
+    , mdHoverNegSkewX2
     , mdHoverNegSkewX3
     , mdHoverNegSkewX6
+    , mdHoverNegSkewY1
     , mdHoverNegSkewY12
+    , mdHoverNegSkewY2
     , mdHoverNegSkewY3
     , mdHoverNegSkewY6
     , mdHoverNegTranslateX1
@@ -5872,8 +8199,13 @@ module Html.Tailwind exposing
     , mdHoverOpacity50
     , mdHoverOpacity75
     , mdHoverRotate0
+    , mdHoverRotate1
+    , mdHoverRotate12
     , mdHoverRotate180
+    , mdHoverRotate2
+    , mdHoverRotate3
     , mdHoverRotate45
+    , mdHoverRotate6
     , mdHoverRotate90
     , mdHoverScale0
     , mdHoverScale100
@@ -5916,11 +8248,15 @@ module Html.Tailwind exposing
     , mdHoverShadowXl
     , mdHoverShadowXs
     , mdHoverSkewX0
+    , mdHoverSkewX1
     , mdHoverSkewX12
+    , mdHoverSkewX2
     , mdHoverSkewX3
     , mdHoverSkewX6
     , mdHoverSkewY0
+    , mdHoverSkewY1
     , mdHoverSkewY12
+    , mdHoverSkewY2
     , mdHoverSkewY3
     , mdHoverSkewY6
     , mdHoverTextBlack
@@ -6022,6 +8358,100 @@ module Html.Tailwind exposing
     , mdHoverTextYellow700
     , mdHoverTextYellow800
     , mdHoverTextYellow900
+    , mdHoverToBlack
+    , mdHoverToBlue100
+    , mdHoverToBlue200
+    , mdHoverToBlue300
+    , mdHoverToBlue400
+    , mdHoverToBlue500
+    , mdHoverToBlue600
+    , mdHoverToBlue700
+    , mdHoverToBlue800
+    , mdHoverToBlue900
+    , mdHoverToCurrent
+    , mdHoverToGray100
+    , mdHoverToGray200
+    , mdHoverToGray300
+    , mdHoverToGray400
+    , mdHoverToGray500
+    , mdHoverToGray600
+    , mdHoverToGray700
+    , mdHoverToGray800
+    , mdHoverToGray900
+    , mdHoverToGreen100
+    , mdHoverToGreen200
+    , mdHoverToGreen300
+    , mdHoverToGreen400
+    , mdHoverToGreen500
+    , mdHoverToGreen600
+    , mdHoverToGreen700
+    , mdHoverToGreen800
+    , mdHoverToGreen900
+    , mdHoverToIndigo100
+    , mdHoverToIndigo200
+    , mdHoverToIndigo300
+    , mdHoverToIndigo400
+    , mdHoverToIndigo500
+    , mdHoverToIndigo600
+    , mdHoverToIndigo700
+    , mdHoverToIndigo800
+    , mdHoverToIndigo900
+    , mdHoverToOrange100
+    , mdHoverToOrange200
+    , mdHoverToOrange300
+    , mdHoverToOrange400
+    , mdHoverToOrange500
+    , mdHoverToOrange600
+    , mdHoverToOrange700
+    , mdHoverToOrange800
+    , mdHoverToOrange900
+    , mdHoverToPink100
+    , mdHoverToPink200
+    , mdHoverToPink300
+    , mdHoverToPink400
+    , mdHoverToPink500
+    , mdHoverToPink600
+    , mdHoverToPink700
+    , mdHoverToPink800
+    , mdHoverToPink900
+    , mdHoverToPurple100
+    , mdHoverToPurple200
+    , mdHoverToPurple300
+    , mdHoverToPurple400
+    , mdHoverToPurple500
+    , mdHoverToPurple600
+    , mdHoverToPurple700
+    , mdHoverToPurple800
+    , mdHoverToPurple900
+    , mdHoverToRed100
+    , mdHoverToRed200
+    , mdHoverToRed300
+    , mdHoverToRed400
+    , mdHoverToRed500
+    , mdHoverToRed600
+    , mdHoverToRed700
+    , mdHoverToRed800
+    , mdHoverToRed900
+    , mdHoverToTeal100
+    , mdHoverToTeal200
+    , mdHoverToTeal300
+    , mdHoverToTeal400
+    , mdHoverToTeal500
+    , mdHoverToTeal600
+    , mdHoverToTeal700
+    , mdHoverToTeal800
+    , mdHoverToTeal900
+    , mdHoverToTransparent
+    , mdHoverToWhite
+    , mdHoverToYellow100
+    , mdHoverToYellow200
+    , mdHoverToYellow300
+    , mdHoverToYellow400
+    , mdHoverToYellow500
+    , mdHoverToYellow600
+    , mdHoverToYellow700
+    , mdHoverToYellow800
+    , mdHoverToYellow900
     , mdHoverTranslateX0
     , mdHoverTranslateX1
     , mdHoverTranslateX10
@@ -6065,6 +8495,100 @@ module Html.Tailwind exposing
     , mdHoverTranslateYFull
     , mdHoverTranslateYPx
     , mdHoverUnderline
+    , mdHoverViaBlack
+    , mdHoverViaBlue100
+    , mdHoverViaBlue200
+    , mdHoverViaBlue300
+    , mdHoverViaBlue400
+    , mdHoverViaBlue500
+    , mdHoverViaBlue600
+    , mdHoverViaBlue700
+    , mdHoverViaBlue800
+    , mdHoverViaBlue900
+    , mdHoverViaCurrent
+    , mdHoverViaGray100
+    , mdHoverViaGray200
+    , mdHoverViaGray300
+    , mdHoverViaGray400
+    , mdHoverViaGray500
+    , mdHoverViaGray600
+    , mdHoverViaGray700
+    , mdHoverViaGray800
+    , mdHoverViaGray900
+    , mdHoverViaGreen100
+    , mdHoverViaGreen200
+    , mdHoverViaGreen300
+    , mdHoverViaGreen400
+    , mdHoverViaGreen500
+    , mdHoverViaGreen600
+    , mdHoverViaGreen700
+    , mdHoverViaGreen800
+    , mdHoverViaGreen900
+    , mdHoverViaIndigo100
+    , mdHoverViaIndigo200
+    , mdHoverViaIndigo300
+    , mdHoverViaIndigo400
+    , mdHoverViaIndigo500
+    , mdHoverViaIndigo600
+    , mdHoverViaIndigo700
+    , mdHoverViaIndigo800
+    , mdHoverViaIndigo900
+    , mdHoverViaOrange100
+    , mdHoverViaOrange200
+    , mdHoverViaOrange300
+    , mdHoverViaOrange400
+    , mdHoverViaOrange500
+    , mdHoverViaOrange600
+    , mdHoverViaOrange700
+    , mdHoverViaOrange800
+    , mdHoverViaOrange900
+    , mdHoverViaPink100
+    , mdHoverViaPink200
+    , mdHoverViaPink300
+    , mdHoverViaPink400
+    , mdHoverViaPink500
+    , mdHoverViaPink600
+    , mdHoverViaPink700
+    , mdHoverViaPink800
+    , mdHoverViaPink900
+    , mdHoverViaPurple100
+    , mdHoverViaPurple200
+    , mdHoverViaPurple300
+    , mdHoverViaPurple400
+    , mdHoverViaPurple500
+    , mdHoverViaPurple600
+    , mdHoverViaPurple700
+    , mdHoverViaPurple800
+    , mdHoverViaPurple900
+    , mdHoverViaRed100
+    , mdHoverViaRed200
+    , mdHoverViaRed300
+    , mdHoverViaRed400
+    , mdHoverViaRed500
+    , mdHoverViaRed600
+    , mdHoverViaRed700
+    , mdHoverViaRed800
+    , mdHoverViaRed900
+    , mdHoverViaTeal100
+    , mdHoverViaTeal200
+    , mdHoverViaTeal300
+    , mdHoverViaTeal400
+    , mdHoverViaTeal500
+    , mdHoverViaTeal600
+    , mdHoverViaTeal700
+    , mdHoverViaTeal800
+    , mdHoverViaTeal900
+    , mdHoverViaTransparent
+    , mdHoverViaWhite
+    , mdHoverViaYellow100
+    , mdHoverViaYellow200
+    , mdHoverViaYellow300
+    , mdHoverViaYellow400
+    , mdHoverViaYellow500
+    , mdHoverViaYellow600
+    , mdHoverViaYellow700
+    , mdHoverViaYellow800
+    , mdHoverViaYellow900
     , mdInline
     , mdInlineBlock
     , mdInlineFlex
@@ -6087,6 +8611,16 @@ module Html.Tailwind exposing
     , mdJustifyCenter
     , mdJustifyEnd
     , mdJustifyEvenly
+    , mdJustifyItemsAuto
+    , mdJustifyItemsCenter
+    , mdJustifyItemsEnd
+    , mdJustifyItemsStart
+    , mdJustifyItemsStretch
+    , mdJustifySelfAuto
+    , mdJustifySelfCenter
+    , mdJustifySelfEnd
+    , mdJustifySelfStart
+    , mdJustifySelfStretch
     , mdJustifyStart
     , mdLeading10
     , mdLeading3
@@ -6105,6 +8639,7 @@ module Html.Tailwind exposing
     , mdLeft0
     , mdLeftAuto
     , mdLineThrough
+    , mdLiningNums
     , mdListDecimal
     , mdListDisc
     , mdListInside
@@ -6400,13 +8935,22 @@ module Html.Tailwind exposing
     , mdNegMy64
     , mdNegMy8
     , mdNegMyPx
+    , mdNegRotate1
+    , mdNegRotate12
     , mdNegRotate180
+    , mdNegRotate2
+    , mdNegRotate3
     , mdNegRotate45
+    , mdNegRotate6
     , mdNegRotate90
+    , mdNegSkewX1
     , mdNegSkewX12
+    , mdNegSkewX2
     , mdNegSkewX3
     , mdNegSkewX6
+    , mdNegSkewY1
     , mdNegSkewY12
+    , mdNegSkewY2
     , mdNegSkewY3
     , mdNegSkewY6
     , mdNegSpaceX1
@@ -6487,6 +9031,7 @@ module Html.Tailwind exposing
     , mdNegTranslateYPx
     , mdNoUnderline
     , mdNormalCase
+    , mdNormalNums
     , mdNotItalic
     , mdNotSrOnly
     , mdObjectBottom
@@ -6503,6 +9048,7 @@ module Html.Tailwind exposing
     , mdObjectRightTop
     , mdObjectScaleDown
     , mdObjectTop
+    , mdOldstyleNums
     , mdOpacity0
     , mdOpacity100
     , mdOpacity25
@@ -6523,6 +9069,7 @@ module Html.Tailwind exposing
     , mdOrderFirst
     , mdOrderLast
     , mdOrderNone
+    , mdOrdinal
     , mdOriginBottom
     , mdOriginBottomLeft
     , mdOriginBottomRight
@@ -6532,7 +9079,9 @@ module Html.Tailwind exposing
     , mdOriginTop
     , mdOriginTopLeft
     , mdOriginTopRight
+    , mdOutlineBlack
     , mdOutlineNone
+    , mdOutlineWhite
     , mdOverflowAuto
     , mdOverflowHidden
     , mdOverflowScroll
@@ -6545,6 +9094,15 @@ module Html.Tailwind exposing
     , mdOverflowYHidden
     , mdOverflowYScroll
     , mdOverflowYVisible
+    , mdOverscrollAuto
+    , mdOverscrollContain
+    , mdOverscrollNone
+    , mdOverscrollXAuto
+    , mdOverscrollXContain
+    , mdOverscrollXNone
+    , mdOverscrollYAuto
+    , mdOverscrollYContain
+    , mdOverscrollYNone
     , mdP0
     , mdP1
     , mdP10
@@ -6602,6 +9160,23 @@ module Html.Tailwind exposing
     , mdPl64
     , mdPl8
     , mdPlPx
+    , mdPlaceContentAround
+    , mdPlaceContentBetween
+    , mdPlaceContentCenter
+    , mdPlaceContentEnd
+    , mdPlaceContentEvenly
+    , mdPlaceContentStart
+    , mdPlaceContentStretch
+    , mdPlaceItemsAuto
+    , mdPlaceItemsCenter
+    , mdPlaceItemsEnd
+    , mdPlaceItemsStart
+    , mdPlaceItemsStretch
+    , mdPlaceSelfAuto
+    , mdPlaceSelfCenter
+    , mdPlaceSelfEnd
+    , mdPlaceSelfStart
+    , mdPlaceSelfStretch
     , mdPlaceholderBlack
     , mdPlaceholderBlue100
     , mdPlaceholderBlue200
@@ -6722,6 +9297,7 @@ module Html.Tailwind exposing
     , mdPr64
     , mdPr8
     , mdPrPx
+    , mdProportionalNums
     , mdPt0
     , mdPt1
     , mdPt10
@@ -6787,63 +9363,95 @@ module Html.Tailwind exposing
     , mdRight0
     , mdRightAuto
     , mdRotate0
+    , mdRotate1
+    , mdRotate12
     , mdRotate180
+    , mdRotate2
+    , mdRotate3
     , mdRotate45
+    , mdRotate6
     , mdRotate90
     , mdRounded
+    , mdRounded2xl
+    , mdRounded3xl
     , mdRoundedB
+    , mdRoundedB2xl
+    , mdRoundedB3xl
     , mdRoundedBFull
     , mdRoundedBLg
     , mdRoundedBMd
     , mdRoundedBNone
     , mdRoundedBSm
+    , mdRoundedBXl
     , mdRoundedBl
+    , mdRoundedBl2xl
+    , mdRoundedBl3xl
     , mdRoundedBlFull
     , mdRoundedBlLg
     , mdRoundedBlMd
     , mdRoundedBlNone
     , mdRoundedBlSm
+    , mdRoundedBlXl
     , mdRoundedBr
+    , mdRoundedBr2xl
+    , mdRoundedBr3xl
     , mdRoundedBrFull
     , mdRoundedBrLg
     , mdRoundedBrMd
     , mdRoundedBrNone
     , mdRoundedBrSm
+    , mdRoundedBrXl
     , mdRoundedFull
     , mdRoundedL
+    , mdRoundedL2xl
+    , mdRoundedL3xl
     , mdRoundedLFull
     , mdRoundedLLg
     , mdRoundedLMd
     , mdRoundedLNone
     , mdRoundedLSm
+    , mdRoundedLXl
     , mdRoundedLg
     , mdRoundedMd
     , mdRoundedNone
     , mdRoundedR
+    , mdRoundedR2xl
+    , mdRoundedR3xl
     , mdRoundedRFull
     , mdRoundedRLg
     , mdRoundedRMd
     , mdRoundedRNone
     , mdRoundedRSm
+    , mdRoundedRXl
     , mdRoundedSm
     , mdRoundedT
+    , mdRoundedT2xl
+    , mdRoundedT3xl
     , mdRoundedTFull
     , mdRoundedTLg
     , mdRoundedTMd
     , mdRoundedTNone
     , mdRoundedTSm
+    , mdRoundedTXl
     , mdRoundedTl
+    , mdRoundedTl2xl
+    , mdRoundedTl3xl
     , mdRoundedTlFull
     , mdRoundedTlLg
     , mdRoundedTlMd
     , mdRoundedTlNone
     , mdRoundedTlSm
+    , mdRoundedTlXl
     , mdRoundedTr
+    , mdRoundedTr2xl
+    , mdRoundedTr3xl
     , mdRoundedTrFull
     , mdRoundedTrLg
     , mdRoundedTrMd
     , mdRoundedTrNone
     , mdRoundedTrSm
+    , mdRoundedTrXl
+    , mdRoundedXl
     , mdRowAuto
     , mdRowEnd1
     , mdRowEnd2
@@ -6853,31 +9461,13 @@ module Html.Tailwind exposing
     , mdRowEnd6
     , mdRowEnd7
     , mdRowEndAuto
-    , mdRowGap0
-    , mdRowGap1
-    , mdRowGap10
-    , mdRowGap12
-    , mdRowGap16
-    , mdRowGap2
-    , mdRowGap20
-    , mdRowGap24
-    , mdRowGap3
-    , mdRowGap32
-    , mdRowGap4
-    , mdRowGap40
-    , mdRowGap48
-    , mdRowGap5
-    , mdRowGap56
-    , mdRowGap6
-    , mdRowGap64
-    , mdRowGap8
-    , mdRowGapPx
     , mdRowSpan1
     , mdRowSpan2
     , mdRowSpan3
     , mdRowSpan4
     , mdRowSpan5
     , mdRowSpan6
+    , mdRowSpanFull
     , mdRowStart1
     , mdRowStart2
     , mdRowStart3
@@ -6938,13 +9528,18 @@ module Html.Tailwind exposing
     , mdShadowXl
     , mdShadowXs
     , mdSkewX0
+    , mdSkewX1
     , mdSkewX12
+    , mdSkewX2
     , mdSkewX3
     , mdSkewX6
     , mdSkewY0
+    , mdSkewY1
     , mdSkewY12
+    , mdSkewY2
     , mdSkewY3
     , mdSkewY6
+    , mdSlashedZero
     , mdSpaceX0
     , mdSpaceX1
     , mdSpaceX10
@@ -6986,6 +9581,7 @@ module Html.Tailwind exposing
     , mdSpaceYPx
     , mdSpaceYReverse
     , mdSrOnly
+    , mdStackedFractions
     , mdStatic
     , mdSticky
     , mdStroke0
@@ -7004,6 +9600,7 @@ module Html.Tailwind exposing
     , mdTableHeaderGroup
     , mdTableRow
     , mdTableRowGroup
+    , mdTabularNums
     , mdText2xl
     , mdText3xl
     , mdText4xl
@@ -7117,6 +9714,100 @@ module Html.Tailwind exposing
     , mdTextYellow700
     , mdTextYellow800
     , mdTextYellow900
+    , mdToBlack
+    , mdToBlue100
+    , mdToBlue200
+    , mdToBlue300
+    , mdToBlue400
+    , mdToBlue500
+    , mdToBlue600
+    , mdToBlue700
+    , mdToBlue800
+    , mdToBlue900
+    , mdToCurrent
+    , mdToGray100
+    , mdToGray200
+    , mdToGray300
+    , mdToGray400
+    , mdToGray500
+    , mdToGray600
+    , mdToGray700
+    , mdToGray800
+    , mdToGray900
+    , mdToGreen100
+    , mdToGreen200
+    , mdToGreen300
+    , mdToGreen400
+    , mdToGreen500
+    , mdToGreen600
+    , mdToGreen700
+    , mdToGreen800
+    , mdToGreen900
+    , mdToIndigo100
+    , mdToIndigo200
+    , mdToIndigo300
+    , mdToIndigo400
+    , mdToIndigo500
+    , mdToIndigo600
+    , mdToIndigo700
+    , mdToIndigo800
+    , mdToIndigo900
+    , mdToOrange100
+    , mdToOrange200
+    , mdToOrange300
+    , mdToOrange400
+    , mdToOrange500
+    , mdToOrange600
+    , mdToOrange700
+    , mdToOrange800
+    , mdToOrange900
+    , mdToPink100
+    , mdToPink200
+    , mdToPink300
+    , mdToPink400
+    , mdToPink500
+    , mdToPink600
+    , mdToPink700
+    , mdToPink800
+    , mdToPink900
+    , mdToPurple100
+    , mdToPurple200
+    , mdToPurple300
+    , mdToPurple400
+    , mdToPurple500
+    , mdToPurple600
+    , mdToPurple700
+    , mdToPurple800
+    , mdToPurple900
+    , mdToRed100
+    , mdToRed200
+    , mdToRed300
+    , mdToRed400
+    , mdToRed500
+    , mdToRed600
+    , mdToRed700
+    , mdToRed800
+    , mdToRed900
+    , mdToTeal100
+    , mdToTeal200
+    , mdToTeal300
+    , mdToTeal400
+    , mdToTeal500
+    , mdToTeal600
+    , mdToTeal700
+    , mdToTeal800
+    , mdToTeal900
+    , mdToTransparent
+    , mdToWhite
+    , mdToYellow100
+    , mdToYellow200
+    , mdToYellow300
+    , mdToYellow400
+    , mdToYellow500
+    , mdToYellow600
+    , mdToYellow700
+    , mdToYellow800
+    , mdToYellow900
     , mdTop0
     , mdTopAuto
     , mdTrackingNormal
@@ -7179,6 +9870,100 @@ module Html.Tailwind exposing
     , mdTruncate
     , mdUnderline
     , mdUppercase
+    , mdViaBlack
+    , mdViaBlue100
+    , mdViaBlue200
+    , mdViaBlue300
+    , mdViaBlue400
+    , mdViaBlue500
+    , mdViaBlue600
+    , mdViaBlue700
+    , mdViaBlue800
+    , mdViaBlue900
+    , mdViaCurrent
+    , mdViaGray100
+    , mdViaGray200
+    , mdViaGray300
+    , mdViaGray400
+    , mdViaGray500
+    , mdViaGray600
+    , mdViaGray700
+    , mdViaGray800
+    , mdViaGray900
+    , mdViaGreen100
+    , mdViaGreen200
+    , mdViaGreen300
+    , mdViaGreen400
+    , mdViaGreen500
+    , mdViaGreen600
+    , mdViaGreen700
+    , mdViaGreen800
+    , mdViaGreen900
+    , mdViaIndigo100
+    , mdViaIndigo200
+    , mdViaIndigo300
+    , mdViaIndigo400
+    , mdViaIndigo500
+    , mdViaIndigo600
+    , mdViaIndigo700
+    , mdViaIndigo800
+    , mdViaIndigo900
+    , mdViaOrange100
+    , mdViaOrange200
+    , mdViaOrange300
+    , mdViaOrange400
+    , mdViaOrange500
+    , mdViaOrange600
+    , mdViaOrange700
+    , mdViaOrange800
+    , mdViaOrange900
+    , mdViaPink100
+    , mdViaPink200
+    , mdViaPink300
+    , mdViaPink400
+    , mdViaPink500
+    , mdViaPink600
+    , mdViaPink700
+    , mdViaPink800
+    , mdViaPink900
+    , mdViaPurple100
+    , mdViaPurple200
+    , mdViaPurple300
+    , mdViaPurple400
+    , mdViaPurple500
+    , mdViaPurple600
+    , mdViaPurple700
+    , mdViaPurple800
+    , mdViaPurple900
+    , mdViaRed100
+    , mdViaRed200
+    , mdViaRed300
+    , mdViaRed400
+    , mdViaRed500
+    , mdViaRed600
+    , mdViaRed700
+    , mdViaRed800
+    , mdViaRed900
+    , mdViaTeal100
+    , mdViaTeal200
+    , mdViaTeal300
+    , mdViaTeal400
+    , mdViaTeal500
+    , mdViaTeal600
+    , mdViaTeal700
+    , mdViaTeal800
+    , mdViaTeal900
+    , mdViaTransparent
+    , mdViaWhite
+    , mdViaYellow100
+    , mdViaYellow200
+    , mdViaYellow300
+    , mdViaYellow400
+    , mdViaYellow500
+    , mdViaYellow600
+    , mdViaYellow700
+    , mdViaYellow800
+    , mdViaYellow900
     , mdVisible
     , mdW0
     , mdW1
@@ -7471,13 +10256,22 @@ module Html.Tailwind exposing
     , negMy64
     , negMy8
     , negMyPx
+    , negRotate1
+    , negRotate12
     , negRotate180
+    , negRotate2
+    , negRotate3
     , negRotate45
+    , negRotate6
     , negRotate90
+    , negSkewX1
     , negSkewX12
+    , negSkewX2
     , negSkewX3
     , negSkewX6
+    , negSkewY1
     , negSkewY12
+    , negSkewY2
     , negSkewY3
     , negSkewY6
     , negSpaceX1
@@ -7558,6 +10352,7 @@ module Html.Tailwind exposing
     , negTranslateYPx
     , noUnderline
     , normalCase
+    , normalNums
     , notItalic
     , notSrOnly
     , objectBottom
@@ -7574,6 +10369,7 @@ module Html.Tailwind exposing
     , objectRightTop
     , objectScaleDown
     , objectTop
+    , oldstyleNums
     , opacity0
     , opacity100
     , opacity25
@@ -7594,6 +10390,7 @@ module Html.Tailwind exposing
     , orderFirst
     , orderLast
     , orderNone
+    , ordinal
     , originBottom
     , originBottomLeft
     , originBottomRight
@@ -7603,7 +10400,9 @@ module Html.Tailwind exposing
     , originTop
     , originTopLeft
     , originTopRight
+    , outlineBlack
     , outlineNone
+    , outlineWhite
     , overflowAuto
     , overflowHidden
     , overflowScroll
@@ -7616,6 +10415,15 @@ module Html.Tailwind exposing
     , overflowYHidden
     , overflowYScroll
     , overflowYVisible
+    , overscrollAuto
+    , overscrollContain
+    , overscrollNone
+    , overscrollXAuto
+    , overscrollXContain
+    , overscrollXNone
+    , overscrollYAuto
+    , overscrollYContain
+    , overscrollYNone
     , p0
     , p1
     , p10
@@ -7673,6 +10481,23 @@ module Html.Tailwind exposing
     , pl64
     , pl8
     , plPx
+    , placeContentAround
+    , placeContentBetween
+    , placeContentCenter
+    , placeContentEnd
+    , placeContentEvenly
+    , placeContentStart
+    , placeContentStretch
+    , placeItemsAuto
+    , placeItemsCenter
+    , placeItemsEnd
+    , placeItemsStart
+    , placeItemsStretch
+    , placeSelfAuto
+    , placeSelfCenter
+    , placeSelfEnd
+    , placeSelfStart
+    , placeSelfStretch
     , placeholderBlack
     , placeholderBlue100
     , placeholderBlue200
@@ -7793,6 +10618,7 @@ module Html.Tailwind exposing
     , pr64
     , pr8
     , prPx
+    , proportionalNums
     , pt0
     , pt1
     , pt10
@@ -7858,63 +10684,95 @@ module Html.Tailwind exposing
     , right0
     , rightAuto
     , rotate0
+    , rotate1
+    , rotate12
     , rotate180
+    , rotate2
+    , rotate3
     , rotate45
+    , rotate6
     , rotate90
     , rounded
+    , rounded2xl
+    , rounded3xl
     , roundedB
+    , roundedB2xl
+    , roundedB3xl
     , roundedBFull
     , roundedBLg
     , roundedBMd
     , roundedBNone
     , roundedBSm
+    , roundedBXl
     , roundedBl
+    , roundedBl2xl
+    , roundedBl3xl
     , roundedBlFull
     , roundedBlLg
     , roundedBlMd
     , roundedBlNone
     , roundedBlSm
+    , roundedBlXl
     , roundedBr
+    , roundedBr2xl
+    , roundedBr3xl
     , roundedBrFull
     , roundedBrLg
     , roundedBrMd
     , roundedBrNone
     , roundedBrSm
+    , roundedBrXl
     , roundedFull
     , roundedL
+    , roundedL2xl
+    , roundedL3xl
     , roundedLFull
     , roundedLLg
     , roundedLMd
     , roundedLNone
     , roundedLSm
+    , roundedLXl
     , roundedLg
     , roundedMd
     , roundedNone
     , roundedR
+    , roundedR2xl
+    , roundedR3xl
     , roundedRFull
     , roundedRLg
     , roundedRMd
     , roundedRNone
     , roundedRSm
+    , roundedRXl
     , roundedSm
     , roundedT
+    , roundedT2xl
+    , roundedT3xl
     , roundedTFull
     , roundedTLg
     , roundedTMd
     , roundedTNone
     , roundedTSm
+    , roundedTXl
     , roundedTl
+    , roundedTl2xl
+    , roundedTl3xl
     , roundedTlFull
     , roundedTlLg
     , roundedTlMd
     , roundedTlNone
     , roundedTlSm
+    , roundedTlXl
     , roundedTr
+    , roundedTr2xl
+    , roundedTr3xl
     , roundedTrFull
     , roundedTrLg
     , roundedTrMd
     , roundedTrNone
     , roundedTrSm
+    , roundedTrXl
+    , roundedXl
     , rowAuto
     , rowEnd1
     , rowEnd2
@@ -7924,31 +10782,13 @@ module Html.Tailwind exposing
     , rowEnd6
     , rowEnd7
     , rowEndAuto
-    , rowGap0
-    , rowGap1
-    , rowGap10
-    , rowGap12
-    , rowGap16
-    , rowGap2
-    , rowGap20
-    , rowGap24
-    , rowGap3
-    , rowGap32
-    , rowGap4
-    , rowGap40
-    , rowGap48
-    , rowGap5
-    , rowGap56
-    , rowGap6
-    , rowGap64
-    , rowGap8
-    , rowGapPx
     , rowSpan1
     , rowSpan2
     , rowSpan3
     , rowSpan4
     , rowSpan5
     , rowSpan6
+    , rowSpanFull
     , rowStart1
     , rowStart2
     , rowStart3
@@ -8009,13 +10849,18 @@ module Html.Tailwind exposing
     , shadowXl
     , shadowXs
     , skewX0
+    , skewX1
     , skewX12
+    , skewX2
     , skewX3
     , skewX6
     , skewY0
+    , skewY1
     , skewY12
+    , skewY2
     , skewY3
     , skewY6
+    , slashedZero
     , smAbsolute
     , smAlignBaseline
     , smAlignBottom
@@ -8023,8 +10868,21 @@ module Html.Tailwind exposing
     , smAlignTextBottom
     , smAlignTextTop
     , smAlignTop
+    , smAnimateBounce
+    , smAnimateNone
+    , smAnimatePing
+    , smAnimatePulse
+    , smAnimateSpin
     , smAntialiased
     , smAppearanceNone
+    , smAutoColsAuto
+    , smAutoColsFr
+    , smAutoColsMax
+    , smAutoColsMin
+    , smAutoRowsAuto
+    , smAutoRowsFr
+    , smAutoRowsMax
+    , smAutoRowsMin
     , smBgAuto
     , smBgBlack
     , smBgBlue100
@@ -8038,10 +10896,22 @@ module Html.Tailwind exposing
     , smBgBlue900
     , smBgBottom
     , smBgCenter
+    , smBgClipBorder
+    , smBgClipContent
+    , smBgClipPadding
+    , smBgClipText
     , smBgContain
     , smBgCover
     , smBgCurrent
     , smBgFixed
+    , smBgGradientToB
+    , smBgGradientToBl
+    , smBgGradientToBr
+    , smBgGradientToL
+    , smBgGradientToR
+    , smBgGradientToT
+    , smBgGradientToTl
+    , smBgGradientToTr
     , smBgGray100
     , smBgGray200
     , smBgGray300
@@ -8074,6 +10944,7 @@ module Html.Tailwind exposing
     , smBgLeftTop
     , smBgLocal
     , smBgNoRepeat
+    , smBgNone
     , smBgOpacity0
     , smBgOpacity100
     , smBgOpacity25
@@ -8305,25 +11176,6 @@ module Html.Tailwind exposing
     , smColEnd8
     , smColEnd9
     , smColEndAuto
-    , smColGap0
-    , smColGap1
-    , smColGap10
-    , smColGap12
-    , smColGap16
-    , smColGap2
-    , smColGap20
-    , smColGap24
-    , smColGap3
-    , smColGap32
-    , smColGap4
-    , smColGap40
-    , smColGap48
-    , smColGap5
-    , smColGap56
-    , smColGap6
-    , smColGap64
-    , smColGap8
-    , smColGapPx
     , smColSpan1
     , smColSpan10
     , smColSpan11
@@ -8336,6 +11188,7 @@ module Html.Tailwind exposing
     , smColSpan7
     , smColSpan8
     , smColSpan9
+    , smColSpanFull
     , smColStart1
     , smColStart10
     , smColStart11
@@ -8350,11 +11203,14 @@ module Html.Tailwind exposing
     , smColStart8
     , smColStart9
     , smColStartAuto
+    , smContainer
     , smContentAround
     , smContentBetween
     , smContentCenter
     , smContentEnd
+    , smContentEvenly
     , smContentStart
+    , smContents
     , smCursorAuto
     , smCursorDefault
     , smCursorMove
@@ -8370,6 +11226,7 @@ module Html.Tailwind exposing
     , smDelay500
     , smDelay700
     , smDelay75
+    , smDiagonalFractions
     , smDivideBlack
     , smDivideBlue100
     , smDivideBlue200
@@ -8381,6 +11238,9 @@ module Html.Tailwind exposing
     , smDivideBlue800
     , smDivideBlue900
     , smDivideCurrent
+    , smDivideDashed
+    , smDivideDotted
+    , smDivideDouble
     , smDivideGray100
     , smDivideGray200
     , smDivideGray300
@@ -8408,6 +11268,7 @@ module Html.Tailwind exposing
     , smDivideIndigo700
     , smDivideIndigo800
     , smDivideIndigo900
+    , smDivideNone
     , smDivideOpacity0
     , smDivideOpacity100
     , smDivideOpacity25
@@ -8449,6 +11310,7 @@ module Html.Tailwind exposing
     , smDivideRed700
     , smDivideRed800
     , smDivideRed900
+    , smDivideSolid
     , smDivideTeal100
     , smDivideTeal200
     , smDivideTeal300
@@ -8722,14 +11584,117 @@ module Html.Tailwind exposing
     , smFocusFontNormal
     , smFocusFontSemibold
     , smFocusFontThin
+    , smFocusFromBlack
+    , smFocusFromBlue100
+    , smFocusFromBlue200
+    , smFocusFromBlue300
+    , smFocusFromBlue400
+    , smFocusFromBlue500
+    , smFocusFromBlue600
+    , smFocusFromBlue700
+    , smFocusFromBlue800
+    , smFocusFromBlue900
+    , smFocusFromCurrent
+    , smFocusFromGray100
+    , smFocusFromGray200
+    , smFocusFromGray300
+    , smFocusFromGray400
+    , smFocusFromGray500
+    , smFocusFromGray600
+    , smFocusFromGray700
+    , smFocusFromGray800
+    , smFocusFromGray900
+    , smFocusFromGreen100
+    , smFocusFromGreen200
+    , smFocusFromGreen300
+    , smFocusFromGreen400
+    , smFocusFromGreen500
+    , smFocusFromGreen600
+    , smFocusFromGreen700
+    , smFocusFromGreen800
+    , smFocusFromGreen900
+    , smFocusFromIndigo100
+    , smFocusFromIndigo200
+    , smFocusFromIndigo300
+    , smFocusFromIndigo400
+    , smFocusFromIndigo500
+    , smFocusFromIndigo600
+    , smFocusFromIndigo700
+    , smFocusFromIndigo800
+    , smFocusFromIndigo900
+    , smFocusFromOrange100
+    , smFocusFromOrange200
+    , smFocusFromOrange300
+    , smFocusFromOrange400
+    , smFocusFromOrange500
+    , smFocusFromOrange600
+    , smFocusFromOrange700
+    , smFocusFromOrange800
+    , smFocusFromOrange900
+    , smFocusFromPink100
+    , smFocusFromPink200
+    , smFocusFromPink300
+    , smFocusFromPink400
+    , smFocusFromPink500
+    , smFocusFromPink600
+    , smFocusFromPink700
+    , smFocusFromPink800
+    , smFocusFromPink900
+    , smFocusFromPurple100
+    , smFocusFromPurple200
+    , smFocusFromPurple300
+    , smFocusFromPurple400
+    , smFocusFromPurple500
+    , smFocusFromPurple600
+    , smFocusFromPurple700
+    , smFocusFromPurple800
+    , smFocusFromPurple900
+    , smFocusFromRed100
+    , smFocusFromRed200
+    , smFocusFromRed300
+    , smFocusFromRed400
+    , smFocusFromRed500
+    , smFocusFromRed600
+    , smFocusFromRed700
+    , smFocusFromRed800
+    , smFocusFromRed900
+    , smFocusFromTeal100
+    , smFocusFromTeal200
+    , smFocusFromTeal300
+    , smFocusFromTeal400
+    , smFocusFromTeal500
+    , smFocusFromTeal600
+    , smFocusFromTeal700
+    , smFocusFromTeal800
+    , smFocusFromTeal900
+    , smFocusFromTransparent
+    , smFocusFromWhite
+    , smFocusFromYellow100
+    , smFocusFromYellow200
+    , smFocusFromYellow300
+    , smFocusFromYellow400
+    , smFocusFromYellow500
+    , smFocusFromYellow600
+    , smFocusFromYellow700
+    , smFocusFromYellow800
+    , smFocusFromYellow900
     , smFocusLineThrough
+    , smFocusNegRotate1
+    , smFocusNegRotate12
     , smFocusNegRotate180
+    , smFocusNegRotate2
+    , smFocusNegRotate3
     , smFocusNegRotate45
+    , smFocusNegRotate6
     , smFocusNegRotate90
+    , smFocusNegSkewX1
     , smFocusNegSkewX12
+    , smFocusNegSkewX2
     , smFocusNegSkewX3
     , smFocusNegSkewX6
+    , smFocusNegSkewY1
     , smFocusNegSkewY12
+    , smFocusNegSkewY2
     , smFocusNegSkewY3
     , smFocusNegSkewY6
     , smFocusNegTranslateX1
@@ -8779,7 +11744,9 @@ module Html.Tailwind exposing
     , smFocusOpacity25
     , smFocusOpacity50
     , smFocusOpacity75
+    , smFocusOutlineBlack
     , smFocusOutlineNone
+    , smFocusOutlineWhite
     , smFocusPlaceholderBlackFocus
     , smFocusPlaceholderBlue100Focus
     , smFocusPlaceholderBlue200Focus
@@ -8880,8 +11847,13 @@ module Html.Tailwind exposing
     , smFocusPlaceholderYellow800Focus
     , smFocusPlaceholderYellow900Focus
     , smFocusRotate0
+    , smFocusRotate1
+    , smFocusRotate12
     , smFocusRotate180
+    , smFocusRotate2
+    , smFocusRotate3
     , smFocusRotate45
+    , smFocusRotate6
     , smFocusRotate90
     , smFocusScale0
     , smFocusScale100
@@ -8924,11 +11896,15 @@ module Html.Tailwind exposing
     , smFocusShadowXl
     , smFocusShadowXs
     , smFocusSkewX0
+    , smFocusSkewX1
     , smFocusSkewX12
+    , smFocusSkewX2
     , smFocusSkewX3
     , smFocusSkewX6
     , smFocusSkewY0
+    , smFocusSkewY1
     , smFocusSkewY12
+    , smFocusSkewY2
     , smFocusSkewY3
     , smFocusSkewY6
     , smFocusSrOnly
@@ -9031,6 +12007,100 @@ module Html.Tailwind exposing
     , smFocusTextYellow700
     , smFocusTextYellow800
     , smFocusTextYellow900
+    , smFocusToBlack
+    , smFocusToBlue100
+    , smFocusToBlue200
+    , smFocusToBlue300
+    , smFocusToBlue400
+    , smFocusToBlue500
+    , smFocusToBlue600
+    , smFocusToBlue700
+    , smFocusToBlue800
+    , smFocusToBlue900
+    , smFocusToCurrent
+    , smFocusToGray100
+    , smFocusToGray200
+    , smFocusToGray300
+    , smFocusToGray400
+    , smFocusToGray500
+    , smFocusToGray600
+    , smFocusToGray700
+    , smFocusToGray800
+    , smFocusToGray900
+    , smFocusToGreen100
+    , smFocusToGreen200
+    , smFocusToGreen300
+    , smFocusToGreen400
+    , smFocusToGreen500
+    , smFocusToGreen600
+    , smFocusToGreen700
+    , smFocusToGreen800
+    , smFocusToGreen900
+    , smFocusToIndigo100
+    , smFocusToIndigo200
+    , smFocusToIndigo300
+    , smFocusToIndigo400
+    , smFocusToIndigo500
+    , smFocusToIndigo600
+    , smFocusToIndigo700
+    , smFocusToIndigo800
+    , smFocusToIndigo900
+    , smFocusToOrange100
+    , smFocusToOrange200
+    , smFocusToOrange300
+    , smFocusToOrange400
+    , smFocusToOrange500
+    , smFocusToOrange600
+    , smFocusToOrange700
+    , smFocusToOrange800
+    , smFocusToOrange900
+    , smFocusToPink100
+    , smFocusToPink200
+    , smFocusToPink300
+    , smFocusToPink400
+    , smFocusToPink500
+    , smFocusToPink600
+    , smFocusToPink700
+    , smFocusToPink800
+    , smFocusToPink900
+    , smFocusToPurple100
+    , smFocusToPurple200
+    , smFocusToPurple300
+    , smFocusToPurple400
+    , smFocusToPurple500
+    , smFocusToPurple600
+    , smFocusToPurple700
+    , smFocusToPurple800
+    , smFocusToPurple900
+    , smFocusToRed100
+    , smFocusToRed200
+    , smFocusToRed300
+    , smFocusToRed400
+    , smFocusToRed500
+    , smFocusToRed600
+    , smFocusToRed700
+    , smFocusToRed800
+    , smFocusToRed900
+    , smFocusToTeal100
+    , smFocusToTeal200
+    , smFocusToTeal300
+    , smFocusToTeal400
+    , smFocusToTeal500
+    , smFocusToTeal600
+    , smFocusToTeal700
+    , smFocusToTeal800
+    , smFocusToTeal900
+    , smFocusToTransparent
+    , smFocusToWhite
+    , smFocusToYellow100
+    , smFocusToYellow200
+    , smFocusToYellow300
+    , smFocusToYellow400
+    , smFocusToYellow500
+    , smFocusToYellow600
+    , smFocusToYellow700
+    , smFocusToYellow800
+    , smFocusToYellow900
     , smFocusTranslateX0
     , smFocusTranslateX1
     , smFocusTranslateX10
@@ -9074,6 +12144,100 @@ module Html.Tailwind exposing
     , smFocusTranslateYFull
     , smFocusTranslateYPx
     , smFocusUnderline
+    , smFocusViaBlack
+    , smFocusViaBlue100
+    , smFocusViaBlue200
+    , smFocusViaBlue300
+    , smFocusViaBlue400
+    , smFocusViaBlue500
+    , smFocusViaBlue600
+    , smFocusViaBlue700
+    , smFocusViaBlue800
+    , smFocusViaBlue900
+    , smFocusViaCurrent
+    , smFocusViaGray100
+    , smFocusViaGray200
+    , smFocusViaGray300
+    , smFocusViaGray400
+    , smFocusViaGray500
+    , smFocusViaGray600
+    , smFocusViaGray700
+    , smFocusViaGray800
+    , smFocusViaGray900
+    , smFocusViaGreen100
+    , smFocusViaGreen200
+    , smFocusViaGreen300
+    , smFocusViaGreen400
+    , smFocusViaGreen500
+    , smFocusViaGreen600
+    , smFocusViaGreen700
+    , smFocusViaGreen800
+    , smFocusViaGreen900
+    , smFocusViaIndigo100
+    , smFocusViaIndigo200
+    , smFocusViaIndigo300
+    , smFocusViaIndigo400
+    , smFocusViaIndigo500
+    , smFocusViaIndigo600
+    , smFocusViaIndigo700
+    , smFocusViaIndigo800
+    , smFocusViaIndigo900
+    , smFocusViaOrange100
+    , smFocusViaOrange200
+    , smFocusViaOrange300
+    , smFocusViaOrange400
+    , smFocusViaOrange500
+    , smFocusViaOrange600
+    , smFocusViaOrange700
+    , smFocusViaOrange800
+    , smFocusViaOrange900
+    , smFocusViaPink100
+    , smFocusViaPink200
+    , smFocusViaPink300
+    , smFocusViaPink400
+    , smFocusViaPink500
+    , smFocusViaPink600
+    , smFocusViaPink700
+    , smFocusViaPink800
+    , smFocusViaPink900
+    , smFocusViaPurple100
+    , smFocusViaPurple200
+    , smFocusViaPurple300
+    , smFocusViaPurple400
+    , smFocusViaPurple500
+    , smFocusViaPurple600
+    , smFocusViaPurple700
+    , smFocusViaPurple800
+    , smFocusViaPurple900
+    , smFocusViaRed100
+    , smFocusViaRed200
+    , smFocusViaRed300
+    , smFocusViaRed400
+    , smFocusViaRed500
+    , smFocusViaRed600
+    , smFocusViaRed700
+    , smFocusViaRed800
+    , smFocusViaRed900
+    , smFocusViaTeal100
+    , smFocusViaTeal200
+    , smFocusViaTeal300
+    , smFocusViaTeal400
+    , smFocusViaTeal500
+    , smFocusViaTeal600
+    , smFocusViaTeal700
+    , smFocusViaTeal800
+    , smFocusViaTeal900
+    , smFocusViaTransparent
+    , smFocusViaWhite
+    , smFocusViaYellow100
+    , smFocusViaYellow200
+    , smFocusViaYellow300
+    , smFocusViaYellow400
+    , smFocusViaYellow500
+    , smFocusViaYellow600
+    , smFocusViaYellow700
+    , smFocusViaYellow800
+    , smFocusViaYellow900
     , smFontBlack
     , smFontBold
     , smFontExtrabold
@@ -9087,6 +12251,100 @@ module Html.Tailwind exposing
     , smFontSerif
     , smFontThin
     , smFontTitle
+    , smFromBlack
+    , smFromBlue100
+    , smFromBlue200
+    , smFromBlue300
+    , smFromBlue400
+    , smFromBlue500
+    , smFromBlue600
+    , smFromBlue700
+    , smFromBlue800
+    , smFromBlue900
+    , smFromCurrent
+    , smFromGray100
+    , smFromGray200
+    , smFromGray300
+    , smFromGray400
+    , smFromGray500
+    , smFromGray600
+    , smFromGray700
+    , smFromGray800
+    , smFromGray900
+    , smFromGreen100
+    , smFromGreen200
+    , smFromGreen300
+    , smFromGreen400
+    , smFromGreen500
+    , smFromGreen600
+    , smFromGreen700
+    , smFromGreen800
+    , smFromGreen900
+    , smFromIndigo100
+    , smFromIndigo200
+    , smFromIndigo300
+    , smFromIndigo400
+    , smFromIndigo500
+    , smFromIndigo600
+    , smFromIndigo700
+    , smFromIndigo800
+    , smFromIndigo900
+    , smFromOrange100
+    , smFromOrange200
+    , smFromOrange300
+    , smFromOrange400
+    , smFromOrange500
+    , smFromOrange600
+    , smFromOrange700
+    , smFromOrange800
+    , smFromOrange900
+    , smFromPink100
+    , smFromPink200
+    , smFromPink300
+    , smFromPink400
+    , smFromPink500
+    , smFromPink600
+    , smFromPink700
+    , smFromPink800
+    , smFromPink900
+    , smFromPurple100
+    , smFromPurple200
+    , smFromPurple300
+    , smFromPurple400
+    , smFromPurple500
+    , smFromPurple600
+    , smFromPurple700
+    , smFromPurple800
+    , smFromPurple900
+    , smFromRed100
+    , smFromRed200
+    , smFromRed300
+    , smFromRed400
+    , smFromRed500
+    , smFromRed600
+    , smFromRed700
+    , smFromRed800
+    , smFromRed900
+    , smFromTeal100
+    , smFromTeal200
+    , smFromTeal300
+    , smFromTeal400
+    , smFromTeal500
+    , smFromTeal600
+    , smFromTeal700
+    , smFromTeal800
+    , smFromTeal900
+    , smFromTransparent
+    , smFromWhite
+    , smFromYellow100
+    , smFromYellow200
+    , smFromYellow300
+    , smFromYellow400
+    , smFromYellow500
+    , smFromYellow600
+    , smFromYellow700
+    , smFromYellow800
+    , smFromYellow900
     , smGap0
     , smGap1
     , smGap10
@@ -9106,6 +12364,44 @@ module Html.Tailwind exposing
     , smGap64
     , smGap8
     , smGapPx
+    , smGapX0
+    , smGapX1
+    , smGapX10
+    , smGapX12
+    , smGapX16
+    , smGapX2
+    , smGapX20
+    , smGapX24
+    , smGapX3
+    , smGapX32
+    , smGapX4
+    , smGapX40
+    , smGapX48
+    , smGapX5
+    , smGapX56
+    , smGapX6
+    , smGapX64
+    , smGapX8
+    , smGapXPx
+    , smGapY0
+    , smGapY1
+    , smGapY10
+    , smGapY12
+    , smGapY16
+    , smGapY2
+    , smGapY20
+    , smGapY24
+    , smGapY3
+    , smGapY32
+    , smGapY4
+    , smGapY40
+    , smGapY48
+    , smGapY5
+    , smGapY56
+    , smGapY6
+    , smGapY64
+    , smGapY8
+    , smGapYPx
     , smGrid
     , smGridCols1
     , smGridCols10
@@ -9361,14 +12657,117 @@ module Html.Tailwind exposing
     , smHoverFontNormal
     , smHoverFontSemibold
     , smHoverFontThin
+    , smHoverFromBlack
+    , smHoverFromBlue100
+    , smHoverFromBlue200
+    , smHoverFromBlue300
+    , smHoverFromBlue400
+    , smHoverFromBlue500
+    , smHoverFromBlue600
+    , smHoverFromBlue700
+    , smHoverFromBlue800
+    , smHoverFromBlue900
+    , smHoverFromCurrent
+    , smHoverFromGray100
+    , smHoverFromGray200
+    , smHoverFromGray300
+    , smHoverFromGray400
+    , smHoverFromGray500
+    , smHoverFromGray600
+    , smHoverFromGray700
+    , smHoverFromGray800
+    , smHoverFromGray900
+    , smHoverFromGreen100
+    , smHoverFromGreen200
+    , smHoverFromGreen300
+    , smHoverFromGreen400
+    , smHoverFromGreen500
+    , smHoverFromGreen600
+    , smHoverFromGreen700
+    , smHoverFromGreen800
+    , smHoverFromGreen900
+    , smHoverFromIndigo100
+    , smHoverFromIndigo200
+    , smHoverFromIndigo300
+    , smHoverFromIndigo400
+    , smHoverFromIndigo500
+    , smHoverFromIndigo600
+    , smHoverFromIndigo700
+    , smHoverFromIndigo800
+    , smHoverFromIndigo900
+    , smHoverFromOrange100
+    , smHoverFromOrange200
+    , smHoverFromOrange300
+    , smHoverFromOrange400
+    , smHoverFromOrange500
+    , smHoverFromOrange600
+    , smHoverFromOrange700
+    , smHoverFromOrange800
+    , smHoverFromOrange900
+    , smHoverFromPink100
+    , smHoverFromPink200
+    , smHoverFromPink300
+    , smHoverFromPink400
+    , smHoverFromPink500
+    , smHoverFromPink600
+    , smHoverFromPink700
+    , smHoverFromPink800
+    , smHoverFromPink900
+    , smHoverFromPurple100
+    , smHoverFromPurple200
+    , smHoverFromPurple300
+    , smHoverFromPurple400
+    , smHoverFromPurple500
+    , smHoverFromPurple600
+    , smHoverFromPurple700
+    , smHoverFromPurple800
+    , smHoverFromPurple900
+    , smHoverFromRed100
+    , smHoverFromRed200
+    , smHoverFromRed300
+    , smHoverFromRed400
+    , smHoverFromRed500
+    , smHoverFromRed600
+    , smHoverFromRed700
+    , smHoverFromRed800
+    , smHoverFromRed900
+    , smHoverFromTeal100
+    , smHoverFromTeal200
+    , smHoverFromTeal300
+    , smHoverFromTeal400
+    , smHoverFromTeal500
+    , smHoverFromTeal600
+    , smHoverFromTeal700
+    , smHoverFromTeal800
+    , smHoverFromTeal900
+    , smHoverFromTransparent
+    , smHoverFromWhite
+    , smHoverFromYellow100
+    , smHoverFromYellow200
+    , smHoverFromYellow300
+    , smHoverFromYellow400
+    , smHoverFromYellow500
+    , smHoverFromYellow600
+    , smHoverFromYellow700
+    , smHoverFromYellow800
+    , smHoverFromYellow900
     , smHoverLineThrough
+    , smHoverNegRotate1
+    , smHoverNegRotate12
     , smHoverNegRotate180
+    , smHoverNegRotate2
+    , smHoverNegRotate3
     , smHoverNegRotate45
+    , smHoverNegRotate6
     , smHoverNegRotate90
+    , smHoverNegSkewX1
     , smHoverNegSkewX12
+    , smHoverNegSkewX2
     , smHoverNegSkewX3
     , smHoverNegSkewX6
+    , smHoverNegSkewY1
     , smHoverNegSkewY12
+    , smHoverNegSkewY2
     , smHoverNegSkewY3
     , smHoverNegSkewY6
     , smHoverNegTranslateX1
@@ -9418,8 +12817,13 @@ module Html.Tailwind exposing
     , smHoverOpacity50
     , smHoverOpacity75
     , smHoverRotate0
+    , smHoverRotate1
+    , smHoverRotate12
     , smHoverRotate180
+    , smHoverRotate2
+    , smHoverRotate3
     , smHoverRotate45
+    , smHoverRotate6
     , smHoverRotate90
     , smHoverScale0
     , smHoverScale100
@@ -9462,11 +12866,15 @@ module Html.Tailwind exposing
     , smHoverShadowXl
     , smHoverShadowXs
     , smHoverSkewX0
+    , smHoverSkewX1
     , smHoverSkewX12
+    , smHoverSkewX2
     , smHoverSkewX3
     , smHoverSkewX6
     , smHoverSkewY0
+    , smHoverSkewY1
     , smHoverSkewY12
+    , smHoverSkewY2
     , smHoverSkewY3
     , smHoverSkewY6
     , smHoverTextBlack
@@ -9568,6 +12976,100 @@ module Html.Tailwind exposing
     , smHoverTextYellow700
     , smHoverTextYellow800
     , smHoverTextYellow900
+    , smHoverToBlack
+    , smHoverToBlue100
+    , smHoverToBlue200
+    , smHoverToBlue300
+    , smHoverToBlue400
+    , smHoverToBlue500
+    , smHoverToBlue600
+    , smHoverToBlue700
+    , smHoverToBlue800
+    , smHoverToBlue900
+    , smHoverToCurrent
+    , smHoverToGray100
+    , smHoverToGray200
+    , smHoverToGray300
+    , smHoverToGray400
+    , smHoverToGray500
+    , smHoverToGray600
+    , smHoverToGray700
+    , smHoverToGray800
+    , smHoverToGray900
+    , smHoverToGreen100
+    , smHoverToGreen200
+    , smHoverToGreen300
+    , smHoverToGreen400
+    , smHoverToGreen500
+    , smHoverToGreen600
+    , smHoverToGreen700
+    , smHoverToGreen800
+    , smHoverToGreen900
+    , smHoverToIndigo100
+    , smHoverToIndigo200
+    , smHoverToIndigo300
+    , smHoverToIndigo400
+    , smHoverToIndigo500
+    , smHoverToIndigo600
+    , smHoverToIndigo700
+    , smHoverToIndigo800
+    , smHoverToIndigo900
+    , smHoverToOrange100
+    , smHoverToOrange200
+    , smHoverToOrange300
+    , smHoverToOrange400
+    , smHoverToOrange500
+    , smHoverToOrange600
+    , smHoverToOrange700
+    , smHoverToOrange800
+    , smHoverToOrange900
+    , smHoverToPink100
+    , smHoverToPink200
+    , smHoverToPink300
+    , smHoverToPink400
+    , smHoverToPink500
+    , smHoverToPink600
+    , smHoverToPink700
+    , smHoverToPink800
+    , smHoverToPink900
+    , smHoverToPurple100
+    , smHoverToPurple200
+    , smHoverToPurple300
+    , smHoverToPurple400
+    , smHoverToPurple500
+    , smHoverToPurple600
+    , smHoverToPurple700
+    , smHoverToPurple800
+    , smHoverToPurple900
+    , smHoverToRed100
+    , smHoverToRed200
+    , smHoverToRed300
+    , smHoverToRed400
+    , smHoverToRed500
+    , smHoverToRed600
+    , smHoverToRed700
+    , smHoverToRed800
+    , smHoverToRed900
+    , smHoverToTeal100
+    , smHoverToTeal200
+    , smHoverToTeal300
+    , smHoverToTeal400
+    , smHoverToTeal500
+    , smHoverToTeal600
+    , smHoverToTeal700
+    , smHoverToTeal800
+    , smHoverToTeal900
+    , smHoverToTransparent
+    , smHoverToWhite
+    , smHoverToYellow100
+    , smHoverToYellow200
+    , smHoverToYellow300
+    , smHoverToYellow400
+    , smHoverToYellow500
+    , smHoverToYellow600
+    , smHoverToYellow700
+    , smHoverToYellow800
+    , smHoverToYellow900
     , smHoverTranslateX0
     , smHoverTranslateX1
     , smHoverTranslateX10
@@ -9611,6 +13113,100 @@ module Html.Tailwind exposing
     , smHoverTranslateYFull
     , smHoverTranslateYPx
     , smHoverUnderline
+    , smHoverViaBlack
+    , smHoverViaBlue100
+    , smHoverViaBlue200
+    , smHoverViaBlue300
+    , smHoverViaBlue400
+    , smHoverViaBlue500
+    , smHoverViaBlue600
+    , smHoverViaBlue700
+    , smHoverViaBlue800
+    , smHoverViaBlue900
+    , smHoverViaCurrent
+    , smHoverViaGray100
+    , smHoverViaGray200
+    , smHoverViaGray300
+    , smHoverViaGray400
+    , smHoverViaGray500
+    , smHoverViaGray600
+    , smHoverViaGray700
+    , smHoverViaGray800
+    , smHoverViaGray900
+    , smHoverViaGreen100
+    , smHoverViaGreen200
+    , smHoverViaGreen300
+    , smHoverViaGreen400
+    , smHoverViaGreen500
+    , smHoverViaGreen600
+    , smHoverViaGreen700
+    , smHoverViaGreen800
+    , smHoverViaGreen900
+    , smHoverViaIndigo100
+    , smHoverViaIndigo200
+    , smHoverViaIndigo300
+    , smHoverViaIndigo400
+    , smHoverViaIndigo500
+    , smHoverViaIndigo600
+    , smHoverViaIndigo700
+    , smHoverViaIndigo800
+    , smHoverViaIndigo900
+    , smHoverViaOrange100
+    , smHoverViaOrange200
+    , smHoverViaOrange300
+    , smHoverViaOrange400
+    , smHoverViaOrange500
+    , smHoverViaOrange600
+    , smHoverViaOrange700
+    , smHoverViaOrange800
+    , smHoverViaOrange900
+    , smHoverViaPink100
+    , smHoverViaPink200
+    , smHoverViaPink300
+    , smHoverViaPink400
+    , smHoverViaPink500
+    , smHoverViaPink600
+    , smHoverViaPink700
+    , smHoverViaPink800
+    , smHoverViaPink900
+    , smHoverViaPurple100
+    , smHoverViaPurple200
+    , smHoverViaPurple300
+    , smHoverViaPurple400
+    , smHoverViaPurple500
+    , smHoverViaPurple600
+    , smHoverViaPurple700
+    , smHoverViaPurple800
+    , smHoverViaPurple900
+    , smHoverViaRed100
+    , smHoverViaRed200
+    , smHoverViaRed300
+    , smHoverViaRed400
+    , smHoverViaRed500
+    , smHoverViaRed600
+    , smHoverViaRed700
+    , smHoverViaRed800
+    , smHoverViaRed900
+    , smHoverViaTeal100
+    , smHoverViaTeal200
+    , smHoverViaTeal300
+    , smHoverViaTeal400
+    , smHoverViaTeal500
+    , smHoverViaTeal600
+    , smHoverViaTeal700
+    , smHoverViaTeal800
+    , smHoverViaTeal900
+    , smHoverViaTransparent
+    , smHoverViaWhite
+    , smHoverViaYellow100
+    , smHoverViaYellow200
+    , smHoverViaYellow300
+    , smHoverViaYellow400
+    , smHoverViaYellow500
+    , smHoverViaYellow600
+    , smHoverViaYellow700
+    , smHoverViaYellow800
+    , smHoverViaYellow900
     , smInline
     , smInlineBlock
     , smInlineFlex
@@ -9633,6 +13229,16 @@ module Html.Tailwind exposing
     , smJustifyCenter
     , smJustifyEnd
     , smJustifyEvenly
+    , smJustifyItemsAuto
+    , smJustifyItemsCenter
+    , smJustifyItemsEnd
+    , smJustifyItemsStart
+    , smJustifyItemsStretch
+    , smJustifySelfAuto
+    , smJustifySelfCenter
+    , smJustifySelfEnd
+    , smJustifySelfStart
+    , smJustifySelfStretch
     , smJustifyStart
     , smLeading10
     , smLeading3
@@ -9651,6 +13257,7 @@ module Html.Tailwind exposing
     , smLeft0
     , smLeftAuto
     , smLineThrough
+    , smLiningNums
     , smListDecimal
     , smListDisc
     , smListInside
@@ -9946,13 +13553,22 @@ module Html.Tailwind exposing
     , smNegMy64
     , smNegMy8
     , smNegMyPx
+    , smNegRotate1
+    , smNegRotate12
     , smNegRotate180
+    , smNegRotate2
+    , smNegRotate3
     , smNegRotate45
+    , smNegRotate6
     , smNegRotate90
+    , smNegSkewX1
     , smNegSkewX12
+    , smNegSkewX2
     , smNegSkewX3
     , smNegSkewX6
+    , smNegSkewY1
     , smNegSkewY12
+    , smNegSkewY2
     , smNegSkewY3
     , smNegSkewY6
     , smNegSpaceX1
@@ -10033,6 +13649,7 @@ module Html.Tailwind exposing
     , smNegTranslateYPx
     , smNoUnderline
     , smNormalCase
+    , smNormalNums
     , smNotItalic
     , smNotSrOnly
     , smObjectBottom
@@ -10049,6 +13666,7 @@ module Html.Tailwind exposing
     , smObjectRightTop
     , smObjectScaleDown
     , smObjectTop
+    , smOldstyleNums
     , smOpacity0
     , smOpacity100
     , smOpacity25
@@ -10069,6 +13687,7 @@ module Html.Tailwind exposing
     , smOrderFirst
     , smOrderLast
     , smOrderNone
+    , smOrdinal
     , smOriginBottom
     , smOriginBottomLeft
     , smOriginBottomRight
@@ -10078,7 +13697,9 @@ module Html.Tailwind exposing
     , smOriginTop
     , smOriginTopLeft
     , smOriginTopRight
+    , smOutlineBlack
     , smOutlineNone
+    , smOutlineWhite
     , smOverflowAuto
     , smOverflowHidden
     , smOverflowScroll
@@ -10091,6 +13712,15 @@ module Html.Tailwind exposing
     , smOverflowYHidden
     , smOverflowYScroll
     , smOverflowYVisible
+    , smOverscrollAuto
+    , smOverscrollContain
+    , smOverscrollNone
+    , smOverscrollXAuto
+    , smOverscrollXContain
+    , smOverscrollXNone
+    , smOverscrollYAuto
+    , smOverscrollYContain
+    , smOverscrollYNone
     , smP0
     , smP1
     , smP10
@@ -10148,6 +13778,23 @@ module Html.Tailwind exposing
     , smPl64
     , smPl8
     , smPlPx
+    , smPlaceContentAround
+    , smPlaceContentBetween
+    , smPlaceContentCenter
+    , smPlaceContentEnd
+    , smPlaceContentEvenly
+    , smPlaceContentStart
+    , smPlaceContentStretch
+    , smPlaceItemsAuto
+    , smPlaceItemsCenter
+    , smPlaceItemsEnd
+    , smPlaceItemsStart
+    , smPlaceItemsStretch
+    , smPlaceSelfAuto
+    , smPlaceSelfCenter
+    , smPlaceSelfEnd
+    , smPlaceSelfStart
+    , smPlaceSelfStretch
     , smPlaceholderBlack
     , smPlaceholderBlue100
     , smPlaceholderBlue200
@@ -10268,6 +13915,7 @@ module Html.Tailwind exposing
     , smPr64
     , smPr8
     , smPrPx
+    , smProportionalNums
     , smPt0
     , smPt1
     , smPt10
@@ -10333,63 +13981,95 @@ module Html.Tailwind exposing
     , smRight0
     , smRightAuto
     , smRotate0
+    , smRotate1
+    , smRotate12
     , smRotate180
+    , smRotate2
+    , smRotate3
     , smRotate45
+    , smRotate6
     , smRotate90
     , smRounded
+    , smRounded2xl
+    , smRounded3xl
     , smRoundedB
+    , smRoundedB2xl
+    , smRoundedB3xl
     , smRoundedBFull
     , smRoundedBLg
     , smRoundedBMd
     , smRoundedBNone
     , smRoundedBSm
+    , smRoundedBXl
     , smRoundedBl
+    , smRoundedBl2xl
+    , smRoundedBl3xl
     , smRoundedBlFull
     , smRoundedBlLg
     , smRoundedBlMd
     , smRoundedBlNone
     , smRoundedBlSm
+    , smRoundedBlXl
     , smRoundedBr
+    , smRoundedBr2xl
+    , smRoundedBr3xl
     , smRoundedBrFull
     , smRoundedBrLg
     , smRoundedBrMd
     , smRoundedBrNone
     , smRoundedBrSm
+    , smRoundedBrXl
     , smRoundedFull
     , smRoundedL
+    , smRoundedL2xl
+    , smRoundedL3xl
     , smRoundedLFull
     , smRoundedLLg
     , smRoundedLMd
     , smRoundedLNone
     , smRoundedLSm
+    , smRoundedLXl
     , smRoundedLg
     , smRoundedMd
     , smRoundedNone
     , smRoundedR
+    , smRoundedR2xl
+    , smRoundedR3xl
     , smRoundedRFull
     , smRoundedRLg
     , smRoundedRMd
     , smRoundedRNone
     , smRoundedRSm
+    , smRoundedRXl
     , smRoundedSm
     , smRoundedT
+    , smRoundedT2xl
+    , smRoundedT3xl
     , smRoundedTFull
     , smRoundedTLg
     , smRoundedTMd
     , smRoundedTNone
     , smRoundedTSm
+    , smRoundedTXl
     , smRoundedTl
+    , smRoundedTl2xl
+    , smRoundedTl3xl
     , smRoundedTlFull
     , smRoundedTlLg
     , smRoundedTlMd
     , smRoundedTlNone
     , smRoundedTlSm
+    , smRoundedTlXl
     , smRoundedTr
+    , smRoundedTr2xl
+    , smRoundedTr3xl
     , smRoundedTrFull
     , smRoundedTrLg
     , smRoundedTrMd
     , smRoundedTrNone
     , smRoundedTrSm
+    , smRoundedTrXl
+    , smRoundedXl
     , smRowAuto
     , smRowEnd1
     , smRowEnd2
@@ -10399,31 +14079,13 @@ module Html.Tailwind exposing
     , smRowEnd6
     , smRowEnd7
     , smRowEndAuto
-    , smRowGap0
-    , smRowGap1
-    , smRowGap10
-    , smRowGap12
-    , smRowGap16
-    , smRowGap2
-    , smRowGap20
-    , smRowGap24
-    , smRowGap3
-    , smRowGap32
-    , smRowGap4
-    , smRowGap40
-    , smRowGap48
-    , smRowGap5
-    , smRowGap56
-    , smRowGap6
-    , smRowGap64
-    , smRowGap8
-    , smRowGapPx
     , smRowSpan1
     , smRowSpan2
     , smRowSpan3
     , smRowSpan4
     , smRowSpan5
     , smRowSpan6
+    , smRowSpanFull
     , smRowStart1
     , smRowStart2
     , smRowStart3
@@ -10484,13 +14146,18 @@ module Html.Tailwind exposing
     , smShadowXl
     , smShadowXs
     , smSkewX0
+    , smSkewX1
     , smSkewX12
+    , smSkewX2
     , smSkewX3
     , smSkewX6
     , smSkewY0
+    , smSkewY1
     , smSkewY12
+    , smSkewY2
     , smSkewY3
     , smSkewY6
+    , smSlashedZero
     , smSpaceX0
     , smSpaceX1
     , smSpaceX10
@@ -10532,6 +14199,7 @@ module Html.Tailwind exposing
     , smSpaceYPx
     , smSpaceYReverse
     , smSrOnly
+    , smStackedFractions
     , smStatic
     , smSticky
     , smStroke0
@@ -10550,6 +14218,7 @@ module Html.Tailwind exposing
     , smTableHeaderGroup
     , smTableRow
     , smTableRowGroup
+    , smTabularNums
     , smText2xl
     , smText3xl
     , smText4xl
@@ -10663,6 +14332,100 @@ module Html.Tailwind exposing
     , smTextYellow700
     , smTextYellow800
     , smTextYellow900
+    , smToBlack
+    , smToBlue100
+    , smToBlue200
+    , smToBlue300
+    , smToBlue400
+    , smToBlue500
+    , smToBlue600
+    , smToBlue700
+    , smToBlue800
+    , smToBlue900
+    , smToCurrent
+    , smToGray100
+    , smToGray200
+    , smToGray300
+    , smToGray400
+    , smToGray500
+    , smToGray600
+    , smToGray700
+    , smToGray800
+    , smToGray900
+    , smToGreen100
+    , smToGreen200
+    , smToGreen300
+    , smToGreen400
+    , smToGreen500
+    , smToGreen600
+    , smToGreen700
+    , smToGreen800
+    , smToGreen900
+    , smToIndigo100
+    , smToIndigo200
+    , smToIndigo300
+    , smToIndigo400
+    , smToIndigo500
+    , smToIndigo600
+    , smToIndigo700
+    , smToIndigo800
+    , smToIndigo900
+    , smToOrange100
+    , smToOrange200
+    , smToOrange300
+    , smToOrange400
+    , smToOrange500
+    , smToOrange600
+    , smToOrange700
+    , smToOrange800
+    , smToOrange900
+    , smToPink100
+    , smToPink200
+    , smToPink300
+    , smToPink400
+    , smToPink500
+    , smToPink600
+    , smToPink700
+    , smToPink800
+    , smToPink900
+    , smToPurple100
+    , smToPurple200
+    , smToPurple300
+    , smToPurple400
+    , smToPurple500
+    , smToPurple600
+    , smToPurple700
+    , smToPurple800
+    , smToPurple900
+    , smToRed100
+    , smToRed200
+    , smToRed300
+    , smToRed400
+    , smToRed500
+    , smToRed600
+    , smToRed700
+    , smToRed800
+    , smToRed900
+    , smToTeal100
+    , smToTeal200
+    , smToTeal300
+    , smToTeal400
+    , smToTeal500
+    , smToTeal600
+    , smToTeal700
+    , smToTeal800
+    , smToTeal900
+    , smToTransparent
+    , smToWhite
+    , smToYellow100
+    , smToYellow200
+    , smToYellow300
+    , smToYellow400
+    , smToYellow500
+    , smToYellow600
+    , smToYellow700
+    , smToYellow800
+    , smToYellow900
     , smTop0
     , smTopAuto
     , smTrackingNormal
@@ -10725,6 +14488,100 @@ module Html.Tailwind exposing
     , smTruncate
     , smUnderline
     , smUppercase
+    , smViaBlack
+    , smViaBlue100
+    , smViaBlue200
+    , smViaBlue300
+    , smViaBlue400
+    , smViaBlue500
+    , smViaBlue600
+    , smViaBlue700
+    , smViaBlue800
+    , smViaBlue900
+    , smViaCurrent
+    , smViaGray100
+    , smViaGray200
+    , smViaGray300
+    , smViaGray400
+    , smViaGray500
+    , smViaGray600
+    , smViaGray700
+    , smViaGray800
+    , smViaGray900
+    , smViaGreen100
+    , smViaGreen200
+    , smViaGreen300
+    , smViaGreen400
+    , smViaGreen500
+    , smViaGreen600
+    , smViaGreen700
+    , smViaGreen800
+    , smViaGreen900
+    , smViaIndigo100
+    , smViaIndigo200
+    , smViaIndigo300
+    , smViaIndigo400
+    , smViaIndigo500
+    , smViaIndigo600
+    , smViaIndigo700
+    , smViaIndigo800
+    , smViaIndigo900
+    , smViaOrange100
+    , smViaOrange200
+    , smViaOrange300
+    , smViaOrange400
+    , smViaOrange500
+    , smViaOrange600
+    , smViaOrange700
+    , smViaOrange800
+    , smViaOrange900
+    , smViaPink100
+    , smViaPink200
+    , smViaPink300
+    , smViaPink400
+    , smViaPink500
+    , smViaPink600
+    , smViaPink700
+    , smViaPink800
+    , smViaPink900
+    , smViaPurple100
+    , smViaPurple200
+    , smViaPurple300
+    , smViaPurple400
+    , smViaPurple500
+    , smViaPurple600
+    , smViaPurple700
+    , smViaPurple800
+    , smViaPurple900
+    , smViaRed100
+    , smViaRed200
+    , smViaRed300
+    , smViaRed400
+    , smViaRed500
+    , smViaRed600
+    , smViaRed700
+    , smViaRed800
+    , smViaRed900
+    , smViaTeal100
+    , smViaTeal200
+    , smViaTeal300
+    , smViaTeal400
+    , smViaTeal500
+    , smViaTeal600
+    , smViaTeal700
+    , smViaTeal800
+    , smViaTeal900
+    , smViaTransparent
+    , smViaWhite
+    , smViaYellow100
+    , smViaYellow200
+    , smViaYellow300
+    , smViaYellow400
+    , smViaYellow500
+    , smViaYellow600
+    , smViaYellow700
+    , smViaYellow800
+    , smViaYellow900
     , smVisible
     , smW0
     , smW1
@@ -10827,6 +14684,7 @@ module Html.Tailwind exposing
     , spaceYPx
     , spaceYReverse
     , srOnly
+    , stackedFractions
     , static
     , sticky
     , stroke0
@@ -10845,6 +14703,7 @@ module Html.Tailwind exposing
     , tableHeaderGroup
     , tableRow
     , tableRowGroup
+    , tabularNums
     , text2xl
     , text3xl
     , text4xl
@@ -10958,6 +14817,100 @@ module Html.Tailwind exposing
     , textYellow700
     , textYellow800
     , textYellow900
+    , toBlack
+    , toBlue100
+    , toBlue200
+    , toBlue300
+    , toBlue400
+    , toBlue500
+    , toBlue600
+    , toBlue700
+    , toBlue800
+    , toBlue900
+    , toCurrent
+    , toGray100
+    , toGray200
+    , toGray300
+    , toGray400
+    , toGray500
+    , toGray600
+    , toGray700
+    , toGray800
+    , toGray900
+    , toGreen100
+    , toGreen200
+    , toGreen300
+    , toGreen400
+    , toGreen500
+    , toGreen600
+    , toGreen700
+    , toGreen800
+    , toGreen900
+    , toIndigo100
+    , toIndigo200
+    , toIndigo300
+    , toIndigo400
+    , toIndigo500
+    , toIndigo600
+    , toIndigo700
+    , toIndigo800
+    , toIndigo900
+    , toOrange100
+    , toOrange200
+    , toOrange300
+    , toOrange400
+    , toOrange500
+    , toOrange600
+    , toOrange700
+    , toOrange800
+    , toOrange900
+    , toPink100
+    , toPink200
+    , toPink300
+    , toPink400
+    , toPink500
+    , toPink600
+    , toPink700
+    , toPink800
+    , toPink900
+    , toPurple100
+    , toPurple200
+    , toPurple300
+    , toPurple400
+    , toPurple500
+    , toPurple600
+    , toPurple700
+    , toPurple800
+    , toPurple900
+    , toRed100
+    , toRed200
+    , toRed300
+    , toRed400
+    , toRed500
+    , toRed600
+    , toRed700
+    , toRed800
+    , toRed900
+    , toTeal100
+    , toTeal200
+    , toTeal300
+    , toTeal400
+    , toTeal500
+    , toTeal600
+    , toTeal700
+    , toTeal800
+    , toTeal900
+    , toTransparent
+    , toWhite
+    , toYellow100
+    , toYellow200
+    , toYellow300
+    , toYellow400
+    , toYellow500
+    , toYellow600
+    , toYellow700
+    , toYellow800
+    , toYellow900
     , top0
     , topAuto
     , trackingNormal
@@ -11020,6 +14973,100 @@ module Html.Tailwind exposing
     , truncate
     , underline
     , uppercase
+    , viaBlack
+    , viaBlue100
+    , viaBlue200
+    , viaBlue300
+    , viaBlue400
+    , viaBlue500
+    , viaBlue600
+    , viaBlue700
+    , viaBlue800
+    , viaBlue900
+    , viaCurrent
+    , viaGray100
+    , viaGray200
+    , viaGray300
+    , viaGray400
+    , viaGray500
+    , viaGray600
+    , viaGray700
+    , viaGray800
+    , viaGray900
+    , viaGreen100
+    , viaGreen200
+    , viaGreen300
+    , viaGreen400
+    , viaGreen500
+    , viaGreen600
+    , viaGreen700
+    , viaGreen800
+    , viaGreen900
+    , viaIndigo100
+    , viaIndigo200
+    , viaIndigo300
+    , viaIndigo400
+    , viaIndigo500
+    , viaIndigo600
+    , viaIndigo700
+    , viaIndigo800
+    , viaIndigo900
+    , viaOrange100
+    , viaOrange200
+    , viaOrange300
+    , viaOrange400
+    , viaOrange500
+    , viaOrange600
+    , viaOrange700
+    , viaOrange800
+    , viaOrange900
+    , viaPink100
+    , viaPink200
+    , viaPink300
+    , viaPink400
+    , viaPink500
+    , viaPink600
+    , viaPink700
+    , viaPink800
+    , viaPink900
+    , viaPurple100
+    , viaPurple200
+    , viaPurple300
+    , viaPurple400
+    , viaPurple500
+    , viaPurple600
+    , viaPurple700
+    , viaPurple800
+    , viaPurple900
+    , viaRed100
+    , viaRed200
+    , viaRed300
+    , viaRed400
+    , viaRed500
+    , viaRed600
+    , viaRed700
+    , viaRed800
+    , viaRed900
+    , viaTeal100
+    , viaTeal200
+    , viaTeal300
+    , viaTeal400
+    , viaTeal500
+    , viaTeal600
+    , viaTeal700
+    , viaTeal800
+    , viaTeal900
+    , viaTransparent
+    , viaWhite
+    , viaYellow100
+    , viaYellow200
+    , viaYellow300
+    , viaYellow400
+    , viaYellow500
+    , viaYellow600
+    , viaYellow700
+    , viaYellow800
+    , viaYellow900
     , visible
     , w0
     , w1
@@ -11081,8 +15128,21 @@ module Html.Tailwind exposing
     , xlAlignTextBottom
     , xlAlignTextTop
     , xlAlignTop
+    , xlAnimateBounce
+    , xlAnimateNone
+    , xlAnimatePing
+    , xlAnimatePulse
+    , xlAnimateSpin
     , xlAntialiased
     , xlAppearanceNone
+    , xlAutoColsAuto
+    , xlAutoColsFr
+    , xlAutoColsMax
+    , xlAutoColsMin
+    , xlAutoRowsAuto
+    , xlAutoRowsFr
+    , xlAutoRowsMax
+    , xlAutoRowsMin
     , xlBgAuto
     , xlBgBlack
     , xlBgBlue100
@@ -11096,10 +15156,22 @@ module Html.Tailwind exposing
     , xlBgBlue900
     , xlBgBottom
     , xlBgCenter
+    , xlBgClipBorder
+    , xlBgClipContent
+    , xlBgClipPadding
+    , xlBgClipText
     , xlBgContain
     , xlBgCover
     , xlBgCurrent
     , xlBgFixed
+    , xlBgGradientToB
+    , xlBgGradientToBl
+    , xlBgGradientToBr
+    , xlBgGradientToL
+    , xlBgGradientToR
+    , xlBgGradientToT
+    , xlBgGradientToTl
+    , xlBgGradientToTr
     , xlBgGray100
     , xlBgGray200
     , xlBgGray300
@@ -11132,6 +15204,7 @@ module Html.Tailwind exposing
     , xlBgLeftTop
     , xlBgLocal
     , xlBgNoRepeat
+    , xlBgNone
     , xlBgOpacity0
     , xlBgOpacity100
     , xlBgOpacity25
@@ -11363,25 +15436,6 @@ module Html.Tailwind exposing
     , xlColEnd8
     , xlColEnd9
     , xlColEndAuto
-    , xlColGap0
-    , xlColGap1
-    , xlColGap10
-    , xlColGap12
-    , xlColGap16
-    , xlColGap2
-    , xlColGap20
-    , xlColGap24
-    , xlColGap3
-    , xlColGap32
-    , xlColGap4
-    , xlColGap40
-    , xlColGap48
-    , xlColGap5
-    , xlColGap56
-    , xlColGap6
-    , xlColGap64
-    , xlColGap8
-    , xlColGapPx
     , xlColSpan1
     , xlColSpan10
     , xlColSpan11
@@ -11394,6 +15448,7 @@ module Html.Tailwind exposing
     , xlColSpan7
     , xlColSpan8
     , xlColSpan9
+    , xlColSpanFull
     , xlColStart1
     , xlColStart10
     , xlColStart11
@@ -11408,11 +15463,14 @@ module Html.Tailwind exposing
     , xlColStart8
     , xlColStart9
     , xlColStartAuto
+    , xlContainer
     , xlContentAround
     , xlContentBetween
     , xlContentCenter
     , xlContentEnd
+    , xlContentEvenly
     , xlContentStart
+    , xlContents
     , xlCursorAuto
     , xlCursorDefault
     , xlCursorMove
@@ -11428,6 +15486,7 @@ module Html.Tailwind exposing
     , xlDelay500
     , xlDelay700
     , xlDelay75
+    , xlDiagonalFractions
     , xlDivideBlack
     , xlDivideBlue100
     , xlDivideBlue200
@@ -11439,6 +15498,9 @@ module Html.Tailwind exposing
     , xlDivideBlue800
     , xlDivideBlue900
     , xlDivideCurrent
+    , xlDivideDashed
+    , xlDivideDotted
+    , xlDivideDouble
     , xlDivideGray100
     , xlDivideGray200
     , xlDivideGray300
@@ -11466,6 +15528,7 @@ module Html.Tailwind exposing
     , xlDivideIndigo700
     , xlDivideIndigo800
     , xlDivideIndigo900
+    , xlDivideNone
     , xlDivideOpacity0
     , xlDivideOpacity100
     , xlDivideOpacity25
@@ -11507,6 +15570,7 @@ module Html.Tailwind exposing
     , xlDivideRed700
     , xlDivideRed800
     , xlDivideRed900
+    , xlDivideSolid
     , xlDivideTeal100
     , xlDivideTeal200
     , xlDivideTeal300
@@ -11780,14 +15844,117 @@ module Html.Tailwind exposing
     , xlFocusFontNormal
     , xlFocusFontSemibold
     , xlFocusFontThin
+    , xlFocusFromBlack
+    , xlFocusFromBlue100
+    , xlFocusFromBlue200
+    , xlFocusFromBlue300
+    , xlFocusFromBlue400
+    , xlFocusFromBlue500
+    , xlFocusFromBlue600
+    , xlFocusFromBlue700
+    , xlFocusFromBlue800
+    , xlFocusFromBlue900
+    , xlFocusFromCurrent
+    , xlFocusFromGray100
+    , xlFocusFromGray200
+    , xlFocusFromGray300
+    , xlFocusFromGray400
+    , xlFocusFromGray500
+    , xlFocusFromGray600
+    , xlFocusFromGray700
+    , xlFocusFromGray800
+    , xlFocusFromGray900
+    , xlFocusFromGreen100
+    , xlFocusFromGreen200
+    , xlFocusFromGreen300
+    , xlFocusFromGreen400
+    , xlFocusFromGreen500
+    , xlFocusFromGreen600
+    , xlFocusFromGreen700
+    , xlFocusFromGreen800
+    , xlFocusFromGreen900
+    , xlFocusFromIndigo100
+    , xlFocusFromIndigo200
+    , xlFocusFromIndigo300
+    , xlFocusFromIndigo400
+    , xlFocusFromIndigo500
+    , xlFocusFromIndigo600
+    , xlFocusFromIndigo700
+    , xlFocusFromIndigo800
+    , xlFocusFromIndigo900
+    , xlFocusFromOrange100
+    , xlFocusFromOrange200
+    , xlFocusFromOrange300
+    , xlFocusFromOrange400
+    , xlFocusFromOrange500
+    , xlFocusFromOrange600
+    , xlFocusFromOrange700
+    , xlFocusFromOrange800
+    , xlFocusFromOrange900
+    , xlFocusFromPink100
+    , xlFocusFromPink200
+    , xlFocusFromPink300
+    , xlFocusFromPink400
+    , xlFocusFromPink500
+    , xlFocusFromPink600
+    , xlFocusFromPink700
+    , xlFocusFromPink800
+    , xlFocusFromPink900
+    , xlFocusFromPurple100
+    , xlFocusFromPurple200
+    , xlFocusFromPurple300
+    , xlFocusFromPurple400
+    , xlFocusFromPurple500
+    , xlFocusFromPurple600
+    , xlFocusFromPurple700
+    , xlFocusFromPurple800
+    , xlFocusFromPurple900
+    , xlFocusFromRed100
+    , xlFocusFromRed200
+    , xlFocusFromRed300
+    , xlFocusFromRed400
+    , xlFocusFromRed500
+    , xlFocusFromRed600
+    , xlFocusFromRed700
+    , xlFocusFromRed800
+    , xlFocusFromRed900
+    , xlFocusFromTeal100
+    , xlFocusFromTeal200
+    , xlFocusFromTeal300
+    , xlFocusFromTeal400
+    , xlFocusFromTeal500
+    , xlFocusFromTeal600
+    , xlFocusFromTeal700
+    , xlFocusFromTeal800
+    , xlFocusFromTeal900
+    , xlFocusFromTransparent
+    , xlFocusFromWhite
+    , xlFocusFromYellow100
+    , xlFocusFromYellow200
+    , xlFocusFromYellow300
+    , xlFocusFromYellow400
+    , xlFocusFromYellow500
+    , xlFocusFromYellow600
+    , xlFocusFromYellow700
+    , xlFocusFromYellow800
+    , xlFocusFromYellow900
     , xlFocusLineThrough
+    , xlFocusNegRotate1
+    , xlFocusNegRotate12
     , xlFocusNegRotate180
+    , xlFocusNegRotate2
+    , xlFocusNegRotate3
     , xlFocusNegRotate45
+    , xlFocusNegRotate6
     , xlFocusNegRotate90
+    , xlFocusNegSkewX1
     , xlFocusNegSkewX12
+    , xlFocusNegSkewX2
     , xlFocusNegSkewX3
     , xlFocusNegSkewX6
+    , xlFocusNegSkewY1
     , xlFocusNegSkewY12
+    , xlFocusNegSkewY2
     , xlFocusNegSkewY3
     , xlFocusNegSkewY6
     , xlFocusNegTranslateX1
@@ -11837,7 +16004,9 @@ module Html.Tailwind exposing
     , xlFocusOpacity25
     , xlFocusOpacity50
     , xlFocusOpacity75
+    , xlFocusOutlineBlack
     , xlFocusOutlineNone
+    , xlFocusOutlineWhite
     , xlFocusPlaceholderBlackFocus
     , xlFocusPlaceholderBlue100Focus
     , xlFocusPlaceholderBlue200Focus
@@ -11938,8 +16107,13 @@ module Html.Tailwind exposing
     , xlFocusPlaceholderYellow800Focus
     , xlFocusPlaceholderYellow900Focus
     , xlFocusRotate0
+    , xlFocusRotate1
+    , xlFocusRotate12
     , xlFocusRotate180
+    , xlFocusRotate2
+    , xlFocusRotate3
     , xlFocusRotate45
+    , xlFocusRotate6
     , xlFocusRotate90
     , xlFocusScale0
     , xlFocusScale100
@@ -11982,11 +16156,15 @@ module Html.Tailwind exposing
     , xlFocusShadowXl
     , xlFocusShadowXs
     , xlFocusSkewX0
+    , xlFocusSkewX1
     , xlFocusSkewX12
+    , xlFocusSkewX2
     , xlFocusSkewX3
     , xlFocusSkewX6
     , xlFocusSkewY0
+    , xlFocusSkewY1
     , xlFocusSkewY12
+    , xlFocusSkewY2
     , xlFocusSkewY3
     , xlFocusSkewY6
     , xlFocusSrOnly
@@ -12089,6 +16267,100 @@ module Html.Tailwind exposing
     , xlFocusTextYellow700
     , xlFocusTextYellow800
     , xlFocusTextYellow900
+    , xlFocusToBlack
+    , xlFocusToBlue100
+    , xlFocusToBlue200
+    , xlFocusToBlue300
+    , xlFocusToBlue400
+    , xlFocusToBlue500
+    , xlFocusToBlue600
+    , xlFocusToBlue700
+    , xlFocusToBlue800
+    , xlFocusToBlue900
+    , xlFocusToCurrent
+    , xlFocusToGray100
+    , xlFocusToGray200
+    , xlFocusToGray300
+    , xlFocusToGray400
+    , xlFocusToGray500
+    , xlFocusToGray600
+    , xlFocusToGray700
+    , xlFocusToGray800
+    , xlFocusToGray900
+    , xlFocusToGreen100
+    , xlFocusToGreen200
+    , xlFocusToGreen300
+    , xlFocusToGreen400
+    , xlFocusToGreen500
+    , xlFocusToGreen600
+    , xlFocusToGreen700
+    , xlFocusToGreen800
+    , xlFocusToGreen900
+    , xlFocusToIndigo100
+    , xlFocusToIndigo200
+    , xlFocusToIndigo300
+    , xlFocusToIndigo400
+    , xlFocusToIndigo500
+    , xlFocusToIndigo600
+    , xlFocusToIndigo700
+    , xlFocusToIndigo800
+    , xlFocusToIndigo900
+    , xlFocusToOrange100
+    , xlFocusToOrange200
+    , xlFocusToOrange300
+    , xlFocusToOrange400
+    , xlFocusToOrange500
+    , xlFocusToOrange600
+    , xlFocusToOrange700
+    , xlFocusToOrange800
+    , xlFocusToOrange900
+    , xlFocusToPink100
+    , xlFocusToPink200
+    , xlFocusToPink300
+    , xlFocusToPink400
+    , xlFocusToPink500
+    , xlFocusToPink600
+    , xlFocusToPink700
+    , xlFocusToPink800
+    , xlFocusToPink900
+    , xlFocusToPurple100
+    , xlFocusToPurple200
+    , xlFocusToPurple300
+    , xlFocusToPurple400
+    , xlFocusToPurple500
+    , xlFocusToPurple600
+    , xlFocusToPurple700
+    , xlFocusToPurple800
+    , xlFocusToPurple900
+    , xlFocusToRed100
+    , xlFocusToRed200
+    , xlFocusToRed300
+    , xlFocusToRed400
+    , xlFocusToRed500
+    , xlFocusToRed600
+    , xlFocusToRed700
+    , xlFocusToRed800
+    , xlFocusToRed900
+    , xlFocusToTeal100
+    , xlFocusToTeal200
+    , xlFocusToTeal300
+    , xlFocusToTeal400
+    , xlFocusToTeal500
+    , xlFocusToTeal600
+    , xlFocusToTeal700
+    , xlFocusToTeal800
+    , xlFocusToTeal900
+    , xlFocusToTransparent
+    , xlFocusToWhite
+    , xlFocusToYellow100
+    , xlFocusToYellow200
+    , xlFocusToYellow300
+    , xlFocusToYellow400
+    , xlFocusToYellow500
+    , xlFocusToYellow600
+    , xlFocusToYellow700
+    , xlFocusToYellow800
+    , xlFocusToYellow900
     , xlFocusTranslateX0
     , xlFocusTranslateX1
     , xlFocusTranslateX10
@@ -12132,6 +16404,100 @@ module Html.Tailwind exposing
     , xlFocusTranslateYFull
     , xlFocusTranslateYPx
     , xlFocusUnderline
+    , xlFocusViaBlack
+    , xlFocusViaBlue100
+    , xlFocusViaBlue200
+    , xlFocusViaBlue300
+    , xlFocusViaBlue400
+    , xlFocusViaBlue500
+    , xlFocusViaBlue600
+    , xlFocusViaBlue700
+    , xlFocusViaBlue800
+    , xlFocusViaBlue900
+    , xlFocusViaCurrent
+    , xlFocusViaGray100
+    , xlFocusViaGray200
+    , xlFocusViaGray300
+    , xlFocusViaGray400
+    , xlFocusViaGray500
+    , xlFocusViaGray600
+    , xlFocusViaGray700
+    , xlFocusViaGray800
+    , xlFocusViaGray900
+    , xlFocusViaGreen100
+    , xlFocusViaGreen200
+    , xlFocusViaGreen300
+    , xlFocusViaGreen400
+    , xlFocusViaGreen500
+    , xlFocusViaGreen600
+    , xlFocusViaGreen700
+    , xlFocusViaGreen800
+    , xlFocusViaGreen900
+    , xlFocusViaIndigo100
+    , xlFocusViaIndigo200
+    , xlFocusViaIndigo300
+    , xlFocusViaIndigo400
+    , xlFocusViaIndigo500
+    , xlFocusViaIndigo600
+    , xlFocusViaIndigo700
+    , xlFocusViaIndigo800
+    , xlFocusViaIndigo900
+    , xlFocusViaOrange100
+    , xlFocusViaOrange200
+    , xlFocusViaOrange300
+    , xlFocusViaOrange400
+    , xlFocusViaOrange500
+    , xlFocusViaOrange600
+    , xlFocusViaOrange700
+    , xlFocusViaOrange800
+    , xlFocusViaOrange900
+    , xlFocusViaPink100
+    , xlFocusViaPink200
+    , xlFocusViaPink300
+    , xlFocusViaPink400
+    , xlFocusViaPink500
+    , xlFocusViaPink600
+    , xlFocusViaPink700
+    , xlFocusViaPink800
+    , xlFocusViaPink900
+    , xlFocusViaPurple100
+    , xlFocusViaPurple200
+    , xlFocusViaPurple300
+    , xlFocusViaPurple400
+    , xlFocusViaPurple500
+    , xlFocusViaPurple600
+    , xlFocusViaPurple700
+    , xlFocusViaPurple800
+    , xlFocusViaPurple900
+    , xlFocusViaRed100
+    , xlFocusViaRed200
+    , xlFocusViaRed300
+    , xlFocusViaRed400
+    , xlFocusViaRed500
+    , xlFocusViaRed600
+    , xlFocusViaRed700
+    , xlFocusViaRed800
+    , xlFocusViaRed900
+    , xlFocusViaTeal100
+    , xlFocusViaTeal200
+    , xlFocusViaTeal300
+    , xlFocusViaTeal400
+    , xlFocusViaTeal500
+    , xlFocusViaTeal600
+    , xlFocusViaTeal700
+    , xlFocusViaTeal800
+    , xlFocusViaTeal900
+    , xlFocusViaTransparent
+    , xlFocusViaWhite
+    , xlFocusViaYellow100
+    , xlFocusViaYellow200
+    , xlFocusViaYellow300
+    , xlFocusViaYellow400
+    , xlFocusViaYellow500
+    , xlFocusViaYellow600
+    , xlFocusViaYellow700
+    , xlFocusViaYellow800
+    , xlFocusViaYellow900
     , xlFontBlack
     , xlFontBold
     , xlFontExtrabold
@@ -12145,6 +16511,100 @@ module Html.Tailwind exposing
     , xlFontSerif
     , xlFontThin
     , xlFontTitle
+    , xlFromBlack
+    , xlFromBlue100
+    , xlFromBlue200
+    , xlFromBlue300
+    , xlFromBlue400
+    , xlFromBlue500
+    , xlFromBlue600
+    , xlFromBlue700
+    , xlFromBlue800
+    , xlFromBlue900
+    , xlFromCurrent
+    , xlFromGray100
+    , xlFromGray200
+    , xlFromGray300
+    , xlFromGray400
+    , xlFromGray500
+    , xlFromGray600
+    , xlFromGray700
+    , xlFromGray800
+    , xlFromGray900
+    , xlFromGreen100
+    , xlFromGreen200
+    , xlFromGreen300
+    , xlFromGreen400
+    , xlFromGreen500
+    , xlFromGreen600
+    , xlFromGreen700
+    , xlFromGreen800
+    , xlFromGreen900
+    , xlFromIndigo100
+    , xlFromIndigo200
+    , xlFromIndigo300
+    , xlFromIndigo400
+    , xlFromIndigo500
+    , xlFromIndigo600
+    , xlFromIndigo700
+    , xlFromIndigo800
+    , xlFromIndigo900
+    , xlFromOrange100
+    , xlFromOrange200
+    , xlFromOrange300
+    , xlFromOrange400
+    , xlFromOrange500
+    , xlFromOrange600
+    , xlFromOrange700
+    , xlFromOrange800
+    , xlFromOrange900
+    , xlFromPink100
+    , xlFromPink200
+    , xlFromPink300
+    , xlFromPink400
+    , xlFromPink500
+    , xlFromPink600
+    , xlFromPink700
+    , xlFromPink800
+    , xlFromPink900
+    , xlFromPurple100
+    , xlFromPurple200
+    , xlFromPurple300
+    , xlFromPurple400
+    , xlFromPurple500
+    , xlFromPurple600
+    , xlFromPurple700
+    , xlFromPurple800
+    , xlFromPurple900
+    , xlFromRed100
+    , xlFromRed200
+    , xlFromRed300
+    , xlFromRed400
+    , xlFromRed500
+    , xlFromRed600
+    , xlFromRed700
+    , xlFromRed800
+    , xlFromRed900
+    , xlFromTeal100
+    , xlFromTeal200
+    , xlFromTeal300
+    , xlFromTeal400
+    , xlFromTeal500
+    , xlFromTeal600
+    , xlFromTeal700
+    , xlFromTeal800
+    , xlFromTeal900
+    , xlFromTransparent
+    , xlFromWhite
+    , xlFromYellow100
+    , xlFromYellow200
+    , xlFromYellow300
+    , xlFromYellow400
+    , xlFromYellow500
+    , xlFromYellow600
+    , xlFromYellow700
+    , xlFromYellow800
+    , xlFromYellow900
     , xlGap0
     , xlGap1
     , xlGap10
@@ -12164,6 +16624,44 @@ module Html.Tailwind exposing
     , xlGap64
     , xlGap8
     , xlGapPx
+    , xlGapX0
+    , xlGapX1
+    , xlGapX10
+    , xlGapX12
+    , xlGapX16
+    , xlGapX2
+    , xlGapX20
+    , xlGapX24
+    , xlGapX3
+    , xlGapX32
+    , xlGapX4
+    , xlGapX40
+    , xlGapX48
+    , xlGapX5
+    , xlGapX56
+    , xlGapX6
+    , xlGapX64
+    , xlGapX8
+    , xlGapXPx
+    , xlGapY0
+    , xlGapY1
+    , xlGapY10
+    , xlGapY12
+    , xlGapY16
+    , xlGapY2
+    , xlGapY20
+    , xlGapY24
+    , xlGapY3
+    , xlGapY32
+    , xlGapY4
+    , xlGapY40
+    , xlGapY48
+    , xlGapY5
+    , xlGapY56
+    , xlGapY6
+    , xlGapY64
+    , xlGapY8
+    , xlGapYPx
     , xlGrid
     , xlGridCols1
     , xlGridCols10
@@ -12419,14 +16917,117 @@ module Html.Tailwind exposing
     , xlHoverFontNormal
     , xlHoverFontSemibold
     , xlHoverFontThin
+    , xlHoverFromBlack
+    , xlHoverFromBlue100
+    , xlHoverFromBlue200
+    , xlHoverFromBlue300
+    , xlHoverFromBlue400
+    , xlHoverFromBlue500
+    , xlHoverFromBlue600
+    , xlHoverFromBlue700
+    , xlHoverFromBlue800
+    , xlHoverFromBlue900
+    , xlHoverFromCurrent
+    , xlHoverFromGray100
+    , xlHoverFromGray200
+    , xlHoverFromGray300
+    , xlHoverFromGray400
+    , xlHoverFromGray500
+    , xlHoverFromGray600
+    , xlHoverFromGray700
+    , xlHoverFromGray800
+    , xlHoverFromGray900
+    , xlHoverFromGreen100
+    , xlHoverFromGreen200
+    , xlHoverFromGreen300
+    , xlHoverFromGreen400
+    , xlHoverFromGreen500
+    , xlHoverFromGreen600
+    , xlHoverFromGreen700
+    , xlHoverFromGreen800
+    , xlHoverFromGreen900
+    , xlHoverFromIndigo100
+    , xlHoverFromIndigo200
+    , xlHoverFromIndigo300
+    , xlHoverFromIndigo400
+    , xlHoverFromIndigo500
+    , xlHoverFromIndigo600
+    , xlHoverFromIndigo700
+    , xlHoverFromIndigo800
+    , xlHoverFromIndigo900
+    , xlHoverFromOrange100
+    , xlHoverFromOrange200
+    , xlHoverFromOrange300
+    , xlHoverFromOrange400
+    , xlHoverFromOrange500
+    , xlHoverFromOrange600
+    , xlHoverFromOrange700
+    , xlHoverFromOrange800
+    , xlHoverFromOrange900
+    , xlHoverFromPink100
+    , xlHoverFromPink200
+    , xlHoverFromPink300
+    , xlHoverFromPink400
+    , xlHoverFromPink500
+    , xlHoverFromPink600
+    , xlHoverFromPink700
+    , xlHoverFromPink800
+    , xlHoverFromPink900
+    , xlHoverFromPurple100
+    , xlHoverFromPurple200
+    , xlHoverFromPurple300
+    , xlHoverFromPurple400
+    , xlHoverFromPurple500
+    , xlHoverFromPurple600
+    , xlHoverFromPurple700
+    , xlHoverFromPurple800
+    , xlHoverFromPurple900
+    , xlHoverFromRed100
+    , xlHoverFromRed200
+    , xlHoverFromRed300
+    , xlHoverFromRed400
+    , xlHoverFromRed500
+    , xlHoverFromRed600
+    , xlHoverFromRed700
+    , xlHoverFromRed800
+    , xlHoverFromRed900
+    , xlHoverFromTeal100
+    , xlHoverFromTeal200
+    , xlHoverFromTeal300
+    , xlHoverFromTeal400
+    , xlHoverFromTeal500
+    , xlHoverFromTeal600
+    , xlHoverFromTeal700
+    , xlHoverFromTeal800
+    , xlHoverFromTeal900
+    , xlHoverFromTransparent
+    , xlHoverFromWhite
+    , xlHoverFromYellow100
+    , xlHoverFromYellow200
+    , xlHoverFromYellow300
+    , xlHoverFromYellow400
+    , xlHoverFromYellow500
+    , xlHoverFromYellow600
+    , xlHoverFromYellow700
+    , xlHoverFromYellow800
+    , xlHoverFromYellow900
     , xlHoverLineThrough
+    , xlHoverNegRotate1
+    , xlHoverNegRotate12
     , xlHoverNegRotate180
+    , xlHoverNegRotate2
+    , xlHoverNegRotate3
     , xlHoverNegRotate45
+    , xlHoverNegRotate6
     , xlHoverNegRotate90
+    , xlHoverNegSkewX1
     , xlHoverNegSkewX12
+    , xlHoverNegSkewX2
     , xlHoverNegSkewX3
     , xlHoverNegSkewX6
+    , xlHoverNegSkewY1
     , xlHoverNegSkewY12
+    , xlHoverNegSkewY2
     , xlHoverNegSkewY3
     , xlHoverNegSkewY6
     , xlHoverNegTranslateX1
@@ -12476,8 +17077,13 @@ module Html.Tailwind exposing
     , xlHoverOpacity50
     , xlHoverOpacity75
     , xlHoverRotate0
+    , xlHoverRotate1
+    , xlHoverRotate12
     , xlHoverRotate180
+    , xlHoverRotate2
+    , xlHoverRotate3
     , xlHoverRotate45
+    , xlHoverRotate6
     , xlHoverRotate90
     , xlHoverScale0
     , xlHoverScale100
@@ -12520,11 +17126,15 @@ module Html.Tailwind exposing
     , xlHoverShadowXl
     , xlHoverShadowXs
     , xlHoverSkewX0
+    , xlHoverSkewX1
     , xlHoverSkewX12
+    , xlHoverSkewX2
     , xlHoverSkewX3
     , xlHoverSkewX6
     , xlHoverSkewY0
+    , xlHoverSkewY1
     , xlHoverSkewY12
+    , xlHoverSkewY2
     , xlHoverSkewY3
     , xlHoverSkewY6
     , xlHoverTextBlack
@@ -12626,6 +17236,100 @@ module Html.Tailwind exposing
     , xlHoverTextYellow700
     , xlHoverTextYellow800
     , xlHoverTextYellow900
+    , xlHoverToBlack
+    , xlHoverToBlue100
+    , xlHoverToBlue200
+    , xlHoverToBlue300
+    , xlHoverToBlue400
+    , xlHoverToBlue500
+    , xlHoverToBlue600
+    , xlHoverToBlue700
+    , xlHoverToBlue800
+    , xlHoverToBlue900
+    , xlHoverToCurrent
+    , xlHoverToGray100
+    , xlHoverToGray200
+    , xlHoverToGray300
+    , xlHoverToGray400
+    , xlHoverToGray500
+    , xlHoverToGray600
+    , xlHoverToGray700
+    , xlHoverToGray800
+    , xlHoverToGray900
+    , xlHoverToGreen100
+    , xlHoverToGreen200
+    , xlHoverToGreen300
+    , xlHoverToGreen400
+    , xlHoverToGreen500
+    , xlHoverToGreen600
+    , xlHoverToGreen700
+    , xlHoverToGreen800
+    , xlHoverToGreen900
+    , xlHoverToIndigo100
+    , xlHoverToIndigo200
+    , xlHoverToIndigo300
+    , xlHoverToIndigo400
+    , xlHoverToIndigo500
+    , xlHoverToIndigo600
+    , xlHoverToIndigo700
+    , xlHoverToIndigo800
+    , xlHoverToIndigo900
+    , xlHoverToOrange100
+    , xlHoverToOrange200
+    , xlHoverToOrange300
+    , xlHoverToOrange400
+    , xlHoverToOrange500
+    , xlHoverToOrange600
+    , xlHoverToOrange700
+    , xlHoverToOrange800
+    , xlHoverToOrange900
+    , xlHoverToPink100
+    , xlHoverToPink200
+    , xlHoverToPink300
+    , xlHoverToPink400
+    , xlHoverToPink500
+    , xlHoverToPink600
+    , xlHoverToPink700
+    , xlHoverToPink800
+    , xlHoverToPink900
+    , xlHoverToPurple100
+    , xlHoverToPurple200
+    , xlHoverToPurple300
+    , xlHoverToPurple400
+    , xlHoverToPurple500
+    , xlHoverToPurple600
+    , xlHoverToPurple700
+    , xlHoverToPurple800
+    , xlHoverToPurple900
+    , xlHoverToRed100
+    , xlHoverToRed200
+    , xlHoverToRed300
+    , xlHoverToRed400
+    , xlHoverToRed500
+    , xlHoverToRed600
+    , xlHoverToRed700
+    , xlHoverToRed800
+    , xlHoverToRed900
+    , xlHoverToTeal100
+    , xlHoverToTeal200
+    , xlHoverToTeal300
+    , xlHoverToTeal400
+    , xlHoverToTeal500
+    , xlHoverToTeal600
+    , xlHoverToTeal700
+    , xlHoverToTeal800
+    , xlHoverToTeal900
+    , xlHoverToTransparent
+    , xlHoverToWhite
+    , xlHoverToYellow100
+    , xlHoverToYellow200
+    , xlHoverToYellow300
+    , xlHoverToYellow400
+    , xlHoverToYellow500
+    , xlHoverToYellow600
+    , xlHoverToYellow700
+    , xlHoverToYellow800
+    , xlHoverToYellow900
     , xlHoverTranslateX0
     , xlHoverTranslateX1
     , xlHoverTranslateX10
@@ -12669,6 +17373,100 @@ module Html.Tailwind exposing
     , xlHoverTranslateYFull
     , xlHoverTranslateYPx
     , xlHoverUnderline
+    , xlHoverViaBlack
+    , xlHoverViaBlue100
+    , xlHoverViaBlue200
+    , xlHoverViaBlue300
+    , xlHoverViaBlue400
+    , xlHoverViaBlue500
+    , xlHoverViaBlue600
+    , xlHoverViaBlue700
+    , xlHoverViaBlue800
+    , xlHoverViaBlue900
+    , xlHoverViaCurrent
+    , xlHoverViaGray100
+    , xlHoverViaGray200
+    , xlHoverViaGray300
+    , xlHoverViaGray400
+    , xlHoverViaGray500
+    , xlHoverViaGray600
+    , xlHoverViaGray700
+    , xlHoverViaGray800
+    , xlHoverViaGray900
+    , xlHoverViaGreen100
+    , xlHoverViaGreen200
+    , xlHoverViaGreen300
+    , xlHoverViaGreen400
+    , xlHoverViaGreen500
+    , xlHoverViaGreen600
+    , xlHoverViaGreen700
+    , xlHoverViaGreen800
+    , xlHoverViaGreen900
+    , xlHoverViaIndigo100
+    , xlHoverViaIndigo200
+    , xlHoverViaIndigo300
+    , xlHoverViaIndigo400
+    , xlHoverViaIndigo500
+    , xlHoverViaIndigo600
+    , xlHoverViaIndigo700
+    , xlHoverViaIndigo800
+    , xlHoverViaIndigo900
+    , xlHoverViaOrange100
+    , xlHoverViaOrange200
+    , xlHoverViaOrange300
+    , xlHoverViaOrange400
+    , xlHoverViaOrange500
+    , xlHoverViaOrange600
+    , xlHoverViaOrange700
+    , xlHoverViaOrange800
+    , xlHoverViaOrange900
+    , xlHoverViaPink100
+    , xlHoverViaPink200
+    , xlHoverViaPink300
+    , xlHoverViaPink400
+    , xlHoverViaPink500
+    , xlHoverViaPink600
+    , xlHoverViaPink700
+    , xlHoverViaPink800
+    , xlHoverViaPink900
+    , xlHoverViaPurple100
+    , xlHoverViaPurple200
+    , xlHoverViaPurple300
+    , xlHoverViaPurple400
+    , xlHoverViaPurple500
+    , xlHoverViaPurple600
+    , xlHoverViaPurple700
+    , xlHoverViaPurple800
+    , xlHoverViaPurple900
+    , xlHoverViaRed100
+    , xlHoverViaRed200
+    , xlHoverViaRed300
+    , xlHoverViaRed400
+    , xlHoverViaRed500
+    , xlHoverViaRed600
+    , xlHoverViaRed700
+    , xlHoverViaRed800
+    , xlHoverViaRed900
+    , xlHoverViaTeal100
+    , xlHoverViaTeal200
+    , xlHoverViaTeal300
+    , xlHoverViaTeal400
+    , xlHoverViaTeal500
+    , xlHoverViaTeal600
+    , xlHoverViaTeal700
+    , xlHoverViaTeal800
+    , xlHoverViaTeal900
+    , xlHoverViaTransparent
+    , xlHoverViaWhite
+    , xlHoverViaYellow100
+    , xlHoverViaYellow200
+    , xlHoverViaYellow300
+    , xlHoverViaYellow400
+    , xlHoverViaYellow500
+    , xlHoverViaYellow600
+    , xlHoverViaYellow700
+    , xlHoverViaYellow800
+    , xlHoverViaYellow900
     , xlInline
     , xlInlineBlock
     , xlInlineFlex
@@ -12691,6 +17489,16 @@ module Html.Tailwind exposing
     , xlJustifyCenter
     , xlJustifyEnd
     , xlJustifyEvenly
+    , xlJustifyItemsAuto
+    , xlJustifyItemsCenter
+    , xlJustifyItemsEnd
+    , xlJustifyItemsStart
+    , xlJustifyItemsStretch
+    , xlJustifySelfAuto
+    , xlJustifySelfCenter
+    , xlJustifySelfEnd
+    , xlJustifySelfStart
+    , xlJustifySelfStretch
     , xlJustifyStart
     , xlLeading10
     , xlLeading3
@@ -12709,6 +17517,7 @@ module Html.Tailwind exposing
     , xlLeft0
     , xlLeftAuto
     , xlLineThrough
+    , xlLiningNums
     , xlListDecimal
     , xlListDisc
     , xlListInside
@@ -13004,13 +17813,22 @@ module Html.Tailwind exposing
     , xlNegMy64
     , xlNegMy8
     , xlNegMyPx
+    , xlNegRotate1
+    , xlNegRotate12
     , xlNegRotate180
+    , xlNegRotate2
+    , xlNegRotate3
     , xlNegRotate45
+    , xlNegRotate6
     , xlNegRotate90
+    , xlNegSkewX1
     , xlNegSkewX12
+    , xlNegSkewX2
     , xlNegSkewX3
     , xlNegSkewX6
+    , xlNegSkewY1
     , xlNegSkewY12
+    , xlNegSkewY2
     , xlNegSkewY3
     , xlNegSkewY6
     , xlNegSpaceX1
@@ -13091,6 +17909,7 @@ module Html.Tailwind exposing
     , xlNegTranslateYPx
     , xlNoUnderline
     , xlNormalCase
+    , xlNormalNums
     , xlNotItalic
     , xlNotSrOnly
     , xlObjectBottom
@@ -13107,6 +17926,7 @@ module Html.Tailwind exposing
     , xlObjectRightTop
     , xlObjectScaleDown
     , xlObjectTop
+    , xlOldstyleNums
     , xlOpacity0
     , xlOpacity100
     , xlOpacity25
@@ -13127,6 +17947,7 @@ module Html.Tailwind exposing
     , xlOrderFirst
     , xlOrderLast
     , xlOrderNone
+    , xlOrdinal
     , xlOriginBottom
     , xlOriginBottomLeft
     , xlOriginBottomRight
@@ -13136,7 +17957,9 @@ module Html.Tailwind exposing
     , xlOriginTop
     , xlOriginTopLeft
     , xlOriginTopRight
+    , xlOutlineBlack
     , xlOutlineNone
+    , xlOutlineWhite
     , xlOverflowAuto
     , xlOverflowHidden
     , xlOverflowScroll
@@ -13149,6 +17972,15 @@ module Html.Tailwind exposing
     , xlOverflowYHidden
     , xlOverflowYScroll
     , xlOverflowYVisible
+    , xlOverscrollAuto
+    , xlOverscrollContain
+    , xlOverscrollNone
+    , xlOverscrollXAuto
+    , xlOverscrollXContain
+    , xlOverscrollXNone
+    , xlOverscrollYAuto
+    , xlOverscrollYContain
+    , xlOverscrollYNone
     , xlP0
     , xlP1
     , xlP10
@@ -13206,6 +18038,23 @@ module Html.Tailwind exposing
     , xlPl64
     , xlPl8
     , xlPlPx
+    , xlPlaceContentAround
+    , xlPlaceContentBetween
+    , xlPlaceContentCenter
+    , xlPlaceContentEnd
+    , xlPlaceContentEvenly
+    , xlPlaceContentStart
+    , xlPlaceContentStretch
+    , xlPlaceItemsAuto
+    , xlPlaceItemsCenter
+    , xlPlaceItemsEnd
+    , xlPlaceItemsStart
+    , xlPlaceItemsStretch
+    , xlPlaceSelfAuto
+    , xlPlaceSelfCenter
+    , xlPlaceSelfEnd
+    , xlPlaceSelfStart
+    , xlPlaceSelfStretch
     , xlPlaceholderBlack
     , xlPlaceholderBlue100
     , xlPlaceholderBlue200
@@ -13326,6 +18175,7 @@ module Html.Tailwind exposing
     , xlPr64
     , xlPr8
     , xlPrPx
+    , xlProportionalNums
     , xlPt0
     , xlPt1
     , xlPt10
@@ -13391,63 +18241,95 @@ module Html.Tailwind exposing
     , xlRight0
     , xlRightAuto
     , xlRotate0
+    , xlRotate1
+    , xlRotate12
     , xlRotate180
+    , xlRotate2
+    , xlRotate3
     , xlRotate45
+    , xlRotate6
     , xlRotate90
     , xlRounded
+    , xlRounded2xl
+    , xlRounded3xl
     , xlRoundedB
+    , xlRoundedB2xl
+    , xlRoundedB3xl
     , xlRoundedBFull
     , xlRoundedBLg
     , xlRoundedBMd
     , xlRoundedBNone
     , xlRoundedBSm
+    , xlRoundedBXl
     , xlRoundedBl
+    , xlRoundedBl2xl
+    , xlRoundedBl3xl
     , xlRoundedBlFull
     , xlRoundedBlLg
     , xlRoundedBlMd
     , xlRoundedBlNone
     , xlRoundedBlSm
+    , xlRoundedBlXl
     , xlRoundedBr
+    , xlRoundedBr2xl
+    , xlRoundedBr3xl
     , xlRoundedBrFull
     , xlRoundedBrLg
     , xlRoundedBrMd
     , xlRoundedBrNone
     , xlRoundedBrSm
+    , xlRoundedBrXl
     , xlRoundedFull
     , xlRoundedL
+    , xlRoundedL2xl
+    , xlRoundedL3xl
     , xlRoundedLFull
     , xlRoundedLLg
     , xlRoundedLMd
     , xlRoundedLNone
     , xlRoundedLSm
+    , xlRoundedLXl
     , xlRoundedLg
     , xlRoundedMd
     , xlRoundedNone
     , xlRoundedR
+    , xlRoundedR2xl
+    , xlRoundedR3xl
     , xlRoundedRFull
     , xlRoundedRLg
     , xlRoundedRMd
     , xlRoundedRNone
     , xlRoundedRSm
+    , xlRoundedRXl
     , xlRoundedSm
     , xlRoundedT
+    , xlRoundedT2xl
+    , xlRoundedT3xl
     , xlRoundedTFull
     , xlRoundedTLg
     , xlRoundedTMd
     , xlRoundedTNone
     , xlRoundedTSm
+    , xlRoundedTXl
     , xlRoundedTl
+    , xlRoundedTl2xl
+    , xlRoundedTl3xl
     , xlRoundedTlFull
     , xlRoundedTlLg
     , xlRoundedTlMd
     , xlRoundedTlNone
     , xlRoundedTlSm
+    , xlRoundedTlXl
     , xlRoundedTr
+    , xlRoundedTr2xl
+    , xlRoundedTr3xl
     , xlRoundedTrFull
     , xlRoundedTrLg
     , xlRoundedTrMd
     , xlRoundedTrNone
     , xlRoundedTrSm
+    , xlRoundedTrXl
+    , xlRoundedXl
     , xlRowAuto
     , xlRowEnd1
     , xlRowEnd2
@@ -13457,31 +18339,13 @@ module Html.Tailwind exposing
     , xlRowEnd6
     , xlRowEnd7
     , xlRowEndAuto
-    , xlRowGap0
-    , xlRowGap1
-    , xlRowGap10
-    , xlRowGap12
-    , xlRowGap16
-    , xlRowGap2
-    , xlRowGap20
-    , xlRowGap24
-    , xlRowGap3
-    , xlRowGap32
-    , xlRowGap4
-    , xlRowGap40
-    , xlRowGap48
-    , xlRowGap5
-    , xlRowGap56
-    , xlRowGap6
-    , xlRowGap64
-    , xlRowGap8
-    , xlRowGapPx
     , xlRowSpan1
     , xlRowSpan2
     , xlRowSpan3
     , xlRowSpan4
     , xlRowSpan5
     , xlRowSpan6
+    , xlRowSpanFull
     , xlRowStart1
     , xlRowStart2
     , xlRowStart3
@@ -13542,13 +18406,18 @@ module Html.Tailwind exposing
     , xlShadowXl
     , xlShadowXs
     , xlSkewX0
+    , xlSkewX1
     , xlSkewX12
+    , xlSkewX2
     , xlSkewX3
     , xlSkewX6
     , xlSkewY0
+    , xlSkewY1
     , xlSkewY12
+    , xlSkewY2
     , xlSkewY3
     , xlSkewY6
+    , xlSlashedZero
     , xlSpaceX0
     , xlSpaceX1
     , xlSpaceX10
@@ -13590,6 +18459,7 @@ module Html.Tailwind exposing
     , xlSpaceYPx
     , xlSpaceYReverse
     , xlSrOnly
+    , xlStackedFractions
     , xlStatic
     , xlSticky
     , xlStroke0
@@ -13608,6 +18478,7 @@ module Html.Tailwind exposing
     , xlTableHeaderGroup
     , xlTableRow
     , xlTableRowGroup
+    , xlTabularNums
     , xlText2xl
     , xlText3xl
     , xlText4xl
@@ -13721,6 +18592,100 @@ module Html.Tailwind exposing
     , xlTextYellow700
     , xlTextYellow800
     , xlTextYellow900
+    , xlToBlack
+    , xlToBlue100
+    , xlToBlue200
+    , xlToBlue300
+    , xlToBlue400
+    , xlToBlue500
+    , xlToBlue600
+    , xlToBlue700
+    , xlToBlue800
+    , xlToBlue900
+    , xlToCurrent
+    , xlToGray100
+    , xlToGray200
+    , xlToGray300
+    , xlToGray400
+    , xlToGray500
+    , xlToGray600
+    , xlToGray700
+    , xlToGray800
+    , xlToGray900
+    , xlToGreen100
+    , xlToGreen200
+    , xlToGreen300
+    , xlToGreen400
+    , xlToGreen500
+    , xlToGreen600
+    , xlToGreen700
+    , xlToGreen800
+    , xlToGreen900
+    , xlToIndigo100
+    , xlToIndigo200
+    , xlToIndigo300
+    , xlToIndigo400
+    , xlToIndigo500
+    , xlToIndigo600
+    , xlToIndigo700
+    , xlToIndigo800
+    , xlToIndigo900
+    , xlToOrange100
+    , xlToOrange200
+    , xlToOrange300
+    , xlToOrange400
+    , xlToOrange500
+    , xlToOrange600
+    , xlToOrange700
+    , xlToOrange800
+    , xlToOrange900
+    , xlToPink100
+    , xlToPink200
+    , xlToPink300
+    , xlToPink400
+    , xlToPink500
+    , xlToPink600
+    , xlToPink700
+    , xlToPink800
+    , xlToPink900
+    , xlToPurple100
+    , xlToPurple200
+    , xlToPurple300
+    , xlToPurple400
+    , xlToPurple500
+    , xlToPurple600
+    , xlToPurple700
+    , xlToPurple800
+    , xlToPurple900
+    , xlToRed100
+    , xlToRed200
+    , xlToRed300
+    , xlToRed400
+    , xlToRed500
+    , xlToRed600
+    , xlToRed700
+    , xlToRed800
+    , xlToRed900
+    , xlToTeal100
+    , xlToTeal200
+    , xlToTeal300
+    , xlToTeal400
+    , xlToTeal500
+    , xlToTeal600
+    , xlToTeal700
+    , xlToTeal800
+    , xlToTeal900
+    , xlToTransparent
+    , xlToWhite
+    , xlToYellow100
+    , xlToYellow200
+    , xlToYellow300
+    , xlToYellow400
+    , xlToYellow500
+    , xlToYellow600
+    , xlToYellow700
+    , xlToYellow800
+    , xlToYellow900
     , xlTop0
     , xlTopAuto
     , xlTrackingNormal
@@ -13783,6 +18748,100 @@ module Html.Tailwind exposing
     , xlTruncate
     , xlUnderline
     , xlUppercase
+    , xlViaBlack
+    , xlViaBlue100
+    , xlViaBlue200
+    , xlViaBlue300
+    , xlViaBlue400
+    , xlViaBlue500
+    , xlViaBlue600
+    , xlViaBlue700
+    , xlViaBlue800
+    , xlViaBlue900
+    , xlViaCurrent
+    , xlViaGray100
+    , xlViaGray200
+    , xlViaGray300
+    , xlViaGray400
+    , xlViaGray500
+    , xlViaGray600
+    , xlViaGray700
+    , xlViaGray800
+    , xlViaGray900
+    , xlViaGreen100
+    , xlViaGreen200
+    , xlViaGreen300
+    , xlViaGreen400
+    , xlViaGreen500
+    , xlViaGreen600
+    , xlViaGreen700
+    , xlViaGreen800
+    , xlViaGreen900
+    , xlViaIndigo100
+    , xlViaIndigo200
+    , xlViaIndigo300
+    , xlViaIndigo400
+    , xlViaIndigo500
+    , xlViaIndigo600
+    , xlViaIndigo700
+    , xlViaIndigo800
+    , xlViaIndigo900
+    , xlViaOrange100
+    , xlViaOrange200
+    , xlViaOrange300
+    , xlViaOrange400
+    , xlViaOrange500
+    , xlViaOrange600
+    , xlViaOrange700
+    , xlViaOrange800
+    , xlViaOrange900
+    , xlViaPink100
+    , xlViaPink200
+    , xlViaPink300
+    , xlViaPink400
+    , xlViaPink500
+    , xlViaPink600
+    , xlViaPink700
+    , xlViaPink800
+    , xlViaPink900
+    , xlViaPurple100
+    , xlViaPurple200
+    , xlViaPurple300
+    , xlViaPurple400
+    , xlViaPurple500
+    , xlViaPurple600
+    , xlViaPurple700
+    , xlViaPurple800
+    , xlViaPurple900
+    , xlViaRed100
+    , xlViaRed200
+    , xlViaRed300
+    , xlViaRed400
+    , xlViaRed500
+    , xlViaRed600
+    , xlViaRed700
+    , xlViaRed800
+    , xlViaRed900
+    , xlViaTeal100
+    , xlViaTeal200
+    , xlViaTeal300
+    , xlViaTeal400
+    , xlViaTeal500
+    , xlViaTeal600
+    , xlViaTeal700
+    , xlViaTeal800
+    , xlViaTeal900
+    , xlViaTransparent
+    , xlViaWhite
+    , xlViaYellow100
+    , xlViaYellow200
+    , xlViaYellow300
+    , xlViaYellow400
+    , xlViaYellow500
+    , xlViaYellow600
+    , xlViaYellow700
+    , xlViaYellow800
+    , xlViaYellow900
     , xlVisible
     , xlW0
     , xlW1
@@ -14777,6 +19836,31 @@ dividePink900 =
     A.class "divide-pink-900"
 
 
+divideSolid : Html.Attribute msg
+divideSolid =
+    A.class "divide-solid"
+
+
+divideDashed : Html.Attribute msg
+divideDashed =
+    A.class "divide-dashed"
+
+
+divideDotted : Html.Attribute msg
+divideDotted =
+    A.class "divide-dotted"
+
+
+divideDouble : Html.Attribute msg
+divideDouble =
+    A.class "divide-double"
+
+
+divideNone : Html.Attribute msg
+divideNone =
+    A.class "divide-none"
+
+
 divideOpacity0 : Html.Attribute msg
 divideOpacity0 =
     A.class "divide-opacity-0"
@@ -14840,6 +19924,26 @@ bgLocal =
 bgScroll : Html.Attribute msg
 bgScroll =
     A.class "bg-scroll"
+
+
+bgClipBorder : Html.Attribute msg
+bgClipBorder =
+    A.class "bg-clip-border"
+
+
+bgClipPadding : Html.Attribute msg
+bgClipPadding =
+    A.class "bg-clip-padding"
+
+
+bgClipContent : Html.Attribute msg
+bgClipContent =
+    A.class "bg-clip-content"
+
+
+bgClipText : Html.Attribute msg
+bgClipText =
+    A.class "bg-clip-text"
 
 
 bgTransparent : Html.Attribute msg
@@ -16250,6 +21354,4281 @@ focusBgPink800 =
 focusBgPink900 : Html.Attribute msg
 focusBgPink900 =
     A.class "focus:bg-pink-900"
+
+
+bgNone : Html.Attribute msg
+bgNone =
+    A.class "bg-none"
+
+
+bgGradientToT : Html.Attribute msg
+bgGradientToT =
+    A.class "bg-gradient-to-t"
+
+
+bgGradientToTr : Html.Attribute msg
+bgGradientToTr =
+    A.class "bg-gradient-to-tr"
+
+
+bgGradientToR : Html.Attribute msg
+bgGradientToR =
+    A.class "bg-gradient-to-r"
+
+
+bgGradientToBr : Html.Attribute msg
+bgGradientToBr =
+    A.class "bg-gradient-to-br"
+
+
+bgGradientToB : Html.Attribute msg
+bgGradientToB =
+    A.class "bg-gradient-to-b"
+
+
+bgGradientToBl : Html.Attribute msg
+bgGradientToBl =
+    A.class "bg-gradient-to-bl"
+
+
+bgGradientToL : Html.Attribute msg
+bgGradientToL =
+    A.class "bg-gradient-to-l"
+
+
+bgGradientToTl : Html.Attribute msg
+bgGradientToTl =
+    A.class "bg-gradient-to-tl"
+
+
+fromTransparent : Html.Attribute msg
+fromTransparent =
+    A.class "from-transparent"
+
+
+fromCurrent : Html.Attribute msg
+fromCurrent =
+    A.class "from-current"
+
+
+fromBlack : Html.Attribute msg
+fromBlack =
+    A.class "from-black"
+
+
+fromWhite : Html.Attribute msg
+fromWhite =
+    A.class "from-white"
+
+
+fromGray100 : Html.Attribute msg
+fromGray100 =
+    A.class "from-gray-100"
+
+
+fromGray200 : Html.Attribute msg
+fromGray200 =
+    A.class "from-gray-200"
+
+
+fromGray300 : Html.Attribute msg
+fromGray300 =
+    A.class "from-gray-300"
+
+
+fromGray400 : Html.Attribute msg
+fromGray400 =
+    A.class "from-gray-400"
+
+
+fromGray500 : Html.Attribute msg
+fromGray500 =
+    A.class "from-gray-500"
+
+
+fromGray600 : Html.Attribute msg
+fromGray600 =
+    A.class "from-gray-600"
+
+
+fromGray700 : Html.Attribute msg
+fromGray700 =
+    A.class "from-gray-700"
+
+
+fromGray800 : Html.Attribute msg
+fromGray800 =
+    A.class "from-gray-800"
+
+
+fromGray900 : Html.Attribute msg
+fromGray900 =
+    A.class "from-gray-900"
+
+
+fromRed100 : Html.Attribute msg
+fromRed100 =
+    A.class "from-red-100"
+
+
+fromRed200 : Html.Attribute msg
+fromRed200 =
+    A.class "from-red-200"
+
+
+fromRed300 : Html.Attribute msg
+fromRed300 =
+    A.class "from-red-300"
+
+
+fromRed400 : Html.Attribute msg
+fromRed400 =
+    A.class "from-red-400"
+
+
+fromRed500 : Html.Attribute msg
+fromRed500 =
+    A.class "from-red-500"
+
+
+fromRed600 : Html.Attribute msg
+fromRed600 =
+    A.class "from-red-600"
+
+
+fromRed700 : Html.Attribute msg
+fromRed700 =
+    A.class "from-red-700"
+
+
+fromRed800 : Html.Attribute msg
+fromRed800 =
+    A.class "from-red-800"
+
+
+fromRed900 : Html.Attribute msg
+fromRed900 =
+    A.class "from-red-900"
+
+
+fromOrange100 : Html.Attribute msg
+fromOrange100 =
+    A.class "from-orange-100"
+
+
+fromOrange200 : Html.Attribute msg
+fromOrange200 =
+    A.class "from-orange-200"
+
+
+fromOrange300 : Html.Attribute msg
+fromOrange300 =
+    A.class "from-orange-300"
+
+
+fromOrange400 : Html.Attribute msg
+fromOrange400 =
+    A.class "from-orange-400"
+
+
+fromOrange500 : Html.Attribute msg
+fromOrange500 =
+    A.class "from-orange-500"
+
+
+fromOrange600 : Html.Attribute msg
+fromOrange600 =
+    A.class "from-orange-600"
+
+
+fromOrange700 : Html.Attribute msg
+fromOrange700 =
+    A.class "from-orange-700"
+
+
+fromOrange800 : Html.Attribute msg
+fromOrange800 =
+    A.class "from-orange-800"
+
+
+fromOrange900 : Html.Attribute msg
+fromOrange900 =
+    A.class "from-orange-900"
+
+
+fromYellow100 : Html.Attribute msg
+fromYellow100 =
+    A.class "from-yellow-100"
+
+
+fromYellow200 : Html.Attribute msg
+fromYellow200 =
+    A.class "from-yellow-200"
+
+
+fromYellow300 : Html.Attribute msg
+fromYellow300 =
+    A.class "from-yellow-300"
+
+
+fromYellow400 : Html.Attribute msg
+fromYellow400 =
+    A.class "from-yellow-400"
+
+
+fromYellow500 : Html.Attribute msg
+fromYellow500 =
+    A.class "from-yellow-500"
+
+
+fromYellow600 : Html.Attribute msg
+fromYellow600 =
+    A.class "from-yellow-600"
+
+
+fromYellow700 : Html.Attribute msg
+fromYellow700 =
+    A.class "from-yellow-700"
+
+
+fromYellow800 : Html.Attribute msg
+fromYellow800 =
+    A.class "from-yellow-800"
+
+
+fromYellow900 : Html.Attribute msg
+fromYellow900 =
+    A.class "from-yellow-900"
+
+
+fromGreen100 : Html.Attribute msg
+fromGreen100 =
+    A.class "from-green-100"
+
+
+fromGreen200 : Html.Attribute msg
+fromGreen200 =
+    A.class "from-green-200"
+
+
+fromGreen300 : Html.Attribute msg
+fromGreen300 =
+    A.class "from-green-300"
+
+
+fromGreen400 : Html.Attribute msg
+fromGreen400 =
+    A.class "from-green-400"
+
+
+fromGreen500 : Html.Attribute msg
+fromGreen500 =
+    A.class "from-green-500"
+
+
+fromGreen600 : Html.Attribute msg
+fromGreen600 =
+    A.class "from-green-600"
+
+
+fromGreen700 : Html.Attribute msg
+fromGreen700 =
+    A.class "from-green-700"
+
+
+fromGreen800 : Html.Attribute msg
+fromGreen800 =
+    A.class "from-green-800"
+
+
+fromGreen900 : Html.Attribute msg
+fromGreen900 =
+    A.class "from-green-900"
+
+
+fromTeal100 : Html.Attribute msg
+fromTeal100 =
+    A.class "from-teal-100"
+
+
+fromTeal200 : Html.Attribute msg
+fromTeal200 =
+    A.class "from-teal-200"
+
+
+fromTeal300 : Html.Attribute msg
+fromTeal300 =
+    A.class "from-teal-300"
+
+
+fromTeal400 : Html.Attribute msg
+fromTeal400 =
+    A.class "from-teal-400"
+
+
+fromTeal500 : Html.Attribute msg
+fromTeal500 =
+    A.class "from-teal-500"
+
+
+fromTeal600 : Html.Attribute msg
+fromTeal600 =
+    A.class "from-teal-600"
+
+
+fromTeal700 : Html.Attribute msg
+fromTeal700 =
+    A.class "from-teal-700"
+
+
+fromTeal800 : Html.Attribute msg
+fromTeal800 =
+    A.class "from-teal-800"
+
+
+fromTeal900 : Html.Attribute msg
+fromTeal900 =
+    A.class "from-teal-900"
+
+
+fromBlue100 : Html.Attribute msg
+fromBlue100 =
+    A.class "from-blue-100"
+
+
+fromBlue200 : Html.Attribute msg
+fromBlue200 =
+    A.class "from-blue-200"
+
+
+fromBlue300 : Html.Attribute msg
+fromBlue300 =
+    A.class "from-blue-300"
+
+
+fromBlue400 : Html.Attribute msg
+fromBlue400 =
+    A.class "from-blue-400"
+
+
+fromBlue500 : Html.Attribute msg
+fromBlue500 =
+    A.class "from-blue-500"
+
+
+fromBlue600 : Html.Attribute msg
+fromBlue600 =
+    A.class "from-blue-600"
+
+
+fromBlue700 : Html.Attribute msg
+fromBlue700 =
+    A.class "from-blue-700"
+
+
+fromBlue800 : Html.Attribute msg
+fromBlue800 =
+    A.class "from-blue-800"
+
+
+fromBlue900 : Html.Attribute msg
+fromBlue900 =
+    A.class "from-blue-900"
+
+
+fromIndigo100 : Html.Attribute msg
+fromIndigo100 =
+    A.class "from-indigo-100"
+
+
+fromIndigo200 : Html.Attribute msg
+fromIndigo200 =
+    A.class "from-indigo-200"
+
+
+fromIndigo300 : Html.Attribute msg
+fromIndigo300 =
+    A.class "from-indigo-300"
+
+
+fromIndigo400 : Html.Attribute msg
+fromIndigo400 =
+    A.class "from-indigo-400"
+
+
+fromIndigo500 : Html.Attribute msg
+fromIndigo500 =
+    A.class "from-indigo-500"
+
+
+fromIndigo600 : Html.Attribute msg
+fromIndigo600 =
+    A.class "from-indigo-600"
+
+
+fromIndigo700 : Html.Attribute msg
+fromIndigo700 =
+    A.class "from-indigo-700"
+
+
+fromIndigo800 : Html.Attribute msg
+fromIndigo800 =
+    A.class "from-indigo-800"
+
+
+fromIndigo900 : Html.Attribute msg
+fromIndigo900 =
+    A.class "from-indigo-900"
+
+
+fromPurple100 : Html.Attribute msg
+fromPurple100 =
+    A.class "from-purple-100"
+
+
+fromPurple200 : Html.Attribute msg
+fromPurple200 =
+    A.class "from-purple-200"
+
+
+fromPurple300 : Html.Attribute msg
+fromPurple300 =
+    A.class "from-purple-300"
+
+
+fromPurple400 : Html.Attribute msg
+fromPurple400 =
+    A.class "from-purple-400"
+
+
+fromPurple500 : Html.Attribute msg
+fromPurple500 =
+    A.class "from-purple-500"
+
+
+fromPurple600 : Html.Attribute msg
+fromPurple600 =
+    A.class "from-purple-600"
+
+
+fromPurple700 : Html.Attribute msg
+fromPurple700 =
+    A.class "from-purple-700"
+
+
+fromPurple800 : Html.Attribute msg
+fromPurple800 =
+    A.class "from-purple-800"
+
+
+fromPurple900 : Html.Attribute msg
+fromPurple900 =
+    A.class "from-purple-900"
+
+
+fromPink100 : Html.Attribute msg
+fromPink100 =
+    A.class "from-pink-100"
+
+
+fromPink200 : Html.Attribute msg
+fromPink200 =
+    A.class "from-pink-200"
+
+
+fromPink300 : Html.Attribute msg
+fromPink300 =
+    A.class "from-pink-300"
+
+
+fromPink400 : Html.Attribute msg
+fromPink400 =
+    A.class "from-pink-400"
+
+
+fromPink500 : Html.Attribute msg
+fromPink500 =
+    A.class "from-pink-500"
+
+
+fromPink600 : Html.Attribute msg
+fromPink600 =
+    A.class "from-pink-600"
+
+
+fromPink700 : Html.Attribute msg
+fromPink700 =
+    A.class "from-pink-700"
+
+
+fromPink800 : Html.Attribute msg
+fromPink800 =
+    A.class "from-pink-800"
+
+
+fromPink900 : Html.Attribute msg
+fromPink900 =
+    A.class "from-pink-900"
+
+
+viaTransparent : Html.Attribute msg
+viaTransparent =
+    A.class "via-transparent"
+
+
+viaCurrent : Html.Attribute msg
+viaCurrent =
+    A.class "via-current"
+
+
+viaBlack : Html.Attribute msg
+viaBlack =
+    A.class "via-black"
+
+
+viaWhite : Html.Attribute msg
+viaWhite =
+    A.class "via-white"
+
+
+viaGray100 : Html.Attribute msg
+viaGray100 =
+    A.class "via-gray-100"
+
+
+viaGray200 : Html.Attribute msg
+viaGray200 =
+    A.class "via-gray-200"
+
+
+viaGray300 : Html.Attribute msg
+viaGray300 =
+    A.class "via-gray-300"
+
+
+viaGray400 : Html.Attribute msg
+viaGray400 =
+    A.class "via-gray-400"
+
+
+viaGray500 : Html.Attribute msg
+viaGray500 =
+    A.class "via-gray-500"
+
+
+viaGray600 : Html.Attribute msg
+viaGray600 =
+    A.class "via-gray-600"
+
+
+viaGray700 : Html.Attribute msg
+viaGray700 =
+    A.class "via-gray-700"
+
+
+viaGray800 : Html.Attribute msg
+viaGray800 =
+    A.class "via-gray-800"
+
+
+viaGray900 : Html.Attribute msg
+viaGray900 =
+    A.class "via-gray-900"
+
+
+viaRed100 : Html.Attribute msg
+viaRed100 =
+    A.class "via-red-100"
+
+
+viaRed200 : Html.Attribute msg
+viaRed200 =
+    A.class "via-red-200"
+
+
+viaRed300 : Html.Attribute msg
+viaRed300 =
+    A.class "via-red-300"
+
+
+viaRed400 : Html.Attribute msg
+viaRed400 =
+    A.class "via-red-400"
+
+
+viaRed500 : Html.Attribute msg
+viaRed500 =
+    A.class "via-red-500"
+
+
+viaRed600 : Html.Attribute msg
+viaRed600 =
+    A.class "via-red-600"
+
+
+viaRed700 : Html.Attribute msg
+viaRed700 =
+    A.class "via-red-700"
+
+
+viaRed800 : Html.Attribute msg
+viaRed800 =
+    A.class "via-red-800"
+
+
+viaRed900 : Html.Attribute msg
+viaRed900 =
+    A.class "via-red-900"
+
+
+viaOrange100 : Html.Attribute msg
+viaOrange100 =
+    A.class "via-orange-100"
+
+
+viaOrange200 : Html.Attribute msg
+viaOrange200 =
+    A.class "via-orange-200"
+
+
+viaOrange300 : Html.Attribute msg
+viaOrange300 =
+    A.class "via-orange-300"
+
+
+viaOrange400 : Html.Attribute msg
+viaOrange400 =
+    A.class "via-orange-400"
+
+
+viaOrange500 : Html.Attribute msg
+viaOrange500 =
+    A.class "via-orange-500"
+
+
+viaOrange600 : Html.Attribute msg
+viaOrange600 =
+    A.class "via-orange-600"
+
+
+viaOrange700 : Html.Attribute msg
+viaOrange700 =
+    A.class "via-orange-700"
+
+
+viaOrange800 : Html.Attribute msg
+viaOrange800 =
+    A.class "via-orange-800"
+
+
+viaOrange900 : Html.Attribute msg
+viaOrange900 =
+    A.class "via-orange-900"
+
+
+viaYellow100 : Html.Attribute msg
+viaYellow100 =
+    A.class "via-yellow-100"
+
+
+viaYellow200 : Html.Attribute msg
+viaYellow200 =
+    A.class "via-yellow-200"
+
+
+viaYellow300 : Html.Attribute msg
+viaYellow300 =
+    A.class "via-yellow-300"
+
+
+viaYellow400 : Html.Attribute msg
+viaYellow400 =
+    A.class "via-yellow-400"
+
+
+viaYellow500 : Html.Attribute msg
+viaYellow500 =
+    A.class "via-yellow-500"
+
+
+viaYellow600 : Html.Attribute msg
+viaYellow600 =
+    A.class "via-yellow-600"
+
+
+viaYellow700 : Html.Attribute msg
+viaYellow700 =
+    A.class "via-yellow-700"
+
+
+viaYellow800 : Html.Attribute msg
+viaYellow800 =
+    A.class "via-yellow-800"
+
+
+viaYellow900 : Html.Attribute msg
+viaYellow900 =
+    A.class "via-yellow-900"
+
+
+viaGreen100 : Html.Attribute msg
+viaGreen100 =
+    A.class "via-green-100"
+
+
+viaGreen200 : Html.Attribute msg
+viaGreen200 =
+    A.class "via-green-200"
+
+
+viaGreen300 : Html.Attribute msg
+viaGreen300 =
+    A.class "via-green-300"
+
+
+viaGreen400 : Html.Attribute msg
+viaGreen400 =
+    A.class "via-green-400"
+
+
+viaGreen500 : Html.Attribute msg
+viaGreen500 =
+    A.class "via-green-500"
+
+
+viaGreen600 : Html.Attribute msg
+viaGreen600 =
+    A.class "via-green-600"
+
+
+viaGreen700 : Html.Attribute msg
+viaGreen700 =
+    A.class "via-green-700"
+
+
+viaGreen800 : Html.Attribute msg
+viaGreen800 =
+    A.class "via-green-800"
+
+
+viaGreen900 : Html.Attribute msg
+viaGreen900 =
+    A.class "via-green-900"
+
+
+viaTeal100 : Html.Attribute msg
+viaTeal100 =
+    A.class "via-teal-100"
+
+
+viaTeal200 : Html.Attribute msg
+viaTeal200 =
+    A.class "via-teal-200"
+
+
+viaTeal300 : Html.Attribute msg
+viaTeal300 =
+    A.class "via-teal-300"
+
+
+viaTeal400 : Html.Attribute msg
+viaTeal400 =
+    A.class "via-teal-400"
+
+
+viaTeal500 : Html.Attribute msg
+viaTeal500 =
+    A.class "via-teal-500"
+
+
+viaTeal600 : Html.Attribute msg
+viaTeal600 =
+    A.class "via-teal-600"
+
+
+viaTeal700 : Html.Attribute msg
+viaTeal700 =
+    A.class "via-teal-700"
+
+
+viaTeal800 : Html.Attribute msg
+viaTeal800 =
+    A.class "via-teal-800"
+
+
+viaTeal900 : Html.Attribute msg
+viaTeal900 =
+    A.class "via-teal-900"
+
+
+viaBlue100 : Html.Attribute msg
+viaBlue100 =
+    A.class "via-blue-100"
+
+
+viaBlue200 : Html.Attribute msg
+viaBlue200 =
+    A.class "via-blue-200"
+
+
+viaBlue300 : Html.Attribute msg
+viaBlue300 =
+    A.class "via-blue-300"
+
+
+viaBlue400 : Html.Attribute msg
+viaBlue400 =
+    A.class "via-blue-400"
+
+
+viaBlue500 : Html.Attribute msg
+viaBlue500 =
+    A.class "via-blue-500"
+
+
+viaBlue600 : Html.Attribute msg
+viaBlue600 =
+    A.class "via-blue-600"
+
+
+viaBlue700 : Html.Attribute msg
+viaBlue700 =
+    A.class "via-blue-700"
+
+
+viaBlue800 : Html.Attribute msg
+viaBlue800 =
+    A.class "via-blue-800"
+
+
+viaBlue900 : Html.Attribute msg
+viaBlue900 =
+    A.class "via-blue-900"
+
+
+viaIndigo100 : Html.Attribute msg
+viaIndigo100 =
+    A.class "via-indigo-100"
+
+
+viaIndigo200 : Html.Attribute msg
+viaIndigo200 =
+    A.class "via-indigo-200"
+
+
+viaIndigo300 : Html.Attribute msg
+viaIndigo300 =
+    A.class "via-indigo-300"
+
+
+viaIndigo400 : Html.Attribute msg
+viaIndigo400 =
+    A.class "via-indigo-400"
+
+
+viaIndigo500 : Html.Attribute msg
+viaIndigo500 =
+    A.class "via-indigo-500"
+
+
+viaIndigo600 : Html.Attribute msg
+viaIndigo600 =
+    A.class "via-indigo-600"
+
+
+viaIndigo700 : Html.Attribute msg
+viaIndigo700 =
+    A.class "via-indigo-700"
+
+
+viaIndigo800 : Html.Attribute msg
+viaIndigo800 =
+    A.class "via-indigo-800"
+
+
+viaIndigo900 : Html.Attribute msg
+viaIndigo900 =
+    A.class "via-indigo-900"
+
+
+viaPurple100 : Html.Attribute msg
+viaPurple100 =
+    A.class "via-purple-100"
+
+
+viaPurple200 : Html.Attribute msg
+viaPurple200 =
+    A.class "via-purple-200"
+
+
+viaPurple300 : Html.Attribute msg
+viaPurple300 =
+    A.class "via-purple-300"
+
+
+viaPurple400 : Html.Attribute msg
+viaPurple400 =
+    A.class "via-purple-400"
+
+
+viaPurple500 : Html.Attribute msg
+viaPurple500 =
+    A.class "via-purple-500"
+
+
+viaPurple600 : Html.Attribute msg
+viaPurple600 =
+    A.class "via-purple-600"
+
+
+viaPurple700 : Html.Attribute msg
+viaPurple700 =
+    A.class "via-purple-700"
+
+
+viaPurple800 : Html.Attribute msg
+viaPurple800 =
+    A.class "via-purple-800"
+
+
+viaPurple900 : Html.Attribute msg
+viaPurple900 =
+    A.class "via-purple-900"
+
+
+viaPink100 : Html.Attribute msg
+viaPink100 =
+    A.class "via-pink-100"
+
+
+viaPink200 : Html.Attribute msg
+viaPink200 =
+    A.class "via-pink-200"
+
+
+viaPink300 : Html.Attribute msg
+viaPink300 =
+    A.class "via-pink-300"
+
+
+viaPink400 : Html.Attribute msg
+viaPink400 =
+    A.class "via-pink-400"
+
+
+viaPink500 : Html.Attribute msg
+viaPink500 =
+    A.class "via-pink-500"
+
+
+viaPink600 : Html.Attribute msg
+viaPink600 =
+    A.class "via-pink-600"
+
+
+viaPink700 : Html.Attribute msg
+viaPink700 =
+    A.class "via-pink-700"
+
+
+viaPink800 : Html.Attribute msg
+viaPink800 =
+    A.class "via-pink-800"
+
+
+viaPink900 : Html.Attribute msg
+viaPink900 =
+    A.class "via-pink-900"
+
+
+toTransparent : Html.Attribute msg
+toTransparent =
+    A.class "to-transparent"
+
+
+toCurrent : Html.Attribute msg
+toCurrent =
+    A.class "to-current"
+
+
+toBlack : Html.Attribute msg
+toBlack =
+    A.class "to-black"
+
+
+toWhite : Html.Attribute msg
+toWhite =
+    A.class "to-white"
+
+
+toGray100 : Html.Attribute msg
+toGray100 =
+    A.class "to-gray-100"
+
+
+toGray200 : Html.Attribute msg
+toGray200 =
+    A.class "to-gray-200"
+
+
+toGray300 : Html.Attribute msg
+toGray300 =
+    A.class "to-gray-300"
+
+
+toGray400 : Html.Attribute msg
+toGray400 =
+    A.class "to-gray-400"
+
+
+toGray500 : Html.Attribute msg
+toGray500 =
+    A.class "to-gray-500"
+
+
+toGray600 : Html.Attribute msg
+toGray600 =
+    A.class "to-gray-600"
+
+
+toGray700 : Html.Attribute msg
+toGray700 =
+    A.class "to-gray-700"
+
+
+toGray800 : Html.Attribute msg
+toGray800 =
+    A.class "to-gray-800"
+
+
+toGray900 : Html.Attribute msg
+toGray900 =
+    A.class "to-gray-900"
+
+
+toRed100 : Html.Attribute msg
+toRed100 =
+    A.class "to-red-100"
+
+
+toRed200 : Html.Attribute msg
+toRed200 =
+    A.class "to-red-200"
+
+
+toRed300 : Html.Attribute msg
+toRed300 =
+    A.class "to-red-300"
+
+
+toRed400 : Html.Attribute msg
+toRed400 =
+    A.class "to-red-400"
+
+
+toRed500 : Html.Attribute msg
+toRed500 =
+    A.class "to-red-500"
+
+
+toRed600 : Html.Attribute msg
+toRed600 =
+    A.class "to-red-600"
+
+
+toRed700 : Html.Attribute msg
+toRed700 =
+    A.class "to-red-700"
+
+
+toRed800 : Html.Attribute msg
+toRed800 =
+    A.class "to-red-800"
+
+
+toRed900 : Html.Attribute msg
+toRed900 =
+    A.class "to-red-900"
+
+
+toOrange100 : Html.Attribute msg
+toOrange100 =
+    A.class "to-orange-100"
+
+
+toOrange200 : Html.Attribute msg
+toOrange200 =
+    A.class "to-orange-200"
+
+
+toOrange300 : Html.Attribute msg
+toOrange300 =
+    A.class "to-orange-300"
+
+
+toOrange400 : Html.Attribute msg
+toOrange400 =
+    A.class "to-orange-400"
+
+
+toOrange500 : Html.Attribute msg
+toOrange500 =
+    A.class "to-orange-500"
+
+
+toOrange600 : Html.Attribute msg
+toOrange600 =
+    A.class "to-orange-600"
+
+
+toOrange700 : Html.Attribute msg
+toOrange700 =
+    A.class "to-orange-700"
+
+
+toOrange800 : Html.Attribute msg
+toOrange800 =
+    A.class "to-orange-800"
+
+
+toOrange900 : Html.Attribute msg
+toOrange900 =
+    A.class "to-orange-900"
+
+
+toYellow100 : Html.Attribute msg
+toYellow100 =
+    A.class "to-yellow-100"
+
+
+toYellow200 : Html.Attribute msg
+toYellow200 =
+    A.class "to-yellow-200"
+
+
+toYellow300 : Html.Attribute msg
+toYellow300 =
+    A.class "to-yellow-300"
+
+
+toYellow400 : Html.Attribute msg
+toYellow400 =
+    A.class "to-yellow-400"
+
+
+toYellow500 : Html.Attribute msg
+toYellow500 =
+    A.class "to-yellow-500"
+
+
+toYellow600 : Html.Attribute msg
+toYellow600 =
+    A.class "to-yellow-600"
+
+
+toYellow700 : Html.Attribute msg
+toYellow700 =
+    A.class "to-yellow-700"
+
+
+toYellow800 : Html.Attribute msg
+toYellow800 =
+    A.class "to-yellow-800"
+
+
+toYellow900 : Html.Attribute msg
+toYellow900 =
+    A.class "to-yellow-900"
+
+
+toGreen100 : Html.Attribute msg
+toGreen100 =
+    A.class "to-green-100"
+
+
+toGreen200 : Html.Attribute msg
+toGreen200 =
+    A.class "to-green-200"
+
+
+toGreen300 : Html.Attribute msg
+toGreen300 =
+    A.class "to-green-300"
+
+
+toGreen400 : Html.Attribute msg
+toGreen400 =
+    A.class "to-green-400"
+
+
+toGreen500 : Html.Attribute msg
+toGreen500 =
+    A.class "to-green-500"
+
+
+toGreen600 : Html.Attribute msg
+toGreen600 =
+    A.class "to-green-600"
+
+
+toGreen700 : Html.Attribute msg
+toGreen700 =
+    A.class "to-green-700"
+
+
+toGreen800 : Html.Attribute msg
+toGreen800 =
+    A.class "to-green-800"
+
+
+toGreen900 : Html.Attribute msg
+toGreen900 =
+    A.class "to-green-900"
+
+
+toTeal100 : Html.Attribute msg
+toTeal100 =
+    A.class "to-teal-100"
+
+
+toTeal200 : Html.Attribute msg
+toTeal200 =
+    A.class "to-teal-200"
+
+
+toTeal300 : Html.Attribute msg
+toTeal300 =
+    A.class "to-teal-300"
+
+
+toTeal400 : Html.Attribute msg
+toTeal400 =
+    A.class "to-teal-400"
+
+
+toTeal500 : Html.Attribute msg
+toTeal500 =
+    A.class "to-teal-500"
+
+
+toTeal600 : Html.Attribute msg
+toTeal600 =
+    A.class "to-teal-600"
+
+
+toTeal700 : Html.Attribute msg
+toTeal700 =
+    A.class "to-teal-700"
+
+
+toTeal800 : Html.Attribute msg
+toTeal800 =
+    A.class "to-teal-800"
+
+
+toTeal900 : Html.Attribute msg
+toTeal900 =
+    A.class "to-teal-900"
+
+
+toBlue100 : Html.Attribute msg
+toBlue100 =
+    A.class "to-blue-100"
+
+
+toBlue200 : Html.Attribute msg
+toBlue200 =
+    A.class "to-blue-200"
+
+
+toBlue300 : Html.Attribute msg
+toBlue300 =
+    A.class "to-blue-300"
+
+
+toBlue400 : Html.Attribute msg
+toBlue400 =
+    A.class "to-blue-400"
+
+
+toBlue500 : Html.Attribute msg
+toBlue500 =
+    A.class "to-blue-500"
+
+
+toBlue600 : Html.Attribute msg
+toBlue600 =
+    A.class "to-blue-600"
+
+
+toBlue700 : Html.Attribute msg
+toBlue700 =
+    A.class "to-blue-700"
+
+
+toBlue800 : Html.Attribute msg
+toBlue800 =
+    A.class "to-blue-800"
+
+
+toBlue900 : Html.Attribute msg
+toBlue900 =
+    A.class "to-blue-900"
+
+
+toIndigo100 : Html.Attribute msg
+toIndigo100 =
+    A.class "to-indigo-100"
+
+
+toIndigo200 : Html.Attribute msg
+toIndigo200 =
+    A.class "to-indigo-200"
+
+
+toIndigo300 : Html.Attribute msg
+toIndigo300 =
+    A.class "to-indigo-300"
+
+
+toIndigo400 : Html.Attribute msg
+toIndigo400 =
+    A.class "to-indigo-400"
+
+
+toIndigo500 : Html.Attribute msg
+toIndigo500 =
+    A.class "to-indigo-500"
+
+
+toIndigo600 : Html.Attribute msg
+toIndigo600 =
+    A.class "to-indigo-600"
+
+
+toIndigo700 : Html.Attribute msg
+toIndigo700 =
+    A.class "to-indigo-700"
+
+
+toIndigo800 : Html.Attribute msg
+toIndigo800 =
+    A.class "to-indigo-800"
+
+
+toIndigo900 : Html.Attribute msg
+toIndigo900 =
+    A.class "to-indigo-900"
+
+
+toPurple100 : Html.Attribute msg
+toPurple100 =
+    A.class "to-purple-100"
+
+
+toPurple200 : Html.Attribute msg
+toPurple200 =
+    A.class "to-purple-200"
+
+
+toPurple300 : Html.Attribute msg
+toPurple300 =
+    A.class "to-purple-300"
+
+
+toPurple400 : Html.Attribute msg
+toPurple400 =
+    A.class "to-purple-400"
+
+
+toPurple500 : Html.Attribute msg
+toPurple500 =
+    A.class "to-purple-500"
+
+
+toPurple600 : Html.Attribute msg
+toPurple600 =
+    A.class "to-purple-600"
+
+
+toPurple700 : Html.Attribute msg
+toPurple700 =
+    A.class "to-purple-700"
+
+
+toPurple800 : Html.Attribute msg
+toPurple800 =
+    A.class "to-purple-800"
+
+
+toPurple900 : Html.Attribute msg
+toPurple900 =
+    A.class "to-purple-900"
+
+
+toPink100 : Html.Attribute msg
+toPink100 =
+    A.class "to-pink-100"
+
+
+toPink200 : Html.Attribute msg
+toPink200 =
+    A.class "to-pink-200"
+
+
+toPink300 : Html.Attribute msg
+toPink300 =
+    A.class "to-pink-300"
+
+
+toPink400 : Html.Attribute msg
+toPink400 =
+    A.class "to-pink-400"
+
+
+toPink500 : Html.Attribute msg
+toPink500 =
+    A.class "to-pink-500"
+
+
+toPink600 : Html.Attribute msg
+toPink600 =
+    A.class "to-pink-600"
+
+
+toPink700 : Html.Attribute msg
+toPink700 =
+    A.class "to-pink-700"
+
+
+toPink800 : Html.Attribute msg
+toPink800 =
+    A.class "to-pink-800"
+
+
+toPink900 : Html.Attribute msg
+toPink900 =
+    A.class "to-pink-900"
+
+
+hoverFromTransparent : Html.Attribute msg
+hoverFromTransparent =
+    A.class "hover:from-transparent"
+
+
+hoverFromCurrent : Html.Attribute msg
+hoverFromCurrent =
+    A.class "hover:from-current"
+
+
+hoverFromBlack : Html.Attribute msg
+hoverFromBlack =
+    A.class "hover:from-black"
+
+
+hoverFromWhite : Html.Attribute msg
+hoverFromWhite =
+    A.class "hover:from-white"
+
+
+hoverFromGray100 : Html.Attribute msg
+hoverFromGray100 =
+    A.class "hover:from-gray-100"
+
+
+hoverFromGray200 : Html.Attribute msg
+hoverFromGray200 =
+    A.class "hover:from-gray-200"
+
+
+hoverFromGray300 : Html.Attribute msg
+hoverFromGray300 =
+    A.class "hover:from-gray-300"
+
+
+hoverFromGray400 : Html.Attribute msg
+hoverFromGray400 =
+    A.class "hover:from-gray-400"
+
+
+hoverFromGray500 : Html.Attribute msg
+hoverFromGray500 =
+    A.class "hover:from-gray-500"
+
+
+hoverFromGray600 : Html.Attribute msg
+hoverFromGray600 =
+    A.class "hover:from-gray-600"
+
+
+hoverFromGray700 : Html.Attribute msg
+hoverFromGray700 =
+    A.class "hover:from-gray-700"
+
+
+hoverFromGray800 : Html.Attribute msg
+hoverFromGray800 =
+    A.class "hover:from-gray-800"
+
+
+hoverFromGray900 : Html.Attribute msg
+hoverFromGray900 =
+    A.class "hover:from-gray-900"
+
+
+hoverFromRed100 : Html.Attribute msg
+hoverFromRed100 =
+    A.class "hover:from-red-100"
+
+
+hoverFromRed200 : Html.Attribute msg
+hoverFromRed200 =
+    A.class "hover:from-red-200"
+
+
+hoverFromRed300 : Html.Attribute msg
+hoverFromRed300 =
+    A.class "hover:from-red-300"
+
+
+hoverFromRed400 : Html.Attribute msg
+hoverFromRed400 =
+    A.class "hover:from-red-400"
+
+
+hoverFromRed500 : Html.Attribute msg
+hoverFromRed500 =
+    A.class "hover:from-red-500"
+
+
+hoverFromRed600 : Html.Attribute msg
+hoverFromRed600 =
+    A.class "hover:from-red-600"
+
+
+hoverFromRed700 : Html.Attribute msg
+hoverFromRed700 =
+    A.class "hover:from-red-700"
+
+
+hoverFromRed800 : Html.Attribute msg
+hoverFromRed800 =
+    A.class "hover:from-red-800"
+
+
+hoverFromRed900 : Html.Attribute msg
+hoverFromRed900 =
+    A.class "hover:from-red-900"
+
+
+hoverFromOrange100 : Html.Attribute msg
+hoverFromOrange100 =
+    A.class "hover:from-orange-100"
+
+
+hoverFromOrange200 : Html.Attribute msg
+hoverFromOrange200 =
+    A.class "hover:from-orange-200"
+
+
+hoverFromOrange300 : Html.Attribute msg
+hoverFromOrange300 =
+    A.class "hover:from-orange-300"
+
+
+hoverFromOrange400 : Html.Attribute msg
+hoverFromOrange400 =
+    A.class "hover:from-orange-400"
+
+
+hoverFromOrange500 : Html.Attribute msg
+hoverFromOrange500 =
+    A.class "hover:from-orange-500"
+
+
+hoverFromOrange600 : Html.Attribute msg
+hoverFromOrange600 =
+    A.class "hover:from-orange-600"
+
+
+hoverFromOrange700 : Html.Attribute msg
+hoverFromOrange700 =
+    A.class "hover:from-orange-700"
+
+
+hoverFromOrange800 : Html.Attribute msg
+hoverFromOrange800 =
+    A.class "hover:from-orange-800"
+
+
+hoverFromOrange900 : Html.Attribute msg
+hoverFromOrange900 =
+    A.class "hover:from-orange-900"
+
+
+hoverFromYellow100 : Html.Attribute msg
+hoverFromYellow100 =
+    A.class "hover:from-yellow-100"
+
+
+hoverFromYellow200 : Html.Attribute msg
+hoverFromYellow200 =
+    A.class "hover:from-yellow-200"
+
+
+hoverFromYellow300 : Html.Attribute msg
+hoverFromYellow300 =
+    A.class "hover:from-yellow-300"
+
+
+hoverFromYellow400 : Html.Attribute msg
+hoverFromYellow400 =
+    A.class "hover:from-yellow-400"
+
+
+hoverFromYellow500 : Html.Attribute msg
+hoverFromYellow500 =
+    A.class "hover:from-yellow-500"
+
+
+hoverFromYellow600 : Html.Attribute msg
+hoverFromYellow600 =
+    A.class "hover:from-yellow-600"
+
+
+hoverFromYellow700 : Html.Attribute msg
+hoverFromYellow700 =
+    A.class "hover:from-yellow-700"
+
+
+hoverFromYellow800 : Html.Attribute msg
+hoverFromYellow800 =
+    A.class "hover:from-yellow-800"
+
+
+hoverFromYellow900 : Html.Attribute msg
+hoverFromYellow900 =
+    A.class "hover:from-yellow-900"
+
+
+hoverFromGreen100 : Html.Attribute msg
+hoverFromGreen100 =
+    A.class "hover:from-green-100"
+
+
+hoverFromGreen200 : Html.Attribute msg
+hoverFromGreen200 =
+    A.class "hover:from-green-200"
+
+
+hoverFromGreen300 : Html.Attribute msg
+hoverFromGreen300 =
+    A.class "hover:from-green-300"
+
+
+hoverFromGreen400 : Html.Attribute msg
+hoverFromGreen400 =
+    A.class "hover:from-green-400"
+
+
+hoverFromGreen500 : Html.Attribute msg
+hoverFromGreen500 =
+    A.class "hover:from-green-500"
+
+
+hoverFromGreen600 : Html.Attribute msg
+hoverFromGreen600 =
+    A.class "hover:from-green-600"
+
+
+hoverFromGreen700 : Html.Attribute msg
+hoverFromGreen700 =
+    A.class "hover:from-green-700"
+
+
+hoverFromGreen800 : Html.Attribute msg
+hoverFromGreen800 =
+    A.class "hover:from-green-800"
+
+
+hoverFromGreen900 : Html.Attribute msg
+hoverFromGreen900 =
+    A.class "hover:from-green-900"
+
+
+hoverFromTeal100 : Html.Attribute msg
+hoverFromTeal100 =
+    A.class "hover:from-teal-100"
+
+
+hoverFromTeal200 : Html.Attribute msg
+hoverFromTeal200 =
+    A.class "hover:from-teal-200"
+
+
+hoverFromTeal300 : Html.Attribute msg
+hoverFromTeal300 =
+    A.class "hover:from-teal-300"
+
+
+hoverFromTeal400 : Html.Attribute msg
+hoverFromTeal400 =
+    A.class "hover:from-teal-400"
+
+
+hoverFromTeal500 : Html.Attribute msg
+hoverFromTeal500 =
+    A.class "hover:from-teal-500"
+
+
+hoverFromTeal600 : Html.Attribute msg
+hoverFromTeal600 =
+    A.class "hover:from-teal-600"
+
+
+hoverFromTeal700 : Html.Attribute msg
+hoverFromTeal700 =
+    A.class "hover:from-teal-700"
+
+
+hoverFromTeal800 : Html.Attribute msg
+hoverFromTeal800 =
+    A.class "hover:from-teal-800"
+
+
+hoverFromTeal900 : Html.Attribute msg
+hoverFromTeal900 =
+    A.class "hover:from-teal-900"
+
+
+hoverFromBlue100 : Html.Attribute msg
+hoverFromBlue100 =
+    A.class "hover:from-blue-100"
+
+
+hoverFromBlue200 : Html.Attribute msg
+hoverFromBlue200 =
+    A.class "hover:from-blue-200"
+
+
+hoverFromBlue300 : Html.Attribute msg
+hoverFromBlue300 =
+    A.class "hover:from-blue-300"
+
+
+hoverFromBlue400 : Html.Attribute msg
+hoverFromBlue400 =
+    A.class "hover:from-blue-400"
+
+
+hoverFromBlue500 : Html.Attribute msg
+hoverFromBlue500 =
+    A.class "hover:from-blue-500"
+
+
+hoverFromBlue600 : Html.Attribute msg
+hoverFromBlue600 =
+    A.class "hover:from-blue-600"
+
+
+hoverFromBlue700 : Html.Attribute msg
+hoverFromBlue700 =
+    A.class "hover:from-blue-700"
+
+
+hoverFromBlue800 : Html.Attribute msg
+hoverFromBlue800 =
+    A.class "hover:from-blue-800"
+
+
+hoverFromBlue900 : Html.Attribute msg
+hoverFromBlue900 =
+    A.class "hover:from-blue-900"
+
+
+hoverFromIndigo100 : Html.Attribute msg
+hoverFromIndigo100 =
+    A.class "hover:from-indigo-100"
+
+
+hoverFromIndigo200 : Html.Attribute msg
+hoverFromIndigo200 =
+    A.class "hover:from-indigo-200"
+
+
+hoverFromIndigo300 : Html.Attribute msg
+hoverFromIndigo300 =
+    A.class "hover:from-indigo-300"
+
+
+hoverFromIndigo400 : Html.Attribute msg
+hoverFromIndigo400 =
+    A.class "hover:from-indigo-400"
+
+
+hoverFromIndigo500 : Html.Attribute msg
+hoverFromIndigo500 =
+    A.class "hover:from-indigo-500"
+
+
+hoverFromIndigo600 : Html.Attribute msg
+hoverFromIndigo600 =
+    A.class "hover:from-indigo-600"
+
+
+hoverFromIndigo700 : Html.Attribute msg
+hoverFromIndigo700 =
+    A.class "hover:from-indigo-700"
+
+
+hoverFromIndigo800 : Html.Attribute msg
+hoverFromIndigo800 =
+    A.class "hover:from-indigo-800"
+
+
+hoverFromIndigo900 : Html.Attribute msg
+hoverFromIndigo900 =
+    A.class "hover:from-indigo-900"
+
+
+hoverFromPurple100 : Html.Attribute msg
+hoverFromPurple100 =
+    A.class "hover:from-purple-100"
+
+
+hoverFromPurple200 : Html.Attribute msg
+hoverFromPurple200 =
+    A.class "hover:from-purple-200"
+
+
+hoverFromPurple300 : Html.Attribute msg
+hoverFromPurple300 =
+    A.class "hover:from-purple-300"
+
+
+hoverFromPurple400 : Html.Attribute msg
+hoverFromPurple400 =
+    A.class "hover:from-purple-400"
+
+
+hoverFromPurple500 : Html.Attribute msg
+hoverFromPurple500 =
+    A.class "hover:from-purple-500"
+
+
+hoverFromPurple600 : Html.Attribute msg
+hoverFromPurple600 =
+    A.class "hover:from-purple-600"
+
+
+hoverFromPurple700 : Html.Attribute msg
+hoverFromPurple700 =
+    A.class "hover:from-purple-700"
+
+
+hoverFromPurple800 : Html.Attribute msg
+hoverFromPurple800 =
+    A.class "hover:from-purple-800"
+
+
+hoverFromPurple900 : Html.Attribute msg
+hoverFromPurple900 =
+    A.class "hover:from-purple-900"
+
+
+hoverFromPink100 : Html.Attribute msg
+hoverFromPink100 =
+    A.class "hover:from-pink-100"
+
+
+hoverFromPink200 : Html.Attribute msg
+hoverFromPink200 =
+    A.class "hover:from-pink-200"
+
+
+hoverFromPink300 : Html.Attribute msg
+hoverFromPink300 =
+    A.class "hover:from-pink-300"
+
+
+hoverFromPink400 : Html.Attribute msg
+hoverFromPink400 =
+    A.class "hover:from-pink-400"
+
+
+hoverFromPink500 : Html.Attribute msg
+hoverFromPink500 =
+    A.class "hover:from-pink-500"
+
+
+hoverFromPink600 : Html.Attribute msg
+hoverFromPink600 =
+    A.class "hover:from-pink-600"
+
+
+hoverFromPink700 : Html.Attribute msg
+hoverFromPink700 =
+    A.class "hover:from-pink-700"
+
+
+hoverFromPink800 : Html.Attribute msg
+hoverFromPink800 =
+    A.class "hover:from-pink-800"
+
+
+hoverFromPink900 : Html.Attribute msg
+hoverFromPink900 =
+    A.class "hover:from-pink-900"
+
+
+hoverViaTransparent : Html.Attribute msg
+hoverViaTransparent =
+    A.class "hover:via-transparent"
+
+
+hoverViaCurrent : Html.Attribute msg
+hoverViaCurrent =
+    A.class "hover:via-current"
+
+
+hoverViaBlack : Html.Attribute msg
+hoverViaBlack =
+    A.class "hover:via-black"
+
+
+hoverViaWhite : Html.Attribute msg
+hoverViaWhite =
+    A.class "hover:via-white"
+
+
+hoverViaGray100 : Html.Attribute msg
+hoverViaGray100 =
+    A.class "hover:via-gray-100"
+
+
+hoverViaGray200 : Html.Attribute msg
+hoverViaGray200 =
+    A.class "hover:via-gray-200"
+
+
+hoverViaGray300 : Html.Attribute msg
+hoverViaGray300 =
+    A.class "hover:via-gray-300"
+
+
+hoverViaGray400 : Html.Attribute msg
+hoverViaGray400 =
+    A.class "hover:via-gray-400"
+
+
+hoverViaGray500 : Html.Attribute msg
+hoverViaGray500 =
+    A.class "hover:via-gray-500"
+
+
+hoverViaGray600 : Html.Attribute msg
+hoverViaGray600 =
+    A.class "hover:via-gray-600"
+
+
+hoverViaGray700 : Html.Attribute msg
+hoverViaGray700 =
+    A.class "hover:via-gray-700"
+
+
+hoverViaGray800 : Html.Attribute msg
+hoverViaGray800 =
+    A.class "hover:via-gray-800"
+
+
+hoverViaGray900 : Html.Attribute msg
+hoverViaGray900 =
+    A.class "hover:via-gray-900"
+
+
+hoverViaRed100 : Html.Attribute msg
+hoverViaRed100 =
+    A.class "hover:via-red-100"
+
+
+hoverViaRed200 : Html.Attribute msg
+hoverViaRed200 =
+    A.class "hover:via-red-200"
+
+
+hoverViaRed300 : Html.Attribute msg
+hoverViaRed300 =
+    A.class "hover:via-red-300"
+
+
+hoverViaRed400 : Html.Attribute msg
+hoverViaRed400 =
+    A.class "hover:via-red-400"
+
+
+hoverViaRed500 : Html.Attribute msg
+hoverViaRed500 =
+    A.class "hover:via-red-500"
+
+
+hoverViaRed600 : Html.Attribute msg
+hoverViaRed600 =
+    A.class "hover:via-red-600"
+
+
+hoverViaRed700 : Html.Attribute msg
+hoverViaRed700 =
+    A.class "hover:via-red-700"
+
+
+hoverViaRed800 : Html.Attribute msg
+hoverViaRed800 =
+    A.class "hover:via-red-800"
+
+
+hoverViaRed900 : Html.Attribute msg
+hoverViaRed900 =
+    A.class "hover:via-red-900"
+
+
+hoverViaOrange100 : Html.Attribute msg
+hoverViaOrange100 =
+    A.class "hover:via-orange-100"
+
+
+hoverViaOrange200 : Html.Attribute msg
+hoverViaOrange200 =
+    A.class "hover:via-orange-200"
+
+
+hoverViaOrange300 : Html.Attribute msg
+hoverViaOrange300 =
+    A.class "hover:via-orange-300"
+
+
+hoverViaOrange400 : Html.Attribute msg
+hoverViaOrange400 =
+    A.class "hover:via-orange-400"
+
+
+hoverViaOrange500 : Html.Attribute msg
+hoverViaOrange500 =
+    A.class "hover:via-orange-500"
+
+
+hoverViaOrange600 : Html.Attribute msg
+hoverViaOrange600 =
+    A.class "hover:via-orange-600"
+
+
+hoverViaOrange700 : Html.Attribute msg
+hoverViaOrange700 =
+    A.class "hover:via-orange-700"
+
+
+hoverViaOrange800 : Html.Attribute msg
+hoverViaOrange800 =
+    A.class "hover:via-orange-800"
+
+
+hoverViaOrange900 : Html.Attribute msg
+hoverViaOrange900 =
+    A.class "hover:via-orange-900"
+
+
+hoverViaYellow100 : Html.Attribute msg
+hoverViaYellow100 =
+    A.class "hover:via-yellow-100"
+
+
+hoverViaYellow200 : Html.Attribute msg
+hoverViaYellow200 =
+    A.class "hover:via-yellow-200"
+
+
+hoverViaYellow300 : Html.Attribute msg
+hoverViaYellow300 =
+    A.class "hover:via-yellow-300"
+
+
+hoverViaYellow400 : Html.Attribute msg
+hoverViaYellow400 =
+    A.class "hover:via-yellow-400"
+
+
+hoverViaYellow500 : Html.Attribute msg
+hoverViaYellow500 =
+    A.class "hover:via-yellow-500"
+
+
+hoverViaYellow600 : Html.Attribute msg
+hoverViaYellow600 =
+    A.class "hover:via-yellow-600"
+
+
+hoverViaYellow700 : Html.Attribute msg
+hoverViaYellow700 =
+    A.class "hover:via-yellow-700"
+
+
+hoverViaYellow800 : Html.Attribute msg
+hoverViaYellow800 =
+    A.class "hover:via-yellow-800"
+
+
+hoverViaYellow900 : Html.Attribute msg
+hoverViaYellow900 =
+    A.class "hover:via-yellow-900"
+
+
+hoverViaGreen100 : Html.Attribute msg
+hoverViaGreen100 =
+    A.class "hover:via-green-100"
+
+
+hoverViaGreen200 : Html.Attribute msg
+hoverViaGreen200 =
+    A.class "hover:via-green-200"
+
+
+hoverViaGreen300 : Html.Attribute msg
+hoverViaGreen300 =
+    A.class "hover:via-green-300"
+
+
+hoverViaGreen400 : Html.Attribute msg
+hoverViaGreen400 =
+    A.class "hover:via-green-400"
+
+
+hoverViaGreen500 : Html.Attribute msg
+hoverViaGreen500 =
+    A.class "hover:via-green-500"
+
+
+hoverViaGreen600 : Html.Attribute msg
+hoverViaGreen600 =
+    A.class "hover:via-green-600"
+
+
+hoverViaGreen700 : Html.Attribute msg
+hoverViaGreen700 =
+    A.class "hover:via-green-700"
+
+
+hoverViaGreen800 : Html.Attribute msg
+hoverViaGreen800 =
+    A.class "hover:via-green-800"
+
+
+hoverViaGreen900 : Html.Attribute msg
+hoverViaGreen900 =
+    A.class "hover:via-green-900"
+
+
+hoverViaTeal100 : Html.Attribute msg
+hoverViaTeal100 =
+    A.class "hover:via-teal-100"
+
+
+hoverViaTeal200 : Html.Attribute msg
+hoverViaTeal200 =
+    A.class "hover:via-teal-200"
+
+
+hoverViaTeal300 : Html.Attribute msg
+hoverViaTeal300 =
+    A.class "hover:via-teal-300"
+
+
+hoverViaTeal400 : Html.Attribute msg
+hoverViaTeal400 =
+    A.class "hover:via-teal-400"
+
+
+hoverViaTeal500 : Html.Attribute msg
+hoverViaTeal500 =
+    A.class "hover:via-teal-500"
+
+
+hoverViaTeal600 : Html.Attribute msg
+hoverViaTeal600 =
+    A.class "hover:via-teal-600"
+
+
+hoverViaTeal700 : Html.Attribute msg
+hoverViaTeal700 =
+    A.class "hover:via-teal-700"
+
+
+hoverViaTeal800 : Html.Attribute msg
+hoverViaTeal800 =
+    A.class "hover:via-teal-800"
+
+
+hoverViaTeal900 : Html.Attribute msg
+hoverViaTeal900 =
+    A.class "hover:via-teal-900"
+
+
+hoverViaBlue100 : Html.Attribute msg
+hoverViaBlue100 =
+    A.class "hover:via-blue-100"
+
+
+hoverViaBlue200 : Html.Attribute msg
+hoverViaBlue200 =
+    A.class "hover:via-blue-200"
+
+
+hoverViaBlue300 : Html.Attribute msg
+hoverViaBlue300 =
+    A.class "hover:via-blue-300"
+
+
+hoverViaBlue400 : Html.Attribute msg
+hoverViaBlue400 =
+    A.class "hover:via-blue-400"
+
+
+hoverViaBlue500 : Html.Attribute msg
+hoverViaBlue500 =
+    A.class "hover:via-blue-500"
+
+
+hoverViaBlue600 : Html.Attribute msg
+hoverViaBlue600 =
+    A.class "hover:via-blue-600"
+
+
+hoverViaBlue700 : Html.Attribute msg
+hoverViaBlue700 =
+    A.class "hover:via-blue-700"
+
+
+hoverViaBlue800 : Html.Attribute msg
+hoverViaBlue800 =
+    A.class "hover:via-blue-800"
+
+
+hoverViaBlue900 : Html.Attribute msg
+hoverViaBlue900 =
+    A.class "hover:via-blue-900"
+
+
+hoverViaIndigo100 : Html.Attribute msg
+hoverViaIndigo100 =
+    A.class "hover:via-indigo-100"
+
+
+hoverViaIndigo200 : Html.Attribute msg
+hoverViaIndigo200 =
+    A.class "hover:via-indigo-200"
+
+
+hoverViaIndigo300 : Html.Attribute msg
+hoverViaIndigo300 =
+    A.class "hover:via-indigo-300"
+
+
+hoverViaIndigo400 : Html.Attribute msg
+hoverViaIndigo400 =
+    A.class "hover:via-indigo-400"
+
+
+hoverViaIndigo500 : Html.Attribute msg
+hoverViaIndigo500 =
+    A.class "hover:via-indigo-500"
+
+
+hoverViaIndigo600 : Html.Attribute msg
+hoverViaIndigo600 =
+    A.class "hover:via-indigo-600"
+
+
+hoverViaIndigo700 : Html.Attribute msg
+hoverViaIndigo700 =
+    A.class "hover:via-indigo-700"
+
+
+hoverViaIndigo800 : Html.Attribute msg
+hoverViaIndigo800 =
+    A.class "hover:via-indigo-800"
+
+
+hoverViaIndigo900 : Html.Attribute msg
+hoverViaIndigo900 =
+    A.class "hover:via-indigo-900"
+
+
+hoverViaPurple100 : Html.Attribute msg
+hoverViaPurple100 =
+    A.class "hover:via-purple-100"
+
+
+hoverViaPurple200 : Html.Attribute msg
+hoverViaPurple200 =
+    A.class "hover:via-purple-200"
+
+
+hoverViaPurple300 : Html.Attribute msg
+hoverViaPurple300 =
+    A.class "hover:via-purple-300"
+
+
+hoverViaPurple400 : Html.Attribute msg
+hoverViaPurple400 =
+    A.class "hover:via-purple-400"
+
+
+hoverViaPurple500 : Html.Attribute msg
+hoverViaPurple500 =
+    A.class "hover:via-purple-500"
+
+
+hoverViaPurple600 : Html.Attribute msg
+hoverViaPurple600 =
+    A.class "hover:via-purple-600"
+
+
+hoverViaPurple700 : Html.Attribute msg
+hoverViaPurple700 =
+    A.class "hover:via-purple-700"
+
+
+hoverViaPurple800 : Html.Attribute msg
+hoverViaPurple800 =
+    A.class "hover:via-purple-800"
+
+
+hoverViaPurple900 : Html.Attribute msg
+hoverViaPurple900 =
+    A.class "hover:via-purple-900"
+
+
+hoverViaPink100 : Html.Attribute msg
+hoverViaPink100 =
+    A.class "hover:via-pink-100"
+
+
+hoverViaPink200 : Html.Attribute msg
+hoverViaPink200 =
+    A.class "hover:via-pink-200"
+
+
+hoverViaPink300 : Html.Attribute msg
+hoverViaPink300 =
+    A.class "hover:via-pink-300"
+
+
+hoverViaPink400 : Html.Attribute msg
+hoverViaPink400 =
+    A.class "hover:via-pink-400"
+
+
+hoverViaPink500 : Html.Attribute msg
+hoverViaPink500 =
+    A.class "hover:via-pink-500"
+
+
+hoverViaPink600 : Html.Attribute msg
+hoverViaPink600 =
+    A.class "hover:via-pink-600"
+
+
+hoverViaPink700 : Html.Attribute msg
+hoverViaPink700 =
+    A.class "hover:via-pink-700"
+
+
+hoverViaPink800 : Html.Attribute msg
+hoverViaPink800 =
+    A.class "hover:via-pink-800"
+
+
+hoverViaPink900 : Html.Attribute msg
+hoverViaPink900 =
+    A.class "hover:via-pink-900"
+
+
+hoverToTransparent : Html.Attribute msg
+hoverToTransparent =
+    A.class "hover:to-transparent"
+
+
+hoverToCurrent : Html.Attribute msg
+hoverToCurrent =
+    A.class "hover:to-current"
+
+
+hoverToBlack : Html.Attribute msg
+hoverToBlack =
+    A.class "hover:to-black"
+
+
+hoverToWhite : Html.Attribute msg
+hoverToWhite =
+    A.class "hover:to-white"
+
+
+hoverToGray100 : Html.Attribute msg
+hoverToGray100 =
+    A.class "hover:to-gray-100"
+
+
+hoverToGray200 : Html.Attribute msg
+hoverToGray200 =
+    A.class "hover:to-gray-200"
+
+
+hoverToGray300 : Html.Attribute msg
+hoverToGray300 =
+    A.class "hover:to-gray-300"
+
+
+hoverToGray400 : Html.Attribute msg
+hoverToGray400 =
+    A.class "hover:to-gray-400"
+
+
+hoverToGray500 : Html.Attribute msg
+hoverToGray500 =
+    A.class "hover:to-gray-500"
+
+
+hoverToGray600 : Html.Attribute msg
+hoverToGray600 =
+    A.class "hover:to-gray-600"
+
+
+hoverToGray700 : Html.Attribute msg
+hoverToGray700 =
+    A.class "hover:to-gray-700"
+
+
+hoverToGray800 : Html.Attribute msg
+hoverToGray800 =
+    A.class "hover:to-gray-800"
+
+
+hoverToGray900 : Html.Attribute msg
+hoverToGray900 =
+    A.class "hover:to-gray-900"
+
+
+hoverToRed100 : Html.Attribute msg
+hoverToRed100 =
+    A.class "hover:to-red-100"
+
+
+hoverToRed200 : Html.Attribute msg
+hoverToRed200 =
+    A.class "hover:to-red-200"
+
+
+hoverToRed300 : Html.Attribute msg
+hoverToRed300 =
+    A.class "hover:to-red-300"
+
+
+hoverToRed400 : Html.Attribute msg
+hoverToRed400 =
+    A.class "hover:to-red-400"
+
+
+hoverToRed500 : Html.Attribute msg
+hoverToRed500 =
+    A.class "hover:to-red-500"
+
+
+hoverToRed600 : Html.Attribute msg
+hoverToRed600 =
+    A.class "hover:to-red-600"
+
+
+hoverToRed700 : Html.Attribute msg
+hoverToRed700 =
+    A.class "hover:to-red-700"
+
+
+hoverToRed800 : Html.Attribute msg
+hoverToRed800 =
+    A.class "hover:to-red-800"
+
+
+hoverToRed900 : Html.Attribute msg
+hoverToRed900 =
+    A.class "hover:to-red-900"
+
+
+hoverToOrange100 : Html.Attribute msg
+hoverToOrange100 =
+    A.class "hover:to-orange-100"
+
+
+hoverToOrange200 : Html.Attribute msg
+hoverToOrange200 =
+    A.class "hover:to-orange-200"
+
+
+hoverToOrange300 : Html.Attribute msg
+hoverToOrange300 =
+    A.class "hover:to-orange-300"
+
+
+hoverToOrange400 : Html.Attribute msg
+hoverToOrange400 =
+    A.class "hover:to-orange-400"
+
+
+hoverToOrange500 : Html.Attribute msg
+hoverToOrange500 =
+    A.class "hover:to-orange-500"
+
+
+hoverToOrange600 : Html.Attribute msg
+hoverToOrange600 =
+    A.class "hover:to-orange-600"
+
+
+hoverToOrange700 : Html.Attribute msg
+hoverToOrange700 =
+    A.class "hover:to-orange-700"
+
+
+hoverToOrange800 : Html.Attribute msg
+hoverToOrange800 =
+    A.class "hover:to-orange-800"
+
+
+hoverToOrange900 : Html.Attribute msg
+hoverToOrange900 =
+    A.class "hover:to-orange-900"
+
+
+hoverToYellow100 : Html.Attribute msg
+hoverToYellow100 =
+    A.class "hover:to-yellow-100"
+
+
+hoverToYellow200 : Html.Attribute msg
+hoverToYellow200 =
+    A.class "hover:to-yellow-200"
+
+
+hoverToYellow300 : Html.Attribute msg
+hoverToYellow300 =
+    A.class "hover:to-yellow-300"
+
+
+hoverToYellow400 : Html.Attribute msg
+hoverToYellow400 =
+    A.class "hover:to-yellow-400"
+
+
+hoverToYellow500 : Html.Attribute msg
+hoverToYellow500 =
+    A.class "hover:to-yellow-500"
+
+
+hoverToYellow600 : Html.Attribute msg
+hoverToYellow600 =
+    A.class "hover:to-yellow-600"
+
+
+hoverToYellow700 : Html.Attribute msg
+hoverToYellow700 =
+    A.class "hover:to-yellow-700"
+
+
+hoverToYellow800 : Html.Attribute msg
+hoverToYellow800 =
+    A.class "hover:to-yellow-800"
+
+
+hoverToYellow900 : Html.Attribute msg
+hoverToYellow900 =
+    A.class "hover:to-yellow-900"
+
+
+hoverToGreen100 : Html.Attribute msg
+hoverToGreen100 =
+    A.class "hover:to-green-100"
+
+
+hoverToGreen200 : Html.Attribute msg
+hoverToGreen200 =
+    A.class "hover:to-green-200"
+
+
+hoverToGreen300 : Html.Attribute msg
+hoverToGreen300 =
+    A.class "hover:to-green-300"
+
+
+hoverToGreen400 : Html.Attribute msg
+hoverToGreen400 =
+    A.class "hover:to-green-400"
+
+
+hoverToGreen500 : Html.Attribute msg
+hoverToGreen500 =
+    A.class "hover:to-green-500"
+
+
+hoverToGreen600 : Html.Attribute msg
+hoverToGreen600 =
+    A.class "hover:to-green-600"
+
+
+hoverToGreen700 : Html.Attribute msg
+hoverToGreen700 =
+    A.class "hover:to-green-700"
+
+
+hoverToGreen800 : Html.Attribute msg
+hoverToGreen800 =
+    A.class "hover:to-green-800"
+
+
+hoverToGreen900 : Html.Attribute msg
+hoverToGreen900 =
+    A.class "hover:to-green-900"
+
+
+hoverToTeal100 : Html.Attribute msg
+hoverToTeal100 =
+    A.class "hover:to-teal-100"
+
+
+hoverToTeal200 : Html.Attribute msg
+hoverToTeal200 =
+    A.class "hover:to-teal-200"
+
+
+hoverToTeal300 : Html.Attribute msg
+hoverToTeal300 =
+    A.class "hover:to-teal-300"
+
+
+hoverToTeal400 : Html.Attribute msg
+hoverToTeal400 =
+    A.class "hover:to-teal-400"
+
+
+hoverToTeal500 : Html.Attribute msg
+hoverToTeal500 =
+    A.class "hover:to-teal-500"
+
+
+hoverToTeal600 : Html.Attribute msg
+hoverToTeal600 =
+    A.class "hover:to-teal-600"
+
+
+hoverToTeal700 : Html.Attribute msg
+hoverToTeal700 =
+    A.class "hover:to-teal-700"
+
+
+hoverToTeal800 : Html.Attribute msg
+hoverToTeal800 =
+    A.class "hover:to-teal-800"
+
+
+hoverToTeal900 : Html.Attribute msg
+hoverToTeal900 =
+    A.class "hover:to-teal-900"
+
+
+hoverToBlue100 : Html.Attribute msg
+hoverToBlue100 =
+    A.class "hover:to-blue-100"
+
+
+hoverToBlue200 : Html.Attribute msg
+hoverToBlue200 =
+    A.class "hover:to-blue-200"
+
+
+hoverToBlue300 : Html.Attribute msg
+hoverToBlue300 =
+    A.class "hover:to-blue-300"
+
+
+hoverToBlue400 : Html.Attribute msg
+hoverToBlue400 =
+    A.class "hover:to-blue-400"
+
+
+hoverToBlue500 : Html.Attribute msg
+hoverToBlue500 =
+    A.class "hover:to-blue-500"
+
+
+hoverToBlue600 : Html.Attribute msg
+hoverToBlue600 =
+    A.class "hover:to-blue-600"
+
+
+hoverToBlue700 : Html.Attribute msg
+hoverToBlue700 =
+    A.class "hover:to-blue-700"
+
+
+hoverToBlue800 : Html.Attribute msg
+hoverToBlue800 =
+    A.class "hover:to-blue-800"
+
+
+hoverToBlue900 : Html.Attribute msg
+hoverToBlue900 =
+    A.class "hover:to-blue-900"
+
+
+hoverToIndigo100 : Html.Attribute msg
+hoverToIndigo100 =
+    A.class "hover:to-indigo-100"
+
+
+hoverToIndigo200 : Html.Attribute msg
+hoverToIndigo200 =
+    A.class "hover:to-indigo-200"
+
+
+hoverToIndigo300 : Html.Attribute msg
+hoverToIndigo300 =
+    A.class "hover:to-indigo-300"
+
+
+hoverToIndigo400 : Html.Attribute msg
+hoverToIndigo400 =
+    A.class "hover:to-indigo-400"
+
+
+hoverToIndigo500 : Html.Attribute msg
+hoverToIndigo500 =
+    A.class "hover:to-indigo-500"
+
+
+hoverToIndigo600 : Html.Attribute msg
+hoverToIndigo600 =
+    A.class "hover:to-indigo-600"
+
+
+hoverToIndigo700 : Html.Attribute msg
+hoverToIndigo700 =
+    A.class "hover:to-indigo-700"
+
+
+hoverToIndigo800 : Html.Attribute msg
+hoverToIndigo800 =
+    A.class "hover:to-indigo-800"
+
+
+hoverToIndigo900 : Html.Attribute msg
+hoverToIndigo900 =
+    A.class "hover:to-indigo-900"
+
+
+hoverToPurple100 : Html.Attribute msg
+hoverToPurple100 =
+    A.class "hover:to-purple-100"
+
+
+hoverToPurple200 : Html.Attribute msg
+hoverToPurple200 =
+    A.class "hover:to-purple-200"
+
+
+hoverToPurple300 : Html.Attribute msg
+hoverToPurple300 =
+    A.class "hover:to-purple-300"
+
+
+hoverToPurple400 : Html.Attribute msg
+hoverToPurple400 =
+    A.class "hover:to-purple-400"
+
+
+hoverToPurple500 : Html.Attribute msg
+hoverToPurple500 =
+    A.class "hover:to-purple-500"
+
+
+hoverToPurple600 : Html.Attribute msg
+hoverToPurple600 =
+    A.class "hover:to-purple-600"
+
+
+hoverToPurple700 : Html.Attribute msg
+hoverToPurple700 =
+    A.class "hover:to-purple-700"
+
+
+hoverToPurple800 : Html.Attribute msg
+hoverToPurple800 =
+    A.class "hover:to-purple-800"
+
+
+hoverToPurple900 : Html.Attribute msg
+hoverToPurple900 =
+    A.class "hover:to-purple-900"
+
+
+hoverToPink100 : Html.Attribute msg
+hoverToPink100 =
+    A.class "hover:to-pink-100"
+
+
+hoverToPink200 : Html.Attribute msg
+hoverToPink200 =
+    A.class "hover:to-pink-200"
+
+
+hoverToPink300 : Html.Attribute msg
+hoverToPink300 =
+    A.class "hover:to-pink-300"
+
+
+hoverToPink400 : Html.Attribute msg
+hoverToPink400 =
+    A.class "hover:to-pink-400"
+
+
+hoverToPink500 : Html.Attribute msg
+hoverToPink500 =
+    A.class "hover:to-pink-500"
+
+
+hoverToPink600 : Html.Attribute msg
+hoverToPink600 =
+    A.class "hover:to-pink-600"
+
+
+hoverToPink700 : Html.Attribute msg
+hoverToPink700 =
+    A.class "hover:to-pink-700"
+
+
+hoverToPink800 : Html.Attribute msg
+hoverToPink800 =
+    A.class "hover:to-pink-800"
+
+
+hoverToPink900 : Html.Attribute msg
+hoverToPink900 =
+    A.class "hover:to-pink-900"
+
+
+focusFromTransparent : Html.Attribute msg
+focusFromTransparent =
+    A.class "focus:from-transparent"
+
+
+focusFromCurrent : Html.Attribute msg
+focusFromCurrent =
+    A.class "focus:from-current"
+
+
+focusFromBlack : Html.Attribute msg
+focusFromBlack =
+    A.class "focus:from-black"
+
+
+focusFromWhite : Html.Attribute msg
+focusFromWhite =
+    A.class "focus:from-white"
+
+
+focusFromGray100 : Html.Attribute msg
+focusFromGray100 =
+    A.class "focus:from-gray-100"
+
+
+focusFromGray200 : Html.Attribute msg
+focusFromGray200 =
+    A.class "focus:from-gray-200"
+
+
+focusFromGray300 : Html.Attribute msg
+focusFromGray300 =
+    A.class "focus:from-gray-300"
+
+
+focusFromGray400 : Html.Attribute msg
+focusFromGray400 =
+    A.class "focus:from-gray-400"
+
+
+focusFromGray500 : Html.Attribute msg
+focusFromGray500 =
+    A.class "focus:from-gray-500"
+
+
+focusFromGray600 : Html.Attribute msg
+focusFromGray600 =
+    A.class "focus:from-gray-600"
+
+
+focusFromGray700 : Html.Attribute msg
+focusFromGray700 =
+    A.class "focus:from-gray-700"
+
+
+focusFromGray800 : Html.Attribute msg
+focusFromGray800 =
+    A.class "focus:from-gray-800"
+
+
+focusFromGray900 : Html.Attribute msg
+focusFromGray900 =
+    A.class "focus:from-gray-900"
+
+
+focusFromRed100 : Html.Attribute msg
+focusFromRed100 =
+    A.class "focus:from-red-100"
+
+
+focusFromRed200 : Html.Attribute msg
+focusFromRed200 =
+    A.class "focus:from-red-200"
+
+
+focusFromRed300 : Html.Attribute msg
+focusFromRed300 =
+    A.class "focus:from-red-300"
+
+
+focusFromRed400 : Html.Attribute msg
+focusFromRed400 =
+    A.class "focus:from-red-400"
+
+
+focusFromRed500 : Html.Attribute msg
+focusFromRed500 =
+    A.class "focus:from-red-500"
+
+
+focusFromRed600 : Html.Attribute msg
+focusFromRed600 =
+    A.class "focus:from-red-600"
+
+
+focusFromRed700 : Html.Attribute msg
+focusFromRed700 =
+    A.class "focus:from-red-700"
+
+
+focusFromRed800 : Html.Attribute msg
+focusFromRed800 =
+    A.class "focus:from-red-800"
+
+
+focusFromRed900 : Html.Attribute msg
+focusFromRed900 =
+    A.class "focus:from-red-900"
+
+
+focusFromOrange100 : Html.Attribute msg
+focusFromOrange100 =
+    A.class "focus:from-orange-100"
+
+
+focusFromOrange200 : Html.Attribute msg
+focusFromOrange200 =
+    A.class "focus:from-orange-200"
+
+
+focusFromOrange300 : Html.Attribute msg
+focusFromOrange300 =
+    A.class "focus:from-orange-300"
+
+
+focusFromOrange400 : Html.Attribute msg
+focusFromOrange400 =
+    A.class "focus:from-orange-400"
+
+
+focusFromOrange500 : Html.Attribute msg
+focusFromOrange500 =
+    A.class "focus:from-orange-500"
+
+
+focusFromOrange600 : Html.Attribute msg
+focusFromOrange600 =
+    A.class "focus:from-orange-600"
+
+
+focusFromOrange700 : Html.Attribute msg
+focusFromOrange700 =
+    A.class "focus:from-orange-700"
+
+
+focusFromOrange800 : Html.Attribute msg
+focusFromOrange800 =
+    A.class "focus:from-orange-800"
+
+
+focusFromOrange900 : Html.Attribute msg
+focusFromOrange900 =
+    A.class "focus:from-orange-900"
+
+
+focusFromYellow100 : Html.Attribute msg
+focusFromYellow100 =
+    A.class "focus:from-yellow-100"
+
+
+focusFromYellow200 : Html.Attribute msg
+focusFromYellow200 =
+    A.class "focus:from-yellow-200"
+
+
+focusFromYellow300 : Html.Attribute msg
+focusFromYellow300 =
+    A.class "focus:from-yellow-300"
+
+
+focusFromYellow400 : Html.Attribute msg
+focusFromYellow400 =
+    A.class "focus:from-yellow-400"
+
+
+focusFromYellow500 : Html.Attribute msg
+focusFromYellow500 =
+    A.class "focus:from-yellow-500"
+
+
+focusFromYellow600 : Html.Attribute msg
+focusFromYellow600 =
+    A.class "focus:from-yellow-600"
+
+
+focusFromYellow700 : Html.Attribute msg
+focusFromYellow700 =
+    A.class "focus:from-yellow-700"
+
+
+focusFromYellow800 : Html.Attribute msg
+focusFromYellow800 =
+    A.class "focus:from-yellow-800"
+
+
+focusFromYellow900 : Html.Attribute msg
+focusFromYellow900 =
+    A.class "focus:from-yellow-900"
+
+
+focusFromGreen100 : Html.Attribute msg
+focusFromGreen100 =
+    A.class "focus:from-green-100"
+
+
+focusFromGreen200 : Html.Attribute msg
+focusFromGreen200 =
+    A.class "focus:from-green-200"
+
+
+focusFromGreen300 : Html.Attribute msg
+focusFromGreen300 =
+    A.class "focus:from-green-300"
+
+
+focusFromGreen400 : Html.Attribute msg
+focusFromGreen400 =
+    A.class "focus:from-green-400"
+
+
+focusFromGreen500 : Html.Attribute msg
+focusFromGreen500 =
+    A.class "focus:from-green-500"
+
+
+focusFromGreen600 : Html.Attribute msg
+focusFromGreen600 =
+    A.class "focus:from-green-600"
+
+
+focusFromGreen700 : Html.Attribute msg
+focusFromGreen700 =
+    A.class "focus:from-green-700"
+
+
+focusFromGreen800 : Html.Attribute msg
+focusFromGreen800 =
+    A.class "focus:from-green-800"
+
+
+focusFromGreen900 : Html.Attribute msg
+focusFromGreen900 =
+    A.class "focus:from-green-900"
+
+
+focusFromTeal100 : Html.Attribute msg
+focusFromTeal100 =
+    A.class "focus:from-teal-100"
+
+
+focusFromTeal200 : Html.Attribute msg
+focusFromTeal200 =
+    A.class "focus:from-teal-200"
+
+
+focusFromTeal300 : Html.Attribute msg
+focusFromTeal300 =
+    A.class "focus:from-teal-300"
+
+
+focusFromTeal400 : Html.Attribute msg
+focusFromTeal400 =
+    A.class "focus:from-teal-400"
+
+
+focusFromTeal500 : Html.Attribute msg
+focusFromTeal500 =
+    A.class "focus:from-teal-500"
+
+
+focusFromTeal600 : Html.Attribute msg
+focusFromTeal600 =
+    A.class "focus:from-teal-600"
+
+
+focusFromTeal700 : Html.Attribute msg
+focusFromTeal700 =
+    A.class "focus:from-teal-700"
+
+
+focusFromTeal800 : Html.Attribute msg
+focusFromTeal800 =
+    A.class "focus:from-teal-800"
+
+
+focusFromTeal900 : Html.Attribute msg
+focusFromTeal900 =
+    A.class "focus:from-teal-900"
+
+
+focusFromBlue100 : Html.Attribute msg
+focusFromBlue100 =
+    A.class "focus:from-blue-100"
+
+
+focusFromBlue200 : Html.Attribute msg
+focusFromBlue200 =
+    A.class "focus:from-blue-200"
+
+
+focusFromBlue300 : Html.Attribute msg
+focusFromBlue300 =
+    A.class "focus:from-blue-300"
+
+
+focusFromBlue400 : Html.Attribute msg
+focusFromBlue400 =
+    A.class "focus:from-blue-400"
+
+
+focusFromBlue500 : Html.Attribute msg
+focusFromBlue500 =
+    A.class "focus:from-blue-500"
+
+
+focusFromBlue600 : Html.Attribute msg
+focusFromBlue600 =
+    A.class "focus:from-blue-600"
+
+
+focusFromBlue700 : Html.Attribute msg
+focusFromBlue700 =
+    A.class "focus:from-blue-700"
+
+
+focusFromBlue800 : Html.Attribute msg
+focusFromBlue800 =
+    A.class "focus:from-blue-800"
+
+
+focusFromBlue900 : Html.Attribute msg
+focusFromBlue900 =
+    A.class "focus:from-blue-900"
+
+
+focusFromIndigo100 : Html.Attribute msg
+focusFromIndigo100 =
+    A.class "focus:from-indigo-100"
+
+
+focusFromIndigo200 : Html.Attribute msg
+focusFromIndigo200 =
+    A.class "focus:from-indigo-200"
+
+
+focusFromIndigo300 : Html.Attribute msg
+focusFromIndigo300 =
+    A.class "focus:from-indigo-300"
+
+
+focusFromIndigo400 : Html.Attribute msg
+focusFromIndigo400 =
+    A.class "focus:from-indigo-400"
+
+
+focusFromIndigo500 : Html.Attribute msg
+focusFromIndigo500 =
+    A.class "focus:from-indigo-500"
+
+
+focusFromIndigo600 : Html.Attribute msg
+focusFromIndigo600 =
+    A.class "focus:from-indigo-600"
+
+
+focusFromIndigo700 : Html.Attribute msg
+focusFromIndigo700 =
+    A.class "focus:from-indigo-700"
+
+
+focusFromIndigo800 : Html.Attribute msg
+focusFromIndigo800 =
+    A.class "focus:from-indigo-800"
+
+
+focusFromIndigo900 : Html.Attribute msg
+focusFromIndigo900 =
+    A.class "focus:from-indigo-900"
+
+
+focusFromPurple100 : Html.Attribute msg
+focusFromPurple100 =
+    A.class "focus:from-purple-100"
+
+
+focusFromPurple200 : Html.Attribute msg
+focusFromPurple200 =
+    A.class "focus:from-purple-200"
+
+
+focusFromPurple300 : Html.Attribute msg
+focusFromPurple300 =
+    A.class "focus:from-purple-300"
+
+
+focusFromPurple400 : Html.Attribute msg
+focusFromPurple400 =
+    A.class "focus:from-purple-400"
+
+
+focusFromPurple500 : Html.Attribute msg
+focusFromPurple500 =
+    A.class "focus:from-purple-500"
+
+
+focusFromPurple600 : Html.Attribute msg
+focusFromPurple600 =
+    A.class "focus:from-purple-600"
+
+
+focusFromPurple700 : Html.Attribute msg
+focusFromPurple700 =
+    A.class "focus:from-purple-700"
+
+
+focusFromPurple800 : Html.Attribute msg
+focusFromPurple800 =
+    A.class "focus:from-purple-800"
+
+
+focusFromPurple900 : Html.Attribute msg
+focusFromPurple900 =
+    A.class "focus:from-purple-900"
+
+
+focusFromPink100 : Html.Attribute msg
+focusFromPink100 =
+    A.class "focus:from-pink-100"
+
+
+focusFromPink200 : Html.Attribute msg
+focusFromPink200 =
+    A.class "focus:from-pink-200"
+
+
+focusFromPink300 : Html.Attribute msg
+focusFromPink300 =
+    A.class "focus:from-pink-300"
+
+
+focusFromPink400 : Html.Attribute msg
+focusFromPink400 =
+    A.class "focus:from-pink-400"
+
+
+focusFromPink500 : Html.Attribute msg
+focusFromPink500 =
+    A.class "focus:from-pink-500"
+
+
+focusFromPink600 : Html.Attribute msg
+focusFromPink600 =
+    A.class "focus:from-pink-600"
+
+
+focusFromPink700 : Html.Attribute msg
+focusFromPink700 =
+    A.class "focus:from-pink-700"
+
+
+focusFromPink800 : Html.Attribute msg
+focusFromPink800 =
+    A.class "focus:from-pink-800"
+
+
+focusFromPink900 : Html.Attribute msg
+focusFromPink900 =
+    A.class "focus:from-pink-900"
+
+
+focusViaTransparent : Html.Attribute msg
+focusViaTransparent =
+    A.class "focus:via-transparent"
+
+
+focusViaCurrent : Html.Attribute msg
+focusViaCurrent =
+    A.class "focus:via-current"
+
+
+focusViaBlack : Html.Attribute msg
+focusViaBlack =
+    A.class "focus:via-black"
+
+
+focusViaWhite : Html.Attribute msg
+focusViaWhite =
+    A.class "focus:via-white"
+
+
+focusViaGray100 : Html.Attribute msg
+focusViaGray100 =
+    A.class "focus:via-gray-100"
+
+
+focusViaGray200 : Html.Attribute msg
+focusViaGray200 =
+    A.class "focus:via-gray-200"
+
+
+focusViaGray300 : Html.Attribute msg
+focusViaGray300 =
+    A.class "focus:via-gray-300"
+
+
+focusViaGray400 : Html.Attribute msg
+focusViaGray400 =
+    A.class "focus:via-gray-400"
+
+
+focusViaGray500 : Html.Attribute msg
+focusViaGray500 =
+    A.class "focus:via-gray-500"
+
+
+focusViaGray600 : Html.Attribute msg
+focusViaGray600 =
+    A.class "focus:via-gray-600"
+
+
+focusViaGray700 : Html.Attribute msg
+focusViaGray700 =
+    A.class "focus:via-gray-700"
+
+
+focusViaGray800 : Html.Attribute msg
+focusViaGray800 =
+    A.class "focus:via-gray-800"
+
+
+focusViaGray900 : Html.Attribute msg
+focusViaGray900 =
+    A.class "focus:via-gray-900"
+
+
+focusViaRed100 : Html.Attribute msg
+focusViaRed100 =
+    A.class "focus:via-red-100"
+
+
+focusViaRed200 : Html.Attribute msg
+focusViaRed200 =
+    A.class "focus:via-red-200"
+
+
+focusViaRed300 : Html.Attribute msg
+focusViaRed300 =
+    A.class "focus:via-red-300"
+
+
+focusViaRed400 : Html.Attribute msg
+focusViaRed400 =
+    A.class "focus:via-red-400"
+
+
+focusViaRed500 : Html.Attribute msg
+focusViaRed500 =
+    A.class "focus:via-red-500"
+
+
+focusViaRed600 : Html.Attribute msg
+focusViaRed600 =
+    A.class "focus:via-red-600"
+
+
+focusViaRed700 : Html.Attribute msg
+focusViaRed700 =
+    A.class "focus:via-red-700"
+
+
+focusViaRed800 : Html.Attribute msg
+focusViaRed800 =
+    A.class "focus:via-red-800"
+
+
+focusViaRed900 : Html.Attribute msg
+focusViaRed900 =
+    A.class "focus:via-red-900"
+
+
+focusViaOrange100 : Html.Attribute msg
+focusViaOrange100 =
+    A.class "focus:via-orange-100"
+
+
+focusViaOrange200 : Html.Attribute msg
+focusViaOrange200 =
+    A.class "focus:via-orange-200"
+
+
+focusViaOrange300 : Html.Attribute msg
+focusViaOrange300 =
+    A.class "focus:via-orange-300"
+
+
+focusViaOrange400 : Html.Attribute msg
+focusViaOrange400 =
+    A.class "focus:via-orange-400"
+
+
+focusViaOrange500 : Html.Attribute msg
+focusViaOrange500 =
+    A.class "focus:via-orange-500"
+
+
+focusViaOrange600 : Html.Attribute msg
+focusViaOrange600 =
+    A.class "focus:via-orange-600"
+
+
+focusViaOrange700 : Html.Attribute msg
+focusViaOrange700 =
+    A.class "focus:via-orange-700"
+
+
+focusViaOrange800 : Html.Attribute msg
+focusViaOrange800 =
+    A.class "focus:via-orange-800"
+
+
+focusViaOrange900 : Html.Attribute msg
+focusViaOrange900 =
+    A.class "focus:via-orange-900"
+
+
+focusViaYellow100 : Html.Attribute msg
+focusViaYellow100 =
+    A.class "focus:via-yellow-100"
+
+
+focusViaYellow200 : Html.Attribute msg
+focusViaYellow200 =
+    A.class "focus:via-yellow-200"
+
+
+focusViaYellow300 : Html.Attribute msg
+focusViaYellow300 =
+    A.class "focus:via-yellow-300"
+
+
+focusViaYellow400 : Html.Attribute msg
+focusViaYellow400 =
+    A.class "focus:via-yellow-400"
+
+
+focusViaYellow500 : Html.Attribute msg
+focusViaYellow500 =
+    A.class "focus:via-yellow-500"
+
+
+focusViaYellow600 : Html.Attribute msg
+focusViaYellow600 =
+    A.class "focus:via-yellow-600"
+
+
+focusViaYellow700 : Html.Attribute msg
+focusViaYellow700 =
+    A.class "focus:via-yellow-700"
+
+
+focusViaYellow800 : Html.Attribute msg
+focusViaYellow800 =
+    A.class "focus:via-yellow-800"
+
+
+focusViaYellow900 : Html.Attribute msg
+focusViaYellow900 =
+    A.class "focus:via-yellow-900"
+
+
+focusViaGreen100 : Html.Attribute msg
+focusViaGreen100 =
+    A.class "focus:via-green-100"
+
+
+focusViaGreen200 : Html.Attribute msg
+focusViaGreen200 =
+    A.class "focus:via-green-200"
+
+
+focusViaGreen300 : Html.Attribute msg
+focusViaGreen300 =
+    A.class "focus:via-green-300"
+
+
+focusViaGreen400 : Html.Attribute msg
+focusViaGreen400 =
+    A.class "focus:via-green-400"
+
+
+focusViaGreen500 : Html.Attribute msg
+focusViaGreen500 =
+    A.class "focus:via-green-500"
+
+
+focusViaGreen600 : Html.Attribute msg
+focusViaGreen600 =
+    A.class "focus:via-green-600"
+
+
+focusViaGreen700 : Html.Attribute msg
+focusViaGreen700 =
+    A.class "focus:via-green-700"
+
+
+focusViaGreen800 : Html.Attribute msg
+focusViaGreen800 =
+    A.class "focus:via-green-800"
+
+
+focusViaGreen900 : Html.Attribute msg
+focusViaGreen900 =
+    A.class "focus:via-green-900"
+
+
+focusViaTeal100 : Html.Attribute msg
+focusViaTeal100 =
+    A.class "focus:via-teal-100"
+
+
+focusViaTeal200 : Html.Attribute msg
+focusViaTeal200 =
+    A.class "focus:via-teal-200"
+
+
+focusViaTeal300 : Html.Attribute msg
+focusViaTeal300 =
+    A.class "focus:via-teal-300"
+
+
+focusViaTeal400 : Html.Attribute msg
+focusViaTeal400 =
+    A.class "focus:via-teal-400"
+
+
+focusViaTeal500 : Html.Attribute msg
+focusViaTeal500 =
+    A.class "focus:via-teal-500"
+
+
+focusViaTeal600 : Html.Attribute msg
+focusViaTeal600 =
+    A.class "focus:via-teal-600"
+
+
+focusViaTeal700 : Html.Attribute msg
+focusViaTeal700 =
+    A.class "focus:via-teal-700"
+
+
+focusViaTeal800 : Html.Attribute msg
+focusViaTeal800 =
+    A.class "focus:via-teal-800"
+
+
+focusViaTeal900 : Html.Attribute msg
+focusViaTeal900 =
+    A.class "focus:via-teal-900"
+
+
+focusViaBlue100 : Html.Attribute msg
+focusViaBlue100 =
+    A.class "focus:via-blue-100"
+
+
+focusViaBlue200 : Html.Attribute msg
+focusViaBlue200 =
+    A.class "focus:via-blue-200"
+
+
+focusViaBlue300 : Html.Attribute msg
+focusViaBlue300 =
+    A.class "focus:via-blue-300"
+
+
+focusViaBlue400 : Html.Attribute msg
+focusViaBlue400 =
+    A.class "focus:via-blue-400"
+
+
+focusViaBlue500 : Html.Attribute msg
+focusViaBlue500 =
+    A.class "focus:via-blue-500"
+
+
+focusViaBlue600 : Html.Attribute msg
+focusViaBlue600 =
+    A.class "focus:via-blue-600"
+
+
+focusViaBlue700 : Html.Attribute msg
+focusViaBlue700 =
+    A.class "focus:via-blue-700"
+
+
+focusViaBlue800 : Html.Attribute msg
+focusViaBlue800 =
+    A.class "focus:via-blue-800"
+
+
+focusViaBlue900 : Html.Attribute msg
+focusViaBlue900 =
+    A.class "focus:via-blue-900"
+
+
+focusViaIndigo100 : Html.Attribute msg
+focusViaIndigo100 =
+    A.class "focus:via-indigo-100"
+
+
+focusViaIndigo200 : Html.Attribute msg
+focusViaIndigo200 =
+    A.class "focus:via-indigo-200"
+
+
+focusViaIndigo300 : Html.Attribute msg
+focusViaIndigo300 =
+    A.class "focus:via-indigo-300"
+
+
+focusViaIndigo400 : Html.Attribute msg
+focusViaIndigo400 =
+    A.class "focus:via-indigo-400"
+
+
+focusViaIndigo500 : Html.Attribute msg
+focusViaIndigo500 =
+    A.class "focus:via-indigo-500"
+
+
+focusViaIndigo600 : Html.Attribute msg
+focusViaIndigo600 =
+    A.class "focus:via-indigo-600"
+
+
+focusViaIndigo700 : Html.Attribute msg
+focusViaIndigo700 =
+    A.class "focus:via-indigo-700"
+
+
+focusViaIndigo800 : Html.Attribute msg
+focusViaIndigo800 =
+    A.class "focus:via-indigo-800"
+
+
+focusViaIndigo900 : Html.Attribute msg
+focusViaIndigo900 =
+    A.class "focus:via-indigo-900"
+
+
+focusViaPurple100 : Html.Attribute msg
+focusViaPurple100 =
+    A.class "focus:via-purple-100"
+
+
+focusViaPurple200 : Html.Attribute msg
+focusViaPurple200 =
+    A.class "focus:via-purple-200"
+
+
+focusViaPurple300 : Html.Attribute msg
+focusViaPurple300 =
+    A.class "focus:via-purple-300"
+
+
+focusViaPurple400 : Html.Attribute msg
+focusViaPurple400 =
+    A.class "focus:via-purple-400"
+
+
+focusViaPurple500 : Html.Attribute msg
+focusViaPurple500 =
+    A.class "focus:via-purple-500"
+
+
+focusViaPurple600 : Html.Attribute msg
+focusViaPurple600 =
+    A.class "focus:via-purple-600"
+
+
+focusViaPurple700 : Html.Attribute msg
+focusViaPurple700 =
+    A.class "focus:via-purple-700"
+
+
+focusViaPurple800 : Html.Attribute msg
+focusViaPurple800 =
+    A.class "focus:via-purple-800"
+
+
+focusViaPurple900 : Html.Attribute msg
+focusViaPurple900 =
+    A.class "focus:via-purple-900"
+
+
+focusViaPink100 : Html.Attribute msg
+focusViaPink100 =
+    A.class "focus:via-pink-100"
+
+
+focusViaPink200 : Html.Attribute msg
+focusViaPink200 =
+    A.class "focus:via-pink-200"
+
+
+focusViaPink300 : Html.Attribute msg
+focusViaPink300 =
+    A.class "focus:via-pink-300"
+
+
+focusViaPink400 : Html.Attribute msg
+focusViaPink400 =
+    A.class "focus:via-pink-400"
+
+
+focusViaPink500 : Html.Attribute msg
+focusViaPink500 =
+    A.class "focus:via-pink-500"
+
+
+focusViaPink600 : Html.Attribute msg
+focusViaPink600 =
+    A.class "focus:via-pink-600"
+
+
+focusViaPink700 : Html.Attribute msg
+focusViaPink700 =
+    A.class "focus:via-pink-700"
+
+
+focusViaPink800 : Html.Attribute msg
+focusViaPink800 =
+    A.class "focus:via-pink-800"
+
+
+focusViaPink900 : Html.Attribute msg
+focusViaPink900 =
+    A.class "focus:via-pink-900"
+
+
+focusToTransparent : Html.Attribute msg
+focusToTransparent =
+    A.class "focus:to-transparent"
+
+
+focusToCurrent : Html.Attribute msg
+focusToCurrent =
+    A.class "focus:to-current"
+
+
+focusToBlack : Html.Attribute msg
+focusToBlack =
+    A.class "focus:to-black"
+
+
+focusToWhite : Html.Attribute msg
+focusToWhite =
+    A.class "focus:to-white"
+
+
+focusToGray100 : Html.Attribute msg
+focusToGray100 =
+    A.class "focus:to-gray-100"
+
+
+focusToGray200 : Html.Attribute msg
+focusToGray200 =
+    A.class "focus:to-gray-200"
+
+
+focusToGray300 : Html.Attribute msg
+focusToGray300 =
+    A.class "focus:to-gray-300"
+
+
+focusToGray400 : Html.Attribute msg
+focusToGray400 =
+    A.class "focus:to-gray-400"
+
+
+focusToGray500 : Html.Attribute msg
+focusToGray500 =
+    A.class "focus:to-gray-500"
+
+
+focusToGray600 : Html.Attribute msg
+focusToGray600 =
+    A.class "focus:to-gray-600"
+
+
+focusToGray700 : Html.Attribute msg
+focusToGray700 =
+    A.class "focus:to-gray-700"
+
+
+focusToGray800 : Html.Attribute msg
+focusToGray800 =
+    A.class "focus:to-gray-800"
+
+
+focusToGray900 : Html.Attribute msg
+focusToGray900 =
+    A.class "focus:to-gray-900"
+
+
+focusToRed100 : Html.Attribute msg
+focusToRed100 =
+    A.class "focus:to-red-100"
+
+
+focusToRed200 : Html.Attribute msg
+focusToRed200 =
+    A.class "focus:to-red-200"
+
+
+focusToRed300 : Html.Attribute msg
+focusToRed300 =
+    A.class "focus:to-red-300"
+
+
+focusToRed400 : Html.Attribute msg
+focusToRed400 =
+    A.class "focus:to-red-400"
+
+
+focusToRed500 : Html.Attribute msg
+focusToRed500 =
+    A.class "focus:to-red-500"
+
+
+focusToRed600 : Html.Attribute msg
+focusToRed600 =
+    A.class "focus:to-red-600"
+
+
+focusToRed700 : Html.Attribute msg
+focusToRed700 =
+    A.class "focus:to-red-700"
+
+
+focusToRed800 : Html.Attribute msg
+focusToRed800 =
+    A.class "focus:to-red-800"
+
+
+focusToRed900 : Html.Attribute msg
+focusToRed900 =
+    A.class "focus:to-red-900"
+
+
+focusToOrange100 : Html.Attribute msg
+focusToOrange100 =
+    A.class "focus:to-orange-100"
+
+
+focusToOrange200 : Html.Attribute msg
+focusToOrange200 =
+    A.class "focus:to-orange-200"
+
+
+focusToOrange300 : Html.Attribute msg
+focusToOrange300 =
+    A.class "focus:to-orange-300"
+
+
+focusToOrange400 : Html.Attribute msg
+focusToOrange400 =
+    A.class "focus:to-orange-400"
+
+
+focusToOrange500 : Html.Attribute msg
+focusToOrange500 =
+    A.class "focus:to-orange-500"
+
+
+focusToOrange600 : Html.Attribute msg
+focusToOrange600 =
+    A.class "focus:to-orange-600"
+
+
+focusToOrange700 : Html.Attribute msg
+focusToOrange700 =
+    A.class "focus:to-orange-700"
+
+
+focusToOrange800 : Html.Attribute msg
+focusToOrange800 =
+    A.class "focus:to-orange-800"
+
+
+focusToOrange900 : Html.Attribute msg
+focusToOrange900 =
+    A.class "focus:to-orange-900"
+
+
+focusToYellow100 : Html.Attribute msg
+focusToYellow100 =
+    A.class "focus:to-yellow-100"
+
+
+focusToYellow200 : Html.Attribute msg
+focusToYellow200 =
+    A.class "focus:to-yellow-200"
+
+
+focusToYellow300 : Html.Attribute msg
+focusToYellow300 =
+    A.class "focus:to-yellow-300"
+
+
+focusToYellow400 : Html.Attribute msg
+focusToYellow400 =
+    A.class "focus:to-yellow-400"
+
+
+focusToYellow500 : Html.Attribute msg
+focusToYellow500 =
+    A.class "focus:to-yellow-500"
+
+
+focusToYellow600 : Html.Attribute msg
+focusToYellow600 =
+    A.class "focus:to-yellow-600"
+
+
+focusToYellow700 : Html.Attribute msg
+focusToYellow700 =
+    A.class "focus:to-yellow-700"
+
+
+focusToYellow800 : Html.Attribute msg
+focusToYellow800 =
+    A.class "focus:to-yellow-800"
+
+
+focusToYellow900 : Html.Attribute msg
+focusToYellow900 =
+    A.class "focus:to-yellow-900"
+
+
+focusToGreen100 : Html.Attribute msg
+focusToGreen100 =
+    A.class "focus:to-green-100"
+
+
+focusToGreen200 : Html.Attribute msg
+focusToGreen200 =
+    A.class "focus:to-green-200"
+
+
+focusToGreen300 : Html.Attribute msg
+focusToGreen300 =
+    A.class "focus:to-green-300"
+
+
+focusToGreen400 : Html.Attribute msg
+focusToGreen400 =
+    A.class "focus:to-green-400"
+
+
+focusToGreen500 : Html.Attribute msg
+focusToGreen500 =
+    A.class "focus:to-green-500"
+
+
+focusToGreen600 : Html.Attribute msg
+focusToGreen600 =
+    A.class "focus:to-green-600"
+
+
+focusToGreen700 : Html.Attribute msg
+focusToGreen700 =
+    A.class "focus:to-green-700"
+
+
+focusToGreen800 : Html.Attribute msg
+focusToGreen800 =
+    A.class "focus:to-green-800"
+
+
+focusToGreen900 : Html.Attribute msg
+focusToGreen900 =
+    A.class "focus:to-green-900"
+
+
+focusToTeal100 : Html.Attribute msg
+focusToTeal100 =
+    A.class "focus:to-teal-100"
+
+
+focusToTeal200 : Html.Attribute msg
+focusToTeal200 =
+    A.class "focus:to-teal-200"
+
+
+focusToTeal300 : Html.Attribute msg
+focusToTeal300 =
+    A.class "focus:to-teal-300"
+
+
+focusToTeal400 : Html.Attribute msg
+focusToTeal400 =
+    A.class "focus:to-teal-400"
+
+
+focusToTeal500 : Html.Attribute msg
+focusToTeal500 =
+    A.class "focus:to-teal-500"
+
+
+focusToTeal600 : Html.Attribute msg
+focusToTeal600 =
+    A.class "focus:to-teal-600"
+
+
+focusToTeal700 : Html.Attribute msg
+focusToTeal700 =
+    A.class "focus:to-teal-700"
+
+
+focusToTeal800 : Html.Attribute msg
+focusToTeal800 =
+    A.class "focus:to-teal-800"
+
+
+focusToTeal900 : Html.Attribute msg
+focusToTeal900 =
+    A.class "focus:to-teal-900"
+
+
+focusToBlue100 : Html.Attribute msg
+focusToBlue100 =
+    A.class "focus:to-blue-100"
+
+
+focusToBlue200 : Html.Attribute msg
+focusToBlue200 =
+    A.class "focus:to-blue-200"
+
+
+focusToBlue300 : Html.Attribute msg
+focusToBlue300 =
+    A.class "focus:to-blue-300"
+
+
+focusToBlue400 : Html.Attribute msg
+focusToBlue400 =
+    A.class "focus:to-blue-400"
+
+
+focusToBlue500 : Html.Attribute msg
+focusToBlue500 =
+    A.class "focus:to-blue-500"
+
+
+focusToBlue600 : Html.Attribute msg
+focusToBlue600 =
+    A.class "focus:to-blue-600"
+
+
+focusToBlue700 : Html.Attribute msg
+focusToBlue700 =
+    A.class "focus:to-blue-700"
+
+
+focusToBlue800 : Html.Attribute msg
+focusToBlue800 =
+    A.class "focus:to-blue-800"
+
+
+focusToBlue900 : Html.Attribute msg
+focusToBlue900 =
+    A.class "focus:to-blue-900"
+
+
+focusToIndigo100 : Html.Attribute msg
+focusToIndigo100 =
+    A.class "focus:to-indigo-100"
+
+
+focusToIndigo200 : Html.Attribute msg
+focusToIndigo200 =
+    A.class "focus:to-indigo-200"
+
+
+focusToIndigo300 : Html.Attribute msg
+focusToIndigo300 =
+    A.class "focus:to-indigo-300"
+
+
+focusToIndigo400 : Html.Attribute msg
+focusToIndigo400 =
+    A.class "focus:to-indigo-400"
+
+
+focusToIndigo500 : Html.Attribute msg
+focusToIndigo500 =
+    A.class "focus:to-indigo-500"
+
+
+focusToIndigo600 : Html.Attribute msg
+focusToIndigo600 =
+    A.class "focus:to-indigo-600"
+
+
+focusToIndigo700 : Html.Attribute msg
+focusToIndigo700 =
+    A.class "focus:to-indigo-700"
+
+
+focusToIndigo800 : Html.Attribute msg
+focusToIndigo800 =
+    A.class "focus:to-indigo-800"
+
+
+focusToIndigo900 : Html.Attribute msg
+focusToIndigo900 =
+    A.class "focus:to-indigo-900"
+
+
+focusToPurple100 : Html.Attribute msg
+focusToPurple100 =
+    A.class "focus:to-purple-100"
+
+
+focusToPurple200 : Html.Attribute msg
+focusToPurple200 =
+    A.class "focus:to-purple-200"
+
+
+focusToPurple300 : Html.Attribute msg
+focusToPurple300 =
+    A.class "focus:to-purple-300"
+
+
+focusToPurple400 : Html.Attribute msg
+focusToPurple400 =
+    A.class "focus:to-purple-400"
+
+
+focusToPurple500 : Html.Attribute msg
+focusToPurple500 =
+    A.class "focus:to-purple-500"
+
+
+focusToPurple600 : Html.Attribute msg
+focusToPurple600 =
+    A.class "focus:to-purple-600"
+
+
+focusToPurple700 : Html.Attribute msg
+focusToPurple700 =
+    A.class "focus:to-purple-700"
+
+
+focusToPurple800 : Html.Attribute msg
+focusToPurple800 =
+    A.class "focus:to-purple-800"
+
+
+focusToPurple900 : Html.Attribute msg
+focusToPurple900 =
+    A.class "focus:to-purple-900"
+
+
+focusToPink100 : Html.Attribute msg
+focusToPink100 =
+    A.class "focus:to-pink-100"
+
+
+focusToPink200 : Html.Attribute msg
+focusToPink200 =
+    A.class "focus:to-pink-200"
+
+
+focusToPink300 : Html.Attribute msg
+focusToPink300 =
+    A.class "focus:to-pink-300"
+
+
+focusToPink400 : Html.Attribute msg
+focusToPink400 =
+    A.class "focus:to-pink-400"
+
+
+focusToPink500 : Html.Attribute msg
+focusToPink500 =
+    A.class "focus:to-pink-500"
+
+
+focusToPink600 : Html.Attribute msg
+focusToPink600 =
+    A.class "focus:to-pink-600"
+
+
+focusToPink700 : Html.Attribute msg
+focusToPink700 =
+    A.class "focus:to-pink-700"
+
+
+focusToPink800 : Html.Attribute msg
+focusToPink800 =
+    A.class "focus:to-pink-800"
+
+
+focusToPink900 : Html.Attribute msg
+focusToPink900 =
+    A.class "focus:to-pink-900"
 
 
 bgOpacity0 : Html.Attribute msg
@@ -17937,6 +27316,21 @@ roundedLg =
     A.class "rounded-lg"
 
 
+roundedXl : Html.Attribute msg
+roundedXl =
+    A.class "rounded-xl"
+
+
+rounded2xl : Html.Attribute msg
+rounded2xl =
+    A.class "rounded-2xl"
+
+
+rounded3xl : Html.Attribute msg
+rounded3xl =
+    A.class "rounded-3xl"
+
+
 roundedFull : Html.Attribute msg
 roundedFull =
     A.class "rounded-full"
@@ -18040,6 +27434,66 @@ roundedBLg =
 roundedLLg : Html.Attribute msg
 roundedLLg =
     A.class "rounded-l-lg"
+
+
+roundedTXl : Html.Attribute msg
+roundedTXl =
+    A.class "rounded-t-xl"
+
+
+roundedRXl : Html.Attribute msg
+roundedRXl =
+    A.class "rounded-r-xl"
+
+
+roundedBXl : Html.Attribute msg
+roundedBXl =
+    A.class "rounded-b-xl"
+
+
+roundedLXl : Html.Attribute msg
+roundedLXl =
+    A.class "rounded-l-xl"
+
+
+roundedT2xl : Html.Attribute msg
+roundedT2xl =
+    A.class "rounded-t-2xl"
+
+
+roundedR2xl : Html.Attribute msg
+roundedR2xl =
+    A.class "rounded-r-2xl"
+
+
+roundedB2xl : Html.Attribute msg
+roundedB2xl =
+    A.class "rounded-b-2xl"
+
+
+roundedL2xl : Html.Attribute msg
+roundedL2xl =
+    A.class "rounded-l-2xl"
+
+
+roundedT3xl : Html.Attribute msg
+roundedT3xl =
+    A.class "rounded-t-3xl"
+
+
+roundedR3xl : Html.Attribute msg
+roundedR3xl =
+    A.class "rounded-r-3xl"
+
+
+roundedB3xl : Html.Attribute msg
+roundedB3xl =
+    A.class "rounded-b-3xl"
+
+
+roundedL3xl : Html.Attribute msg
+roundedL3xl =
+    A.class "rounded-l-3xl"
 
 
 roundedTFull : Html.Attribute msg
@@ -18160,6 +27614,66 @@ roundedBrLg =
 roundedBlLg : Html.Attribute msg
 roundedBlLg =
     A.class "rounded-bl-lg"
+
+
+roundedTlXl : Html.Attribute msg
+roundedTlXl =
+    A.class "rounded-tl-xl"
+
+
+roundedTrXl : Html.Attribute msg
+roundedTrXl =
+    A.class "rounded-tr-xl"
+
+
+roundedBrXl : Html.Attribute msg
+roundedBrXl =
+    A.class "rounded-br-xl"
+
+
+roundedBlXl : Html.Attribute msg
+roundedBlXl =
+    A.class "rounded-bl-xl"
+
+
+roundedTl2xl : Html.Attribute msg
+roundedTl2xl =
+    A.class "rounded-tl-2xl"
+
+
+roundedTr2xl : Html.Attribute msg
+roundedTr2xl =
+    A.class "rounded-tr-2xl"
+
+
+roundedBr2xl : Html.Attribute msg
+roundedBr2xl =
+    A.class "rounded-br-2xl"
+
+
+roundedBl2xl : Html.Attribute msg
+roundedBl2xl =
+    A.class "rounded-bl-2xl"
+
+
+roundedTl3xl : Html.Attribute msg
+roundedTl3xl =
+    A.class "rounded-tl-3xl"
+
+
+roundedTr3xl : Html.Attribute msg
+roundedTr3xl =
+    A.class "rounded-tr-3xl"
+
+
+roundedBr3xl : Html.Attribute msg
+roundedBr3xl =
+    A.class "rounded-br-3xl"
+
+
+roundedBl3xl : Html.Attribute msg
+roundedBl3xl =
+    A.class "rounded-bl-3xl"
 
 
 roundedTlFull : Html.Attribute msg
@@ -18462,6 +27976,11 @@ inlineGrid =
     A.class "inline-grid"
 
 
+contents : Html.Attribute msg
+contents =
+    A.class "contents"
+
+
 hidden : Html.Attribute msg
 hidden =
     A.class "hidden"
@@ -18502,6 +28021,91 @@ flexNoWrap =
     A.class "flex-no-wrap"
 
 
+placeItemsAuto : Html.Attribute msg
+placeItemsAuto =
+    A.class "place-items-auto"
+
+
+placeItemsStart : Html.Attribute msg
+placeItemsStart =
+    A.class "place-items-start"
+
+
+placeItemsEnd : Html.Attribute msg
+placeItemsEnd =
+    A.class "place-items-end"
+
+
+placeItemsCenter : Html.Attribute msg
+placeItemsCenter =
+    A.class "place-items-center"
+
+
+placeItemsStretch : Html.Attribute msg
+placeItemsStretch =
+    A.class "place-items-stretch"
+
+
+placeContentCenter : Html.Attribute msg
+placeContentCenter =
+    A.class "place-content-center"
+
+
+placeContentStart : Html.Attribute msg
+placeContentStart =
+    A.class "place-content-start"
+
+
+placeContentEnd : Html.Attribute msg
+placeContentEnd =
+    A.class "place-content-end"
+
+
+placeContentBetween : Html.Attribute msg
+placeContentBetween =
+    A.class "place-content-between"
+
+
+placeContentAround : Html.Attribute msg
+placeContentAround =
+    A.class "place-content-around"
+
+
+placeContentEvenly : Html.Attribute msg
+placeContentEvenly =
+    A.class "place-content-evenly"
+
+
+placeContentStretch : Html.Attribute msg
+placeContentStretch =
+    A.class "place-content-stretch"
+
+
+placeSelfAuto : Html.Attribute msg
+placeSelfAuto =
+    A.class "place-self-auto"
+
+
+placeSelfStart : Html.Attribute msg
+placeSelfStart =
+    A.class "place-self-start"
+
+
+placeSelfEnd : Html.Attribute msg
+placeSelfEnd =
+    A.class "place-self-end"
+
+
+placeSelfCenter : Html.Attribute msg
+placeSelfCenter =
+    A.class "place-self-center"
+
+
+placeSelfStretch : Html.Attribute msg
+placeSelfStretch =
+    A.class "place-self-stretch"
+
+
 itemsStart : Html.Attribute msg
 itemsStart =
     A.class "items-start"
@@ -18527,6 +28131,36 @@ itemsStretch =
     A.class "items-stretch"
 
 
+contentCenter : Html.Attribute msg
+contentCenter =
+    A.class "content-center"
+
+
+contentStart : Html.Attribute msg
+contentStart =
+    A.class "content-start"
+
+
+contentEnd : Html.Attribute msg
+contentEnd =
+    A.class "content-end"
+
+
+contentBetween : Html.Attribute msg
+contentBetween =
+    A.class "content-between"
+
+
+contentAround : Html.Attribute msg
+contentAround =
+    A.class "content-around"
+
+
+contentEvenly : Html.Attribute msg
+contentEvenly =
+    A.class "content-evenly"
+
+
 selfAuto : Html.Attribute msg
 selfAuto =
     A.class "self-auto"
@@ -18550,6 +28184,31 @@ selfCenter =
 selfStretch : Html.Attribute msg
 selfStretch =
     A.class "self-stretch"
+
+
+justifyItemsAuto : Html.Attribute msg
+justifyItemsAuto =
+    A.class "justify-items-auto"
+
+
+justifyItemsStart : Html.Attribute msg
+justifyItemsStart =
+    A.class "justify-items-start"
+
+
+justifyItemsEnd : Html.Attribute msg
+justifyItemsEnd =
+    A.class "justify-items-end"
+
+
+justifyItemsCenter : Html.Attribute msg
+justifyItemsCenter =
+    A.class "justify-items-center"
+
+
+justifyItemsStretch : Html.Attribute msg
+justifyItemsStretch =
+    A.class "justify-items-stretch"
 
 
 justifyStart : Html.Attribute msg
@@ -18582,29 +28241,29 @@ justifyEvenly =
     A.class "justify-evenly"
 
 
-contentCenter : Html.Attribute msg
-contentCenter =
-    A.class "content-center"
+justifySelfAuto : Html.Attribute msg
+justifySelfAuto =
+    A.class "justify-self-auto"
 
 
-contentStart : Html.Attribute msg
-contentStart =
-    A.class "content-start"
+justifySelfStart : Html.Attribute msg
+justifySelfStart =
+    A.class "justify-self-start"
 
 
-contentEnd : Html.Attribute msg
-contentEnd =
-    A.class "content-end"
+justifySelfEnd : Html.Attribute msg
+justifySelfEnd =
+    A.class "justify-self-end"
 
 
-contentBetween : Html.Attribute msg
-contentBetween =
-    A.class "content-between"
+justifySelfCenter : Html.Attribute msg
+justifySelfCenter =
+    A.class "justify-self-center"
 
 
-contentAround : Html.Attribute msg
-contentAround =
-    A.class "content-around"
+justifySelfStretch : Html.Attribute msg
+justifySelfStretch =
+    A.class "justify-self-stretch"
 
 
 flex1 : Html.Attribute msg
@@ -20767,9 +30426,29 @@ outlineNone =
     A.class "outline-none"
 
 
+outlineWhite : Html.Attribute msg
+outlineWhite =
+    A.class "outline-white"
+
+
+outlineBlack : Html.Attribute msg
+outlineBlack =
+    A.class "outline-black"
+
+
 focusOutlineNone : Html.Attribute msg
 focusOutlineNone =
     A.class "focus:outline-none"
+
+
+focusOutlineWhite : Html.Attribute msg
+focusOutlineWhite =
+    A.class "focus:outline-white"
+
+
+focusOutlineBlack : Html.Attribute msg
+focusOutlineBlack =
+    A.class "focus:outline-black"
 
 
 overflowAuto : Html.Attribute msg
@@ -20840,6 +30519,51 @@ scrollingTouch =
 scrollingAuto : Html.Attribute msg
 scrollingAuto =
     A.class "scrolling-auto"
+
+
+overscrollAuto : Html.Attribute msg
+overscrollAuto =
+    A.class "overscroll-auto"
+
+
+overscrollContain : Html.Attribute msg
+overscrollContain =
+    A.class "overscroll-contain"
+
+
+overscrollNone : Html.Attribute msg
+overscrollNone =
+    A.class "overscroll-none"
+
+
+overscrollYAuto : Html.Attribute msg
+overscrollYAuto =
+    A.class "overscroll-y-auto"
+
+
+overscrollYContain : Html.Attribute msg
+overscrollYContain =
+    A.class "overscroll-y-contain"
+
+
+overscrollYNone : Html.Attribute msg
+overscrollYNone =
+    A.class "overscroll-y-none"
+
+
+overscrollXAuto : Html.Attribute msg
+overscrollXAuto =
+    A.class "overscroll-x-auto"
+
+
+overscrollXContain : Html.Attribute msg
+overscrollXContain =
+    A.class "overscroll-x-contain"
+
+
+overscrollXNone : Html.Attribute msg
+overscrollXNone =
+    A.class "overscroll-x-none"
 
 
 p0 : Html.Attribute msg
@@ -24397,6 +34121,51 @@ subpixelAntialiased =
     A.class "subpixel-antialiased"
 
 
+ordinal : Html.Attribute msg
+ordinal =
+    A.class "ordinal"
+
+
+slashedZero : Html.Attribute msg
+slashedZero =
+    A.class "slashed-zero"
+
+
+liningNums : Html.Attribute msg
+liningNums =
+    A.class "lining-nums"
+
+
+oldstyleNums : Html.Attribute msg
+oldstyleNums =
+    A.class "oldstyle-nums"
+
+
+proportionalNums : Html.Attribute msg
+proportionalNums =
+    A.class "proportional-nums"
+
+
+tabularNums : Html.Attribute msg
+tabularNums =
+    A.class "tabular-nums"
+
+
+diagonalFractions : Html.Attribute msg
+diagonalFractions =
+    A.class "diagonal-fractions"
+
+
+stackedFractions : Html.Attribute msg
+stackedFractions =
+    A.class "stacked-fractions"
+
+
+normalNums : Html.Attribute msg
+normalNums =
+    A.class "normal-nums"
+
+
 trackingTighter : Html.Attribute msg
 trackingTighter =
     A.class "tracking-tighter"
@@ -24902,194 +34671,194 @@ gapPx =
     A.class "gap-px"
 
 
-colGap0 : Html.Attribute msg
-colGap0 =
-    A.class "col-gap-0"
+gapX0 : Html.Attribute msg
+gapX0 =
+    A.class "gap-x-0"
 
 
-colGap1 : Html.Attribute msg
-colGap1 =
-    A.class "col-gap-1"
+gapX1 : Html.Attribute msg
+gapX1 =
+    A.class "gap-x-1"
 
 
-colGap2 : Html.Attribute msg
-colGap2 =
-    A.class "col-gap-2"
+gapX2 : Html.Attribute msg
+gapX2 =
+    A.class "gap-x-2"
 
 
-colGap3 : Html.Attribute msg
-colGap3 =
-    A.class "col-gap-3"
+gapX3 : Html.Attribute msg
+gapX3 =
+    A.class "gap-x-3"
 
 
-colGap4 : Html.Attribute msg
-colGap4 =
-    A.class "col-gap-4"
+gapX4 : Html.Attribute msg
+gapX4 =
+    A.class "gap-x-4"
 
 
-colGap5 : Html.Attribute msg
-colGap5 =
-    A.class "col-gap-5"
+gapX5 : Html.Attribute msg
+gapX5 =
+    A.class "gap-x-5"
 
 
-colGap6 : Html.Attribute msg
-colGap6 =
-    A.class "col-gap-6"
+gapX6 : Html.Attribute msg
+gapX6 =
+    A.class "gap-x-6"
 
 
-colGap8 : Html.Attribute msg
-colGap8 =
-    A.class "col-gap-8"
+gapX8 : Html.Attribute msg
+gapX8 =
+    A.class "gap-x-8"
 
 
-colGap10 : Html.Attribute msg
-colGap10 =
-    A.class "col-gap-10"
+gapX10 : Html.Attribute msg
+gapX10 =
+    A.class "gap-x-10"
 
 
-colGap12 : Html.Attribute msg
-colGap12 =
-    A.class "col-gap-12"
+gapX12 : Html.Attribute msg
+gapX12 =
+    A.class "gap-x-12"
 
 
-colGap16 : Html.Attribute msg
-colGap16 =
-    A.class "col-gap-16"
+gapX16 : Html.Attribute msg
+gapX16 =
+    A.class "gap-x-16"
 
 
-colGap20 : Html.Attribute msg
-colGap20 =
-    A.class "col-gap-20"
+gapX20 : Html.Attribute msg
+gapX20 =
+    A.class "gap-x-20"
 
 
-colGap24 : Html.Attribute msg
-colGap24 =
-    A.class "col-gap-24"
+gapX24 : Html.Attribute msg
+gapX24 =
+    A.class "gap-x-24"
 
 
-colGap32 : Html.Attribute msg
-colGap32 =
-    A.class "col-gap-32"
+gapX32 : Html.Attribute msg
+gapX32 =
+    A.class "gap-x-32"
 
 
-colGap40 : Html.Attribute msg
-colGap40 =
-    A.class "col-gap-40"
+gapX40 : Html.Attribute msg
+gapX40 =
+    A.class "gap-x-40"
 
 
-colGap48 : Html.Attribute msg
-colGap48 =
-    A.class "col-gap-48"
+gapX48 : Html.Attribute msg
+gapX48 =
+    A.class "gap-x-48"
 
 
-colGap56 : Html.Attribute msg
-colGap56 =
-    A.class "col-gap-56"
+gapX56 : Html.Attribute msg
+gapX56 =
+    A.class "gap-x-56"
 
 
-colGap64 : Html.Attribute msg
-colGap64 =
-    A.class "col-gap-64"
+gapX64 : Html.Attribute msg
+gapX64 =
+    A.class "gap-x-64"
 
 
-colGapPx : Html.Attribute msg
-colGapPx =
-    A.class "col-gap-px"
+gapXPx : Html.Attribute msg
+gapXPx =
+    A.class "gap-x-px"
 
 
-rowGap0 : Html.Attribute msg
-rowGap0 =
-    A.class "row-gap-0"
+gapY0 : Html.Attribute msg
+gapY0 =
+    A.class "gap-y-0"
 
 
-rowGap1 : Html.Attribute msg
-rowGap1 =
-    A.class "row-gap-1"
+gapY1 : Html.Attribute msg
+gapY1 =
+    A.class "gap-y-1"
 
 
-rowGap2 : Html.Attribute msg
-rowGap2 =
-    A.class "row-gap-2"
+gapY2 : Html.Attribute msg
+gapY2 =
+    A.class "gap-y-2"
 
 
-rowGap3 : Html.Attribute msg
-rowGap3 =
-    A.class "row-gap-3"
+gapY3 : Html.Attribute msg
+gapY3 =
+    A.class "gap-y-3"
 
 
-rowGap4 : Html.Attribute msg
-rowGap4 =
-    A.class "row-gap-4"
+gapY4 : Html.Attribute msg
+gapY4 =
+    A.class "gap-y-4"
 
 
-rowGap5 : Html.Attribute msg
-rowGap5 =
-    A.class "row-gap-5"
+gapY5 : Html.Attribute msg
+gapY5 =
+    A.class "gap-y-5"
 
 
-rowGap6 : Html.Attribute msg
-rowGap6 =
-    A.class "row-gap-6"
+gapY6 : Html.Attribute msg
+gapY6 =
+    A.class "gap-y-6"
 
 
-rowGap8 : Html.Attribute msg
-rowGap8 =
-    A.class "row-gap-8"
+gapY8 : Html.Attribute msg
+gapY8 =
+    A.class "gap-y-8"
 
 
-rowGap10 : Html.Attribute msg
-rowGap10 =
-    A.class "row-gap-10"
+gapY10 : Html.Attribute msg
+gapY10 =
+    A.class "gap-y-10"
 
 
-rowGap12 : Html.Attribute msg
-rowGap12 =
-    A.class "row-gap-12"
+gapY12 : Html.Attribute msg
+gapY12 =
+    A.class "gap-y-12"
 
 
-rowGap16 : Html.Attribute msg
-rowGap16 =
-    A.class "row-gap-16"
+gapY16 : Html.Attribute msg
+gapY16 =
+    A.class "gap-y-16"
 
 
-rowGap20 : Html.Attribute msg
-rowGap20 =
-    A.class "row-gap-20"
+gapY20 : Html.Attribute msg
+gapY20 =
+    A.class "gap-y-20"
 
 
-rowGap24 : Html.Attribute msg
-rowGap24 =
-    A.class "row-gap-24"
+gapY24 : Html.Attribute msg
+gapY24 =
+    A.class "gap-y-24"
 
 
-rowGap32 : Html.Attribute msg
-rowGap32 =
-    A.class "row-gap-32"
+gapY32 : Html.Attribute msg
+gapY32 =
+    A.class "gap-y-32"
 
 
-rowGap40 : Html.Attribute msg
-rowGap40 =
-    A.class "row-gap-40"
+gapY40 : Html.Attribute msg
+gapY40 =
+    A.class "gap-y-40"
 
 
-rowGap48 : Html.Attribute msg
-rowGap48 =
-    A.class "row-gap-48"
+gapY48 : Html.Attribute msg
+gapY48 =
+    A.class "gap-y-48"
 
 
-rowGap56 : Html.Attribute msg
-rowGap56 =
-    A.class "row-gap-56"
+gapY56 : Html.Attribute msg
+gapY56 =
+    A.class "gap-y-56"
 
 
-rowGap64 : Html.Attribute msg
-rowGap64 =
-    A.class "row-gap-64"
+gapY64 : Html.Attribute msg
+gapY64 =
+    A.class "gap-y-64"
 
 
-rowGapPx : Html.Attribute msg
-rowGapPx =
-    A.class "row-gap-px"
+gapYPx : Html.Attribute msg
+gapYPx =
+    A.class "gap-y-px"
 
 
 gridFlowRow : Html.Attribute msg
@@ -25177,6 +34946,26 @@ gridColsNone =
     A.class "grid-cols-none"
 
 
+autoColsAuto : Html.Attribute msg
+autoColsAuto =
+    A.class "auto-cols-auto"
+
+
+autoColsMin : Html.Attribute msg
+autoColsMin =
+    A.class "auto-cols-min"
+
+
+autoColsMax : Html.Attribute msg
+autoColsMax =
+    A.class "auto-cols-max"
+
+
+autoColsFr : Html.Attribute msg
+autoColsFr =
+    A.class "auto-cols-fr"
+
+
 colAuto : Html.Attribute msg
 colAuto =
     A.class "col-auto"
@@ -25240,6 +35029,11 @@ colSpan11 =
 colSpan12 : Html.Attribute msg
 colSpan12 =
     A.class "col-span-12"
+
+
+colSpanFull : Html.Attribute msg
+colSpanFull =
+    A.class "col-span-full"
 
 
 colStart1 : Html.Attribute msg
@@ -25417,6 +35211,26 @@ gridRowsNone =
     A.class "grid-rows-none"
 
 
+autoRowsAuto : Html.Attribute msg
+autoRowsAuto =
+    A.class "auto-rows-auto"
+
+
+autoRowsMin : Html.Attribute msg
+autoRowsMin =
+    A.class "auto-rows-min"
+
+
+autoRowsMax : Html.Attribute msg
+autoRowsMax =
+    A.class "auto-rows-max"
+
+
+autoRowsFr : Html.Attribute msg
+autoRowsFr =
+    A.class "auto-rows-fr"
+
+
 rowAuto : Html.Attribute msg
 rowAuto =
     A.class "row-auto"
@@ -25450,6 +35264,11 @@ rowSpan5 =
 rowSpan6 : Html.Attribute msg
 rowSpan6 =
     A.class "row-span-6"
+
+
+rowSpanFull : Html.Attribute msg
+rowSpanFull =
+    A.class "row-span-full"
 
 
 rowStart1 : Html.Attribute msg
@@ -26042,6 +35861,31 @@ rotate0 =
     A.class "rotate-0"
 
 
+rotate1 : Html.Attribute msg
+rotate1 =
+    A.class "rotate-1"
+
+
+rotate2 : Html.Attribute msg
+rotate2 =
+    A.class "rotate-2"
+
+
+rotate3 : Html.Attribute msg
+rotate3 =
+    A.class "rotate-3"
+
+
+rotate6 : Html.Attribute msg
+rotate6 =
+    A.class "rotate-6"
+
+
+rotate12 : Html.Attribute msg
+rotate12 =
+    A.class "rotate-12"
+
+
 rotate45 : Html.Attribute msg
 rotate45 =
     A.class "rotate-45"
@@ -26072,9 +35916,59 @@ negRotate45 =
     A.class "-rotate-45"
 
 
+negRotate12 : Html.Attribute msg
+negRotate12 =
+    A.class "-rotate-12"
+
+
+negRotate6 : Html.Attribute msg
+negRotate6 =
+    A.class "-rotate-6"
+
+
+negRotate3 : Html.Attribute msg
+negRotate3 =
+    A.class "-rotate-3"
+
+
+negRotate2 : Html.Attribute msg
+negRotate2 =
+    A.class "-rotate-2"
+
+
+negRotate1 : Html.Attribute msg
+negRotate1 =
+    A.class "-rotate-1"
+
+
 hoverRotate0 : Html.Attribute msg
 hoverRotate0 =
     A.class "hover:rotate-0"
+
+
+hoverRotate1 : Html.Attribute msg
+hoverRotate1 =
+    A.class "hover:rotate-1"
+
+
+hoverRotate2 : Html.Attribute msg
+hoverRotate2 =
+    A.class "hover:rotate-2"
+
+
+hoverRotate3 : Html.Attribute msg
+hoverRotate3 =
+    A.class "hover:rotate-3"
+
+
+hoverRotate6 : Html.Attribute msg
+hoverRotate6 =
+    A.class "hover:rotate-6"
+
+
+hoverRotate12 : Html.Attribute msg
+hoverRotate12 =
+    A.class "hover:rotate-12"
 
 
 hoverRotate45 : Html.Attribute msg
@@ -26107,9 +36001,59 @@ hoverNegRotate45 =
     A.class "hover:-rotate-45"
 
 
+hoverNegRotate12 : Html.Attribute msg
+hoverNegRotate12 =
+    A.class "hover:-rotate-12"
+
+
+hoverNegRotate6 : Html.Attribute msg
+hoverNegRotate6 =
+    A.class "hover:-rotate-6"
+
+
+hoverNegRotate3 : Html.Attribute msg
+hoverNegRotate3 =
+    A.class "hover:-rotate-3"
+
+
+hoverNegRotate2 : Html.Attribute msg
+hoverNegRotate2 =
+    A.class "hover:-rotate-2"
+
+
+hoverNegRotate1 : Html.Attribute msg
+hoverNegRotate1 =
+    A.class "hover:-rotate-1"
+
+
 focusRotate0 : Html.Attribute msg
 focusRotate0 =
     A.class "focus:rotate-0"
+
+
+focusRotate1 : Html.Attribute msg
+focusRotate1 =
+    A.class "focus:rotate-1"
+
+
+focusRotate2 : Html.Attribute msg
+focusRotate2 =
+    A.class "focus:rotate-2"
+
+
+focusRotate3 : Html.Attribute msg
+focusRotate3 =
+    A.class "focus:rotate-3"
+
+
+focusRotate6 : Html.Attribute msg
+focusRotate6 =
+    A.class "focus:rotate-6"
+
+
+focusRotate12 : Html.Attribute msg
+focusRotate12 =
+    A.class "focus:rotate-12"
 
 
 focusRotate45 : Html.Attribute msg
@@ -26140,6 +36084,31 @@ focusNegRotate90 =
 focusNegRotate45 : Html.Attribute msg
 focusNegRotate45 =
     A.class "focus:-rotate-45"
+
+
+focusNegRotate12 : Html.Attribute msg
+focusNegRotate12 =
+    A.class "focus:-rotate-12"
+
+
+focusNegRotate6 : Html.Attribute msg
+focusNegRotate6 =
+    A.class "focus:-rotate-6"
+
+
+focusNegRotate3 : Html.Attribute msg
+focusNegRotate3 =
+    A.class "focus:-rotate-3"
+
+
+focusNegRotate2 : Html.Attribute msg
+focusNegRotate2 =
+    A.class "focus:-rotate-2"
+
+
+focusNegRotate1 : Html.Attribute msg
+focusNegRotate1 =
+    A.class "focus:-rotate-1"
 
 
 translateX0 : Html.Attribute msg
@@ -27377,6 +37346,16 @@ skewX0 =
     A.class "skew-x-0"
 
 
+skewX1 : Html.Attribute msg
+skewX1 =
+    A.class "skew-x-1"
+
+
+skewX2 : Html.Attribute msg
+skewX2 =
+    A.class "skew-x-2"
+
+
 skewX3 : Html.Attribute msg
 skewX3 =
     A.class "skew-x-3"
@@ -27407,9 +37386,29 @@ negSkewX3 =
     A.class "-skew-x-3"
 
 
+negSkewX2 : Html.Attribute msg
+negSkewX2 =
+    A.class "-skew-x-2"
+
+
+negSkewX1 : Html.Attribute msg
+negSkewX1 =
+    A.class "-skew-x-1"
+
+
 skewY0 : Html.Attribute msg
 skewY0 =
     A.class "skew-y-0"
+
+
+skewY1 : Html.Attribute msg
+skewY1 =
+    A.class "skew-y-1"
+
+
+skewY2 : Html.Attribute msg
+skewY2 =
+    A.class "skew-y-2"
 
 
 skewY3 : Html.Attribute msg
@@ -27442,9 +37441,29 @@ negSkewY3 =
     A.class "-skew-y-3"
 
 
+negSkewY2 : Html.Attribute msg
+negSkewY2 =
+    A.class "-skew-y-2"
+
+
+negSkewY1 : Html.Attribute msg
+negSkewY1 =
+    A.class "-skew-y-1"
+
+
 hoverSkewX0 : Html.Attribute msg
 hoverSkewX0 =
     A.class "hover:skew-x-0"
+
+
+hoverSkewX1 : Html.Attribute msg
+hoverSkewX1 =
+    A.class "hover:skew-x-1"
+
+
+hoverSkewX2 : Html.Attribute msg
+hoverSkewX2 =
+    A.class "hover:skew-x-2"
 
 
 hoverSkewX3 : Html.Attribute msg
@@ -27477,9 +37496,29 @@ hoverNegSkewX3 =
     A.class "hover:-skew-x-3"
 
 
+hoverNegSkewX2 : Html.Attribute msg
+hoverNegSkewX2 =
+    A.class "hover:-skew-x-2"
+
+
+hoverNegSkewX1 : Html.Attribute msg
+hoverNegSkewX1 =
+    A.class "hover:-skew-x-1"
+
+
 hoverSkewY0 : Html.Attribute msg
 hoverSkewY0 =
     A.class "hover:skew-y-0"
+
+
+hoverSkewY1 : Html.Attribute msg
+hoverSkewY1 =
+    A.class "hover:skew-y-1"
+
+
+hoverSkewY2 : Html.Attribute msg
+hoverSkewY2 =
+    A.class "hover:skew-y-2"
 
 
 hoverSkewY3 : Html.Attribute msg
@@ -27512,9 +37551,29 @@ hoverNegSkewY3 =
     A.class "hover:-skew-y-3"
 
 
+hoverNegSkewY2 : Html.Attribute msg
+hoverNegSkewY2 =
+    A.class "hover:-skew-y-2"
+
+
+hoverNegSkewY1 : Html.Attribute msg
+hoverNegSkewY1 =
+    A.class "hover:-skew-y-1"
+
+
 focusSkewX0 : Html.Attribute msg
 focusSkewX0 =
     A.class "focus:skew-x-0"
+
+
+focusSkewX1 : Html.Attribute msg
+focusSkewX1 =
+    A.class "focus:skew-x-1"
+
+
+focusSkewX2 : Html.Attribute msg
+focusSkewX2 =
+    A.class "focus:skew-x-2"
 
 
 focusSkewX3 : Html.Attribute msg
@@ -27547,9 +37606,29 @@ focusNegSkewX3 =
     A.class "focus:-skew-x-3"
 
 
+focusNegSkewX2 : Html.Attribute msg
+focusNegSkewX2 =
+    A.class "focus:-skew-x-2"
+
+
+focusNegSkewX1 : Html.Attribute msg
+focusNegSkewX1 =
+    A.class "focus:-skew-x-1"
+
+
 focusSkewY0 : Html.Attribute msg
 focusSkewY0 =
     A.class "focus:skew-y-0"
+
+
+focusSkewY1 : Html.Attribute msg
+focusSkewY1 =
+    A.class "focus:skew-y-1"
+
+
+focusSkewY2 : Html.Attribute msg
+focusSkewY2 =
+    A.class "focus:skew-y-2"
 
 
 focusSkewY3 : Html.Attribute msg
@@ -27580,6 +37659,16 @@ focusNegSkewY6 =
 focusNegSkewY3 : Html.Attribute msg
 focusNegSkewY3 =
     A.class "focus:-skew-y-3"
+
+
+focusNegSkewY2 : Html.Attribute msg
+focusNegSkewY2 =
+    A.class "focus:-skew-y-2"
+
+
+focusNegSkewY1 : Html.Attribute msg
+focusNegSkewY1 =
+    A.class "focus:-skew-y-1"
 
 
 transitionNone : Html.Attribute msg
@@ -27715,6 +37804,36 @@ delay700 =
 delay1000 : Html.Attribute msg
 delay1000 =
     A.class "delay-1000"
+
+
+animateNone : Html.Attribute msg
+animateNone =
+    A.class "animate-none"
+
+
+animateSpin : Html.Attribute msg
+animateSpin =
+    A.class "animate-spin"
+
+
+animatePing : Html.Attribute msg
+animatePing =
+    A.class "animate-ping"
+
+
+animatePulse : Html.Attribute msg
+animatePulse =
+    A.class "animate-pulse"
+
+
+animateBounce : Html.Attribute msg
+animateBounce =
+    A.class "animate-bounce"
+
+
+smContainer : Html.Attribute msg
+smContainer =
+    A.class "sm:container"
 
 
 smSpaceY0 : Html.Attribute msg
@@ -28627,6 +38746,31 @@ smDividePink900 =
     A.class "sm:divide-pink-900"
 
 
+smDivideSolid : Html.Attribute msg
+smDivideSolid =
+    A.class "sm:divide-solid"
+
+
+smDivideDashed : Html.Attribute msg
+smDivideDashed =
+    A.class "sm:divide-dashed"
+
+
+smDivideDotted : Html.Attribute msg
+smDivideDotted =
+    A.class "sm:divide-dotted"
+
+
+smDivideDouble : Html.Attribute msg
+smDivideDouble =
+    A.class "sm:divide-double"
+
+
+smDivideNone : Html.Attribute msg
+smDivideNone =
+    A.class "sm:divide-none"
+
+
 smDivideOpacity0 : Html.Attribute msg
 smDivideOpacity0 =
     A.class "sm:divide-opacity-0"
@@ -28690,6 +38834,26 @@ smBgLocal =
 smBgScroll : Html.Attribute msg
 smBgScroll =
     A.class "sm:bg-scroll"
+
+
+smBgClipBorder : Html.Attribute msg
+smBgClipBorder =
+    A.class "sm:bg-clip-border"
+
+
+smBgClipPadding : Html.Attribute msg
+smBgClipPadding =
+    A.class "sm:bg-clip-padding"
+
+
+smBgClipContent : Html.Attribute msg
+smBgClipContent =
+    A.class "sm:bg-clip-content"
+
+
+smBgClipText : Html.Attribute msg
+smBgClipText =
+    A.class "sm:bg-clip-text"
 
 
 smBgTransparent : Html.Attribute msg
@@ -30100,6 +40264,4281 @@ smFocusBgPink800 =
 smFocusBgPink900 : Html.Attribute msg
 smFocusBgPink900 =
     A.class "sm:focus:bg-pink-900"
+
+
+smBgNone : Html.Attribute msg
+smBgNone =
+    A.class "sm:bg-none"
+
+
+smBgGradientToT : Html.Attribute msg
+smBgGradientToT =
+    A.class "sm:bg-gradient-to-t"
+
+
+smBgGradientToTr : Html.Attribute msg
+smBgGradientToTr =
+    A.class "sm:bg-gradient-to-tr"
+
+
+smBgGradientToR : Html.Attribute msg
+smBgGradientToR =
+    A.class "sm:bg-gradient-to-r"
+
+
+smBgGradientToBr : Html.Attribute msg
+smBgGradientToBr =
+    A.class "sm:bg-gradient-to-br"
+
+
+smBgGradientToB : Html.Attribute msg
+smBgGradientToB =
+    A.class "sm:bg-gradient-to-b"
+
+
+smBgGradientToBl : Html.Attribute msg
+smBgGradientToBl =
+    A.class "sm:bg-gradient-to-bl"
+
+
+smBgGradientToL : Html.Attribute msg
+smBgGradientToL =
+    A.class "sm:bg-gradient-to-l"
+
+
+smBgGradientToTl : Html.Attribute msg
+smBgGradientToTl =
+    A.class "sm:bg-gradient-to-tl"
+
+
+smFromTransparent : Html.Attribute msg
+smFromTransparent =
+    A.class "sm:from-transparent"
+
+
+smFromCurrent : Html.Attribute msg
+smFromCurrent =
+    A.class "sm:from-current"
+
+
+smFromBlack : Html.Attribute msg
+smFromBlack =
+    A.class "sm:from-black"
+
+
+smFromWhite : Html.Attribute msg
+smFromWhite =
+    A.class "sm:from-white"
+
+
+smFromGray100 : Html.Attribute msg
+smFromGray100 =
+    A.class "sm:from-gray-100"
+
+
+smFromGray200 : Html.Attribute msg
+smFromGray200 =
+    A.class "sm:from-gray-200"
+
+
+smFromGray300 : Html.Attribute msg
+smFromGray300 =
+    A.class "sm:from-gray-300"
+
+
+smFromGray400 : Html.Attribute msg
+smFromGray400 =
+    A.class "sm:from-gray-400"
+
+
+smFromGray500 : Html.Attribute msg
+smFromGray500 =
+    A.class "sm:from-gray-500"
+
+
+smFromGray600 : Html.Attribute msg
+smFromGray600 =
+    A.class "sm:from-gray-600"
+
+
+smFromGray700 : Html.Attribute msg
+smFromGray700 =
+    A.class "sm:from-gray-700"
+
+
+smFromGray800 : Html.Attribute msg
+smFromGray800 =
+    A.class "sm:from-gray-800"
+
+
+smFromGray900 : Html.Attribute msg
+smFromGray900 =
+    A.class "sm:from-gray-900"
+
+
+smFromRed100 : Html.Attribute msg
+smFromRed100 =
+    A.class "sm:from-red-100"
+
+
+smFromRed200 : Html.Attribute msg
+smFromRed200 =
+    A.class "sm:from-red-200"
+
+
+smFromRed300 : Html.Attribute msg
+smFromRed300 =
+    A.class "sm:from-red-300"
+
+
+smFromRed400 : Html.Attribute msg
+smFromRed400 =
+    A.class "sm:from-red-400"
+
+
+smFromRed500 : Html.Attribute msg
+smFromRed500 =
+    A.class "sm:from-red-500"
+
+
+smFromRed600 : Html.Attribute msg
+smFromRed600 =
+    A.class "sm:from-red-600"
+
+
+smFromRed700 : Html.Attribute msg
+smFromRed700 =
+    A.class "sm:from-red-700"
+
+
+smFromRed800 : Html.Attribute msg
+smFromRed800 =
+    A.class "sm:from-red-800"
+
+
+smFromRed900 : Html.Attribute msg
+smFromRed900 =
+    A.class "sm:from-red-900"
+
+
+smFromOrange100 : Html.Attribute msg
+smFromOrange100 =
+    A.class "sm:from-orange-100"
+
+
+smFromOrange200 : Html.Attribute msg
+smFromOrange200 =
+    A.class "sm:from-orange-200"
+
+
+smFromOrange300 : Html.Attribute msg
+smFromOrange300 =
+    A.class "sm:from-orange-300"
+
+
+smFromOrange400 : Html.Attribute msg
+smFromOrange400 =
+    A.class "sm:from-orange-400"
+
+
+smFromOrange500 : Html.Attribute msg
+smFromOrange500 =
+    A.class "sm:from-orange-500"
+
+
+smFromOrange600 : Html.Attribute msg
+smFromOrange600 =
+    A.class "sm:from-orange-600"
+
+
+smFromOrange700 : Html.Attribute msg
+smFromOrange700 =
+    A.class "sm:from-orange-700"
+
+
+smFromOrange800 : Html.Attribute msg
+smFromOrange800 =
+    A.class "sm:from-orange-800"
+
+
+smFromOrange900 : Html.Attribute msg
+smFromOrange900 =
+    A.class "sm:from-orange-900"
+
+
+smFromYellow100 : Html.Attribute msg
+smFromYellow100 =
+    A.class "sm:from-yellow-100"
+
+
+smFromYellow200 : Html.Attribute msg
+smFromYellow200 =
+    A.class "sm:from-yellow-200"
+
+
+smFromYellow300 : Html.Attribute msg
+smFromYellow300 =
+    A.class "sm:from-yellow-300"
+
+
+smFromYellow400 : Html.Attribute msg
+smFromYellow400 =
+    A.class "sm:from-yellow-400"
+
+
+smFromYellow500 : Html.Attribute msg
+smFromYellow500 =
+    A.class "sm:from-yellow-500"
+
+
+smFromYellow600 : Html.Attribute msg
+smFromYellow600 =
+    A.class "sm:from-yellow-600"
+
+
+smFromYellow700 : Html.Attribute msg
+smFromYellow700 =
+    A.class "sm:from-yellow-700"
+
+
+smFromYellow800 : Html.Attribute msg
+smFromYellow800 =
+    A.class "sm:from-yellow-800"
+
+
+smFromYellow900 : Html.Attribute msg
+smFromYellow900 =
+    A.class "sm:from-yellow-900"
+
+
+smFromGreen100 : Html.Attribute msg
+smFromGreen100 =
+    A.class "sm:from-green-100"
+
+
+smFromGreen200 : Html.Attribute msg
+smFromGreen200 =
+    A.class "sm:from-green-200"
+
+
+smFromGreen300 : Html.Attribute msg
+smFromGreen300 =
+    A.class "sm:from-green-300"
+
+
+smFromGreen400 : Html.Attribute msg
+smFromGreen400 =
+    A.class "sm:from-green-400"
+
+
+smFromGreen500 : Html.Attribute msg
+smFromGreen500 =
+    A.class "sm:from-green-500"
+
+
+smFromGreen600 : Html.Attribute msg
+smFromGreen600 =
+    A.class "sm:from-green-600"
+
+
+smFromGreen700 : Html.Attribute msg
+smFromGreen700 =
+    A.class "sm:from-green-700"
+
+
+smFromGreen800 : Html.Attribute msg
+smFromGreen800 =
+    A.class "sm:from-green-800"
+
+
+smFromGreen900 : Html.Attribute msg
+smFromGreen900 =
+    A.class "sm:from-green-900"
+
+
+smFromTeal100 : Html.Attribute msg
+smFromTeal100 =
+    A.class "sm:from-teal-100"
+
+
+smFromTeal200 : Html.Attribute msg
+smFromTeal200 =
+    A.class "sm:from-teal-200"
+
+
+smFromTeal300 : Html.Attribute msg
+smFromTeal300 =
+    A.class "sm:from-teal-300"
+
+
+smFromTeal400 : Html.Attribute msg
+smFromTeal400 =
+    A.class "sm:from-teal-400"
+
+
+smFromTeal500 : Html.Attribute msg
+smFromTeal500 =
+    A.class "sm:from-teal-500"
+
+
+smFromTeal600 : Html.Attribute msg
+smFromTeal600 =
+    A.class "sm:from-teal-600"
+
+
+smFromTeal700 : Html.Attribute msg
+smFromTeal700 =
+    A.class "sm:from-teal-700"
+
+
+smFromTeal800 : Html.Attribute msg
+smFromTeal800 =
+    A.class "sm:from-teal-800"
+
+
+smFromTeal900 : Html.Attribute msg
+smFromTeal900 =
+    A.class "sm:from-teal-900"
+
+
+smFromBlue100 : Html.Attribute msg
+smFromBlue100 =
+    A.class "sm:from-blue-100"
+
+
+smFromBlue200 : Html.Attribute msg
+smFromBlue200 =
+    A.class "sm:from-blue-200"
+
+
+smFromBlue300 : Html.Attribute msg
+smFromBlue300 =
+    A.class "sm:from-blue-300"
+
+
+smFromBlue400 : Html.Attribute msg
+smFromBlue400 =
+    A.class "sm:from-blue-400"
+
+
+smFromBlue500 : Html.Attribute msg
+smFromBlue500 =
+    A.class "sm:from-blue-500"
+
+
+smFromBlue600 : Html.Attribute msg
+smFromBlue600 =
+    A.class "sm:from-blue-600"
+
+
+smFromBlue700 : Html.Attribute msg
+smFromBlue700 =
+    A.class "sm:from-blue-700"
+
+
+smFromBlue800 : Html.Attribute msg
+smFromBlue800 =
+    A.class "sm:from-blue-800"
+
+
+smFromBlue900 : Html.Attribute msg
+smFromBlue900 =
+    A.class "sm:from-blue-900"
+
+
+smFromIndigo100 : Html.Attribute msg
+smFromIndigo100 =
+    A.class "sm:from-indigo-100"
+
+
+smFromIndigo200 : Html.Attribute msg
+smFromIndigo200 =
+    A.class "sm:from-indigo-200"
+
+
+smFromIndigo300 : Html.Attribute msg
+smFromIndigo300 =
+    A.class "sm:from-indigo-300"
+
+
+smFromIndigo400 : Html.Attribute msg
+smFromIndigo400 =
+    A.class "sm:from-indigo-400"
+
+
+smFromIndigo500 : Html.Attribute msg
+smFromIndigo500 =
+    A.class "sm:from-indigo-500"
+
+
+smFromIndigo600 : Html.Attribute msg
+smFromIndigo600 =
+    A.class "sm:from-indigo-600"
+
+
+smFromIndigo700 : Html.Attribute msg
+smFromIndigo700 =
+    A.class "sm:from-indigo-700"
+
+
+smFromIndigo800 : Html.Attribute msg
+smFromIndigo800 =
+    A.class "sm:from-indigo-800"
+
+
+smFromIndigo900 : Html.Attribute msg
+smFromIndigo900 =
+    A.class "sm:from-indigo-900"
+
+
+smFromPurple100 : Html.Attribute msg
+smFromPurple100 =
+    A.class "sm:from-purple-100"
+
+
+smFromPurple200 : Html.Attribute msg
+smFromPurple200 =
+    A.class "sm:from-purple-200"
+
+
+smFromPurple300 : Html.Attribute msg
+smFromPurple300 =
+    A.class "sm:from-purple-300"
+
+
+smFromPurple400 : Html.Attribute msg
+smFromPurple400 =
+    A.class "sm:from-purple-400"
+
+
+smFromPurple500 : Html.Attribute msg
+smFromPurple500 =
+    A.class "sm:from-purple-500"
+
+
+smFromPurple600 : Html.Attribute msg
+smFromPurple600 =
+    A.class "sm:from-purple-600"
+
+
+smFromPurple700 : Html.Attribute msg
+smFromPurple700 =
+    A.class "sm:from-purple-700"
+
+
+smFromPurple800 : Html.Attribute msg
+smFromPurple800 =
+    A.class "sm:from-purple-800"
+
+
+smFromPurple900 : Html.Attribute msg
+smFromPurple900 =
+    A.class "sm:from-purple-900"
+
+
+smFromPink100 : Html.Attribute msg
+smFromPink100 =
+    A.class "sm:from-pink-100"
+
+
+smFromPink200 : Html.Attribute msg
+smFromPink200 =
+    A.class "sm:from-pink-200"
+
+
+smFromPink300 : Html.Attribute msg
+smFromPink300 =
+    A.class "sm:from-pink-300"
+
+
+smFromPink400 : Html.Attribute msg
+smFromPink400 =
+    A.class "sm:from-pink-400"
+
+
+smFromPink500 : Html.Attribute msg
+smFromPink500 =
+    A.class "sm:from-pink-500"
+
+
+smFromPink600 : Html.Attribute msg
+smFromPink600 =
+    A.class "sm:from-pink-600"
+
+
+smFromPink700 : Html.Attribute msg
+smFromPink700 =
+    A.class "sm:from-pink-700"
+
+
+smFromPink800 : Html.Attribute msg
+smFromPink800 =
+    A.class "sm:from-pink-800"
+
+
+smFromPink900 : Html.Attribute msg
+smFromPink900 =
+    A.class "sm:from-pink-900"
+
+
+smViaTransparent : Html.Attribute msg
+smViaTransparent =
+    A.class "sm:via-transparent"
+
+
+smViaCurrent : Html.Attribute msg
+smViaCurrent =
+    A.class "sm:via-current"
+
+
+smViaBlack : Html.Attribute msg
+smViaBlack =
+    A.class "sm:via-black"
+
+
+smViaWhite : Html.Attribute msg
+smViaWhite =
+    A.class "sm:via-white"
+
+
+smViaGray100 : Html.Attribute msg
+smViaGray100 =
+    A.class "sm:via-gray-100"
+
+
+smViaGray200 : Html.Attribute msg
+smViaGray200 =
+    A.class "sm:via-gray-200"
+
+
+smViaGray300 : Html.Attribute msg
+smViaGray300 =
+    A.class "sm:via-gray-300"
+
+
+smViaGray400 : Html.Attribute msg
+smViaGray400 =
+    A.class "sm:via-gray-400"
+
+
+smViaGray500 : Html.Attribute msg
+smViaGray500 =
+    A.class "sm:via-gray-500"
+
+
+smViaGray600 : Html.Attribute msg
+smViaGray600 =
+    A.class "sm:via-gray-600"
+
+
+smViaGray700 : Html.Attribute msg
+smViaGray700 =
+    A.class "sm:via-gray-700"
+
+
+smViaGray800 : Html.Attribute msg
+smViaGray800 =
+    A.class "sm:via-gray-800"
+
+
+smViaGray900 : Html.Attribute msg
+smViaGray900 =
+    A.class "sm:via-gray-900"
+
+
+smViaRed100 : Html.Attribute msg
+smViaRed100 =
+    A.class "sm:via-red-100"
+
+
+smViaRed200 : Html.Attribute msg
+smViaRed200 =
+    A.class "sm:via-red-200"
+
+
+smViaRed300 : Html.Attribute msg
+smViaRed300 =
+    A.class "sm:via-red-300"
+
+
+smViaRed400 : Html.Attribute msg
+smViaRed400 =
+    A.class "sm:via-red-400"
+
+
+smViaRed500 : Html.Attribute msg
+smViaRed500 =
+    A.class "sm:via-red-500"
+
+
+smViaRed600 : Html.Attribute msg
+smViaRed600 =
+    A.class "sm:via-red-600"
+
+
+smViaRed700 : Html.Attribute msg
+smViaRed700 =
+    A.class "sm:via-red-700"
+
+
+smViaRed800 : Html.Attribute msg
+smViaRed800 =
+    A.class "sm:via-red-800"
+
+
+smViaRed900 : Html.Attribute msg
+smViaRed900 =
+    A.class "sm:via-red-900"
+
+
+smViaOrange100 : Html.Attribute msg
+smViaOrange100 =
+    A.class "sm:via-orange-100"
+
+
+smViaOrange200 : Html.Attribute msg
+smViaOrange200 =
+    A.class "sm:via-orange-200"
+
+
+smViaOrange300 : Html.Attribute msg
+smViaOrange300 =
+    A.class "sm:via-orange-300"
+
+
+smViaOrange400 : Html.Attribute msg
+smViaOrange400 =
+    A.class "sm:via-orange-400"
+
+
+smViaOrange500 : Html.Attribute msg
+smViaOrange500 =
+    A.class "sm:via-orange-500"
+
+
+smViaOrange600 : Html.Attribute msg
+smViaOrange600 =
+    A.class "sm:via-orange-600"
+
+
+smViaOrange700 : Html.Attribute msg
+smViaOrange700 =
+    A.class "sm:via-orange-700"
+
+
+smViaOrange800 : Html.Attribute msg
+smViaOrange800 =
+    A.class "sm:via-orange-800"
+
+
+smViaOrange900 : Html.Attribute msg
+smViaOrange900 =
+    A.class "sm:via-orange-900"
+
+
+smViaYellow100 : Html.Attribute msg
+smViaYellow100 =
+    A.class "sm:via-yellow-100"
+
+
+smViaYellow200 : Html.Attribute msg
+smViaYellow200 =
+    A.class "sm:via-yellow-200"
+
+
+smViaYellow300 : Html.Attribute msg
+smViaYellow300 =
+    A.class "sm:via-yellow-300"
+
+
+smViaYellow400 : Html.Attribute msg
+smViaYellow400 =
+    A.class "sm:via-yellow-400"
+
+
+smViaYellow500 : Html.Attribute msg
+smViaYellow500 =
+    A.class "sm:via-yellow-500"
+
+
+smViaYellow600 : Html.Attribute msg
+smViaYellow600 =
+    A.class "sm:via-yellow-600"
+
+
+smViaYellow700 : Html.Attribute msg
+smViaYellow700 =
+    A.class "sm:via-yellow-700"
+
+
+smViaYellow800 : Html.Attribute msg
+smViaYellow800 =
+    A.class "sm:via-yellow-800"
+
+
+smViaYellow900 : Html.Attribute msg
+smViaYellow900 =
+    A.class "sm:via-yellow-900"
+
+
+smViaGreen100 : Html.Attribute msg
+smViaGreen100 =
+    A.class "sm:via-green-100"
+
+
+smViaGreen200 : Html.Attribute msg
+smViaGreen200 =
+    A.class "sm:via-green-200"
+
+
+smViaGreen300 : Html.Attribute msg
+smViaGreen300 =
+    A.class "sm:via-green-300"
+
+
+smViaGreen400 : Html.Attribute msg
+smViaGreen400 =
+    A.class "sm:via-green-400"
+
+
+smViaGreen500 : Html.Attribute msg
+smViaGreen500 =
+    A.class "sm:via-green-500"
+
+
+smViaGreen600 : Html.Attribute msg
+smViaGreen600 =
+    A.class "sm:via-green-600"
+
+
+smViaGreen700 : Html.Attribute msg
+smViaGreen700 =
+    A.class "sm:via-green-700"
+
+
+smViaGreen800 : Html.Attribute msg
+smViaGreen800 =
+    A.class "sm:via-green-800"
+
+
+smViaGreen900 : Html.Attribute msg
+smViaGreen900 =
+    A.class "sm:via-green-900"
+
+
+smViaTeal100 : Html.Attribute msg
+smViaTeal100 =
+    A.class "sm:via-teal-100"
+
+
+smViaTeal200 : Html.Attribute msg
+smViaTeal200 =
+    A.class "sm:via-teal-200"
+
+
+smViaTeal300 : Html.Attribute msg
+smViaTeal300 =
+    A.class "sm:via-teal-300"
+
+
+smViaTeal400 : Html.Attribute msg
+smViaTeal400 =
+    A.class "sm:via-teal-400"
+
+
+smViaTeal500 : Html.Attribute msg
+smViaTeal500 =
+    A.class "sm:via-teal-500"
+
+
+smViaTeal600 : Html.Attribute msg
+smViaTeal600 =
+    A.class "sm:via-teal-600"
+
+
+smViaTeal700 : Html.Attribute msg
+smViaTeal700 =
+    A.class "sm:via-teal-700"
+
+
+smViaTeal800 : Html.Attribute msg
+smViaTeal800 =
+    A.class "sm:via-teal-800"
+
+
+smViaTeal900 : Html.Attribute msg
+smViaTeal900 =
+    A.class "sm:via-teal-900"
+
+
+smViaBlue100 : Html.Attribute msg
+smViaBlue100 =
+    A.class "sm:via-blue-100"
+
+
+smViaBlue200 : Html.Attribute msg
+smViaBlue200 =
+    A.class "sm:via-blue-200"
+
+
+smViaBlue300 : Html.Attribute msg
+smViaBlue300 =
+    A.class "sm:via-blue-300"
+
+
+smViaBlue400 : Html.Attribute msg
+smViaBlue400 =
+    A.class "sm:via-blue-400"
+
+
+smViaBlue500 : Html.Attribute msg
+smViaBlue500 =
+    A.class "sm:via-blue-500"
+
+
+smViaBlue600 : Html.Attribute msg
+smViaBlue600 =
+    A.class "sm:via-blue-600"
+
+
+smViaBlue700 : Html.Attribute msg
+smViaBlue700 =
+    A.class "sm:via-blue-700"
+
+
+smViaBlue800 : Html.Attribute msg
+smViaBlue800 =
+    A.class "sm:via-blue-800"
+
+
+smViaBlue900 : Html.Attribute msg
+smViaBlue900 =
+    A.class "sm:via-blue-900"
+
+
+smViaIndigo100 : Html.Attribute msg
+smViaIndigo100 =
+    A.class "sm:via-indigo-100"
+
+
+smViaIndigo200 : Html.Attribute msg
+smViaIndigo200 =
+    A.class "sm:via-indigo-200"
+
+
+smViaIndigo300 : Html.Attribute msg
+smViaIndigo300 =
+    A.class "sm:via-indigo-300"
+
+
+smViaIndigo400 : Html.Attribute msg
+smViaIndigo400 =
+    A.class "sm:via-indigo-400"
+
+
+smViaIndigo500 : Html.Attribute msg
+smViaIndigo500 =
+    A.class "sm:via-indigo-500"
+
+
+smViaIndigo600 : Html.Attribute msg
+smViaIndigo600 =
+    A.class "sm:via-indigo-600"
+
+
+smViaIndigo700 : Html.Attribute msg
+smViaIndigo700 =
+    A.class "sm:via-indigo-700"
+
+
+smViaIndigo800 : Html.Attribute msg
+smViaIndigo800 =
+    A.class "sm:via-indigo-800"
+
+
+smViaIndigo900 : Html.Attribute msg
+smViaIndigo900 =
+    A.class "sm:via-indigo-900"
+
+
+smViaPurple100 : Html.Attribute msg
+smViaPurple100 =
+    A.class "sm:via-purple-100"
+
+
+smViaPurple200 : Html.Attribute msg
+smViaPurple200 =
+    A.class "sm:via-purple-200"
+
+
+smViaPurple300 : Html.Attribute msg
+smViaPurple300 =
+    A.class "sm:via-purple-300"
+
+
+smViaPurple400 : Html.Attribute msg
+smViaPurple400 =
+    A.class "sm:via-purple-400"
+
+
+smViaPurple500 : Html.Attribute msg
+smViaPurple500 =
+    A.class "sm:via-purple-500"
+
+
+smViaPurple600 : Html.Attribute msg
+smViaPurple600 =
+    A.class "sm:via-purple-600"
+
+
+smViaPurple700 : Html.Attribute msg
+smViaPurple700 =
+    A.class "sm:via-purple-700"
+
+
+smViaPurple800 : Html.Attribute msg
+smViaPurple800 =
+    A.class "sm:via-purple-800"
+
+
+smViaPurple900 : Html.Attribute msg
+smViaPurple900 =
+    A.class "sm:via-purple-900"
+
+
+smViaPink100 : Html.Attribute msg
+smViaPink100 =
+    A.class "sm:via-pink-100"
+
+
+smViaPink200 : Html.Attribute msg
+smViaPink200 =
+    A.class "sm:via-pink-200"
+
+
+smViaPink300 : Html.Attribute msg
+smViaPink300 =
+    A.class "sm:via-pink-300"
+
+
+smViaPink400 : Html.Attribute msg
+smViaPink400 =
+    A.class "sm:via-pink-400"
+
+
+smViaPink500 : Html.Attribute msg
+smViaPink500 =
+    A.class "sm:via-pink-500"
+
+
+smViaPink600 : Html.Attribute msg
+smViaPink600 =
+    A.class "sm:via-pink-600"
+
+
+smViaPink700 : Html.Attribute msg
+smViaPink700 =
+    A.class "sm:via-pink-700"
+
+
+smViaPink800 : Html.Attribute msg
+smViaPink800 =
+    A.class "sm:via-pink-800"
+
+
+smViaPink900 : Html.Attribute msg
+smViaPink900 =
+    A.class "sm:via-pink-900"
+
+
+smToTransparent : Html.Attribute msg
+smToTransparent =
+    A.class "sm:to-transparent"
+
+
+smToCurrent : Html.Attribute msg
+smToCurrent =
+    A.class "sm:to-current"
+
+
+smToBlack : Html.Attribute msg
+smToBlack =
+    A.class "sm:to-black"
+
+
+smToWhite : Html.Attribute msg
+smToWhite =
+    A.class "sm:to-white"
+
+
+smToGray100 : Html.Attribute msg
+smToGray100 =
+    A.class "sm:to-gray-100"
+
+
+smToGray200 : Html.Attribute msg
+smToGray200 =
+    A.class "sm:to-gray-200"
+
+
+smToGray300 : Html.Attribute msg
+smToGray300 =
+    A.class "sm:to-gray-300"
+
+
+smToGray400 : Html.Attribute msg
+smToGray400 =
+    A.class "sm:to-gray-400"
+
+
+smToGray500 : Html.Attribute msg
+smToGray500 =
+    A.class "sm:to-gray-500"
+
+
+smToGray600 : Html.Attribute msg
+smToGray600 =
+    A.class "sm:to-gray-600"
+
+
+smToGray700 : Html.Attribute msg
+smToGray700 =
+    A.class "sm:to-gray-700"
+
+
+smToGray800 : Html.Attribute msg
+smToGray800 =
+    A.class "sm:to-gray-800"
+
+
+smToGray900 : Html.Attribute msg
+smToGray900 =
+    A.class "sm:to-gray-900"
+
+
+smToRed100 : Html.Attribute msg
+smToRed100 =
+    A.class "sm:to-red-100"
+
+
+smToRed200 : Html.Attribute msg
+smToRed200 =
+    A.class "sm:to-red-200"
+
+
+smToRed300 : Html.Attribute msg
+smToRed300 =
+    A.class "sm:to-red-300"
+
+
+smToRed400 : Html.Attribute msg
+smToRed400 =
+    A.class "sm:to-red-400"
+
+
+smToRed500 : Html.Attribute msg
+smToRed500 =
+    A.class "sm:to-red-500"
+
+
+smToRed600 : Html.Attribute msg
+smToRed600 =
+    A.class "sm:to-red-600"
+
+
+smToRed700 : Html.Attribute msg
+smToRed700 =
+    A.class "sm:to-red-700"
+
+
+smToRed800 : Html.Attribute msg
+smToRed800 =
+    A.class "sm:to-red-800"
+
+
+smToRed900 : Html.Attribute msg
+smToRed900 =
+    A.class "sm:to-red-900"
+
+
+smToOrange100 : Html.Attribute msg
+smToOrange100 =
+    A.class "sm:to-orange-100"
+
+
+smToOrange200 : Html.Attribute msg
+smToOrange200 =
+    A.class "sm:to-orange-200"
+
+
+smToOrange300 : Html.Attribute msg
+smToOrange300 =
+    A.class "sm:to-orange-300"
+
+
+smToOrange400 : Html.Attribute msg
+smToOrange400 =
+    A.class "sm:to-orange-400"
+
+
+smToOrange500 : Html.Attribute msg
+smToOrange500 =
+    A.class "sm:to-orange-500"
+
+
+smToOrange600 : Html.Attribute msg
+smToOrange600 =
+    A.class "sm:to-orange-600"
+
+
+smToOrange700 : Html.Attribute msg
+smToOrange700 =
+    A.class "sm:to-orange-700"
+
+
+smToOrange800 : Html.Attribute msg
+smToOrange800 =
+    A.class "sm:to-orange-800"
+
+
+smToOrange900 : Html.Attribute msg
+smToOrange900 =
+    A.class "sm:to-orange-900"
+
+
+smToYellow100 : Html.Attribute msg
+smToYellow100 =
+    A.class "sm:to-yellow-100"
+
+
+smToYellow200 : Html.Attribute msg
+smToYellow200 =
+    A.class "sm:to-yellow-200"
+
+
+smToYellow300 : Html.Attribute msg
+smToYellow300 =
+    A.class "sm:to-yellow-300"
+
+
+smToYellow400 : Html.Attribute msg
+smToYellow400 =
+    A.class "sm:to-yellow-400"
+
+
+smToYellow500 : Html.Attribute msg
+smToYellow500 =
+    A.class "sm:to-yellow-500"
+
+
+smToYellow600 : Html.Attribute msg
+smToYellow600 =
+    A.class "sm:to-yellow-600"
+
+
+smToYellow700 : Html.Attribute msg
+smToYellow700 =
+    A.class "sm:to-yellow-700"
+
+
+smToYellow800 : Html.Attribute msg
+smToYellow800 =
+    A.class "sm:to-yellow-800"
+
+
+smToYellow900 : Html.Attribute msg
+smToYellow900 =
+    A.class "sm:to-yellow-900"
+
+
+smToGreen100 : Html.Attribute msg
+smToGreen100 =
+    A.class "sm:to-green-100"
+
+
+smToGreen200 : Html.Attribute msg
+smToGreen200 =
+    A.class "sm:to-green-200"
+
+
+smToGreen300 : Html.Attribute msg
+smToGreen300 =
+    A.class "sm:to-green-300"
+
+
+smToGreen400 : Html.Attribute msg
+smToGreen400 =
+    A.class "sm:to-green-400"
+
+
+smToGreen500 : Html.Attribute msg
+smToGreen500 =
+    A.class "sm:to-green-500"
+
+
+smToGreen600 : Html.Attribute msg
+smToGreen600 =
+    A.class "sm:to-green-600"
+
+
+smToGreen700 : Html.Attribute msg
+smToGreen700 =
+    A.class "sm:to-green-700"
+
+
+smToGreen800 : Html.Attribute msg
+smToGreen800 =
+    A.class "sm:to-green-800"
+
+
+smToGreen900 : Html.Attribute msg
+smToGreen900 =
+    A.class "sm:to-green-900"
+
+
+smToTeal100 : Html.Attribute msg
+smToTeal100 =
+    A.class "sm:to-teal-100"
+
+
+smToTeal200 : Html.Attribute msg
+smToTeal200 =
+    A.class "sm:to-teal-200"
+
+
+smToTeal300 : Html.Attribute msg
+smToTeal300 =
+    A.class "sm:to-teal-300"
+
+
+smToTeal400 : Html.Attribute msg
+smToTeal400 =
+    A.class "sm:to-teal-400"
+
+
+smToTeal500 : Html.Attribute msg
+smToTeal500 =
+    A.class "sm:to-teal-500"
+
+
+smToTeal600 : Html.Attribute msg
+smToTeal600 =
+    A.class "sm:to-teal-600"
+
+
+smToTeal700 : Html.Attribute msg
+smToTeal700 =
+    A.class "sm:to-teal-700"
+
+
+smToTeal800 : Html.Attribute msg
+smToTeal800 =
+    A.class "sm:to-teal-800"
+
+
+smToTeal900 : Html.Attribute msg
+smToTeal900 =
+    A.class "sm:to-teal-900"
+
+
+smToBlue100 : Html.Attribute msg
+smToBlue100 =
+    A.class "sm:to-blue-100"
+
+
+smToBlue200 : Html.Attribute msg
+smToBlue200 =
+    A.class "sm:to-blue-200"
+
+
+smToBlue300 : Html.Attribute msg
+smToBlue300 =
+    A.class "sm:to-blue-300"
+
+
+smToBlue400 : Html.Attribute msg
+smToBlue400 =
+    A.class "sm:to-blue-400"
+
+
+smToBlue500 : Html.Attribute msg
+smToBlue500 =
+    A.class "sm:to-blue-500"
+
+
+smToBlue600 : Html.Attribute msg
+smToBlue600 =
+    A.class "sm:to-blue-600"
+
+
+smToBlue700 : Html.Attribute msg
+smToBlue700 =
+    A.class "sm:to-blue-700"
+
+
+smToBlue800 : Html.Attribute msg
+smToBlue800 =
+    A.class "sm:to-blue-800"
+
+
+smToBlue900 : Html.Attribute msg
+smToBlue900 =
+    A.class "sm:to-blue-900"
+
+
+smToIndigo100 : Html.Attribute msg
+smToIndigo100 =
+    A.class "sm:to-indigo-100"
+
+
+smToIndigo200 : Html.Attribute msg
+smToIndigo200 =
+    A.class "sm:to-indigo-200"
+
+
+smToIndigo300 : Html.Attribute msg
+smToIndigo300 =
+    A.class "sm:to-indigo-300"
+
+
+smToIndigo400 : Html.Attribute msg
+smToIndigo400 =
+    A.class "sm:to-indigo-400"
+
+
+smToIndigo500 : Html.Attribute msg
+smToIndigo500 =
+    A.class "sm:to-indigo-500"
+
+
+smToIndigo600 : Html.Attribute msg
+smToIndigo600 =
+    A.class "sm:to-indigo-600"
+
+
+smToIndigo700 : Html.Attribute msg
+smToIndigo700 =
+    A.class "sm:to-indigo-700"
+
+
+smToIndigo800 : Html.Attribute msg
+smToIndigo800 =
+    A.class "sm:to-indigo-800"
+
+
+smToIndigo900 : Html.Attribute msg
+smToIndigo900 =
+    A.class "sm:to-indigo-900"
+
+
+smToPurple100 : Html.Attribute msg
+smToPurple100 =
+    A.class "sm:to-purple-100"
+
+
+smToPurple200 : Html.Attribute msg
+smToPurple200 =
+    A.class "sm:to-purple-200"
+
+
+smToPurple300 : Html.Attribute msg
+smToPurple300 =
+    A.class "sm:to-purple-300"
+
+
+smToPurple400 : Html.Attribute msg
+smToPurple400 =
+    A.class "sm:to-purple-400"
+
+
+smToPurple500 : Html.Attribute msg
+smToPurple500 =
+    A.class "sm:to-purple-500"
+
+
+smToPurple600 : Html.Attribute msg
+smToPurple600 =
+    A.class "sm:to-purple-600"
+
+
+smToPurple700 : Html.Attribute msg
+smToPurple700 =
+    A.class "sm:to-purple-700"
+
+
+smToPurple800 : Html.Attribute msg
+smToPurple800 =
+    A.class "sm:to-purple-800"
+
+
+smToPurple900 : Html.Attribute msg
+smToPurple900 =
+    A.class "sm:to-purple-900"
+
+
+smToPink100 : Html.Attribute msg
+smToPink100 =
+    A.class "sm:to-pink-100"
+
+
+smToPink200 : Html.Attribute msg
+smToPink200 =
+    A.class "sm:to-pink-200"
+
+
+smToPink300 : Html.Attribute msg
+smToPink300 =
+    A.class "sm:to-pink-300"
+
+
+smToPink400 : Html.Attribute msg
+smToPink400 =
+    A.class "sm:to-pink-400"
+
+
+smToPink500 : Html.Attribute msg
+smToPink500 =
+    A.class "sm:to-pink-500"
+
+
+smToPink600 : Html.Attribute msg
+smToPink600 =
+    A.class "sm:to-pink-600"
+
+
+smToPink700 : Html.Attribute msg
+smToPink700 =
+    A.class "sm:to-pink-700"
+
+
+smToPink800 : Html.Attribute msg
+smToPink800 =
+    A.class "sm:to-pink-800"
+
+
+smToPink900 : Html.Attribute msg
+smToPink900 =
+    A.class "sm:to-pink-900"
+
+
+smHoverFromTransparent : Html.Attribute msg
+smHoverFromTransparent =
+    A.class "sm:hover:from-transparent"
+
+
+smHoverFromCurrent : Html.Attribute msg
+smHoverFromCurrent =
+    A.class "sm:hover:from-current"
+
+
+smHoverFromBlack : Html.Attribute msg
+smHoverFromBlack =
+    A.class "sm:hover:from-black"
+
+
+smHoverFromWhite : Html.Attribute msg
+smHoverFromWhite =
+    A.class "sm:hover:from-white"
+
+
+smHoverFromGray100 : Html.Attribute msg
+smHoverFromGray100 =
+    A.class "sm:hover:from-gray-100"
+
+
+smHoverFromGray200 : Html.Attribute msg
+smHoverFromGray200 =
+    A.class "sm:hover:from-gray-200"
+
+
+smHoverFromGray300 : Html.Attribute msg
+smHoverFromGray300 =
+    A.class "sm:hover:from-gray-300"
+
+
+smHoverFromGray400 : Html.Attribute msg
+smHoverFromGray400 =
+    A.class "sm:hover:from-gray-400"
+
+
+smHoverFromGray500 : Html.Attribute msg
+smHoverFromGray500 =
+    A.class "sm:hover:from-gray-500"
+
+
+smHoverFromGray600 : Html.Attribute msg
+smHoverFromGray600 =
+    A.class "sm:hover:from-gray-600"
+
+
+smHoverFromGray700 : Html.Attribute msg
+smHoverFromGray700 =
+    A.class "sm:hover:from-gray-700"
+
+
+smHoverFromGray800 : Html.Attribute msg
+smHoverFromGray800 =
+    A.class "sm:hover:from-gray-800"
+
+
+smHoverFromGray900 : Html.Attribute msg
+smHoverFromGray900 =
+    A.class "sm:hover:from-gray-900"
+
+
+smHoverFromRed100 : Html.Attribute msg
+smHoverFromRed100 =
+    A.class "sm:hover:from-red-100"
+
+
+smHoverFromRed200 : Html.Attribute msg
+smHoverFromRed200 =
+    A.class "sm:hover:from-red-200"
+
+
+smHoverFromRed300 : Html.Attribute msg
+smHoverFromRed300 =
+    A.class "sm:hover:from-red-300"
+
+
+smHoverFromRed400 : Html.Attribute msg
+smHoverFromRed400 =
+    A.class "sm:hover:from-red-400"
+
+
+smHoverFromRed500 : Html.Attribute msg
+smHoverFromRed500 =
+    A.class "sm:hover:from-red-500"
+
+
+smHoverFromRed600 : Html.Attribute msg
+smHoverFromRed600 =
+    A.class "sm:hover:from-red-600"
+
+
+smHoverFromRed700 : Html.Attribute msg
+smHoverFromRed700 =
+    A.class "sm:hover:from-red-700"
+
+
+smHoverFromRed800 : Html.Attribute msg
+smHoverFromRed800 =
+    A.class "sm:hover:from-red-800"
+
+
+smHoverFromRed900 : Html.Attribute msg
+smHoverFromRed900 =
+    A.class "sm:hover:from-red-900"
+
+
+smHoverFromOrange100 : Html.Attribute msg
+smHoverFromOrange100 =
+    A.class "sm:hover:from-orange-100"
+
+
+smHoverFromOrange200 : Html.Attribute msg
+smHoverFromOrange200 =
+    A.class "sm:hover:from-orange-200"
+
+
+smHoverFromOrange300 : Html.Attribute msg
+smHoverFromOrange300 =
+    A.class "sm:hover:from-orange-300"
+
+
+smHoverFromOrange400 : Html.Attribute msg
+smHoverFromOrange400 =
+    A.class "sm:hover:from-orange-400"
+
+
+smHoverFromOrange500 : Html.Attribute msg
+smHoverFromOrange500 =
+    A.class "sm:hover:from-orange-500"
+
+
+smHoverFromOrange600 : Html.Attribute msg
+smHoverFromOrange600 =
+    A.class "sm:hover:from-orange-600"
+
+
+smHoverFromOrange700 : Html.Attribute msg
+smHoverFromOrange700 =
+    A.class "sm:hover:from-orange-700"
+
+
+smHoverFromOrange800 : Html.Attribute msg
+smHoverFromOrange800 =
+    A.class "sm:hover:from-orange-800"
+
+
+smHoverFromOrange900 : Html.Attribute msg
+smHoverFromOrange900 =
+    A.class "sm:hover:from-orange-900"
+
+
+smHoverFromYellow100 : Html.Attribute msg
+smHoverFromYellow100 =
+    A.class "sm:hover:from-yellow-100"
+
+
+smHoverFromYellow200 : Html.Attribute msg
+smHoverFromYellow200 =
+    A.class "sm:hover:from-yellow-200"
+
+
+smHoverFromYellow300 : Html.Attribute msg
+smHoverFromYellow300 =
+    A.class "sm:hover:from-yellow-300"
+
+
+smHoverFromYellow400 : Html.Attribute msg
+smHoverFromYellow400 =
+    A.class "sm:hover:from-yellow-400"
+
+
+smHoverFromYellow500 : Html.Attribute msg
+smHoverFromYellow500 =
+    A.class "sm:hover:from-yellow-500"
+
+
+smHoverFromYellow600 : Html.Attribute msg
+smHoverFromYellow600 =
+    A.class "sm:hover:from-yellow-600"
+
+
+smHoverFromYellow700 : Html.Attribute msg
+smHoverFromYellow700 =
+    A.class "sm:hover:from-yellow-700"
+
+
+smHoverFromYellow800 : Html.Attribute msg
+smHoverFromYellow800 =
+    A.class "sm:hover:from-yellow-800"
+
+
+smHoverFromYellow900 : Html.Attribute msg
+smHoverFromYellow900 =
+    A.class "sm:hover:from-yellow-900"
+
+
+smHoverFromGreen100 : Html.Attribute msg
+smHoverFromGreen100 =
+    A.class "sm:hover:from-green-100"
+
+
+smHoverFromGreen200 : Html.Attribute msg
+smHoverFromGreen200 =
+    A.class "sm:hover:from-green-200"
+
+
+smHoverFromGreen300 : Html.Attribute msg
+smHoverFromGreen300 =
+    A.class "sm:hover:from-green-300"
+
+
+smHoverFromGreen400 : Html.Attribute msg
+smHoverFromGreen400 =
+    A.class "sm:hover:from-green-400"
+
+
+smHoverFromGreen500 : Html.Attribute msg
+smHoverFromGreen500 =
+    A.class "sm:hover:from-green-500"
+
+
+smHoverFromGreen600 : Html.Attribute msg
+smHoverFromGreen600 =
+    A.class "sm:hover:from-green-600"
+
+
+smHoverFromGreen700 : Html.Attribute msg
+smHoverFromGreen700 =
+    A.class "sm:hover:from-green-700"
+
+
+smHoverFromGreen800 : Html.Attribute msg
+smHoverFromGreen800 =
+    A.class "sm:hover:from-green-800"
+
+
+smHoverFromGreen900 : Html.Attribute msg
+smHoverFromGreen900 =
+    A.class "sm:hover:from-green-900"
+
+
+smHoverFromTeal100 : Html.Attribute msg
+smHoverFromTeal100 =
+    A.class "sm:hover:from-teal-100"
+
+
+smHoverFromTeal200 : Html.Attribute msg
+smHoverFromTeal200 =
+    A.class "sm:hover:from-teal-200"
+
+
+smHoverFromTeal300 : Html.Attribute msg
+smHoverFromTeal300 =
+    A.class "sm:hover:from-teal-300"
+
+
+smHoverFromTeal400 : Html.Attribute msg
+smHoverFromTeal400 =
+    A.class "sm:hover:from-teal-400"
+
+
+smHoverFromTeal500 : Html.Attribute msg
+smHoverFromTeal500 =
+    A.class "sm:hover:from-teal-500"
+
+
+smHoverFromTeal600 : Html.Attribute msg
+smHoverFromTeal600 =
+    A.class "sm:hover:from-teal-600"
+
+
+smHoverFromTeal700 : Html.Attribute msg
+smHoverFromTeal700 =
+    A.class "sm:hover:from-teal-700"
+
+
+smHoverFromTeal800 : Html.Attribute msg
+smHoverFromTeal800 =
+    A.class "sm:hover:from-teal-800"
+
+
+smHoverFromTeal900 : Html.Attribute msg
+smHoverFromTeal900 =
+    A.class "sm:hover:from-teal-900"
+
+
+smHoverFromBlue100 : Html.Attribute msg
+smHoverFromBlue100 =
+    A.class "sm:hover:from-blue-100"
+
+
+smHoverFromBlue200 : Html.Attribute msg
+smHoverFromBlue200 =
+    A.class "sm:hover:from-blue-200"
+
+
+smHoverFromBlue300 : Html.Attribute msg
+smHoverFromBlue300 =
+    A.class "sm:hover:from-blue-300"
+
+
+smHoverFromBlue400 : Html.Attribute msg
+smHoverFromBlue400 =
+    A.class "sm:hover:from-blue-400"
+
+
+smHoverFromBlue500 : Html.Attribute msg
+smHoverFromBlue500 =
+    A.class "sm:hover:from-blue-500"
+
+
+smHoverFromBlue600 : Html.Attribute msg
+smHoverFromBlue600 =
+    A.class "sm:hover:from-blue-600"
+
+
+smHoverFromBlue700 : Html.Attribute msg
+smHoverFromBlue700 =
+    A.class "sm:hover:from-blue-700"
+
+
+smHoverFromBlue800 : Html.Attribute msg
+smHoverFromBlue800 =
+    A.class "sm:hover:from-blue-800"
+
+
+smHoverFromBlue900 : Html.Attribute msg
+smHoverFromBlue900 =
+    A.class "sm:hover:from-blue-900"
+
+
+smHoverFromIndigo100 : Html.Attribute msg
+smHoverFromIndigo100 =
+    A.class "sm:hover:from-indigo-100"
+
+
+smHoverFromIndigo200 : Html.Attribute msg
+smHoverFromIndigo200 =
+    A.class "sm:hover:from-indigo-200"
+
+
+smHoverFromIndigo300 : Html.Attribute msg
+smHoverFromIndigo300 =
+    A.class "sm:hover:from-indigo-300"
+
+
+smHoverFromIndigo400 : Html.Attribute msg
+smHoverFromIndigo400 =
+    A.class "sm:hover:from-indigo-400"
+
+
+smHoverFromIndigo500 : Html.Attribute msg
+smHoverFromIndigo500 =
+    A.class "sm:hover:from-indigo-500"
+
+
+smHoverFromIndigo600 : Html.Attribute msg
+smHoverFromIndigo600 =
+    A.class "sm:hover:from-indigo-600"
+
+
+smHoverFromIndigo700 : Html.Attribute msg
+smHoverFromIndigo700 =
+    A.class "sm:hover:from-indigo-700"
+
+
+smHoverFromIndigo800 : Html.Attribute msg
+smHoverFromIndigo800 =
+    A.class "sm:hover:from-indigo-800"
+
+
+smHoverFromIndigo900 : Html.Attribute msg
+smHoverFromIndigo900 =
+    A.class "sm:hover:from-indigo-900"
+
+
+smHoverFromPurple100 : Html.Attribute msg
+smHoverFromPurple100 =
+    A.class "sm:hover:from-purple-100"
+
+
+smHoverFromPurple200 : Html.Attribute msg
+smHoverFromPurple200 =
+    A.class "sm:hover:from-purple-200"
+
+
+smHoverFromPurple300 : Html.Attribute msg
+smHoverFromPurple300 =
+    A.class "sm:hover:from-purple-300"
+
+
+smHoverFromPurple400 : Html.Attribute msg
+smHoverFromPurple400 =
+    A.class "sm:hover:from-purple-400"
+
+
+smHoverFromPurple500 : Html.Attribute msg
+smHoverFromPurple500 =
+    A.class "sm:hover:from-purple-500"
+
+
+smHoverFromPurple600 : Html.Attribute msg
+smHoverFromPurple600 =
+    A.class "sm:hover:from-purple-600"
+
+
+smHoverFromPurple700 : Html.Attribute msg
+smHoverFromPurple700 =
+    A.class "sm:hover:from-purple-700"
+
+
+smHoverFromPurple800 : Html.Attribute msg
+smHoverFromPurple800 =
+    A.class "sm:hover:from-purple-800"
+
+
+smHoverFromPurple900 : Html.Attribute msg
+smHoverFromPurple900 =
+    A.class "sm:hover:from-purple-900"
+
+
+smHoverFromPink100 : Html.Attribute msg
+smHoverFromPink100 =
+    A.class "sm:hover:from-pink-100"
+
+
+smHoverFromPink200 : Html.Attribute msg
+smHoverFromPink200 =
+    A.class "sm:hover:from-pink-200"
+
+
+smHoverFromPink300 : Html.Attribute msg
+smHoverFromPink300 =
+    A.class "sm:hover:from-pink-300"
+
+
+smHoverFromPink400 : Html.Attribute msg
+smHoverFromPink400 =
+    A.class "sm:hover:from-pink-400"
+
+
+smHoverFromPink500 : Html.Attribute msg
+smHoverFromPink500 =
+    A.class "sm:hover:from-pink-500"
+
+
+smHoverFromPink600 : Html.Attribute msg
+smHoverFromPink600 =
+    A.class "sm:hover:from-pink-600"
+
+
+smHoverFromPink700 : Html.Attribute msg
+smHoverFromPink700 =
+    A.class "sm:hover:from-pink-700"
+
+
+smHoverFromPink800 : Html.Attribute msg
+smHoverFromPink800 =
+    A.class "sm:hover:from-pink-800"
+
+
+smHoverFromPink900 : Html.Attribute msg
+smHoverFromPink900 =
+    A.class "sm:hover:from-pink-900"
+
+
+smHoverViaTransparent : Html.Attribute msg
+smHoverViaTransparent =
+    A.class "sm:hover:via-transparent"
+
+
+smHoverViaCurrent : Html.Attribute msg
+smHoverViaCurrent =
+    A.class "sm:hover:via-current"
+
+
+smHoverViaBlack : Html.Attribute msg
+smHoverViaBlack =
+    A.class "sm:hover:via-black"
+
+
+smHoverViaWhite : Html.Attribute msg
+smHoverViaWhite =
+    A.class "sm:hover:via-white"
+
+
+smHoverViaGray100 : Html.Attribute msg
+smHoverViaGray100 =
+    A.class "sm:hover:via-gray-100"
+
+
+smHoverViaGray200 : Html.Attribute msg
+smHoverViaGray200 =
+    A.class "sm:hover:via-gray-200"
+
+
+smHoverViaGray300 : Html.Attribute msg
+smHoverViaGray300 =
+    A.class "sm:hover:via-gray-300"
+
+
+smHoverViaGray400 : Html.Attribute msg
+smHoverViaGray400 =
+    A.class "sm:hover:via-gray-400"
+
+
+smHoverViaGray500 : Html.Attribute msg
+smHoverViaGray500 =
+    A.class "sm:hover:via-gray-500"
+
+
+smHoverViaGray600 : Html.Attribute msg
+smHoverViaGray600 =
+    A.class "sm:hover:via-gray-600"
+
+
+smHoverViaGray700 : Html.Attribute msg
+smHoverViaGray700 =
+    A.class "sm:hover:via-gray-700"
+
+
+smHoverViaGray800 : Html.Attribute msg
+smHoverViaGray800 =
+    A.class "sm:hover:via-gray-800"
+
+
+smHoverViaGray900 : Html.Attribute msg
+smHoverViaGray900 =
+    A.class "sm:hover:via-gray-900"
+
+
+smHoverViaRed100 : Html.Attribute msg
+smHoverViaRed100 =
+    A.class "sm:hover:via-red-100"
+
+
+smHoverViaRed200 : Html.Attribute msg
+smHoverViaRed200 =
+    A.class "sm:hover:via-red-200"
+
+
+smHoverViaRed300 : Html.Attribute msg
+smHoverViaRed300 =
+    A.class "sm:hover:via-red-300"
+
+
+smHoverViaRed400 : Html.Attribute msg
+smHoverViaRed400 =
+    A.class "sm:hover:via-red-400"
+
+
+smHoverViaRed500 : Html.Attribute msg
+smHoverViaRed500 =
+    A.class "sm:hover:via-red-500"
+
+
+smHoverViaRed600 : Html.Attribute msg
+smHoverViaRed600 =
+    A.class "sm:hover:via-red-600"
+
+
+smHoverViaRed700 : Html.Attribute msg
+smHoverViaRed700 =
+    A.class "sm:hover:via-red-700"
+
+
+smHoverViaRed800 : Html.Attribute msg
+smHoverViaRed800 =
+    A.class "sm:hover:via-red-800"
+
+
+smHoverViaRed900 : Html.Attribute msg
+smHoverViaRed900 =
+    A.class "sm:hover:via-red-900"
+
+
+smHoverViaOrange100 : Html.Attribute msg
+smHoverViaOrange100 =
+    A.class "sm:hover:via-orange-100"
+
+
+smHoverViaOrange200 : Html.Attribute msg
+smHoverViaOrange200 =
+    A.class "sm:hover:via-orange-200"
+
+
+smHoverViaOrange300 : Html.Attribute msg
+smHoverViaOrange300 =
+    A.class "sm:hover:via-orange-300"
+
+
+smHoverViaOrange400 : Html.Attribute msg
+smHoverViaOrange400 =
+    A.class "sm:hover:via-orange-400"
+
+
+smHoverViaOrange500 : Html.Attribute msg
+smHoverViaOrange500 =
+    A.class "sm:hover:via-orange-500"
+
+
+smHoverViaOrange600 : Html.Attribute msg
+smHoverViaOrange600 =
+    A.class "sm:hover:via-orange-600"
+
+
+smHoverViaOrange700 : Html.Attribute msg
+smHoverViaOrange700 =
+    A.class "sm:hover:via-orange-700"
+
+
+smHoverViaOrange800 : Html.Attribute msg
+smHoverViaOrange800 =
+    A.class "sm:hover:via-orange-800"
+
+
+smHoverViaOrange900 : Html.Attribute msg
+smHoverViaOrange900 =
+    A.class "sm:hover:via-orange-900"
+
+
+smHoverViaYellow100 : Html.Attribute msg
+smHoverViaYellow100 =
+    A.class "sm:hover:via-yellow-100"
+
+
+smHoverViaYellow200 : Html.Attribute msg
+smHoverViaYellow200 =
+    A.class "sm:hover:via-yellow-200"
+
+
+smHoverViaYellow300 : Html.Attribute msg
+smHoverViaYellow300 =
+    A.class "sm:hover:via-yellow-300"
+
+
+smHoverViaYellow400 : Html.Attribute msg
+smHoverViaYellow400 =
+    A.class "sm:hover:via-yellow-400"
+
+
+smHoverViaYellow500 : Html.Attribute msg
+smHoverViaYellow500 =
+    A.class "sm:hover:via-yellow-500"
+
+
+smHoverViaYellow600 : Html.Attribute msg
+smHoverViaYellow600 =
+    A.class "sm:hover:via-yellow-600"
+
+
+smHoverViaYellow700 : Html.Attribute msg
+smHoverViaYellow700 =
+    A.class "sm:hover:via-yellow-700"
+
+
+smHoverViaYellow800 : Html.Attribute msg
+smHoverViaYellow800 =
+    A.class "sm:hover:via-yellow-800"
+
+
+smHoverViaYellow900 : Html.Attribute msg
+smHoverViaYellow900 =
+    A.class "sm:hover:via-yellow-900"
+
+
+smHoverViaGreen100 : Html.Attribute msg
+smHoverViaGreen100 =
+    A.class "sm:hover:via-green-100"
+
+
+smHoverViaGreen200 : Html.Attribute msg
+smHoverViaGreen200 =
+    A.class "sm:hover:via-green-200"
+
+
+smHoverViaGreen300 : Html.Attribute msg
+smHoverViaGreen300 =
+    A.class "sm:hover:via-green-300"
+
+
+smHoverViaGreen400 : Html.Attribute msg
+smHoverViaGreen400 =
+    A.class "sm:hover:via-green-400"
+
+
+smHoverViaGreen500 : Html.Attribute msg
+smHoverViaGreen500 =
+    A.class "sm:hover:via-green-500"
+
+
+smHoverViaGreen600 : Html.Attribute msg
+smHoverViaGreen600 =
+    A.class "sm:hover:via-green-600"
+
+
+smHoverViaGreen700 : Html.Attribute msg
+smHoverViaGreen700 =
+    A.class "sm:hover:via-green-700"
+
+
+smHoverViaGreen800 : Html.Attribute msg
+smHoverViaGreen800 =
+    A.class "sm:hover:via-green-800"
+
+
+smHoverViaGreen900 : Html.Attribute msg
+smHoverViaGreen900 =
+    A.class "sm:hover:via-green-900"
+
+
+smHoverViaTeal100 : Html.Attribute msg
+smHoverViaTeal100 =
+    A.class "sm:hover:via-teal-100"
+
+
+smHoverViaTeal200 : Html.Attribute msg
+smHoverViaTeal200 =
+    A.class "sm:hover:via-teal-200"
+
+
+smHoverViaTeal300 : Html.Attribute msg
+smHoverViaTeal300 =
+    A.class "sm:hover:via-teal-300"
+
+
+smHoverViaTeal400 : Html.Attribute msg
+smHoverViaTeal400 =
+    A.class "sm:hover:via-teal-400"
+
+
+smHoverViaTeal500 : Html.Attribute msg
+smHoverViaTeal500 =
+    A.class "sm:hover:via-teal-500"
+
+
+smHoverViaTeal600 : Html.Attribute msg
+smHoverViaTeal600 =
+    A.class "sm:hover:via-teal-600"
+
+
+smHoverViaTeal700 : Html.Attribute msg
+smHoverViaTeal700 =
+    A.class "sm:hover:via-teal-700"
+
+
+smHoverViaTeal800 : Html.Attribute msg
+smHoverViaTeal800 =
+    A.class "sm:hover:via-teal-800"
+
+
+smHoverViaTeal900 : Html.Attribute msg
+smHoverViaTeal900 =
+    A.class "sm:hover:via-teal-900"
+
+
+smHoverViaBlue100 : Html.Attribute msg
+smHoverViaBlue100 =
+    A.class "sm:hover:via-blue-100"
+
+
+smHoverViaBlue200 : Html.Attribute msg
+smHoverViaBlue200 =
+    A.class "sm:hover:via-blue-200"
+
+
+smHoverViaBlue300 : Html.Attribute msg
+smHoverViaBlue300 =
+    A.class "sm:hover:via-blue-300"
+
+
+smHoverViaBlue400 : Html.Attribute msg
+smHoverViaBlue400 =
+    A.class "sm:hover:via-blue-400"
+
+
+smHoverViaBlue500 : Html.Attribute msg
+smHoverViaBlue500 =
+    A.class "sm:hover:via-blue-500"
+
+
+smHoverViaBlue600 : Html.Attribute msg
+smHoverViaBlue600 =
+    A.class "sm:hover:via-blue-600"
+
+
+smHoverViaBlue700 : Html.Attribute msg
+smHoverViaBlue700 =
+    A.class "sm:hover:via-blue-700"
+
+
+smHoverViaBlue800 : Html.Attribute msg
+smHoverViaBlue800 =
+    A.class "sm:hover:via-blue-800"
+
+
+smHoverViaBlue900 : Html.Attribute msg
+smHoverViaBlue900 =
+    A.class "sm:hover:via-blue-900"
+
+
+smHoverViaIndigo100 : Html.Attribute msg
+smHoverViaIndigo100 =
+    A.class "sm:hover:via-indigo-100"
+
+
+smHoverViaIndigo200 : Html.Attribute msg
+smHoverViaIndigo200 =
+    A.class "sm:hover:via-indigo-200"
+
+
+smHoverViaIndigo300 : Html.Attribute msg
+smHoverViaIndigo300 =
+    A.class "sm:hover:via-indigo-300"
+
+
+smHoverViaIndigo400 : Html.Attribute msg
+smHoverViaIndigo400 =
+    A.class "sm:hover:via-indigo-400"
+
+
+smHoverViaIndigo500 : Html.Attribute msg
+smHoverViaIndigo500 =
+    A.class "sm:hover:via-indigo-500"
+
+
+smHoverViaIndigo600 : Html.Attribute msg
+smHoverViaIndigo600 =
+    A.class "sm:hover:via-indigo-600"
+
+
+smHoverViaIndigo700 : Html.Attribute msg
+smHoverViaIndigo700 =
+    A.class "sm:hover:via-indigo-700"
+
+
+smHoverViaIndigo800 : Html.Attribute msg
+smHoverViaIndigo800 =
+    A.class "sm:hover:via-indigo-800"
+
+
+smHoverViaIndigo900 : Html.Attribute msg
+smHoverViaIndigo900 =
+    A.class "sm:hover:via-indigo-900"
+
+
+smHoverViaPurple100 : Html.Attribute msg
+smHoverViaPurple100 =
+    A.class "sm:hover:via-purple-100"
+
+
+smHoverViaPurple200 : Html.Attribute msg
+smHoverViaPurple200 =
+    A.class "sm:hover:via-purple-200"
+
+
+smHoverViaPurple300 : Html.Attribute msg
+smHoverViaPurple300 =
+    A.class "sm:hover:via-purple-300"
+
+
+smHoverViaPurple400 : Html.Attribute msg
+smHoverViaPurple400 =
+    A.class "sm:hover:via-purple-400"
+
+
+smHoverViaPurple500 : Html.Attribute msg
+smHoverViaPurple500 =
+    A.class "sm:hover:via-purple-500"
+
+
+smHoverViaPurple600 : Html.Attribute msg
+smHoverViaPurple600 =
+    A.class "sm:hover:via-purple-600"
+
+
+smHoverViaPurple700 : Html.Attribute msg
+smHoverViaPurple700 =
+    A.class "sm:hover:via-purple-700"
+
+
+smHoverViaPurple800 : Html.Attribute msg
+smHoverViaPurple800 =
+    A.class "sm:hover:via-purple-800"
+
+
+smHoverViaPurple900 : Html.Attribute msg
+smHoverViaPurple900 =
+    A.class "sm:hover:via-purple-900"
+
+
+smHoverViaPink100 : Html.Attribute msg
+smHoverViaPink100 =
+    A.class "sm:hover:via-pink-100"
+
+
+smHoverViaPink200 : Html.Attribute msg
+smHoverViaPink200 =
+    A.class "sm:hover:via-pink-200"
+
+
+smHoverViaPink300 : Html.Attribute msg
+smHoverViaPink300 =
+    A.class "sm:hover:via-pink-300"
+
+
+smHoverViaPink400 : Html.Attribute msg
+smHoverViaPink400 =
+    A.class "sm:hover:via-pink-400"
+
+
+smHoverViaPink500 : Html.Attribute msg
+smHoverViaPink500 =
+    A.class "sm:hover:via-pink-500"
+
+
+smHoverViaPink600 : Html.Attribute msg
+smHoverViaPink600 =
+    A.class "sm:hover:via-pink-600"
+
+
+smHoverViaPink700 : Html.Attribute msg
+smHoverViaPink700 =
+    A.class "sm:hover:via-pink-700"
+
+
+smHoverViaPink800 : Html.Attribute msg
+smHoverViaPink800 =
+    A.class "sm:hover:via-pink-800"
+
+
+smHoverViaPink900 : Html.Attribute msg
+smHoverViaPink900 =
+    A.class "sm:hover:via-pink-900"
+
+
+smHoverToTransparent : Html.Attribute msg
+smHoverToTransparent =
+    A.class "sm:hover:to-transparent"
+
+
+smHoverToCurrent : Html.Attribute msg
+smHoverToCurrent =
+    A.class "sm:hover:to-current"
+
+
+smHoverToBlack : Html.Attribute msg
+smHoverToBlack =
+    A.class "sm:hover:to-black"
+
+
+smHoverToWhite : Html.Attribute msg
+smHoverToWhite =
+    A.class "sm:hover:to-white"
+
+
+smHoverToGray100 : Html.Attribute msg
+smHoverToGray100 =
+    A.class "sm:hover:to-gray-100"
+
+
+smHoverToGray200 : Html.Attribute msg
+smHoverToGray200 =
+    A.class "sm:hover:to-gray-200"
+
+
+smHoverToGray300 : Html.Attribute msg
+smHoverToGray300 =
+    A.class "sm:hover:to-gray-300"
+
+
+smHoverToGray400 : Html.Attribute msg
+smHoverToGray400 =
+    A.class "sm:hover:to-gray-400"
+
+
+smHoverToGray500 : Html.Attribute msg
+smHoverToGray500 =
+    A.class "sm:hover:to-gray-500"
+
+
+smHoverToGray600 : Html.Attribute msg
+smHoverToGray600 =
+    A.class "sm:hover:to-gray-600"
+
+
+smHoverToGray700 : Html.Attribute msg
+smHoverToGray700 =
+    A.class "sm:hover:to-gray-700"
+
+
+smHoverToGray800 : Html.Attribute msg
+smHoverToGray800 =
+    A.class "sm:hover:to-gray-800"
+
+
+smHoverToGray900 : Html.Attribute msg
+smHoverToGray900 =
+    A.class "sm:hover:to-gray-900"
+
+
+smHoverToRed100 : Html.Attribute msg
+smHoverToRed100 =
+    A.class "sm:hover:to-red-100"
+
+
+smHoverToRed200 : Html.Attribute msg
+smHoverToRed200 =
+    A.class "sm:hover:to-red-200"
+
+
+smHoverToRed300 : Html.Attribute msg
+smHoverToRed300 =
+    A.class "sm:hover:to-red-300"
+
+
+smHoverToRed400 : Html.Attribute msg
+smHoverToRed400 =
+    A.class "sm:hover:to-red-400"
+
+
+smHoverToRed500 : Html.Attribute msg
+smHoverToRed500 =
+    A.class "sm:hover:to-red-500"
+
+
+smHoverToRed600 : Html.Attribute msg
+smHoverToRed600 =
+    A.class "sm:hover:to-red-600"
+
+
+smHoverToRed700 : Html.Attribute msg
+smHoverToRed700 =
+    A.class "sm:hover:to-red-700"
+
+
+smHoverToRed800 : Html.Attribute msg
+smHoverToRed800 =
+    A.class "sm:hover:to-red-800"
+
+
+smHoverToRed900 : Html.Attribute msg
+smHoverToRed900 =
+    A.class "sm:hover:to-red-900"
+
+
+smHoverToOrange100 : Html.Attribute msg
+smHoverToOrange100 =
+    A.class "sm:hover:to-orange-100"
+
+
+smHoverToOrange200 : Html.Attribute msg
+smHoverToOrange200 =
+    A.class "sm:hover:to-orange-200"
+
+
+smHoverToOrange300 : Html.Attribute msg
+smHoverToOrange300 =
+    A.class "sm:hover:to-orange-300"
+
+
+smHoverToOrange400 : Html.Attribute msg
+smHoverToOrange400 =
+    A.class "sm:hover:to-orange-400"
+
+
+smHoverToOrange500 : Html.Attribute msg
+smHoverToOrange500 =
+    A.class "sm:hover:to-orange-500"
+
+
+smHoverToOrange600 : Html.Attribute msg
+smHoverToOrange600 =
+    A.class "sm:hover:to-orange-600"
+
+
+smHoverToOrange700 : Html.Attribute msg
+smHoverToOrange700 =
+    A.class "sm:hover:to-orange-700"
+
+
+smHoverToOrange800 : Html.Attribute msg
+smHoverToOrange800 =
+    A.class "sm:hover:to-orange-800"
+
+
+smHoverToOrange900 : Html.Attribute msg
+smHoverToOrange900 =
+    A.class "sm:hover:to-orange-900"
+
+
+smHoverToYellow100 : Html.Attribute msg
+smHoverToYellow100 =
+    A.class "sm:hover:to-yellow-100"
+
+
+smHoverToYellow200 : Html.Attribute msg
+smHoverToYellow200 =
+    A.class "sm:hover:to-yellow-200"
+
+
+smHoverToYellow300 : Html.Attribute msg
+smHoverToYellow300 =
+    A.class "sm:hover:to-yellow-300"
+
+
+smHoverToYellow400 : Html.Attribute msg
+smHoverToYellow400 =
+    A.class "sm:hover:to-yellow-400"
+
+
+smHoverToYellow500 : Html.Attribute msg
+smHoverToYellow500 =
+    A.class "sm:hover:to-yellow-500"
+
+
+smHoverToYellow600 : Html.Attribute msg
+smHoverToYellow600 =
+    A.class "sm:hover:to-yellow-600"
+
+
+smHoverToYellow700 : Html.Attribute msg
+smHoverToYellow700 =
+    A.class "sm:hover:to-yellow-700"
+
+
+smHoverToYellow800 : Html.Attribute msg
+smHoverToYellow800 =
+    A.class "sm:hover:to-yellow-800"
+
+
+smHoverToYellow900 : Html.Attribute msg
+smHoverToYellow900 =
+    A.class "sm:hover:to-yellow-900"
+
+
+smHoverToGreen100 : Html.Attribute msg
+smHoverToGreen100 =
+    A.class "sm:hover:to-green-100"
+
+
+smHoverToGreen200 : Html.Attribute msg
+smHoverToGreen200 =
+    A.class "sm:hover:to-green-200"
+
+
+smHoverToGreen300 : Html.Attribute msg
+smHoverToGreen300 =
+    A.class "sm:hover:to-green-300"
+
+
+smHoverToGreen400 : Html.Attribute msg
+smHoverToGreen400 =
+    A.class "sm:hover:to-green-400"
+
+
+smHoverToGreen500 : Html.Attribute msg
+smHoverToGreen500 =
+    A.class "sm:hover:to-green-500"
+
+
+smHoverToGreen600 : Html.Attribute msg
+smHoverToGreen600 =
+    A.class "sm:hover:to-green-600"
+
+
+smHoverToGreen700 : Html.Attribute msg
+smHoverToGreen700 =
+    A.class "sm:hover:to-green-700"
+
+
+smHoverToGreen800 : Html.Attribute msg
+smHoverToGreen800 =
+    A.class "sm:hover:to-green-800"
+
+
+smHoverToGreen900 : Html.Attribute msg
+smHoverToGreen900 =
+    A.class "sm:hover:to-green-900"
+
+
+smHoverToTeal100 : Html.Attribute msg
+smHoverToTeal100 =
+    A.class "sm:hover:to-teal-100"
+
+
+smHoverToTeal200 : Html.Attribute msg
+smHoverToTeal200 =
+    A.class "sm:hover:to-teal-200"
+
+
+smHoverToTeal300 : Html.Attribute msg
+smHoverToTeal300 =
+    A.class "sm:hover:to-teal-300"
+
+
+smHoverToTeal400 : Html.Attribute msg
+smHoverToTeal400 =
+    A.class "sm:hover:to-teal-400"
+
+
+smHoverToTeal500 : Html.Attribute msg
+smHoverToTeal500 =
+    A.class "sm:hover:to-teal-500"
+
+
+smHoverToTeal600 : Html.Attribute msg
+smHoverToTeal600 =
+    A.class "sm:hover:to-teal-600"
+
+
+smHoverToTeal700 : Html.Attribute msg
+smHoverToTeal700 =
+    A.class "sm:hover:to-teal-700"
+
+
+smHoverToTeal800 : Html.Attribute msg
+smHoverToTeal800 =
+    A.class "sm:hover:to-teal-800"
+
+
+smHoverToTeal900 : Html.Attribute msg
+smHoverToTeal900 =
+    A.class "sm:hover:to-teal-900"
+
+
+smHoverToBlue100 : Html.Attribute msg
+smHoverToBlue100 =
+    A.class "sm:hover:to-blue-100"
+
+
+smHoverToBlue200 : Html.Attribute msg
+smHoverToBlue200 =
+    A.class "sm:hover:to-blue-200"
+
+
+smHoverToBlue300 : Html.Attribute msg
+smHoverToBlue300 =
+    A.class "sm:hover:to-blue-300"
+
+
+smHoverToBlue400 : Html.Attribute msg
+smHoverToBlue400 =
+    A.class "sm:hover:to-blue-400"
+
+
+smHoverToBlue500 : Html.Attribute msg
+smHoverToBlue500 =
+    A.class "sm:hover:to-blue-500"
+
+
+smHoverToBlue600 : Html.Attribute msg
+smHoverToBlue600 =
+    A.class "sm:hover:to-blue-600"
+
+
+smHoverToBlue700 : Html.Attribute msg
+smHoverToBlue700 =
+    A.class "sm:hover:to-blue-700"
+
+
+smHoverToBlue800 : Html.Attribute msg
+smHoverToBlue800 =
+    A.class "sm:hover:to-blue-800"
+
+
+smHoverToBlue900 : Html.Attribute msg
+smHoverToBlue900 =
+    A.class "sm:hover:to-blue-900"
+
+
+smHoverToIndigo100 : Html.Attribute msg
+smHoverToIndigo100 =
+    A.class "sm:hover:to-indigo-100"
+
+
+smHoverToIndigo200 : Html.Attribute msg
+smHoverToIndigo200 =
+    A.class "sm:hover:to-indigo-200"
+
+
+smHoverToIndigo300 : Html.Attribute msg
+smHoverToIndigo300 =
+    A.class "sm:hover:to-indigo-300"
+
+
+smHoverToIndigo400 : Html.Attribute msg
+smHoverToIndigo400 =
+    A.class "sm:hover:to-indigo-400"
+
+
+smHoverToIndigo500 : Html.Attribute msg
+smHoverToIndigo500 =
+    A.class "sm:hover:to-indigo-500"
+
+
+smHoverToIndigo600 : Html.Attribute msg
+smHoverToIndigo600 =
+    A.class "sm:hover:to-indigo-600"
+
+
+smHoverToIndigo700 : Html.Attribute msg
+smHoverToIndigo700 =
+    A.class "sm:hover:to-indigo-700"
+
+
+smHoverToIndigo800 : Html.Attribute msg
+smHoverToIndigo800 =
+    A.class "sm:hover:to-indigo-800"
+
+
+smHoverToIndigo900 : Html.Attribute msg
+smHoverToIndigo900 =
+    A.class "sm:hover:to-indigo-900"
+
+
+smHoverToPurple100 : Html.Attribute msg
+smHoverToPurple100 =
+    A.class "sm:hover:to-purple-100"
+
+
+smHoverToPurple200 : Html.Attribute msg
+smHoverToPurple200 =
+    A.class "sm:hover:to-purple-200"
+
+
+smHoverToPurple300 : Html.Attribute msg
+smHoverToPurple300 =
+    A.class "sm:hover:to-purple-300"
+
+
+smHoverToPurple400 : Html.Attribute msg
+smHoverToPurple400 =
+    A.class "sm:hover:to-purple-400"
+
+
+smHoverToPurple500 : Html.Attribute msg
+smHoverToPurple500 =
+    A.class "sm:hover:to-purple-500"
+
+
+smHoverToPurple600 : Html.Attribute msg
+smHoverToPurple600 =
+    A.class "sm:hover:to-purple-600"
+
+
+smHoverToPurple700 : Html.Attribute msg
+smHoverToPurple700 =
+    A.class "sm:hover:to-purple-700"
+
+
+smHoverToPurple800 : Html.Attribute msg
+smHoverToPurple800 =
+    A.class "sm:hover:to-purple-800"
+
+
+smHoverToPurple900 : Html.Attribute msg
+smHoverToPurple900 =
+    A.class "sm:hover:to-purple-900"
+
+
+smHoverToPink100 : Html.Attribute msg
+smHoverToPink100 =
+    A.class "sm:hover:to-pink-100"
+
+
+smHoverToPink200 : Html.Attribute msg
+smHoverToPink200 =
+    A.class "sm:hover:to-pink-200"
+
+
+smHoverToPink300 : Html.Attribute msg
+smHoverToPink300 =
+    A.class "sm:hover:to-pink-300"
+
+
+smHoverToPink400 : Html.Attribute msg
+smHoverToPink400 =
+    A.class "sm:hover:to-pink-400"
+
+
+smHoverToPink500 : Html.Attribute msg
+smHoverToPink500 =
+    A.class "sm:hover:to-pink-500"
+
+
+smHoverToPink600 : Html.Attribute msg
+smHoverToPink600 =
+    A.class "sm:hover:to-pink-600"
+
+
+smHoverToPink700 : Html.Attribute msg
+smHoverToPink700 =
+    A.class "sm:hover:to-pink-700"
+
+
+smHoverToPink800 : Html.Attribute msg
+smHoverToPink800 =
+    A.class "sm:hover:to-pink-800"
+
+
+smHoverToPink900 : Html.Attribute msg
+smHoverToPink900 =
+    A.class "sm:hover:to-pink-900"
+
+
+smFocusFromTransparent : Html.Attribute msg
+smFocusFromTransparent =
+    A.class "sm:focus:from-transparent"
+
+
+smFocusFromCurrent : Html.Attribute msg
+smFocusFromCurrent =
+    A.class "sm:focus:from-current"
+
+
+smFocusFromBlack : Html.Attribute msg
+smFocusFromBlack =
+    A.class "sm:focus:from-black"
+
+
+smFocusFromWhite : Html.Attribute msg
+smFocusFromWhite =
+    A.class "sm:focus:from-white"
+
+
+smFocusFromGray100 : Html.Attribute msg
+smFocusFromGray100 =
+    A.class "sm:focus:from-gray-100"
+
+
+smFocusFromGray200 : Html.Attribute msg
+smFocusFromGray200 =
+    A.class "sm:focus:from-gray-200"
+
+
+smFocusFromGray300 : Html.Attribute msg
+smFocusFromGray300 =
+    A.class "sm:focus:from-gray-300"
+
+
+smFocusFromGray400 : Html.Attribute msg
+smFocusFromGray400 =
+    A.class "sm:focus:from-gray-400"
+
+
+smFocusFromGray500 : Html.Attribute msg
+smFocusFromGray500 =
+    A.class "sm:focus:from-gray-500"
+
+
+smFocusFromGray600 : Html.Attribute msg
+smFocusFromGray600 =
+    A.class "sm:focus:from-gray-600"
+
+
+smFocusFromGray700 : Html.Attribute msg
+smFocusFromGray700 =
+    A.class "sm:focus:from-gray-700"
+
+
+smFocusFromGray800 : Html.Attribute msg
+smFocusFromGray800 =
+    A.class "sm:focus:from-gray-800"
+
+
+smFocusFromGray900 : Html.Attribute msg
+smFocusFromGray900 =
+    A.class "sm:focus:from-gray-900"
+
+
+smFocusFromRed100 : Html.Attribute msg
+smFocusFromRed100 =
+    A.class "sm:focus:from-red-100"
+
+
+smFocusFromRed200 : Html.Attribute msg
+smFocusFromRed200 =
+    A.class "sm:focus:from-red-200"
+
+
+smFocusFromRed300 : Html.Attribute msg
+smFocusFromRed300 =
+    A.class "sm:focus:from-red-300"
+
+
+smFocusFromRed400 : Html.Attribute msg
+smFocusFromRed400 =
+    A.class "sm:focus:from-red-400"
+
+
+smFocusFromRed500 : Html.Attribute msg
+smFocusFromRed500 =
+    A.class "sm:focus:from-red-500"
+
+
+smFocusFromRed600 : Html.Attribute msg
+smFocusFromRed600 =
+    A.class "sm:focus:from-red-600"
+
+
+smFocusFromRed700 : Html.Attribute msg
+smFocusFromRed700 =
+    A.class "sm:focus:from-red-700"
+
+
+smFocusFromRed800 : Html.Attribute msg
+smFocusFromRed800 =
+    A.class "sm:focus:from-red-800"
+
+
+smFocusFromRed900 : Html.Attribute msg
+smFocusFromRed900 =
+    A.class "sm:focus:from-red-900"
+
+
+smFocusFromOrange100 : Html.Attribute msg
+smFocusFromOrange100 =
+    A.class "sm:focus:from-orange-100"
+
+
+smFocusFromOrange200 : Html.Attribute msg
+smFocusFromOrange200 =
+    A.class "sm:focus:from-orange-200"
+
+
+smFocusFromOrange300 : Html.Attribute msg
+smFocusFromOrange300 =
+    A.class "sm:focus:from-orange-300"
+
+
+smFocusFromOrange400 : Html.Attribute msg
+smFocusFromOrange400 =
+    A.class "sm:focus:from-orange-400"
+
+
+smFocusFromOrange500 : Html.Attribute msg
+smFocusFromOrange500 =
+    A.class "sm:focus:from-orange-500"
+
+
+smFocusFromOrange600 : Html.Attribute msg
+smFocusFromOrange600 =
+    A.class "sm:focus:from-orange-600"
+
+
+smFocusFromOrange700 : Html.Attribute msg
+smFocusFromOrange700 =
+    A.class "sm:focus:from-orange-700"
+
+
+smFocusFromOrange800 : Html.Attribute msg
+smFocusFromOrange800 =
+    A.class "sm:focus:from-orange-800"
+
+
+smFocusFromOrange900 : Html.Attribute msg
+smFocusFromOrange900 =
+    A.class "sm:focus:from-orange-900"
+
+
+smFocusFromYellow100 : Html.Attribute msg
+smFocusFromYellow100 =
+    A.class "sm:focus:from-yellow-100"
+
+
+smFocusFromYellow200 : Html.Attribute msg
+smFocusFromYellow200 =
+    A.class "sm:focus:from-yellow-200"
+
+
+smFocusFromYellow300 : Html.Attribute msg
+smFocusFromYellow300 =
+    A.class "sm:focus:from-yellow-300"
+
+
+smFocusFromYellow400 : Html.Attribute msg
+smFocusFromYellow400 =
+    A.class "sm:focus:from-yellow-400"
+
+
+smFocusFromYellow500 : Html.Attribute msg
+smFocusFromYellow500 =
+    A.class "sm:focus:from-yellow-500"
+
+
+smFocusFromYellow600 : Html.Attribute msg
+smFocusFromYellow600 =
+    A.class "sm:focus:from-yellow-600"
+
+
+smFocusFromYellow700 : Html.Attribute msg
+smFocusFromYellow700 =
+    A.class "sm:focus:from-yellow-700"
+
+
+smFocusFromYellow800 : Html.Attribute msg
+smFocusFromYellow800 =
+    A.class "sm:focus:from-yellow-800"
+
+
+smFocusFromYellow900 : Html.Attribute msg
+smFocusFromYellow900 =
+    A.class "sm:focus:from-yellow-900"
+
+
+smFocusFromGreen100 : Html.Attribute msg
+smFocusFromGreen100 =
+    A.class "sm:focus:from-green-100"
+
+
+smFocusFromGreen200 : Html.Attribute msg
+smFocusFromGreen200 =
+    A.class "sm:focus:from-green-200"
+
+
+smFocusFromGreen300 : Html.Attribute msg
+smFocusFromGreen300 =
+    A.class "sm:focus:from-green-300"
+
+
+smFocusFromGreen400 : Html.Attribute msg
+smFocusFromGreen400 =
+    A.class "sm:focus:from-green-400"
+
+
+smFocusFromGreen500 : Html.Attribute msg
+smFocusFromGreen500 =
+    A.class "sm:focus:from-green-500"
+
+
+smFocusFromGreen600 : Html.Attribute msg
+smFocusFromGreen600 =
+    A.class "sm:focus:from-green-600"
+
+
+smFocusFromGreen700 : Html.Attribute msg
+smFocusFromGreen700 =
+    A.class "sm:focus:from-green-700"
+
+
+smFocusFromGreen800 : Html.Attribute msg
+smFocusFromGreen800 =
+    A.class "sm:focus:from-green-800"
+
+
+smFocusFromGreen900 : Html.Attribute msg
+smFocusFromGreen900 =
+    A.class "sm:focus:from-green-900"
+
+
+smFocusFromTeal100 : Html.Attribute msg
+smFocusFromTeal100 =
+    A.class "sm:focus:from-teal-100"
+
+
+smFocusFromTeal200 : Html.Attribute msg
+smFocusFromTeal200 =
+    A.class "sm:focus:from-teal-200"
+
+
+smFocusFromTeal300 : Html.Attribute msg
+smFocusFromTeal300 =
+    A.class "sm:focus:from-teal-300"
+
+
+smFocusFromTeal400 : Html.Attribute msg
+smFocusFromTeal400 =
+    A.class "sm:focus:from-teal-400"
+
+
+smFocusFromTeal500 : Html.Attribute msg
+smFocusFromTeal500 =
+    A.class "sm:focus:from-teal-500"
+
+
+smFocusFromTeal600 : Html.Attribute msg
+smFocusFromTeal600 =
+    A.class "sm:focus:from-teal-600"
+
+
+smFocusFromTeal700 : Html.Attribute msg
+smFocusFromTeal700 =
+    A.class "sm:focus:from-teal-700"
+
+
+smFocusFromTeal800 : Html.Attribute msg
+smFocusFromTeal800 =
+    A.class "sm:focus:from-teal-800"
+
+
+smFocusFromTeal900 : Html.Attribute msg
+smFocusFromTeal900 =
+    A.class "sm:focus:from-teal-900"
+
+
+smFocusFromBlue100 : Html.Attribute msg
+smFocusFromBlue100 =
+    A.class "sm:focus:from-blue-100"
+
+
+smFocusFromBlue200 : Html.Attribute msg
+smFocusFromBlue200 =
+    A.class "sm:focus:from-blue-200"
+
+
+smFocusFromBlue300 : Html.Attribute msg
+smFocusFromBlue300 =
+    A.class "sm:focus:from-blue-300"
+
+
+smFocusFromBlue400 : Html.Attribute msg
+smFocusFromBlue400 =
+    A.class "sm:focus:from-blue-400"
+
+
+smFocusFromBlue500 : Html.Attribute msg
+smFocusFromBlue500 =
+    A.class "sm:focus:from-blue-500"
+
+
+smFocusFromBlue600 : Html.Attribute msg
+smFocusFromBlue600 =
+    A.class "sm:focus:from-blue-600"
+
+
+smFocusFromBlue700 : Html.Attribute msg
+smFocusFromBlue700 =
+    A.class "sm:focus:from-blue-700"
+
+
+smFocusFromBlue800 : Html.Attribute msg
+smFocusFromBlue800 =
+    A.class "sm:focus:from-blue-800"
+
+
+smFocusFromBlue900 : Html.Attribute msg
+smFocusFromBlue900 =
+    A.class "sm:focus:from-blue-900"
+
+
+smFocusFromIndigo100 : Html.Attribute msg
+smFocusFromIndigo100 =
+    A.class "sm:focus:from-indigo-100"
+
+
+smFocusFromIndigo200 : Html.Attribute msg
+smFocusFromIndigo200 =
+    A.class "sm:focus:from-indigo-200"
+
+
+smFocusFromIndigo300 : Html.Attribute msg
+smFocusFromIndigo300 =
+    A.class "sm:focus:from-indigo-300"
+
+
+smFocusFromIndigo400 : Html.Attribute msg
+smFocusFromIndigo400 =
+    A.class "sm:focus:from-indigo-400"
+
+
+smFocusFromIndigo500 : Html.Attribute msg
+smFocusFromIndigo500 =
+    A.class "sm:focus:from-indigo-500"
+
+
+smFocusFromIndigo600 : Html.Attribute msg
+smFocusFromIndigo600 =
+    A.class "sm:focus:from-indigo-600"
+
+
+smFocusFromIndigo700 : Html.Attribute msg
+smFocusFromIndigo700 =
+    A.class "sm:focus:from-indigo-700"
+
+
+smFocusFromIndigo800 : Html.Attribute msg
+smFocusFromIndigo800 =
+    A.class "sm:focus:from-indigo-800"
+
+
+smFocusFromIndigo900 : Html.Attribute msg
+smFocusFromIndigo900 =
+    A.class "sm:focus:from-indigo-900"
+
+
+smFocusFromPurple100 : Html.Attribute msg
+smFocusFromPurple100 =
+    A.class "sm:focus:from-purple-100"
+
+
+smFocusFromPurple200 : Html.Attribute msg
+smFocusFromPurple200 =
+    A.class "sm:focus:from-purple-200"
+
+
+smFocusFromPurple300 : Html.Attribute msg
+smFocusFromPurple300 =
+    A.class "sm:focus:from-purple-300"
+
+
+smFocusFromPurple400 : Html.Attribute msg
+smFocusFromPurple400 =
+    A.class "sm:focus:from-purple-400"
+
+
+smFocusFromPurple500 : Html.Attribute msg
+smFocusFromPurple500 =
+    A.class "sm:focus:from-purple-500"
+
+
+smFocusFromPurple600 : Html.Attribute msg
+smFocusFromPurple600 =
+    A.class "sm:focus:from-purple-600"
+
+
+smFocusFromPurple700 : Html.Attribute msg
+smFocusFromPurple700 =
+    A.class "sm:focus:from-purple-700"
+
+
+smFocusFromPurple800 : Html.Attribute msg
+smFocusFromPurple800 =
+    A.class "sm:focus:from-purple-800"
+
+
+smFocusFromPurple900 : Html.Attribute msg
+smFocusFromPurple900 =
+    A.class "sm:focus:from-purple-900"
+
+
+smFocusFromPink100 : Html.Attribute msg
+smFocusFromPink100 =
+    A.class "sm:focus:from-pink-100"
+
+
+smFocusFromPink200 : Html.Attribute msg
+smFocusFromPink200 =
+    A.class "sm:focus:from-pink-200"
+
+
+smFocusFromPink300 : Html.Attribute msg
+smFocusFromPink300 =
+    A.class "sm:focus:from-pink-300"
+
+
+smFocusFromPink400 : Html.Attribute msg
+smFocusFromPink400 =
+    A.class "sm:focus:from-pink-400"
+
+
+smFocusFromPink500 : Html.Attribute msg
+smFocusFromPink500 =
+    A.class "sm:focus:from-pink-500"
+
+
+smFocusFromPink600 : Html.Attribute msg
+smFocusFromPink600 =
+    A.class "sm:focus:from-pink-600"
+
+
+smFocusFromPink700 : Html.Attribute msg
+smFocusFromPink700 =
+    A.class "sm:focus:from-pink-700"
+
+
+smFocusFromPink800 : Html.Attribute msg
+smFocusFromPink800 =
+    A.class "sm:focus:from-pink-800"
+
+
+smFocusFromPink900 : Html.Attribute msg
+smFocusFromPink900 =
+    A.class "sm:focus:from-pink-900"
+
+
+smFocusViaTransparent : Html.Attribute msg
+smFocusViaTransparent =
+    A.class "sm:focus:via-transparent"
+
+
+smFocusViaCurrent : Html.Attribute msg
+smFocusViaCurrent =
+    A.class "sm:focus:via-current"
+
+
+smFocusViaBlack : Html.Attribute msg
+smFocusViaBlack =
+    A.class "sm:focus:via-black"
+
+
+smFocusViaWhite : Html.Attribute msg
+smFocusViaWhite =
+    A.class "sm:focus:via-white"
+
+
+smFocusViaGray100 : Html.Attribute msg
+smFocusViaGray100 =
+    A.class "sm:focus:via-gray-100"
+
+
+smFocusViaGray200 : Html.Attribute msg
+smFocusViaGray200 =
+    A.class "sm:focus:via-gray-200"
+
+
+smFocusViaGray300 : Html.Attribute msg
+smFocusViaGray300 =
+    A.class "sm:focus:via-gray-300"
+
+
+smFocusViaGray400 : Html.Attribute msg
+smFocusViaGray400 =
+    A.class "sm:focus:via-gray-400"
+
+
+smFocusViaGray500 : Html.Attribute msg
+smFocusViaGray500 =
+    A.class "sm:focus:via-gray-500"
+
+
+smFocusViaGray600 : Html.Attribute msg
+smFocusViaGray600 =
+    A.class "sm:focus:via-gray-600"
+
+
+smFocusViaGray700 : Html.Attribute msg
+smFocusViaGray700 =
+    A.class "sm:focus:via-gray-700"
+
+
+smFocusViaGray800 : Html.Attribute msg
+smFocusViaGray800 =
+    A.class "sm:focus:via-gray-800"
+
+
+smFocusViaGray900 : Html.Attribute msg
+smFocusViaGray900 =
+    A.class "sm:focus:via-gray-900"
+
+
+smFocusViaRed100 : Html.Attribute msg
+smFocusViaRed100 =
+    A.class "sm:focus:via-red-100"
+
+
+smFocusViaRed200 : Html.Attribute msg
+smFocusViaRed200 =
+    A.class "sm:focus:via-red-200"
+
+
+smFocusViaRed300 : Html.Attribute msg
+smFocusViaRed300 =
+    A.class "sm:focus:via-red-300"
+
+
+smFocusViaRed400 : Html.Attribute msg
+smFocusViaRed400 =
+    A.class "sm:focus:via-red-400"
+
+
+smFocusViaRed500 : Html.Attribute msg
+smFocusViaRed500 =
+    A.class "sm:focus:via-red-500"
+
+
+smFocusViaRed600 : Html.Attribute msg
+smFocusViaRed600 =
+    A.class "sm:focus:via-red-600"
+
+
+smFocusViaRed700 : Html.Attribute msg
+smFocusViaRed700 =
+    A.class "sm:focus:via-red-700"
+
+
+smFocusViaRed800 : Html.Attribute msg
+smFocusViaRed800 =
+    A.class "sm:focus:via-red-800"
+
+
+smFocusViaRed900 : Html.Attribute msg
+smFocusViaRed900 =
+    A.class "sm:focus:via-red-900"
+
+
+smFocusViaOrange100 : Html.Attribute msg
+smFocusViaOrange100 =
+    A.class "sm:focus:via-orange-100"
+
+
+smFocusViaOrange200 : Html.Attribute msg
+smFocusViaOrange200 =
+    A.class "sm:focus:via-orange-200"
+
+
+smFocusViaOrange300 : Html.Attribute msg
+smFocusViaOrange300 =
+    A.class "sm:focus:via-orange-300"
+
+
+smFocusViaOrange400 : Html.Attribute msg
+smFocusViaOrange400 =
+    A.class "sm:focus:via-orange-400"
+
+
+smFocusViaOrange500 : Html.Attribute msg
+smFocusViaOrange500 =
+    A.class "sm:focus:via-orange-500"
+
+
+smFocusViaOrange600 : Html.Attribute msg
+smFocusViaOrange600 =
+    A.class "sm:focus:via-orange-600"
+
+
+smFocusViaOrange700 : Html.Attribute msg
+smFocusViaOrange700 =
+    A.class "sm:focus:via-orange-700"
+
+
+smFocusViaOrange800 : Html.Attribute msg
+smFocusViaOrange800 =
+    A.class "sm:focus:via-orange-800"
+
+
+smFocusViaOrange900 : Html.Attribute msg
+smFocusViaOrange900 =
+    A.class "sm:focus:via-orange-900"
+
+
+smFocusViaYellow100 : Html.Attribute msg
+smFocusViaYellow100 =
+    A.class "sm:focus:via-yellow-100"
+
+
+smFocusViaYellow200 : Html.Attribute msg
+smFocusViaYellow200 =
+    A.class "sm:focus:via-yellow-200"
+
+
+smFocusViaYellow300 : Html.Attribute msg
+smFocusViaYellow300 =
+    A.class "sm:focus:via-yellow-300"
+
+
+smFocusViaYellow400 : Html.Attribute msg
+smFocusViaYellow400 =
+    A.class "sm:focus:via-yellow-400"
+
+
+smFocusViaYellow500 : Html.Attribute msg
+smFocusViaYellow500 =
+    A.class "sm:focus:via-yellow-500"
+
+
+smFocusViaYellow600 : Html.Attribute msg
+smFocusViaYellow600 =
+    A.class "sm:focus:via-yellow-600"
+
+
+smFocusViaYellow700 : Html.Attribute msg
+smFocusViaYellow700 =
+    A.class "sm:focus:via-yellow-700"
+
+
+smFocusViaYellow800 : Html.Attribute msg
+smFocusViaYellow800 =
+    A.class "sm:focus:via-yellow-800"
+
+
+smFocusViaYellow900 : Html.Attribute msg
+smFocusViaYellow900 =
+    A.class "sm:focus:via-yellow-900"
+
+
+smFocusViaGreen100 : Html.Attribute msg
+smFocusViaGreen100 =
+    A.class "sm:focus:via-green-100"
+
+
+smFocusViaGreen200 : Html.Attribute msg
+smFocusViaGreen200 =
+    A.class "sm:focus:via-green-200"
+
+
+smFocusViaGreen300 : Html.Attribute msg
+smFocusViaGreen300 =
+    A.class "sm:focus:via-green-300"
+
+
+smFocusViaGreen400 : Html.Attribute msg
+smFocusViaGreen400 =
+    A.class "sm:focus:via-green-400"
+
+
+smFocusViaGreen500 : Html.Attribute msg
+smFocusViaGreen500 =
+    A.class "sm:focus:via-green-500"
+
+
+smFocusViaGreen600 : Html.Attribute msg
+smFocusViaGreen600 =
+    A.class "sm:focus:via-green-600"
+
+
+smFocusViaGreen700 : Html.Attribute msg
+smFocusViaGreen700 =
+    A.class "sm:focus:via-green-700"
+
+
+smFocusViaGreen800 : Html.Attribute msg
+smFocusViaGreen800 =
+    A.class "sm:focus:via-green-800"
+
+
+smFocusViaGreen900 : Html.Attribute msg
+smFocusViaGreen900 =
+    A.class "sm:focus:via-green-900"
+
+
+smFocusViaTeal100 : Html.Attribute msg
+smFocusViaTeal100 =
+    A.class "sm:focus:via-teal-100"
+
+
+smFocusViaTeal200 : Html.Attribute msg
+smFocusViaTeal200 =
+    A.class "sm:focus:via-teal-200"
+
+
+smFocusViaTeal300 : Html.Attribute msg
+smFocusViaTeal300 =
+    A.class "sm:focus:via-teal-300"
+
+
+smFocusViaTeal400 : Html.Attribute msg
+smFocusViaTeal400 =
+    A.class "sm:focus:via-teal-400"
+
+
+smFocusViaTeal500 : Html.Attribute msg
+smFocusViaTeal500 =
+    A.class "sm:focus:via-teal-500"
+
+
+smFocusViaTeal600 : Html.Attribute msg
+smFocusViaTeal600 =
+    A.class "sm:focus:via-teal-600"
+
+
+smFocusViaTeal700 : Html.Attribute msg
+smFocusViaTeal700 =
+    A.class "sm:focus:via-teal-700"
+
+
+smFocusViaTeal800 : Html.Attribute msg
+smFocusViaTeal800 =
+    A.class "sm:focus:via-teal-800"
+
+
+smFocusViaTeal900 : Html.Attribute msg
+smFocusViaTeal900 =
+    A.class "sm:focus:via-teal-900"
+
+
+smFocusViaBlue100 : Html.Attribute msg
+smFocusViaBlue100 =
+    A.class "sm:focus:via-blue-100"
+
+
+smFocusViaBlue200 : Html.Attribute msg
+smFocusViaBlue200 =
+    A.class "sm:focus:via-blue-200"
+
+
+smFocusViaBlue300 : Html.Attribute msg
+smFocusViaBlue300 =
+    A.class "sm:focus:via-blue-300"
+
+
+smFocusViaBlue400 : Html.Attribute msg
+smFocusViaBlue400 =
+    A.class "sm:focus:via-blue-400"
+
+
+smFocusViaBlue500 : Html.Attribute msg
+smFocusViaBlue500 =
+    A.class "sm:focus:via-blue-500"
+
+
+smFocusViaBlue600 : Html.Attribute msg
+smFocusViaBlue600 =
+    A.class "sm:focus:via-blue-600"
+
+
+smFocusViaBlue700 : Html.Attribute msg
+smFocusViaBlue700 =
+    A.class "sm:focus:via-blue-700"
+
+
+smFocusViaBlue800 : Html.Attribute msg
+smFocusViaBlue800 =
+    A.class "sm:focus:via-blue-800"
+
+
+smFocusViaBlue900 : Html.Attribute msg
+smFocusViaBlue900 =
+    A.class "sm:focus:via-blue-900"
+
+
+smFocusViaIndigo100 : Html.Attribute msg
+smFocusViaIndigo100 =
+    A.class "sm:focus:via-indigo-100"
+
+
+smFocusViaIndigo200 : Html.Attribute msg
+smFocusViaIndigo200 =
+    A.class "sm:focus:via-indigo-200"
+
+
+smFocusViaIndigo300 : Html.Attribute msg
+smFocusViaIndigo300 =
+    A.class "sm:focus:via-indigo-300"
+
+
+smFocusViaIndigo400 : Html.Attribute msg
+smFocusViaIndigo400 =
+    A.class "sm:focus:via-indigo-400"
+
+
+smFocusViaIndigo500 : Html.Attribute msg
+smFocusViaIndigo500 =
+    A.class "sm:focus:via-indigo-500"
+
+
+smFocusViaIndigo600 : Html.Attribute msg
+smFocusViaIndigo600 =
+    A.class "sm:focus:via-indigo-600"
+
+
+smFocusViaIndigo700 : Html.Attribute msg
+smFocusViaIndigo700 =
+    A.class "sm:focus:via-indigo-700"
+
+
+smFocusViaIndigo800 : Html.Attribute msg
+smFocusViaIndigo800 =
+    A.class "sm:focus:via-indigo-800"
+
+
+smFocusViaIndigo900 : Html.Attribute msg
+smFocusViaIndigo900 =
+    A.class "sm:focus:via-indigo-900"
+
+
+smFocusViaPurple100 : Html.Attribute msg
+smFocusViaPurple100 =
+    A.class "sm:focus:via-purple-100"
+
+
+smFocusViaPurple200 : Html.Attribute msg
+smFocusViaPurple200 =
+    A.class "sm:focus:via-purple-200"
+
+
+smFocusViaPurple300 : Html.Attribute msg
+smFocusViaPurple300 =
+    A.class "sm:focus:via-purple-300"
+
+
+smFocusViaPurple400 : Html.Attribute msg
+smFocusViaPurple400 =
+    A.class "sm:focus:via-purple-400"
+
+
+smFocusViaPurple500 : Html.Attribute msg
+smFocusViaPurple500 =
+    A.class "sm:focus:via-purple-500"
+
+
+smFocusViaPurple600 : Html.Attribute msg
+smFocusViaPurple600 =
+    A.class "sm:focus:via-purple-600"
+
+
+smFocusViaPurple700 : Html.Attribute msg
+smFocusViaPurple700 =
+    A.class "sm:focus:via-purple-700"
+
+
+smFocusViaPurple800 : Html.Attribute msg
+smFocusViaPurple800 =
+    A.class "sm:focus:via-purple-800"
+
+
+smFocusViaPurple900 : Html.Attribute msg
+smFocusViaPurple900 =
+    A.class "sm:focus:via-purple-900"
+
+
+smFocusViaPink100 : Html.Attribute msg
+smFocusViaPink100 =
+    A.class "sm:focus:via-pink-100"
+
+
+smFocusViaPink200 : Html.Attribute msg
+smFocusViaPink200 =
+    A.class "sm:focus:via-pink-200"
+
+
+smFocusViaPink300 : Html.Attribute msg
+smFocusViaPink300 =
+    A.class "sm:focus:via-pink-300"
+
+
+smFocusViaPink400 : Html.Attribute msg
+smFocusViaPink400 =
+    A.class "sm:focus:via-pink-400"
+
+
+smFocusViaPink500 : Html.Attribute msg
+smFocusViaPink500 =
+    A.class "sm:focus:via-pink-500"
+
+
+smFocusViaPink600 : Html.Attribute msg
+smFocusViaPink600 =
+    A.class "sm:focus:via-pink-600"
+
+
+smFocusViaPink700 : Html.Attribute msg
+smFocusViaPink700 =
+    A.class "sm:focus:via-pink-700"
+
+
+smFocusViaPink800 : Html.Attribute msg
+smFocusViaPink800 =
+    A.class "sm:focus:via-pink-800"
+
+
+smFocusViaPink900 : Html.Attribute msg
+smFocusViaPink900 =
+    A.class "sm:focus:via-pink-900"
+
+
+smFocusToTransparent : Html.Attribute msg
+smFocusToTransparent =
+    A.class "sm:focus:to-transparent"
+
+
+smFocusToCurrent : Html.Attribute msg
+smFocusToCurrent =
+    A.class "sm:focus:to-current"
+
+
+smFocusToBlack : Html.Attribute msg
+smFocusToBlack =
+    A.class "sm:focus:to-black"
+
+
+smFocusToWhite : Html.Attribute msg
+smFocusToWhite =
+    A.class "sm:focus:to-white"
+
+
+smFocusToGray100 : Html.Attribute msg
+smFocusToGray100 =
+    A.class "sm:focus:to-gray-100"
+
+
+smFocusToGray200 : Html.Attribute msg
+smFocusToGray200 =
+    A.class "sm:focus:to-gray-200"
+
+
+smFocusToGray300 : Html.Attribute msg
+smFocusToGray300 =
+    A.class "sm:focus:to-gray-300"
+
+
+smFocusToGray400 : Html.Attribute msg
+smFocusToGray400 =
+    A.class "sm:focus:to-gray-400"
+
+
+smFocusToGray500 : Html.Attribute msg
+smFocusToGray500 =
+    A.class "sm:focus:to-gray-500"
+
+
+smFocusToGray600 : Html.Attribute msg
+smFocusToGray600 =
+    A.class "sm:focus:to-gray-600"
+
+
+smFocusToGray700 : Html.Attribute msg
+smFocusToGray700 =
+    A.class "sm:focus:to-gray-700"
+
+
+smFocusToGray800 : Html.Attribute msg
+smFocusToGray800 =
+    A.class "sm:focus:to-gray-800"
+
+
+smFocusToGray900 : Html.Attribute msg
+smFocusToGray900 =
+    A.class "sm:focus:to-gray-900"
+
+
+smFocusToRed100 : Html.Attribute msg
+smFocusToRed100 =
+    A.class "sm:focus:to-red-100"
+
+
+smFocusToRed200 : Html.Attribute msg
+smFocusToRed200 =
+    A.class "sm:focus:to-red-200"
+
+
+smFocusToRed300 : Html.Attribute msg
+smFocusToRed300 =
+    A.class "sm:focus:to-red-300"
+
+
+smFocusToRed400 : Html.Attribute msg
+smFocusToRed400 =
+    A.class "sm:focus:to-red-400"
+
+
+smFocusToRed500 : Html.Attribute msg
+smFocusToRed500 =
+    A.class "sm:focus:to-red-500"
+
+
+smFocusToRed600 : Html.Attribute msg
+smFocusToRed600 =
+    A.class "sm:focus:to-red-600"
+
+
+smFocusToRed700 : Html.Attribute msg
+smFocusToRed700 =
+    A.class "sm:focus:to-red-700"
+
+
+smFocusToRed800 : Html.Attribute msg
+smFocusToRed800 =
+    A.class "sm:focus:to-red-800"
+
+
+smFocusToRed900 : Html.Attribute msg
+smFocusToRed900 =
+    A.class "sm:focus:to-red-900"
+
+
+smFocusToOrange100 : Html.Attribute msg
+smFocusToOrange100 =
+    A.class "sm:focus:to-orange-100"
+
+
+smFocusToOrange200 : Html.Attribute msg
+smFocusToOrange200 =
+    A.class "sm:focus:to-orange-200"
+
+
+smFocusToOrange300 : Html.Attribute msg
+smFocusToOrange300 =
+    A.class "sm:focus:to-orange-300"
+
+
+smFocusToOrange400 : Html.Attribute msg
+smFocusToOrange400 =
+    A.class "sm:focus:to-orange-400"
+
+
+smFocusToOrange500 : Html.Attribute msg
+smFocusToOrange500 =
+    A.class "sm:focus:to-orange-500"
+
+
+smFocusToOrange600 : Html.Attribute msg
+smFocusToOrange600 =
+    A.class "sm:focus:to-orange-600"
+
+
+smFocusToOrange700 : Html.Attribute msg
+smFocusToOrange700 =
+    A.class "sm:focus:to-orange-700"
+
+
+smFocusToOrange800 : Html.Attribute msg
+smFocusToOrange800 =
+    A.class "sm:focus:to-orange-800"
+
+
+smFocusToOrange900 : Html.Attribute msg
+smFocusToOrange900 =
+    A.class "sm:focus:to-orange-900"
+
+
+smFocusToYellow100 : Html.Attribute msg
+smFocusToYellow100 =
+    A.class "sm:focus:to-yellow-100"
+
+
+smFocusToYellow200 : Html.Attribute msg
+smFocusToYellow200 =
+    A.class "sm:focus:to-yellow-200"
+
+
+smFocusToYellow300 : Html.Attribute msg
+smFocusToYellow300 =
+    A.class "sm:focus:to-yellow-300"
+
+
+smFocusToYellow400 : Html.Attribute msg
+smFocusToYellow400 =
+    A.class "sm:focus:to-yellow-400"
+
+
+smFocusToYellow500 : Html.Attribute msg
+smFocusToYellow500 =
+    A.class "sm:focus:to-yellow-500"
+
+
+smFocusToYellow600 : Html.Attribute msg
+smFocusToYellow600 =
+    A.class "sm:focus:to-yellow-600"
+
+
+smFocusToYellow700 : Html.Attribute msg
+smFocusToYellow700 =
+    A.class "sm:focus:to-yellow-700"
+
+
+smFocusToYellow800 : Html.Attribute msg
+smFocusToYellow800 =
+    A.class "sm:focus:to-yellow-800"
+
+
+smFocusToYellow900 : Html.Attribute msg
+smFocusToYellow900 =
+    A.class "sm:focus:to-yellow-900"
+
+
+smFocusToGreen100 : Html.Attribute msg
+smFocusToGreen100 =
+    A.class "sm:focus:to-green-100"
+
+
+smFocusToGreen200 : Html.Attribute msg
+smFocusToGreen200 =
+    A.class "sm:focus:to-green-200"
+
+
+smFocusToGreen300 : Html.Attribute msg
+smFocusToGreen300 =
+    A.class "sm:focus:to-green-300"
+
+
+smFocusToGreen400 : Html.Attribute msg
+smFocusToGreen400 =
+    A.class "sm:focus:to-green-400"
+
+
+smFocusToGreen500 : Html.Attribute msg
+smFocusToGreen500 =
+    A.class "sm:focus:to-green-500"
+
+
+smFocusToGreen600 : Html.Attribute msg
+smFocusToGreen600 =
+    A.class "sm:focus:to-green-600"
+
+
+smFocusToGreen700 : Html.Attribute msg
+smFocusToGreen700 =
+    A.class "sm:focus:to-green-700"
+
+
+smFocusToGreen800 : Html.Attribute msg
+smFocusToGreen800 =
+    A.class "sm:focus:to-green-800"
+
+
+smFocusToGreen900 : Html.Attribute msg
+smFocusToGreen900 =
+    A.class "sm:focus:to-green-900"
+
+
+smFocusToTeal100 : Html.Attribute msg
+smFocusToTeal100 =
+    A.class "sm:focus:to-teal-100"
+
+
+smFocusToTeal200 : Html.Attribute msg
+smFocusToTeal200 =
+    A.class "sm:focus:to-teal-200"
+
+
+smFocusToTeal300 : Html.Attribute msg
+smFocusToTeal300 =
+    A.class "sm:focus:to-teal-300"
+
+
+smFocusToTeal400 : Html.Attribute msg
+smFocusToTeal400 =
+    A.class "sm:focus:to-teal-400"
+
+
+smFocusToTeal500 : Html.Attribute msg
+smFocusToTeal500 =
+    A.class "sm:focus:to-teal-500"
+
+
+smFocusToTeal600 : Html.Attribute msg
+smFocusToTeal600 =
+    A.class "sm:focus:to-teal-600"
+
+
+smFocusToTeal700 : Html.Attribute msg
+smFocusToTeal700 =
+    A.class "sm:focus:to-teal-700"
+
+
+smFocusToTeal800 : Html.Attribute msg
+smFocusToTeal800 =
+    A.class "sm:focus:to-teal-800"
+
+
+smFocusToTeal900 : Html.Attribute msg
+smFocusToTeal900 =
+    A.class "sm:focus:to-teal-900"
+
+
+smFocusToBlue100 : Html.Attribute msg
+smFocusToBlue100 =
+    A.class "sm:focus:to-blue-100"
+
+
+smFocusToBlue200 : Html.Attribute msg
+smFocusToBlue200 =
+    A.class "sm:focus:to-blue-200"
+
+
+smFocusToBlue300 : Html.Attribute msg
+smFocusToBlue300 =
+    A.class "sm:focus:to-blue-300"
+
+
+smFocusToBlue400 : Html.Attribute msg
+smFocusToBlue400 =
+    A.class "sm:focus:to-blue-400"
+
+
+smFocusToBlue500 : Html.Attribute msg
+smFocusToBlue500 =
+    A.class "sm:focus:to-blue-500"
+
+
+smFocusToBlue600 : Html.Attribute msg
+smFocusToBlue600 =
+    A.class "sm:focus:to-blue-600"
+
+
+smFocusToBlue700 : Html.Attribute msg
+smFocusToBlue700 =
+    A.class "sm:focus:to-blue-700"
+
+
+smFocusToBlue800 : Html.Attribute msg
+smFocusToBlue800 =
+    A.class "sm:focus:to-blue-800"
+
+
+smFocusToBlue900 : Html.Attribute msg
+smFocusToBlue900 =
+    A.class "sm:focus:to-blue-900"
+
+
+smFocusToIndigo100 : Html.Attribute msg
+smFocusToIndigo100 =
+    A.class "sm:focus:to-indigo-100"
+
+
+smFocusToIndigo200 : Html.Attribute msg
+smFocusToIndigo200 =
+    A.class "sm:focus:to-indigo-200"
+
+
+smFocusToIndigo300 : Html.Attribute msg
+smFocusToIndigo300 =
+    A.class "sm:focus:to-indigo-300"
+
+
+smFocusToIndigo400 : Html.Attribute msg
+smFocusToIndigo400 =
+    A.class "sm:focus:to-indigo-400"
+
+
+smFocusToIndigo500 : Html.Attribute msg
+smFocusToIndigo500 =
+    A.class "sm:focus:to-indigo-500"
+
+
+smFocusToIndigo600 : Html.Attribute msg
+smFocusToIndigo600 =
+    A.class "sm:focus:to-indigo-600"
+
+
+smFocusToIndigo700 : Html.Attribute msg
+smFocusToIndigo700 =
+    A.class "sm:focus:to-indigo-700"
+
+
+smFocusToIndigo800 : Html.Attribute msg
+smFocusToIndigo800 =
+    A.class "sm:focus:to-indigo-800"
+
+
+smFocusToIndigo900 : Html.Attribute msg
+smFocusToIndigo900 =
+    A.class "sm:focus:to-indigo-900"
+
+
+smFocusToPurple100 : Html.Attribute msg
+smFocusToPurple100 =
+    A.class "sm:focus:to-purple-100"
+
+
+smFocusToPurple200 : Html.Attribute msg
+smFocusToPurple200 =
+    A.class "sm:focus:to-purple-200"
+
+
+smFocusToPurple300 : Html.Attribute msg
+smFocusToPurple300 =
+    A.class "sm:focus:to-purple-300"
+
+
+smFocusToPurple400 : Html.Attribute msg
+smFocusToPurple400 =
+    A.class "sm:focus:to-purple-400"
+
+
+smFocusToPurple500 : Html.Attribute msg
+smFocusToPurple500 =
+    A.class "sm:focus:to-purple-500"
+
+
+smFocusToPurple600 : Html.Attribute msg
+smFocusToPurple600 =
+    A.class "sm:focus:to-purple-600"
+
+
+smFocusToPurple700 : Html.Attribute msg
+smFocusToPurple700 =
+    A.class "sm:focus:to-purple-700"
+
+
+smFocusToPurple800 : Html.Attribute msg
+smFocusToPurple800 =
+    A.class "sm:focus:to-purple-800"
+
+
+smFocusToPurple900 : Html.Attribute msg
+smFocusToPurple900 =
+    A.class "sm:focus:to-purple-900"
+
+
+smFocusToPink100 : Html.Attribute msg
+smFocusToPink100 =
+    A.class "sm:focus:to-pink-100"
+
+
+smFocusToPink200 : Html.Attribute msg
+smFocusToPink200 =
+    A.class "sm:focus:to-pink-200"
+
+
+smFocusToPink300 : Html.Attribute msg
+smFocusToPink300 =
+    A.class "sm:focus:to-pink-300"
+
+
+smFocusToPink400 : Html.Attribute msg
+smFocusToPink400 =
+    A.class "sm:focus:to-pink-400"
+
+
+smFocusToPink500 : Html.Attribute msg
+smFocusToPink500 =
+    A.class "sm:focus:to-pink-500"
+
+
+smFocusToPink600 : Html.Attribute msg
+smFocusToPink600 =
+    A.class "sm:focus:to-pink-600"
+
+
+smFocusToPink700 : Html.Attribute msg
+smFocusToPink700 =
+    A.class "sm:focus:to-pink-700"
+
+
+smFocusToPink800 : Html.Attribute msg
+smFocusToPink800 =
+    A.class "sm:focus:to-pink-800"
+
+
+smFocusToPink900 : Html.Attribute msg
+smFocusToPink900 =
+    A.class "sm:focus:to-pink-900"
 
 
 smBgOpacity0 : Html.Attribute msg
@@ -31787,6 +46226,21 @@ smRoundedLg =
     A.class "sm:rounded-lg"
 
 
+smRoundedXl : Html.Attribute msg
+smRoundedXl =
+    A.class "sm:rounded-xl"
+
+
+smRounded2xl : Html.Attribute msg
+smRounded2xl =
+    A.class "sm:rounded-2xl"
+
+
+smRounded3xl : Html.Attribute msg
+smRounded3xl =
+    A.class "sm:rounded-3xl"
+
+
 smRoundedFull : Html.Attribute msg
 smRoundedFull =
     A.class "sm:rounded-full"
@@ -31890,6 +46344,66 @@ smRoundedBLg =
 smRoundedLLg : Html.Attribute msg
 smRoundedLLg =
     A.class "sm:rounded-l-lg"
+
+
+smRoundedTXl : Html.Attribute msg
+smRoundedTXl =
+    A.class "sm:rounded-t-xl"
+
+
+smRoundedRXl : Html.Attribute msg
+smRoundedRXl =
+    A.class "sm:rounded-r-xl"
+
+
+smRoundedBXl : Html.Attribute msg
+smRoundedBXl =
+    A.class "sm:rounded-b-xl"
+
+
+smRoundedLXl : Html.Attribute msg
+smRoundedLXl =
+    A.class "sm:rounded-l-xl"
+
+
+smRoundedT2xl : Html.Attribute msg
+smRoundedT2xl =
+    A.class "sm:rounded-t-2xl"
+
+
+smRoundedR2xl : Html.Attribute msg
+smRoundedR2xl =
+    A.class "sm:rounded-r-2xl"
+
+
+smRoundedB2xl : Html.Attribute msg
+smRoundedB2xl =
+    A.class "sm:rounded-b-2xl"
+
+
+smRoundedL2xl : Html.Attribute msg
+smRoundedL2xl =
+    A.class "sm:rounded-l-2xl"
+
+
+smRoundedT3xl : Html.Attribute msg
+smRoundedT3xl =
+    A.class "sm:rounded-t-3xl"
+
+
+smRoundedR3xl : Html.Attribute msg
+smRoundedR3xl =
+    A.class "sm:rounded-r-3xl"
+
+
+smRoundedB3xl : Html.Attribute msg
+smRoundedB3xl =
+    A.class "sm:rounded-b-3xl"
+
+
+smRoundedL3xl : Html.Attribute msg
+smRoundedL3xl =
+    A.class "sm:rounded-l-3xl"
 
 
 smRoundedTFull : Html.Attribute msg
@@ -32010,6 +46524,66 @@ smRoundedBrLg =
 smRoundedBlLg : Html.Attribute msg
 smRoundedBlLg =
     A.class "sm:rounded-bl-lg"
+
+
+smRoundedTlXl : Html.Attribute msg
+smRoundedTlXl =
+    A.class "sm:rounded-tl-xl"
+
+
+smRoundedTrXl : Html.Attribute msg
+smRoundedTrXl =
+    A.class "sm:rounded-tr-xl"
+
+
+smRoundedBrXl : Html.Attribute msg
+smRoundedBrXl =
+    A.class "sm:rounded-br-xl"
+
+
+smRoundedBlXl : Html.Attribute msg
+smRoundedBlXl =
+    A.class "sm:rounded-bl-xl"
+
+
+smRoundedTl2xl : Html.Attribute msg
+smRoundedTl2xl =
+    A.class "sm:rounded-tl-2xl"
+
+
+smRoundedTr2xl : Html.Attribute msg
+smRoundedTr2xl =
+    A.class "sm:rounded-tr-2xl"
+
+
+smRoundedBr2xl : Html.Attribute msg
+smRoundedBr2xl =
+    A.class "sm:rounded-br-2xl"
+
+
+smRoundedBl2xl : Html.Attribute msg
+smRoundedBl2xl =
+    A.class "sm:rounded-bl-2xl"
+
+
+smRoundedTl3xl : Html.Attribute msg
+smRoundedTl3xl =
+    A.class "sm:rounded-tl-3xl"
+
+
+smRoundedTr3xl : Html.Attribute msg
+smRoundedTr3xl =
+    A.class "sm:rounded-tr-3xl"
+
+
+smRoundedBr3xl : Html.Attribute msg
+smRoundedBr3xl =
+    A.class "sm:rounded-br-3xl"
+
+
+smRoundedBl3xl : Html.Attribute msg
+smRoundedBl3xl =
+    A.class "sm:rounded-bl-3xl"
 
 
 smRoundedTlFull : Html.Attribute msg
@@ -32312,6 +46886,11 @@ smInlineGrid =
     A.class "sm:inline-grid"
 
 
+smContents : Html.Attribute msg
+smContents =
+    A.class "sm:contents"
+
+
 smHidden : Html.Attribute msg
 smHidden =
     A.class "sm:hidden"
@@ -32352,6 +46931,91 @@ smFlexNoWrap =
     A.class "sm:flex-no-wrap"
 
 
+smPlaceItemsAuto : Html.Attribute msg
+smPlaceItemsAuto =
+    A.class "sm:place-items-auto"
+
+
+smPlaceItemsStart : Html.Attribute msg
+smPlaceItemsStart =
+    A.class "sm:place-items-start"
+
+
+smPlaceItemsEnd : Html.Attribute msg
+smPlaceItemsEnd =
+    A.class "sm:place-items-end"
+
+
+smPlaceItemsCenter : Html.Attribute msg
+smPlaceItemsCenter =
+    A.class "sm:place-items-center"
+
+
+smPlaceItemsStretch : Html.Attribute msg
+smPlaceItemsStretch =
+    A.class "sm:place-items-stretch"
+
+
+smPlaceContentCenter : Html.Attribute msg
+smPlaceContentCenter =
+    A.class "sm:place-content-center"
+
+
+smPlaceContentStart : Html.Attribute msg
+smPlaceContentStart =
+    A.class "sm:place-content-start"
+
+
+smPlaceContentEnd : Html.Attribute msg
+smPlaceContentEnd =
+    A.class "sm:place-content-end"
+
+
+smPlaceContentBetween : Html.Attribute msg
+smPlaceContentBetween =
+    A.class "sm:place-content-between"
+
+
+smPlaceContentAround : Html.Attribute msg
+smPlaceContentAround =
+    A.class "sm:place-content-around"
+
+
+smPlaceContentEvenly : Html.Attribute msg
+smPlaceContentEvenly =
+    A.class "sm:place-content-evenly"
+
+
+smPlaceContentStretch : Html.Attribute msg
+smPlaceContentStretch =
+    A.class "sm:place-content-stretch"
+
+
+smPlaceSelfAuto : Html.Attribute msg
+smPlaceSelfAuto =
+    A.class "sm:place-self-auto"
+
+
+smPlaceSelfStart : Html.Attribute msg
+smPlaceSelfStart =
+    A.class "sm:place-self-start"
+
+
+smPlaceSelfEnd : Html.Attribute msg
+smPlaceSelfEnd =
+    A.class "sm:place-self-end"
+
+
+smPlaceSelfCenter : Html.Attribute msg
+smPlaceSelfCenter =
+    A.class "sm:place-self-center"
+
+
+smPlaceSelfStretch : Html.Attribute msg
+smPlaceSelfStretch =
+    A.class "sm:place-self-stretch"
+
+
 smItemsStart : Html.Attribute msg
 smItemsStart =
     A.class "sm:items-start"
@@ -32377,6 +47041,36 @@ smItemsStretch =
     A.class "sm:items-stretch"
 
 
+smContentCenter : Html.Attribute msg
+smContentCenter =
+    A.class "sm:content-center"
+
+
+smContentStart : Html.Attribute msg
+smContentStart =
+    A.class "sm:content-start"
+
+
+smContentEnd : Html.Attribute msg
+smContentEnd =
+    A.class "sm:content-end"
+
+
+smContentBetween : Html.Attribute msg
+smContentBetween =
+    A.class "sm:content-between"
+
+
+smContentAround : Html.Attribute msg
+smContentAround =
+    A.class "sm:content-around"
+
+
+smContentEvenly : Html.Attribute msg
+smContentEvenly =
+    A.class "sm:content-evenly"
+
+
 smSelfAuto : Html.Attribute msg
 smSelfAuto =
     A.class "sm:self-auto"
@@ -32400,6 +47094,31 @@ smSelfCenter =
 smSelfStretch : Html.Attribute msg
 smSelfStretch =
     A.class "sm:self-stretch"
+
+
+smJustifyItemsAuto : Html.Attribute msg
+smJustifyItemsAuto =
+    A.class "sm:justify-items-auto"
+
+
+smJustifyItemsStart : Html.Attribute msg
+smJustifyItemsStart =
+    A.class "sm:justify-items-start"
+
+
+smJustifyItemsEnd : Html.Attribute msg
+smJustifyItemsEnd =
+    A.class "sm:justify-items-end"
+
+
+smJustifyItemsCenter : Html.Attribute msg
+smJustifyItemsCenter =
+    A.class "sm:justify-items-center"
+
+
+smJustifyItemsStretch : Html.Attribute msg
+smJustifyItemsStretch =
+    A.class "sm:justify-items-stretch"
 
 
 smJustifyStart : Html.Attribute msg
@@ -32432,29 +47151,29 @@ smJustifyEvenly =
     A.class "sm:justify-evenly"
 
 
-smContentCenter : Html.Attribute msg
-smContentCenter =
-    A.class "sm:content-center"
+smJustifySelfAuto : Html.Attribute msg
+smJustifySelfAuto =
+    A.class "sm:justify-self-auto"
 
 
-smContentStart : Html.Attribute msg
-smContentStart =
-    A.class "sm:content-start"
+smJustifySelfStart : Html.Attribute msg
+smJustifySelfStart =
+    A.class "sm:justify-self-start"
 
 
-smContentEnd : Html.Attribute msg
-smContentEnd =
-    A.class "sm:content-end"
+smJustifySelfEnd : Html.Attribute msg
+smJustifySelfEnd =
+    A.class "sm:justify-self-end"
 
 
-smContentBetween : Html.Attribute msg
-smContentBetween =
-    A.class "sm:content-between"
+smJustifySelfCenter : Html.Attribute msg
+smJustifySelfCenter =
+    A.class "sm:justify-self-center"
 
 
-smContentAround : Html.Attribute msg
-smContentAround =
-    A.class "sm:content-around"
+smJustifySelfStretch : Html.Attribute msg
+smJustifySelfStretch =
+    A.class "sm:justify-self-stretch"
 
 
 smFlex1 : Html.Attribute msg
@@ -34617,9 +49336,29 @@ smOutlineNone =
     A.class "sm:outline-none"
 
 
+smOutlineWhite : Html.Attribute msg
+smOutlineWhite =
+    A.class "sm:outline-white"
+
+
+smOutlineBlack : Html.Attribute msg
+smOutlineBlack =
+    A.class "sm:outline-black"
+
+
 smFocusOutlineNone : Html.Attribute msg
 smFocusOutlineNone =
     A.class "sm:focus:outline-none"
+
+
+smFocusOutlineWhite : Html.Attribute msg
+smFocusOutlineWhite =
+    A.class "sm:focus:outline-white"
+
+
+smFocusOutlineBlack : Html.Attribute msg
+smFocusOutlineBlack =
+    A.class "sm:focus:outline-black"
 
 
 smOverflowAuto : Html.Attribute msg
@@ -34690,6 +49429,51 @@ smScrollingTouch =
 smScrollingAuto : Html.Attribute msg
 smScrollingAuto =
     A.class "sm:scrolling-auto"
+
+
+smOverscrollAuto : Html.Attribute msg
+smOverscrollAuto =
+    A.class "sm:overscroll-auto"
+
+
+smOverscrollContain : Html.Attribute msg
+smOverscrollContain =
+    A.class "sm:overscroll-contain"
+
+
+smOverscrollNone : Html.Attribute msg
+smOverscrollNone =
+    A.class "sm:overscroll-none"
+
+
+smOverscrollYAuto : Html.Attribute msg
+smOverscrollYAuto =
+    A.class "sm:overscroll-y-auto"
+
+
+smOverscrollYContain : Html.Attribute msg
+smOverscrollYContain =
+    A.class "sm:overscroll-y-contain"
+
+
+smOverscrollYNone : Html.Attribute msg
+smOverscrollYNone =
+    A.class "sm:overscroll-y-none"
+
+
+smOverscrollXAuto : Html.Attribute msg
+smOverscrollXAuto =
+    A.class "sm:overscroll-x-auto"
+
+
+smOverscrollXContain : Html.Attribute msg
+smOverscrollXContain =
+    A.class "sm:overscroll-x-contain"
+
+
+smOverscrollXNone : Html.Attribute msg
+smOverscrollXNone =
+    A.class "sm:overscroll-x-none"
 
 
 smP0 : Html.Attribute msg
@@ -38247,6 +53031,51 @@ smSubpixelAntialiased =
     A.class "sm:subpixel-antialiased"
 
 
+smOrdinal : Html.Attribute msg
+smOrdinal =
+    A.class "sm:ordinal"
+
+
+smSlashedZero : Html.Attribute msg
+smSlashedZero =
+    A.class "sm:slashed-zero"
+
+
+smLiningNums : Html.Attribute msg
+smLiningNums =
+    A.class "sm:lining-nums"
+
+
+smOldstyleNums : Html.Attribute msg
+smOldstyleNums =
+    A.class "sm:oldstyle-nums"
+
+
+smProportionalNums : Html.Attribute msg
+smProportionalNums =
+    A.class "sm:proportional-nums"
+
+
+smTabularNums : Html.Attribute msg
+smTabularNums =
+    A.class "sm:tabular-nums"
+
+
+smDiagonalFractions : Html.Attribute msg
+smDiagonalFractions =
+    A.class "sm:diagonal-fractions"
+
+
+smStackedFractions : Html.Attribute msg
+smStackedFractions =
+    A.class "sm:stacked-fractions"
+
+
+smNormalNums : Html.Attribute msg
+smNormalNums =
+    A.class "sm:normal-nums"
+
+
 smTrackingTighter : Html.Attribute msg
 smTrackingTighter =
     A.class "sm:tracking-tighter"
@@ -38752,194 +53581,194 @@ smGapPx =
     A.class "sm:gap-px"
 
 
-smColGap0 : Html.Attribute msg
-smColGap0 =
-    A.class "sm:col-gap-0"
+smGapX0 : Html.Attribute msg
+smGapX0 =
+    A.class "sm:gap-x-0"
 
 
-smColGap1 : Html.Attribute msg
-smColGap1 =
-    A.class "sm:col-gap-1"
+smGapX1 : Html.Attribute msg
+smGapX1 =
+    A.class "sm:gap-x-1"
 
 
-smColGap2 : Html.Attribute msg
-smColGap2 =
-    A.class "sm:col-gap-2"
+smGapX2 : Html.Attribute msg
+smGapX2 =
+    A.class "sm:gap-x-2"
 
 
-smColGap3 : Html.Attribute msg
-smColGap3 =
-    A.class "sm:col-gap-3"
+smGapX3 : Html.Attribute msg
+smGapX3 =
+    A.class "sm:gap-x-3"
 
 
-smColGap4 : Html.Attribute msg
-smColGap4 =
-    A.class "sm:col-gap-4"
+smGapX4 : Html.Attribute msg
+smGapX4 =
+    A.class "sm:gap-x-4"
 
 
-smColGap5 : Html.Attribute msg
-smColGap5 =
-    A.class "sm:col-gap-5"
+smGapX5 : Html.Attribute msg
+smGapX5 =
+    A.class "sm:gap-x-5"
 
 
-smColGap6 : Html.Attribute msg
-smColGap6 =
-    A.class "sm:col-gap-6"
+smGapX6 : Html.Attribute msg
+smGapX6 =
+    A.class "sm:gap-x-6"
 
 
-smColGap8 : Html.Attribute msg
-smColGap8 =
-    A.class "sm:col-gap-8"
+smGapX8 : Html.Attribute msg
+smGapX8 =
+    A.class "sm:gap-x-8"
 
 
-smColGap10 : Html.Attribute msg
-smColGap10 =
-    A.class "sm:col-gap-10"
+smGapX10 : Html.Attribute msg
+smGapX10 =
+    A.class "sm:gap-x-10"
 
 
-smColGap12 : Html.Attribute msg
-smColGap12 =
-    A.class "sm:col-gap-12"
+smGapX12 : Html.Attribute msg
+smGapX12 =
+    A.class "sm:gap-x-12"
 
 
-smColGap16 : Html.Attribute msg
-smColGap16 =
-    A.class "sm:col-gap-16"
+smGapX16 : Html.Attribute msg
+smGapX16 =
+    A.class "sm:gap-x-16"
 
 
-smColGap20 : Html.Attribute msg
-smColGap20 =
-    A.class "sm:col-gap-20"
+smGapX20 : Html.Attribute msg
+smGapX20 =
+    A.class "sm:gap-x-20"
 
 
-smColGap24 : Html.Attribute msg
-smColGap24 =
-    A.class "sm:col-gap-24"
+smGapX24 : Html.Attribute msg
+smGapX24 =
+    A.class "sm:gap-x-24"
 
 
-smColGap32 : Html.Attribute msg
-smColGap32 =
-    A.class "sm:col-gap-32"
+smGapX32 : Html.Attribute msg
+smGapX32 =
+    A.class "sm:gap-x-32"
 
 
-smColGap40 : Html.Attribute msg
-smColGap40 =
-    A.class "sm:col-gap-40"
+smGapX40 : Html.Attribute msg
+smGapX40 =
+    A.class "sm:gap-x-40"
 
 
-smColGap48 : Html.Attribute msg
-smColGap48 =
-    A.class "sm:col-gap-48"
+smGapX48 : Html.Attribute msg
+smGapX48 =
+    A.class "sm:gap-x-48"
 
 
-smColGap56 : Html.Attribute msg
-smColGap56 =
-    A.class "sm:col-gap-56"
+smGapX56 : Html.Attribute msg
+smGapX56 =
+    A.class "sm:gap-x-56"
 
 
-smColGap64 : Html.Attribute msg
-smColGap64 =
-    A.class "sm:col-gap-64"
+smGapX64 : Html.Attribute msg
+smGapX64 =
+    A.class "sm:gap-x-64"
 
 
-smColGapPx : Html.Attribute msg
-smColGapPx =
-    A.class "sm:col-gap-px"
+smGapXPx : Html.Attribute msg
+smGapXPx =
+    A.class "sm:gap-x-px"
 
 
-smRowGap0 : Html.Attribute msg
-smRowGap0 =
-    A.class "sm:row-gap-0"
+smGapY0 : Html.Attribute msg
+smGapY0 =
+    A.class "sm:gap-y-0"
 
 
-smRowGap1 : Html.Attribute msg
-smRowGap1 =
-    A.class "sm:row-gap-1"
+smGapY1 : Html.Attribute msg
+smGapY1 =
+    A.class "sm:gap-y-1"
 
 
-smRowGap2 : Html.Attribute msg
-smRowGap2 =
-    A.class "sm:row-gap-2"
+smGapY2 : Html.Attribute msg
+smGapY2 =
+    A.class "sm:gap-y-2"
 
 
-smRowGap3 : Html.Attribute msg
-smRowGap3 =
-    A.class "sm:row-gap-3"
+smGapY3 : Html.Attribute msg
+smGapY3 =
+    A.class "sm:gap-y-3"
 
 
-smRowGap4 : Html.Attribute msg
-smRowGap4 =
-    A.class "sm:row-gap-4"
+smGapY4 : Html.Attribute msg
+smGapY4 =
+    A.class "sm:gap-y-4"
 
 
-smRowGap5 : Html.Attribute msg
-smRowGap5 =
-    A.class "sm:row-gap-5"
+smGapY5 : Html.Attribute msg
+smGapY5 =
+    A.class "sm:gap-y-5"
 
 
-smRowGap6 : Html.Attribute msg
-smRowGap6 =
-    A.class "sm:row-gap-6"
+smGapY6 : Html.Attribute msg
+smGapY6 =
+    A.class "sm:gap-y-6"
 
 
-smRowGap8 : Html.Attribute msg
-smRowGap8 =
-    A.class "sm:row-gap-8"
+smGapY8 : Html.Attribute msg
+smGapY8 =
+    A.class "sm:gap-y-8"
 
 
-smRowGap10 : Html.Attribute msg
-smRowGap10 =
-    A.class "sm:row-gap-10"
+smGapY10 : Html.Attribute msg
+smGapY10 =
+    A.class "sm:gap-y-10"
 
 
-smRowGap12 : Html.Attribute msg
-smRowGap12 =
-    A.class "sm:row-gap-12"
+smGapY12 : Html.Attribute msg
+smGapY12 =
+    A.class "sm:gap-y-12"
 
 
-smRowGap16 : Html.Attribute msg
-smRowGap16 =
-    A.class "sm:row-gap-16"
+smGapY16 : Html.Attribute msg
+smGapY16 =
+    A.class "sm:gap-y-16"
 
 
-smRowGap20 : Html.Attribute msg
-smRowGap20 =
-    A.class "sm:row-gap-20"
+smGapY20 : Html.Attribute msg
+smGapY20 =
+    A.class "sm:gap-y-20"
 
 
-smRowGap24 : Html.Attribute msg
-smRowGap24 =
-    A.class "sm:row-gap-24"
+smGapY24 : Html.Attribute msg
+smGapY24 =
+    A.class "sm:gap-y-24"
 
 
-smRowGap32 : Html.Attribute msg
-smRowGap32 =
-    A.class "sm:row-gap-32"
+smGapY32 : Html.Attribute msg
+smGapY32 =
+    A.class "sm:gap-y-32"
 
 
-smRowGap40 : Html.Attribute msg
-smRowGap40 =
-    A.class "sm:row-gap-40"
+smGapY40 : Html.Attribute msg
+smGapY40 =
+    A.class "sm:gap-y-40"
 
 
-smRowGap48 : Html.Attribute msg
-smRowGap48 =
-    A.class "sm:row-gap-48"
+smGapY48 : Html.Attribute msg
+smGapY48 =
+    A.class "sm:gap-y-48"
 
 
-smRowGap56 : Html.Attribute msg
-smRowGap56 =
-    A.class "sm:row-gap-56"
+smGapY56 : Html.Attribute msg
+smGapY56 =
+    A.class "sm:gap-y-56"
 
 
-smRowGap64 : Html.Attribute msg
-smRowGap64 =
-    A.class "sm:row-gap-64"
+smGapY64 : Html.Attribute msg
+smGapY64 =
+    A.class "sm:gap-y-64"
 
 
-smRowGapPx : Html.Attribute msg
-smRowGapPx =
-    A.class "sm:row-gap-px"
+smGapYPx : Html.Attribute msg
+smGapYPx =
+    A.class "sm:gap-y-px"
 
 
 smGridFlowRow : Html.Attribute msg
@@ -39027,6 +53856,26 @@ smGridColsNone =
     A.class "sm:grid-cols-none"
 
 
+smAutoColsAuto : Html.Attribute msg
+smAutoColsAuto =
+    A.class "sm:auto-cols-auto"
+
+
+smAutoColsMin : Html.Attribute msg
+smAutoColsMin =
+    A.class "sm:auto-cols-min"
+
+
+smAutoColsMax : Html.Attribute msg
+smAutoColsMax =
+    A.class "sm:auto-cols-max"
+
+
+smAutoColsFr : Html.Attribute msg
+smAutoColsFr =
+    A.class "sm:auto-cols-fr"
+
+
 smColAuto : Html.Attribute msg
 smColAuto =
     A.class "sm:col-auto"
@@ -39090,6 +53939,11 @@ smColSpan11 =
 smColSpan12 : Html.Attribute msg
 smColSpan12 =
     A.class "sm:col-span-12"
+
+
+smColSpanFull : Html.Attribute msg
+smColSpanFull =
+    A.class "sm:col-span-full"
 
 
 smColStart1 : Html.Attribute msg
@@ -39267,6 +54121,26 @@ smGridRowsNone =
     A.class "sm:grid-rows-none"
 
 
+smAutoRowsAuto : Html.Attribute msg
+smAutoRowsAuto =
+    A.class "sm:auto-rows-auto"
+
+
+smAutoRowsMin : Html.Attribute msg
+smAutoRowsMin =
+    A.class "sm:auto-rows-min"
+
+
+smAutoRowsMax : Html.Attribute msg
+smAutoRowsMax =
+    A.class "sm:auto-rows-max"
+
+
+smAutoRowsFr : Html.Attribute msg
+smAutoRowsFr =
+    A.class "sm:auto-rows-fr"
+
+
 smRowAuto : Html.Attribute msg
 smRowAuto =
     A.class "sm:row-auto"
@@ -39300,6 +54174,11 @@ smRowSpan5 =
 smRowSpan6 : Html.Attribute msg
 smRowSpan6 =
     A.class "sm:row-span-6"
+
+
+smRowSpanFull : Html.Attribute msg
+smRowSpanFull =
+    A.class "sm:row-span-full"
 
 
 smRowStart1 : Html.Attribute msg
@@ -39892,6 +54771,31 @@ smRotate0 =
     A.class "sm:rotate-0"
 
 
+smRotate1 : Html.Attribute msg
+smRotate1 =
+    A.class "sm:rotate-1"
+
+
+smRotate2 : Html.Attribute msg
+smRotate2 =
+    A.class "sm:rotate-2"
+
+
+smRotate3 : Html.Attribute msg
+smRotate3 =
+    A.class "sm:rotate-3"
+
+
+smRotate6 : Html.Attribute msg
+smRotate6 =
+    A.class "sm:rotate-6"
+
+
+smRotate12 : Html.Attribute msg
+smRotate12 =
+    A.class "sm:rotate-12"
+
+
 smRotate45 : Html.Attribute msg
 smRotate45 =
     A.class "sm:rotate-45"
@@ -39922,9 +54826,59 @@ smNegRotate45 =
     A.class "sm:-rotate-45"
 
 
+smNegRotate12 : Html.Attribute msg
+smNegRotate12 =
+    A.class "sm:-rotate-12"
+
+
+smNegRotate6 : Html.Attribute msg
+smNegRotate6 =
+    A.class "sm:-rotate-6"
+
+
+smNegRotate3 : Html.Attribute msg
+smNegRotate3 =
+    A.class "sm:-rotate-3"
+
+
+smNegRotate2 : Html.Attribute msg
+smNegRotate2 =
+    A.class "sm:-rotate-2"
+
+
+smNegRotate1 : Html.Attribute msg
+smNegRotate1 =
+    A.class "sm:-rotate-1"
+
+
 smHoverRotate0 : Html.Attribute msg
 smHoverRotate0 =
     A.class "sm:hover:rotate-0"
+
+
+smHoverRotate1 : Html.Attribute msg
+smHoverRotate1 =
+    A.class "sm:hover:rotate-1"
+
+
+smHoverRotate2 : Html.Attribute msg
+smHoverRotate2 =
+    A.class "sm:hover:rotate-2"
+
+
+smHoverRotate3 : Html.Attribute msg
+smHoverRotate3 =
+    A.class "sm:hover:rotate-3"
+
+
+smHoverRotate6 : Html.Attribute msg
+smHoverRotate6 =
+    A.class "sm:hover:rotate-6"
+
+
+smHoverRotate12 : Html.Attribute msg
+smHoverRotate12 =
+    A.class "sm:hover:rotate-12"
 
 
 smHoverRotate45 : Html.Attribute msg
@@ -39957,9 +54911,59 @@ smHoverNegRotate45 =
     A.class "sm:hover:-rotate-45"
 
 
+smHoverNegRotate12 : Html.Attribute msg
+smHoverNegRotate12 =
+    A.class "sm:hover:-rotate-12"
+
+
+smHoverNegRotate6 : Html.Attribute msg
+smHoverNegRotate6 =
+    A.class "sm:hover:-rotate-6"
+
+
+smHoverNegRotate3 : Html.Attribute msg
+smHoverNegRotate3 =
+    A.class "sm:hover:-rotate-3"
+
+
+smHoverNegRotate2 : Html.Attribute msg
+smHoverNegRotate2 =
+    A.class "sm:hover:-rotate-2"
+
+
+smHoverNegRotate1 : Html.Attribute msg
+smHoverNegRotate1 =
+    A.class "sm:hover:-rotate-1"
+
+
 smFocusRotate0 : Html.Attribute msg
 smFocusRotate0 =
     A.class "sm:focus:rotate-0"
+
+
+smFocusRotate1 : Html.Attribute msg
+smFocusRotate1 =
+    A.class "sm:focus:rotate-1"
+
+
+smFocusRotate2 : Html.Attribute msg
+smFocusRotate2 =
+    A.class "sm:focus:rotate-2"
+
+
+smFocusRotate3 : Html.Attribute msg
+smFocusRotate3 =
+    A.class "sm:focus:rotate-3"
+
+
+smFocusRotate6 : Html.Attribute msg
+smFocusRotate6 =
+    A.class "sm:focus:rotate-6"
+
+
+smFocusRotate12 : Html.Attribute msg
+smFocusRotate12 =
+    A.class "sm:focus:rotate-12"
 
 
 smFocusRotate45 : Html.Attribute msg
@@ -39990,6 +54994,31 @@ smFocusNegRotate90 =
 smFocusNegRotate45 : Html.Attribute msg
 smFocusNegRotate45 =
     A.class "sm:focus:-rotate-45"
+
+
+smFocusNegRotate12 : Html.Attribute msg
+smFocusNegRotate12 =
+    A.class "sm:focus:-rotate-12"
+
+
+smFocusNegRotate6 : Html.Attribute msg
+smFocusNegRotate6 =
+    A.class "sm:focus:-rotate-6"
+
+
+smFocusNegRotate3 : Html.Attribute msg
+smFocusNegRotate3 =
+    A.class "sm:focus:-rotate-3"
+
+
+smFocusNegRotate2 : Html.Attribute msg
+smFocusNegRotate2 =
+    A.class "sm:focus:-rotate-2"
+
+
+smFocusNegRotate1 : Html.Attribute msg
+smFocusNegRotate1 =
+    A.class "sm:focus:-rotate-1"
 
 
 smTranslateX0 : Html.Attribute msg
@@ -41227,6 +56256,16 @@ smSkewX0 =
     A.class "sm:skew-x-0"
 
 
+smSkewX1 : Html.Attribute msg
+smSkewX1 =
+    A.class "sm:skew-x-1"
+
+
+smSkewX2 : Html.Attribute msg
+smSkewX2 =
+    A.class "sm:skew-x-2"
+
+
 smSkewX3 : Html.Attribute msg
 smSkewX3 =
     A.class "sm:skew-x-3"
@@ -41257,9 +56296,29 @@ smNegSkewX3 =
     A.class "sm:-skew-x-3"
 
 
+smNegSkewX2 : Html.Attribute msg
+smNegSkewX2 =
+    A.class "sm:-skew-x-2"
+
+
+smNegSkewX1 : Html.Attribute msg
+smNegSkewX1 =
+    A.class "sm:-skew-x-1"
+
+
 smSkewY0 : Html.Attribute msg
 smSkewY0 =
     A.class "sm:skew-y-0"
+
+
+smSkewY1 : Html.Attribute msg
+smSkewY1 =
+    A.class "sm:skew-y-1"
+
+
+smSkewY2 : Html.Attribute msg
+smSkewY2 =
+    A.class "sm:skew-y-2"
 
 
 smSkewY3 : Html.Attribute msg
@@ -41292,9 +56351,29 @@ smNegSkewY3 =
     A.class "sm:-skew-y-3"
 
 
+smNegSkewY2 : Html.Attribute msg
+smNegSkewY2 =
+    A.class "sm:-skew-y-2"
+
+
+smNegSkewY1 : Html.Attribute msg
+smNegSkewY1 =
+    A.class "sm:-skew-y-1"
+
+
 smHoverSkewX0 : Html.Attribute msg
 smHoverSkewX0 =
     A.class "sm:hover:skew-x-0"
+
+
+smHoverSkewX1 : Html.Attribute msg
+smHoverSkewX1 =
+    A.class "sm:hover:skew-x-1"
+
+
+smHoverSkewX2 : Html.Attribute msg
+smHoverSkewX2 =
+    A.class "sm:hover:skew-x-2"
 
 
 smHoverSkewX3 : Html.Attribute msg
@@ -41327,9 +56406,29 @@ smHoverNegSkewX3 =
     A.class "sm:hover:-skew-x-3"
 
 
+smHoverNegSkewX2 : Html.Attribute msg
+smHoverNegSkewX2 =
+    A.class "sm:hover:-skew-x-2"
+
+
+smHoverNegSkewX1 : Html.Attribute msg
+smHoverNegSkewX1 =
+    A.class "sm:hover:-skew-x-1"
+
+
 smHoverSkewY0 : Html.Attribute msg
 smHoverSkewY0 =
     A.class "sm:hover:skew-y-0"
+
+
+smHoverSkewY1 : Html.Attribute msg
+smHoverSkewY1 =
+    A.class "sm:hover:skew-y-1"
+
+
+smHoverSkewY2 : Html.Attribute msg
+smHoverSkewY2 =
+    A.class "sm:hover:skew-y-2"
 
 
 smHoverSkewY3 : Html.Attribute msg
@@ -41362,9 +56461,29 @@ smHoverNegSkewY3 =
     A.class "sm:hover:-skew-y-3"
 
 
+smHoverNegSkewY2 : Html.Attribute msg
+smHoverNegSkewY2 =
+    A.class "sm:hover:-skew-y-2"
+
+
+smHoverNegSkewY1 : Html.Attribute msg
+smHoverNegSkewY1 =
+    A.class "sm:hover:-skew-y-1"
+
+
 smFocusSkewX0 : Html.Attribute msg
 smFocusSkewX0 =
     A.class "sm:focus:skew-x-0"
+
+
+smFocusSkewX1 : Html.Attribute msg
+smFocusSkewX1 =
+    A.class "sm:focus:skew-x-1"
+
+
+smFocusSkewX2 : Html.Attribute msg
+smFocusSkewX2 =
+    A.class "sm:focus:skew-x-2"
 
 
 smFocusSkewX3 : Html.Attribute msg
@@ -41397,9 +56516,29 @@ smFocusNegSkewX3 =
     A.class "sm:focus:-skew-x-3"
 
 
+smFocusNegSkewX2 : Html.Attribute msg
+smFocusNegSkewX2 =
+    A.class "sm:focus:-skew-x-2"
+
+
+smFocusNegSkewX1 : Html.Attribute msg
+smFocusNegSkewX1 =
+    A.class "sm:focus:-skew-x-1"
+
+
 smFocusSkewY0 : Html.Attribute msg
 smFocusSkewY0 =
     A.class "sm:focus:skew-y-0"
+
+
+smFocusSkewY1 : Html.Attribute msg
+smFocusSkewY1 =
+    A.class "sm:focus:skew-y-1"
+
+
+smFocusSkewY2 : Html.Attribute msg
+smFocusSkewY2 =
+    A.class "sm:focus:skew-y-2"
 
 
 smFocusSkewY3 : Html.Attribute msg
@@ -41430,6 +56569,16 @@ smFocusNegSkewY6 =
 smFocusNegSkewY3 : Html.Attribute msg
 smFocusNegSkewY3 =
     A.class "sm:focus:-skew-y-3"
+
+
+smFocusNegSkewY2 : Html.Attribute msg
+smFocusNegSkewY2 =
+    A.class "sm:focus:-skew-y-2"
+
+
+smFocusNegSkewY1 : Html.Attribute msg
+smFocusNegSkewY1 =
+    A.class "sm:focus:-skew-y-1"
 
 
 smTransitionNone : Html.Attribute msg
@@ -41565,6 +56714,36 @@ smDelay700 =
 smDelay1000 : Html.Attribute msg
 smDelay1000 =
     A.class "sm:delay-1000"
+
+
+smAnimateNone : Html.Attribute msg
+smAnimateNone =
+    A.class "sm:animate-none"
+
+
+smAnimateSpin : Html.Attribute msg
+smAnimateSpin =
+    A.class "sm:animate-spin"
+
+
+smAnimatePing : Html.Attribute msg
+smAnimatePing =
+    A.class "sm:animate-ping"
+
+
+smAnimatePulse : Html.Attribute msg
+smAnimatePulse =
+    A.class "sm:animate-pulse"
+
+
+smAnimateBounce : Html.Attribute msg
+smAnimateBounce =
+    A.class "sm:animate-bounce"
+
+
+mdContainer : Html.Attribute msg
+mdContainer =
+    A.class "md:container"
 
 
 mdSpaceY0 : Html.Attribute msg
@@ -42477,6 +57656,31 @@ mdDividePink900 =
     A.class "md:divide-pink-900"
 
 
+mdDivideSolid : Html.Attribute msg
+mdDivideSolid =
+    A.class "md:divide-solid"
+
+
+mdDivideDashed : Html.Attribute msg
+mdDivideDashed =
+    A.class "md:divide-dashed"
+
+
+mdDivideDotted : Html.Attribute msg
+mdDivideDotted =
+    A.class "md:divide-dotted"
+
+
+mdDivideDouble : Html.Attribute msg
+mdDivideDouble =
+    A.class "md:divide-double"
+
+
+mdDivideNone : Html.Attribute msg
+mdDivideNone =
+    A.class "md:divide-none"
+
+
 mdDivideOpacity0 : Html.Attribute msg
 mdDivideOpacity0 =
     A.class "md:divide-opacity-0"
@@ -42540,6 +57744,26 @@ mdBgLocal =
 mdBgScroll : Html.Attribute msg
 mdBgScroll =
     A.class "md:bg-scroll"
+
+
+mdBgClipBorder : Html.Attribute msg
+mdBgClipBorder =
+    A.class "md:bg-clip-border"
+
+
+mdBgClipPadding : Html.Attribute msg
+mdBgClipPadding =
+    A.class "md:bg-clip-padding"
+
+
+mdBgClipContent : Html.Attribute msg
+mdBgClipContent =
+    A.class "md:bg-clip-content"
+
+
+mdBgClipText : Html.Attribute msg
+mdBgClipText =
+    A.class "md:bg-clip-text"
 
 
 mdBgTransparent : Html.Attribute msg
@@ -43950,6 +59174,4281 @@ mdFocusBgPink800 =
 mdFocusBgPink900 : Html.Attribute msg
 mdFocusBgPink900 =
     A.class "md:focus:bg-pink-900"
+
+
+mdBgNone : Html.Attribute msg
+mdBgNone =
+    A.class "md:bg-none"
+
+
+mdBgGradientToT : Html.Attribute msg
+mdBgGradientToT =
+    A.class "md:bg-gradient-to-t"
+
+
+mdBgGradientToTr : Html.Attribute msg
+mdBgGradientToTr =
+    A.class "md:bg-gradient-to-tr"
+
+
+mdBgGradientToR : Html.Attribute msg
+mdBgGradientToR =
+    A.class "md:bg-gradient-to-r"
+
+
+mdBgGradientToBr : Html.Attribute msg
+mdBgGradientToBr =
+    A.class "md:bg-gradient-to-br"
+
+
+mdBgGradientToB : Html.Attribute msg
+mdBgGradientToB =
+    A.class "md:bg-gradient-to-b"
+
+
+mdBgGradientToBl : Html.Attribute msg
+mdBgGradientToBl =
+    A.class "md:bg-gradient-to-bl"
+
+
+mdBgGradientToL : Html.Attribute msg
+mdBgGradientToL =
+    A.class "md:bg-gradient-to-l"
+
+
+mdBgGradientToTl : Html.Attribute msg
+mdBgGradientToTl =
+    A.class "md:bg-gradient-to-tl"
+
+
+mdFromTransparent : Html.Attribute msg
+mdFromTransparent =
+    A.class "md:from-transparent"
+
+
+mdFromCurrent : Html.Attribute msg
+mdFromCurrent =
+    A.class "md:from-current"
+
+
+mdFromBlack : Html.Attribute msg
+mdFromBlack =
+    A.class "md:from-black"
+
+
+mdFromWhite : Html.Attribute msg
+mdFromWhite =
+    A.class "md:from-white"
+
+
+mdFromGray100 : Html.Attribute msg
+mdFromGray100 =
+    A.class "md:from-gray-100"
+
+
+mdFromGray200 : Html.Attribute msg
+mdFromGray200 =
+    A.class "md:from-gray-200"
+
+
+mdFromGray300 : Html.Attribute msg
+mdFromGray300 =
+    A.class "md:from-gray-300"
+
+
+mdFromGray400 : Html.Attribute msg
+mdFromGray400 =
+    A.class "md:from-gray-400"
+
+
+mdFromGray500 : Html.Attribute msg
+mdFromGray500 =
+    A.class "md:from-gray-500"
+
+
+mdFromGray600 : Html.Attribute msg
+mdFromGray600 =
+    A.class "md:from-gray-600"
+
+
+mdFromGray700 : Html.Attribute msg
+mdFromGray700 =
+    A.class "md:from-gray-700"
+
+
+mdFromGray800 : Html.Attribute msg
+mdFromGray800 =
+    A.class "md:from-gray-800"
+
+
+mdFromGray900 : Html.Attribute msg
+mdFromGray900 =
+    A.class "md:from-gray-900"
+
+
+mdFromRed100 : Html.Attribute msg
+mdFromRed100 =
+    A.class "md:from-red-100"
+
+
+mdFromRed200 : Html.Attribute msg
+mdFromRed200 =
+    A.class "md:from-red-200"
+
+
+mdFromRed300 : Html.Attribute msg
+mdFromRed300 =
+    A.class "md:from-red-300"
+
+
+mdFromRed400 : Html.Attribute msg
+mdFromRed400 =
+    A.class "md:from-red-400"
+
+
+mdFromRed500 : Html.Attribute msg
+mdFromRed500 =
+    A.class "md:from-red-500"
+
+
+mdFromRed600 : Html.Attribute msg
+mdFromRed600 =
+    A.class "md:from-red-600"
+
+
+mdFromRed700 : Html.Attribute msg
+mdFromRed700 =
+    A.class "md:from-red-700"
+
+
+mdFromRed800 : Html.Attribute msg
+mdFromRed800 =
+    A.class "md:from-red-800"
+
+
+mdFromRed900 : Html.Attribute msg
+mdFromRed900 =
+    A.class "md:from-red-900"
+
+
+mdFromOrange100 : Html.Attribute msg
+mdFromOrange100 =
+    A.class "md:from-orange-100"
+
+
+mdFromOrange200 : Html.Attribute msg
+mdFromOrange200 =
+    A.class "md:from-orange-200"
+
+
+mdFromOrange300 : Html.Attribute msg
+mdFromOrange300 =
+    A.class "md:from-orange-300"
+
+
+mdFromOrange400 : Html.Attribute msg
+mdFromOrange400 =
+    A.class "md:from-orange-400"
+
+
+mdFromOrange500 : Html.Attribute msg
+mdFromOrange500 =
+    A.class "md:from-orange-500"
+
+
+mdFromOrange600 : Html.Attribute msg
+mdFromOrange600 =
+    A.class "md:from-orange-600"
+
+
+mdFromOrange700 : Html.Attribute msg
+mdFromOrange700 =
+    A.class "md:from-orange-700"
+
+
+mdFromOrange800 : Html.Attribute msg
+mdFromOrange800 =
+    A.class "md:from-orange-800"
+
+
+mdFromOrange900 : Html.Attribute msg
+mdFromOrange900 =
+    A.class "md:from-orange-900"
+
+
+mdFromYellow100 : Html.Attribute msg
+mdFromYellow100 =
+    A.class "md:from-yellow-100"
+
+
+mdFromYellow200 : Html.Attribute msg
+mdFromYellow200 =
+    A.class "md:from-yellow-200"
+
+
+mdFromYellow300 : Html.Attribute msg
+mdFromYellow300 =
+    A.class "md:from-yellow-300"
+
+
+mdFromYellow400 : Html.Attribute msg
+mdFromYellow400 =
+    A.class "md:from-yellow-400"
+
+
+mdFromYellow500 : Html.Attribute msg
+mdFromYellow500 =
+    A.class "md:from-yellow-500"
+
+
+mdFromYellow600 : Html.Attribute msg
+mdFromYellow600 =
+    A.class "md:from-yellow-600"
+
+
+mdFromYellow700 : Html.Attribute msg
+mdFromYellow700 =
+    A.class "md:from-yellow-700"
+
+
+mdFromYellow800 : Html.Attribute msg
+mdFromYellow800 =
+    A.class "md:from-yellow-800"
+
+
+mdFromYellow900 : Html.Attribute msg
+mdFromYellow900 =
+    A.class "md:from-yellow-900"
+
+
+mdFromGreen100 : Html.Attribute msg
+mdFromGreen100 =
+    A.class "md:from-green-100"
+
+
+mdFromGreen200 : Html.Attribute msg
+mdFromGreen200 =
+    A.class "md:from-green-200"
+
+
+mdFromGreen300 : Html.Attribute msg
+mdFromGreen300 =
+    A.class "md:from-green-300"
+
+
+mdFromGreen400 : Html.Attribute msg
+mdFromGreen400 =
+    A.class "md:from-green-400"
+
+
+mdFromGreen500 : Html.Attribute msg
+mdFromGreen500 =
+    A.class "md:from-green-500"
+
+
+mdFromGreen600 : Html.Attribute msg
+mdFromGreen600 =
+    A.class "md:from-green-600"
+
+
+mdFromGreen700 : Html.Attribute msg
+mdFromGreen700 =
+    A.class "md:from-green-700"
+
+
+mdFromGreen800 : Html.Attribute msg
+mdFromGreen800 =
+    A.class "md:from-green-800"
+
+
+mdFromGreen900 : Html.Attribute msg
+mdFromGreen900 =
+    A.class "md:from-green-900"
+
+
+mdFromTeal100 : Html.Attribute msg
+mdFromTeal100 =
+    A.class "md:from-teal-100"
+
+
+mdFromTeal200 : Html.Attribute msg
+mdFromTeal200 =
+    A.class "md:from-teal-200"
+
+
+mdFromTeal300 : Html.Attribute msg
+mdFromTeal300 =
+    A.class "md:from-teal-300"
+
+
+mdFromTeal400 : Html.Attribute msg
+mdFromTeal400 =
+    A.class "md:from-teal-400"
+
+
+mdFromTeal500 : Html.Attribute msg
+mdFromTeal500 =
+    A.class "md:from-teal-500"
+
+
+mdFromTeal600 : Html.Attribute msg
+mdFromTeal600 =
+    A.class "md:from-teal-600"
+
+
+mdFromTeal700 : Html.Attribute msg
+mdFromTeal700 =
+    A.class "md:from-teal-700"
+
+
+mdFromTeal800 : Html.Attribute msg
+mdFromTeal800 =
+    A.class "md:from-teal-800"
+
+
+mdFromTeal900 : Html.Attribute msg
+mdFromTeal900 =
+    A.class "md:from-teal-900"
+
+
+mdFromBlue100 : Html.Attribute msg
+mdFromBlue100 =
+    A.class "md:from-blue-100"
+
+
+mdFromBlue200 : Html.Attribute msg
+mdFromBlue200 =
+    A.class "md:from-blue-200"
+
+
+mdFromBlue300 : Html.Attribute msg
+mdFromBlue300 =
+    A.class "md:from-blue-300"
+
+
+mdFromBlue400 : Html.Attribute msg
+mdFromBlue400 =
+    A.class "md:from-blue-400"
+
+
+mdFromBlue500 : Html.Attribute msg
+mdFromBlue500 =
+    A.class "md:from-blue-500"
+
+
+mdFromBlue600 : Html.Attribute msg
+mdFromBlue600 =
+    A.class "md:from-blue-600"
+
+
+mdFromBlue700 : Html.Attribute msg
+mdFromBlue700 =
+    A.class "md:from-blue-700"
+
+
+mdFromBlue800 : Html.Attribute msg
+mdFromBlue800 =
+    A.class "md:from-blue-800"
+
+
+mdFromBlue900 : Html.Attribute msg
+mdFromBlue900 =
+    A.class "md:from-blue-900"
+
+
+mdFromIndigo100 : Html.Attribute msg
+mdFromIndigo100 =
+    A.class "md:from-indigo-100"
+
+
+mdFromIndigo200 : Html.Attribute msg
+mdFromIndigo200 =
+    A.class "md:from-indigo-200"
+
+
+mdFromIndigo300 : Html.Attribute msg
+mdFromIndigo300 =
+    A.class "md:from-indigo-300"
+
+
+mdFromIndigo400 : Html.Attribute msg
+mdFromIndigo400 =
+    A.class "md:from-indigo-400"
+
+
+mdFromIndigo500 : Html.Attribute msg
+mdFromIndigo500 =
+    A.class "md:from-indigo-500"
+
+
+mdFromIndigo600 : Html.Attribute msg
+mdFromIndigo600 =
+    A.class "md:from-indigo-600"
+
+
+mdFromIndigo700 : Html.Attribute msg
+mdFromIndigo700 =
+    A.class "md:from-indigo-700"
+
+
+mdFromIndigo800 : Html.Attribute msg
+mdFromIndigo800 =
+    A.class "md:from-indigo-800"
+
+
+mdFromIndigo900 : Html.Attribute msg
+mdFromIndigo900 =
+    A.class "md:from-indigo-900"
+
+
+mdFromPurple100 : Html.Attribute msg
+mdFromPurple100 =
+    A.class "md:from-purple-100"
+
+
+mdFromPurple200 : Html.Attribute msg
+mdFromPurple200 =
+    A.class "md:from-purple-200"
+
+
+mdFromPurple300 : Html.Attribute msg
+mdFromPurple300 =
+    A.class "md:from-purple-300"
+
+
+mdFromPurple400 : Html.Attribute msg
+mdFromPurple400 =
+    A.class "md:from-purple-400"
+
+
+mdFromPurple500 : Html.Attribute msg
+mdFromPurple500 =
+    A.class "md:from-purple-500"
+
+
+mdFromPurple600 : Html.Attribute msg
+mdFromPurple600 =
+    A.class "md:from-purple-600"
+
+
+mdFromPurple700 : Html.Attribute msg
+mdFromPurple700 =
+    A.class "md:from-purple-700"
+
+
+mdFromPurple800 : Html.Attribute msg
+mdFromPurple800 =
+    A.class "md:from-purple-800"
+
+
+mdFromPurple900 : Html.Attribute msg
+mdFromPurple900 =
+    A.class "md:from-purple-900"
+
+
+mdFromPink100 : Html.Attribute msg
+mdFromPink100 =
+    A.class "md:from-pink-100"
+
+
+mdFromPink200 : Html.Attribute msg
+mdFromPink200 =
+    A.class "md:from-pink-200"
+
+
+mdFromPink300 : Html.Attribute msg
+mdFromPink300 =
+    A.class "md:from-pink-300"
+
+
+mdFromPink400 : Html.Attribute msg
+mdFromPink400 =
+    A.class "md:from-pink-400"
+
+
+mdFromPink500 : Html.Attribute msg
+mdFromPink500 =
+    A.class "md:from-pink-500"
+
+
+mdFromPink600 : Html.Attribute msg
+mdFromPink600 =
+    A.class "md:from-pink-600"
+
+
+mdFromPink700 : Html.Attribute msg
+mdFromPink700 =
+    A.class "md:from-pink-700"
+
+
+mdFromPink800 : Html.Attribute msg
+mdFromPink800 =
+    A.class "md:from-pink-800"
+
+
+mdFromPink900 : Html.Attribute msg
+mdFromPink900 =
+    A.class "md:from-pink-900"
+
+
+mdViaTransparent : Html.Attribute msg
+mdViaTransparent =
+    A.class "md:via-transparent"
+
+
+mdViaCurrent : Html.Attribute msg
+mdViaCurrent =
+    A.class "md:via-current"
+
+
+mdViaBlack : Html.Attribute msg
+mdViaBlack =
+    A.class "md:via-black"
+
+
+mdViaWhite : Html.Attribute msg
+mdViaWhite =
+    A.class "md:via-white"
+
+
+mdViaGray100 : Html.Attribute msg
+mdViaGray100 =
+    A.class "md:via-gray-100"
+
+
+mdViaGray200 : Html.Attribute msg
+mdViaGray200 =
+    A.class "md:via-gray-200"
+
+
+mdViaGray300 : Html.Attribute msg
+mdViaGray300 =
+    A.class "md:via-gray-300"
+
+
+mdViaGray400 : Html.Attribute msg
+mdViaGray400 =
+    A.class "md:via-gray-400"
+
+
+mdViaGray500 : Html.Attribute msg
+mdViaGray500 =
+    A.class "md:via-gray-500"
+
+
+mdViaGray600 : Html.Attribute msg
+mdViaGray600 =
+    A.class "md:via-gray-600"
+
+
+mdViaGray700 : Html.Attribute msg
+mdViaGray700 =
+    A.class "md:via-gray-700"
+
+
+mdViaGray800 : Html.Attribute msg
+mdViaGray800 =
+    A.class "md:via-gray-800"
+
+
+mdViaGray900 : Html.Attribute msg
+mdViaGray900 =
+    A.class "md:via-gray-900"
+
+
+mdViaRed100 : Html.Attribute msg
+mdViaRed100 =
+    A.class "md:via-red-100"
+
+
+mdViaRed200 : Html.Attribute msg
+mdViaRed200 =
+    A.class "md:via-red-200"
+
+
+mdViaRed300 : Html.Attribute msg
+mdViaRed300 =
+    A.class "md:via-red-300"
+
+
+mdViaRed400 : Html.Attribute msg
+mdViaRed400 =
+    A.class "md:via-red-400"
+
+
+mdViaRed500 : Html.Attribute msg
+mdViaRed500 =
+    A.class "md:via-red-500"
+
+
+mdViaRed600 : Html.Attribute msg
+mdViaRed600 =
+    A.class "md:via-red-600"
+
+
+mdViaRed700 : Html.Attribute msg
+mdViaRed700 =
+    A.class "md:via-red-700"
+
+
+mdViaRed800 : Html.Attribute msg
+mdViaRed800 =
+    A.class "md:via-red-800"
+
+
+mdViaRed900 : Html.Attribute msg
+mdViaRed900 =
+    A.class "md:via-red-900"
+
+
+mdViaOrange100 : Html.Attribute msg
+mdViaOrange100 =
+    A.class "md:via-orange-100"
+
+
+mdViaOrange200 : Html.Attribute msg
+mdViaOrange200 =
+    A.class "md:via-orange-200"
+
+
+mdViaOrange300 : Html.Attribute msg
+mdViaOrange300 =
+    A.class "md:via-orange-300"
+
+
+mdViaOrange400 : Html.Attribute msg
+mdViaOrange400 =
+    A.class "md:via-orange-400"
+
+
+mdViaOrange500 : Html.Attribute msg
+mdViaOrange500 =
+    A.class "md:via-orange-500"
+
+
+mdViaOrange600 : Html.Attribute msg
+mdViaOrange600 =
+    A.class "md:via-orange-600"
+
+
+mdViaOrange700 : Html.Attribute msg
+mdViaOrange700 =
+    A.class "md:via-orange-700"
+
+
+mdViaOrange800 : Html.Attribute msg
+mdViaOrange800 =
+    A.class "md:via-orange-800"
+
+
+mdViaOrange900 : Html.Attribute msg
+mdViaOrange900 =
+    A.class "md:via-orange-900"
+
+
+mdViaYellow100 : Html.Attribute msg
+mdViaYellow100 =
+    A.class "md:via-yellow-100"
+
+
+mdViaYellow200 : Html.Attribute msg
+mdViaYellow200 =
+    A.class "md:via-yellow-200"
+
+
+mdViaYellow300 : Html.Attribute msg
+mdViaYellow300 =
+    A.class "md:via-yellow-300"
+
+
+mdViaYellow400 : Html.Attribute msg
+mdViaYellow400 =
+    A.class "md:via-yellow-400"
+
+
+mdViaYellow500 : Html.Attribute msg
+mdViaYellow500 =
+    A.class "md:via-yellow-500"
+
+
+mdViaYellow600 : Html.Attribute msg
+mdViaYellow600 =
+    A.class "md:via-yellow-600"
+
+
+mdViaYellow700 : Html.Attribute msg
+mdViaYellow700 =
+    A.class "md:via-yellow-700"
+
+
+mdViaYellow800 : Html.Attribute msg
+mdViaYellow800 =
+    A.class "md:via-yellow-800"
+
+
+mdViaYellow900 : Html.Attribute msg
+mdViaYellow900 =
+    A.class "md:via-yellow-900"
+
+
+mdViaGreen100 : Html.Attribute msg
+mdViaGreen100 =
+    A.class "md:via-green-100"
+
+
+mdViaGreen200 : Html.Attribute msg
+mdViaGreen200 =
+    A.class "md:via-green-200"
+
+
+mdViaGreen300 : Html.Attribute msg
+mdViaGreen300 =
+    A.class "md:via-green-300"
+
+
+mdViaGreen400 : Html.Attribute msg
+mdViaGreen400 =
+    A.class "md:via-green-400"
+
+
+mdViaGreen500 : Html.Attribute msg
+mdViaGreen500 =
+    A.class "md:via-green-500"
+
+
+mdViaGreen600 : Html.Attribute msg
+mdViaGreen600 =
+    A.class "md:via-green-600"
+
+
+mdViaGreen700 : Html.Attribute msg
+mdViaGreen700 =
+    A.class "md:via-green-700"
+
+
+mdViaGreen800 : Html.Attribute msg
+mdViaGreen800 =
+    A.class "md:via-green-800"
+
+
+mdViaGreen900 : Html.Attribute msg
+mdViaGreen900 =
+    A.class "md:via-green-900"
+
+
+mdViaTeal100 : Html.Attribute msg
+mdViaTeal100 =
+    A.class "md:via-teal-100"
+
+
+mdViaTeal200 : Html.Attribute msg
+mdViaTeal200 =
+    A.class "md:via-teal-200"
+
+
+mdViaTeal300 : Html.Attribute msg
+mdViaTeal300 =
+    A.class "md:via-teal-300"
+
+
+mdViaTeal400 : Html.Attribute msg
+mdViaTeal400 =
+    A.class "md:via-teal-400"
+
+
+mdViaTeal500 : Html.Attribute msg
+mdViaTeal500 =
+    A.class "md:via-teal-500"
+
+
+mdViaTeal600 : Html.Attribute msg
+mdViaTeal600 =
+    A.class "md:via-teal-600"
+
+
+mdViaTeal700 : Html.Attribute msg
+mdViaTeal700 =
+    A.class "md:via-teal-700"
+
+
+mdViaTeal800 : Html.Attribute msg
+mdViaTeal800 =
+    A.class "md:via-teal-800"
+
+
+mdViaTeal900 : Html.Attribute msg
+mdViaTeal900 =
+    A.class "md:via-teal-900"
+
+
+mdViaBlue100 : Html.Attribute msg
+mdViaBlue100 =
+    A.class "md:via-blue-100"
+
+
+mdViaBlue200 : Html.Attribute msg
+mdViaBlue200 =
+    A.class "md:via-blue-200"
+
+
+mdViaBlue300 : Html.Attribute msg
+mdViaBlue300 =
+    A.class "md:via-blue-300"
+
+
+mdViaBlue400 : Html.Attribute msg
+mdViaBlue400 =
+    A.class "md:via-blue-400"
+
+
+mdViaBlue500 : Html.Attribute msg
+mdViaBlue500 =
+    A.class "md:via-blue-500"
+
+
+mdViaBlue600 : Html.Attribute msg
+mdViaBlue600 =
+    A.class "md:via-blue-600"
+
+
+mdViaBlue700 : Html.Attribute msg
+mdViaBlue700 =
+    A.class "md:via-blue-700"
+
+
+mdViaBlue800 : Html.Attribute msg
+mdViaBlue800 =
+    A.class "md:via-blue-800"
+
+
+mdViaBlue900 : Html.Attribute msg
+mdViaBlue900 =
+    A.class "md:via-blue-900"
+
+
+mdViaIndigo100 : Html.Attribute msg
+mdViaIndigo100 =
+    A.class "md:via-indigo-100"
+
+
+mdViaIndigo200 : Html.Attribute msg
+mdViaIndigo200 =
+    A.class "md:via-indigo-200"
+
+
+mdViaIndigo300 : Html.Attribute msg
+mdViaIndigo300 =
+    A.class "md:via-indigo-300"
+
+
+mdViaIndigo400 : Html.Attribute msg
+mdViaIndigo400 =
+    A.class "md:via-indigo-400"
+
+
+mdViaIndigo500 : Html.Attribute msg
+mdViaIndigo500 =
+    A.class "md:via-indigo-500"
+
+
+mdViaIndigo600 : Html.Attribute msg
+mdViaIndigo600 =
+    A.class "md:via-indigo-600"
+
+
+mdViaIndigo700 : Html.Attribute msg
+mdViaIndigo700 =
+    A.class "md:via-indigo-700"
+
+
+mdViaIndigo800 : Html.Attribute msg
+mdViaIndigo800 =
+    A.class "md:via-indigo-800"
+
+
+mdViaIndigo900 : Html.Attribute msg
+mdViaIndigo900 =
+    A.class "md:via-indigo-900"
+
+
+mdViaPurple100 : Html.Attribute msg
+mdViaPurple100 =
+    A.class "md:via-purple-100"
+
+
+mdViaPurple200 : Html.Attribute msg
+mdViaPurple200 =
+    A.class "md:via-purple-200"
+
+
+mdViaPurple300 : Html.Attribute msg
+mdViaPurple300 =
+    A.class "md:via-purple-300"
+
+
+mdViaPurple400 : Html.Attribute msg
+mdViaPurple400 =
+    A.class "md:via-purple-400"
+
+
+mdViaPurple500 : Html.Attribute msg
+mdViaPurple500 =
+    A.class "md:via-purple-500"
+
+
+mdViaPurple600 : Html.Attribute msg
+mdViaPurple600 =
+    A.class "md:via-purple-600"
+
+
+mdViaPurple700 : Html.Attribute msg
+mdViaPurple700 =
+    A.class "md:via-purple-700"
+
+
+mdViaPurple800 : Html.Attribute msg
+mdViaPurple800 =
+    A.class "md:via-purple-800"
+
+
+mdViaPurple900 : Html.Attribute msg
+mdViaPurple900 =
+    A.class "md:via-purple-900"
+
+
+mdViaPink100 : Html.Attribute msg
+mdViaPink100 =
+    A.class "md:via-pink-100"
+
+
+mdViaPink200 : Html.Attribute msg
+mdViaPink200 =
+    A.class "md:via-pink-200"
+
+
+mdViaPink300 : Html.Attribute msg
+mdViaPink300 =
+    A.class "md:via-pink-300"
+
+
+mdViaPink400 : Html.Attribute msg
+mdViaPink400 =
+    A.class "md:via-pink-400"
+
+
+mdViaPink500 : Html.Attribute msg
+mdViaPink500 =
+    A.class "md:via-pink-500"
+
+
+mdViaPink600 : Html.Attribute msg
+mdViaPink600 =
+    A.class "md:via-pink-600"
+
+
+mdViaPink700 : Html.Attribute msg
+mdViaPink700 =
+    A.class "md:via-pink-700"
+
+
+mdViaPink800 : Html.Attribute msg
+mdViaPink800 =
+    A.class "md:via-pink-800"
+
+
+mdViaPink900 : Html.Attribute msg
+mdViaPink900 =
+    A.class "md:via-pink-900"
+
+
+mdToTransparent : Html.Attribute msg
+mdToTransparent =
+    A.class "md:to-transparent"
+
+
+mdToCurrent : Html.Attribute msg
+mdToCurrent =
+    A.class "md:to-current"
+
+
+mdToBlack : Html.Attribute msg
+mdToBlack =
+    A.class "md:to-black"
+
+
+mdToWhite : Html.Attribute msg
+mdToWhite =
+    A.class "md:to-white"
+
+
+mdToGray100 : Html.Attribute msg
+mdToGray100 =
+    A.class "md:to-gray-100"
+
+
+mdToGray200 : Html.Attribute msg
+mdToGray200 =
+    A.class "md:to-gray-200"
+
+
+mdToGray300 : Html.Attribute msg
+mdToGray300 =
+    A.class "md:to-gray-300"
+
+
+mdToGray400 : Html.Attribute msg
+mdToGray400 =
+    A.class "md:to-gray-400"
+
+
+mdToGray500 : Html.Attribute msg
+mdToGray500 =
+    A.class "md:to-gray-500"
+
+
+mdToGray600 : Html.Attribute msg
+mdToGray600 =
+    A.class "md:to-gray-600"
+
+
+mdToGray700 : Html.Attribute msg
+mdToGray700 =
+    A.class "md:to-gray-700"
+
+
+mdToGray800 : Html.Attribute msg
+mdToGray800 =
+    A.class "md:to-gray-800"
+
+
+mdToGray900 : Html.Attribute msg
+mdToGray900 =
+    A.class "md:to-gray-900"
+
+
+mdToRed100 : Html.Attribute msg
+mdToRed100 =
+    A.class "md:to-red-100"
+
+
+mdToRed200 : Html.Attribute msg
+mdToRed200 =
+    A.class "md:to-red-200"
+
+
+mdToRed300 : Html.Attribute msg
+mdToRed300 =
+    A.class "md:to-red-300"
+
+
+mdToRed400 : Html.Attribute msg
+mdToRed400 =
+    A.class "md:to-red-400"
+
+
+mdToRed500 : Html.Attribute msg
+mdToRed500 =
+    A.class "md:to-red-500"
+
+
+mdToRed600 : Html.Attribute msg
+mdToRed600 =
+    A.class "md:to-red-600"
+
+
+mdToRed700 : Html.Attribute msg
+mdToRed700 =
+    A.class "md:to-red-700"
+
+
+mdToRed800 : Html.Attribute msg
+mdToRed800 =
+    A.class "md:to-red-800"
+
+
+mdToRed900 : Html.Attribute msg
+mdToRed900 =
+    A.class "md:to-red-900"
+
+
+mdToOrange100 : Html.Attribute msg
+mdToOrange100 =
+    A.class "md:to-orange-100"
+
+
+mdToOrange200 : Html.Attribute msg
+mdToOrange200 =
+    A.class "md:to-orange-200"
+
+
+mdToOrange300 : Html.Attribute msg
+mdToOrange300 =
+    A.class "md:to-orange-300"
+
+
+mdToOrange400 : Html.Attribute msg
+mdToOrange400 =
+    A.class "md:to-orange-400"
+
+
+mdToOrange500 : Html.Attribute msg
+mdToOrange500 =
+    A.class "md:to-orange-500"
+
+
+mdToOrange600 : Html.Attribute msg
+mdToOrange600 =
+    A.class "md:to-orange-600"
+
+
+mdToOrange700 : Html.Attribute msg
+mdToOrange700 =
+    A.class "md:to-orange-700"
+
+
+mdToOrange800 : Html.Attribute msg
+mdToOrange800 =
+    A.class "md:to-orange-800"
+
+
+mdToOrange900 : Html.Attribute msg
+mdToOrange900 =
+    A.class "md:to-orange-900"
+
+
+mdToYellow100 : Html.Attribute msg
+mdToYellow100 =
+    A.class "md:to-yellow-100"
+
+
+mdToYellow200 : Html.Attribute msg
+mdToYellow200 =
+    A.class "md:to-yellow-200"
+
+
+mdToYellow300 : Html.Attribute msg
+mdToYellow300 =
+    A.class "md:to-yellow-300"
+
+
+mdToYellow400 : Html.Attribute msg
+mdToYellow400 =
+    A.class "md:to-yellow-400"
+
+
+mdToYellow500 : Html.Attribute msg
+mdToYellow500 =
+    A.class "md:to-yellow-500"
+
+
+mdToYellow600 : Html.Attribute msg
+mdToYellow600 =
+    A.class "md:to-yellow-600"
+
+
+mdToYellow700 : Html.Attribute msg
+mdToYellow700 =
+    A.class "md:to-yellow-700"
+
+
+mdToYellow800 : Html.Attribute msg
+mdToYellow800 =
+    A.class "md:to-yellow-800"
+
+
+mdToYellow900 : Html.Attribute msg
+mdToYellow900 =
+    A.class "md:to-yellow-900"
+
+
+mdToGreen100 : Html.Attribute msg
+mdToGreen100 =
+    A.class "md:to-green-100"
+
+
+mdToGreen200 : Html.Attribute msg
+mdToGreen200 =
+    A.class "md:to-green-200"
+
+
+mdToGreen300 : Html.Attribute msg
+mdToGreen300 =
+    A.class "md:to-green-300"
+
+
+mdToGreen400 : Html.Attribute msg
+mdToGreen400 =
+    A.class "md:to-green-400"
+
+
+mdToGreen500 : Html.Attribute msg
+mdToGreen500 =
+    A.class "md:to-green-500"
+
+
+mdToGreen600 : Html.Attribute msg
+mdToGreen600 =
+    A.class "md:to-green-600"
+
+
+mdToGreen700 : Html.Attribute msg
+mdToGreen700 =
+    A.class "md:to-green-700"
+
+
+mdToGreen800 : Html.Attribute msg
+mdToGreen800 =
+    A.class "md:to-green-800"
+
+
+mdToGreen900 : Html.Attribute msg
+mdToGreen900 =
+    A.class "md:to-green-900"
+
+
+mdToTeal100 : Html.Attribute msg
+mdToTeal100 =
+    A.class "md:to-teal-100"
+
+
+mdToTeal200 : Html.Attribute msg
+mdToTeal200 =
+    A.class "md:to-teal-200"
+
+
+mdToTeal300 : Html.Attribute msg
+mdToTeal300 =
+    A.class "md:to-teal-300"
+
+
+mdToTeal400 : Html.Attribute msg
+mdToTeal400 =
+    A.class "md:to-teal-400"
+
+
+mdToTeal500 : Html.Attribute msg
+mdToTeal500 =
+    A.class "md:to-teal-500"
+
+
+mdToTeal600 : Html.Attribute msg
+mdToTeal600 =
+    A.class "md:to-teal-600"
+
+
+mdToTeal700 : Html.Attribute msg
+mdToTeal700 =
+    A.class "md:to-teal-700"
+
+
+mdToTeal800 : Html.Attribute msg
+mdToTeal800 =
+    A.class "md:to-teal-800"
+
+
+mdToTeal900 : Html.Attribute msg
+mdToTeal900 =
+    A.class "md:to-teal-900"
+
+
+mdToBlue100 : Html.Attribute msg
+mdToBlue100 =
+    A.class "md:to-blue-100"
+
+
+mdToBlue200 : Html.Attribute msg
+mdToBlue200 =
+    A.class "md:to-blue-200"
+
+
+mdToBlue300 : Html.Attribute msg
+mdToBlue300 =
+    A.class "md:to-blue-300"
+
+
+mdToBlue400 : Html.Attribute msg
+mdToBlue400 =
+    A.class "md:to-blue-400"
+
+
+mdToBlue500 : Html.Attribute msg
+mdToBlue500 =
+    A.class "md:to-blue-500"
+
+
+mdToBlue600 : Html.Attribute msg
+mdToBlue600 =
+    A.class "md:to-blue-600"
+
+
+mdToBlue700 : Html.Attribute msg
+mdToBlue700 =
+    A.class "md:to-blue-700"
+
+
+mdToBlue800 : Html.Attribute msg
+mdToBlue800 =
+    A.class "md:to-blue-800"
+
+
+mdToBlue900 : Html.Attribute msg
+mdToBlue900 =
+    A.class "md:to-blue-900"
+
+
+mdToIndigo100 : Html.Attribute msg
+mdToIndigo100 =
+    A.class "md:to-indigo-100"
+
+
+mdToIndigo200 : Html.Attribute msg
+mdToIndigo200 =
+    A.class "md:to-indigo-200"
+
+
+mdToIndigo300 : Html.Attribute msg
+mdToIndigo300 =
+    A.class "md:to-indigo-300"
+
+
+mdToIndigo400 : Html.Attribute msg
+mdToIndigo400 =
+    A.class "md:to-indigo-400"
+
+
+mdToIndigo500 : Html.Attribute msg
+mdToIndigo500 =
+    A.class "md:to-indigo-500"
+
+
+mdToIndigo600 : Html.Attribute msg
+mdToIndigo600 =
+    A.class "md:to-indigo-600"
+
+
+mdToIndigo700 : Html.Attribute msg
+mdToIndigo700 =
+    A.class "md:to-indigo-700"
+
+
+mdToIndigo800 : Html.Attribute msg
+mdToIndigo800 =
+    A.class "md:to-indigo-800"
+
+
+mdToIndigo900 : Html.Attribute msg
+mdToIndigo900 =
+    A.class "md:to-indigo-900"
+
+
+mdToPurple100 : Html.Attribute msg
+mdToPurple100 =
+    A.class "md:to-purple-100"
+
+
+mdToPurple200 : Html.Attribute msg
+mdToPurple200 =
+    A.class "md:to-purple-200"
+
+
+mdToPurple300 : Html.Attribute msg
+mdToPurple300 =
+    A.class "md:to-purple-300"
+
+
+mdToPurple400 : Html.Attribute msg
+mdToPurple400 =
+    A.class "md:to-purple-400"
+
+
+mdToPurple500 : Html.Attribute msg
+mdToPurple500 =
+    A.class "md:to-purple-500"
+
+
+mdToPurple600 : Html.Attribute msg
+mdToPurple600 =
+    A.class "md:to-purple-600"
+
+
+mdToPurple700 : Html.Attribute msg
+mdToPurple700 =
+    A.class "md:to-purple-700"
+
+
+mdToPurple800 : Html.Attribute msg
+mdToPurple800 =
+    A.class "md:to-purple-800"
+
+
+mdToPurple900 : Html.Attribute msg
+mdToPurple900 =
+    A.class "md:to-purple-900"
+
+
+mdToPink100 : Html.Attribute msg
+mdToPink100 =
+    A.class "md:to-pink-100"
+
+
+mdToPink200 : Html.Attribute msg
+mdToPink200 =
+    A.class "md:to-pink-200"
+
+
+mdToPink300 : Html.Attribute msg
+mdToPink300 =
+    A.class "md:to-pink-300"
+
+
+mdToPink400 : Html.Attribute msg
+mdToPink400 =
+    A.class "md:to-pink-400"
+
+
+mdToPink500 : Html.Attribute msg
+mdToPink500 =
+    A.class "md:to-pink-500"
+
+
+mdToPink600 : Html.Attribute msg
+mdToPink600 =
+    A.class "md:to-pink-600"
+
+
+mdToPink700 : Html.Attribute msg
+mdToPink700 =
+    A.class "md:to-pink-700"
+
+
+mdToPink800 : Html.Attribute msg
+mdToPink800 =
+    A.class "md:to-pink-800"
+
+
+mdToPink900 : Html.Attribute msg
+mdToPink900 =
+    A.class "md:to-pink-900"
+
+
+mdHoverFromTransparent : Html.Attribute msg
+mdHoverFromTransparent =
+    A.class "md:hover:from-transparent"
+
+
+mdHoverFromCurrent : Html.Attribute msg
+mdHoverFromCurrent =
+    A.class "md:hover:from-current"
+
+
+mdHoverFromBlack : Html.Attribute msg
+mdHoverFromBlack =
+    A.class "md:hover:from-black"
+
+
+mdHoverFromWhite : Html.Attribute msg
+mdHoverFromWhite =
+    A.class "md:hover:from-white"
+
+
+mdHoverFromGray100 : Html.Attribute msg
+mdHoverFromGray100 =
+    A.class "md:hover:from-gray-100"
+
+
+mdHoverFromGray200 : Html.Attribute msg
+mdHoverFromGray200 =
+    A.class "md:hover:from-gray-200"
+
+
+mdHoverFromGray300 : Html.Attribute msg
+mdHoverFromGray300 =
+    A.class "md:hover:from-gray-300"
+
+
+mdHoverFromGray400 : Html.Attribute msg
+mdHoverFromGray400 =
+    A.class "md:hover:from-gray-400"
+
+
+mdHoverFromGray500 : Html.Attribute msg
+mdHoverFromGray500 =
+    A.class "md:hover:from-gray-500"
+
+
+mdHoverFromGray600 : Html.Attribute msg
+mdHoverFromGray600 =
+    A.class "md:hover:from-gray-600"
+
+
+mdHoverFromGray700 : Html.Attribute msg
+mdHoverFromGray700 =
+    A.class "md:hover:from-gray-700"
+
+
+mdHoverFromGray800 : Html.Attribute msg
+mdHoverFromGray800 =
+    A.class "md:hover:from-gray-800"
+
+
+mdHoverFromGray900 : Html.Attribute msg
+mdHoverFromGray900 =
+    A.class "md:hover:from-gray-900"
+
+
+mdHoverFromRed100 : Html.Attribute msg
+mdHoverFromRed100 =
+    A.class "md:hover:from-red-100"
+
+
+mdHoverFromRed200 : Html.Attribute msg
+mdHoverFromRed200 =
+    A.class "md:hover:from-red-200"
+
+
+mdHoverFromRed300 : Html.Attribute msg
+mdHoverFromRed300 =
+    A.class "md:hover:from-red-300"
+
+
+mdHoverFromRed400 : Html.Attribute msg
+mdHoverFromRed400 =
+    A.class "md:hover:from-red-400"
+
+
+mdHoverFromRed500 : Html.Attribute msg
+mdHoverFromRed500 =
+    A.class "md:hover:from-red-500"
+
+
+mdHoverFromRed600 : Html.Attribute msg
+mdHoverFromRed600 =
+    A.class "md:hover:from-red-600"
+
+
+mdHoverFromRed700 : Html.Attribute msg
+mdHoverFromRed700 =
+    A.class "md:hover:from-red-700"
+
+
+mdHoverFromRed800 : Html.Attribute msg
+mdHoverFromRed800 =
+    A.class "md:hover:from-red-800"
+
+
+mdHoverFromRed900 : Html.Attribute msg
+mdHoverFromRed900 =
+    A.class "md:hover:from-red-900"
+
+
+mdHoverFromOrange100 : Html.Attribute msg
+mdHoverFromOrange100 =
+    A.class "md:hover:from-orange-100"
+
+
+mdHoverFromOrange200 : Html.Attribute msg
+mdHoverFromOrange200 =
+    A.class "md:hover:from-orange-200"
+
+
+mdHoverFromOrange300 : Html.Attribute msg
+mdHoverFromOrange300 =
+    A.class "md:hover:from-orange-300"
+
+
+mdHoverFromOrange400 : Html.Attribute msg
+mdHoverFromOrange400 =
+    A.class "md:hover:from-orange-400"
+
+
+mdHoverFromOrange500 : Html.Attribute msg
+mdHoverFromOrange500 =
+    A.class "md:hover:from-orange-500"
+
+
+mdHoverFromOrange600 : Html.Attribute msg
+mdHoverFromOrange600 =
+    A.class "md:hover:from-orange-600"
+
+
+mdHoverFromOrange700 : Html.Attribute msg
+mdHoverFromOrange700 =
+    A.class "md:hover:from-orange-700"
+
+
+mdHoverFromOrange800 : Html.Attribute msg
+mdHoverFromOrange800 =
+    A.class "md:hover:from-orange-800"
+
+
+mdHoverFromOrange900 : Html.Attribute msg
+mdHoverFromOrange900 =
+    A.class "md:hover:from-orange-900"
+
+
+mdHoverFromYellow100 : Html.Attribute msg
+mdHoverFromYellow100 =
+    A.class "md:hover:from-yellow-100"
+
+
+mdHoverFromYellow200 : Html.Attribute msg
+mdHoverFromYellow200 =
+    A.class "md:hover:from-yellow-200"
+
+
+mdHoverFromYellow300 : Html.Attribute msg
+mdHoverFromYellow300 =
+    A.class "md:hover:from-yellow-300"
+
+
+mdHoverFromYellow400 : Html.Attribute msg
+mdHoverFromYellow400 =
+    A.class "md:hover:from-yellow-400"
+
+
+mdHoverFromYellow500 : Html.Attribute msg
+mdHoverFromYellow500 =
+    A.class "md:hover:from-yellow-500"
+
+
+mdHoverFromYellow600 : Html.Attribute msg
+mdHoverFromYellow600 =
+    A.class "md:hover:from-yellow-600"
+
+
+mdHoverFromYellow700 : Html.Attribute msg
+mdHoverFromYellow700 =
+    A.class "md:hover:from-yellow-700"
+
+
+mdHoverFromYellow800 : Html.Attribute msg
+mdHoverFromYellow800 =
+    A.class "md:hover:from-yellow-800"
+
+
+mdHoverFromYellow900 : Html.Attribute msg
+mdHoverFromYellow900 =
+    A.class "md:hover:from-yellow-900"
+
+
+mdHoverFromGreen100 : Html.Attribute msg
+mdHoverFromGreen100 =
+    A.class "md:hover:from-green-100"
+
+
+mdHoverFromGreen200 : Html.Attribute msg
+mdHoverFromGreen200 =
+    A.class "md:hover:from-green-200"
+
+
+mdHoverFromGreen300 : Html.Attribute msg
+mdHoverFromGreen300 =
+    A.class "md:hover:from-green-300"
+
+
+mdHoverFromGreen400 : Html.Attribute msg
+mdHoverFromGreen400 =
+    A.class "md:hover:from-green-400"
+
+
+mdHoverFromGreen500 : Html.Attribute msg
+mdHoverFromGreen500 =
+    A.class "md:hover:from-green-500"
+
+
+mdHoverFromGreen600 : Html.Attribute msg
+mdHoverFromGreen600 =
+    A.class "md:hover:from-green-600"
+
+
+mdHoverFromGreen700 : Html.Attribute msg
+mdHoverFromGreen700 =
+    A.class "md:hover:from-green-700"
+
+
+mdHoverFromGreen800 : Html.Attribute msg
+mdHoverFromGreen800 =
+    A.class "md:hover:from-green-800"
+
+
+mdHoverFromGreen900 : Html.Attribute msg
+mdHoverFromGreen900 =
+    A.class "md:hover:from-green-900"
+
+
+mdHoverFromTeal100 : Html.Attribute msg
+mdHoverFromTeal100 =
+    A.class "md:hover:from-teal-100"
+
+
+mdHoverFromTeal200 : Html.Attribute msg
+mdHoverFromTeal200 =
+    A.class "md:hover:from-teal-200"
+
+
+mdHoverFromTeal300 : Html.Attribute msg
+mdHoverFromTeal300 =
+    A.class "md:hover:from-teal-300"
+
+
+mdHoverFromTeal400 : Html.Attribute msg
+mdHoverFromTeal400 =
+    A.class "md:hover:from-teal-400"
+
+
+mdHoverFromTeal500 : Html.Attribute msg
+mdHoverFromTeal500 =
+    A.class "md:hover:from-teal-500"
+
+
+mdHoverFromTeal600 : Html.Attribute msg
+mdHoverFromTeal600 =
+    A.class "md:hover:from-teal-600"
+
+
+mdHoverFromTeal700 : Html.Attribute msg
+mdHoverFromTeal700 =
+    A.class "md:hover:from-teal-700"
+
+
+mdHoverFromTeal800 : Html.Attribute msg
+mdHoverFromTeal800 =
+    A.class "md:hover:from-teal-800"
+
+
+mdHoverFromTeal900 : Html.Attribute msg
+mdHoverFromTeal900 =
+    A.class "md:hover:from-teal-900"
+
+
+mdHoverFromBlue100 : Html.Attribute msg
+mdHoverFromBlue100 =
+    A.class "md:hover:from-blue-100"
+
+
+mdHoverFromBlue200 : Html.Attribute msg
+mdHoverFromBlue200 =
+    A.class "md:hover:from-blue-200"
+
+
+mdHoverFromBlue300 : Html.Attribute msg
+mdHoverFromBlue300 =
+    A.class "md:hover:from-blue-300"
+
+
+mdHoverFromBlue400 : Html.Attribute msg
+mdHoverFromBlue400 =
+    A.class "md:hover:from-blue-400"
+
+
+mdHoverFromBlue500 : Html.Attribute msg
+mdHoverFromBlue500 =
+    A.class "md:hover:from-blue-500"
+
+
+mdHoverFromBlue600 : Html.Attribute msg
+mdHoverFromBlue600 =
+    A.class "md:hover:from-blue-600"
+
+
+mdHoverFromBlue700 : Html.Attribute msg
+mdHoverFromBlue700 =
+    A.class "md:hover:from-blue-700"
+
+
+mdHoverFromBlue800 : Html.Attribute msg
+mdHoverFromBlue800 =
+    A.class "md:hover:from-blue-800"
+
+
+mdHoverFromBlue900 : Html.Attribute msg
+mdHoverFromBlue900 =
+    A.class "md:hover:from-blue-900"
+
+
+mdHoverFromIndigo100 : Html.Attribute msg
+mdHoverFromIndigo100 =
+    A.class "md:hover:from-indigo-100"
+
+
+mdHoverFromIndigo200 : Html.Attribute msg
+mdHoverFromIndigo200 =
+    A.class "md:hover:from-indigo-200"
+
+
+mdHoverFromIndigo300 : Html.Attribute msg
+mdHoverFromIndigo300 =
+    A.class "md:hover:from-indigo-300"
+
+
+mdHoverFromIndigo400 : Html.Attribute msg
+mdHoverFromIndigo400 =
+    A.class "md:hover:from-indigo-400"
+
+
+mdHoverFromIndigo500 : Html.Attribute msg
+mdHoverFromIndigo500 =
+    A.class "md:hover:from-indigo-500"
+
+
+mdHoverFromIndigo600 : Html.Attribute msg
+mdHoverFromIndigo600 =
+    A.class "md:hover:from-indigo-600"
+
+
+mdHoverFromIndigo700 : Html.Attribute msg
+mdHoverFromIndigo700 =
+    A.class "md:hover:from-indigo-700"
+
+
+mdHoverFromIndigo800 : Html.Attribute msg
+mdHoverFromIndigo800 =
+    A.class "md:hover:from-indigo-800"
+
+
+mdHoverFromIndigo900 : Html.Attribute msg
+mdHoverFromIndigo900 =
+    A.class "md:hover:from-indigo-900"
+
+
+mdHoverFromPurple100 : Html.Attribute msg
+mdHoverFromPurple100 =
+    A.class "md:hover:from-purple-100"
+
+
+mdHoverFromPurple200 : Html.Attribute msg
+mdHoverFromPurple200 =
+    A.class "md:hover:from-purple-200"
+
+
+mdHoverFromPurple300 : Html.Attribute msg
+mdHoverFromPurple300 =
+    A.class "md:hover:from-purple-300"
+
+
+mdHoverFromPurple400 : Html.Attribute msg
+mdHoverFromPurple400 =
+    A.class "md:hover:from-purple-400"
+
+
+mdHoverFromPurple500 : Html.Attribute msg
+mdHoverFromPurple500 =
+    A.class "md:hover:from-purple-500"
+
+
+mdHoverFromPurple600 : Html.Attribute msg
+mdHoverFromPurple600 =
+    A.class "md:hover:from-purple-600"
+
+
+mdHoverFromPurple700 : Html.Attribute msg
+mdHoverFromPurple700 =
+    A.class "md:hover:from-purple-700"
+
+
+mdHoverFromPurple800 : Html.Attribute msg
+mdHoverFromPurple800 =
+    A.class "md:hover:from-purple-800"
+
+
+mdHoverFromPurple900 : Html.Attribute msg
+mdHoverFromPurple900 =
+    A.class "md:hover:from-purple-900"
+
+
+mdHoverFromPink100 : Html.Attribute msg
+mdHoverFromPink100 =
+    A.class "md:hover:from-pink-100"
+
+
+mdHoverFromPink200 : Html.Attribute msg
+mdHoverFromPink200 =
+    A.class "md:hover:from-pink-200"
+
+
+mdHoverFromPink300 : Html.Attribute msg
+mdHoverFromPink300 =
+    A.class "md:hover:from-pink-300"
+
+
+mdHoverFromPink400 : Html.Attribute msg
+mdHoverFromPink400 =
+    A.class "md:hover:from-pink-400"
+
+
+mdHoverFromPink500 : Html.Attribute msg
+mdHoverFromPink500 =
+    A.class "md:hover:from-pink-500"
+
+
+mdHoverFromPink600 : Html.Attribute msg
+mdHoverFromPink600 =
+    A.class "md:hover:from-pink-600"
+
+
+mdHoverFromPink700 : Html.Attribute msg
+mdHoverFromPink700 =
+    A.class "md:hover:from-pink-700"
+
+
+mdHoverFromPink800 : Html.Attribute msg
+mdHoverFromPink800 =
+    A.class "md:hover:from-pink-800"
+
+
+mdHoverFromPink900 : Html.Attribute msg
+mdHoverFromPink900 =
+    A.class "md:hover:from-pink-900"
+
+
+mdHoverViaTransparent : Html.Attribute msg
+mdHoverViaTransparent =
+    A.class "md:hover:via-transparent"
+
+
+mdHoverViaCurrent : Html.Attribute msg
+mdHoverViaCurrent =
+    A.class "md:hover:via-current"
+
+
+mdHoverViaBlack : Html.Attribute msg
+mdHoverViaBlack =
+    A.class "md:hover:via-black"
+
+
+mdHoverViaWhite : Html.Attribute msg
+mdHoverViaWhite =
+    A.class "md:hover:via-white"
+
+
+mdHoverViaGray100 : Html.Attribute msg
+mdHoverViaGray100 =
+    A.class "md:hover:via-gray-100"
+
+
+mdHoverViaGray200 : Html.Attribute msg
+mdHoverViaGray200 =
+    A.class "md:hover:via-gray-200"
+
+
+mdHoverViaGray300 : Html.Attribute msg
+mdHoverViaGray300 =
+    A.class "md:hover:via-gray-300"
+
+
+mdHoverViaGray400 : Html.Attribute msg
+mdHoverViaGray400 =
+    A.class "md:hover:via-gray-400"
+
+
+mdHoverViaGray500 : Html.Attribute msg
+mdHoverViaGray500 =
+    A.class "md:hover:via-gray-500"
+
+
+mdHoverViaGray600 : Html.Attribute msg
+mdHoverViaGray600 =
+    A.class "md:hover:via-gray-600"
+
+
+mdHoverViaGray700 : Html.Attribute msg
+mdHoverViaGray700 =
+    A.class "md:hover:via-gray-700"
+
+
+mdHoverViaGray800 : Html.Attribute msg
+mdHoverViaGray800 =
+    A.class "md:hover:via-gray-800"
+
+
+mdHoverViaGray900 : Html.Attribute msg
+mdHoverViaGray900 =
+    A.class "md:hover:via-gray-900"
+
+
+mdHoverViaRed100 : Html.Attribute msg
+mdHoverViaRed100 =
+    A.class "md:hover:via-red-100"
+
+
+mdHoverViaRed200 : Html.Attribute msg
+mdHoverViaRed200 =
+    A.class "md:hover:via-red-200"
+
+
+mdHoverViaRed300 : Html.Attribute msg
+mdHoverViaRed300 =
+    A.class "md:hover:via-red-300"
+
+
+mdHoverViaRed400 : Html.Attribute msg
+mdHoverViaRed400 =
+    A.class "md:hover:via-red-400"
+
+
+mdHoverViaRed500 : Html.Attribute msg
+mdHoverViaRed500 =
+    A.class "md:hover:via-red-500"
+
+
+mdHoverViaRed600 : Html.Attribute msg
+mdHoverViaRed600 =
+    A.class "md:hover:via-red-600"
+
+
+mdHoverViaRed700 : Html.Attribute msg
+mdHoverViaRed700 =
+    A.class "md:hover:via-red-700"
+
+
+mdHoverViaRed800 : Html.Attribute msg
+mdHoverViaRed800 =
+    A.class "md:hover:via-red-800"
+
+
+mdHoverViaRed900 : Html.Attribute msg
+mdHoverViaRed900 =
+    A.class "md:hover:via-red-900"
+
+
+mdHoverViaOrange100 : Html.Attribute msg
+mdHoverViaOrange100 =
+    A.class "md:hover:via-orange-100"
+
+
+mdHoverViaOrange200 : Html.Attribute msg
+mdHoverViaOrange200 =
+    A.class "md:hover:via-orange-200"
+
+
+mdHoverViaOrange300 : Html.Attribute msg
+mdHoverViaOrange300 =
+    A.class "md:hover:via-orange-300"
+
+
+mdHoverViaOrange400 : Html.Attribute msg
+mdHoverViaOrange400 =
+    A.class "md:hover:via-orange-400"
+
+
+mdHoverViaOrange500 : Html.Attribute msg
+mdHoverViaOrange500 =
+    A.class "md:hover:via-orange-500"
+
+
+mdHoverViaOrange600 : Html.Attribute msg
+mdHoverViaOrange600 =
+    A.class "md:hover:via-orange-600"
+
+
+mdHoverViaOrange700 : Html.Attribute msg
+mdHoverViaOrange700 =
+    A.class "md:hover:via-orange-700"
+
+
+mdHoverViaOrange800 : Html.Attribute msg
+mdHoverViaOrange800 =
+    A.class "md:hover:via-orange-800"
+
+
+mdHoverViaOrange900 : Html.Attribute msg
+mdHoverViaOrange900 =
+    A.class "md:hover:via-orange-900"
+
+
+mdHoverViaYellow100 : Html.Attribute msg
+mdHoverViaYellow100 =
+    A.class "md:hover:via-yellow-100"
+
+
+mdHoverViaYellow200 : Html.Attribute msg
+mdHoverViaYellow200 =
+    A.class "md:hover:via-yellow-200"
+
+
+mdHoverViaYellow300 : Html.Attribute msg
+mdHoverViaYellow300 =
+    A.class "md:hover:via-yellow-300"
+
+
+mdHoverViaYellow400 : Html.Attribute msg
+mdHoverViaYellow400 =
+    A.class "md:hover:via-yellow-400"
+
+
+mdHoverViaYellow500 : Html.Attribute msg
+mdHoverViaYellow500 =
+    A.class "md:hover:via-yellow-500"
+
+
+mdHoverViaYellow600 : Html.Attribute msg
+mdHoverViaYellow600 =
+    A.class "md:hover:via-yellow-600"
+
+
+mdHoverViaYellow700 : Html.Attribute msg
+mdHoverViaYellow700 =
+    A.class "md:hover:via-yellow-700"
+
+
+mdHoverViaYellow800 : Html.Attribute msg
+mdHoverViaYellow800 =
+    A.class "md:hover:via-yellow-800"
+
+
+mdHoverViaYellow900 : Html.Attribute msg
+mdHoverViaYellow900 =
+    A.class "md:hover:via-yellow-900"
+
+
+mdHoverViaGreen100 : Html.Attribute msg
+mdHoverViaGreen100 =
+    A.class "md:hover:via-green-100"
+
+
+mdHoverViaGreen200 : Html.Attribute msg
+mdHoverViaGreen200 =
+    A.class "md:hover:via-green-200"
+
+
+mdHoverViaGreen300 : Html.Attribute msg
+mdHoverViaGreen300 =
+    A.class "md:hover:via-green-300"
+
+
+mdHoverViaGreen400 : Html.Attribute msg
+mdHoverViaGreen400 =
+    A.class "md:hover:via-green-400"
+
+
+mdHoverViaGreen500 : Html.Attribute msg
+mdHoverViaGreen500 =
+    A.class "md:hover:via-green-500"
+
+
+mdHoverViaGreen600 : Html.Attribute msg
+mdHoverViaGreen600 =
+    A.class "md:hover:via-green-600"
+
+
+mdHoverViaGreen700 : Html.Attribute msg
+mdHoverViaGreen700 =
+    A.class "md:hover:via-green-700"
+
+
+mdHoverViaGreen800 : Html.Attribute msg
+mdHoverViaGreen800 =
+    A.class "md:hover:via-green-800"
+
+
+mdHoverViaGreen900 : Html.Attribute msg
+mdHoverViaGreen900 =
+    A.class "md:hover:via-green-900"
+
+
+mdHoverViaTeal100 : Html.Attribute msg
+mdHoverViaTeal100 =
+    A.class "md:hover:via-teal-100"
+
+
+mdHoverViaTeal200 : Html.Attribute msg
+mdHoverViaTeal200 =
+    A.class "md:hover:via-teal-200"
+
+
+mdHoverViaTeal300 : Html.Attribute msg
+mdHoverViaTeal300 =
+    A.class "md:hover:via-teal-300"
+
+
+mdHoverViaTeal400 : Html.Attribute msg
+mdHoverViaTeal400 =
+    A.class "md:hover:via-teal-400"
+
+
+mdHoverViaTeal500 : Html.Attribute msg
+mdHoverViaTeal500 =
+    A.class "md:hover:via-teal-500"
+
+
+mdHoverViaTeal600 : Html.Attribute msg
+mdHoverViaTeal600 =
+    A.class "md:hover:via-teal-600"
+
+
+mdHoverViaTeal700 : Html.Attribute msg
+mdHoverViaTeal700 =
+    A.class "md:hover:via-teal-700"
+
+
+mdHoverViaTeal800 : Html.Attribute msg
+mdHoverViaTeal800 =
+    A.class "md:hover:via-teal-800"
+
+
+mdHoverViaTeal900 : Html.Attribute msg
+mdHoverViaTeal900 =
+    A.class "md:hover:via-teal-900"
+
+
+mdHoverViaBlue100 : Html.Attribute msg
+mdHoverViaBlue100 =
+    A.class "md:hover:via-blue-100"
+
+
+mdHoverViaBlue200 : Html.Attribute msg
+mdHoverViaBlue200 =
+    A.class "md:hover:via-blue-200"
+
+
+mdHoverViaBlue300 : Html.Attribute msg
+mdHoverViaBlue300 =
+    A.class "md:hover:via-blue-300"
+
+
+mdHoverViaBlue400 : Html.Attribute msg
+mdHoverViaBlue400 =
+    A.class "md:hover:via-blue-400"
+
+
+mdHoverViaBlue500 : Html.Attribute msg
+mdHoverViaBlue500 =
+    A.class "md:hover:via-blue-500"
+
+
+mdHoverViaBlue600 : Html.Attribute msg
+mdHoverViaBlue600 =
+    A.class "md:hover:via-blue-600"
+
+
+mdHoverViaBlue700 : Html.Attribute msg
+mdHoverViaBlue700 =
+    A.class "md:hover:via-blue-700"
+
+
+mdHoverViaBlue800 : Html.Attribute msg
+mdHoverViaBlue800 =
+    A.class "md:hover:via-blue-800"
+
+
+mdHoverViaBlue900 : Html.Attribute msg
+mdHoverViaBlue900 =
+    A.class "md:hover:via-blue-900"
+
+
+mdHoverViaIndigo100 : Html.Attribute msg
+mdHoverViaIndigo100 =
+    A.class "md:hover:via-indigo-100"
+
+
+mdHoverViaIndigo200 : Html.Attribute msg
+mdHoverViaIndigo200 =
+    A.class "md:hover:via-indigo-200"
+
+
+mdHoverViaIndigo300 : Html.Attribute msg
+mdHoverViaIndigo300 =
+    A.class "md:hover:via-indigo-300"
+
+
+mdHoverViaIndigo400 : Html.Attribute msg
+mdHoverViaIndigo400 =
+    A.class "md:hover:via-indigo-400"
+
+
+mdHoverViaIndigo500 : Html.Attribute msg
+mdHoverViaIndigo500 =
+    A.class "md:hover:via-indigo-500"
+
+
+mdHoverViaIndigo600 : Html.Attribute msg
+mdHoverViaIndigo600 =
+    A.class "md:hover:via-indigo-600"
+
+
+mdHoverViaIndigo700 : Html.Attribute msg
+mdHoverViaIndigo700 =
+    A.class "md:hover:via-indigo-700"
+
+
+mdHoverViaIndigo800 : Html.Attribute msg
+mdHoverViaIndigo800 =
+    A.class "md:hover:via-indigo-800"
+
+
+mdHoverViaIndigo900 : Html.Attribute msg
+mdHoverViaIndigo900 =
+    A.class "md:hover:via-indigo-900"
+
+
+mdHoverViaPurple100 : Html.Attribute msg
+mdHoverViaPurple100 =
+    A.class "md:hover:via-purple-100"
+
+
+mdHoverViaPurple200 : Html.Attribute msg
+mdHoverViaPurple200 =
+    A.class "md:hover:via-purple-200"
+
+
+mdHoverViaPurple300 : Html.Attribute msg
+mdHoverViaPurple300 =
+    A.class "md:hover:via-purple-300"
+
+
+mdHoverViaPurple400 : Html.Attribute msg
+mdHoverViaPurple400 =
+    A.class "md:hover:via-purple-400"
+
+
+mdHoverViaPurple500 : Html.Attribute msg
+mdHoverViaPurple500 =
+    A.class "md:hover:via-purple-500"
+
+
+mdHoverViaPurple600 : Html.Attribute msg
+mdHoverViaPurple600 =
+    A.class "md:hover:via-purple-600"
+
+
+mdHoverViaPurple700 : Html.Attribute msg
+mdHoverViaPurple700 =
+    A.class "md:hover:via-purple-700"
+
+
+mdHoverViaPurple800 : Html.Attribute msg
+mdHoverViaPurple800 =
+    A.class "md:hover:via-purple-800"
+
+
+mdHoverViaPurple900 : Html.Attribute msg
+mdHoverViaPurple900 =
+    A.class "md:hover:via-purple-900"
+
+
+mdHoverViaPink100 : Html.Attribute msg
+mdHoverViaPink100 =
+    A.class "md:hover:via-pink-100"
+
+
+mdHoverViaPink200 : Html.Attribute msg
+mdHoverViaPink200 =
+    A.class "md:hover:via-pink-200"
+
+
+mdHoverViaPink300 : Html.Attribute msg
+mdHoverViaPink300 =
+    A.class "md:hover:via-pink-300"
+
+
+mdHoverViaPink400 : Html.Attribute msg
+mdHoverViaPink400 =
+    A.class "md:hover:via-pink-400"
+
+
+mdHoverViaPink500 : Html.Attribute msg
+mdHoverViaPink500 =
+    A.class "md:hover:via-pink-500"
+
+
+mdHoverViaPink600 : Html.Attribute msg
+mdHoverViaPink600 =
+    A.class "md:hover:via-pink-600"
+
+
+mdHoverViaPink700 : Html.Attribute msg
+mdHoverViaPink700 =
+    A.class "md:hover:via-pink-700"
+
+
+mdHoverViaPink800 : Html.Attribute msg
+mdHoverViaPink800 =
+    A.class "md:hover:via-pink-800"
+
+
+mdHoverViaPink900 : Html.Attribute msg
+mdHoverViaPink900 =
+    A.class "md:hover:via-pink-900"
+
+
+mdHoverToTransparent : Html.Attribute msg
+mdHoverToTransparent =
+    A.class "md:hover:to-transparent"
+
+
+mdHoverToCurrent : Html.Attribute msg
+mdHoverToCurrent =
+    A.class "md:hover:to-current"
+
+
+mdHoverToBlack : Html.Attribute msg
+mdHoverToBlack =
+    A.class "md:hover:to-black"
+
+
+mdHoverToWhite : Html.Attribute msg
+mdHoverToWhite =
+    A.class "md:hover:to-white"
+
+
+mdHoverToGray100 : Html.Attribute msg
+mdHoverToGray100 =
+    A.class "md:hover:to-gray-100"
+
+
+mdHoverToGray200 : Html.Attribute msg
+mdHoverToGray200 =
+    A.class "md:hover:to-gray-200"
+
+
+mdHoverToGray300 : Html.Attribute msg
+mdHoverToGray300 =
+    A.class "md:hover:to-gray-300"
+
+
+mdHoverToGray400 : Html.Attribute msg
+mdHoverToGray400 =
+    A.class "md:hover:to-gray-400"
+
+
+mdHoverToGray500 : Html.Attribute msg
+mdHoverToGray500 =
+    A.class "md:hover:to-gray-500"
+
+
+mdHoverToGray600 : Html.Attribute msg
+mdHoverToGray600 =
+    A.class "md:hover:to-gray-600"
+
+
+mdHoverToGray700 : Html.Attribute msg
+mdHoverToGray700 =
+    A.class "md:hover:to-gray-700"
+
+
+mdHoverToGray800 : Html.Attribute msg
+mdHoverToGray800 =
+    A.class "md:hover:to-gray-800"
+
+
+mdHoverToGray900 : Html.Attribute msg
+mdHoverToGray900 =
+    A.class "md:hover:to-gray-900"
+
+
+mdHoverToRed100 : Html.Attribute msg
+mdHoverToRed100 =
+    A.class "md:hover:to-red-100"
+
+
+mdHoverToRed200 : Html.Attribute msg
+mdHoverToRed200 =
+    A.class "md:hover:to-red-200"
+
+
+mdHoverToRed300 : Html.Attribute msg
+mdHoverToRed300 =
+    A.class "md:hover:to-red-300"
+
+
+mdHoverToRed400 : Html.Attribute msg
+mdHoverToRed400 =
+    A.class "md:hover:to-red-400"
+
+
+mdHoverToRed500 : Html.Attribute msg
+mdHoverToRed500 =
+    A.class "md:hover:to-red-500"
+
+
+mdHoverToRed600 : Html.Attribute msg
+mdHoverToRed600 =
+    A.class "md:hover:to-red-600"
+
+
+mdHoverToRed700 : Html.Attribute msg
+mdHoverToRed700 =
+    A.class "md:hover:to-red-700"
+
+
+mdHoverToRed800 : Html.Attribute msg
+mdHoverToRed800 =
+    A.class "md:hover:to-red-800"
+
+
+mdHoverToRed900 : Html.Attribute msg
+mdHoverToRed900 =
+    A.class "md:hover:to-red-900"
+
+
+mdHoverToOrange100 : Html.Attribute msg
+mdHoverToOrange100 =
+    A.class "md:hover:to-orange-100"
+
+
+mdHoverToOrange200 : Html.Attribute msg
+mdHoverToOrange200 =
+    A.class "md:hover:to-orange-200"
+
+
+mdHoverToOrange300 : Html.Attribute msg
+mdHoverToOrange300 =
+    A.class "md:hover:to-orange-300"
+
+
+mdHoverToOrange400 : Html.Attribute msg
+mdHoverToOrange400 =
+    A.class "md:hover:to-orange-400"
+
+
+mdHoverToOrange500 : Html.Attribute msg
+mdHoverToOrange500 =
+    A.class "md:hover:to-orange-500"
+
+
+mdHoverToOrange600 : Html.Attribute msg
+mdHoverToOrange600 =
+    A.class "md:hover:to-orange-600"
+
+
+mdHoverToOrange700 : Html.Attribute msg
+mdHoverToOrange700 =
+    A.class "md:hover:to-orange-700"
+
+
+mdHoverToOrange800 : Html.Attribute msg
+mdHoverToOrange800 =
+    A.class "md:hover:to-orange-800"
+
+
+mdHoverToOrange900 : Html.Attribute msg
+mdHoverToOrange900 =
+    A.class "md:hover:to-orange-900"
+
+
+mdHoverToYellow100 : Html.Attribute msg
+mdHoverToYellow100 =
+    A.class "md:hover:to-yellow-100"
+
+
+mdHoverToYellow200 : Html.Attribute msg
+mdHoverToYellow200 =
+    A.class "md:hover:to-yellow-200"
+
+
+mdHoverToYellow300 : Html.Attribute msg
+mdHoverToYellow300 =
+    A.class "md:hover:to-yellow-300"
+
+
+mdHoverToYellow400 : Html.Attribute msg
+mdHoverToYellow400 =
+    A.class "md:hover:to-yellow-400"
+
+
+mdHoverToYellow500 : Html.Attribute msg
+mdHoverToYellow500 =
+    A.class "md:hover:to-yellow-500"
+
+
+mdHoverToYellow600 : Html.Attribute msg
+mdHoverToYellow600 =
+    A.class "md:hover:to-yellow-600"
+
+
+mdHoverToYellow700 : Html.Attribute msg
+mdHoverToYellow700 =
+    A.class "md:hover:to-yellow-700"
+
+
+mdHoverToYellow800 : Html.Attribute msg
+mdHoverToYellow800 =
+    A.class "md:hover:to-yellow-800"
+
+
+mdHoverToYellow900 : Html.Attribute msg
+mdHoverToYellow900 =
+    A.class "md:hover:to-yellow-900"
+
+
+mdHoverToGreen100 : Html.Attribute msg
+mdHoverToGreen100 =
+    A.class "md:hover:to-green-100"
+
+
+mdHoverToGreen200 : Html.Attribute msg
+mdHoverToGreen200 =
+    A.class "md:hover:to-green-200"
+
+
+mdHoverToGreen300 : Html.Attribute msg
+mdHoverToGreen300 =
+    A.class "md:hover:to-green-300"
+
+
+mdHoverToGreen400 : Html.Attribute msg
+mdHoverToGreen400 =
+    A.class "md:hover:to-green-400"
+
+
+mdHoverToGreen500 : Html.Attribute msg
+mdHoverToGreen500 =
+    A.class "md:hover:to-green-500"
+
+
+mdHoverToGreen600 : Html.Attribute msg
+mdHoverToGreen600 =
+    A.class "md:hover:to-green-600"
+
+
+mdHoverToGreen700 : Html.Attribute msg
+mdHoverToGreen700 =
+    A.class "md:hover:to-green-700"
+
+
+mdHoverToGreen800 : Html.Attribute msg
+mdHoverToGreen800 =
+    A.class "md:hover:to-green-800"
+
+
+mdHoverToGreen900 : Html.Attribute msg
+mdHoverToGreen900 =
+    A.class "md:hover:to-green-900"
+
+
+mdHoverToTeal100 : Html.Attribute msg
+mdHoverToTeal100 =
+    A.class "md:hover:to-teal-100"
+
+
+mdHoverToTeal200 : Html.Attribute msg
+mdHoverToTeal200 =
+    A.class "md:hover:to-teal-200"
+
+
+mdHoverToTeal300 : Html.Attribute msg
+mdHoverToTeal300 =
+    A.class "md:hover:to-teal-300"
+
+
+mdHoverToTeal400 : Html.Attribute msg
+mdHoverToTeal400 =
+    A.class "md:hover:to-teal-400"
+
+
+mdHoverToTeal500 : Html.Attribute msg
+mdHoverToTeal500 =
+    A.class "md:hover:to-teal-500"
+
+
+mdHoverToTeal600 : Html.Attribute msg
+mdHoverToTeal600 =
+    A.class "md:hover:to-teal-600"
+
+
+mdHoverToTeal700 : Html.Attribute msg
+mdHoverToTeal700 =
+    A.class "md:hover:to-teal-700"
+
+
+mdHoverToTeal800 : Html.Attribute msg
+mdHoverToTeal800 =
+    A.class "md:hover:to-teal-800"
+
+
+mdHoverToTeal900 : Html.Attribute msg
+mdHoverToTeal900 =
+    A.class "md:hover:to-teal-900"
+
+
+mdHoverToBlue100 : Html.Attribute msg
+mdHoverToBlue100 =
+    A.class "md:hover:to-blue-100"
+
+
+mdHoverToBlue200 : Html.Attribute msg
+mdHoverToBlue200 =
+    A.class "md:hover:to-blue-200"
+
+
+mdHoverToBlue300 : Html.Attribute msg
+mdHoverToBlue300 =
+    A.class "md:hover:to-blue-300"
+
+
+mdHoverToBlue400 : Html.Attribute msg
+mdHoverToBlue400 =
+    A.class "md:hover:to-blue-400"
+
+
+mdHoverToBlue500 : Html.Attribute msg
+mdHoverToBlue500 =
+    A.class "md:hover:to-blue-500"
+
+
+mdHoverToBlue600 : Html.Attribute msg
+mdHoverToBlue600 =
+    A.class "md:hover:to-blue-600"
+
+
+mdHoverToBlue700 : Html.Attribute msg
+mdHoverToBlue700 =
+    A.class "md:hover:to-blue-700"
+
+
+mdHoverToBlue800 : Html.Attribute msg
+mdHoverToBlue800 =
+    A.class "md:hover:to-blue-800"
+
+
+mdHoverToBlue900 : Html.Attribute msg
+mdHoverToBlue900 =
+    A.class "md:hover:to-blue-900"
+
+
+mdHoverToIndigo100 : Html.Attribute msg
+mdHoverToIndigo100 =
+    A.class "md:hover:to-indigo-100"
+
+
+mdHoverToIndigo200 : Html.Attribute msg
+mdHoverToIndigo200 =
+    A.class "md:hover:to-indigo-200"
+
+
+mdHoverToIndigo300 : Html.Attribute msg
+mdHoverToIndigo300 =
+    A.class "md:hover:to-indigo-300"
+
+
+mdHoverToIndigo400 : Html.Attribute msg
+mdHoverToIndigo400 =
+    A.class "md:hover:to-indigo-400"
+
+
+mdHoverToIndigo500 : Html.Attribute msg
+mdHoverToIndigo500 =
+    A.class "md:hover:to-indigo-500"
+
+
+mdHoverToIndigo600 : Html.Attribute msg
+mdHoverToIndigo600 =
+    A.class "md:hover:to-indigo-600"
+
+
+mdHoverToIndigo700 : Html.Attribute msg
+mdHoverToIndigo700 =
+    A.class "md:hover:to-indigo-700"
+
+
+mdHoverToIndigo800 : Html.Attribute msg
+mdHoverToIndigo800 =
+    A.class "md:hover:to-indigo-800"
+
+
+mdHoverToIndigo900 : Html.Attribute msg
+mdHoverToIndigo900 =
+    A.class "md:hover:to-indigo-900"
+
+
+mdHoverToPurple100 : Html.Attribute msg
+mdHoverToPurple100 =
+    A.class "md:hover:to-purple-100"
+
+
+mdHoverToPurple200 : Html.Attribute msg
+mdHoverToPurple200 =
+    A.class "md:hover:to-purple-200"
+
+
+mdHoverToPurple300 : Html.Attribute msg
+mdHoverToPurple300 =
+    A.class "md:hover:to-purple-300"
+
+
+mdHoverToPurple400 : Html.Attribute msg
+mdHoverToPurple400 =
+    A.class "md:hover:to-purple-400"
+
+
+mdHoverToPurple500 : Html.Attribute msg
+mdHoverToPurple500 =
+    A.class "md:hover:to-purple-500"
+
+
+mdHoverToPurple600 : Html.Attribute msg
+mdHoverToPurple600 =
+    A.class "md:hover:to-purple-600"
+
+
+mdHoverToPurple700 : Html.Attribute msg
+mdHoverToPurple700 =
+    A.class "md:hover:to-purple-700"
+
+
+mdHoverToPurple800 : Html.Attribute msg
+mdHoverToPurple800 =
+    A.class "md:hover:to-purple-800"
+
+
+mdHoverToPurple900 : Html.Attribute msg
+mdHoverToPurple900 =
+    A.class "md:hover:to-purple-900"
+
+
+mdHoverToPink100 : Html.Attribute msg
+mdHoverToPink100 =
+    A.class "md:hover:to-pink-100"
+
+
+mdHoverToPink200 : Html.Attribute msg
+mdHoverToPink200 =
+    A.class "md:hover:to-pink-200"
+
+
+mdHoverToPink300 : Html.Attribute msg
+mdHoverToPink300 =
+    A.class "md:hover:to-pink-300"
+
+
+mdHoverToPink400 : Html.Attribute msg
+mdHoverToPink400 =
+    A.class "md:hover:to-pink-400"
+
+
+mdHoverToPink500 : Html.Attribute msg
+mdHoverToPink500 =
+    A.class "md:hover:to-pink-500"
+
+
+mdHoverToPink600 : Html.Attribute msg
+mdHoverToPink600 =
+    A.class "md:hover:to-pink-600"
+
+
+mdHoverToPink700 : Html.Attribute msg
+mdHoverToPink700 =
+    A.class "md:hover:to-pink-700"
+
+
+mdHoverToPink800 : Html.Attribute msg
+mdHoverToPink800 =
+    A.class "md:hover:to-pink-800"
+
+
+mdHoverToPink900 : Html.Attribute msg
+mdHoverToPink900 =
+    A.class "md:hover:to-pink-900"
+
+
+mdFocusFromTransparent : Html.Attribute msg
+mdFocusFromTransparent =
+    A.class "md:focus:from-transparent"
+
+
+mdFocusFromCurrent : Html.Attribute msg
+mdFocusFromCurrent =
+    A.class "md:focus:from-current"
+
+
+mdFocusFromBlack : Html.Attribute msg
+mdFocusFromBlack =
+    A.class "md:focus:from-black"
+
+
+mdFocusFromWhite : Html.Attribute msg
+mdFocusFromWhite =
+    A.class "md:focus:from-white"
+
+
+mdFocusFromGray100 : Html.Attribute msg
+mdFocusFromGray100 =
+    A.class "md:focus:from-gray-100"
+
+
+mdFocusFromGray200 : Html.Attribute msg
+mdFocusFromGray200 =
+    A.class "md:focus:from-gray-200"
+
+
+mdFocusFromGray300 : Html.Attribute msg
+mdFocusFromGray300 =
+    A.class "md:focus:from-gray-300"
+
+
+mdFocusFromGray400 : Html.Attribute msg
+mdFocusFromGray400 =
+    A.class "md:focus:from-gray-400"
+
+
+mdFocusFromGray500 : Html.Attribute msg
+mdFocusFromGray500 =
+    A.class "md:focus:from-gray-500"
+
+
+mdFocusFromGray600 : Html.Attribute msg
+mdFocusFromGray600 =
+    A.class "md:focus:from-gray-600"
+
+
+mdFocusFromGray700 : Html.Attribute msg
+mdFocusFromGray700 =
+    A.class "md:focus:from-gray-700"
+
+
+mdFocusFromGray800 : Html.Attribute msg
+mdFocusFromGray800 =
+    A.class "md:focus:from-gray-800"
+
+
+mdFocusFromGray900 : Html.Attribute msg
+mdFocusFromGray900 =
+    A.class "md:focus:from-gray-900"
+
+
+mdFocusFromRed100 : Html.Attribute msg
+mdFocusFromRed100 =
+    A.class "md:focus:from-red-100"
+
+
+mdFocusFromRed200 : Html.Attribute msg
+mdFocusFromRed200 =
+    A.class "md:focus:from-red-200"
+
+
+mdFocusFromRed300 : Html.Attribute msg
+mdFocusFromRed300 =
+    A.class "md:focus:from-red-300"
+
+
+mdFocusFromRed400 : Html.Attribute msg
+mdFocusFromRed400 =
+    A.class "md:focus:from-red-400"
+
+
+mdFocusFromRed500 : Html.Attribute msg
+mdFocusFromRed500 =
+    A.class "md:focus:from-red-500"
+
+
+mdFocusFromRed600 : Html.Attribute msg
+mdFocusFromRed600 =
+    A.class "md:focus:from-red-600"
+
+
+mdFocusFromRed700 : Html.Attribute msg
+mdFocusFromRed700 =
+    A.class "md:focus:from-red-700"
+
+
+mdFocusFromRed800 : Html.Attribute msg
+mdFocusFromRed800 =
+    A.class "md:focus:from-red-800"
+
+
+mdFocusFromRed900 : Html.Attribute msg
+mdFocusFromRed900 =
+    A.class "md:focus:from-red-900"
+
+
+mdFocusFromOrange100 : Html.Attribute msg
+mdFocusFromOrange100 =
+    A.class "md:focus:from-orange-100"
+
+
+mdFocusFromOrange200 : Html.Attribute msg
+mdFocusFromOrange200 =
+    A.class "md:focus:from-orange-200"
+
+
+mdFocusFromOrange300 : Html.Attribute msg
+mdFocusFromOrange300 =
+    A.class "md:focus:from-orange-300"
+
+
+mdFocusFromOrange400 : Html.Attribute msg
+mdFocusFromOrange400 =
+    A.class "md:focus:from-orange-400"
+
+
+mdFocusFromOrange500 : Html.Attribute msg
+mdFocusFromOrange500 =
+    A.class "md:focus:from-orange-500"
+
+
+mdFocusFromOrange600 : Html.Attribute msg
+mdFocusFromOrange600 =
+    A.class "md:focus:from-orange-600"
+
+
+mdFocusFromOrange700 : Html.Attribute msg
+mdFocusFromOrange700 =
+    A.class "md:focus:from-orange-700"
+
+
+mdFocusFromOrange800 : Html.Attribute msg
+mdFocusFromOrange800 =
+    A.class "md:focus:from-orange-800"
+
+
+mdFocusFromOrange900 : Html.Attribute msg
+mdFocusFromOrange900 =
+    A.class "md:focus:from-orange-900"
+
+
+mdFocusFromYellow100 : Html.Attribute msg
+mdFocusFromYellow100 =
+    A.class "md:focus:from-yellow-100"
+
+
+mdFocusFromYellow200 : Html.Attribute msg
+mdFocusFromYellow200 =
+    A.class "md:focus:from-yellow-200"
+
+
+mdFocusFromYellow300 : Html.Attribute msg
+mdFocusFromYellow300 =
+    A.class "md:focus:from-yellow-300"
+
+
+mdFocusFromYellow400 : Html.Attribute msg
+mdFocusFromYellow400 =
+    A.class "md:focus:from-yellow-400"
+
+
+mdFocusFromYellow500 : Html.Attribute msg
+mdFocusFromYellow500 =
+    A.class "md:focus:from-yellow-500"
+
+
+mdFocusFromYellow600 : Html.Attribute msg
+mdFocusFromYellow600 =
+    A.class "md:focus:from-yellow-600"
+
+
+mdFocusFromYellow700 : Html.Attribute msg
+mdFocusFromYellow700 =
+    A.class "md:focus:from-yellow-700"
+
+
+mdFocusFromYellow800 : Html.Attribute msg
+mdFocusFromYellow800 =
+    A.class "md:focus:from-yellow-800"
+
+
+mdFocusFromYellow900 : Html.Attribute msg
+mdFocusFromYellow900 =
+    A.class "md:focus:from-yellow-900"
+
+
+mdFocusFromGreen100 : Html.Attribute msg
+mdFocusFromGreen100 =
+    A.class "md:focus:from-green-100"
+
+
+mdFocusFromGreen200 : Html.Attribute msg
+mdFocusFromGreen200 =
+    A.class "md:focus:from-green-200"
+
+
+mdFocusFromGreen300 : Html.Attribute msg
+mdFocusFromGreen300 =
+    A.class "md:focus:from-green-300"
+
+
+mdFocusFromGreen400 : Html.Attribute msg
+mdFocusFromGreen400 =
+    A.class "md:focus:from-green-400"
+
+
+mdFocusFromGreen500 : Html.Attribute msg
+mdFocusFromGreen500 =
+    A.class "md:focus:from-green-500"
+
+
+mdFocusFromGreen600 : Html.Attribute msg
+mdFocusFromGreen600 =
+    A.class "md:focus:from-green-600"
+
+
+mdFocusFromGreen700 : Html.Attribute msg
+mdFocusFromGreen700 =
+    A.class "md:focus:from-green-700"
+
+
+mdFocusFromGreen800 : Html.Attribute msg
+mdFocusFromGreen800 =
+    A.class "md:focus:from-green-800"
+
+
+mdFocusFromGreen900 : Html.Attribute msg
+mdFocusFromGreen900 =
+    A.class "md:focus:from-green-900"
+
+
+mdFocusFromTeal100 : Html.Attribute msg
+mdFocusFromTeal100 =
+    A.class "md:focus:from-teal-100"
+
+
+mdFocusFromTeal200 : Html.Attribute msg
+mdFocusFromTeal200 =
+    A.class "md:focus:from-teal-200"
+
+
+mdFocusFromTeal300 : Html.Attribute msg
+mdFocusFromTeal300 =
+    A.class "md:focus:from-teal-300"
+
+
+mdFocusFromTeal400 : Html.Attribute msg
+mdFocusFromTeal400 =
+    A.class "md:focus:from-teal-400"
+
+
+mdFocusFromTeal500 : Html.Attribute msg
+mdFocusFromTeal500 =
+    A.class "md:focus:from-teal-500"
+
+
+mdFocusFromTeal600 : Html.Attribute msg
+mdFocusFromTeal600 =
+    A.class "md:focus:from-teal-600"
+
+
+mdFocusFromTeal700 : Html.Attribute msg
+mdFocusFromTeal700 =
+    A.class "md:focus:from-teal-700"
+
+
+mdFocusFromTeal800 : Html.Attribute msg
+mdFocusFromTeal800 =
+    A.class "md:focus:from-teal-800"
+
+
+mdFocusFromTeal900 : Html.Attribute msg
+mdFocusFromTeal900 =
+    A.class "md:focus:from-teal-900"
+
+
+mdFocusFromBlue100 : Html.Attribute msg
+mdFocusFromBlue100 =
+    A.class "md:focus:from-blue-100"
+
+
+mdFocusFromBlue200 : Html.Attribute msg
+mdFocusFromBlue200 =
+    A.class "md:focus:from-blue-200"
+
+
+mdFocusFromBlue300 : Html.Attribute msg
+mdFocusFromBlue300 =
+    A.class "md:focus:from-blue-300"
+
+
+mdFocusFromBlue400 : Html.Attribute msg
+mdFocusFromBlue400 =
+    A.class "md:focus:from-blue-400"
+
+
+mdFocusFromBlue500 : Html.Attribute msg
+mdFocusFromBlue500 =
+    A.class "md:focus:from-blue-500"
+
+
+mdFocusFromBlue600 : Html.Attribute msg
+mdFocusFromBlue600 =
+    A.class "md:focus:from-blue-600"
+
+
+mdFocusFromBlue700 : Html.Attribute msg
+mdFocusFromBlue700 =
+    A.class "md:focus:from-blue-700"
+
+
+mdFocusFromBlue800 : Html.Attribute msg
+mdFocusFromBlue800 =
+    A.class "md:focus:from-blue-800"
+
+
+mdFocusFromBlue900 : Html.Attribute msg
+mdFocusFromBlue900 =
+    A.class "md:focus:from-blue-900"
+
+
+mdFocusFromIndigo100 : Html.Attribute msg
+mdFocusFromIndigo100 =
+    A.class "md:focus:from-indigo-100"
+
+
+mdFocusFromIndigo200 : Html.Attribute msg
+mdFocusFromIndigo200 =
+    A.class "md:focus:from-indigo-200"
+
+
+mdFocusFromIndigo300 : Html.Attribute msg
+mdFocusFromIndigo300 =
+    A.class "md:focus:from-indigo-300"
+
+
+mdFocusFromIndigo400 : Html.Attribute msg
+mdFocusFromIndigo400 =
+    A.class "md:focus:from-indigo-400"
+
+
+mdFocusFromIndigo500 : Html.Attribute msg
+mdFocusFromIndigo500 =
+    A.class "md:focus:from-indigo-500"
+
+
+mdFocusFromIndigo600 : Html.Attribute msg
+mdFocusFromIndigo600 =
+    A.class "md:focus:from-indigo-600"
+
+
+mdFocusFromIndigo700 : Html.Attribute msg
+mdFocusFromIndigo700 =
+    A.class "md:focus:from-indigo-700"
+
+
+mdFocusFromIndigo800 : Html.Attribute msg
+mdFocusFromIndigo800 =
+    A.class "md:focus:from-indigo-800"
+
+
+mdFocusFromIndigo900 : Html.Attribute msg
+mdFocusFromIndigo900 =
+    A.class "md:focus:from-indigo-900"
+
+
+mdFocusFromPurple100 : Html.Attribute msg
+mdFocusFromPurple100 =
+    A.class "md:focus:from-purple-100"
+
+
+mdFocusFromPurple200 : Html.Attribute msg
+mdFocusFromPurple200 =
+    A.class "md:focus:from-purple-200"
+
+
+mdFocusFromPurple300 : Html.Attribute msg
+mdFocusFromPurple300 =
+    A.class "md:focus:from-purple-300"
+
+
+mdFocusFromPurple400 : Html.Attribute msg
+mdFocusFromPurple400 =
+    A.class "md:focus:from-purple-400"
+
+
+mdFocusFromPurple500 : Html.Attribute msg
+mdFocusFromPurple500 =
+    A.class "md:focus:from-purple-500"
+
+
+mdFocusFromPurple600 : Html.Attribute msg
+mdFocusFromPurple600 =
+    A.class "md:focus:from-purple-600"
+
+
+mdFocusFromPurple700 : Html.Attribute msg
+mdFocusFromPurple700 =
+    A.class "md:focus:from-purple-700"
+
+
+mdFocusFromPurple800 : Html.Attribute msg
+mdFocusFromPurple800 =
+    A.class "md:focus:from-purple-800"
+
+
+mdFocusFromPurple900 : Html.Attribute msg
+mdFocusFromPurple900 =
+    A.class "md:focus:from-purple-900"
+
+
+mdFocusFromPink100 : Html.Attribute msg
+mdFocusFromPink100 =
+    A.class "md:focus:from-pink-100"
+
+
+mdFocusFromPink200 : Html.Attribute msg
+mdFocusFromPink200 =
+    A.class "md:focus:from-pink-200"
+
+
+mdFocusFromPink300 : Html.Attribute msg
+mdFocusFromPink300 =
+    A.class "md:focus:from-pink-300"
+
+
+mdFocusFromPink400 : Html.Attribute msg
+mdFocusFromPink400 =
+    A.class "md:focus:from-pink-400"
+
+
+mdFocusFromPink500 : Html.Attribute msg
+mdFocusFromPink500 =
+    A.class "md:focus:from-pink-500"
+
+
+mdFocusFromPink600 : Html.Attribute msg
+mdFocusFromPink600 =
+    A.class "md:focus:from-pink-600"
+
+
+mdFocusFromPink700 : Html.Attribute msg
+mdFocusFromPink700 =
+    A.class "md:focus:from-pink-700"
+
+
+mdFocusFromPink800 : Html.Attribute msg
+mdFocusFromPink800 =
+    A.class "md:focus:from-pink-800"
+
+
+mdFocusFromPink900 : Html.Attribute msg
+mdFocusFromPink900 =
+    A.class "md:focus:from-pink-900"
+
+
+mdFocusViaTransparent : Html.Attribute msg
+mdFocusViaTransparent =
+    A.class "md:focus:via-transparent"
+
+
+mdFocusViaCurrent : Html.Attribute msg
+mdFocusViaCurrent =
+    A.class "md:focus:via-current"
+
+
+mdFocusViaBlack : Html.Attribute msg
+mdFocusViaBlack =
+    A.class "md:focus:via-black"
+
+
+mdFocusViaWhite : Html.Attribute msg
+mdFocusViaWhite =
+    A.class "md:focus:via-white"
+
+
+mdFocusViaGray100 : Html.Attribute msg
+mdFocusViaGray100 =
+    A.class "md:focus:via-gray-100"
+
+
+mdFocusViaGray200 : Html.Attribute msg
+mdFocusViaGray200 =
+    A.class "md:focus:via-gray-200"
+
+
+mdFocusViaGray300 : Html.Attribute msg
+mdFocusViaGray300 =
+    A.class "md:focus:via-gray-300"
+
+
+mdFocusViaGray400 : Html.Attribute msg
+mdFocusViaGray400 =
+    A.class "md:focus:via-gray-400"
+
+
+mdFocusViaGray500 : Html.Attribute msg
+mdFocusViaGray500 =
+    A.class "md:focus:via-gray-500"
+
+
+mdFocusViaGray600 : Html.Attribute msg
+mdFocusViaGray600 =
+    A.class "md:focus:via-gray-600"
+
+
+mdFocusViaGray700 : Html.Attribute msg
+mdFocusViaGray700 =
+    A.class "md:focus:via-gray-700"
+
+
+mdFocusViaGray800 : Html.Attribute msg
+mdFocusViaGray800 =
+    A.class "md:focus:via-gray-800"
+
+
+mdFocusViaGray900 : Html.Attribute msg
+mdFocusViaGray900 =
+    A.class "md:focus:via-gray-900"
+
+
+mdFocusViaRed100 : Html.Attribute msg
+mdFocusViaRed100 =
+    A.class "md:focus:via-red-100"
+
+
+mdFocusViaRed200 : Html.Attribute msg
+mdFocusViaRed200 =
+    A.class "md:focus:via-red-200"
+
+
+mdFocusViaRed300 : Html.Attribute msg
+mdFocusViaRed300 =
+    A.class "md:focus:via-red-300"
+
+
+mdFocusViaRed400 : Html.Attribute msg
+mdFocusViaRed400 =
+    A.class "md:focus:via-red-400"
+
+
+mdFocusViaRed500 : Html.Attribute msg
+mdFocusViaRed500 =
+    A.class "md:focus:via-red-500"
+
+
+mdFocusViaRed600 : Html.Attribute msg
+mdFocusViaRed600 =
+    A.class "md:focus:via-red-600"
+
+
+mdFocusViaRed700 : Html.Attribute msg
+mdFocusViaRed700 =
+    A.class "md:focus:via-red-700"
+
+
+mdFocusViaRed800 : Html.Attribute msg
+mdFocusViaRed800 =
+    A.class "md:focus:via-red-800"
+
+
+mdFocusViaRed900 : Html.Attribute msg
+mdFocusViaRed900 =
+    A.class "md:focus:via-red-900"
+
+
+mdFocusViaOrange100 : Html.Attribute msg
+mdFocusViaOrange100 =
+    A.class "md:focus:via-orange-100"
+
+
+mdFocusViaOrange200 : Html.Attribute msg
+mdFocusViaOrange200 =
+    A.class "md:focus:via-orange-200"
+
+
+mdFocusViaOrange300 : Html.Attribute msg
+mdFocusViaOrange300 =
+    A.class "md:focus:via-orange-300"
+
+
+mdFocusViaOrange400 : Html.Attribute msg
+mdFocusViaOrange400 =
+    A.class "md:focus:via-orange-400"
+
+
+mdFocusViaOrange500 : Html.Attribute msg
+mdFocusViaOrange500 =
+    A.class "md:focus:via-orange-500"
+
+
+mdFocusViaOrange600 : Html.Attribute msg
+mdFocusViaOrange600 =
+    A.class "md:focus:via-orange-600"
+
+
+mdFocusViaOrange700 : Html.Attribute msg
+mdFocusViaOrange700 =
+    A.class "md:focus:via-orange-700"
+
+
+mdFocusViaOrange800 : Html.Attribute msg
+mdFocusViaOrange800 =
+    A.class "md:focus:via-orange-800"
+
+
+mdFocusViaOrange900 : Html.Attribute msg
+mdFocusViaOrange900 =
+    A.class "md:focus:via-orange-900"
+
+
+mdFocusViaYellow100 : Html.Attribute msg
+mdFocusViaYellow100 =
+    A.class "md:focus:via-yellow-100"
+
+
+mdFocusViaYellow200 : Html.Attribute msg
+mdFocusViaYellow200 =
+    A.class "md:focus:via-yellow-200"
+
+
+mdFocusViaYellow300 : Html.Attribute msg
+mdFocusViaYellow300 =
+    A.class "md:focus:via-yellow-300"
+
+
+mdFocusViaYellow400 : Html.Attribute msg
+mdFocusViaYellow400 =
+    A.class "md:focus:via-yellow-400"
+
+
+mdFocusViaYellow500 : Html.Attribute msg
+mdFocusViaYellow500 =
+    A.class "md:focus:via-yellow-500"
+
+
+mdFocusViaYellow600 : Html.Attribute msg
+mdFocusViaYellow600 =
+    A.class "md:focus:via-yellow-600"
+
+
+mdFocusViaYellow700 : Html.Attribute msg
+mdFocusViaYellow700 =
+    A.class "md:focus:via-yellow-700"
+
+
+mdFocusViaYellow800 : Html.Attribute msg
+mdFocusViaYellow800 =
+    A.class "md:focus:via-yellow-800"
+
+
+mdFocusViaYellow900 : Html.Attribute msg
+mdFocusViaYellow900 =
+    A.class "md:focus:via-yellow-900"
+
+
+mdFocusViaGreen100 : Html.Attribute msg
+mdFocusViaGreen100 =
+    A.class "md:focus:via-green-100"
+
+
+mdFocusViaGreen200 : Html.Attribute msg
+mdFocusViaGreen200 =
+    A.class "md:focus:via-green-200"
+
+
+mdFocusViaGreen300 : Html.Attribute msg
+mdFocusViaGreen300 =
+    A.class "md:focus:via-green-300"
+
+
+mdFocusViaGreen400 : Html.Attribute msg
+mdFocusViaGreen400 =
+    A.class "md:focus:via-green-400"
+
+
+mdFocusViaGreen500 : Html.Attribute msg
+mdFocusViaGreen500 =
+    A.class "md:focus:via-green-500"
+
+
+mdFocusViaGreen600 : Html.Attribute msg
+mdFocusViaGreen600 =
+    A.class "md:focus:via-green-600"
+
+
+mdFocusViaGreen700 : Html.Attribute msg
+mdFocusViaGreen700 =
+    A.class "md:focus:via-green-700"
+
+
+mdFocusViaGreen800 : Html.Attribute msg
+mdFocusViaGreen800 =
+    A.class "md:focus:via-green-800"
+
+
+mdFocusViaGreen900 : Html.Attribute msg
+mdFocusViaGreen900 =
+    A.class "md:focus:via-green-900"
+
+
+mdFocusViaTeal100 : Html.Attribute msg
+mdFocusViaTeal100 =
+    A.class "md:focus:via-teal-100"
+
+
+mdFocusViaTeal200 : Html.Attribute msg
+mdFocusViaTeal200 =
+    A.class "md:focus:via-teal-200"
+
+
+mdFocusViaTeal300 : Html.Attribute msg
+mdFocusViaTeal300 =
+    A.class "md:focus:via-teal-300"
+
+
+mdFocusViaTeal400 : Html.Attribute msg
+mdFocusViaTeal400 =
+    A.class "md:focus:via-teal-400"
+
+
+mdFocusViaTeal500 : Html.Attribute msg
+mdFocusViaTeal500 =
+    A.class "md:focus:via-teal-500"
+
+
+mdFocusViaTeal600 : Html.Attribute msg
+mdFocusViaTeal600 =
+    A.class "md:focus:via-teal-600"
+
+
+mdFocusViaTeal700 : Html.Attribute msg
+mdFocusViaTeal700 =
+    A.class "md:focus:via-teal-700"
+
+
+mdFocusViaTeal800 : Html.Attribute msg
+mdFocusViaTeal800 =
+    A.class "md:focus:via-teal-800"
+
+
+mdFocusViaTeal900 : Html.Attribute msg
+mdFocusViaTeal900 =
+    A.class "md:focus:via-teal-900"
+
+
+mdFocusViaBlue100 : Html.Attribute msg
+mdFocusViaBlue100 =
+    A.class "md:focus:via-blue-100"
+
+
+mdFocusViaBlue200 : Html.Attribute msg
+mdFocusViaBlue200 =
+    A.class "md:focus:via-blue-200"
+
+
+mdFocusViaBlue300 : Html.Attribute msg
+mdFocusViaBlue300 =
+    A.class "md:focus:via-blue-300"
+
+
+mdFocusViaBlue400 : Html.Attribute msg
+mdFocusViaBlue400 =
+    A.class "md:focus:via-blue-400"
+
+
+mdFocusViaBlue500 : Html.Attribute msg
+mdFocusViaBlue500 =
+    A.class "md:focus:via-blue-500"
+
+
+mdFocusViaBlue600 : Html.Attribute msg
+mdFocusViaBlue600 =
+    A.class "md:focus:via-blue-600"
+
+
+mdFocusViaBlue700 : Html.Attribute msg
+mdFocusViaBlue700 =
+    A.class "md:focus:via-blue-700"
+
+
+mdFocusViaBlue800 : Html.Attribute msg
+mdFocusViaBlue800 =
+    A.class "md:focus:via-blue-800"
+
+
+mdFocusViaBlue900 : Html.Attribute msg
+mdFocusViaBlue900 =
+    A.class "md:focus:via-blue-900"
+
+
+mdFocusViaIndigo100 : Html.Attribute msg
+mdFocusViaIndigo100 =
+    A.class "md:focus:via-indigo-100"
+
+
+mdFocusViaIndigo200 : Html.Attribute msg
+mdFocusViaIndigo200 =
+    A.class "md:focus:via-indigo-200"
+
+
+mdFocusViaIndigo300 : Html.Attribute msg
+mdFocusViaIndigo300 =
+    A.class "md:focus:via-indigo-300"
+
+
+mdFocusViaIndigo400 : Html.Attribute msg
+mdFocusViaIndigo400 =
+    A.class "md:focus:via-indigo-400"
+
+
+mdFocusViaIndigo500 : Html.Attribute msg
+mdFocusViaIndigo500 =
+    A.class "md:focus:via-indigo-500"
+
+
+mdFocusViaIndigo600 : Html.Attribute msg
+mdFocusViaIndigo600 =
+    A.class "md:focus:via-indigo-600"
+
+
+mdFocusViaIndigo700 : Html.Attribute msg
+mdFocusViaIndigo700 =
+    A.class "md:focus:via-indigo-700"
+
+
+mdFocusViaIndigo800 : Html.Attribute msg
+mdFocusViaIndigo800 =
+    A.class "md:focus:via-indigo-800"
+
+
+mdFocusViaIndigo900 : Html.Attribute msg
+mdFocusViaIndigo900 =
+    A.class "md:focus:via-indigo-900"
+
+
+mdFocusViaPurple100 : Html.Attribute msg
+mdFocusViaPurple100 =
+    A.class "md:focus:via-purple-100"
+
+
+mdFocusViaPurple200 : Html.Attribute msg
+mdFocusViaPurple200 =
+    A.class "md:focus:via-purple-200"
+
+
+mdFocusViaPurple300 : Html.Attribute msg
+mdFocusViaPurple300 =
+    A.class "md:focus:via-purple-300"
+
+
+mdFocusViaPurple400 : Html.Attribute msg
+mdFocusViaPurple400 =
+    A.class "md:focus:via-purple-400"
+
+
+mdFocusViaPurple500 : Html.Attribute msg
+mdFocusViaPurple500 =
+    A.class "md:focus:via-purple-500"
+
+
+mdFocusViaPurple600 : Html.Attribute msg
+mdFocusViaPurple600 =
+    A.class "md:focus:via-purple-600"
+
+
+mdFocusViaPurple700 : Html.Attribute msg
+mdFocusViaPurple700 =
+    A.class "md:focus:via-purple-700"
+
+
+mdFocusViaPurple800 : Html.Attribute msg
+mdFocusViaPurple800 =
+    A.class "md:focus:via-purple-800"
+
+
+mdFocusViaPurple900 : Html.Attribute msg
+mdFocusViaPurple900 =
+    A.class "md:focus:via-purple-900"
+
+
+mdFocusViaPink100 : Html.Attribute msg
+mdFocusViaPink100 =
+    A.class "md:focus:via-pink-100"
+
+
+mdFocusViaPink200 : Html.Attribute msg
+mdFocusViaPink200 =
+    A.class "md:focus:via-pink-200"
+
+
+mdFocusViaPink300 : Html.Attribute msg
+mdFocusViaPink300 =
+    A.class "md:focus:via-pink-300"
+
+
+mdFocusViaPink400 : Html.Attribute msg
+mdFocusViaPink400 =
+    A.class "md:focus:via-pink-400"
+
+
+mdFocusViaPink500 : Html.Attribute msg
+mdFocusViaPink500 =
+    A.class "md:focus:via-pink-500"
+
+
+mdFocusViaPink600 : Html.Attribute msg
+mdFocusViaPink600 =
+    A.class "md:focus:via-pink-600"
+
+
+mdFocusViaPink700 : Html.Attribute msg
+mdFocusViaPink700 =
+    A.class "md:focus:via-pink-700"
+
+
+mdFocusViaPink800 : Html.Attribute msg
+mdFocusViaPink800 =
+    A.class "md:focus:via-pink-800"
+
+
+mdFocusViaPink900 : Html.Attribute msg
+mdFocusViaPink900 =
+    A.class "md:focus:via-pink-900"
+
+
+mdFocusToTransparent : Html.Attribute msg
+mdFocusToTransparent =
+    A.class "md:focus:to-transparent"
+
+
+mdFocusToCurrent : Html.Attribute msg
+mdFocusToCurrent =
+    A.class "md:focus:to-current"
+
+
+mdFocusToBlack : Html.Attribute msg
+mdFocusToBlack =
+    A.class "md:focus:to-black"
+
+
+mdFocusToWhite : Html.Attribute msg
+mdFocusToWhite =
+    A.class "md:focus:to-white"
+
+
+mdFocusToGray100 : Html.Attribute msg
+mdFocusToGray100 =
+    A.class "md:focus:to-gray-100"
+
+
+mdFocusToGray200 : Html.Attribute msg
+mdFocusToGray200 =
+    A.class "md:focus:to-gray-200"
+
+
+mdFocusToGray300 : Html.Attribute msg
+mdFocusToGray300 =
+    A.class "md:focus:to-gray-300"
+
+
+mdFocusToGray400 : Html.Attribute msg
+mdFocusToGray400 =
+    A.class "md:focus:to-gray-400"
+
+
+mdFocusToGray500 : Html.Attribute msg
+mdFocusToGray500 =
+    A.class "md:focus:to-gray-500"
+
+
+mdFocusToGray600 : Html.Attribute msg
+mdFocusToGray600 =
+    A.class "md:focus:to-gray-600"
+
+
+mdFocusToGray700 : Html.Attribute msg
+mdFocusToGray700 =
+    A.class "md:focus:to-gray-700"
+
+
+mdFocusToGray800 : Html.Attribute msg
+mdFocusToGray800 =
+    A.class "md:focus:to-gray-800"
+
+
+mdFocusToGray900 : Html.Attribute msg
+mdFocusToGray900 =
+    A.class "md:focus:to-gray-900"
+
+
+mdFocusToRed100 : Html.Attribute msg
+mdFocusToRed100 =
+    A.class "md:focus:to-red-100"
+
+
+mdFocusToRed200 : Html.Attribute msg
+mdFocusToRed200 =
+    A.class "md:focus:to-red-200"
+
+
+mdFocusToRed300 : Html.Attribute msg
+mdFocusToRed300 =
+    A.class "md:focus:to-red-300"
+
+
+mdFocusToRed400 : Html.Attribute msg
+mdFocusToRed400 =
+    A.class "md:focus:to-red-400"
+
+
+mdFocusToRed500 : Html.Attribute msg
+mdFocusToRed500 =
+    A.class "md:focus:to-red-500"
+
+
+mdFocusToRed600 : Html.Attribute msg
+mdFocusToRed600 =
+    A.class "md:focus:to-red-600"
+
+
+mdFocusToRed700 : Html.Attribute msg
+mdFocusToRed700 =
+    A.class "md:focus:to-red-700"
+
+
+mdFocusToRed800 : Html.Attribute msg
+mdFocusToRed800 =
+    A.class "md:focus:to-red-800"
+
+
+mdFocusToRed900 : Html.Attribute msg
+mdFocusToRed900 =
+    A.class "md:focus:to-red-900"
+
+
+mdFocusToOrange100 : Html.Attribute msg
+mdFocusToOrange100 =
+    A.class "md:focus:to-orange-100"
+
+
+mdFocusToOrange200 : Html.Attribute msg
+mdFocusToOrange200 =
+    A.class "md:focus:to-orange-200"
+
+
+mdFocusToOrange300 : Html.Attribute msg
+mdFocusToOrange300 =
+    A.class "md:focus:to-orange-300"
+
+
+mdFocusToOrange400 : Html.Attribute msg
+mdFocusToOrange400 =
+    A.class "md:focus:to-orange-400"
+
+
+mdFocusToOrange500 : Html.Attribute msg
+mdFocusToOrange500 =
+    A.class "md:focus:to-orange-500"
+
+
+mdFocusToOrange600 : Html.Attribute msg
+mdFocusToOrange600 =
+    A.class "md:focus:to-orange-600"
+
+
+mdFocusToOrange700 : Html.Attribute msg
+mdFocusToOrange700 =
+    A.class "md:focus:to-orange-700"
+
+
+mdFocusToOrange800 : Html.Attribute msg
+mdFocusToOrange800 =
+    A.class "md:focus:to-orange-800"
+
+
+mdFocusToOrange900 : Html.Attribute msg
+mdFocusToOrange900 =
+    A.class "md:focus:to-orange-900"
+
+
+mdFocusToYellow100 : Html.Attribute msg
+mdFocusToYellow100 =
+    A.class "md:focus:to-yellow-100"
+
+
+mdFocusToYellow200 : Html.Attribute msg
+mdFocusToYellow200 =
+    A.class "md:focus:to-yellow-200"
+
+
+mdFocusToYellow300 : Html.Attribute msg
+mdFocusToYellow300 =
+    A.class "md:focus:to-yellow-300"
+
+
+mdFocusToYellow400 : Html.Attribute msg
+mdFocusToYellow400 =
+    A.class "md:focus:to-yellow-400"
+
+
+mdFocusToYellow500 : Html.Attribute msg
+mdFocusToYellow500 =
+    A.class "md:focus:to-yellow-500"
+
+
+mdFocusToYellow600 : Html.Attribute msg
+mdFocusToYellow600 =
+    A.class "md:focus:to-yellow-600"
+
+
+mdFocusToYellow700 : Html.Attribute msg
+mdFocusToYellow700 =
+    A.class "md:focus:to-yellow-700"
+
+
+mdFocusToYellow800 : Html.Attribute msg
+mdFocusToYellow800 =
+    A.class "md:focus:to-yellow-800"
+
+
+mdFocusToYellow900 : Html.Attribute msg
+mdFocusToYellow900 =
+    A.class "md:focus:to-yellow-900"
+
+
+mdFocusToGreen100 : Html.Attribute msg
+mdFocusToGreen100 =
+    A.class "md:focus:to-green-100"
+
+
+mdFocusToGreen200 : Html.Attribute msg
+mdFocusToGreen200 =
+    A.class "md:focus:to-green-200"
+
+
+mdFocusToGreen300 : Html.Attribute msg
+mdFocusToGreen300 =
+    A.class "md:focus:to-green-300"
+
+
+mdFocusToGreen400 : Html.Attribute msg
+mdFocusToGreen400 =
+    A.class "md:focus:to-green-400"
+
+
+mdFocusToGreen500 : Html.Attribute msg
+mdFocusToGreen500 =
+    A.class "md:focus:to-green-500"
+
+
+mdFocusToGreen600 : Html.Attribute msg
+mdFocusToGreen600 =
+    A.class "md:focus:to-green-600"
+
+
+mdFocusToGreen700 : Html.Attribute msg
+mdFocusToGreen700 =
+    A.class "md:focus:to-green-700"
+
+
+mdFocusToGreen800 : Html.Attribute msg
+mdFocusToGreen800 =
+    A.class "md:focus:to-green-800"
+
+
+mdFocusToGreen900 : Html.Attribute msg
+mdFocusToGreen900 =
+    A.class "md:focus:to-green-900"
+
+
+mdFocusToTeal100 : Html.Attribute msg
+mdFocusToTeal100 =
+    A.class "md:focus:to-teal-100"
+
+
+mdFocusToTeal200 : Html.Attribute msg
+mdFocusToTeal200 =
+    A.class "md:focus:to-teal-200"
+
+
+mdFocusToTeal300 : Html.Attribute msg
+mdFocusToTeal300 =
+    A.class "md:focus:to-teal-300"
+
+
+mdFocusToTeal400 : Html.Attribute msg
+mdFocusToTeal400 =
+    A.class "md:focus:to-teal-400"
+
+
+mdFocusToTeal500 : Html.Attribute msg
+mdFocusToTeal500 =
+    A.class "md:focus:to-teal-500"
+
+
+mdFocusToTeal600 : Html.Attribute msg
+mdFocusToTeal600 =
+    A.class "md:focus:to-teal-600"
+
+
+mdFocusToTeal700 : Html.Attribute msg
+mdFocusToTeal700 =
+    A.class "md:focus:to-teal-700"
+
+
+mdFocusToTeal800 : Html.Attribute msg
+mdFocusToTeal800 =
+    A.class "md:focus:to-teal-800"
+
+
+mdFocusToTeal900 : Html.Attribute msg
+mdFocusToTeal900 =
+    A.class "md:focus:to-teal-900"
+
+
+mdFocusToBlue100 : Html.Attribute msg
+mdFocusToBlue100 =
+    A.class "md:focus:to-blue-100"
+
+
+mdFocusToBlue200 : Html.Attribute msg
+mdFocusToBlue200 =
+    A.class "md:focus:to-blue-200"
+
+
+mdFocusToBlue300 : Html.Attribute msg
+mdFocusToBlue300 =
+    A.class "md:focus:to-blue-300"
+
+
+mdFocusToBlue400 : Html.Attribute msg
+mdFocusToBlue400 =
+    A.class "md:focus:to-blue-400"
+
+
+mdFocusToBlue500 : Html.Attribute msg
+mdFocusToBlue500 =
+    A.class "md:focus:to-blue-500"
+
+
+mdFocusToBlue600 : Html.Attribute msg
+mdFocusToBlue600 =
+    A.class "md:focus:to-blue-600"
+
+
+mdFocusToBlue700 : Html.Attribute msg
+mdFocusToBlue700 =
+    A.class "md:focus:to-blue-700"
+
+
+mdFocusToBlue800 : Html.Attribute msg
+mdFocusToBlue800 =
+    A.class "md:focus:to-blue-800"
+
+
+mdFocusToBlue900 : Html.Attribute msg
+mdFocusToBlue900 =
+    A.class "md:focus:to-blue-900"
+
+
+mdFocusToIndigo100 : Html.Attribute msg
+mdFocusToIndigo100 =
+    A.class "md:focus:to-indigo-100"
+
+
+mdFocusToIndigo200 : Html.Attribute msg
+mdFocusToIndigo200 =
+    A.class "md:focus:to-indigo-200"
+
+
+mdFocusToIndigo300 : Html.Attribute msg
+mdFocusToIndigo300 =
+    A.class "md:focus:to-indigo-300"
+
+
+mdFocusToIndigo400 : Html.Attribute msg
+mdFocusToIndigo400 =
+    A.class "md:focus:to-indigo-400"
+
+
+mdFocusToIndigo500 : Html.Attribute msg
+mdFocusToIndigo500 =
+    A.class "md:focus:to-indigo-500"
+
+
+mdFocusToIndigo600 : Html.Attribute msg
+mdFocusToIndigo600 =
+    A.class "md:focus:to-indigo-600"
+
+
+mdFocusToIndigo700 : Html.Attribute msg
+mdFocusToIndigo700 =
+    A.class "md:focus:to-indigo-700"
+
+
+mdFocusToIndigo800 : Html.Attribute msg
+mdFocusToIndigo800 =
+    A.class "md:focus:to-indigo-800"
+
+
+mdFocusToIndigo900 : Html.Attribute msg
+mdFocusToIndigo900 =
+    A.class "md:focus:to-indigo-900"
+
+
+mdFocusToPurple100 : Html.Attribute msg
+mdFocusToPurple100 =
+    A.class "md:focus:to-purple-100"
+
+
+mdFocusToPurple200 : Html.Attribute msg
+mdFocusToPurple200 =
+    A.class "md:focus:to-purple-200"
+
+
+mdFocusToPurple300 : Html.Attribute msg
+mdFocusToPurple300 =
+    A.class "md:focus:to-purple-300"
+
+
+mdFocusToPurple400 : Html.Attribute msg
+mdFocusToPurple400 =
+    A.class "md:focus:to-purple-400"
+
+
+mdFocusToPurple500 : Html.Attribute msg
+mdFocusToPurple500 =
+    A.class "md:focus:to-purple-500"
+
+
+mdFocusToPurple600 : Html.Attribute msg
+mdFocusToPurple600 =
+    A.class "md:focus:to-purple-600"
+
+
+mdFocusToPurple700 : Html.Attribute msg
+mdFocusToPurple700 =
+    A.class "md:focus:to-purple-700"
+
+
+mdFocusToPurple800 : Html.Attribute msg
+mdFocusToPurple800 =
+    A.class "md:focus:to-purple-800"
+
+
+mdFocusToPurple900 : Html.Attribute msg
+mdFocusToPurple900 =
+    A.class "md:focus:to-purple-900"
+
+
+mdFocusToPink100 : Html.Attribute msg
+mdFocusToPink100 =
+    A.class "md:focus:to-pink-100"
+
+
+mdFocusToPink200 : Html.Attribute msg
+mdFocusToPink200 =
+    A.class "md:focus:to-pink-200"
+
+
+mdFocusToPink300 : Html.Attribute msg
+mdFocusToPink300 =
+    A.class "md:focus:to-pink-300"
+
+
+mdFocusToPink400 : Html.Attribute msg
+mdFocusToPink400 =
+    A.class "md:focus:to-pink-400"
+
+
+mdFocusToPink500 : Html.Attribute msg
+mdFocusToPink500 =
+    A.class "md:focus:to-pink-500"
+
+
+mdFocusToPink600 : Html.Attribute msg
+mdFocusToPink600 =
+    A.class "md:focus:to-pink-600"
+
+
+mdFocusToPink700 : Html.Attribute msg
+mdFocusToPink700 =
+    A.class "md:focus:to-pink-700"
+
+
+mdFocusToPink800 : Html.Attribute msg
+mdFocusToPink800 =
+    A.class "md:focus:to-pink-800"
+
+
+mdFocusToPink900 : Html.Attribute msg
+mdFocusToPink900 =
+    A.class "md:focus:to-pink-900"
 
 
 mdBgOpacity0 : Html.Attribute msg
@@ -45637,6 +65136,21 @@ mdRoundedLg =
     A.class "md:rounded-lg"
 
 
+mdRoundedXl : Html.Attribute msg
+mdRoundedXl =
+    A.class "md:rounded-xl"
+
+
+mdRounded2xl : Html.Attribute msg
+mdRounded2xl =
+    A.class "md:rounded-2xl"
+
+
+mdRounded3xl : Html.Attribute msg
+mdRounded3xl =
+    A.class "md:rounded-3xl"
+
+
 mdRoundedFull : Html.Attribute msg
 mdRoundedFull =
     A.class "md:rounded-full"
@@ -45740,6 +65254,66 @@ mdRoundedBLg =
 mdRoundedLLg : Html.Attribute msg
 mdRoundedLLg =
     A.class "md:rounded-l-lg"
+
+
+mdRoundedTXl : Html.Attribute msg
+mdRoundedTXl =
+    A.class "md:rounded-t-xl"
+
+
+mdRoundedRXl : Html.Attribute msg
+mdRoundedRXl =
+    A.class "md:rounded-r-xl"
+
+
+mdRoundedBXl : Html.Attribute msg
+mdRoundedBXl =
+    A.class "md:rounded-b-xl"
+
+
+mdRoundedLXl : Html.Attribute msg
+mdRoundedLXl =
+    A.class "md:rounded-l-xl"
+
+
+mdRoundedT2xl : Html.Attribute msg
+mdRoundedT2xl =
+    A.class "md:rounded-t-2xl"
+
+
+mdRoundedR2xl : Html.Attribute msg
+mdRoundedR2xl =
+    A.class "md:rounded-r-2xl"
+
+
+mdRoundedB2xl : Html.Attribute msg
+mdRoundedB2xl =
+    A.class "md:rounded-b-2xl"
+
+
+mdRoundedL2xl : Html.Attribute msg
+mdRoundedL2xl =
+    A.class "md:rounded-l-2xl"
+
+
+mdRoundedT3xl : Html.Attribute msg
+mdRoundedT3xl =
+    A.class "md:rounded-t-3xl"
+
+
+mdRoundedR3xl : Html.Attribute msg
+mdRoundedR3xl =
+    A.class "md:rounded-r-3xl"
+
+
+mdRoundedB3xl : Html.Attribute msg
+mdRoundedB3xl =
+    A.class "md:rounded-b-3xl"
+
+
+mdRoundedL3xl : Html.Attribute msg
+mdRoundedL3xl =
+    A.class "md:rounded-l-3xl"
 
 
 mdRoundedTFull : Html.Attribute msg
@@ -45860,6 +65434,66 @@ mdRoundedBrLg =
 mdRoundedBlLg : Html.Attribute msg
 mdRoundedBlLg =
     A.class "md:rounded-bl-lg"
+
+
+mdRoundedTlXl : Html.Attribute msg
+mdRoundedTlXl =
+    A.class "md:rounded-tl-xl"
+
+
+mdRoundedTrXl : Html.Attribute msg
+mdRoundedTrXl =
+    A.class "md:rounded-tr-xl"
+
+
+mdRoundedBrXl : Html.Attribute msg
+mdRoundedBrXl =
+    A.class "md:rounded-br-xl"
+
+
+mdRoundedBlXl : Html.Attribute msg
+mdRoundedBlXl =
+    A.class "md:rounded-bl-xl"
+
+
+mdRoundedTl2xl : Html.Attribute msg
+mdRoundedTl2xl =
+    A.class "md:rounded-tl-2xl"
+
+
+mdRoundedTr2xl : Html.Attribute msg
+mdRoundedTr2xl =
+    A.class "md:rounded-tr-2xl"
+
+
+mdRoundedBr2xl : Html.Attribute msg
+mdRoundedBr2xl =
+    A.class "md:rounded-br-2xl"
+
+
+mdRoundedBl2xl : Html.Attribute msg
+mdRoundedBl2xl =
+    A.class "md:rounded-bl-2xl"
+
+
+mdRoundedTl3xl : Html.Attribute msg
+mdRoundedTl3xl =
+    A.class "md:rounded-tl-3xl"
+
+
+mdRoundedTr3xl : Html.Attribute msg
+mdRoundedTr3xl =
+    A.class "md:rounded-tr-3xl"
+
+
+mdRoundedBr3xl : Html.Attribute msg
+mdRoundedBr3xl =
+    A.class "md:rounded-br-3xl"
+
+
+mdRoundedBl3xl : Html.Attribute msg
+mdRoundedBl3xl =
+    A.class "md:rounded-bl-3xl"
 
 
 mdRoundedTlFull : Html.Attribute msg
@@ -46162,6 +65796,11 @@ mdInlineGrid =
     A.class "md:inline-grid"
 
 
+mdContents : Html.Attribute msg
+mdContents =
+    A.class "md:contents"
+
+
 mdHidden : Html.Attribute msg
 mdHidden =
     A.class "md:hidden"
@@ -46202,6 +65841,91 @@ mdFlexNoWrap =
     A.class "md:flex-no-wrap"
 
 
+mdPlaceItemsAuto : Html.Attribute msg
+mdPlaceItemsAuto =
+    A.class "md:place-items-auto"
+
+
+mdPlaceItemsStart : Html.Attribute msg
+mdPlaceItemsStart =
+    A.class "md:place-items-start"
+
+
+mdPlaceItemsEnd : Html.Attribute msg
+mdPlaceItemsEnd =
+    A.class "md:place-items-end"
+
+
+mdPlaceItemsCenter : Html.Attribute msg
+mdPlaceItemsCenter =
+    A.class "md:place-items-center"
+
+
+mdPlaceItemsStretch : Html.Attribute msg
+mdPlaceItemsStretch =
+    A.class "md:place-items-stretch"
+
+
+mdPlaceContentCenter : Html.Attribute msg
+mdPlaceContentCenter =
+    A.class "md:place-content-center"
+
+
+mdPlaceContentStart : Html.Attribute msg
+mdPlaceContentStart =
+    A.class "md:place-content-start"
+
+
+mdPlaceContentEnd : Html.Attribute msg
+mdPlaceContentEnd =
+    A.class "md:place-content-end"
+
+
+mdPlaceContentBetween : Html.Attribute msg
+mdPlaceContentBetween =
+    A.class "md:place-content-between"
+
+
+mdPlaceContentAround : Html.Attribute msg
+mdPlaceContentAround =
+    A.class "md:place-content-around"
+
+
+mdPlaceContentEvenly : Html.Attribute msg
+mdPlaceContentEvenly =
+    A.class "md:place-content-evenly"
+
+
+mdPlaceContentStretch : Html.Attribute msg
+mdPlaceContentStretch =
+    A.class "md:place-content-stretch"
+
+
+mdPlaceSelfAuto : Html.Attribute msg
+mdPlaceSelfAuto =
+    A.class "md:place-self-auto"
+
+
+mdPlaceSelfStart : Html.Attribute msg
+mdPlaceSelfStart =
+    A.class "md:place-self-start"
+
+
+mdPlaceSelfEnd : Html.Attribute msg
+mdPlaceSelfEnd =
+    A.class "md:place-self-end"
+
+
+mdPlaceSelfCenter : Html.Attribute msg
+mdPlaceSelfCenter =
+    A.class "md:place-self-center"
+
+
+mdPlaceSelfStretch : Html.Attribute msg
+mdPlaceSelfStretch =
+    A.class "md:place-self-stretch"
+
+
 mdItemsStart : Html.Attribute msg
 mdItemsStart =
     A.class "md:items-start"
@@ -46227,6 +65951,36 @@ mdItemsStretch =
     A.class "md:items-stretch"
 
 
+mdContentCenter : Html.Attribute msg
+mdContentCenter =
+    A.class "md:content-center"
+
+
+mdContentStart : Html.Attribute msg
+mdContentStart =
+    A.class "md:content-start"
+
+
+mdContentEnd : Html.Attribute msg
+mdContentEnd =
+    A.class "md:content-end"
+
+
+mdContentBetween : Html.Attribute msg
+mdContentBetween =
+    A.class "md:content-between"
+
+
+mdContentAround : Html.Attribute msg
+mdContentAround =
+    A.class "md:content-around"
+
+
+mdContentEvenly : Html.Attribute msg
+mdContentEvenly =
+    A.class "md:content-evenly"
+
+
 mdSelfAuto : Html.Attribute msg
 mdSelfAuto =
     A.class "md:self-auto"
@@ -46250,6 +66004,31 @@ mdSelfCenter =
 mdSelfStretch : Html.Attribute msg
 mdSelfStretch =
     A.class "md:self-stretch"
+
+
+mdJustifyItemsAuto : Html.Attribute msg
+mdJustifyItemsAuto =
+    A.class "md:justify-items-auto"
+
+
+mdJustifyItemsStart : Html.Attribute msg
+mdJustifyItemsStart =
+    A.class "md:justify-items-start"
+
+
+mdJustifyItemsEnd : Html.Attribute msg
+mdJustifyItemsEnd =
+    A.class "md:justify-items-end"
+
+
+mdJustifyItemsCenter : Html.Attribute msg
+mdJustifyItemsCenter =
+    A.class "md:justify-items-center"
+
+
+mdJustifyItemsStretch : Html.Attribute msg
+mdJustifyItemsStretch =
+    A.class "md:justify-items-stretch"
 
 
 mdJustifyStart : Html.Attribute msg
@@ -46282,29 +66061,29 @@ mdJustifyEvenly =
     A.class "md:justify-evenly"
 
 
-mdContentCenter : Html.Attribute msg
-mdContentCenter =
-    A.class "md:content-center"
+mdJustifySelfAuto : Html.Attribute msg
+mdJustifySelfAuto =
+    A.class "md:justify-self-auto"
 
 
-mdContentStart : Html.Attribute msg
-mdContentStart =
-    A.class "md:content-start"
+mdJustifySelfStart : Html.Attribute msg
+mdJustifySelfStart =
+    A.class "md:justify-self-start"
 
 
-mdContentEnd : Html.Attribute msg
-mdContentEnd =
-    A.class "md:content-end"
+mdJustifySelfEnd : Html.Attribute msg
+mdJustifySelfEnd =
+    A.class "md:justify-self-end"
 
 
-mdContentBetween : Html.Attribute msg
-mdContentBetween =
-    A.class "md:content-between"
+mdJustifySelfCenter : Html.Attribute msg
+mdJustifySelfCenter =
+    A.class "md:justify-self-center"
 
 
-mdContentAround : Html.Attribute msg
-mdContentAround =
-    A.class "md:content-around"
+mdJustifySelfStretch : Html.Attribute msg
+mdJustifySelfStretch =
+    A.class "md:justify-self-stretch"
 
 
 mdFlex1 : Html.Attribute msg
@@ -48467,9 +68246,29 @@ mdOutlineNone =
     A.class "md:outline-none"
 
 
+mdOutlineWhite : Html.Attribute msg
+mdOutlineWhite =
+    A.class "md:outline-white"
+
+
+mdOutlineBlack : Html.Attribute msg
+mdOutlineBlack =
+    A.class "md:outline-black"
+
+
 mdFocusOutlineNone : Html.Attribute msg
 mdFocusOutlineNone =
     A.class "md:focus:outline-none"
+
+
+mdFocusOutlineWhite : Html.Attribute msg
+mdFocusOutlineWhite =
+    A.class "md:focus:outline-white"
+
+
+mdFocusOutlineBlack : Html.Attribute msg
+mdFocusOutlineBlack =
+    A.class "md:focus:outline-black"
 
 
 mdOverflowAuto : Html.Attribute msg
@@ -48540,6 +68339,51 @@ mdScrollingTouch =
 mdScrollingAuto : Html.Attribute msg
 mdScrollingAuto =
     A.class "md:scrolling-auto"
+
+
+mdOverscrollAuto : Html.Attribute msg
+mdOverscrollAuto =
+    A.class "md:overscroll-auto"
+
+
+mdOverscrollContain : Html.Attribute msg
+mdOverscrollContain =
+    A.class "md:overscroll-contain"
+
+
+mdOverscrollNone : Html.Attribute msg
+mdOverscrollNone =
+    A.class "md:overscroll-none"
+
+
+mdOverscrollYAuto : Html.Attribute msg
+mdOverscrollYAuto =
+    A.class "md:overscroll-y-auto"
+
+
+mdOverscrollYContain : Html.Attribute msg
+mdOverscrollYContain =
+    A.class "md:overscroll-y-contain"
+
+
+mdOverscrollYNone : Html.Attribute msg
+mdOverscrollYNone =
+    A.class "md:overscroll-y-none"
+
+
+mdOverscrollXAuto : Html.Attribute msg
+mdOverscrollXAuto =
+    A.class "md:overscroll-x-auto"
+
+
+mdOverscrollXContain : Html.Attribute msg
+mdOverscrollXContain =
+    A.class "md:overscroll-x-contain"
+
+
+mdOverscrollXNone : Html.Attribute msg
+mdOverscrollXNone =
+    A.class "md:overscroll-x-none"
 
 
 mdP0 : Html.Attribute msg
@@ -52097,6 +71941,51 @@ mdSubpixelAntialiased =
     A.class "md:subpixel-antialiased"
 
 
+mdOrdinal : Html.Attribute msg
+mdOrdinal =
+    A.class "md:ordinal"
+
+
+mdSlashedZero : Html.Attribute msg
+mdSlashedZero =
+    A.class "md:slashed-zero"
+
+
+mdLiningNums : Html.Attribute msg
+mdLiningNums =
+    A.class "md:lining-nums"
+
+
+mdOldstyleNums : Html.Attribute msg
+mdOldstyleNums =
+    A.class "md:oldstyle-nums"
+
+
+mdProportionalNums : Html.Attribute msg
+mdProportionalNums =
+    A.class "md:proportional-nums"
+
+
+mdTabularNums : Html.Attribute msg
+mdTabularNums =
+    A.class "md:tabular-nums"
+
+
+mdDiagonalFractions : Html.Attribute msg
+mdDiagonalFractions =
+    A.class "md:diagonal-fractions"
+
+
+mdStackedFractions : Html.Attribute msg
+mdStackedFractions =
+    A.class "md:stacked-fractions"
+
+
+mdNormalNums : Html.Attribute msg
+mdNormalNums =
+    A.class "md:normal-nums"
+
+
 mdTrackingTighter : Html.Attribute msg
 mdTrackingTighter =
     A.class "md:tracking-tighter"
@@ -52602,194 +72491,194 @@ mdGapPx =
     A.class "md:gap-px"
 
 
-mdColGap0 : Html.Attribute msg
-mdColGap0 =
-    A.class "md:col-gap-0"
+mdGapX0 : Html.Attribute msg
+mdGapX0 =
+    A.class "md:gap-x-0"
 
 
-mdColGap1 : Html.Attribute msg
-mdColGap1 =
-    A.class "md:col-gap-1"
+mdGapX1 : Html.Attribute msg
+mdGapX1 =
+    A.class "md:gap-x-1"
 
 
-mdColGap2 : Html.Attribute msg
-mdColGap2 =
-    A.class "md:col-gap-2"
+mdGapX2 : Html.Attribute msg
+mdGapX2 =
+    A.class "md:gap-x-2"
 
 
-mdColGap3 : Html.Attribute msg
-mdColGap3 =
-    A.class "md:col-gap-3"
+mdGapX3 : Html.Attribute msg
+mdGapX3 =
+    A.class "md:gap-x-3"
 
 
-mdColGap4 : Html.Attribute msg
-mdColGap4 =
-    A.class "md:col-gap-4"
+mdGapX4 : Html.Attribute msg
+mdGapX4 =
+    A.class "md:gap-x-4"
 
 
-mdColGap5 : Html.Attribute msg
-mdColGap5 =
-    A.class "md:col-gap-5"
+mdGapX5 : Html.Attribute msg
+mdGapX5 =
+    A.class "md:gap-x-5"
 
 
-mdColGap6 : Html.Attribute msg
-mdColGap6 =
-    A.class "md:col-gap-6"
+mdGapX6 : Html.Attribute msg
+mdGapX6 =
+    A.class "md:gap-x-6"
 
 
-mdColGap8 : Html.Attribute msg
-mdColGap8 =
-    A.class "md:col-gap-8"
+mdGapX8 : Html.Attribute msg
+mdGapX8 =
+    A.class "md:gap-x-8"
 
 
-mdColGap10 : Html.Attribute msg
-mdColGap10 =
-    A.class "md:col-gap-10"
+mdGapX10 : Html.Attribute msg
+mdGapX10 =
+    A.class "md:gap-x-10"
 
 
-mdColGap12 : Html.Attribute msg
-mdColGap12 =
-    A.class "md:col-gap-12"
+mdGapX12 : Html.Attribute msg
+mdGapX12 =
+    A.class "md:gap-x-12"
 
 
-mdColGap16 : Html.Attribute msg
-mdColGap16 =
-    A.class "md:col-gap-16"
+mdGapX16 : Html.Attribute msg
+mdGapX16 =
+    A.class "md:gap-x-16"
 
 
-mdColGap20 : Html.Attribute msg
-mdColGap20 =
-    A.class "md:col-gap-20"
+mdGapX20 : Html.Attribute msg
+mdGapX20 =
+    A.class "md:gap-x-20"
 
 
-mdColGap24 : Html.Attribute msg
-mdColGap24 =
-    A.class "md:col-gap-24"
+mdGapX24 : Html.Attribute msg
+mdGapX24 =
+    A.class "md:gap-x-24"
 
 
-mdColGap32 : Html.Attribute msg
-mdColGap32 =
-    A.class "md:col-gap-32"
+mdGapX32 : Html.Attribute msg
+mdGapX32 =
+    A.class "md:gap-x-32"
 
 
-mdColGap40 : Html.Attribute msg
-mdColGap40 =
-    A.class "md:col-gap-40"
+mdGapX40 : Html.Attribute msg
+mdGapX40 =
+    A.class "md:gap-x-40"
 
 
-mdColGap48 : Html.Attribute msg
-mdColGap48 =
-    A.class "md:col-gap-48"
+mdGapX48 : Html.Attribute msg
+mdGapX48 =
+    A.class "md:gap-x-48"
 
 
-mdColGap56 : Html.Attribute msg
-mdColGap56 =
-    A.class "md:col-gap-56"
+mdGapX56 : Html.Attribute msg
+mdGapX56 =
+    A.class "md:gap-x-56"
 
 
-mdColGap64 : Html.Attribute msg
-mdColGap64 =
-    A.class "md:col-gap-64"
+mdGapX64 : Html.Attribute msg
+mdGapX64 =
+    A.class "md:gap-x-64"
 
 
-mdColGapPx : Html.Attribute msg
-mdColGapPx =
-    A.class "md:col-gap-px"
+mdGapXPx : Html.Attribute msg
+mdGapXPx =
+    A.class "md:gap-x-px"
 
 
-mdRowGap0 : Html.Attribute msg
-mdRowGap0 =
-    A.class "md:row-gap-0"
+mdGapY0 : Html.Attribute msg
+mdGapY0 =
+    A.class "md:gap-y-0"
 
 
-mdRowGap1 : Html.Attribute msg
-mdRowGap1 =
-    A.class "md:row-gap-1"
+mdGapY1 : Html.Attribute msg
+mdGapY1 =
+    A.class "md:gap-y-1"
 
 
-mdRowGap2 : Html.Attribute msg
-mdRowGap2 =
-    A.class "md:row-gap-2"
+mdGapY2 : Html.Attribute msg
+mdGapY2 =
+    A.class "md:gap-y-2"
 
 
-mdRowGap3 : Html.Attribute msg
-mdRowGap3 =
-    A.class "md:row-gap-3"
+mdGapY3 : Html.Attribute msg
+mdGapY3 =
+    A.class "md:gap-y-3"
 
 
-mdRowGap4 : Html.Attribute msg
-mdRowGap4 =
-    A.class "md:row-gap-4"
+mdGapY4 : Html.Attribute msg
+mdGapY4 =
+    A.class "md:gap-y-4"
 
 
-mdRowGap5 : Html.Attribute msg
-mdRowGap5 =
-    A.class "md:row-gap-5"
+mdGapY5 : Html.Attribute msg
+mdGapY5 =
+    A.class "md:gap-y-5"
 
 
-mdRowGap6 : Html.Attribute msg
-mdRowGap6 =
-    A.class "md:row-gap-6"
+mdGapY6 : Html.Attribute msg
+mdGapY6 =
+    A.class "md:gap-y-6"
 
 
-mdRowGap8 : Html.Attribute msg
-mdRowGap8 =
-    A.class "md:row-gap-8"
+mdGapY8 : Html.Attribute msg
+mdGapY8 =
+    A.class "md:gap-y-8"
 
 
-mdRowGap10 : Html.Attribute msg
-mdRowGap10 =
-    A.class "md:row-gap-10"
+mdGapY10 : Html.Attribute msg
+mdGapY10 =
+    A.class "md:gap-y-10"
 
 
-mdRowGap12 : Html.Attribute msg
-mdRowGap12 =
-    A.class "md:row-gap-12"
+mdGapY12 : Html.Attribute msg
+mdGapY12 =
+    A.class "md:gap-y-12"
 
 
-mdRowGap16 : Html.Attribute msg
-mdRowGap16 =
-    A.class "md:row-gap-16"
+mdGapY16 : Html.Attribute msg
+mdGapY16 =
+    A.class "md:gap-y-16"
 
 
-mdRowGap20 : Html.Attribute msg
-mdRowGap20 =
-    A.class "md:row-gap-20"
+mdGapY20 : Html.Attribute msg
+mdGapY20 =
+    A.class "md:gap-y-20"
 
 
-mdRowGap24 : Html.Attribute msg
-mdRowGap24 =
-    A.class "md:row-gap-24"
+mdGapY24 : Html.Attribute msg
+mdGapY24 =
+    A.class "md:gap-y-24"
 
 
-mdRowGap32 : Html.Attribute msg
-mdRowGap32 =
-    A.class "md:row-gap-32"
+mdGapY32 : Html.Attribute msg
+mdGapY32 =
+    A.class "md:gap-y-32"
 
 
-mdRowGap40 : Html.Attribute msg
-mdRowGap40 =
-    A.class "md:row-gap-40"
+mdGapY40 : Html.Attribute msg
+mdGapY40 =
+    A.class "md:gap-y-40"
 
 
-mdRowGap48 : Html.Attribute msg
-mdRowGap48 =
-    A.class "md:row-gap-48"
+mdGapY48 : Html.Attribute msg
+mdGapY48 =
+    A.class "md:gap-y-48"
 
 
-mdRowGap56 : Html.Attribute msg
-mdRowGap56 =
-    A.class "md:row-gap-56"
+mdGapY56 : Html.Attribute msg
+mdGapY56 =
+    A.class "md:gap-y-56"
 
 
-mdRowGap64 : Html.Attribute msg
-mdRowGap64 =
-    A.class "md:row-gap-64"
+mdGapY64 : Html.Attribute msg
+mdGapY64 =
+    A.class "md:gap-y-64"
 
 
-mdRowGapPx : Html.Attribute msg
-mdRowGapPx =
-    A.class "md:row-gap-px"
+mdGapYPx : Html.Attribute msg
+mdGapYPx =
+    A.class "md:gap-y-px"
 
 
 mdGridFlowRow : Html.Attribute msg
@@ -52877,6 +72766,26 @@ mdGridColsNone =
     A.class "md:grid-cols-none"
 
 
+mdAutoColsAuto : Html.Attribute msg
+mdAutoColsAuto =
+    A.class "md:auto-cols-auto"
+
+
+mdAutoColsMin : Html.Attribute msg
+mdAutoColsMin =
+    A.class "md:auto-cols-min"
+
+
+mdAutoColsMax : Html.Attribute msg
+mdAutoColsMax =
+    A.class "md:auto-cols-max"
+
+
+mdAutoColsFr : Html.Attribute msg
+mdAutoColsFr =
+    A.class "md:auto-cols-fr"
+
+
 mdColAuto : Html.Attribute msg
 mdColAuto =
     A.class "md:col-auto"
@@ -52940,6 +72849,11 @@ mdColSpan11 =
 mdColSpan12 : Html.Attribute msg
 mdColSpan12 =
     A.class "md:col-span-12"
+
+
+mdColSpanFull : Html.Attribute msg
+mdColSpanFull =
+    A.class "md:col-span-full"
 
 
 mdColStart1 : Html.Attribute msg
@@ -53117,6 +73031,26 @@ mdGridRowsNone =
     A.class "md:grid-rows-none"
 
 
+mdAutoRowsAuto : Html.Attribute msg
+mdAutoRowsAuto =
+    A.class "md:auto-rows-auto"
+
+
+mdAutoRowsMin : Html.Attribute msg
+mdAutoRowsMin =
+    A.class "md:auto-rows-min"
+
+
+mdAutoRowsMax : Html.Attribute msg
+mdAutoRowsMax =
+    A.class "md:auto-rows-max"
+
+
+mdAutoRowsFr : Html.Attribute msg
+mdAutoRowsFr =
+    A.class "md:auto-rows-fr"
+
+
 mdRowAuto : Html.Attribute msg
 mdRowAuto =
     A.class "md:row-auto"
@@ -53150,6 +73084,11 @@ mdRowSpan5 =
 mdRowSpan6 : Html.Attribute msg
 mdRowSpan6 =
     A.class "md:row-span-6"
+
+
+mdRowSpanFull : Html.Attribute msg
+mdRowSpanFull =
+    A.class "md:row-span-full"
 
 
 mdRowStart1 : Html.Attribute msg
@@ -53742,6 +73681,31 @@ mdRotate0 =
     A.class "md:rotate-0"
 
 
+mdRotate1 : Html.Attribute msg
+mdRotate1 =
+    A.class "md:rotate-1"
+
+
+mdRotate2 : Html.Attribute msg
+mdRotate2 =
+    A.class "md:rotate-2"
+
+
+mdRotate3 : Html.Attribute msg
+mdRotate3 =
+    A.class "md:rotate-3"
+
+
+mdRotate6 : Html.Attribute msg
+mdRotate6 =
+    A.class "md:rotate-6"
+
+
+mdRotate12 : Html.Attribute msg
+mdRotate12 =
+    A.class "md:rotate-12"
+
+
 mdRotate45 : Html.Attribute msg
 mdRotate45 =
     A.class "md:rotate-45"
@@ -53772,9 +73736,59 @@ mdNegRotate45 =
     A.class "md:-rotate-45"
 
 
+mdNegRotate12 : Html.Attribute msg
+mdNegRotate12 =
+    A.class "md:-rotate-12"
+
+
+mdNegRotate6 : Html.Attribute msg
+mdNegRotate6 =
+    A.class "md:-rotate-6"
+
+
+mdNegRotate3 : Html.Attribute msg
+mdNegRotate3 =
+    A.class "md:-rotate-3"
+
+
+mdNegRotate2 : Html.Attribute msg
+mdNegRotate2 =
+    A.class "md:-rotate-2"
+
+
+mdNegRotate1 : Html.Attribute msg
+mdNegRotate1 =
+    A.class "md:-rotate-1"
+
+
 mdHoverRotate0 : Html.Attribute msg
 mdHoverRotate0 =
     A.class "md:hover:rotate-0"
+
+
+mdHoverRotate1 : Html.Attribute msg
+mdHoverRotate1 =
+    A.class "md:hover:rotate-1"
+
+
+mdHoverRotate2 : Html.Attribute msg
+mdHoverRotate2 =
+    A.class "md:hover:rotate-2"
+
+
+mdHoverRotate3 : Html.Attribute msg
+mdHoverRotate3 =
+    A.class "md:hover:rotate-3"
+
+
+mdHoverRotate6 : Html.Attribute msg
+mdHoverRotate6 =
+    A.class "md:hover:rotate-6"
+
+
+mdHoverRotate12 : Html.Attribute msg
+mdHoverRotate12 =
+    A.class "md:hover:rotate-12"
 
 
 mdHoverRotate45 : Html.Attribute msg
@@ -53807,9 +73821,59 @@ mdHoverNegRotate45 =
     A.class "md:hover:-rotate-45"
 
 
+mdHoverNegRotate12 : Html.Attribute msg
+mdHoverNegRotate12 =
+    A.class "md:hover:-rotate-12"
+
+
+mdHoverNegRotate6 : Html.Attribute msg
+mdHoverNegRotate6 =
+    A.class "md:hover:-rotate-6"
+
+
+mdHoverNegRotate3 : Html.Attribute msg
+mdHoverNegRotate3 =
+    A.class "md:hover:-rotate-3"
+
+
+mdHoverNegRotate2 : Html.Attribute msg
+mdHoverNegRotate2 =
+    A.class "md:hover:-rotate-2"
+
+
+mdHoverNegRotate1 : Html.Attribute msg
+mdHoverNegRotate1 =
+    A.class "md:hover:-rotate-1"
+
+
 mdFocusRotate0 : Html.Attribute msg
 mdFocusRotate0 =
     A.class "md:focus:rotate-0"
+
+
+mdFocusRotate1 : Html.Attribute msg
+mdFocusRotate1 =
+    A.class "md:focus:rotate-1"
+
+
+mdFocusRotate2 : Html.Attribute msg
+mdFocusRotate2 =
+    A.class "md:focus:rotate-2"
+
+
+mdFocusRotate3 : Html.Attribute msg
+mdFocusRotate3 =
+    A.class "md:focus:rotate-3"
+
+
+mdFocusRotate6 : Html.Attribute msg
+mdFocusRotate6 =
+    A.class "md:focus:rotate-6"
+
+
+mdFocusRotate12 : Html.Attribute msg
+mdFocusRotate12 =
+    A.class "md:focus:rotate-12"
 
 
 mdFocusRotate45 : Html.Attribute msg
@@ -53840,6 +73904,31 @@ mdFocusNegRotate90 =
 mdFocusNegRotate45 : Html.Attribute msg
 mdFocusNegRotate45 =
     A.class "md:focus:-rotate-45"
+
+
+mdFocusNegRotate12 : Html.Attribute msg
+mdFocusNegRotate12 =
+    A.class "md:focus:-rotate-12"
+
+
+mdFocusNegRotate6 : Html.Attribute msg
+mdFocusNegRotate6 =
+    A.class "md:focus:-rotate-6"
+
+
+mdFocusNegRotate3 : Html.Attribute msg
+mdFocusNegRotate3 =
+    A.class "md:focus:-rotate-3"
+
+
+mdFocusNegRotate2 : Html.Attribute msg
+mdFocusNegRotate2 =
+    A.class "md:focus:-rotate-2"
+
+
+mdFocusNegRotate1 : Html.Attribute msg
+mdFocusNegRotate1 =
+    A.class "md:focus:-rotate-1"
 
 
 mdTranslateX0 : Html.Attribute msg
@@ -55077,6 +75166,16 @@ mdSkewX0 =
     A.class "md:skew-x-0"
 
 
+mdSkewX1 : Html.Attribute msg
+mdSkewX1 =
+    A.class "md:skew-x-1"
+
+
+mdSkewX2 : Html.Attribute msg
+mdSkewX2 =
+    A.class "md:skew-x-2"
+
+
 mdSkewX3 : Html.Attribute msg
 mdSkewX3 =
     A.class "md:skew-x-3"
@@ -55107,9 +75206,29 @@ mdNegSkewX3 =
     A.class "md:-skew-x-3"
 
 
+mdNegSkewX2 : Html.Attribute msg
+mdNegSkewX2 =
+    A.class "md:-skew-x-2"
+
+
+mdNegSkewX1 : Html.Attribute msg
+mdNegSkewX1 =
+    A.class "md:-skew-x-1"
+
+
 mdSkewY0 : Html.Attribute msg
 mdSkewY0 =
     A.class "md:skew-y-0"
+
+
+mdSkewY1 : Html.Attribute msg
+mdSkewY1 =
+    A.class "md:skew-y-1"
+
+
+mdSkewY2 : Html.Attribute msg
+mdSkewY2 =
+    A.class "md:skew-y-2"
 
 
 mdSkewY3 : Html.Attribute msg
@@ -55142,9 +75261,29 @@ mdNegSkewY3 =
     A.class "md:-skew-y-3"
 
 
+mdNegSkewY2 : Html.Attribute msg
+mdNegSkewY2 =
+    A.class "md:-skew-y-2"
+
+
+mdNegSkewY1 : Html.Attribute msg
+mdNegSkewY1 =
+    A.class "md:-skew-y-1"
+
+
 mdHoverSkewX0 : Html.Attribute msg
 mdHoverSkewX0 =
     A.class "md:hover:skew-x-0"
+
+
+mdHoverSkewX1 : Html.Attribute msg
+mdHoverSkewX1 =
+    A.class "md:hover:skew-x-1"
+
+
+mdHoverSkewX2 : Html.Attribute msg
+mdHoverSkewX2 =
+    A.class "md:hover:skew-x-2"
 
 
 mdHoverSkewX3 : Html.Attribute msg
@@ -55177,9 +75316,29 @@ mdHoverNegSkewX3 =
     A.class "md:hover:-skew-x-3"
 
 
+mdHoverNegSkewX2 : Html.Attribute msg
+mdHoverNegSkewX2 =
+    A.class "md:hover:-skew-x-2"
+
+
+mdHoverNegSkewX1 : Html.Attribute msg
+mdHoverNegSkewX1 =
+    A.class "md:hover:-skew-x-1"
+
+
 mdHoverSkewY0 : Html.Attribute msg
 mdHoverSkewY0 =
     A.class "md:hover:skew-y-0"
+
+
+mdHoverSkewY1 : Html.Attribute msg
+mdHoverSkewY1 =
+    A.class "md:hover:skew-y-1"
+
+
+mdHoverSkewY2 : Html.Attribute msg
+mdHoverSkewY2 =
+    A.class "md:hover:skew-y-2"
 
 
 mdHoverSkewY3 : Html.Attribute msg
@@ -55212,9 +75371,29 @@ mdHoverNegSkewY3 =
     A.class "md:hover:-skew-y-3"
 
 
+mdHoverNegSkewY2 : Html.Attribute msg
+mdHoverNegSkewY2 =
+    A.class "md:hover:-skew-y-2"
+
+
+mdHoverNegSkewY1 : Html.Attribute msg
+mdHoverNegSkewY1 =
+    A.class "md:hover:-skew-y-1"
+
+
 mdFocusSkewX0 : Html.Attribute msg
 mdFocusSkewX0 =
     A.class "md:focus:skew-x-0"
+
+
+mdFocusSkewX1 : Html.Attribute msg
+mdFocusSkewX1 =
+    A.class "md:focus:skew-x-1"
+
+
+mdFocusSkewX2 : Html.Attribute msg
+mdFocusSkewX2 =
+    A.class "md:focus:skew-x-2"
 
 
 mdFocusSkewX3 : Html.Attribute msg
@@ -55247,9 +75426,29 @@ mdFocusNegSkewX3 =
     A.class "md:focus:-skew-x-3"
 
 
+mdFocusNegSkewX2 : Html.Attribute msg
+mdFocusNegSkewX2 =
+    A.class "md:focus:-skew-x-2"
+
+
+mdFocusNegSkewX1 : Html.Attribute msg
+mdFocusNegSkewX1 =
+    A.class "md:focus:-skew-x-1"
+
+
 mdFocusSkewY0 : Html.Attribute msg
 mdFocusSkewY0 =
     A.class "md:focus:skew-y-0"
+
+
+mdFocusSkewY1 : Html.Attribute msg
+mdFocusSkewY1 =
+    A.class "md:focus:skew-y-1"
+
+
+mdFocusSkewY2 : Html.Attribute msg
+mdFocusSkewY2 =
+    A.class "md:focus:skew-y-2"
 
 
 mdFocusSkewY3 : Html.Attribute msg
@@ -55280,6 +75479,16 @@ mdFocusNegSkewY6 =
 mdFocusNegSkewY3 : Html.Attribute msg
 mdFocusNegSkewY3 =
     A.class "md:focus:-skew-y-3"
+
+
+mdFocusNegSkewY2 : Html.Attribute msg
+mdFocusNegSkewY2 =
+    A.class "md:focus:-skew-y-2"
+
+
+mdFocusNegSkewY1 : Html.Attribute msg
+mdFocusNegSkewY1 =
+    A.class "md:focus:-skew-y-1"
 
 
 mdTransitionNone : Html.Attribute msg
@@ -55415,6 +75624,36 @@ mdDelay700 =
 mdDelay1000 : Html.Attribute msg
 mdDelay1000 =
     A.class "md:delay-1000"
+
+
+mdAnimateNone : Html.Attribute msg
+mdAnimateNone =
+    A.class "md:animate-none"
+
+
+mdAnimateSpin : Html.Attribute msg
+mdAnimateSpin =
+    A.class "md:animate-spin"
+
+
+mdAnimatePing : Html.Attribute msg
+mdAnimatePing =
+    A.class "md:animate-ping"
+
+
+mdAnimatePulse : Html.Attribute msg
+mdAnimatePulse =
+    A.class "md:animate-pulse"
+
+
+mdAnimateBounce : Html.Attribute msg
+mdAnimateBounce =
+    A.class "md:animate-bounce"
+
+
+lgContainer : Html.Attribute msg
+lgContainer =
+    A.class "lg:container"
 
 
 lgSpaceY0 : Html.Attribute msg
@@ -56327,6 +76566,31 @@ lgDividePink900 =
     A.class "lg:divide-pink-900"
 
 
+lgDivideSolid : Html.Attribute msg
+lgDivideSolid =
+    A.class "lg:divide-solid"
+
+
+lgDivideDashed : Html.Attribute msg
+lgDivideDashed =
+    A.class "lg:divide-dashed"
+
+
+lgDivideDotted : Html.Attribute msg
+lgDivideDotted =
+    A.class "lg:divide-dotted"
+
+
+lgDivideDouble : Html.Attribute msg
+lgDivideDouble =
+    A.class "lg:divide-double"
+
+
+lgDivideNone : Html.Attribute msg
+lgDivideNone =
+    A.class "lg:divide-none"
+
+
 lgDivideOpacity0 : Html.Attribute msg
 lgDivideOpacity0 =
     A.class "lg:divide-opacity-0"
@@ -56390,6 +76654,26 @@ lgBgLocal =
 lgBgScroll : Html.Attribute msg
 lgBgScroll =
     A.class "lg:bg-scroll"
+
+
+lgBgClipBorder : Html.Attribute msg
+lgBgClipBorder =
+    A.class "lg:bg-clip-border"
+
+
+lgBgClipPadding : Html.Attribute msg
+lgBgClipPadding =
+    A.class "lg:bg-clip-padding"
+
+
+lgBgClipContent : Html.Attribute msg
+lgBgClipContent =
+    A.class "lg:bg-clip-content"
+
+
+lgBgClipText : Html.Attribute msg
+lgBgClipText =
+    A.class "lg:bg-clip-text"
 
 
 lgBgTransparent : Html.Attribute msg
@@ -57800,6 +78084,4281 @@ lgFocusBgPink800 =
 lgFocusBgPink900 : Html.Attribute msg
 lgFocusBgPink900 =
     A.class "lg:focus:bg-pink-900"
+
+
+lgBgNone : Html.Attribute msg
+lgBgNone =
+    A.class "lg:bg-none"
+
+
+lgBgGradientToT : Html.Attribute msg
+lgBgGradientToT =
+    A.class "lg:bg-gradient-to-t"
+
+
+lgBgGradientToTr : Html.Attribute msg
+lgBgGradientToTr =
+    A.class "lg:bg-gradient-to-tr"
+
+
+lgBgGradientToR : Html.Attribute msg
+lgBgGradientToR =
+    A.class "lg:bg-gradient-to-r"
+
+
+lgBgGradientToBr : Html.Attribute msg
+lgBgGradientToBr =
+    A.class "lg:bg-gradient-to-br"
+
+
+lgBgGradientToB : Html.Attribute msg
+lgBgGradientToB =
+    A.class "lg:bg-gradient-to-b"
+
+
+lgBgGradientToBl : Html.Attribute msg
+lgBgGradientToBl =
+    A.class "lg:bg-gradient-to-bl"
+
+
+lgBgGradientToL : Html.Attribute msg
+lgBgGradientToL =
+    A.class "lg:bg-gradient-to-l"
+
+
+lgBgGradientToTl : Html.Attribute msg
+lgBgGradientToTl =
+    A.class "lg:bg-gradient-to-tl"
+
+
+lgFromTransparent : Html.Attribute msg
+lgFromTransparent =
+    A.class "lg:from-transparent"
+
+
+lgFromCurrent : Html.Attribute msg
+lgFromCurrent =
+    A.class "lg:from-current"
+
+
+lgFromBlack : Html.Attribute msg
+lgFromBlack =
+    A.class "lg:from-black"
+
+
+lgFromWhite : Html.Attribute msg
+lgFromWhite =
+    A.class "lg:from-white"
+
+
+lgFromGray100 : Html.Attribute msg
+lgFromGray100 =
+    A.class "lg:from-gray-100"
+
+
+lgFromGray200 : Html.Attribute msg
+lgFromGray200 =
+    A.class "lg:from-gray-200"
+
+
+lgFromGray300 : Html.Attribute msg
+lgFromGray300 =
+    A.class "lg:from-gray-300"
+
+
+lgFromGray400 : Html.Attribute msg
+lgFromGray400 =
+    A.class "lg:from-gray-400"
+
+
+lgFromGray500 : Html.Attribute msg
+lgFromGray500 =
+    A.class "lg:from-gray-500"
+
+
+lgFromGray600 : Html.Attribute msg
+lgFromGray600 =
+    A.class "lg:from-gray-600"
+
+
+lgFromGray700 : Html.Attribute msg
+lgFromGray700 =
+    A.class "lg:from-gray-700"
+
+
+lgFromGray800 : Html.Attribute msg
+lgFromGray800 =
+    A.class "lg:from-gray-800"
+
+
+lgFromGray900 : Html.Attribute msg
+lgFromGray900 =
+    A.class "lg:from-gray-900"
+
+
+lgFromRed100 : Html.Attribute msg
+lgFromRed100 =
+    A.class "lg:from-red-100"
+
+
+lgFromRed200 : Html.Attribute msg
+lgFromRed200 =
+    A.class "lg:from-red-200"
+
+
+lgFromRed300 : Html.Attribute msg
+lgFromRed300 =
+    A.class "lg:from-red-300"
+
+
+lgFromRed400 : Html.Attribute msg
+lgFromRed400 =
+    A.class "lg:from-red-400"
+
+
+lgFromRed500 : Html.Attribute msg
+lgFromRed500 =
+    A.class "lg:from-red-500"
+
+
+lgFromRed600 : Html.Attribute msg
+lgFromRed600 =
+    A.class "lg:from-red-600"
+
+
+lgFromRed700 : Html.Attribute msg
+lgFromRed700 =
+    A.class "lg:from-red-700"
+
+
+lgFromRed800 : Html.Attribute msg
+lgFromRed800 =
+    A.class "lg:from-red-800"
+
+
+lgFromRed900 : Html.Attribute msg
+lgFromRed900 =
+    A.class "lg:from-red-900"
+
+
+lgFromOrange100 : Html.Attribute msg
+lgFromOrange100 =
+    A.class "lg:from-orange-100"
+
+
+lgFromOrange200 : Html.Attribute msg
+lgFromOrange200 =
+    A.class "lg:from-orange-200"
+
+
+lgFromOrange300 : Html.Attribute msg
+lgFromOrange300 =
+    A.class "lg:from-orange-300"
+
+
+lgFromOrange400 : Html.Attribute msg
+lgFromOrange400 =
+    A.class "lg:from-orange-400"
+
+
+lgFromOrange500 : Html.Attribute msg
+lgFromOrange500 =
+    A.class "lg:from-orange-500"
+
+
+lgFromOrange600 : Html.Attribute msg
+lgFromOrange600 =
+    A.class "lg:from-orange-600"
+
+
+lgFromOrange700 : Html.Attribute msg
+lgFromOrange700 =
+    A.class "lg:from-orange-700"
+
+
+lgFromOrange800 : Html.Attribute msg
+lgFromOrange800 =
+    A.class "lg:from-orange-800"
+
+
+lgFromOrange900 : Html.Attribute msg
+lgFromOrange900 =
+    A.class "lg:from-orange-900"
+
+
+lgFromYellow100 : Html.Attribute msg
+lgFromYellow100 =
+    A.class "lg:from-yellow-100"
+
+
+lgFromYellow200 : Html.Attribute msg
+lgFromYellow200 =
+    A.class "lg:from-yellow-200"
+
+
+lgFromYellow300 : Html.Attribute msg
+lgFromYellow300 =
+    A.class "lg:from-yellow-300"
+
+
+lgFromYellow400 : Html.Attribute msg
+lgFromYellow400 =
+    A.class "lg:from-yellow-400"
+
+
+lgFromYellow500 : Html.Attribute msg
+lgFromYellow500 =
+    A.class "lg:from-yellow-500"
+
+
+lgFromYellow600 : Html.Attribute msg
+lgFromYellow600 =
+    A.class "lg:from-yellow-600"
+
+
+lgFromYellow700 : Html.Attribute msg
+lgFromYellow700 =
+    A.class "lg:from-yellow-700"
+
+
+lgFromYellow800 : Html.Attribute msg
+lgFromYellow800 =
+    A.class "lg:from-yellow-800"
+
+
+lgFromYellow900 : Html.Attribute msg
+lgFromYellow900 =
+    A.class "lg:from-yellow-900"
+
+
+lgFromGreen100 : Html.Attribute msg
+lgFromGreen100 =
+    A.class "lg:from-green-100"
+
+
+lgFromGreen200 : Html.Attribute msg
+lgFromGreen200 =
+    A.class "lg:from-green-200"
+
+
+lgFromGreen300 : Html.Attribute msg
+lgFromGreen300 =
+    A.class "lg:from-green-300"
+
+
+lgFromGreen400 : Html.Attribute msg
+lgFromGreen400 =
+    A.class "lg:from-green-400"
+
+
+lgFromGreen500 : Html.Attribute msg
+lgFromGreen500 =
+    A.class "lg:from-green-500"
+
+
+lgFromGreen600 : Html.Attribute msg
+lgFromGreen600 =
+    A.class "lg:from-green-600"
+
+
+lgFromGreen700 : Html.Attribute msg
+lgFromGreen700 =
+    A.class "lg:from-green-700"
+
+
+lgFromGreen800 : Html.Attribute msg
+lgFromGreen800 =
+    A.class "lg:from-green-800"
+
+
+lgFromGreen900 : Html.Attribute msg
+lgFromGreen900 =
+    A.class "lg:from-green-900"
+
+
+lgFromTeal100 : Html.Attribute msg
+lgFromTeal100 =
+    A.class "lg:from-teal-100"
+
+
+lgFromTeal200 : Html.Attribute msg
+lgFromTeal200 =
+    A.class "lg:from-teal-200"
+
+
+lgFromTeal300 : Html.Attribute msg
+lgFromTeal300 =
+    A.class "lg:from-teal-300"
+
+
+lgFromTeal400 : Html.Attribute msg
+lgFromTeal400 =
+    A.class "lg:from-teal-400"
+
+
+lgFromTeal500 : Html.Attribute msg
+lgFromTeal500 =
+    A.class "lg:from-teal-500"
+
+
+lgFromTeal600 : Html.Attribute msg
+lgFromTeal600 =
+    A.class "lg:from-teal-600"
+
+
+lgFromTeal700 : Html.Attribute msg
+lgFromTeal700 =
+    A.class "lg:from-teal-700"
+
+
+lgFromTeal800 : Html.Attribute msg
+lgFromTeal800 =
+    A.class "lg:from-teal-800"
+
+
+lgFromTeal900 : Html.Attribute msg
+lgFromTeal900 =
+    A.class "lg:from-teal-900"
+
+
+lgFromBlue100 : Html.Attribute msg
+lgFromBlue100 =
+    A.class "lg:from-blue-100"
+
+
+lgFromBlue200 : Html.Attribute msg
+lgFromBlue200 =
+    A.class "lg:from-blue-200"
+
+
+lgFromBlue300 : Html.Attribute msg
+lgFromBlue300 =
+    A.class "lg:from-blue-300"
+
+
+lgFromBlue400 : Html.Attribute msg
+lgFromBlue400 =
+    A.class "lg:from-blue-400"
+
+
+lgFromBlue500 : Html.Attribute msg
+lgFromBlue500 =
+    A.class "lg:from-blue-500"
+
+
+lgFromBlue600 : Html.Attribute msg
+lgFromBlue600 =
+    A.class "lg:from-blue-600"
+
+
+lgFromBlue700 : Html.Attribute msg
+lgFromBlue700 =
+    A.class "lg:from-blue-700"
+
+
+lgFromBlue800 : Html.Attribute msg
+lgFromBlue800 =
+    A.class "lg:from-blue-800"
+
+
+lgFromBlue900 : Html.Attribute msg
+lgFromBlue900 =
+    A.class "lg:from-blue-900"
+
+
+lgFromIndigo100 : Html.Attribute msg
+lgFromIndigo100 =
+    A.class "lg:from-indigo-100"
+
+
+lgFromIndigo200 : Html.Attribute msg
+lgFromIndigo200 =
+    A.class "lg:from-indigo-200"
+
+
+lgFromIndigo300 : Html.Attribute msg
+lgFromIndigo300 =
+    A.class "lg:from-indigo-300"
+
+
+lgFromIndigo400 : Html.Attribute msg
+lgFromIndigo400 =
+    A.class "lg:from-indigo-400"
+
+
+lgFromIndigo500 : Html.Attribute msg
+lgFromIndigo500 =
+    A.class "lg:from-indigo-500"
+
+
+lgFromIndigo600 : Html.Attribute msg
+lgFromIndigo600 =
+    A.class "lg:from-indigo-600"
+
+
+lgFromIndigo700 : Html.Attribute msg
+lgFromIndigo700 =
+    A.class "lg:from-indigo-700"
+
+
+lgFromIndigo800 : Html.Attribute msg
+lgFromIndigo800 =
+    A.class "lg:from-indigo-800"
+
+
+lgFromIndigo900 : Html.Attribute msg
+lgFromIndigo900 =
+    A.class "lg:from-indigo-900"
+
+
+lgFromPurple100 : Html.Attribute msg
+lgFromPurple100 =
+    A.class "lg:from-purple-100"
+
+
+lgFromPurple200 : Html.Attribute msg
+lgFromPurple200 =
+    A.class "lg:from-purple-200"
+
+
+lgFromPurple300 : Html.Attribute msg
+lgFromPurple300 =
+    A.class "lg:from-purple-300"
+
+
+lgFromPurple400 : Html.Attribute msg
+lgFromPurple400 =
+    A.class "lg:from-purple-400"
+
+
+lgFromPurple500 : Html.Attribute msg
+lgFromPurple500 =
+    A.class "lg:from-purple-500"
+
+
+lgFromPurple600 : Html.Attribute msg
+lgFromPurple600 =
+    A.class "lg:from-purple-600"
+
+
+lgFromPurple700 : Html.Attribute msg
+lgFromPurple700 =
+    A.class "lg:from-purple-700"
+
+
+lgFromPurple800 : Html.Attribute msg
+lgFromPurple800 =
+    A.class "lg:from-purple-800"
+
+
+lgFromPurple900 : Html.Attribute msg
+lgFromPurple900 =
+    A.class "lg:from-purple-900"
+
+
+lgFromPink100 : Html.Attribute msg
+lgFromPink100 =
+    A.class "lg:from-pink-100"
+
+
+lgFromPink200 : Html.Attribute msg
+lgFromPink200 =
+    A.class "lg:from-pink-200"
+
+
+lgFromPink300 : Html.Attribute msg
+lgFromPink300 =
+    A.class "lg:from-pink-300"
+
+
+lgFromPink400 : Html.Attribute msg
+lgFromPink400 =
+    A.class "lg:from-pink-400"
+
+
+lgFromPink500 : Html.Attribute msg
+lgFromPink500 =
+    A.class "lg:from-pink-500"
+
+
+lgFromPink600 : Html.Attribute msg
+lgFromPink600 =
+    A.class "lg:from-pink-600"
+
+
+lgFromPink700 : Html.Attribute msg
+lgFromPink700 =
+    A.class "lg:from-pink-700"
+
+
+lgFromPink800 : Html.Attribute msg
+lgFromPink800 =
+    A.class "lg:from-pink-800"
+
+
+lgFromPink900 : Html.Attribute msg
+lgFromPink900 =
+    A.class "lg:from-pink-900"
+
+
+lgViaTransparent : Html.Attribute msg
+lgViaTransparent =
+    A.class "lg:via-transparent"
+
+
+lgViaCurrent : Html.Attribute msg
+lgViaCurrent =
+    A.class "lg:via-current"
+
+
+lgViaBlack : Html.Attribute msg
+lgViaBlack =
+    A.class "lg:via-black"
+
+
+lgViaWhite : Html.Attribute msg
+lgViaWhite =
+    A.class "lg:via-white"
+
+
+lgViaGray100 : Html.Attribute msg
+lgViaGray100 =
+    A.class "lg:via-gray-100"
+
+
+lgViaGray200 : Html.Attribute msg
+lgViaGray200 =
+    A.class "lg:via-gray-200"
+
+
+lgViaGray300 : Html.Attribute msg
+lgViaGray300 =
+    A.class "lg:via-gray-300"
+
+
+lgViaGray400 : Html.Attribute msg
+lgViaGray400 =
+    A.class "lg:via-gray-400"
+
+
+lgViaGray500 : Html.Attribute msg
+lgViaGray500 =
+    A.class "lg:via-gray-500"
+
+
+lgViaGray600 : Html.Attribute msg
+lgViaGray600 =
+    A.class "lg:via-gray-600"
+
+
+lgViaGray700 : Html.Attribute msg
+lgViaGray700 =
+    A.class "lg:via-gray-700"
+
+
+lgViaGray800 : Html.Attribute msg
+lgViaGray800 =
+    A.class "lg:via-gray-800"
+
+
+lgViaGray900 : Html.Attribute msg
+lgViaGray900 =
+    A.class "lg:via-gray-900"
+
+
+lgViaRed100 : Html.Attribute msg
+lgViaRed100 =
+    A.class "lg:via-red-100"
+
+
+lgViaRed200 : Html.Attribute msg
+lgViaRed200 =
+    A.class "lg:via-red-200"
+
+
+lgViaRed300 : Html.Attribute msg
+lgViaRed300 =
+    A.class "lg:via-red-300"
+
+
+lgViaRed400 : Html.Attribute msg
+lgViaRed400 =
+    A.class "lg:via-red-400"
+
+
+lgViaRed500 : Html.Attribute msg
+lgViaRed500 =
+    A.class "lg:via-red-500"
+
+
+lgViaRed600 : Html.Attribute msg
+lgViaRed600 =
+    A.class "lg:via-red-600"
+
+
+lgViaRed700 : Html.Attribute msg
+lgViaRed700 =
+    A.class "lg:via-red-700"
+
+
+lgViaRed800 : Html.Attribute msg
+lgViaRed800 =
+    A.class "lg:via-red-800"
+
+
+lgViaRed900 : Html.Attribute msg
+lgViaRed900 =
+    A.class "lg:via-red-900"
+
+
+lgViaOrange100 : Html.Attribute msg
+lgViaOrange100 =
+    A.class "lg:via-orange-100"
+
+
+lgViaOrange200 : Html.Attribute msg
+lgViaOrange200 =
+    A.class "lg:via-orange-200"
+
+
+lgViaOrange300 : Html.Attribute msg
+lgViaOrange300 =
+    A.class "lg:via-orange-300"
+
+
+lgViaOrange400 : Html.Attribute msg
+lgViaOrange400 =
+    A.class "lg:via-orange-400"
+
+
+lgViaOrange500 : Html.Attribute msg
+lgViaOrange500 =
+    A.class "lg:via-orange-500"
+
+
+lgViaOrange600 : Html.Attribute msg
+lgViaOrange600 =
+    A.class "lg:via-orange-600"
+
+
+lgViaOrange700 : Html.Attribute msg
+lgViaOrange700 =
+    A.class "lg:via-orange-700"
+
+
+lgViaOrange800 : Html.Attribute msg
+lgViaOrange800 =
+    A.class "lg:via-orange-800"
+
+
+lgViaOrange900 : Html.Attribute msg
+lgViaOrange900 =
+    A.class "lg:via-orange-900"
+
+
+lgViaYellow100 : Html.Attribute msg
+lgViaYellow100 =
+    A.class "lg:via-yellow-100"
+
+
+lgViaYellow200 : Html.Attribute msg
+lgViaYellow200 =
+    A.class "lg:via-yellow-200"
+
+
+lgViaYellow300 : Html.Attribute msg
+lgViaYellow300 =
+    A.class "lg:via-yellow-300"
+
+
+lgViaYellow400 : Html.Attribute msg
+lgViaYellow400 =
+    A.class "lg:via-yellow-400"
+
+
+lgViaYellow500 : Html.Attribute msg
+lgViaYellow500 =
+    A.class "lg:via-yellow-500"
+
+
+lgViaYellow600 : Html.Attribute msg
+lgViaYellow600 =
+    A.class "lg:via-yellow-600"
+
+
+lgViaYellow700 : Html.Attribute msg
+lgViaYellow700 =
+    A.class "lg:via-yellow-700"
+
+
+lgViaYellow800 : Html.Attribute msg
+lgViaYellow800 =
+    A.class "lg:via-yellow-800"
+
+
+lgViaYellow900 : Html.Attribute msg
+lgViaYellow900 =
+    A.class "lg:via-yellow-900"
+
+
+lgViaGreen100 : Html.Attribute msg
+lgViaGreen100 =
+    A.class "lg:via-green-100"
+
+
+lgViaGreen200 : Html.Attribute msg
+lgViaGreen200 =
+    A.class "lg:via-green-200"
+
+
+lgViaGreen300 : Html.Attribute msg
+lgViaGreen300 =
+    A.class "lg:via-green-300"
+
+
+lgViaGreen400 : Html.Attribute msg
+lgViaGreen400 =
+    A.class "lg:via-green-400"
+
+
+lgViaGreen500 : Html.Attribute msg
+lgViaGreen500 =
+    A.class "lg:via-green-500"
+
+
+lgViaGreen600 : Html.Attribute msg
+lgViaGreen600 =
+    A.class "lg:via-green-600"
+
+
+lgViaGreen700 : Html.Attribute msg
+lgViaGreen700 =
+    A.class "lg:via-green-700"
+
+
+lgViaGreen800 : Html.Attribute msg
+lgViaGreen800 =
+    A.class "lg:via-green-800"
+
+
+lgViaGreen900 : Html.Attribute msg
+lgViaGreen900 =
+    A.class "lg:via-green-900"
+
+
+lgViaTeal100 : Html.Attribute msg
+lgViaTeal100 =
+    A.class "lg:via-teal-100"
+
+
+lgViaTeal200 : Html.Attribute msg
+lgViaTeal200 =
+    A.class "lg:via-teal-200"
+
+
+lgViaTeal300 : Html.Attribute msg
+lgViaTeal300 =
+    A.class "lg:via-teal-300"
+
+
+lgViaTeal400 : Html.Attribute msg
+lgViaTeal400 =
+    A.class "lg:via-teal-400"
+
+
+lgViaTeal500 : Html.Attribute msg
+lgViaTeal500 =
+    A.class "lg:via-teal-500"
+
+
+lgViaTeal600 : Html.Attribute msg
+lgViaTeal600 =
+    A.class "lg:via-teal-600"
+
+
+lgViaTeal700 : Html.Attribute msg
+lgViaTeal700 =
+    A.class "lg:via-teal-700"
+
+
+lgViaTeal800 : Html.Attribute msg
+lgViaTeal800 =
+    A.class "lg:via-teal-800"
+
+
+lgViaTeal900 : Html.Attribute msg
+lgViaTeal900 =
+    A.class "lg:via-teal-900"
+
+
+lgViaBlue100 : Html.Attribute msg
+lgViaBlue100 =
+    A.class "lg:via-blue-100"
+
+
+lgViaBlue200 : Html.Attribute msg
+lgViaBlue200 =
+    A.class "lg:via-blue-200"
+
+
+lgViaBlue300 : Html.Attribute msg
+lgViaBlue300 =
+    A.class "lg:via-blue-300"
+
+
+lgViaBlue400 : Html.Attribute msg
+lgViaBlue400 =
+    A.class "lg:via-blue-400"
+
+
+lgViaBlue500 : Html.Attribute msg
+lgViaBlue500 =
+    A.class "lg:via-blue-500"
+
+
+lgViaBlue600 : Html.Attribute msg
+lgViaBlue600 =
+    A.class "lg:via-blue-600"
+
+
+lgViaBlue700 : Html.Attribute msg
+lgViaBlue700 =
+    A.class "lg:via-blue-700"
+
+
+lgViaBlue800 : Html.Attribute msg
+lgViaBlue800 =
+    A.class "lg:via-blue-800"
+
+
+lgViaBlue900 : Html.Attribute msg
+lgViaBlue900 =
+    A.class "lg:via-blue-900"
+
+
+lgViaIndigo100 : Html.Attribute msg
+lgViaIndigo100 =
+    A.class "lg:via-indigo-100"
+
+
+lgViaIndigo200 : Html.Attribute msg
+lgViaIndigo200 =
+    A.class "lg:via-indigo-200"
+
+
+lgViaIndigo300 : Html.Attribute msg
+lgViaIndigo300 =
+    A.class "lg:via-indigo-300"
+
+
+lgViaIndigo400 : Html.Attribute msg
+lgViaIndigo400 =
+    A.class "lg:via-indigo-400"
+
+
+lgViaIndigo500 : Html.Attribute msg
+lgViaIndigo500 =
+    A.class "lg:via-indigo-500"
+
+
+lgViaIndigo600 : Html.Attribute msg
+lgViaIndigo600 =
+    A.class "lg:via-indigo-600"
+
+
+lgViaIndigo700 : Html.Attribute msg
+lgViaIndigo700 =
+    A.class "lg:via-indigo-700"
+
+
+lgViaIndigo800 : Html.Attribute msg
+lgViaIndigo800 =
+    A.class "lg:via-indigo-800"
+
+
+lgViaIndigo900 : Html.Attribute msg
+lgViaIndigo900 =
+    A.class "lg:via-indigo-900"
+
+
+lgViaPurple100 : Html.Attribute msg
+lgViaPurple100 =
+    A.class "lg:via-purple-100"
+
+
+lgViaPurple200 : Html.Attribute msg
+lgViaPurple200 =
+    A.class "lg:via-purple-200"
+
+
+lgViaPurple300 : Html.Attribute msg
+lgViaPurple300 =
+    A.class "lg:via-purple-300"
+
+
+lgViaPurple400 : Html.Attribute msg
+lgViaPurple400 =
+    A.class "lg:via-purple-400"
+
+
+lgViaPurple500 : Html.Attribute msg
+lgViaPurple500 =
+    A.class "lg:via-purple-500"
+
+
+lgViaPurple600 : Html.Attribute msg
+lgViaPurple600 =
+    A.class "lg:via-purple-600"
+
+
+lgViaPurple700 : Html.Attribute msg
+lgViaPurple700 =
+    A.class "lg:via-purple-700"
+
+
+lgViaPurple800 : Html.Attribute msg
+lgViaPurple800 =
+    A.class "lg:via-purple-800"
+
+
+lgViaPurple900 : Html.Attribute msg
+lgViaPurple900 =
+    A.class "lg:via-purple-900"
+
+
+lgViaPink100 : Html.Attribute msg
+lgViaPink100 =
+    A.class "lg:via-pink-100"
+
+
+lgViaPink200 : Html.Attribute msg
+lgViaPink200 =
+    A.class "lg:via-pink-200"
+
+
+lgViaPink300 : Html.Attribute msg
+lgViaPink300 =
+    A.class "lg:via-pink-300"
+
+
+lgViaPink400 : Html.Attribute msg
+lgViaPink400 =
+    A.class "lg:via-pink-400"
+
+
+lgViaPink500 : Html.Attribute msg
+lgViaPink500 =
+    A.class "lg:via-pink-500"
+
+
+lgViaPink600 : Html.Attribute msg
+lgViaPink600 =
+    A.class "lg:via-pink-600"
+
+
+lgViaPink700 : Html.Attribute msg
+lgViaPink700 =
+    A.class "lg:via-pink-700"
+
+
+lgViaPink800 : Html.Attribute msg
+lgViaPink800 =
+    A.class "lg:via-pink-800"
+
+
+lgViaPink900 : Html.Attribute msg
+lgViaPink900 =
+    A.class "lg:via-pink-900"
+
+
+lgToTransparent : Html.Attribute msg
+lgToTransparent =
+    A.class "lg:to-transparent"
+
+
+lgToCurrent : Html.Attribute msg
+lgToCurrent =
+    A.class "lg:to-current"
+
+
+lgToBlack : Html.Attribute msg
+lgToBlack =
+    A.class "lg:to-black"
+
+
+lgToWhite : Html.Attribute msg
+lgToWhite =
+    A.class "lg:to-white"
+
+
+lgToGray100 : Html.Attribute msg
+lgToGray100 =
+    A.class "lg:to-gray-100"
+
+
+lgToGray200 : Html.Attribute msg
+lgToGray200 =
+    A.class "lg:to-gray-200"
+
+
+lgToGray300 : Html.Attribute msg
+lgToGray300 =
+    A.class "lg:to-gray-300"
+
+
+lgToGray400 : Html.Attribute msg
+lgToGray400 =
+    A.class "lg:to-gray-400"
+
+
+lgToGray500 : Html.Attribute msg
+lgToGray500 =
+    A.class "lg:to-gray-500"
+
+
+lgToGray600 : Html.Attribute msg
+lgToGray600 =
+    A.class "lg:to-gray-600"
+
+
+lgToGray700 : Html.Attribute msg
+lgToGray700 =
+    A.class "lg:to-gray-700"
+
+
+lgToGray800 : Html.Attribute msg
+lgToGray800 =
+    A.class "lg:to-gray-800"
+
+
+lgToGray900 : Html.Attribute msg
+lgToGray900 =
+    A.class "lg:to-gray-900"
+
+
+lgToRed100 : Html.Attribute msg
+lgToRed100 =
+    A.class "lg:to-red-100"
+
+
+lgToRed200 : Html.Attribute msg
+lgToRed200 =
+    A.class "lg:to-red-200"
+
+
+lgToRed300 : Html.Attribute msg
+lgToRed300 =
+    A.class "lg:to-red-300"
+
+
+lgToRed400 : Html.Attribute msg
+lgToRed400 =
+    A.class "lg:to-red-400"
+
+
+lgToRed500 : Html.Attribute msg
+lgToRed500 =
+    A.class "lg:to-red-500"
+
+
+lgToRed600 : Html.Attribute msg
+lgToRed600 =
+    A.class "lg:to-red-600"
+
+
+lgToRed700 : Html.Attribute msg
+lgToRed700 =
+    A.class "lg:to-red-700"
+
+
+lgToRed800 : Html.Attribute msg
+lgToRed800 =
+    A.class "lg:to-red-800"
+
+
+lgToRed900 : Html.Attribute msg
+lgToRed900 =
+    A.class "lg:to-red-900"
+
+
+lgToOrange100 : Html.Attribute msg
+lgToOrange100 =
+    A.class "lg:to-orange-100"
+
+
+lgToOrange200 : Html.Attribute msg
+lgToOrange200 =
+    A.class "lg:to-orange-200"
+
+
+lgToOrange300 : Html.Attribute msg
+lgToOrange300 =
+    A.class "lg:to-orange-300"
+
+
+lgToOrange400 : Html.Attribute msg
+lgToOrange400 =
+    A.class "lg:to-orange-400"
+
+
+lgToOrange500 : Html.Attribute msg
+lgToOrange500 =
+    A.class "lg:to-orange-500"
+
+
+lgToOrange600 : Html.Attribute msg
+lgToOrange600 =
+    A.class "lg:to-orange-600"
+
+
+lgToOrange700 : Html.Attribute msg
+lgToOrange700 =
+    A.class "lg:to-orange-700"
+
+
+lgToOrange800 : Html.Attribute msg
+lgToOrange800 =
+    A.class "lg:to-orange-800"
+
+
+lgToOrange900 : Html.Attribute msg
+lgToOrange900 =
+    A.class "lg:to-orange-900"
+
+
+lgToYellow100 : Html.Attribute msg
+lgToYellow100 =
+    A.class "lg:to-yellow-100"
+
+
+lgToYellow200 : Html.Attribute msg
+lgToYellow200 =
+    A.class "lg:to-yellow-200"
+
+
+lgToYellow300 : Html.Attribute msg
+lgToYellow300 =
+    A.class "lg:to-yellow-300"
+
+
+lgToYellow400 : Html.Attribute msg
+lgToYellow400 =
+    A.class "lg:to-yellow-400"
+
+
+lgToYellow500 : Html.Attribute msg
+lgToYellow500 =
+    A.class "lg:to-yellow-500"
+
+
+lgToYellow600 : Html.Attribute msg
+lgToYellow600 =
+    A.class "lg:to-yellow-600"
+
+
+lgToYellow700 : Html.Attribute msg
+lgToYellow700 =
+    A.class "lg:to-yellow-700"
+
+
+lgToYellow800 : Html.Attribute msg
+lgToYellow800 =
+    A.class "lg:to-yellow-800"
+
+
+lgToYellow900 : Html.Attribute msg
+lgToYellow900 =
+    A.class "lg:to-yellow-900"
+
+
+lgToGreen100 : Html.Attribute msg
+lgToGreen100 =
+    A.class "lg:to-green-100"
+
+
+lgToGreen200 : Html.Attribute msg
+lgToGreen200 =
+    A.class "lg:to-green-200"
+
+
+lgToGreen300 : Html.Attribute msg
+lgToGreen300 =
+    A.class "lg:to-green-300"
+
+
+lgToGreen400 : Html.Attribute msg
+lgToGreen400 =
+    A.class "lg:to-green-400"
+
+
+lgToGreen500 : Html.Attribute msg
+lgToGreen500 =
+    A.class "lg:to-green-500"
+
+
+lgToGreen600 : Html.Attribute msg
+lgToGreen600 =
+    A.class "lg:to-green-600"
+
+
+lgToGreen700 : Html.Attribute msg
+lgToGreen700 =
+    A.class "lg:to-green-700"
+
+
+lgToGreen800 : Html.Attribute msg
+lgToGreen800 =
+    A.class "lg:to-green-800"
+
+
+lgToGreen900 : Html.Attribute msg
+lgToGreen900 =
+    A.class "lg:to-green-900"
+
+
+lgToTeal100 : Html.Attribute msg
+lgToTeal100 =
+    A.class "lg:to-teal-100"
+
+
+lgToTeal200 : Html.Attribute msg
+lgToTeal200 =
+    A.class "lg:to-teal-200"
+
+
+lgToTeal300 : Html.Attribute msg
+lgToTeal300 =
+    A.class "lg:to-teal-300"
+
+
+lgToTeal400 : Html.Attribute msg
+lgToTeal400 =
+    A.class "lg:to-teal-400"
+
+
+lgToTeal500 : Html.Attribute msg
+lgToTeal500 =
+    A.class "lg:to-teal-500"
+
+
+lgToTeal600 : Html.Attribute msg
+lgToTeal600 =
+    A.class "lg:to-teal-600"
+
+
+lgToTeal700 : Html.Attribute msg
+lgToTeal700 =
+    A.class "lg:to-teal-700"
+
+
+lgToTeal800 : Html.Attribute msg
+lgToTeal800 =
+    A.class "lg:to-teal-800"
+
+
+lgToTeal900 : Html.Attribute msg
+lgToTeal900 =
+    A.class "lg:to-teal-900"
+
+
+lgToBlue100 : Html.Attribute msg
+lgToBlue100 =
+    A.class "lg:to-blue-100"
+
+
+lgToBlue200 : Html.Attribute msg
+lgToBlue200 =
+    A.class "lg:to-blue-200"
+
+
+lgToBlue300 : Html.Attribute msg
+lgToBlue300 =
+    A.class "lg:to-blue-300"
+
+
+lgToBlue400 : Html.Attribute msg
+lgToBlue400 =
+    A.class "lg:to-blue-400"
+
+
+lgToBlue500 : Html.Attribute msg
+lgToBlue500 =
+    A.class "lg:to-blue-500"
+
+
+lgToBlue600 : Html.Attribute msg
+lgToBlue600 =
+    A.class "lg:to-blue-600"
+
+
+lgToBlue700 : Html.Attribute msg
+lgToBlue700 =
+    A.class "lg:to-blue-700"
+
+
+lgToBlue800 : Html.Attribute msg
+lgToBlue800 =
+    A.class "lg:to-blue-800"
+
+
+lgToBlue900 : Html.Attribute msg
+lgToBlue900 =
+    A.class "lg:to-blue-900"
+
+
+lgToIndigo100 : Html.Attribute msg
+lgToIndigo100 =
+    A.class "lg:to-indigo-100"
+
+
+lgToIndigo200 : Html.Attribute msg
+lgToIndigo200 =
+    A.class "lg:to-indigo-200"
+
+
+lgToIndigo300 : Html.Attribute msg
+lgToIndigo300 =
+    A.class "lg:to-indigo-300"
+
+
+lgToIndigo400 : Html.Attribute msg
+lgToIndigo400 =
+    A.class "lg:to-indigo-400"
+
+
+lgToIndigo500 : Html.Attribute msg
+lgToIndigo500 =
+    A.class "lg:to-indigo-500"
+
+
+lgToIndigo600 : Html.Attribute msg
+lgToIndigo600 =
+    A.class "lg:to-indigo-600"
+
+
+lgToIndigo700 : Html.Attribute msg
+lgToIndigo700 =
+    A.class "lg:to-indigo-700"
+
+
+lgToIndigo800 : Html.Attribute msg
+lgToIndigo800 =
+    A.class "lg:to-indigo-800"
+
+
+lgToIndigo900 : Html.Attribute msg
+lgToIndigo900 =
+    A.class "lg:to-indigo-900"
+
+
+lgToPurple100 : Html.Attribute msg
+lgToPurple100 =
+    A.class "lg:to-purple-100"
+
+
+lgToPurple200 : Html.Attribute msg
+lgToPurple200 =
+    A.class "lg:to-purple-200"
+
+
+lgToPurple300 : Html.Attribute msg
+lgToPurple300 =
+    A.class "lg:to-purple-300"
+
+
+lgToPurple400 : Html.Attribute msg
+lgToPurple400 =
+    A.class "lg:to-purple-400"
+
+
+lgToPurple500 : Html.Attribute msg
+lgToPurple500 =
+    A.class "lg:to-purple-500"
+
+
+lgToPurple600 : Html.Attribute msg
+lgToPurple600 =
+    A.class "lg:to-purple-600"
+
+
+lgToPurple700 : Html.Attribute msg
+lgToPurple700 =
+    A.class "lg:to-purple-700"
+
+
+lgToPurple800 : Html.Attribute msg
+lgToPurple800 =
+    A.class "lg:to-purple-800"
+
+
+lgToPurple900 : Html.Attribute msg
+lgToPurple900 =
+    A.class "lg:to-purple-900"
+
+
+lgToPink100 : Html.Attribute msg
+lgToPink100 =
+    A.class "lg:to-pink-100"
+
+
+lgToPink200 : Html.Attribute msg
+lgToPink200 =
+    A.class "lg:to-pink-200"
+
+
+lgToPink300 : Html.Attribute msg
+lgToPink300 =
+    A.class "lg:to-pink-300"
+
+
+lgToPink400 : Html.Attribute msg
+lgToPink400 =
+    A.class "lg:to-pink-400"
+
+
+lgToPink500 : Html.Attribute msg
+lgToPink500 =
+    A.class "lg:to-pink-500"
+
+
+lgToPink600 : Html.Attribute msg
+lgToPink600 =
+    A.class "lg:to-pink-600"
+
+
+lgToPink700 : Html.Attribute msg
+lgToPink700 =
+    A.class "lg:to-pink-700"
+
+
+lgToPink800 : Html.Attribute msg
+lgToPink800 =
+    A.class "lg:to-pink-800"
+
+
+lgToPink900 : Html.Attribute msg
+lgToPink900 =
+    A.class "lg:to-pink-900"
+
+
+lgHoverFromTransparent : Html.Attribute msg
+lgHoverFromTransparent =
+    A.class "lg:hover:from-transparent"
+
+
+lgHoverFromCurrent : Html.Attribute msg
+lgHoverFromCurrent =
+    A.class "lg:hover:from-current"
+
+
+lgHoverFromBlack : Html.Attribute msg
+lgHoverFromBlack =
+    A.class "lg:hover:from-black"
+
+
+lgHoverFromWhite : Html.Attribute msg
+lgHoverFromWhite =
+    A.class "lg:hover:from-white"
+
+
+lgHoverFromGray100 : Html.Attribute msg
+lgHoverFromGray100 =
+    A.class "lg:hover:from-gray-100"
+
+
+lgHoverFromGray200 : Html.Attribute msg
+lgHoverFromGray200 =
+    A.class "lg:hover:from-gray-200"
+
+
+lgHoverFromGray300 : Html.Attribute msg
+lgHoverFromGray300 =
+    A.class "lg:hover:from-gray-300"
+
+
+lgHoverFromGray400 : Html.Attribute msg
+lgHoverFromGray400 =
+    A.class "lg:hover:from-gray-400"
+
+
+lgHoverFromGray500 : Html.Attribute msg
+lgHoverFromGray500 =
+    A.class "lg:hover:from-gray-500"
+
+
+lgHoverFromGray600 : Html.Attribute msg
+lgHoverFromGray600 =
+    A.class "lg:hover:from-gray-600"
+
+
+lgHoverFromGray700 : Html.Attribute msg
+lgHoverFromGray700 =
+    A.class "lg:hover:from-gray-700"
+
+
+lgHoverFromGray800 : Html.Attribute msg
+lgHoverFromGray800 =
+    A.class "lg:hover:from-gray-800"
+
+
+lgHoverFromGray900 : Html.Attribute msg
+lgHoverFromGray900 =
+    A.class "lg:hover:from-gray-900"
+
+
+lgHoverFromRed100 : Html.Attribute msg
+lgHoverFromRed100 =
+    A.class "lg:hover:from-red-100"
+
+
+lgHoverFromRed200 : Html.Attribute msg
+lgHoverFromRed200 =
+    A.class "lg:hover:from-red-200"
+
+
+lgHoverFromRed300 : Html.Attribute msg
+lgHoverFromRed300 =
+    A.class "lg:hover:from-red-300"
+
+
+lgHoverFromRed400 : Html.Attribute msg
+lgHoverFromRed400 =
+    A.class "lg:hover:from-red-400"
+
+
+lgHoverFromRed500 : Html.Attribute msg
+lgHoverFromRed500 =
+    A.class "lg:hover:from-red-500"
+
+
+lgHoverFromRed600 : Html.Attribute msg
+lgHoverFromRed600 =
+    A.class "lg:hover:from-red-600"
+
+
+lgHoverFromRed700 : Html.Attribute msg
+lgHoverFromRed700 =
+    A.class "lg:hover:from-red-700"
+
+
+lgHoverFromRed800 : Html.Attribute msg
+lgHoverFromRed800 =
+    A.class "lg:hover:from-red-800"
+
+
+lgHoverFromRed900 : Html.Attribute msg
+lgHoverFromRed900 =
+    A.class "lg:hover:from-red-900"
+
+
+lgHoverFromOrange100 : Html.Attribute msg
+lgHoverFromOrange100 =
+    A.class "lg:hover:from-orange-100"
+
+
+lgHoverFromOrange200 : Html.Attribute msg
+lgHoverFromOrange200 =
+    A.class "lg:hover:from-orange-200"
+
+
+lgHoverFromOrange300 : Html.Attribute msg
+lgHoverFromOrange300 =
+    A.class "lg:hover:from-orange-300"
+
+
+lgHoverFromOrange400 : Html.Attribute msg
+lgHoverFromOrange400 =
+    A.class "lg:hover:from-orange-400"
+
+
+lgHoverFromOrange500 : Html.Attribute msg
+lgHoverFromOrange500 =
+    A.class "lg:hover:from-orange-500"
+
+
+lgHoverFromOrange600 : Html.Attribute msg
+lgHoverFromOrange600 =
+    A.class "lg:hover:from-orange-600"
+
+
+lgHoverFromOrange700 : Html.Attribute msg
+lgHoverFromOrange700 =
+    A.class "lg:hover:from-orange-700"
+
+
+lgHoverFromOrange800 : Html.Attribute msg
+lgHoverFromOrange800 =
+    A.class "lg:hover:from-orange-800"
+
+
+lgHoverFromOrange900 : Html.Attribute msg
+lgHoverFromOrange900 =
+    A.class "lg:hover:from-orange-900"
+
+
+lgHoverFromYellow100 : Html.Attribute msg
+lgHoverFromYellow100 =
+    A.class "lg:hover:from-yellow-100"
+
+
+lgHoverFromYellow200 : Html.Attribute msg
+lgHoverFromYellow200 =
+    A.class "lg:hover:from-yellow-200"
+
+
+lgHoverFromYellow300 : Html.Attribute msg
+lgHoverFromYellow300 =
+    A.class "lg:hover:from-yellow-300"
+
+
+lgHoverFromYellow400 : Html.Attribute msg
+lgHoverFromYellow400 =
+    A.class "lg:hover:from-yellow-400"
+
+
+lgHoverFromYellow500 : Html.Attribute msg
+lgHoverFromYellow500 =
+    A.class "lg:hover:from-yellow-500"
+
+
+lgHoverFromYellow600 : Html.Attribute msg
+lgHoverFromYellow600 =
+    A.class "lg:hover:from-yellow-600"
+
+
+lgHoverFromYellow700 : Html.Attribute msg
+lgHoverFromYellow700 =
+    A.class "lg:hover:from-yellow-700"
+
+
+lgHoverFromYellow800 : Html.Attribute msg
+lgHoverFromYellow800 =
+    A.class "lg:hover:from-yellow-800"
+
+
+lgHoverFromYellow900 : Html.Attribute msg
+lgHoverFromYellow900 =
+    A.class "lg:hover:from-yellow-900"
+
+
+lgHoverFromGreen100 : Html.Attribute msg
+lgHoverFromGreen100 =
+    A.class "lg:hover:from-green-100"
+
+
+lgHoverFromGreen200 : Html.Attribute msg
+lgHoverFromGreen200 =
+    A.class "lg:hover:from-green-200"
+
+
+lgHoverFromGreen300 : Html.Attribute msg
+lgHoverFromGreen300 =
+    A.class "lg:hover:from-green-300"
+
+
+lgHoverFromGreen400 : Html.Attribute msg
+lgHoverFromGreen400 =
+    A.class "lg:hover:from-green-400"
+
+
+lgHoverFromGreen500 : Html.Attribute msg
+lgHoverFromGreen500 =
+    A.class "lg:hover:from-green-500"
+
+
+lgHoverFromGreen600 : Html.Attribute msg
+lgHoverFromGreen600 =
+    A.class "lg:hover:from-green-600"
+
+
+lgHoverFromGreen700 : Html.Attribute msg
+lgHoverFromGreen700 =
+    A.class "lg:hover:from-green-700"
+
+
+lgHoverFromGreen800 : Html.Attribute msg
+lgHoverFromGreen800 =
+    A.class "lg:hover:from-green-800"
+
+
+lgHoverFromGreen900 : Html.Attribute msg
+lgHoverFromGreen900 =
+    A.class "lg:hover:from-green-900"
+
+
+lgHoverFromTeal100 : Html.Attribute msg
+lgHoverFromTeal100 =
+    A.class "lg:hover:from-teal-100"
+
+
+lgHoverFromTeal200 : Html.Attribute msg
+lgHoverFromTeal200 =
+    A.class "lg:hover:from-teal-200"
+
+
+lgHoverFromTeal300 : Html.Attribute msg
+lgHoverFromTeal300 =
+    A.class "lg:hover:from-teal-300"
+
+
+lgHoverFromTeal400 : Html.Attribute msg
+lgHoverFromTeal400 =
+    A.class "lg:hover:from-teal-400"
+
+
+lgHoverFromTeal500 : Html.Attribute msg
+lgHoverFromTeal500 =
+    A.class "lg:hover:from-teal-500"
+
+
+lgHoverFromTeal600 : Html.Attribute msg
+lgHoverFromTeal600 =
+    A.class "lg:hover:from-teal-600"
+
+
+lgHoverFromTeal700 : Html.Attribute msg
+lgHoverFromTeal700 =
+    A.class "lg:hover:from-teal-700"
+
+
+lgHoverFromTeal800 : Html.Attribute msg
+lgHoverFromTeal800 =
+    A.class "lg:hover:from-teal-800"
+
+
+lgHoverFromTeal900 : Html.Attribute msg
+lgHoverFromTeal900 =
+    A.class "lg:hover:from-teal-900"
+
+
+lgHoverFromBlue100 : Html.Attribute msg
+lgHoverFromBlue100 =
+    A.class "lg:hover:from-blue-100"
+
+
+lgHoverFromBlue200 : Html.Attribute msg
+lgHoverFromBlue200 =
+    A.class "lg:hover:from-blue-200"
+
+
+lgHoverFromBlue300 : Html.Attribute msg
+lgHoverFromBlue300 =
+    A.class "lg:hover:from-blue-300"
+
+
+lgHoverFromBlue400 : Html.Attribute msg
+lgHoverFromBlue400 =
+    A.class "lg:hover:from-blue-400"
+
+
+lgHoverFromBlue500 : Html.Attribute msg
+lgHoverFromBlue500 =
+    A.class "lg:hover:from-blue-500"
+
+
+lgHoverFromBlue600 : Html.Attribute msg
+lgHoverFromBlue600 =
+    A.class "lg:hover:from-blue-600"
+
+
+lgHoverFromBlue700 : Html.Attribute msg
+lgHoverFromBlue700 =
+    A.class "lg:hover:from-blue-700"
+
+
+lgHoverFromBlue800 : Html.Attribute msg
+lgHoverFromBlue800 =
+    A.class "lg:hover:from-blue-800"
+
+
+lgHoverFromBlue900 : Html.Attribute msg
+lgHoverFromBlue900 =
+    A.class "lg:hover:from-blue-900"
+
+
+lgHoverFromIndigo100 : Html.Attribute msg
+lgHoverFromIndigo100 =
+    A.class "lg:hover:from-indigo-100"
+
+
+lgHoverFromIndigo200 : Html.Attribute msg
+lgHoverFromIndigo200 =
+    A.class "lg:hover:from-indigo-200"
+
+
+lgHoverFromIndigo300 : Html.Attribute msg
+lgHoverFromIndigo300 =
+    A.class "lg:hover:from-indigo-300"
+
+
+lgHoverFromIndigo400 : Html.Attribute msg
+lgHoverFromIndigo400 =
+    A.class "lg:hover:from-indigo-400"
+
+
+lgHoverFromIndigo500 : Html.Attribute msg
+lgHoverFromIndigo500 =
+    A.class "lg:hover:from-indigo-500"
+
+
+lgHoverFromIndigo600 : Html.Attribute msg
+lgHoverFromIndigo600 =
+    A.class "lg:hover:from-indigo-600"
+
+
+lgHoverFromIndigo700 : Html.Attribute msg
+lgHoverFromIndigo700 =
+    A.class "lg:hover:from-indigo-700"
+
+
+lgHoverFromIndigo800 : Html.Attribute msg
+lgHoverFromIndigo800 =
+    A.class "lg:hover:from-indigo-800"
+
+
+lgHoverFromIndigo900 : Html.Attribute msg
+lgHoverFromIndigo900 =
+    A.class "lg:hover:from-indigo-900"
+
+
+lgHoverFromPurple100 : Html.Attribute msg
+lgHoverFromPurple100 =
+    A.class "lg:hover:from-purple-100"
+
+
+lgHoverFromPurple200 : Html.Attribute msg
+lgHoverFromPurple200 =
+    A.class "lg:hover:from-purple-200"
+
+
+lgHoverFromPurple300 : Html.Attribute msg
+lgHoverFromPurple300 =
+    A.class "lg:hover:from-purple-300"
+
+
+lgHoverFromPurple400 : Html.Attribute msg
+lgHoverFromPurple400 =
+    A.class "lg:hover:from-purple-400"
+
+
+lgHoverFromPurple500 : Html.Attribute msg
+lgHoverFromPurple500 =
+    A.class "lg:hover:from-purple-500"
+
+
+lgHoverFromPurple600 : Html.Attribute msg
+lgHoverFromPurple600 =
+    A.class "lg:hover:from-purple-600"
+
+
+lgHoverFromPurple700 : Html.Attribute msg
+lgHoverFromPurple700 =
+    A.class "lg:hover:from-purple-700"
+
+
+lgHoverFromPurple800 : Html.Attribute msg
+lgHoverFromPurple800 =
+    A.class "lg:hover:from-purple-800"
+
+
+lgHoverFromPurple900 : Html.Attribute msg
+lgHoverFromPurple900 =
+    A.class "lg:hover:from-purple-900"
+
+
+lgHoverFromPink100 : Html.Attribute msg
+lgHoverFromPink100 =
+    A.class "lg:hover:from-pink-100"
+
+
+lgHoverFromPink200 : Html.Attribute msg
+lgHoverFromPink200 =
+    A.class "lg:hover:from-pink-200"
+
+
+lgHoverFromPink300 : Html.Attribute msg
+lgHoverFromPink300 =
+    A.class "lg:hover:from-pink-300"
+
+
+lgHoverFromPink400 : Html.Attribute msg
+lgHoverFromPink400 =
+    A.class "lg:hover:from-pink-400"
+
+
+lgHoverFromPink500 : Html.Attribute msg
+lgHoverFromPink500 =
+    A.class "lg:hover:from-pink-500"
+
+
+lgHoverFromPink600 : Html.Attribute msg
+lgHoverFromPink600 =
+    A.class "lg:hover:from-pink-600"
+
+
+lgHoverFromPink700 : Html.Attribute msg
+lgHoverFromPink700 =
+    A.class "lg:hover:from-pink-700"
+
+
+lgHoverFromPink800 : Html.Attribute msg
+lgHoverFromPink800 =
+    A.class "lg:hover:from-pink-800"
+
+
+lgHoverFromPink900 : Html.Attribute msg
+lgHoverFromPink900 =
+    A.class "lg:hover:from-pink-900"
+
+
+lgHoverViaTransparent : Html.Attribute msg
+lgHoverViaTransparent =
+    A.class "lg:hover:via-transparent"
+
+
+lgHoverViaCurrent : Html.Attribute msg
+lgHoverViaCurrent =
+    A.class "lg:hover:via-current"
+
+
+lgHoverViaBlack : Html.Attribute msg
+lgHoverViaBlack =
+    A.class "lg:hover:via-black"
+
+
+lgHoverViaWhite : Html.Attribute msg
+lgHoverViaWhite =
+    A.class "lg:hover:via-white"
+
+
+lgHoverViaGray100 : Html.Attribute msg
+lgHoverViaGray100 =
+    A.class "lg:hover:via-gray-100"
+
+
+lgHoverViaGray200 : Html.Attribute msg
+lgHoverViaGray200 =
+    A.class "lg:hover:via-gray-200"
+
+
+lgHoverViaGray300 : Html.Attribute msg
+lgHoverViaGray300 =
+    A.class "lg:hover:via-gray-300"
+
+
+lgHoverViaGray400 : Html.Attribute msg
+lgHoverViaGray400 =
+    A.class "lg:hover:via-gray-400"
+
+
+lgHoverViaGray500 : Html.Attribute msg
+lgHoverViaGray500 =
+    A.class "lg:hover:via-gray-500"
+
+
+lgHoverViaGray600 : Html.Attribute msg
+lgHoverViaGray600 =
+    A.class "lg:hover:via-gray-600"
+
+
+lgHoverViaGray700 : Html.Attribute msg
+lgHoverViaGray700 =
+    A.class "lg:hover:via-gray-700"
+
+
+lgHoverViaGray800 : Html.Attribute msg
+lgHoverViaGray800 =
+    A.class "lg:hover:via-gray-800"
+
+
+lgHoverViaGray900 : Html.Attribute msg
+lgHoverViaGray900 =
+    A.class "lg:hover:via-gray-900"
+
+
+lgHoverViaRed100 : Html.Attribute msg
+lgHoverViaRed100 =
+    A.class "lg:hover:via-red-100"
+
+
+lgHoverViaRed200 : Html.Attribute msg
+lgHoverViaRed200 =
+    A.class "lg:hover:via-red-200"
+
+
+lgHoverViaRed300 : Html.Attribute msg
+lgHoverViaRed300 =
+    A.class "lg:hover:via-red-300"
+
+
+lgHoverViaRed400 : Html.Attribute msg
+lgHoverViaRed400 =
+    A.class "lg:hover:via-red-400"
+
+
+lgHoverViaRed500 : Html.Attribute msg
+lgHoverViaRed500 =
+    A.class "lg:hover:via-red-500"
+
+
+lgHoverViaRed600 : Html.Attribute msg
+lgHoverViaRed600 =
+    A.class "lg:hover:via-red-600"
+
+
+lgHoverViaRed700 : Html.Attribute msg
+lgHoverViaRed700 =
+    A.class "lg:hover:via-red-700"
+
+
+lgHoverViaRed800 : Html.Attribute msg
+lgHoverViaRed800 =
+    A.class "lg:hover:via-red-800"
+
+
+lgHoverViaRed900 : Html.Attribute msg
+lgHoverViaRed900 =
+    A.class "lg:hover:via-red-900"
+
+
+lgHoverViaOrange100 : Html.Attribute msg
+lgHoverViaOrange100 =
+    A.class "lg:hover:via-orange-100"
+
+
+lgHoverViaOrange200 : Html.Attribute msg
+lgHoverViaOrange200 =
+    A.class "lg:hover:via-orange-200"
+
+
+lgHoverViaOrange300 : Html.Attribute msg
+lgHoverViaOrange300 =
+    A.class "lg:hover:via-orange-300"
+
+
+lgHoverViaOrange400 : Html.Attribute msg
+lgHoverViaOrange400 =
+    A.class "lg:hover:via-orange-400"
+
+
+lgHoverViaOrange500 : Html.Attribute msg
+lgHoverViaOrange500 =
+    A.class "lg:hover:via-orange-500"
+
+
+lgHoverViaOrange600 : Html.Attribute msg
+lgHoverViaOrange600 =
+    A.class "lg:hover:via-orange-600"
+
+
+lgHoverViaOrange700 : Html.Attribute msg
+lgHoverViaOrange700 =
+    A.class "lg:hover:via-orange-700"
+
+
+lgHoverViaOrange800 : Html.Attribute msg
+lgHoverViaOrange800 =
+    A.class "lg:hover:via-orange-800"
+
+
+lgHoverViaOrange900 : Html.Attribute msg
+lgHoverViaOrange900 =
+    A.class "lg:hover:via-orange-900"
+
+
+lgHoverViaYellow100 : Html.Attribute msg
+lgHoverViaYellow100 =
+    A.class "lg:hover:via-yellow-100"
+
+
+lgHoverViaYellow200 : Html.Attribute msg
+lgHoverViaYellow200 =
+    A.class "lg:hover:via-yellow-200"
+
+
+lgHoverViaYellow300 : Html.Attribute msg
+lgHoverViaYellow300 =
+    A.class "lg:hover:via-yellow-300"
+
+
+lgHoverViaYellow400 : Html.Attribute msg
+lgHoverViaYellow400 =
+    A.class "lg:hover:via-yellow-400"
+
+
+lgHoverViaYellow500 : Html.Attribute msg
+lgHoverViaYellow500 =
+    A.class "lg:hover:via-yellow-500"
+
+
+lgHoverViaYellow600 : Html.Attribute msg
+lgHoverViaYellow600 =
+    A.class "lg:hover:via-yellow-600"
+
+
+lgHoverViaYellow700 : Html.Attribute msg
+lgHoverViaYellow700 =
+    A.class "lg:hover:via-yellow-700"
+
+
+lgHoverViaYellow800 : Html.Attribute msg
+lgHoverViaYellow800 =
+    A.class "lg:hover:via-yellow-800"
+
+
+lgHoverViaYellow900 : Html.Attribute msg
+lgHoverViaYellow900 =
+    A.class "lg:hover:via-yellow-900"
+
+
+lgHoverViaGreen100 : Html.Attribute msg
+lgHoverViaGreen100 =
+    A.class "lg:hover:via-green-100"
+
+
+lgHoverViaGreen200 : Html.Attribute msg
+lgHoverViaGreen200 =
+    A.class "lg:hover:via-green-200"
+
+
+lgHoverViaGreen300 : Html.Attribute msg
+lgHoverViaGreen300 =
+    A.class "lg:hover:via-green-300"
+
+
+lgHoverViaGreen400 : Html.Attribute msg
+lgHoverViaGreen400 =
+    A.class "lg:hover:via-green-400"
+
+
+lgHoverViaGreen500 : Html.Attribute msg
+lgHoverViaGreen500 =
+    A.class "lg:hover:via-green-500"
+
+
+lgHoverViaGreen600 : Html.Attribute msg
+lgHoverViaGreen600 =
+    A.class "lg:hover:via-green-600"
+
+
+lgHoverViaGreen700 : Html.Attribute msg
+lgHoverViaGreen700 =
+    A.class "lg:hover:via-green-700"
+
+
+lgHoverViaGreen800 : Html.Attribute msg
+lgHoverViaGreen800 =
+    A.class "lg:hover:via-green-800"
+
+
+lgHoverViaGreen900 : Html.Attribute msg
+lgHoverViaGreen900 =
+    A.class "lg:hover:via-green-900"
+
+
+lgHoverViaTeal100 : Html.Attribute msg
+lgHoverViaTeal100 =
+    A.class "lg:hover:via-teal-100"
+
+
+lgHoverViaTeal200 : Html.Attribute msg
+lgHoverViaTeal200 =
+    A.class "lg:hover:via-teal-200"
+
+
+lgHoverViaTeal300 : Html.Attribute msg
+lgHoverViaTeal300 =
+    A.class "lg:hover:via-teal-300"
+
+
+lgHoverViaTeal400 : Html.Attribute msg
+lgHoverViaTeal400 =
+    A.class "lg:hover:via-teal-400"
+
+
+lgHoverViaTeal500 : Html.Attribute msg
+lgHoverViaTeal500 =
+    A.class "lg:hover:via-teal-500"
+
+
+lgHoverViaTeal600 : Html.Attribute msg
+lgHoverViaTeal600 =
+    A.class "lg:hover:via-teal-600"
+
+
+lgHoverViaTeal700 : Html.Attribute msg
+lgHoverViaTeal700 =
+    A.class "lg:hover:via-teal-700"
+
+
+lgHoverViaTeal800 : Html.Attribute msg
+lgHoverViaTeal800 =
+    A.class "lg:hover:via-teal-800"
+
+
+lgHoverViaTeal900 : Html.Attribute msg
+lgHoverViaTeal900 =
+    A.class "lg:hover:via-teal-900"
+
+
+lgHoverViaBlue100 : Html.Attribute msg
+lgHoverViaBlue100 =
+    A.class "lg:hover:via-blue-100"
+
+
+lgHoverViaBlue200 : Html.Attribute msg
+lgHoverViaBlue200 =
+    A.class "lg:hover:via-blue-200"
+
+
+lgHoverViaBlue300 : Html.Attribute msg
+lgHoverViaBlue300 =
+    A.class "lg:hover:via-blue-300"
+
+
+lgHoverViaBlue400 : Html.Attribute msg
+lgHoverViaBlue400 =
+    A.class "lg:hover:via-blue-400"
+
+
+lgHoverViaBlue500 : Html.Attribute msg
+lgHoverViaBlue500 =
+    A.class "lg:hover:via-blue-500"
+
+
+lgHoverViaBlue600 : Html.Attribute msg
+lgHoverViaBlue600 =
+    A.class "lg:hover:via-blue-600"
+
+
+lgHoverViaBlue700 : Html.Attribute msg
+lgHoverViaBlue700 =
+    A.class "lg:hover:via-blue-700"
+
+
+lgHoverViaBlue800 : Html.Attribute msg
+lgHoverViaBlue800 =
+    A.class "lg:hover:via-blue-800"
+
+
+lgHoverViaBlue900 : Html.Attribute msg
+lgHoverViaBlue900 =
+    A.class "lg:hover:via-blue-900"
+
+
+lgHoverViaIndigo100 : Html.Attribute msg
+lgHoverViaIndigo100 =
+    A.class "lg:hover:via-indigo-100"
+
+
+lgHoverViaIndigo200 : Html.Attribute msg
+lgHoverViaIndigo200 =
+    A.class "lg:hover:via-indigo-200"
+
+
+lgHoverViaIndigo300 : Html.Attribute msg
+lgHoverViaIndigo300 =
+    A.class "lg:hover:via-indigo-300"
+
+
+lgHoverViaIndigo400 : Html.Attribute msg
+lgHoverViaIndigo400 =
+    A.class "lg:hover:via-indigo-400"
+
+
+lgHoverViaIndigo500 : Html.Attribute msg
+lgHoverViaIndigo500 =
+    A.class "lg:hover:via-indigo-500"
+
+
+lgHoverViaIndigo600 : Html.Attribute msg
+lgHoverViaIndigo600 =
+    A.class "lg:hover:via-indigo-600"
+
+
+lgHoverViaIndigo700 : Html.Attribute msg
+lgHoverViaIndigo700 =
+    A.class "lg:hover:via-indigo-700"
+
+
+lgHoverViaIndigo800 : Html.Attribute msg
+lgHoverViaIndigo800 =
+    A.class "lg:hover:via-indigo-800"
+
+
+lgHoverViaIndigo900 : Html.Attribute msg
+lgHoverViaIndigo900 =
+    A.class "lg:hover:via-indigo-900"
+
+
+lgHoverViaPurple100 : Html.Attribute msg
+lgHoverViaPurple100 =
+    A.class "lg:hover:via-purple-100"
+
+
+lgHoverViaPurple200 : Html.Attribute msg
+lgHoverViaPurple200 =
+    A.class "lg:hover:via-purple-200"
+
+
+lgHoverViaPurple300 : Html.Attribute msg
+lgHoverViaPurple300 =
+    A.class "lg:hover:via-purple-300"
+
+
+lgHoverViaPurple400 : Html.Attribute msg
+lgHoverViaPurple400 =
+    A.class "lg:hover:via-purple-400"
+
+
+lgHoverViaPurple500 : Html.Attribute msg
+lgHoverViaPurple500 =
+    A.class "lg:hover:via-purple-500"
+
+
+lgHoverViaPurple600 : Html.Attribute msg
+lgHoverViaPurple600 =
+    A.class "lg:hover:via-purple-600"
+
+
+lgHoverViaPurple700 : Html.Attribute msg
+lgHoverViaPurple700 =
+    A.class "lg:hover:via-purple-700"
+
+
+lgHoverViaPurple800 : Html.Attribute msg
+lgHoverViaPurple800 =
+    A.class "lg:hover:via-purple-800"
+
+
+lgHoverViaPurple900 : Html.Attribute msg
+lgHoverViaPurple900 =
+    A.class "lg:hover:via-purple-900"
+
+
+lgHoverViaPink100 : Html.Attribute msg
+lgHoverViaPink100 =
+    A.class "lg:hover:via-pink-100"
+
+
+lgHoverViaPink200 : Html.Attribute msg
+lgHoverViaPink200 =
+    A.class "lg:hover:via-pink-200"
+
+
+lgHoverViaPink300 : Html.Attribute msg
+lgHoverViaPink300 =
+    A.class "lg:hover:via-pink-300"
+
+
+lgHoverViaPink400 : Html.Attribute msg
+lgHoverViaPink400 =
+    A.class "lg:hover:via-pink-400"
+
+
+lgHoverViaPink500 : Html.Attribute msg
+lgHoverViaPink500 =
+    A.class "lg:hover:via-pink-500"
+
+
+lgHoverViaPink600 : Html.Attribute msg
+lgHoverViaPink600 =
+    A.class "lg:hover:via-pink-600"
+
+
+lgHoverViaPink700 : Html.Attribute msg
+lgHoverViaPink700 =
+    A.class "lg:hover:via-pink-700"
+
+
+lgHoverViaPink800 : Html.Attribute msg
+lgHoverViaPink800 =
+    A.class "lg:hover:via-pink-800"
+
+
+lgHoverViaPink900 : Html.Attribute msg
+lgHoverViaPink900 =
+    A.class "lg:hover:via-pink-900"
+
+
+lgHoverToTransparent : Html.Attribute msg
+lgHoverToTransparent =
+    A.class "lg:hover:to-transparent"
+
+
+lgHoverToCurrent : Html.Attribute msg
+lgHoverToCurrent =
+    A.class "lg:hover:to-current"
+
+
+lgHoverToBlack : Html.Attribute msg
+lgHoverToBlack =
+    A.class "lg:hover:to-black"
+
+
+lgHoverToWhite : Html.Attribute msg
+lgHoverToWhite =
+    A.class "lg:hover:to-white"
+
+
+lgHoverToGray100 : Html.Attribute msg
+lgHoverToGray100 =
+    A.class "lg:hover:to-gray-100"
+
+
+lgHoverToGray200 : Html.Attribute msg
+lgHoverToGray200 =
+    A.class "lg:hover:to-gray-200"
+
+
+lgHoverToGray300 : Html.Attribute msg
+lgHoverToGray300 =
+    A.class "lg:hover:to-gray-300"
+
+
+lgHoverToGray400 : Html.Attribute msg
+lgHoverToGray400 =
+    A.class "lg:hover:to-gray-400"
+
+
+lgHoverToGray500 : Html.Attribute msg
+lgHoverToGray500 =
+    A.class "lg:hover:to-gray-500"
+
+
+lgHoverToGray600 : Html.Attribute msg
+lgHoverToGray600 =
+    A.class "lg:hover:to-gray-600"
+
+
+lgHoverToGray700 : Html.Attribute msg
+lgHoverToGray700 =
+    A.class "lg:hover:to-gray-700"
+
+
+lgHoverToGray800 : Html.Attribute msg
+lgHoverToGray800 =
+    A.class "lg:hover:to-gray-800"
+
+
+lgHoverToGray900 : Html.Attribute msg
+lgHoverToGray900 =
+    A.class "lg:hover:to-gray-900"
+
+
+lgHoverToRed100 : Html.Attribute msg
+lgHoverToRed100 =
+    A.class "lg:hover:to-red-100"
+
+
+lgHoverToRed200 : Html.Attribute msg
+lgHoverToRed200 =
+    A.class "lg:hover:to-red-200"
+
+
+lgHoverToRed300 : Html.Attribute msg
+lgHoverToRed300 =
+    A.class "lg:hover:to-red-300"
+
+
+lgHoverToRed400 : Html.Attribute msg
+lgHoverToRed400 =
+    A.class "lg:hover:to-red-400"
+
+
+lgHoverToRed500 : Html.Attribute msg
+lgHoverToRed500 =
+    A.class "lg:hover:to-red-500"
+
+
+lgHoverToRed600 : Html.Attribute msg
+lgHoverToRed600 =
+    A.class "lg:hover:to-red-600"
+
+
+lgHoverToRed700 : Html.Attribute msg
+lgHoverToRed700 =
+    A.class "lg:hover:to-red-700"
+
+
+lgHoverToRed800 : Html.Attribute msg
+lgHoverToRed800 =
+    A.class "lg:hover:to-red-800"
+
+
+lgHoverToRed900 : Html.Attribute msg
+lgHoverToRed900 =
+    A.class "lg:hover:to-red-900"
+
+
+lgHoverToOrange100 : Html.Attribute msg
+lgHoverToOrange100 =
+    A.class "lg:hover:to-orange-100"
+
+
+lgHoverToOrange200 : Html.Attribute msg
+lgHoverToOrange200 =
+    A.class "lg:hover:to-orange-200"
+
+
+lgHoverToOrange300 : Html.Attribute msg
+lgHoverToOrange300 =
+    A.class "lg:hover:to-orange-300"
+
+
+lgHoverToOrange400 : Html.Attribute msg
+lgHoverToOrange400 =
+    A.class "lg:hover:to-orange-400"
+
+
+lgHoverToOrange500 : Html.Attribute msg
+lgHoverToOrange500 =
+    A.class "lg:hover:to-orange-500"
+
+
+lgHoverToOrange600 : Html.Attribute msg
+lgHoverToOrange600 =
+    A.class "lg:hover:to-orange-600"
+
+
+lgHoverToOrange700 : Html.Attribute msg
+lgHoverToOrange700 =
+    A.class "lg:hover:to-orange-700"
+
+
+lgHoverToOrange800 : Html.Attribute msg
+lgHoverToOrange800 =
+    A.class "lg:hover:to-orange-800"
+
+
+lgHoverToOrange900 : Html.Attribute msg
+lgHoverToOrange900 =
+    A.class "lg:hover:to-orange-900"
+
+
+lgHoverToYellow100 : Html.Attribute msg
+lgHoverToYellow100 =
+    A.class "lg:hover:to-yellow-100"
+
+
+lgHoverToYellow200 : Html.Attribute msg
+lgHoverToYellow200 =
+    A.class "lg:hover:to-yellow-200"
+
+
+lgHoverToYellow300 : Html.Attribute msg
+lgHoverToYellow300 =
+    A.class "lg:hover:to-yellow-300"
+
+
+lgHoverToYellow400 : Html.Attribute msg
+lgHoverToYellow400 =
+    A.class "lg:hover:to-yellow-400"
+
+
+lgHoverToYellow500 : Html.Attribute msg
+lgHoverToYellow500 =
+    A.class "lg:hover:to-yellow-500"
+
+
+lgHoverToYellow600 : Html.Attribute msg
+lgHoverToYellow600 =
+    A.class "lg:hover:to-yellow-600"
+
+
+lgHoverToYellow700 : Html.Attribute msg
+lgHoverToYellow700 =
+    A.class "lg:hover:to-yellow-700"
+
+
+lgHoverToYellow800 : Html.Attribute msg
+lgHoverToYellow800 =
+    A.class "lg:hover:to-yellow-800"
+
+
+lgHoverToYellow900 : Html.Attribute msg
+lgHoverToYellow900 =
+    A.class "lg:hover:to-yellow-900"
+
+
+lgHoverToGreen100 : Html.Attribute msg
+lgHoverToGreen100 =
+    A.class "lg:hover:to-green-100"
+
+
+lgHoverToGreen200 : Html.Attribute msg
+lgHoverToGreen200 =
+    A.class "lg:hover:to-green-200"
+
+
+lgHoverToGreen300 : Html.Attribute msg
+lgHoverToGreen300 =
+    A.class "lg:hover:to-green-300"
+
+
+lgHoverToGreen400 : Html.Attribute msg
+lgHoverToGreen400 =
+    A.class "lg:hover:to-green-400"
+
+
+lgHoverToGreen500 : Html.Attribute msg
+lgHoverToGreen500 =
+    A.class "lg:hover:to-green-500"
+
+
+lgHoverToGreen600 : Html.Attribute msg
+lgHoverToGreen600 =
+    A.class "lg:hover:to-green-600"
+
+
+lgHoverToGreen700 : Html.Attribute msg
+lgHoverToGreen700 =
+    A.class "lg:hover:to-green-700"
+
+
+lgHoverToGreen800 : Html.Attribute msg
+lgHoverToGreen800 =
+    A.class "lg:hover:to-green-800"
+
+
+lgHoverToGreen900 : Html.Attribute msg
+lgHoverToGreen900 =
+    A.class "lg:hover:to-green-900"
+
+
+lgHoverToTeal100 : Html.Attribute msg
+lgHoverToTeal100 =
+    A.class "lg:hover:to-teal-100"
+
+
+lgHoverToTeal200 : Html.Attribute msg
+lgHoverToTeal200 =
+    A.class "lg:hover:to-teal-200"
+
+
+lgHoverToTeal300 : Html.Attribute msg
+lgHoverToTeal300 =
+    A.class "lg:hover:to-teal-300"
+
+
+lgHoverToTeal400 : Html.Attribute msg
+lgHoverToTeal400 =
+    A.class "lg:hover:to-teal-400"
+
+
+lgHoverToTeal500 : Html.Attribute msg
+lgHoverToTeal500 =
+    A.class "lg:hover:to-teal-500"
+
+
+lgHoverToTeal600 : Html.Attribute msg
+lgHoverToTeal600 =
+    A.class "lg:hover:to-teal-600"
+
+
+lgHoverToTeal700 : Html.Attribute msg
+lgHoverToTeal700 =
+    A.class "lg:hover:to-teal-700"
+
+
+lgHoverToTeal800 : Html.Attribute msg
+lgHoverToTeal800 =
+    A.class "lg:hover:to-teal-800"
+
+
+lgHoverToTeal900 : Html.Attribute msg
+lgHoverToTeal900 =
+    A.class "lg:hover:to-teal-900"
+
+
+lgHoverToBlue100 : Html.Attribute msg
+lgHoverToBlue100 =
+    A.class "lg:hover:to-blue-100"
+
+
+lgHoverToBlue200 : Html.Attribute msg
+lgHoverToBlue200 =
+    A.class "lg:hover:to-blue-200"
+
+
+lgHoverToBlue300 : Html.Attribute msg
+lgHoverToBlue300 =
+    A.class "lg:hover:to-blue-300"
+
+
+lgHoverToBlue400 : Html.Attribute msg
+lgHoverToBlue400 =
+    A.class "lg:hover:to-blue-400"
+
+
+lgHoverToBlue500 : Html.Attribute msg
+lgHoverToBlue500 =
+    A.class "lg:hover:to-blue-500"
+
+
+lgHoverToBlue600 : Html.Attribute msg
+lgHoverToBlue600 =
+    A.class "lg:hover:to-blue-600"
+
+
+lgHoverToBlue700 : Html.Attribute msg
+lgHoverToBlue700 =
+    A.class "lg:hover:to-blue-700"
+
+
+lgHoverToBlue800 : Html.Attribute msg
+lgHoverToBlue800 =
+    A.class "lg:hover:to-blue-800"
+
+
+lgHoverToBlue900 : Html.Attribute msg
+lgHoverToBlue900 =
+    A.class "lg:hover:to-blue-900"
+
+
+lgHoverToIndigo100 : Html.Attribute msg
+lgHoverToIndigo100 =
+    A.class "lg:hover:to-indigo-100"
+
+
+lgHoverToIndigo200 : Html.Attribute msg
+lgHoverToIndigo200 =
+    A.class "lg:hover:to-indigo-200"
+
+
+lgHoverToIndigo300 : Html.Attribute msg
+lgHoverToIndigo300 =
+    A.class "lg:hover:to-indigo-300"
+
+
+lgHoverToIndigo400 : Html.Attribute msg
+lgHoverToIndigo400 =
+    A.class "lg:hover:to-indigo-400"
+
+
+lgHoverToIndigo500 : Html.Attribute msg
+lgHoverToIndigo500 =
+    A.class "lg:hover:to-indigo-500"
+
+
+lgHoverToIndigo600 : Html.Attribute msg
+lgHoverToIndigo600 =
+    A.class "lg:hover:to-indigo-600"
+
+
+lgHoverToIndigo700 : Html.Attribute msg
+lgHoverToIndigo700 =
+    A.class "lg:hover:to-indigo-700"
+
+
+lgHoverToIndigo800 : Html.Attribute msg
+lgHoverToIndigo800 =
+    A.class "lg:hover:to-indigo-800"
+
+
+lgHoverToIndigo900 : Html.Attribute msg
+lgHoverToIndigo900 =
+    A.class "lg:hover:to-indigo-900"
+
+
+lgHoverToPurple100 : Html.Attribute msg
+lgHoverToPurple100 =
+    A.class "lg:hover:to-purple-100"
+
+
+lgHoverToPurple200 : Html.Attribute msg
+lgHoverToPurple200 =
+    A.class "lg:hover:to-purple-200"
+
+
+lgHoverToPurple300 : Html.Attribute msg
+lgHoverToPurple300 =
+    A.class "lg:hover:to-purple-300"
+
+
+lgHoverToPurple400 : Html.Attribute msg
+lgHoverToPurple400 =
+    A.class "lg:hover:to-purple-400"
+
+
+lgHoverToPurple500 : Html.Attribute msg
+lgHoverToPurple500 =
+    A.class "lg:hover:to-purple-500"
+
+
+lgHoverToPurple600 : Html.Attribute msg
+lgHoverToPurple600 =
+    A.class "lg:hover:to-purple-600"
+
+
+lgHoverToPurple700 : Html.Attribute msg
+lgHoverToPurple700 =
+    A.class "lg:hover:to-purple-700"
+
+
+lgHoverToPurple800 : Html.Attribute msg
+lgHoverToPurple800 =
+    A.class "lg:hover:to-purple-800"
+
+
+lgHoverToPurple900 : Html.Attribute msg
+lgHoverToPurple900 =
+    A.class "lg:hover:to-purple-900"
+
+
+lgHoverToPink100 : Html.Attribute msg
+lgHoverToPink100 =
+    A.class "lg:hover:to-pink-100"
+
+
+lgHoverToPink200 : Html.Attribute msg
+lgHoverToPink200 =
+    A.class "lg:hover:to-pink-200"
+
+
+lgHoverToPink300 : Html.Attribute msg
+lgHoverToPink300 =
+    A.class "lg:hover:to-pink-300"
+
+
+lgHoverToPink400 : Html.Attribute msg
+lgHoverToPink400 =
+    A.class "lg:hover:to-pink-400"
+
+
+lgHoverToPink500 : Html.Attribute msg
+lgHoverToPink500 =
+    A.class "lg:hover:to-pink-500"
+
+
+lgHoverToPink600 : Html.Attribute msg
+lgHoverToPink600 =
+    A.class "lg:hover:to-pink-600"
+
+
+lgHoverToPink700 : Html.Attribute msg
+lgHoverToPink700 =
+    A.class "lg:hover:to-pink-700"
+
+
+lgHoverToPink800 : Html.Attribute msg
+lgHoverToPink800 =
+    A.class "lg:hover:to-pink-800"
+
+
+lgHoverToPink900 : Html.Attribute msg
+lgHoverToPink900 =
+    A.class "lg:hover:to-pink-900"
+
+
+lgFocusFromTransparent : Html.Attribute msg
+lgFocusFromTransparent =
+    A.class "lg:focus:from-transparent"
+
+
+lgFocusFromCurrent : Html.Attribute msg
+lgFocusFromCurrent =
+    A.class "lg:focus:from-current"
+
+
+lgFocusFromBlack : Html.Attribute msg
+lgFocusFromBlack =
+    A.class "lg:focus:from-black"
+
+
+lgFocusFromWhite : Html.Attribute msg
+lgFocusFromWhite =
+    A.class "lg:focus:from-white"
+
+
+lgFocusFromGray100 : Html.Attribute msg
+lgFocusFromGray100 =
+    A.class "lg:focus:from-gray-100"
+
+
+lgFocusFromGray200 : Html.Attribute msg
+lgFocusFromGray200 =
+    A.class "lg:focus:from-gray-200"
+
+
+lgFocusFromGray300 : Html.Attribute msg
+lgFocusFromGray300 =
+    A.class "lg:focus:from-gray-300"
+
+
+lgFocusFromGray400 : Html.Attribute msg
+lgFocusFromGray400 =
+    A.class "lg:focus:from-gray-400"
+
+
+lgFocusFromGray500 : Html.Attribute msg
+lgFocusFromGray500 =
+    A.class "lg:focus:from-gray-500"
+
+
+lgFocusFromGray600 : Html.Attribute msg
+lgFocusFromGray600 =
+    A.class "lg:focus:from-gray-600"
+
+
+lgFocusFromGray700 : Html.Attribute msg
+lgFocusFromGray700 =
+    A.class "lg:focus:from-gray-700"
+
+
+lgFocusFromGray800 : Html.Attribute msg
+lgFocusFromGray800 =
+    A.class "lg:focus:from-gray-800"
+
+
+lgFocusFromGray900 : Html.Attribute msg
+lgFocusFromGray900 =
+    A.class "lg:focus:from-gray-900"
+
+
+lgFocusFromRed100 : Html.Attribute msg
+lgFocusFromRed100 =
+    A.class "lg:focus:from-red-100"
+
+
+lgFocusFromRed200 : Html.Attribute msg
+lgFocusFromRed200 =
+    A.class "lg:focus:from-red-200"
+
+
+lgFocusFromRed300 : Html.Attribute msg
+lgFocusFromRed300 =
+    A.class "lg:focus:from-red-300"
+
+
+lgFocusFromRed400 : Html.Attribute msg
+lgFocusFromRed400 =
+    A.class "lg:focus:from-red-400"
+
+
+lgFocusFromRed500 : Html.Attribute msg
+lgFocusFromRed500 =
+    A.class "lg:focus:from-red-500"
+
+
+lgFocusFromRed600 : Html.Attribute msg
+lgFocusFromRed600 =
+    A.class "lg:focus:from-red-600"
+
+
+lgFocusFromRed700 : Html.Attribute msg
+lgFocusFromRed700 =
+    A.class "lg:focus:from-red-700"
+
+
+lgFocusFromRed800 : Html.Attribute msg
+lgFocusFromRed800 =
+    A.class "lg:focus:from-red-800"
+
+
+lgFocusFromRed900 : Html.Attribute msg
+lgFocusFromRed900 =
+    A.class "lg:focus:from-red-900"
+
+
+lgFocusFromOrange100 : Html.Attribute msg
+lgFocusFromOrange100 =
+    A.class "lg:focus:from-orange-100"
+
+
+lgFocusFromOrange200 : Html.Attribute msg
+lgFocusFromOrange200 =
+    A.class "lg:focus:from-orange-200"
+
+
+lgFocusFromOrange300 : Html.Attribute msg
+lgFocusFromOrange300 =
+    A.class "lg:focus:from-orange-300"
+
+
+lgFocusFromOrange400 : Html.Attribute msg
+lgFocusFromOrange400 =
+    A.class "lg:focus:from-orange-400"
+
+
+lgFocusFromOrange500 : Html.Attribute msg
+lgFocusFromOrange500 =
+    A.class "lg:focus:from-orange-500"
+
+
+lgFocusFromOrange600 : Html.Attribute msg
+lgFocusFromOrange600 =
+    A.class "lg:focus:from-orange-600"
+
+
+lgFocusFromOrange700 : Html.Attribute msg
+lgFocusFromOrange700 =
+    A.class "lg:focus:from-orange-700"
+
+
+lgFocusFromOrange800 : Html.Attribute msg
+lgFocusFromOrange800 =
+    A.class "lg:focus:from-orange-800"
+
+
+lgFocusFromOrange900 : Html.Attribute msg
+lgFocusFromOrange900 =
+    A.class "lg:focus:from-orange-900"
+
+
+lgFocusFromYellow100 : Html.Attribute msg
+lgFocusFromYellow100 =
+    A.class "lg:focus:from-yellow-100"
+
+
+lgFocusFromYellow200 : Html.Attribute msg
+lgFocusFromYellow200 =
+    A.class "lg:focus:from-yellow-200"
+
+
+lgFocusFromYellow300 : Html.Attribute msg
+lgFocusFromYellow300 =
+    A.class "lg:focus:from-yellow-300"
+
+
+lgFocusFromYellow400 : Html.Attribute msg
+lgFocusFromYellow400 =
+    A.class "lg:focus:from-yellow-400"
+
+
+lgFocusFromYellow500 : Html.Attribute msg
+lgFocusFromYellow500 =
+    A.class "lg:focus:from-yellow-500"
+
+
+lgFocusFromYellow600 : Html.Attribute msg
+lgFocusFromYellow600 =
+    A.class "lg:focus:from-yellow-600"
+
+
+lgFocusFromYellow700 : Html.Attribute msg
+lgFocusFromYellow700 =
+    A.class "lg:focus:from-yellow-700"
+
+
+lgFocusFromYellow800 : Html.Attribute msg
+lgFocusFromYellow800 =
+    A.class "lg:focus:from-yellow-800"
+
+
+lgFocusFromYellow900 : Html.Attribute msg
+lgFocusFromYellow900 =
+    A.class "lg:focus:from-yellow-900"
+
+
+lgFocusFromGreen100 : Html.Attribute msg
+lgFocusFromGreen100 =
+    A.class "lg:focus:from-green-100"
+
+
+lgFocusFromGreen200 : Html.Attribute msg
+lgFocusFromGreen200 =
+    A.class "lg:focus:from-green-200"
+
+
+lgFocusFromGreen300 : Html.Attribute msg
+lgFocusFromGreen300 =
+    A.class "lg:focus:from-green-300"
+
+
+lgFocusFromGreen400 : Html.Attribute msg
+lgFocusFromGreen400 =
+    A.class "lg:focus:from-green-400"
+
+
+lgFocusFromGreen500 : Html.Attribute msg
+lgFocusFromGreen500 =
+    A.class "lg:focus:from-green-500"
+
+
+lgFocusFromGreen600 : Html.Attribute msg
+lgFocusFromGreen600 =
+    A.class "lg:focus:from-green-600"
+
+
+lgFocusFromGreen700 : Html.Attribute msg
+lgFocusFromGreen700 =
+    A.class "lg:focus:from-green-700"
+
+
+lgFocusFromGreen800 : Html.Attribute msg
+lgFocusFromGreen800 =
+    A.class "lg:focus:from-green-800"
+
+
+lgFocusFromGreen900 : Html.Attribute msg
+lgFocusFromGreen900 =
+    A.class "lg:focus:from-green-900"
+
+
+lgFocusFromTeal100 : Html.Attribute msg
+lgFocusFromTeal100 =
+    A.class "lg:focus:from-teal-100"
+
+
+lgFocusFromTeal200 : Html.Attribute msg
+lgFocusFromTeal200 =
+    A.class "lg:focus:from-teal-200"
+
+
+lgFocusFromTeal300 : Html.Attribute msg
+lgFocusFromTeal300 =
+    A.class "lg:focus:from-teal-300"
+
+
+lgFocusFromTeal400 : Html.Attribute msg
+lgFocusFromTeal400 =
+    A.class "lg:focus:from-teal-400"
+
+
+lgFocusFromTeal500 : Html.Attribute msg
+lgFocusFromTeal500 =
+    A.class "lg:focus:from-teal-500"
+
+
+lgFocusFromTeal600 : Html.Attribute msg
+lgFocusFromTeal600 =
+    A.class "lg:focus:from-teal-600"
+
+
+lgFocusFromTeal700 : Html.Attribute msg
+lgFocusFromTeal700 =
+    A.class "lg:focus:from-teal-700"
+
+
+lgFocusFromTeal800 : Html.Attribute msg
+lgFocusFromTeal800 =
+    A.class "lg:focus:from-teal-800"
+
+
+lgFocusFromTeal900 : Html.Attribute msg
+lgFocusFromTeal900 =
+    A.class "lg:focus:from-teal-900"
+
+
+lgFocusFromBlue100 : Html.Attribute msg
+lgFocusFromBlue100 =
+    A.class "lg:focus:from-blue-100"
+
+
+lgFocusFromBlue200 : Html.Attribute msg
+lgFocusFromBlue200 =
+    A.class "lg:focus:from-blue-200"
+
+
+lgFocusFromBlue300 : Html.Attribute msg
+lgFocusFromBlue300 =
+    A.class "lg:focus:from-blue-300"
+
+
+lgFocusFromBlue400 : Html.Attribute msg
+lgFocusFromBlue400 =
+    A.class "lg:focus:from-blue-400"
+
+
+lgFocusFromBlue500 : Html.Attribute msg
+lgFocusFromBlue500 =
+    A.class "lg:focus:from-blue-500"
+
+
+lgFocusFromBlue600 : Html.Attribute msg
+lgFocusFromBlue600 =
+    A.class "lg:focus:from-blue-600"
+
+
+lgFocusFromBlue700 : Html.Attribute msg
+lgFocusFromBlue700 =
+    A.class "lg:focus:from-blue-700"
+
+
+lgFocusFromBlue800 : Html.Attribute msg
+lgFocusFromBlue800 =
+    A.class "lg:focus:from-blue-800"
+
+
+lgFocusFromBlue900 : Html.Attribute msg
+lgFocusFromBlue900 =
+    A.class "lg:focus:from-blue-900"
+
+
+lgFocusFromIndigo100 : Html.Attribute msg
+lgFocusFromIndigo100 =
+    A.class "lg:focus:from-indigo-100"
+
+
+lgFocusFromIndigo200 : Html.Attribute msg
+lgFocusFromIndigo200 =
+    A.class "lg:focus:from-indigo-200"
+
+
+lgFocusFromIndigo300 : Html.Attribute msg
+lgFocusFromIndigo300 =
+    A.class "lg:focus:from-indigo-300"
+
+
+lgFocusFromIndigo400 : Html.Attribute msg
+lgFocusFromIndigo400 =
+    A.class "lg:focus:from-indigo-400"
+
+
+lgFocusFromIndigo500 : Html.Attribute msg
+lgFocusFromIndigo500 =
+    A.class "lg:focus:from-indigo-500"
+
+
+lgFocusFromIndigo600 : Html.Attribute msg
+lgFocusFromIndigo600 =
+    A.class "lg:focus:from-indigo-600"
+
+
+lgFocusFromIndigo700 : Html.Attribute msg
+lgFocusFromIndigo700 =
+    A.class "lg:focus:from-indigo-700"
+
+
+lgFocusFromIndigo800 : Html.Attribute msg
+lgFocusFromIndigo800 =
+    A.class "lg:focus:from-indigo-800"
+
+
+lgFocusFromIndigo900 : Html.Attribute msg
+lgFocusFromIndigo900 =
+    A.class "lg:focus:from-indigo-900"
+
+
+lgFocusFromPurple100 : Html.Attribute msg
+lgFocusFromPurple100 =
+    A.class "lg:focus:from-purple-100"
+
+
+lgFocusFromPurple200 : Html.Attribute msg
+lgFocusFromPurple200 =
+    A.class "lg:focus:from-purple-200"
+
+
+lgFocusFromPurple300 : Html.Attribute msg
+lgFocusFromPurple300 =
+    A.class "lg:focus:from-purple-300"
+
+
+lgFocusFromPurple400 : Html.Attribute msg
+lgFocusFromPurple400 =
+    A.class "lg:focus:from-purple-400"
+
+
+lgFocusFromPurple500 : Html.Attribute msg
+lgFocusFromPurple500 =
+    A.class "lg:focus:from-purple-500"
+
+
+lgFocusFromPurple600 : Html.Attribute msg
+lgFocusFromPurple600 =
+    A.class "lg:focus:from-purple-600"
+
+
+lgFocusFromPurple700 : Html.Attribute msg
+lgFocusFromPurple700 =
+    A.class "lg:focus:from-purple-700"
+
+
+lgFocusFromPurple800 : Html.Attribute msg
+lgFocusFromPurple800 =
+    A.class "lg:focus:from-purple-800"
+
+
+lgFocusFromPurple900 : Html.Attribute msg
+lgFocusFromPurple900 =
+    A.class "lg:focus:from-purple-900"
+
+
+lgFocusFromPink100 : Html.Attribute msg
+lgFocusFromPink100 =
+    A.class "lg:focus:from-pink-100"
+
+
+lgFocusFromPink200 : Html.Attribute msg
+lgFocusFromPink200 =
+    A.class "lg:focus:from-pink-200"
+
+
+lgFocusFromPink300 : Html.Attribute msg
+lgFocusFromPink300 =
+    A.class "lg:focus:from-pink-300"
+
+
+lgFocusFromPink400 : Html.Attribute msg
+lgFocusFromPink400 =
+    A.class "lg:focus:from-pink-400"
+
+
+lgFocusFromPink500 : Html.Attribute msg
+lgFocusFromPink500 =
+    A.class "lg:focus:from-pink-500"
+
+
+lgFocusFromPink600 : Html.Attribute msg
+lgFocusFromPink600 =
+    A.class "lg:focus:from-pink-600"
+
+
+lgFocusFromPink700 : Html.Attribute msg
+lgFocusFromPink700 =
+    A.class "lg:focus:from-pink-700"
+
+
+lgFocusFromPink800 : Html.Attribute msg
+lgFocusFromPink800 =
+    A.class "lg:focus:from-pink-800"
+
+
+lgFocusFromPink900 : Html.Attribute msg
+lgFocusFromPink900 =
+    A.class "lg:focus:from-pink-900"
+
+
+lgFocusViaTransparent : Html.Attribute msg
+lgFocusViaTransparent =
+    A.class "lg:focus:via-transparent"
+
+
+lgFocusViaCurrent : Html.Attribute msg
+lgFocusViaCurrent =
+    A.class "lg:focus:via-current"
+
+
+lgFocusViaBlack : Html.Attribute msg
+lgFocusViaBlack =
+    A.class "lg:focus:via-black"
+
+
+lgFocusViaWhite : Html.Attribute msg
+lgFocusViaWhite =
+    A.class "lg:focus:via-white"
+
+
+lgFocusViaGray100 : Html.Attribute msg
+lgFocusViaGray100 =
+    A.class "lg:focus:via-gray-100"
+
+
+lgFocusViaGray200 : Html.Attribute msg
+lgFocusViaGray200 =
+    A.class "lg:focus:via-gray-200"
+
+
+lgFocusViaGray300 : Html.Attribute msg
+lgFocusViaGray300 =
+    A.class "lg:focus:via-gray-300"
+
+
+lgFocusViaGray400 : Html.Attribute msg
+lgFocusViaGray400 =
+    A.class "lg:focus:via-gray-400"
+
+
+lgFocusViaGray500 : Html.Attribute msg
+lgFocusViaGray500 =
+    A.class "lg:focus:via-gray-500"
+
+
+lgFocusViaGray600 : Html.Attribute msg
+lgFocusViaGray600 =
+    A.class "lg:focus:via-gray-600"
+
+
+lgFocusViaGray700 : Html.Attribute msg
+lgFocusViaGray700 =
+    A.class "lg:focus:via-gray-700"
+
+
+lgFocusViaGray800 : Html.Attribute msg
+lgFocusViaGray800 =
+    A.class "lg:focus:via-gray-800"
+
+
+lgFocusViaGray900 : Html.Attribute msg
+lgFocusViaGray900 =
+    A.class "lg:focus:via-gray-900"
+
+
+lgFocusViaRed100 : Html.Attribute msg
+lgFocusViaRed100 =
+    A.class "lg:focus:via-red-100"
+
+
+lgFocusViaRed200 : Html.Attribute msg
+lgFocusViaRed200 =
+    A.class "lg:focus:via-red-200"
+
+
+lgFocusViaRed300 : Html.Attribute msg
+lgFocusViaRed300 =
+    A.class "lg:focus:via-red-300"
+
+
+lgFocusViaRed400 : Html.Attribute msg
+lgFocusViaRed400 =
+    A.class "lg:focus:via-red-400"
+
+
+lgFocusViaRed500 : Html.Attribute msg
+lgFocusViaRed500 =
+    A.class "lg:focus:via-red-500"
+
+
+lgFocusViaRed600 : Html.Attribute msg
+lgFocusViaRed600 =
+    A.class "lg:focus:via-red-600"
+
+
+lgFocusViaRed700 : Html.Attribute msg
+lgFocusViaRed700 =
+    A.class "lg:focus:via-red-700"
+
+
+lgFocusViaRed800 : Html.Attribute msg
+lgFocusViaRed800 =
+    A.class "lg:focus:via-red-800"
+
+
+lgFocusViaRed900 : Html.Attribute msg
+lgFocusViaRed900 =
+    A.class "lg:focus:via-red-900"
+
+
+lgFocusViaOrange100 : Html.Attribute msg
+lgFocusViaOrange100 =
+    A.class "lg:focus:via-orange-100"
+
+
+lgFocusViaOrange200 : Html.Attribute msg
+lgFocusViaOrange200 =
+    A.class "lg:focus:via-orange-200"
+
+
+lgFocusViaOrange300 : Html.Attribute msg
+lgFocusViaOrange300 =
+    A.class "lg:focus:via-orange-300"
+
+
+lgFocusViaOrange400 : Html.Attribute msg
+lgFocusViaOrange400 =
+    A.class "lg:focus:via-orange-400"
+
+
+lgFocusViaOrange500 : Html.Attribute msg
+lgFocusViaOrange500 =
+    A.class "lg:focus:via-orange-500"
+
+
+lgFocusViaOrange600 : Html.Attribute msg
+lgFocusViaOrange600 =
+    A.class "lg:focus:via-orange-600"
+
+
+lgFocusViaOrange700 : Html.Attribute msg
+lgFocusViaOrange700 =
+    A.class "lg:focus:via-orange-700"
+
+
+lgFocusViaOrange800 : Html.Attribute msg
+lgFocusViaOrange800 =
+    A.class "lg:focus:via-orange-800"
+
+
+lgFocusViaOrange900 : Html.Attribute msg
+lgFocusViaOrange900 =
+    A.class "lg:focus:via-orange-900"
+
+
+lgFocusViaYellow100 : Html.Attribute msg
+lgFocusViaYellow100 =
+    A.class "lg:focus:via-yellow-100"
+
+
+lgFocusViaYellow200 : Html.Attribute msg
+lgFocusViaYellow200 =
+    A.class "lg:focus:via-yellow-200"
+
+
+lgFocusViaYellow300 : Html.Attribute msg
+lgFocusViaYellow300 =
+    A.class "lg:focus:via-yellow-300"
+
+
+lgFocusViaYellow400 : Html.Attribute msg
+lgFocusViaYellow400 =
+    A.class "lg:focus:via-yellow-400"
+
+
+lgFocusViaYellow500 : Html.Attribute msg
+lgFocusViaYellow500 =
+    A.class "lg:focus:via-yellow-500"
+
+
+lgFocusViaYellow600 : Html.Attribute msg
+lgFocusViaYellow600 =
+    A.class "lg:focus:via-yellow-600"
+
+
+lgFocusViaYellow700 : Html.Attribute msg
+lgFocusViaYellow700 =
+    A.class "lg:focus:via-yellow-700"
+
+
+lgFocusViaYellow800 : Html.Attribute msg
+lgFocusViaYellow800 =
+    A.class "lg:focus:via-yellow-800"
+
+
+lgFocusViaYellow900 : Html.Attribute msg
+lgFocusViaYellow900 =
+    A.class "lg:focus:via-yellow-900"
+
+
+lgFocusViaGreen100 : Html.Attribute msg
+lgFocusViaGreen100 =
+    A.class "lg:focus:via-green-100"
+
+
+lgFocusViaGreen200 : Html.Attribute msg
+lgFocusViaGreen200 =
+    A.class "lg:focus:via-green-200"
+
+
+lgFocusViaGreen300 : Html.Attribute msg
+lgFocusViaGreen300 =
+    A.class "lg:focus:via-green-300"
+
+
+lgFocusViaGreen400 : Html.Attribute msg
+lgFocusViaGreen400 =
+    A.class "lg:focus:via-green-400"
+
+
+lgFocusViaGreen500 : Html.Attribute msg
+lgFocusViaGreen500 =
+    A.class "lg:focus:via-green-500"
+
+
+lgFocusViaGreen600 : Html.Attribute msg
+lgFocusViaGreen600 =
+    A.class "lg:focus:via-green-600"
+
+
+lgFocusViaGreen700 : Html.Attribute msg
+lgFocusViaGreen700 =
+    A.class "lg:focus:via-green-700"
+
+
+lgFocusViaGreen800 : Html.Attribute msg
+lgFocusViaGreen800 =
+    A.class "lg:focus:via-green-800"
+
+
+lgFocusViaGreen900 : Html.Attribute msg
+lgFocusViaGreen900 =
+    A.class "lg:focus:via-green-900"
+
+
+lgFocusViaTeal100 : Html.Attribute msg
+lgFocusViaTeal100 =
+    A.class "lg:focus:via-teal-100"
+
+
+lgFocusViaTeal200 : Html.Attribute msg
+lgFocusViaTeal200 =
+    A.class "lg:focus:via-teal-200"
+
+
+lgFocusViaTeal300 : Html.Attribute msg
+lgFocusViaTeal300 =
+    A.class "lg:focus:via-teal-300"
+
+
+lgFocusViaTeal400 : Html.Attribute msg
+lgFocusViaTeal400 =
+    A.class "lg:focus:via-teal-400"
+
+
+lgFocusViaTeal500 : Html.Attribute msg
+lgFocusViaTeal500 =
+    A.class "lg:focus:via-teal-500"
+
+
+lgFocusViaTeal600 : Html.Attribute msg
+lgFocusViaTeal600 =
+    A.class "lg:focus:via-teal-600"
+
+
+lgFocusViaTeal700 : Html.Attribute msg
+lgFocusViaTeal700 =
+    A.class "lg:focus:via-teal-700"
+
+
+lgFocusViaTeal800 : Html.Attribute msg
+lgFocusViaTeal800 =
+    A.class "lg:focus:via-teal-800"
+
+
+lgFocusViaTeal900 : Html.Attribute msg
+lgFocusViaTeal900 =
+    A.class "lg:focus:via-teal-900"
+
+
+lgFocusViaBlue100 : Html.Attribute msg
+lgFocusViaBlue100 =
+    A.class "lg:focus:via-blue-100"
+
+
+lgFocusViaBlue200 : Html.Attribute msg
+lgFocusViaBlue200 =
+    A.class "lg:focus:via-blue-200"
+
+
+lgFocusViaBlue300 : Html.Attribute msg
+lgFocusViaBlue300 =
+    A.class "lg:focus:via-blue-300"
+
+
+lgFocusViaBlue400 : Html.Attribute msg
+lgFocusViaBlue400 =
+    A.class "lg:focus:via-blue-400"
+
+
+lgFocusViaBlue500 : Html.Attribute msg
+lgFocusViaBlue500 =
+    A.class "lg:focus:via-blue-500"
+
+
+lgFocusViaBlue600 : Html.Attribute msg
+lgFocusViaBlue600 =
+    A.class "lg:focus:via-blue-600"
+
+
+lgFocusViaBlue700 : Html.Attribute msg
+lgFocusViaBlue700 =
+    A.class "lg:focus:via-blue-700"
+
+
+lgFocusViaBlue800 : Html.Attribute msg
+lgFocusViaBlue800 =
+    A.class "lg:focus:via-blue-800"
+
+
+lgFocusViaBlue900 : Html.Attribute msg
+lgFocusViaBlue900 =
+    A.class "lg:focus:via-blue-900"
+
+
+lgFocusViaIndigo100 : Html.Attribute msg
+lgFocusViaIndigo100 =
+    A.class "lg:focus:via-indigo-100"
+
+
+lgFocusViaIndigo200 : Html.Attribute msg
+lgFocusViaIndigo200 =
+    A.class "lg:focus:via-indigo-200"
+
+
+lgFocusViaIndigo300 : Html.Attribute msg
+lgFocusViaIndigo300 =
+    A.class "lg:focus:via-indigo-300"
+
+
+lgFocusViaIndigo400 : Html.Attribute msg
+lgFocusViaIndigo400 =
+    A.class "lg:focus:via-indigo-400"
+
+
+lgFocusViaIndigo500 : Html.Attribute msg
+lgFocusViaIndigo500 =
+    A.class "lg:focus:via-indigo-500"
+
+
+lgFocusViaIndigo600 : Html.Attribute msg
+lgFocusViaIndigo600 =
+    A.class "lg:focus:via-indigo-600"
+
+
+lgFocusViaIndigo700 : Html.Attribute msg
+lgFocusViaIndigo700 =
+    A.class "lg:focus:via-indigo-700"
+
+
+lgFocusViaIndigo800 : Html.Attribute msg
+lgFocusViaIndigo800 =
+    A.class "lg:focus:via-indigo-800"
+
+
+lgFocusViaIndigo900 : Html.Attribute msg
+lgFocusViaIndigo900 =
+    A.class "lg:focus:via-indigo-900"
+
+
+lgFocusViaPurple100 : Html.Attribute msg
+lgFocusViaPurple100 =
+    A.class "lg:focus:via-purple-100"
+
+
+lgFocusViaPurple200 : Html.Attribute msg
+lgFocusViaPurple200 =
+    A.class "lg:focus:via-purple-200"
+
+
+lgFocusViaPurple300 : Html.Attribute msg
+lgFocusViaPurple300 =
+    A.class "lg:focus:via-purple-300"
+
+
+lgFocusViaPurple400 : Html.Attribute msg
+lgFocusViaPurple400 =
+    A.class "lg:focus:via-purple-400"
+
+
+lgFocusViaPurple500 : Html.Attribute msg
+lgFocusViaPurple500 =
+    A.class "lg:focus:via-purple-500"
+
+
+lgFocusViaPurple600 : Html.Attribute msg
+lgFocusViaPurple600 =
+    A.class "lg:focus:via-purple-600"
+
+
+lgFocusViaPurple700 : Html.Attribute msg
+lgFocusViaPurple700 =
+    A.class "lg:focus:via-purple-700"
+
+
+lgFocusViaPurple800 : Html.Attribute msg
+lgFocusViaPurple800 =
+    A.class "lg:focus:via-purple-800"
+
+
+lgFocusViaPurple900 : Html.Attribute msg
+lgFocusViaPurple900 =
+    A.class "lg:focus:via-purple-900"
+
+
+lgFocusViaPink100 : Html.Attribute msg
+lgFocusViaPink100 =
+    A.class "lg:focus:via-pink-100"
+
+
+lgFocusViaPink200 : Html.Attribute msg
+lgFocusViaPink200 =
+    A.class "lg:focus:via-pink-200"
+
+
+lgFocusViaPink300 : Html.Attribute msg
+lgFocusViaPink300 =
+    A.class "lg:focus:via-pink-300"
+
+
+lgFocusViaPink400 : Html.Attribute msg
+lgFocusViaPink400 =
+    A.class "lg:focus:via-pink-400"
+
+
+lgFocusViaPink500 : Html.Attribute msg
+lgFocusViaPink500 =
+    A.class "lg:focus:via-pink-500"
+
+
+lgFocusViaPink600 : Html.Attribute msg
+lgFocusViaPink600 =
+    A.class "lg:focus:via-pink-600"
+
+
+lgFocusViaPink700 : Html.Attribute msg
+lgFocusViaPink700 =
+    A.class "lg:focus:via-pink-700"
+
+
+lgFocusViaPink800 : Html.Attribute msg
+lgFocusViaPink800 =
+    A.class "lg:focus:via-pink-800"
+
+
+lgFocusViaPink900 : Html.Attribute msg
+lgFocusViaPink900 =
+    A.class "lg:focus:via-pink-900"
+
+
+lgFocusToTransparent : Html.Attribute msg
+lgFocusToTransparent =
+    A.class "lg:focus:to-transparent"
+
+
+lgFocusToCurrent : Html.Attribute msg
+lgFocusToCurrent =
+    A.class "lg:focus:to-current"
+
+
+lgFocusToBlack : Html.Attribute msg
+lgFocusToBlack =
+    A.class "lg:focus:to-black"
+
+
+lgFocusToWhite : Html.Attribute msg
+lgFocusToWhite =
+    A.class "lg:focus:to-white"
+
+
+lgFocusToGray100 : Html.Attribute msg
+lgFocusToGray100 =
+    A.class "lg:focus:to-gray-100"
+
+
+lgFocusToGray200 : Html.Attribute msg
+lgFocusToGray200 =
+    A.class "lg:focus:to-gray-200"
+
+
+lgFocusToGray300 : Html.Attribute msg
+lgFocusToGray300 =
+    A.class "lg:focus:to-gray-300"
+
+
+lgFocusToGray400 : Html.Attribute msg
+lgFocusToGray400 =
+    A.class "lg:focus:to-gray-400"
+
+
+lgFocusToGray500 : Html.Attribute msg
+lgFocusToGray500 =
+    A.class "lg:focus:to-gray-500"
+
+
+lgFocusToGray600 : Html.Attribute msg
+lgFocusToGray600 =
+    A.class "lg:focus:to-gray-600"
+
+
+lgFocusToGray700 : Html.Attribute msg
+lgFocusToGray700 =
+    A.class "lg:focus:to-gray-700"
+
+
+lgFocusToGray800 : Html.Attribute msg
+lgFocusToGray800 =
+    A.class "lg:focus:to-gray-800"
+
+
+lgFocusToGray900 : Html.Attribute msg
+lgFocusToGray900 =
+    A.class "lg:focus:to-gray-900"
+
+
+lgFocusToRed100 : Html.Attribute msg
+lgFocusToRed100 =
+    A.class "lg:focus:to-red-100"
+
+
+lgFocusToRed200 : Html.Attribute msg
+lgFocusToRed200 =
+    A.class "lg:focus:to-red-200"
+
+
+lgFocusToRed300 : Html.Attribute msg
+lgFocusToRed300 =
+    A.class "lg:focus:to-red-300"
+
+
+lgFocusToRed400 : Html.Attribute msg
+lgFocusToRed400 =
+    A.class "lg:focus:to-red-400"
+
+
+lgFocusToRed500 : Html.Attribute msg
+lgFocusToRed500 =
+    A.class "lg:focus:to-red-500"
+
+
+lgFocusToRed600 : Html.Attribute msg
+lgFocusToRed600 =
+    A.class "lg:focus:to-red-600"
+
+
+lgFocusToRed700 : Html.Attribute msg
+lgFocusToRed700 =
+    A.class "lg:focus:to-red-700"
+
+
+lgFocusToRed800 : Html.Attribute msg
+lgFocusToRed800 =
+    A.class "lg:focus:to-red-800"
+
+
+lgFocusToRed900 : Html.Attribute msg
+lgFocusToRed900 =
+    A.class "lg:focus:to-red-900"
+
+
+lgFocusToOrange100 : Html.Attribute msg
+lgFocusToOrange100 =
+    A.class "lg:focus:to-orange-100"
+
+
+lgFocusToOrange200 : Html.Attribute msg
+lgFocusToOrange200 =
+    A.class "lg:focus:to-orange-200"
+
+
+lgFocusToOrange300 : Html.Attribute msg
+lgFocusToOrange300 =
+    A.class "lg:focus:to-orange-300"
+
+
+lgFocusToOrange400 : Html.Attribute msg
+lgFocusToOrange400 =
+    A.class "lg:focus:to-orange-400"
+
+
+lgFocusToOrange500 : Html.Attribute msg
+lgFocusToOrange500 =
+    A.class "lg:focus:to-orange-500"
+
+
+lgFocusToOrange600 : Html.Attribute msg
+lgFocusToOrange600 =
+    A.class "lg:focus:to-orange-600"
+
+
+lgFocusToOrange700 : Html.Attribute msg
+lgFocusToOrange700 =
+    A.class "lg:focus:to-orange-700"
+
+
+lgFocusToOrange800 : Html.Attribute msg
+lgFocusToOrange800 =
+    A.class "lg:focus:to-orange-800"
+
+
+lgFocusToOrange900 : Html.Attribute msg
+lgFocusToOrange900 =
+    A.class "lg:focus:to-orange-900"
+
+
+lgFocusToYellow100 : Html.Attribute msg
+lgFocusToYellow100 =
+    A.class "lg:focus:to-yellow-100"
+
+
+lgFocusToYellow200 : Html.Attribute msg
+lgFocusToYellow200 =
+    A.class "lg:focus:to-yellow-200"
+
+
+lgFocusToYellow300 : Html.Attribute msg
+lgFocusToYellow300 =
+    A.class "lg:focus:to-yellow-300"
+
+
+lgFocusToYellow400 : Html.Attribute msg
+lgFocusToYellow400 =
+    A.class "lg:focus:to-yellow-400"
+
+
+lgFocusToYellow500 : Html.Attribute msg
+lgFocusToYellow500 =
+    A.class "lg:focus:to-yellow-500"
+
+
+lgFocusToYellow600 : Html.Attribute msg
+lgFocusToYellow600 =
+    A.class "lg:focus:to-yellow-600"
+
+
+lgFocusToYellow700 : Html.Attribute msg
+lgFocusToYellow700 =
+    A.class "lg:focus:to-yellow-700"
+
+
+lgFocusToYellow800 : Html.Attribute msg
+lgFocusToYellow800 =
+    A.class "lg:focus:to-yellow-800"
+
+
+lgFocusToYellow900 : Html.Attribute msg
+lgFocusToYellow900 =
+    A.class "lg:focus:to-yellow-900"
+
+
+lgFocusToGreen100 : Html.Attribute msg
+lgFocusToGreen100 =
+    A.class "lg:focus:to-green-100"
+
+
+lgFocusToGreen200 : Html.Attribute msg
+lgFocusToGreen200 =
+    A.class "lg:focus:to-green-200"
+
+
+lgFocusToGreen300 : Html.Attribute msg
+lgFocusToGreen300 =
+    A.class "lg:focus:to-green-300"
+
+
+lgFocusToGreen400 : Html.Attribute msg
+lgFocusToGreen400 =
+    A.class "lg:focus:to-green-400"
+
+
+lgFocusToGreen500 : Html.Attribute msg
+lgFocusToGreen500 =
+    A.class "lg:focus:to-green-500"
+
+
+lgFocusToGreen600 : Html.Attribute msg
+lgFocusToGreen600 =
+    A.class "lg:focus:to-green-600"
+
+
+lgFocusToGreen700 : Html.Attribute msg
+lgFocusToGreen700 =
+    A.class "lg:focus:to-green-700"
+
+
+lgFocusToGreen800 : Html.Attribute msg
+lgFocusToGreen800 =
+    A.class "lg:focus:to-green-800"
+
+
+lgFocusToGreen900 : Html.Attribute msg
+lgFocusToGreen900 =
+    A.class "lg:focus:to-green-900"
+
+
+lgFocusToTeal100 : Html.Attribute msg
+lgFocusToTeal100 =
+    A.class "lg:focus:to-teal-100"
+
+
+lgFocusToTeal200 : Html.Attribute msg
+lgFocusToTeal200 =
+    A.class "lg:focus:to-teal-200"
+
+
+lgFocusToTeal300 : Html.Attribute msg
+lgFocusToTeal300 =
+    A.class "lg:focus:to-teal-300"
+
+
+lgFocusToTeal400 : Html.Attribute msg
+lgFocusToTeal400 =
+    A.class "lg:focus:to-teal-400"
+
+
+lgFocusToTeal500 : Html.Attribute msg
+lgFocusToTeal500 =
+    A.class "lg:focus:to-teal-500"
+
+
+lgFocusToTeal600 : Html.Attribute msg
+lgFocusToTeal600 =
+    A.class "lg:focus:to-teal-600"
+
+
+lgFocusToTeal700 : Html.Attribute msg
+lgFocusToTeal700 =
+    A.class "lg:focus:to-teal-700"
+
+
+lgFocusToTeal800 : Html.Attribute msg
+lgFocusToTeal800 =
+    A.class "lg:focus:to-teal-800"
+
+
+lgFocusToTeal900 : Html.Attribute msg
+lgFocusToTeal900 =
+    A.class "lg:focus:to-teal-900"
+
+
+lgFocusToBlue100 : Html.Attribute msg
+lgFocusToBlue100 =
+    A.class "lg:focus:to-blue-100"
+
+
+lgFocusToBlue200 : Html.Attribute msg
+lgFocusToBlue200 =
+    A.class "lg:focus:to-blue-200"
+
+
+lgFocusToBlue300 : Html.Attribute msg
+lgFocusToBlue300 =
+    A.class "lg:focus:to-blue-300"
+
+
+lgFocusToBlue400 : Html.Attribute msg
+lgFocusToBlue400 =
+    A.class "lg:focus:to-blue-400"
+
+
+lgFocusToBlue500 : Html.Attribute msg
+lgFocusToBlue500 =
+    A.class "lg:focus:to-blue-500"
+
+
+lgFocusToBlue600 : Html.Attribute msg
+lgFocusToBlue600 =
+    A.class "lg:focus:to-blue-600"
+
+
+lgFocusToBlue700 : Html.Attribute msg
+lgFocusToBlue700 =
+    A.class "lg:focus:to-blue-700"
+
+
+lgFocusToBlue800 : Html.Attribute msg
+lgFocusToBlue800 =
+    A.class "lg:focus:to-blue-800"
+
+
+lgFocusToBlue900 : Html.Attribute msg
+lgFocusToBlue900 =
+    A.class "lg:focus:to-blue-900"
+
+
+lgFocusToIndigo100 : Html.Attribute msg
+lgFocusToIndigo100 =
+    A.class "lg:focus:to-indigo-100"
+
+
+lgFocusToIndigo200 : Html.Attribute msg
+lgFocusToIndigo200 =
+    A.class "lg:focus:to-indigo-200"
+
+
+lgFocusToIndigo300 : Html.Attribute msg
+lgFocusToIndigo300 =
+    A.class "lg:focus:to-indigo-300"
+
+
+lgFocusToIndigo400 : Html.Attribute msg
+lgFocusToIndigo400 =
+    A.class "lg:focus:to-indigo-400"
+
+
+lgFocusToIndigo500 : Html.Attribute msg
+lgFocusToIndigo500 =
+    A.class "lg:focus:to-indigo-500"
+
+
+lgFocusToIndigo600 : Html.Attribute msg
+lgFocusToIndigo600 =
+    A.class "lg:focus:to-indigo-600"
+
+
+lgFocusToIndigo700 : Html.Attribute msg
+lgFocusToIndigo700 =
+    A.class "lg:focus:to-indigo-700"
+
+
+lgFocusToIndigo800 : Html.Attribute msg
+lgFocusToIndigo800 =
+    A.class "lg:focus:to-indigo-800"
+
+
+lgFocusToIndigo900 : Html.Attribute msg
+lgFocusToIndigo900 =
+    A.class "lg:focus:to-indigo-900"
+
+
+lgFocusToPurple100 : Html.Attribute msg
+lgFocusToPurple100 =
+    A.class "lg:focus:to-purple-100"
+
+
+lgFocusToPurple200 : Html.Attribute msg
+lgFocusToPurple200 =
+    A.class "lg:focus:to-purple-200"
+
+
+lgFocusToPurple300 : Html.Attribute msg
+lgFocusToPurple300 =
+    A.class "lg:focus:to-purple-300"
+
+
+lgFocusToPurple400 : Html.Attribute msg
+lgFocusToPurple400 =
+    A.class "lg:focus:to-purple-400"
+
+
+lgFocusToPurple500 : Html.Attribute msg
+lgFocusToPurple500 =
+    A.class "lg:focus:to-purple-500"
+
+
+lgFocusToPurple600 : Html.Attribute msg
+lgFocusToPurple600 =
+    A.class "lg:focus:to-purple-600"
+
+
+lgFocusToPurple700 : Html.Attribute msg
+lgFocusToPurple700 =
+    A.class "lg:focus:to-purple-700"
+
+
+lgFocusToPurple800 : Html.Attribute msg
+lgFocusToPurple800 =
+    A.class "lg:focus:to-purple-800"
+
+
+lgFocusToPurple900 : Html.Attribute msg
+lgFocusToPurple900 =
+    A.class "lg:focus:to-purple-900"
+
+
+lgFocusToPink100 : Html.Attribute msg
+lgFocusToPink100 =
+    A.class "lg:focus:to-pink-100"
+
+
+lgFocusToPink200 : Html.Attribute msg
+lgFocusToPink200 =
+    A.class "lg:focus:to-pink-200"
+
+
+lgFocusToPink300 : Html.Attribute msg
+lgFocusToPink300 =
+    A.class "lg:focus:to-pink-300"
+
+
+lgFocusToPink400 : Html.Attribute msg
+lgFocusToPink400 =
+    A.class "lg:focus:to-pink-400"
+
+
+lgFocusToPink500 : Html.Attribute msg
+lgFocusToPink500 =
+    A.class "lg:focus:to-pink-500"
+
+
+lgFocusToPink600 : Html.Attribute msg
+lgFocusToPink600 =
+    A.class "lg:focus:to-pink-600"
+
+
+lgFocusToPink700 : Html.Attribute msg
+lgFocusToPink700 =
+    A.class "lg:focus:to-pink-700"
+
+
+lgFocusToPink800 : Html.Attribute msg
+lgFocusToPink800 =
+    A.class "lg:focus:to-pink-800"
+
+
+lgFocusToPink900 : Html.Attribute msg
+lgFocusToPink900 =
+    A.class "lg:focus:to-pink-900"
 
 
 lgBgOpacity0 : Html.Attribute msg
@@ -59487,6 +84046,21 @@ lgRoundedLg =
     A.class "lg:rounded-lg"
 
 
+lgRoundedXl : Html.Attribute msg
+lgRoundedXl =
+    A.class "lg:rounded-xl"
+
+
+lgRounded2xl : Html.Attribute msg
+lgRounded2xl =
+    A.class "lg:rounded-2xl"
+
+
+lgRounded3xl : Html.Attribute msg
+lgRounded3xl =
+    A.class "lg:rounded-3xl"
+
+
 lgRoundedFull : Html.Attribute msg
 lgRoundedFull =
     A.class "lg:rounded-full"
@@ -59590,6 +84164,66 @@ lgRoundedBLg =
 lgRoundedLLg : Html.Attribute msg
 lgRoundedLLg =
     A.class "lg:rounded-l-lg"
+
+
+lgRoundedTXl : Html.Attribute msg
+lgRoundedTXl =
+    A.class "lg:rounded-t-xl"
+
+
+lgRoundedRXl : Html.Attribute msg
+lgRoundedRXl =
+    A.class "lg:rounded-r-xl"
+
+
+lgRoundedBXl : Html.Attribute msg
+lgRoundedBXl =
+    A.class "lg:rounded-b-xl"
+
+
+lgRoundedLXl : Html.Attribute msg
+lgRoundedLXl =
+    A.class "lg:rounded-l-xl"
+
+
+lgRoundedT2xl : Html.Attribute msg
+lgRoundedT2xl =
+    A.class "lg:rounded-t-2xl"
+
+
+lgRoundedR2xl : Html.Attribute msg
+lgRoundedR2xl =
+    A.class "lg:rounded-r-2xl"
+
+
+lgRoundedB2xl : Html.Attribute msg
+lgRoundedB2xl =
+    A.class "lg:rounded-b-2xl"
+
+
+lgRoundedL2xl : Html.Attribute msg
+lgRoundedL2xl =
+    A.class "lg:rounded-l-2xl"
+
+
+lgRoundedT3xl : Html.Attribute msg
+lgRoundedT3xl =
+    A.class "lg:rounded-t-3xl"
+
+
+lgRoundedR3xl : Html.Attribute msg
+lgRoundedR3xl =
+    A.class "lg:rounded-r-3xl"
+
+
+lgRoundedB3xl : Html.Attribute msg
+lgRoundedB3xl =
+    A.class "lg:rounded-b-3xl"
+
+
+lgRoundedL3xl : Html.Attribute msg
+lgRoundedL3xl =
+    A.class "lg:rounded-l-3xl"
 
 
 lgRoundedTFull : Html.Attribute msg
@@ -59710,6 +84344,66 @@ lgRoundedBrLg =
 lgRoundedBlLg : Html.Attribute msg
 lgRoundedBlLg =
     A.class "lg:rounded-bl-lg"
+
+
+lgRoundedTlXl : Html.Attribute msg
+lgRoundedTlXl =
+    A.class "lg:rounded-tl-xl"
+
+
+lgRoundedTrXl : Html.Attribute msg
+lgRoundedTrXl =
+    A.class "lg:rounded-tr-xl"
+
+
+lgRoundedBrXl : Html.Attribute msg
+lgRoundedBrXl =
+    A.class "lg:rounded-br-xl"
+
+
+lgRoundedBlXl : Html.Attribute msg
+lgRoundedBlXl =
+    A.class "lg:rounded-bl-xl"
+
+
+lgRoundedTl2xl : Html.Attribute msg
+lgRoundedTl2xl =
+    A.class "lg:rounded-tl-2xl"
+
+
+lgRoundedTr2xl : Html.Attribute msg
+lgRoundedTr2xl =
+    A.class "lg:rounded-tr-2xl"
+
+
+lgRoundedBr2xl : Html.Attribute msg
+lgRoundedBr2xl =
+    A.class "lg:rounded-br-2xl"
+
+
+lgRoundedBl2xl : Html.Attribute msg
+lgRoundedBl2xl =
+    A.class "lg:rounded-bl-2xl"
+
+
+lgRoundedTl3xl : Html.Attribute msg
+lgRoundedTl3xl =
+    A.class "lg:rounded-tl-3xl"
+
+
+lgRoundedTr3xl : Html.Attribute msg
+lgRoundedTr3xl =
+    A.class "lg:rounded-tr-3xl"
+
+
+lgRoundedBr3xl : Html.Attribute msg
+lgRoundedBr3xl =
+    A.class "lg:rounded-br-3xl"
+
+
+lgRoundedBl3xl : Html.Attribute msg
+lgRoundedBl3xl =
+    A.class "lg:rounded-bl-3xl"
 
 
 lgRoundedTlFull : Html.Attribute msg
@@ -60012,6 +84706,11 @@ lgInlineGrid =
     A.class "lg:inline-grid"
 
 
+lgContents : Html.Attribute msg
+lgContents =
+    A.class "lg:contents"
+
+
 lgHidden : Html.Attribute msg
 lgHidden =
     A.class "lg:hidden"
@@ -60052,6 +84751,91 @@ lgFlexNoWrap =
     A.class "lg:flex-no-wrap"
 
 
+lgPlaceItemsAuto : Html.Attribute msg
+lgPlaceItemsAuto =
+    A.class "lg:place-items-auto"
+
+
+lgPlaceItemsStart : Html.Attribute msg
+lgPlaceItemsStart =
+    A.class "lg:place-items-start"
+
+
+lgPlaceItemsEnd : Html.Attribute msg
+lgPlaceItemsEnd =
+    A.class "lg:place-items-end"
+
+
+lgPlaceItemsCenter : Html.Attribute msg
+lgPlaceItemsCenter =
+    A.class "lg:place-items-center"
+
+
+lgPlaceItemsStretch : Html.Attribute msg
+lgPlaceItemsStretch =
+    A.class "lg:place-items-stretch"
+
+
+lgPlaceContentCenter : Html.Attribute msg
+lgPlaceContentCenter =
+    A.class "lg:place-content-center"
+
+
+lgPlaceContentStart : Html.Attribute msg
+lgPlaceContentStart =
+    A.class "lg:place-content-start"
+
+
+lgPlaceContentEnd : Html.Attribute msg
+lgPlaceContentEnd =
+    A.class "lg:place-content-end"
+
+
+lgPlaceContentBetween : Html.Attribute msg
+lgPlaceContentBetween =
+    A.class "lg:place-content-between"
+
+
+lgPlaceContentAround : Html.Attribute msg
+lgPlaceContentAround =
+    A.class "lg:place-content-around"
+
+
+lgPlaceContentEvenly : Html.Attribute msg
+lgPlaceContentEvenly =
+    A.class "lg:place-content-evenly"
+
+
+lgPlaceContentStretch : Html.Attribute msg
+lgPlaceContentStretch =
+    A.class "lg:place-content-stretch"
+
+
+lgPlaceSelfAuto : Html.Attribute msg
+lgPlaceSelfAuto =
+    A.class "lg:place-self-auto"
+
+
+lgPlaceSelfStart : Html.Attribute msg
+lgPlaceSelfStart =
+    A.class "lg:place-self-start"
+
+
+lgPlaceSelfEnd : Html.Attribute msg
+lgPlaceSelfEnd =
+    A.class "lg:place-self-end"
+
+
+lgPlaceSelfCenter : Html.Attribute msg
+lgPlaceSelfCenter =
+    A.class "lg:place-self-center"
+
+
+lgPlaceSelfStretch : Html.Attribute msg
+lgPlaceSelfStretch =
+    A.class "lg:place-self-stretch"
+
+
 lgItemsStart : Html.Attribute msg
 lgItemsStart =
     A.class "lg:items-start"
@@ -60077,6 +84861,36 @@ lgItemsStretch =
     A.class "lg:items-stretch"
 
 
+lgContentCenter : Html.Attribute msg
+lgContentCenter =
+    A.class "lg:content-center"
+
+
+lgContentStart : Html.Attribute msg
+lgContentStart =
+    A.class "lg:content-start"
+
+
+lgContentEnd : Html.Attribute msg
+lgContentEnd =
+    A.class "lg:content-end"
+
+
+lgContentBetween : Html.Attribute msg
+lgContentBetween =
+    A.class "lg:content-between"
+
+
+lgContentAround : Html.Attribute msg
+lgContentAround =
+    A.class "lg:content-around"
+
+
+lgContentEvenly : Html.Attribute msg
+lgContentEvenly =
+    A.class "lg:content-evenly"
+
+
 lgSelfAuto : Html.Attribute msg
 lgSelfAuto =
     A.class "lg:self-auto"
@@ -60100,6 +84914,31 @@ lgSelfCenter =
 lgSelfStretch : Html.Attribute msg
 lgSelfStretch =
     A.class "lg:self-stretch"
+
+
+lgJustifyItemsAuto : Html.Attribute msg
+lgJustifyItemsAuto =
+    A.class "lg:justify-items-auto"
+
+
+lgJustifyItemsStart : Html.Attribute msg
+lgJustifyItemsStart =
+    A.class "lg:justify-items-start"
+
+
+lgJustifyItemsEnd : Html.Attribute msg
+lgJustifyItemsEnd =
+    A.class "lg:justify-items-end"
+
+
+lgJustifyItemsCenter : Html.Attribute msg
+lgJustifyItemsCenter =
+    A.class "lg:justify-items-center"
+
+
+lgJustifyItemsStretch : Html.Attribute msg
+lgJustifyItemsStretch =
+    A.class "lg:justify-items-stretch"
 
 
 lgJustifyStart : Html.Attribute msg
@@ -60132,29 +84971,29 @@ lgJustifyEvenly =
     A.class "lg:justify-evenly"
 
 
-lgContentCenter : Html.Attribute msg
-lgContentCenter =
-    A.class "lg:content-center"
+lgJustifySelfAuto : Html.Attribute msg
+lgJustifySelfAuto =
+    A.class "lg:justify-self-auto"
 
 
-lgContentStart : Html.Attribute msg
-lgContentStart =
-    A.class "lg:content-start"
+lgJustifySelfStart : Html.Attribute msg
+lgJustifySelfStart =
+    A.class "lg:justify-self-start"
 
 
-lgContentEnd : Html.Attribute msg
-lgContentEnd =
-    A.class "lg:content-end"
+lgJustifySelfEnd : Html.Attribute msg
+lgJustifySelfEnd =
+    A.class "lg:justify-self-end"
 
 
-lgContentBetween : Html.Attribute msg
-lgContentBetween =
-    A.class "lg:content-between"
+lgJustifySelfCenter : Html.Attribute msg
+lgJustifySelfCenter =
+    A.class "lg:justify-self-center"
 
 
-lgContentAround : Html.Attribute msg
-lgContentAround =
-    A.class "lg:content-around"
+lgJustifySelfStretch : Html.Attribute msg
+lgJustifySelfStretch =
+    A.class "lg:justify-self-stretch"
 
 
 lgFlex1 : Html.Attribute msg
@@ -62317,9 +87156,29 @@ lgOutlineNone =
     A.class "lg:outline-none"
 
 
+lgOutlineWhite : Html.Attribute msg
+lgOutlineWhite =
+    A.class "lg:outline-white"
+
+
+lgOutlineBlack : Html.Attribute msg
+lgOutlineBlack =
+    A.class "lg:outline-black"
+
+
 lgFocusOutlineNone : Html.Attribute msg
 lgFocusOutlineNone =
     A.class "lg:focus:outline-none"
+
+
+lgFocusOutlineWhite : Html.Attribute msg
+lgFocusOutlineWhite =
+    A.class "lg:focus:outline-white"
+
+
+lgFocusOutlineBlack : Html.Attribute msg
+lgFocusOutlineBlack =
+    A.class "lg:focus:outline-black"
 
 
 lgOverflowAuto : Html.Attribute msg
@@ -62390,6 +87249,51 @@ lgScrollingTouch =
 lgScrollingAuto : Html.Attribute msg
 lgScrollingAuto =
     A.class "lg:scrolling-auto"
+
+
+lgOverscrollAuto : Html.Attribute msg
+lgOverscrollAuto =
+    A.class "lg:overscroll-auto"
+
+
+lgOverscrollContain : Html.Attribute msg
+lgOverscrollContain =
+    A.class "lg:overscroll-contain"
+
+
+lgOverscrollNone : Html.Attribute msg
+lgOverscrollNone =
+    A.class "lg:overscroll-none"
+
+
+lgOverscrollYAuto : Html.Attribute msg
+lgOverscrollYAuto =
+    A.class "lg:overscroll-y-auto"
+
+
+lgOverscrollYContain : Html.Attribute msg
+lgOverscrollYContain =
+    A.class "lg:overscroll-y-contain"
+
+
+lgOverscrollYNone : Html.Attribute msg
+lgOverscrollYNone =
+    A.class "lg:overscroll-y-none"
+
+
+lgOverscrollXAuto : Html.Attribute msg
+lgOverscrollXAuto =
+    A.class "lg:overscroll-x-auto"
+
+
+lgOverscrollXContain : Html.Attribute msg
+lgOverscrollXContain =
+    A.class "lg:overscroll-x-contain"
+
+
+lgOverscrollXNone : Html.Attribute msg
+lgOverscrollXNone =
+    A.class "lg:overscroll-x-none"
 
 
 lgP0 : Html.Attribute msg
@@ -65947,6 +90851,51 @@ lgSubpixelAntialiased =
     A.class "lg:subpixel-antialiased"
 
 
+lgOrdinal : Html.Attribute msg
+lgOrdinal =
+    A.class "lg:ordinal"
+
+
+lgSlashedZero : Html.Attribute msg
+lgSlashedZero =
+    A.class "lg:slashed-zero"
+
+
+lgLiningNums : Html.Attribute msg
+lgLiningNums =
+    A.class "lg:lining-nums"
+
+
+lgOldstyleNums : Html.Attribute msg
+lgOldstyleNums =
+    A.class "lg:oldstyle-nums"
+
+
+lgProportionalNums : Html.Attribute msg
+lgProportionalNums =
+    A.class "lg:proportional-nums"
+
+
+lgTabularNums : Html.Attribute msg
+lgTabularNums =
+    A.class "lg:tabular-nums"
+
+
+lgDiagonalFractions : Html.Attribute msg
+lgDiagonalFractions =
+    A.class "lg:diagonal-fractions"
+
+
+lgStackedFractions : Html.Attribute msg
+lgStackedFractions =
+    A.class "lg:stacked-fractions"
+
+
+lgNormalNums : Html.Attribute msg
+lgNormalNums =
+    A.class "lg:normal-nums"
+
+
 lgTrackingTighter : Html.Attribute msg
 lgTrackingTighter =
     A.class "lg:tracking-tighter"
@@ -66452,194 +91401,194 @@ lgGapPx =
     A.class "lg:gap-px"
 
 
-lgColGap0 : Html.Attribute msg
-lgColGap0 =
-    A.class "lg:col-gap-0"
+lgGapX0 : Html.Attribute msg
+lgGapX0 =
+    A.class "lg:gap-x-0"
 
 
-lgColGap1 : Html.Attribute msg
-lgColGap1 =
-    A.class "lg:col-gap-1"
+lgGapX1 : Html.Attribute msg
+lgGapX1 =
+    A.class "lg:gap-x-1"
 
 
-lgColGap2 : Html.Attribute msg
-lgColGap2 =
-    A.class "lg:col-gap-2"
+lgGapX2 : Html.Attribute msg
+lgGapX2 =
+    A.class "lg:gap-x-2"
 
 
-lgColGap3 : Html.Attribute msg
-lgColGap3 =
-    A.class "lg:col-gap-3"
+lgGapX3 : Html.Attribute msg
+lgGapX3 =
+    A.class "lg:gap-x-3"
 
 
-lgColGap4 : Html.Attribute msg
-lgColGap4 =
-    A.class "lg:col-gap-4"
+lgGapX4 : Html.Attribute msg
+lgGapX4 =
+    A.class "lg:gap-x-4"
 
 
-lgColGap5 : Html.Attribute msg
-lgColGap5 =
-    A.class "lg:col-gap-5"
+lgGapX5 : Html.Attribute msg
+lgGapX5 =
+    A.class "lg:gap-x-5"
 
 
-lgColGap6 : Html.Attribute msg
-lgColGap6 =
-    A.class "lg:col-gap-6"
+lgGapX6 : Html.Attribute msg
+lgGapX6 =
+    A.class "lg:gap-x-6"
 
 
-lgColGap8 : Html.Attribute msg
-lgColGap8 =
-    A.class "lg:col-gap-8"
+lgGapX8 : Html.Attribute msg
+lgGapX8 =
+    A.class "lg:gap-x-8"
 
 
-lgColGap10 : Html.Attribute msg
-lgColGap10 =
-    A.class "lg:col-gap-10"
+lgGapX10 : Html.Attribute msg
+lgGapX10 =
+    A.class "lg:gap-x-10"
 
 
-lgColGap12 : Html.Attribute msg
-lgColGap12 =
-    A.class "lg:col-gap-12"
+lgGapX12 : Html.Attribute msg
+lgGapX12 =
+    A.class "lg:gap-x-12"
 
 
-lgColGap16 : Html.Attribute msg
-lgColGap16 =
-    A.class "lg:col-gap-16"
+lgGapX16 : Html.Attribute msg
+lgGapX16 =
+    A.class "lg:gap-x-16"
 
 
-lgColGap20 : Html.Attribute msg
-lgColGap20 =
-    A.class "lg:col-gap-20"
+lgGapX20 : Html.Attribute msg
+lgGapX20 =
+    A.class "lg:gap-x-20"
 
 
-lgColGap24 : Html.Attribute msg
-lgColGap24 =
-    A.class "lg:col-gap-24"
+lgGapX24 : Html.Attribute msg
+lgGapX24 =
+    A.class "lg:gap-x-24"
 
 
-lgColGap32 : Html.Attribute msg
-lgColGap32 =
-    A.class "lg:col-gap-32"
+lgGapX32 : Html.Attribute msg
+lgGapX32 =
+    A.class "lg:gap-x-32"
 
 
-lgColGap40 : Html.Attribute msg
-lgColGap40 =
-    A.class "lg:col-gap-40"
+lgGapX40 : Html.Attribute msg
+lgGapX40 =
+    A.class "lg:gap-x-40"
 
 
-lgColGap48 : Html.Attribute msg
-lgColGap48 =
-    A.class "lg:col-gap-48"
+lgGapX48 : Html.Attribute msg
+lgGapX48 =
+    A.class "lg:gap-x-48"
 
 
-lgColGap56 : Html.Attribute msg
-lgColGap56 =
-    A.class "lg:col-gap-56"
+lgGapX56 : Html.Attribute msg
+lgGapX56 =
+    A.class "lg:gap-x-56"
 
 
-lgColGap64 : Html.Attribute msg
-lgColGap64 =
-    A.class "lg:col-gap-64"
+lgGapX64 : Html.Attribute msg
+lgGapX64 =
+    A.class "lg:gap-x-64"
 
 
-lgColGapPx : Html.Attribute msg
-lgColGapPx =
-    A.class "lg:col-gap-px"
+lgGapXPx : Html.Attribute msg
+lgGapXPx =
+    A.class "lg:gap-x-px"
 
 
-lgRowGap0 : Html.Attribute msg
-lgRowGap0 =
-    A.class "lg:row-gap-0"
+lgGapY0 : Html.Attribute msg
+lgGapY0 =
+    A.class "lg:gap-y-0"
 
 
-lgRowGap1 : Html.Attribute msg
-lgRowGap1 =
-    A.class "lg:row-gap-1"
+lgGapY1 : Html.Attribute msg
+lgGapY1 =
+    A.class "lg:gap-y-1"
 
 
-lgRowGap2 : Html.Attribute msg
-lgRowGap2 =
-    A.class "lg:row-gap-2"
+lgGapY2 : Html.Attribute msg
+lgGapY2 =
+    A.class "lg:gap-y-2"
 
 
-lgRowGap3 : Html.Attribute msg
-lgRowGap3 =
-    A.class "lg:row-gap-3"
+lgGapY3 : Html.Attribute msg
+lgGapY3 =
+    A.class "lg:gap-y-3"
 
 
-lgRowGap4 : Html.Attribute msg
-lgRowGap4 =
-    A.class "lg:row-gap-4"
+lgGapY4 : Html.Attribute msg
+lgGapY4 =
+    A.class "lg:gap-y-4"
 
 
-lgRowGap5 : Html.Attribute msg
-lgRowGap5 =
-    A.class "lg:row-gap-5"
+lgGapY5 : Html.Attribute msg
+lgGapY5 =
+    A.class "lg:gap-y-5"
 
 
-lgRowGap6 : Html.Attribute msg
-lgRowGap6 =
-    A.class "lg:row-gap-6"
+lgGapY6 : Html.Attribute msg
+lgGapY6 =
+    A.class "lg:gap-y-6"
 
 
-lgRowGap8 : Html.Attribute msg
-lgRowGap8 =
-    A.class "lg:row-gap-8"
+lgGapY8 : Html.Attribute msg
+lgGapY8 =
+    A.class "lg:gap-y-8"
 
 
-lgRowGap10 : Html.Attribute msg
-lgRowGap10 =
-    A.class "lg:row-gap-10"
+lgGapY10 : Html.Attribute msg
+lgGapY10 =
+    A.class "lg:gap-y-10"
 
 
-lgRowGap12 : Html.Attribute msg
-lgRowGap12 =
-    A.class "lg:row-gap-12"
+lgGapY12 : Html.Attribute msg
+lgGapY12 =
+    A.class "lg:gap-y-12"
 
 
-lgRowGap16 : Html.Attribute msg
-lgRowGap16 =
-    A.class "lg:row-gap-16"
+lgGapY16 : Html.Attribute msg
+lgGapY16 =
+    A.class "lg:gap-y-16"
 
 
-lgRowGap20 : Html.Attribute msg
-lgRowGap20 =
-    A.class "lg:row-gap-20"
+lgGapY20 : Html.Attribute msg
+lgGapY20 =
+    A.class "lg:gap-y-20"
 
 
-lgRowGap24 : Html.Attribute msg
-lgRowGap24 =
-    A.class "lg:row-gap-24"
+lgGapY24 : Html.Attribute msg
+lgGapY24 =
+    A.class "lg:gap-y-24"
 
 
-lgRowGap32 : Html.Attribute msg
-lgRowGap32 =
-    A.class "lg:row-gap-32"
+lgGapY32 : Html.Attribute msg
+lgGapY32 =
+    A.class "lg:gap-y-32"
 
 
-lgRowGap40 : Html.Attribute msg
-lgRowGap40 =
-    A.class "lg:row-gap-40"
+lgGapY40 : Html.Attribute msg
+lgGapY40 =
+    A.class "lg:gap-y-40"
 
 
-lgRowGap48 : Html.Attribute msg
-lgRowGap48 =
-    A.class "lg:row-gap-48"
+lgGapY48 : Html.Attribute msg
+lgGapY48 =
+    A.class "lg:gap-y-48"
 
 
-lgRowGap56 : Html.Attribute msg
-lgRowGap56 =
-    A.class "lg:row-gap-56"
+lgGapY56 : Html.Attribute msg
+lgGapY56 =
+    A.class "lg:gap-y-56"
 
 
-lgRowGap64 : Html.Attribute msg
-lgRowGap64 =
-    A.class "lg:row-gap-64"
+lgGapY64 : Html.Attribute msg
+lgGapY64 =
+    A.class "lg:gap-y-64"
 
 
-lgRowGapPx : Html.Attribute msg
-lgRowGapPx =
-    A.class "lg:row-gap-px"
+lgGapYPx : Html.Attribute msg
+lgGapYPx =
+    A.class "lg:gap-y-px"
 
 
 lgGridFlowRow : Html.Attribute msg
@@ -66727,6 +91676,26 @@ lgGridColsNone =
     A.class "lg:grid-cols-none"
 
 
+lgAutoColsAuto : Html.Attribute msg
+lgAutoColsAuto =
+    A.class "lg:auto-cols-auto"
+
+
+lgAutoColsMin : Html.Attribute msg
+lgAutoColsMin =
+    A.class "lg:auto-cols-min"
+
+
+lgAutoColsMax : Html.Attribute msg
+lgAutoColsMax =
+    A.class "lg:auto-cols-max"
+
+
+lgAutoColsFr : Html.Attribute msg
+lgAutoColsFr =
+    A.class "lg:auto-cols-fr"
+
+
 lgColAuto : Html.Attribute msg
 lgColAuto =
     A.class "lg:col-auto"
@@ -66790,6 +91759,11 @@ lgColSpan11 =
 lgColSpan12 : Html.Attribute msg
 lgColSpan12 =
     A.class "lg:col-span-12"
+
+
+lgColSpanFull : Html.Attribute msg
+lgColSpanFull =
+    A.class "lg:col-span-full"
 
 
 lgColStart1 : Html.Attribute msg
@@ -66967,6 +91941,26 @@ lgGridRowsNone =
     A.class "lg:grid-rows-none"
 
 
+lgAutoRowsAuto : Html.Attribute msg
+lgAutoRowsAuto =
+    A.class "lg:auto-rows-auto"
+
+
+lgAutoRowsMin : Html.Attribute msg
+lgAutoRowsMin =
+    A.class "lg:auto-rows-min"
+
+
+lgAutoRowsMax : Html.Attribute msg
+lgAutoRowsMax =
+    A.class "lg:auto-rows-max"
+
+
+lgAutoRowsFr : Html.Attribute msg
+lgAutoRowsFr =
+    A.class "lg:auto-rows-fr"
+
+
 lgRowAuto : Html.Attribute msg
 lgRowAuto =
     A.class "lg:row-auto"
@@ -67000,6 +91994,11 @@ lgRowSpan5 =
 lgRowSpan6 : Html.Attribute msg
 lgRowSpan6 =
     A.class "lg:row-span-6"
+
+
+lgRowSpanFull : Html.Attribute msg
+lgRowSpanFull =
+    A.class "lg:row-span-full"
 
 
 lgRowStart1 : Html.Attribute msg
@@ -67592,6 +92591,31 @@ lgRotate0 =
     A.class "lg:rotate-0"
 
 
+lgRotate1 : Html.Attribute msg
+lgRotate1 =
+    A.class "lg:rotate-1"
+
+
+lgRotate2 : Html.Attribute msg
+lgRotate2 =
+    A.class "lg:rotate-2"
+
+
+lgRotate3 : Html.Attribute msg
+lgRotate3 =
+    A.class "lg:rotate-3"
+
+
+lgRotate6 : Html.Attribute msg
+lgRotate6 =
+    A.class "lg:rotate-6"
+
+
+lgRotate12 : Html.Attribute msg
+lgRotate12 =
+    A.class "lg:rotate-12"
+
+
 lgRotate45 : Html.Attribute msg
 lgRotate45 =
     A.class "lg:rotate-45"
@@ -67622,9 +92646,59 @@ lgNegRotate45 =
     A.class "lg:-rotate-45"
 
 
+lgNegRotate12 : Html.Attribute msg
+lgNegRotate12 =
+    A.class "lg:-rotate-12"
+
+
+lgNegRotate6 : Html.Attribute msg
+lgNegRotate6 =
+    A.class "lg:-rotate-6"
+
+
+lgNegRotate3 : Html.Attribute msg
+lgNegRotate3 =
+    A.class "lg:-rotate-3"
+
+
+lgNegRotate2 : Html.Attribute msg
+lgNegRotate2 =
+    A.class "lg:-rotate-2"
+
+
+lgNegRotate1 : Html.Attribute msg
+lgNegRotate1 =
+    A.class "lg:-rotate-1"
+
+
 lgHoverRotate0 : Html.Attribute msg
 lgHoverRotate0 =
     A.class "lg:hover:rotate-0"
+
+
+lgHoverRotate1 : Html.Attribute msg
+lgHoverRotate1 =
+    A.class "lg:hover:rotate-1"
+
+
+lgHoverRotate2 : Html.Attribute msg
+lgHoverRotate2 =
+    A.class "lg:hover:rotate-2"
+
+
+lgHoverRotate3 : Html.Attribute msg
+lgHoverRotate3 =
+    A.class "lg:hover:rotate-3"
+
+
+lgHoverRotate6 : Html.Attribute msg
+lgHoverRotate6 =
+    A.class "lg:hover:rotate-6"
+
+
+lgHoverRotate12 : Html.Attribute msg
+lgHoverRotate12 =
+    A.class "lg:hover:rotate-12"
 
 
 lgHoverRotate45 : Html.Attribute msg
@@ -67657,9 +92731,59 @@ lgHoverNegRotate45 =
     A.class "lg:hover:-rotate-45"
 
 
+lgHoverNegRotate12 : Html.Attribute msg
+lgHoverNegRotate12 =
+    A.class "lg:hover:-rotate-12"
+
+
+lgHoverNegRotate6 : Html.Attribute msg
+lgHoverNegRotate6 =
+    A.class "lg:hover:-rotate-6"
+
+
+lgHoverNegRotate3 : Html.Attribute msg
+lgHoverNegRotate3 =
+    A.class "lg:hover:-rotate-3"
+
+
+lgHoverNegRotate2 : Html.Attribute msg
+lgHoverNegRotate2 =
+    A.class "lg:hover:-rotate-2"
+
+
+lgHoverNegRotate1 : Html.Attribute msg
+lgHoverNegRotate1 =
+    A.class "lg:hover:-rotate-1"
+
+
 lgFocusRotate0 : Html.Attribute msg
 lgFocusRotate0 =
     A.class "lg:focus:rotate-0"
+
+
+lgFocusRotate1 : Html.Attribute msg
+lgFocusRotate1 =
+    A.class "lg:focus:rotate-1"
+
+
+lgFocusRotate2 : Html.Attribute msg
+lgFocusRotate2 =
+    A.class "lg:focus:rotate-2"
+
+
+lgFocusRotate3 : Html.Attribute msg
+lgFocusRotate3 =
+    A.class "lg:focus:rotate-3"
+
+
+lgFocusRotate6 : Html.Attribute msg
+lgFocusRotate6 =
+    A.class "lg:focus:rotate-6"
+
+
+lgFocusRotate12 : Html.Attribute msg
+lgFocusRotate12 =
+    A.class "lg:focus:rotate-12"
 
 
 lgFocusRotate45 : Html.Attribute msg
@@ -67690,6 +92814,31 @@ lgFocusNegRotate90 =
 lgFocusNegRotate45 : Html.Attribute msg
 lgFocusNegRotate45 =
     A.class "lg:focus:-rotate-45"
+
+
+lgFocusNegRotate12 : Html.Attribute msg
+lgFocusNegRotate12 =
+    A.class "lg:focus:-rotate-12"
+
+
+lgFocusNegRotate6 : Html.Attribute msg
+lgFocusNegRotate6 =
+    A.class "lg:focus:-rotate-6"
+
+
+lgFocusNegRotate3 : Html.Attribute msg
+lgFocusNegRotate3 =
+    A.class "lg:focus:-rotate-3"
+
+
+lgFocusNegRotate2 : Html.Attribute msg
+lgFocusNegRotate2 =
+    A.class "lg:focus:-rotate-2"
+
+
+lgFocusNegRotate1 : Html.Attribute msg
+lgFocusNegRotate1 =
+    A.class "lg:focus:-rotate-1"
 
 
 lgTranslateX0 : Html.Attribute msg
@@ -68927,6 +94076,16 @@ lgSkewX0 =
     A.class "lg:skew-x-0"
 
 
+lgSkewX1 : Html.Attribute msg
+lgSkewX1 =
+    A.class "lg:skew-x-1"
+
+
+lgSkewX2 : Html.Attribute msg
+lgSkewX2 =
+    A.class "lg:skew-x-2"
+
+
 lgSkewX3 : Html.Attribute msg
 lgSkewX3 =
     A.class "lg:skew-x-3"
@@ -68957,9 +94116,29 @@ lgNegSkewX3 =
     A.class "lg:-skew-x-3"
 
 
+lgNegSkewX2 : Html.Attribute msg
+lgNegSkewX2 =
+    A.class "lg:-skew-x-2"
+
+
+lgNegSkewX1 : Html.Attribute msg
+lgNegSkewX1 =
+    A.class "lg:-skew-x-1"
+
+
 lgSkewY0 : Html.Attribute msg
 lgSkewY0 =
     A.class "lg:skew-y-0"
+
+
+lgSkewY1 : Html.Attribute msg
+lgSkewY1 =
+    A.class "lg:skew-y-1"
+
+
+lgSkewY2 : Html.Attribute msg
+lgSkewY2 =
+    A.class "lg:skew-y-2"
 
 
 lgSkewY3 : Html.Attribute msg
@@ -68992,9 +94171,29 @@ lgNegSkewY3 =
     A.class "lg:-skew-y-3"
 
 
+lgNegSkewY2 : Html.Attribute msg
+lgNegSkewY2 =
+    A.class "lg:-skew-y-2"
+
+
+lgNegSkewY1 : Html.Attribute msg
+lgNegSkewY1 =
+    A.class "lg:-skew-y-1"
+
+
 lgHoverSkewX0 : Html.Attribute msg
 lgHoverSkewX0 =
     A.class "lg:hover:skew-x-0"
+
+
+lgHoverSkewX1 : Html.Attribute msg
+lgHoverSkewX1 =
+    A.class "lg:hover:skew-x-1"
+
+
+lgHoverSkewX2 : Html.Attribute msg
+lgHoverSkewX2 =
+    A.class "lg:hover:skew-x-2"
 
 
 lgHoverSkewX3 : Html.Attribute msg
@@ -69027,9 +94226,29 @@ lgHoverNegSkewX3 =
     A.class "lg:hover:-skew-x-3"
 
 
+lgHoverNegSkewX2 : Html.Attribute msg
+lgHoverNegSkewX2 =
+    A.class "lg:hover:-skew-x-2"
+
+
+lgHoverNegSkewX1 : Html.Attribute msg
+lgHoverNegSkewX1 =
+    A.class "lg:hover:-skew-x-1"
+
+
 lgHoverSkewY0 : Html.Attribute msg
 lgHoverSkewY0 =
     A.class "lg:hover:skew-y-0"
+
+
+lgHoverSkewY1 : Html.Attribute msg
+lgHoverSkewY1 =
+    A.class "lg:hover:skew-y-1"
+
+
+lgHoverSkewY2 : Html.Attribute msg
+lgHoverSkewY2 =
+    A.class "lg:hover:skew-y-2"
 
 
 lgHoverSkewY3 : Html.Attribute msg
@@ -69062,9 +94281,29 @@ lgHoverNegSkewY3 =
     A.class "lg:hover:-skew-y-3"
 
 
+lgHoverNegSkewY2 : Html.Attribute msg
+lgHoverNegSkewY2 =
+    A.class "lg:hover:-skew-y-2"
+
+
+lgHoverNegSkewY1 : Html.Attribute msg
+lgHoverNegSkewY1 =
+    A.class "lg:hover:-skew-y-1"
+
+
 lgFocusSkewX0 : Html.Attribute msg
 lgFocusSkewX0 =
     A.class "lg:focus:skew-x-0"
+
+
+lgFocusSkewX1 : Html.Attribute msg
+lgFocusSkewX1 =
+    A.class "lg:focus:skew-x-1"
+
+
+lgFocusSkewX2 : Html.Attribute msg
+lgFocusSkewX2 =
+    A.class "lg:focus:skew-x-2"
 
 
 lgFocusSkewX3 : Html.Attribute msg
@@ -69097,9 +94336,29 @@ lgFocusNegSkewX3 =
     A.class "lg:focus:-skew-x-3"
 
 
+lgFocusNegSkewX2 : Html.Attribute msg
+lgFocusNegSkewX2 =
+    A.class "lg:focus:-skew-x-2"
+
+
+lgFocusNegSkewX1 : Html.Attribute msg
+lgFocusNegSkewX1 =
+    A.class "lg:focus:-skew-x-1"
+
+
 lgFocusSkewY0 : Html.Attribute msg
 lgFocusSkewY0 =
     A.class "lg:focus:skew-y-0"
+
+
+lgFocusSkewY1 : Html.Attribute msg
+lgFocusSkewY1 =
+    A.class "lg:focus:skew-y-1"
+
+
+lgFocusSkewY2 : Html.Attribute msg
+lgFocusSkewY2 =
+    A.class "lg:focus:skew-y-2"
 
 
 lgFocusSkewY3 : Html.Attribute msg
@@ -69130,6 +94389,16 @@ lgFocusNegSkewY6 =
 lgFocusNegSkewY3 : Html.Attribute msg
 lgFocusNegSkewY3 =
     A.class "lg:focus:-skew-y-3"
+
+
+lgFocusNegSkewY2 : Html.Attribute msg
+lgFocusNegSkewY2 =
+    A.class "lg:focus:-skew-y-2"
+
+
+lgFocusNegSkewY1 : Html.Attribute msg
+lgFocusNegSkewY1 =
+    A.class "lg:focus:-skew-y-1"
 
 
 lgTransitionNone : Html.Attribute msg
@@ -69265,6 +94534,36 @@ lgDelay700 =
 lgDelay1000 : Html.Attribute msg
 lgDelay1000 =
     A.class "lg:delay-1000"
+
+
+lgAnimateNone : Html.Attribute msg
+lgAnimateNone =
+    A.class "lg:animate-none"
+
+
+lgAnimateSpin : Html.Attribute msg
+lgAnimateSpin =
+    A.class "lg:animate-spin"
+
+
+lgAnimatePing : Html.Attribute msg
+lgAnimatePing =
+    A.class "lg:animate-ping"
+
+
+lgAnimatePulse : Html.Attribute msg
+lgAnimatePulse =
+    A.class "lg:animate-pulse"
+
+
+lgAnimateBounce : Html.Attribute msg
+lgAnimateBounce =
+    A.class "lg:animate-bounce"
+
+
+xlContainer : Html.Attribute msg
+xlContainer =
+    A.class "xl:container"
 
 
 xlSpaceY0 : Html.Attribute msg
@@ -70177,6 +95476,31 @@ xlDividePink900 =
     A.class "xl:divide-pink-900"
 
 
+xlDivideSolid : Html.Attribute msg
+xlDivideSolid =
+    A.class "xl:divide-solid"
+
+
+xlDivideDashed : Html.Attribute msg
+xlDivideDashed =
+    A.class "xl:divide-dashed"
+
+
+xlDivideDotted : Html.Attribute msg
+xlDivideDotted =
+    A.class "xl:divide-dotted"
+
+
+xlDivideDouble : Html.Attribute msg
+xlDivideDouble =
+    A.class "xl:divide-double"
+
+
+xlDivideNone : Html.Attribute msg
+xlDivideNone =
+    A.class "xl:divide-none"
+
+
 xlDivideOpacity0 : Html.Attribute msg
 xlDivideOpacity0 =
     A.class "xl:divide-opacity-0"
@@ -70240,6 +95564,26 @@ xlBgLocal =
 xlBgScroll : Html.Attribute msg
 xlBgScroll =
     A.class "xl:bg-scroll"
+
+
+xlBgClipBorder : Html.Attribute msg
+xlBgClipBorder =
+    A.class "xl:bg-clip-border"
+
+
+xlBgClipPadding : Html.Attribute msg
+xlBgClipPadding =
+    A.class "xl:bg-clip-padding"
+
+
+xlBgClipContent : Html.Attribute msg
+xlBgClipContent =
+    A.class "xl:bg-clip-content"
+
+
+xlBgClipText : Html.Attribute msg
+xlBgClipText =
+    A.class "xl:bg-clip-text"
 
 
 xlBgTransparent : Html.Attribute msg
@@ -71650,6 +96994,4281 @@ xlFocusBgPink800 =
 xlFocusBgPink900 : Html.Attribute msg
 xlFocusBgPink900 =
     A.class "xl:focus:bg-pink-900"
+
+
+xlBgNone : Html.Attribute msg
+xlBgNone =
+    A.class "xl:bg-none"
+
+
+xlBgGradientToT : Html.Attribute msg
+xlBgGradientToT =
+    A.class "xl:bg-gradient-to-t"
+
+
+xlBgGradientToTr : Html.Attribute msg
+xlBgGradientToTr =
+    A.class "xl:bg-gradient-to-tr"
+
+
+xlBgGradientToR : Html.Attribute msg
+xlBgGradientToR =
+    A.class "xl:bg-gradient-to-r"
+
+
+xlBgGradientToBr : Html.Attribute msg
+xlBgGradientToBr =
+    A.class "xl:bg-gradient-to-br"
+
+
+xlBgGradientToB : Html.Attribute msg
+xlBgGradientToB =
+    A.class "xl:bg-gradient-to-b"
+
+
+xlBgGradientToBl : Html.Attribute msg
+xlBgGradientToBl =
+    A.class "xl:bg-gradient-to-bl"
+
+
+xlBgGradientToL : Html.Attribute msg
+xlBgGradientToL =
+    A.class "xl:bg-gradient-to-l"
+
+
+xlBgGradientToTl : Html.Attribute msg
+xlBgGradientToTl =
+    A.class "xl:bg-gradient-to-tl"
+
+
+xlFromTransparent : Html.Attribute msg
+xlFromTransparent =
+    A.class "xl:from-transparent"
+
+
+xlFromCurrent : Html.Attribute msg
+xlFromCurrent =
+    A.class "xl:from-current"
+
+
+xlFromBlack : Html.Attribute msg
+xlFromBlack =
+    A.class "xl:from-black"
+
+
+xlFromWhite : Html.Attribute msg
+xlFromWhite =
+    A.class "xl:from-white"
+
+
+xlFromGray100 : Html.Attribute msg
+xlFromGray100 =
+    A.class "xl:from-gray-100"
+
+
+xlFromGray200 : Html.Attribute msg
+xlFromGray200 =
+    A.class "xl:from-gray-200"
+
+
+xlFromGray300 : Html.Attribute msg
+xlFromGray300 =
+    A.class "xl:from-gray-300"
+
+
+xlFromGray400 : Html.Attribute msg
+xlFromGray400 =
+    A.class "xl:from-gray-400"
+
+
+xlFromGray500 : Html.Attribute msg
+xlFromGray500 =
+    A.class "xl:from-gray-500"
+
+
+xlFromGray600 : Html.Attribute msg
+xlFromGray600 =
+    A.class "xl:from-gray-600"
+
+
+xlFromGray700 : Html.Attribute msg
+xlFromGray700 =
+    A.class "xl:from-gray-700"
+
+
+xlFromGray800 : Html.Attribute msg
+xlFromGray800 =
+    A.class "xl:from-gray-800"
+
+
+xlFromGray900 : Html.Attribute msg
+xlFromGray900 =
+    A.class "xl:from-gray-900"
+
+
+xlFromRed100 : Html.Attribute msg
+xlFromRed100 =
+    A.class "xl:from-red-100"
+
+
+xlFromRed200 : Html.Attribute msg
+xlFromRed200 =
+    A.class "xl:from-red-200"
+
+
+xlFromRed300 : Html.Attribute msg
+xlFromRed300 =
+    A.class "xl:from-red-300"
+
+
+xlFromRed400 : Html.Attribute msg
+xlFromRed400 =
+    A.class "xl:from-red-400"
+
+
+xlFromRed500 : Html.Attribute msg
+xlFromRed500 =
+    A.class "xl:from-red-500"
+
+
+xlFromRed600 : Html.Attribute msg
+xlFromRed600 =
+    A.class "xl:from-red-600"
+
+
+xlFromRed700 : Html.Attribute msg
+xlFromRed700 =
+    A.class "xl:from-red-700"
+
+
+xlFromRed800 : Html.Attribute msg
+xlFromRed800 =
+    A.class "xl:from-red-800"
+
+
+xlFromRed900 : Html.Attribute msg
+xlFromRed900 =
+    A.class "xl:from-red-900"
+
+
+xlFromOrange100 : Html.Attribute msg
+xlFromOrange100 =
+    A.class "xl:from-orange-100"
+
+
+xlFromOrange200 : Html.Attribute msg
+xlFromOrange200 =
+    A.class "xl:from-orange-200"
+
+
+xlFromOrange300 : Html.Attribute msg
+xlFromOrange300 =
+    A.class "xl:from-orange-300"
+
+
+xlFromOrange400 : Html.Attribute msg
+xlFromOrange400 =
+    A.class "xl:from-orange-400"
+
+
+xlFromOrange500 : Html.Attribute msg
+xlFromOrange500 =
+    A.class "xl:from-orange-500"
+
+
+xlFromOrange600 : Html.Attribute msg
+xlFromOrange600 =
+    A.class "xl:from-orange-600"
+
+
+xlFromOrange700 : Html.Attribute msg
+xlFromOrange700 =
+    A.class "xl:from-orange-700"
+
+
+xlFromOrange800 : Html.Attribute msg
+xlFromOrange800 =
+    A.class "xl:from-orange-800"
+
+
+xlFromOrange900 : Html.Attribute msg
+xlFromOrange900 =
+    A.class "xl:from-orange-900"
+
+
+xlFromYellow100 : Html.Attribute msg
+xlFromYellow100 =
+    A.class "xl:from-yellow-100"
+
+
+xlFromYellow200 : Html.Attribute msg
+xlFromYellow200 =
+    A.class "xl:from-yellow-200"
+
+
+xlFromYellow300 : Html.Attribute msg
+xlFromYellow300 =
+    A.class "xl:from-yellow-300"
+
+
+xlFromYellow400 : Html.Attribute msg
+xlFromYellow400 =
+    A.class "xl:from-yellow-400"
+
+
+xlFromYellow500 : Html.Attribute msg
+xlFromYellow500 =
+    A.class "xl:from-yellow-500"
+
+
+xlFromYellow600 : Html.Attribute msg
+xlFromYellow600 =
+    A.class "xl:from-yellow-600"
+
+
+xlFromYellow700 : Html.Attribute msg
+xlFromYellow700 =
+    A.class "xl:from-yellow-700"
+
+
+xlFromYellow800 : Html.Attribute msg
+xlFromYellow800 =
+    A.class "xl:from-yellow-800"
+
+
+xlFromYellow900 : Html.Attribute msg
+xlFromYellow900 =
+    A.class "xl:from-yellow-900"
+
+
+xlFromGreen100 : Html.Attribute msg
+xlFromGreen100 =
+    A.class "xl:from-green-100"
+
+
+xlFromGreen200 : Html.Attribute msg
+xlFromGreen200 =
+    A.class "xl:from-green-200"
+
+
+xlFromGreen300 : Html.Attribute msg
+xlFromGreen300 =
+    A.class "xl:from-green-300"
+
+
+xlFromGreen400 : Html.Attribute msg
+xlFromGreen400 =
+    A.class "xl:from-green-400"
+
+
+xlFromGreen500 : Html.Attribute msg
+xlFromGreen500 =
+    A.class "xl:from-green-500"
+
+
+xlFromGreen600 : Html.Attribute msg
+xlFromGreen600 =
+    A.class "xl:from-green-600"
+
+
+xlFromGreen700 : Html.Attribute msg
+xlFromGreen700 =
+    A.class "xl:from-green-700"
+
+
+xlFromGreen800 : Html.Attribute msg
+xlFromGreen800 =
+    A.class "xl:from-green-800"
+
+
+xlFromGreen900 : Html.Attribute msg
+xlFromGreen900 =
+    A.class "xl:from-green-900"
+
+
+xlFromTeal100 : Html.Attribute msg
+xlFromTeal100 =
+    A.class "xl:from-teal-100"
+
+
+xlFromTeal200 : Html.Attribute msg
+xlFromTeal200 =
+    A.class "xl:from-teal-200"
+
+
+xlFromTeal300 : Html.Attribute msg
+xlFromTeal300 =
+    A.class "xl:from-teal-300"
+
+
+xlFromTeal400 : Html.Attribute msg
+xlFromTeal400 =
+    A.class "xl:from-teal-400"
+
+
+xlFromTeal500 : Html.Attribute msg
+xlFromTeal500 =
+    A.class "xl:from-teal-500"
+
+
+xlFromTeal600 : Html.Attribute msg
+xlFromTeal600 =
+    A.class "xl:from-teal-600"
+
+
+xlFromTeal700 : Html.Attribute msg
+xlFromTeal700 =
+    A.class "xl:from-teal-700"
+
+
+xlFromTeal800 : Html.Attribute msg
+xlFromTeal800 =
+    A.class "xl:from-teal-800"
+
+
+xlFromTeal900 : Html.Attribute msg
+xlFromTeal900 =
+    A.class "xl:from-teal-900"
+
+
+xlFromBlue100 : Html.Attribute msg
+xlFromBlue100 =
+    A.class "xl:from-blue-100"
+
+
+xlFromBlue200 : Html.Attribute msg
+xlFromBlue200 =
+    A.class "xl:from-blue-200"
+
+
+xlFromBlue300 : Html.Attribute msg
+xlFromBlue300 =
+    A.class "xl:from-blue-300"
+
+
+xlFromBlue400 : Html.Attribute msg
+xlFromBlue400 =
+    A.class "xl:from-blue-400"
+
+
+xlFromBlue500 : Html.Attribute msg
+xlFromBlue500 =
+    A.class "xl:from-blue-500"
+
+
+xlFromBlue600 : Html.Attribute msg
+xlFromBlue600 =
+    A.class "xl:from-blue-600"
+
+
+xlFromBlue700 : Html.Attribute msg
+xlFromBlue700 =
+    A.class "xl:from-blue-700"
+
+
+xlFromBlue800 : Html.Attribute msg
+xlFromBlue800 =
+    A.class "xl:from-blue-800"
+
+
+xlFromBlue900 : Html.Attribute msg
+xlFromBlue900 =
+    A.class "xl:from-blue-900"
+
+
+xlFromIndigo100 : Html.Attribute msg
+xlFromIndigo100 =
+    A.class "xl:from-indigo-100"
+
+
+xlFromIndigo200 : Html.Attribute msg
+xlFromIndigo200 =
+    A.class "xl:from-indigo-200"
+
+
+xlFromIndigo300 : Html.Attribute msg
+xlFromIndigo300 =
+    A.class "xl:from-indigo-300"
+
+
+xlFromIndigo400 : Html.Attribute msg
+xlFromIndigo400 =
+    A.class "xl:from-indigo-400"
+
+
+xlFromIndigo500 : Html.Attribute msg
+xlFromIndigo500 =
+    A.class "xl:from-indigo-500"
+
+
+xlFromIndigo600 : Html.Attribute msg
+xlFromIndigo600 =
+    A.class "xl:from-indigo-600"
+
+
+xlFromIndigo700 : Html.Attribute msg
+xlFromIndigo700 =
+    A.class "xl:from-indigo-700"
+
+
+xlFromIndigo800 : Html.Attribute msg
+xlFromIndigo800 =
+    A.class "xl:from-indigo-800"
+
+
+xlFromIndigo900 : Html.Attribute msg
+xlFromIndigo900 =
+    A.class "xl:from-indigo-900"
+
+
+xlFromPurple100 : Html.Attribute msg
+xlFromPurple100 =
+    A.class "xl:from-purple-100"
+
+
+xlFromPurple200 : Html.Attribute msg
+xlFromPurple200 =
+    A.class "xl:from-purple-200"
+
+
+xlFromPurple300 : Html.Attribute msg
+xlFromPurple300 =
+    A.class "xl:from-purple-300"
+
+
+xlFromPurple400 : Html.Attribute msg
+xlFromPurple400 =
+    A.class "xl:from-purple-400"
+
+
+xlFromPurple500 : Html.Attribute msg
+xlFromPurple500 =
+    A.class "xl:from-purple-500"
+
+
+xlFromPurple600 : Html.Attribute msg
+xlFromPurple600 =
+    A.class "xl:from-purple-600"
+
+
+xlFromPurple700 : Html.Attribute msg
+xlFromPurple700 =
+    A.class "xl:from-purple-700"
+
+
+xlFromPurple800 : Html.Attribute msg
+xlFromPurple800 =
+    A.class "xl:from-purple-800"
+
+
+xlFromPurple900 : Html.Attribute msg
+xlFromPurple900 =
+    A.class "xl:from-purple-900"
+
+
+xlFromPink100 : Html.Attribute msg
+xlFromPink100 =
+    A.class "xl:from-pink-100"
+
+
+xlFromPink200 : Html.Attribute msg
+xlFromPink200 =
+    A.class "xl:from-pink-200"
+
+
+xlFromPink300 : Html.Attribute msg
+xlFromPink300 =
+    A.class "xl:from-pink-300"
+
+
+xlFromPink400 : Html.Attribute msg
+xlFromPink400 =
+    A.class "xl:from-pink-400"
+
+
+xlFromPink500 : Html.Attribute msg
+xlFromPink500 =
+    A.class "xl:from-pink-500"
+
+
+xlFromPink600 : Html.Attribute msg
+xlFromPink600 =
+    A.class "xl:from-pink-600"
+
+
+xlFromPink700 : Html.Attribute msg
+xlFromPink700 =
+    A.class "xl:from-pink-700"
+
+
+xlFromPink800 : Html.Attribute msg
+xlFromPink800 =
+    A.class "xl:from-pink-800"
+
+
+xlFromPink900 : Html.Attribute msg
+xlFromPink900 =
+    A.class "xl:from-pink-900"
+
+
+xlViaTransparent : Html.Attribute msg
+xlViaTransparent =
+    A.class "xl:via-transparent"
+
+
+xlViaCurrent : Html.Attribute msg
+xlViaCurrent =
+    A.class "xl:via-current"
+
+
+xlViaBlack : Html.Attribute msg
+xlViaBlack =
+    A.class "xl:via-black"
+
+
+xlViaWhite : Html.Attribute msg
+xlViaWhite =
+    A.class "xl:via-white"
+
+
+xlViaGray100 : Html.Attribute msg
+xlViaGray100 =
+    A.class "xl:via-gray-100"
+
+
+xlViaGray200 : Html.Attribute msg
+xlViaGray200 =
+    A.class "xl:via-gray-200"
+
+
+xlViaGray300 : Html.Attribute msg
+xlViaGray300 =
+    A.class "xl:via-gray-300"
+
+
+xlViaGray400 : Html.Attribute msg
+xlViaGray400 =
+    A.class "xl:via-gray-400"
+
+
+xlViaGray500 : Html.Attribute msg
+xlViaGray500 =
+    A.class "xl:via-gray-500"
+
+
+xlViaGray600 : Html.Attribute msg
+xlViaGray600 =
+    A.class "xl:via-gray-600"
+
+
+xlViaGray700 : Html.Attribute msg
+xlViaGray700 =
+    A.class "xl:via-gray-700"
+
+
+xlViaGray800 : Html.Attribute msg
+xlViaGray800 =
+    A.class "xl:via-gray-800"
+
+
+xlViaGray900 : Html.Attribute msg
+xlViaGray900 =
+    A.class "xl:via-gray-900"
+
+
+xlViaRed100 : Html.Attribute msg
+xlViaRed100 =
+    A.class "xl:via-red-100"
+
+
+xlViaRed200 : Html.Attribute msg
+xlViaRed200 =
+    A.class "xl:via-red-200"
+
+
+xlViaRed300 : Html.Attribute msg
+xlViaRed300 =
+    A.class "xl:via-red-300"
+
+
+xlViaRed400 : Html.Attribute msg
+xlViaRed400 =
+    A.class "xl:via-red-400"
+
+
+xlViaRed500 : Html.Attribute msg
+xlViaRed500 =
+    A.class "xl:via-red-500"
+
+
+xlViaRed600 : Html.Attribute msg
+xlViaRed600 =
+    A.class "xl:via-red-600"
+
+
+xlViaRed700 : Html.Attribute msg
+xlViaRed700 =
+    A.class "xl:via-red-700"
+
+
+xlViaRed800 : Html.Attribute msg
+xlViaRed800 =
+    A.class "xl:via-red-800"
+
+
+xlViaRed900 : Html.Attribute msg
+xlViaRed900 =
+    A.class "xl:via-red-900"
+
+
+xlViaOrange100 : Html.Attribute msg
+xlViaOrange100 =
+    A.class "xl:via-orange-100"
+
+
+xlViaOrange200 : Html.Attribute msg
+xlViaOrange200 =
+    A.class "xl:via-orange-200"
+
+
+xlViaOrange300 : Html.Attribute msg
+xlViaOrange300 =
+    A.class "xl:via-orange-300"
+
+
+xlViaOrange400 : Html.Attribute msg
+xlViaOrange400 =
+    A.class "xl:via-orange-400"
+
+
+xlViaOrange500 : Html.Attribute msg
+xlViaOrange500 =
+    A.class "xl:via-orange-500"
+
+
+xlViaOrange600 : Html.Attribute msg
+xlViaOrange600 =
+    A.class "xl:via-orange-600"
+
+
+xlViaOrange700 : Html.Attribute msg
+xlViaOrange700 =
+    A.class "xl:via-orange-700"
+
+
+xlViaOrange800 : Html.Attribute msg
+xlViaOrange800 =
+    A.class "xl:via-orange-800"
+
+
+xlViaOrange900 : Html.Attribute msg
+xlViaOrange900 =
+    A.class "xl:via-orange-900"
+
+
+xlViaYellow100 : Html.Attribute msg
+xlViaYellow100 =
+    A.class "xl:via-yellow-100"
+
+
+xlViaYellow200 : Html.Attribute msg
+xlViaYellow200 =
+    A.class "xl:via-yellow-200"
+
+
+xlViaYellow300 : Html.Attribute msg
+xlViaYellow300 =
+    A.class "xl:via-yellow-300"
+
+
+xlViaYellow400 : Html.Attribute msg
+xlViaYellow400 =
+    A.class "xl:via-yellow-400"
+
+
+xlViaYellow500 : Html.Attribute msg
+xlViaYellow500 =
+    A.class "xl:via-yellow-500"
+
+
+xlViaYellow600 : Html.Attribute msg
+xlViaYellow600 =
+    A.class "xl:via-yellow-600"
+
+
+xlViaYellow700 : Html.Attribute msg
+xlViaYellow700 =
+    A.class "xl:via-yellow-700"
+
+
+xlViaYellow800 : Html.Attribute msg
+xlViaYellow800 =
+    A.class "xl:via-yellow-800"
+
+
+xlViaYellow900 : Html.Attribute msg
+xlViaYellow900 =
+    A.class "xl:via-yellow-900"
+
+
+xlViaGreen100 : Html.Attribute msg
+xlViaGreen100 =
+    A.class "xl:via-green-100"
+
+
+xlViaGreen200 : Html.Attribute msg
+xlViaGreen200 =
+    A.class "xl:via-green-200"
+
+
+xlViaGreen300 : Html.Attribute msg
+xlViaGreen300 =
+    A.class "xl:via-green-300"
+
+
+xlViaGreen400 : Html.Attribute msg
+xlViaGreen400 =
+    A.class "xl:via-green-400"
+
+
+xlViaGreen500 : Html.Attribute msg
+xlViaGreen500 =
+    A.class "xl:via-green-500"
+
+
+xlViaGreen600 : Html.Attribute msg
+xlViaGreen600 =
+    A.class "xl:via-green-600"
+
+
+xlViaGreen700 : Html.Attribute msg
+xlViaGreen700 =
+    A.class "xl:via-green-700"
+
+
+xlViaGreen800 : Html.Attribute msg
+xlViaGreen800 =
+    A.class "xl:via-green-800"
+
+
+xlViaGreen900 : Html.Attribute msg
+xlViaGreen900 =
+    A.class "xl:via-green-900"
+
+
+xlViaTeal100 : Html.Attribute msg
+xlViaTeal100 =
+    A.class "xl:via-teal-100"
+
+
+xlViaTeal200 : Html.Attribute msg
+xlViaTeal200 =
+    A.class "xl:via-teal-200"
+
+
+xlViaTeal300 : Html.Attribute msg
+xlViaTeal300 =
+    A.class "xl:via-teal-300"
+
+
+xlViaTeal400 : Html.Attribute msg
+xlViaTeal400 =
+    A.class "xl:via-teal-400"
+
+
+xlViaTeal500 : Html.Attribute msg
+xlViaTeal500 =
+    A.class "xl:via-teal-500"
+
+
+xlViaTeal600 : Html.Attribute msg
+xlViaTeal600 =
+    A.class "xl:via-teal-600"
+
+
+xlViaTeal700 : Html.Attribute msg
+xlViaTeal700 =
+    A.class "xl:via-teal-700"
+
+
+xlViaTeal800 : Html.Attribute msg
+xlViaTeal800 =
+    A.class "xl:via-teal-800"
+
+
+xlViaTeal900 : Html.Attribute msg
+xlViaTeal900 =
+    A.class "xl:via-teal-900"
+
+
+xlViaBlue100 : Html.Attribute msg
+xlViaBlue100 =
+    A.class "xl:via-blue-100"
+
+
+xlViaBlue200 : Html.Attribute msg
+xlViaBlue200 =
+    A.class "xl:via-blue-200"
+
+
+xlViaBlue300 : Html.Attribute msg
+xlViaBlue300 =
+    A.class "xl:via-blue-300"
+
+
+xlViaBlue400 : Html.Attribute msg
+xlViaBlue400 =
+    A.class "xl:via-blue-400"
+
+
+xlViaBlue500 : Html.Attribute msg
+xlViaBlue500 =
+    A.class "xl:via-blue-500"
+
+
+xlViaBlue600 : Html.Attribute msg
+xlViaBlue600 =
+    A.class "xl:via-blue-600"
+
+
+xlViaBlue700 : Html.Attribute msg
+xlViaBlue700 =
+    A.class "xl:via-blue-700"
+
+
+xlViaBlue800 : Html.Attribute msg
+xlViaBlue800 =
+    A.class "xl:via-blue-800"
+
+
+xlViaBlue900 : Html.Attribute msg
+xlViaBlue900 =
+    A.class "xl:via-blue-900"
+
+
+xlViaIndigo100 : Html.Attribute msg
+xlViaIndigo100 =
+    A.class "xl:via-indigo-100"
+
+
+xlViaIndigo200 : Html.Attribute msg
+xlViaIndigo200 =
+    A.class "xl:via-indigo-200"
+
+
+xlViaIndigo300 : Html.Attribute msg
+xlViaIndigo300 =
+    A.class "xl:via-indigo-300"
+
+
+xlViaIndigo400 : Html.Attribute msg
+xlViaIndigo400 =
+    A.class "xl:via-indigo-400"
+
+
+xlViaIndigo500 : Html.Attribute msg
+xlViaIndigo500 =
+    A.class "xl:via-indigo-500"
+
+
+xlViaIndigo600 : Html.Attribute msg
+xlViaIndigo600 =
+    A.class "xl:via-indigo-600"
+
+
+xlViaIndigo700 : Html.Attribute msg
+xlViaIndigo700 =
+    A.class "xl:via-indigo-700"
+
+
+xlViaIndigo800 : Html.Attribute msg
+xlViaIndigo800 =
+    A.class "xl:via-indigo-800"
+
+
+xlViaIndigo900 : Html.Attribute msg
+xlViaIndigo900 =
+    A.class "xl:via-indigo-900"
+
+
+xlViaPurple100 : Html.Attribute msg
+xlViaPurple100 =
+    A.class "xl:via-purple-100"
+
+
+xlViaPurple200 : Html.Attribute msg
+xlViaPurple200 =
+    A.class "xl:via-purple-200"
+
+
+xlViaPurple300 : Html.Attribute msg
+xlViaPurple300 =
+    A.class "xl:via-purple-300"
+
+
+xlViaPurple400 : Html.Attribute msg
+xlViaPurple400 =
+    A.class "xl:via-purple-400"
+
+
+xlViaPurple500 : Html.Attribute msg
+xlViaPurple500 =
+    A.class "xl:via-purple-500"
+
+
+xlViaPurple600 : Html.Attribute msg
+xlViaPurple600 =
+    A.class "xl:via-purple-600"
+
+
+xlViaPurple700 : Html.Attribute msg
+xlViaPurple700 =
+    A.class "xl:via-purple-700"
+
+
+xlViaPurple800 : Html.Attribute msg
+xlViaPurple800 =
+    A.class "xl:via-purple-800"
+
+
+xlViaPurple900 : Html.Attribute msg
+xlViaPurple900 =
+    A.class "xl:via-purple-900"
+
+
+xlViaPink100 : Html.Attribute msg
+xlViaPink100 =
+    A.class "xl:via-pink-100"
+
+
+xlViaPink200 : Html.Attribute msg
+xlViaPink200 =
+    A.class "xl:via-pink-200"
+
+
+xlViaPink300 : Html.Attribute msg
+xlViaPink300 =
+    A.class "xl:via-pink-300"
+
+
+xlViaPink400 : Html.Attribute msg
+xlViaPink400 =
+    A.class "xl:via-pink-400"
+
+
+xlViaPink500 : Html.Attribute msg
+xlViaPink500 =
+    A.class "xl:via-pink-500"
+
+
+xlViaPink600 : Html.Attribute msg
+xlViaPink600 =
+    A.class "xl:via-pink-600"
+
+
+xlViaPink700 : Html.Attribute msg
+xlViaPink700 =
+    A.class "xl:via-pink-700"
+
+
+xlViaPink800 : Html.Attribute msg
+xlViaPink800 =
+    A.class "xl:via-pink-800"
+
+
+xlViaPink900 : Html.Attribute msg
+xlViaPink900 =
+    A.class "xl:via-pink-900"
+
+
+xlToTransparent : Html.Attribute msg
+xlToTransparent =
+    A.class "xl:to-transparent"
+
+
+xlToCurrent : Html.Attribute msg
+xlToCurrent =
+    A.class "xl:to-current"
+
+
+xlToBlack : Html.Attribute msg
+xlToBlack =
+    A.class "xl:to-black"
+
+
+xlToWhite : Html.Attribute msg
+xlToWhite =
+    A.class "xl:to-white"
+
+
+xlToGray100 : Html.Attribute msg
+xlToGray100 =
+    A.class "xl:to-gray-100"
+
+
+xlToGray200 : Html.Attribute msg
+xlToGray200 =
+    A.class "xl:to-gray-200"
+
+
+xlToGray300 : Html.Attribute msg
+xlToGray300 =
+    A.class "xl:to-gray-300"
+
+
+xlToGray400 : Html.Attribute msg
+xlToGray400 =
+    A.class "xl:to-gray-400"
+
+
+xlToGray500 : Html.Attribute msg
+xlToGray500 =
+    A.class "xl:to-gray-500"
+
+
+xlToGray600 : Html.Attribute msg
+xlToGray600 =
+    A.class "xl:to-gray-600"
+
+
+xlToGray700 : Html.Attribute msg
+xlToGray700 =
+    A.class "xl:to-gray-700"
+
+
+xlToGray800 : Html.Attribute msg
+xlToGray800 =
+    A.class "xl:to-gray-800"
+
+
+xlToGray900 : Html.Attribute msg
+xlToGray900 =
+    A.class "xl:to-gray-900"
+
+
+xlToRed100 : Html.Attribute msg
+xlToRed100 =
+    A.class "xl:to-red-100"
+
+
+xlToRed200 : Html.Attribute msg
+xlToRed200 =
+    A.class "xl:to-red-200"
+
+
+xlToRed300 : Html.Attribute msg
+xlToRed300 =
+    A.class "xl:to-red-300"
+
+
+xlToRed400 : Html.Attribute msg
+xlToRed400 =
+    A.class "xl:to-red-400"
+
+
+xlToRed500 : Html.Attribute msg
+xlToRed500 =
+    A.class "xl:to-red-500"
+
+
+xlToRed600 : Html.Attribute msg
+xlToRed600 =
+    A.class "xl:to-red-600"
+
+
+xlToRed700 : Html.Attribute msg
+xlToRed700 =
+    A.class "xl:to-red-700"
+
+
+xlToRed800 : Html.Attribute msg
+xlToRed800 =
+    A.class "xl:to-red-800"
+
+
+xlToRed900 : Html.Attribute msg
+xlToRed900 =
+    A.class "xl:to-red-900"
+
+
+xlToOrange100 : Html.Attribute msg
+xlToOrange100 =
+    A.class "xl:to-orange-100"
+
+
+xlToOrange200 : Html.Attribute msg
+xlToOrange200 =
+    A.class "xl:to-orange-200"
+
+
+xlToOrange300 : Html.Attribute msg
+xlToOrange300 =
+    A.class "xl:to-orange-300"
+
+
+xlToOrange400 : Html.Attribute msg
+xlToOrange400 =
+    A.class "xl:to-orange-400"
+
+
+xlToOrange500 : Html.Attribute msg
+xlToOrange500 =
+    A.class "xl:to-orange-500"
+
+
+xlToOrange600 : Html.Attribute msg
+xlToOrange600 =
+    A.class "xl:to-orange-600"
+
+
+xlToOrange700 : Html.Attribute msg
+xlToOrange700 =
+    A.class "xl:to-orange-700"
+
+
+xlToOrange800 : Html.Attribute msg
+xlToOrange800 =
+    A.class "xl:to-orange-800"
+
+
+xlToOrange900 : Html.Attribute msg
+xlToOrange900 =
+    A.class "xl:to-orange-900"
+
+
+xlToYellow100 : Html.Attribute msg
+xlToYellow100 =
+    A.class "xl:to-yellow-100"
+
+
+xlToYellow200 : Html.Attribute msg
+xlToYellow200 =
+    A.class "xl:to-yellow-200"
+
+
+xlToYellow300 : Html.Attribute msg
+xlToYellow300 =
+    A.class "xl:to-yellow-300"
+
+
+xlToYellow400 : Html.Attribute msg
+xlToYellow400 =
+    A.class "xl:to-yellow-400"
+
+
+xlToYellow500 : Html.Attribute msg
+xlToYellow500 =
+    A.class "xl:to-yellow-500"
+
+
+xlToYellow600 : Html.Attribute msg
+xlToYellow600 =
+    A.class "xl:to-yellow-600"
+
+
+xlToYellow700 : Html.Attribute msg
+xlToYellow700 =
+    A.class "xl:to-yellow-700"
+
+
+xlToYellow800 : Html.Attribute msg
+xlToYellow800 =
+    A.class "xl:to-yellow-800"
+
+
+xlToYellow900 : Html.Attribute msg
+xlToYellow900 =
+    A.class "xl:to-yellow-900"
+
+
+xlToGreen100 : Html.Attribute msg
+xlToGreen100 =
+    A.class "xl:to-green-100"
+
+
+xlToGreen200 : Html.Attribute msg
+xlToGreen200 =
+    A.class "xl:to-green-200"
+
+
+xlToGreen300 : Html.Attribute msg
+xlToGreen300 =
+    A.class "xl:to-green-300"
+
+
+xlToGreen400 : Html.Attribute msg
+xlToGreen400 =
+    A.class "xl:to-green-400"
+
+
+xlToGreen500 : Html.Attribute msg
+xlToGreen500 =
+    A.class "xl:to-green-500"
+
+
+xlToGreen600 : Html.Attribute msg
+xlToGreen600 =
+    A.class "xl:to-green-600"
+
+
+xlToGreen700 : Html.Attribute msg
+xlToGreen700 =
+    A.class "xl:to-green-700"
+
+
+xlToGreen800 : Html.Attribute msg
+xlToGreen800 =
+    A.class "xl:to-green-800"
+
+
+xlToGreen900 : Html.Attribute msg
+xlToGreen900 =
+    A.class "xl:to-green-900"
+
+
+xlToTeal100 : Html.Attribute msg
+xlToTeal100 =
+    A.class "xl:to-teal-100"
+
+
+xlToTeal200 : Html.Attribute msg
+xlToTeal200 =
+    A.class "xl:to-teal-200"
+
+
+xlToTeal300 : Html.Attribute msg
+xlToTeal300 =
+    A.class "xl:to-teal-300"
+
+
+xlToTeal400 : Html.Attribute msg
+xlToTeal400 =
+    A.class "xl:to-teal-400"
+
+
+xlToTeal500 : Html.Attribute msg
+xlToTeal500 =
+    A.class "xl:to-teal-500"
+
+
+xlToTeal600 : Html.Attribute msg
+xlToTeal600 =
+    A.class "xl:to-teal-600"
+
+
+xlToTeal700 : Html.Attribute msg
+xlToTeal700 =
+    A.class "xl:to-teal-700"
+
+
+xlToTeal800 : Html.Attribute msg
+xlToTeal800 =
+    A.class "xl:to-teal-800"
+
+
+xlToTeal900 : Html.Attribute msg
+xlToTeal900 =
+    A.class "xl:to-teal-900"
+
+
+xlToBlue100 : Html.Attribute msg
+xlToBlue100 =
+    A.class "xl:to-blue-100"
+
+
+xlToBlue200 : Html.Attribute msg
+xlToBlue200 =
+    A.class "xl:to-blue-200"
+
+
+xlToBlue300 : Html.Attribute msg
+xlToBlue300 =
+    A.class "xl:to-blue-300"
+
+
+xlToBlue400 : Html.Attribute msg
+xlToBlue400 =
+    A.class "xl:to-blue-400"
+
+
+xlToBlue500 : Html.Attribute msg
+xlToBlue500 =
+    A.class "xl:to-blue-500"
+
+
+xlToBlue600 : Html.Attribute msg
+xlToBlue600 =
+    A.class "xl:to-blue-600"
+
+
+xlToBlue700 : Html.Attribute msg
+xlToBlue700 =
+    A.class "xl:to-blue-700"
+
+
+xlToBlue800 : Html.Attribute msg
+xlToBlue800 =
+    A.class "xl:to-blue-800"
+
+
+xlToBlue900 : Html.Attribute msg
+xlToBlue900 =
+    A.class "xl:to-blue-900"
+
+
+xlToIndigo100 : Html.Attribute msg
+xlToIndigo100 =
+    A.class "xl:to-indigo-100"
+
+
+xlToIndigo200 : Html.Attribute msg
+xlToIndigo200 =
+    A.class "xl:to-indigo-200"
+
+
+xlToIndigo300 : Html.Attribute msg
+xlToIndigo300 =
+    A.class "xl:to-indigo-300"
+
+
+xlToIndigo400 : Html.Attribute msg
+xlToIndigo400 =
+    A.class "xl:to-indigo-400"
+
+
+xlToIndigo500 : Html.Attribute msg
+xlToIndigo500 =
+    A.class "xl:to-indigo-500"
+
+
+xlToIndigo600 : Html.Attribute msg
+xlToIndigo600 =
+    A.class "xl:to-indigo-600"
+
+
+xlToIndigo700 : Html.Attribute msg
+xlToIndigo700 =
+    A.class "xl:to-indigo-700"
+
+
+xlToIndigo800 : Html.Attribute msg
+xlToIndigo800 =
+    A.class "xl:to-indigo-800"
+
+
+xlToIndigo900 : Html.Attribute msg
+xlToIndigo900 =
+    A.class "xl:to-indigo-900"
+
+
+xlToPurple100 : Html.Attribute msg
+xlToPurple100 =
+    A.class "xl:to-purple-100"
+
+
+xlToPurple200 : Html.Attribute msg
+xlToPurple200 =
+    A.class "xl:to-purple-200"
+
+
+xlToPurple300 : Html.Attribute msg
+xlToPurple300 =
+    A.class "xl:to-purple-300"
+
+
+xlToPurple400 : Html.Attribute msg
+xlToPurple400 =
+    A.class "xl:to-purple-400"
+
+
+xlToPurple500 : Html.Attribute msg
+xlToPurple500 =
+    A.class "xl:to-purple-500"
+
+
+xlToPurple600 : Html.Attribute msg
+xlToPurple600 =
+    A.class "xl:to-purple-600"
+
+
+xlToPurple700 : Html.Attribute msg
+xlToPurple700 =
+    A.class "xl:to-purple-700"
+
+
+xlToPurple800 : Html.Attribute msg
+xlToPurple800 =
+    A.class "xl:to-purple-800"
+
+
+xlToPurple900 : Html.Attribute msg
+xlToPurple900 =
+    A.class "xl:to-purple-900"
+
+
+xlToPink100 : Html.Attribute msg
+xlToPink100 =
+    A.class "xl:to-pink-100"
+
+
+xlToPink200 : Html.Attribute msg
+xlToPink200 =
+    A.class "xl:to-pink-200"
+
+
+xlToPink300 : Html.Attribute msg
+xlToPink300 =
+    A.class "xl:to-pink-300"
+
+
+xlToPink400 : Html.Attribute msg
+xlToPink400 =
+    A.class "xl:to-pink-400"
+
+
+xlToPink500 : Html.Attribute msg
+xlToPink500 =
+    A.class "xl:to-pink-500"
+
+
+xlToPink600 : Html.Attribute msg
+xlToPink600 =
+    A.class "xl:to-pink-600"
+
+
+xlToPink700 : Html.Attribute msg
+xlToPink700 =
+    A.class "xl:to-pink-700"
+
+
+xlToPink800 : Html.Attribute msg
+xlToPink800 =
+    A.class "xl:to-pink-800"
+
+
+xlToPink900 : Html.Attribute msg
+xlToPink900 =
+    A.class "xl:to-pink-900"
+
+
+xlHoverFromTransparent : Html.Attribute msg
+xlHoverFromTransparent =
+    A.class "xl:hover:from-transparent"
+
+
+xlHoverFromCurrent : Html.Attribute msg
+xlHoverFromCurrent =
+    A.class "xl:hover:from-current"
+
+
+xlHoverFromBlack : Html.Attribute msg
+xlHoverFromBlack =
+    A.class "xl:hover:from-black"
+
+
+xlHoverFromWhite : Html.Attribute msg
+xlHoverFromWhite =
+    A.class "xl:hover:from-white"
+
+
+xlHoverFromGray100 : Html.Attribute msg
+xlHoverFromGray100 =
+    A.class "xl:hover:from-gray-100"
+
+
+xlHoverFromGray200 : Html.Attribute msg
+xlHoverFromGray200 =
+    A.class "xl:hover:from-gray-200"
+
+
+xlHoverFromGray300 : Html.Attribute msg
+xlHoverFromGray300 =
+    A.class "xl:hover:from-gray-300"
+
+
+xlHoverFromGray400 : Html.Attribute msg
+xlHoverFromGray400 =
+    A.class "xl:hover:from-gray-400"
+
+
+xlHoverFromGray500 : Html.Attribute msg
+xlHoverFromGray500 =
+    A.class "xl:hover:from-gray-500"
+
+
+xlHoverFromGray600 : Html.Attribute msg
+xlHoverFromGray600 =
+    A.class "xl:hover:from-gray-600"
+
+
+xlHoverFromGray700 : Html.Attribute msg
+xlHoverFromGray700 =
+    A.class "xl:hover:from-gray-700"
+
+
+xlHoverFromGray800 : Html.Attribute msg
+xlHoverFromGray800 =
+    A.class "xl:hover:from-gray-800"
+
+
+xlHoverFromGray900 : Html.Attribute msg
+xlHoverFromGray900 =
+    A.class "xl:hover:from-gray-900"
+
+
+xlHoverFromRed100 : Html.Attribute msg
+xlHoverFromRed100 =
+    A.class "xl:hover:from-red-100"
+
+
+xlHoverFromRed200 : Html.Attribute msg
+xlHoverFromRed200 =
+    A.class "xl:hover:from-red-200"
+
+
+xlHoverFromRed300 : Html.Attribute msg
+xlHoverFromRed300 =
+    A.class "xl:hover:from-red-300"
+
+
+xlHoverFromRed400 : Html.Attribute msg
+xlHoverFromRed400 =
+    A.class "xl:hover:from-red-400"
+
+
+xlHoverFromRed500 : Html.Attribute msg
+xlHoverFromRed500 =
+    A.class "xl:hover:from-red-500"
+
+
+xlHoverFromRed600 : Html.Attribute msg
+xlHoverFromRed600 =
+    A.class "xl:hover:from-red-600"
+
+
+xlHoverFromRed700 : Html.Attribute msg
+xlHoverFromRed700 =
+    A.class "xl:hover:from-red-700"
+
+
+xlHoverFromRed800 : Html.Attribute msg
+xlHoverFromRed800 =
+    A.class "xl:hover:from-red-800"
+
+
+xlHoverFromRed900 : Html.Attribute msg
+xlHoverFromRed900 =
+    A.class "xl:hover:from-red-900"
+
+
+xlHoverFromOrange100 : Html.Attribute msg
+xlHoverFromOrange100 =
+    A.class "xl:hover:from-orange-100"
+
+
+xlHoverFromOrange200 : Html.Attribute msg
+xlHoverFromOrange200 =
+    A.class "xl:hover:from-orange-200"
+
+
+xlHoverFromOrange300 : Html.Attribute msg
+xlHoverFromOrange300 =
+    A.class "xl:hover:from-orange-300"
+
+
+xlHoverFromOrange400 : Html.Attribute msg
+xlHoverFromOrange400 =
+    A.class "xl:hover:from-orange-400"
+
+
+xlHoverFromOrange500 : Html.Attribute msg
+xlHoverFromOrange500 =
+    A.class "xl:hover:from-orange-500"
+
+
+xlHoverFromOrange600 : Html.Attribute msg
+xlHoverFromOrange600 =
+    A.class "xl:hover:from-orange-600"
+
+
+xlHoverFromOrange700 : Html.Attribute msg
+xlHoverFromOrange700 =
+    A.class "xl:hover:from-orange-700"
+
+
+xlHoverFromOrange800 : Html.Attribute msg
+xlHoverFromOrange800 =
+    A.class "xl:hover:from-orange-800"
+
+
+xlHoverFromOrange900 : Html.Attribute msg
+xlHoverFromOrange900 =
+    A.class "xl:hover:from-orange-900"
+
+
+xlHoverFromYellow100 : Html.Attribute msg
+xlHoverFromYellow100 =
+    A.class "xl:hover:from-yellow-100"
+
+
+xlHoverFromYellow200 : Html.Attribute msg
+xlHoverFromYellow200 =
+    A.class "xl:hover:from-yellow-200"
+
+
+xlHoverFromYellow300 : Html.Attribute msg
+xlHoverFromYellow300 =
+    A.class "xl:hover:from-yellow-300"
+
+
+xlHoverFromYellow400 : Html.Attribute msg
+xlHoverFromYellow400 =
+    A.class "xl:hover:from-yellow-400"
+
+
+xlHoverFromYellow500 : Html.Attribute msg
+xlHoverFromYellow500 =
+    A.class "xl:hover:from-yellow-500"
+
+
+xlHoverFromYellow600 : Html.Attribute msg
+xlHoverFromYellow600 =
+    A.class "xl:hover:from-yellow-600"
+
+
+xlHoverFromYellow700 : Html.Attribute msg
+xlHoverFromYellow700 =
+    A.class "xl:hover:from-yellow-700"
+
+
+xlHoverFromYellow800 : Html.Attribute msg
+xlHoverFromYellow800 =
+    A.class "xl:hover:from-yellow-800"
+
+
+xlHoverFromYellow900 : Html.Attribute msg
+xlHoverFromYellow900 =
+    A.class "xl:hover:from-yellow-900"
+
+
+xlHoverFromGreen100 : Html.Attribute msg
+xlHoverFromGreen100 =
+    A.class "xl:hover:from-green-100"
+
+
+xlHoverFromGreen200 : Html.Attribute msg
+xlHoverFromGreen200 =
+    A.class "xl:hover:from-green-200"
+
+
+xlHoverFromGreen300 : Html.Attribute msg
+xlHoverFromGreen300 =
+    A.class "xl:hover:from-green-300"
+
+
+xlHoverFromGreen400 : Html.Attribute msg
+xlHoverFromGreen400 =
+    A.class "xl:hover:from-green-400"
+
+
+xlHoverFromGreen500 : Html.Attribute msg
+xlHoverFromGreen500 =
+    A.class "xl:hover:from-green-500"
+
+
+xlHoverFromGreen600 : Html.Attribute msg
+xlHoverFromGreen600 =
+    A.class "xl:hover:from-green-600"
+
+
+xlHoverFromGreen700 : Html.Attribute msg
+xlHoverFromGreen700 =
+    A.class "xl:hover:from-green-700"
+
+
+xlHoverFromGreen800 : Html.Attribute msg
+xlHoverFromGreen800 =
+    A.class "xl:hover:from-green-800"
+
+
+xlHoverFromGreen900 : Html.Attribute msg
+xlHoverFromGreen900 =
+    A.class "xl:hover:from-green-900"
+
+
+xlHoverFromTeal100 : Html.Attribute msg
+xlHoverFromTeal100 =
+    A.class "xl:hover:from-teal-100"
+
+
+xlHoverFromTeal200 : Html.Attribute msg
+xlHoverFromTeal200 =
+    A.class "xl:hover:from-teal-200"
+
+
+xlHoverFromTeal300 : Html.Attribute msg
+xlHoverFromTeal300 =
+    A.class "xl:hover:from-teal-300"
+
+
+xlHoverFromTeal400 : Html.Attribute msg
+xlHoverFromTeal400 =
+    A.class "xl:hover:from-teal-400"
+
+
+xlHoverFromTeal500 : Html.Attribute msg
+xlHoverFromTeal500 =
+    A.class "xl:hover:from-teal-500"
+
+
+xlHoverFromTeal600 : Html.Attribute msg
+xlHoverFromTeal600 =
+    A.class "xl:hover:from-teal-600"
+
+
+xlHoverFromTeal700 : Html.Attribute msg
+xlHoverFromTeal700 =
+    A.class "xl:hover:from-teal-700"
+
+
+xlHoverFromTeal800 : Html.Attribute msg
+xlHoverFromTeal800 =
+    A.class "xl:hover:from-teal-800"
+
+
+xlHoverFromTeal900 : Html.Attribute msg
+xlHoverFromTeal900 =
+    A.class "xl:hover:from-teal-900"
+
+
+xlHoverFromBlue100 : Html.Attribute msg
+xlHoverFromBlue100 =
+    A.class "xl:hover:from-blue-100"
+
+
+xlHoverFromBlue200 : Html.Attribute msg
+xlHoverFromBlue200 =
+    A.class "xl:hover:from-blue-200"
+
+
+xlHoverFromBlue300 : Html.Attribute msg
+xlHoverFromBlue300 =
+    A.class "xl:hover:from-blue-300"
+
+
+xlHoverFromBlue400 : Html.Attribute msg
+xlHoverFromBlue400 =
+    A.class "xl:hover:from-blue-400"
+
+
+xlHoverFromBlue500 : Html.Attribute msg
+xlHoverFromBlue500 =
+    A.class "xl:hover:from-blue-500"
+
+
+xlHoverFromBlue600 : Html.Attribute msg
+xlHoverFromBlue600 =
+    A.class "xl:hover:from-blue-600"
+
+
+xlHoverFromBlue700 : Html.Attribute msg
+xlHoverFromBlue700 =
+    A.class "xl:hover:from-blue-700"
+
+
+xlHoverFromBlue800 : Html.Attribute msg
+xlHoverFromBlue800 =
+    A.class "xl:hover:from-blue-800"
+
+
+xlHoverFromBlue900 : Html.Attribute msg
+xlHoverFromBlue900 =
+    A.class "xl:hover:from-blue-900"
+
+
+xlHoverFromIndigo100 : Html.Attribute msg
+xlHoverFromIndigo100 =
+    A.class "xl:hover:from-indigo-100"
+
+
+xlHoverFromIndigo200 : Html.Attribute msg
+xlHoverFromIndigo200 =
+    A.class "xl:hover:from-indigo-200"
+
+
+xlHoverFromIndigo300 : Html.Attribute msg
+xlHoverFromIndigo300 =
+    A.class "xl:hover:from-indigo-300"
+
+
+xlHoverFromIndigo400 : Html.Attribute msg
+xlHoverFromIndigo400 =
+    A.class "xl:hover:from-indigo-400"
+
+
+xlHoverFromIndigo500 : Html.Attribute msg
+xlHoverFromIndigo500 =
+    A.class "xl:hover:from-indigo-500"
+
+
+xlHoverFromIndigo600 : Html.Attribute msg
+xlHoverFromIndigo600 =
+    A.class "xl:hover:from-indigo-600"
+
+
+xlHoverFromIndigo700 : Html.Attribute msg
+xlHoverFromIndigo700 =
+    A.class "xl:hover:from-indigo-700"
+
+
+xlHoverFromIndigo800 : Html.Attribute msg
+xlHoverFromIndigo800 =
+    A.class "xl:hover:from-indigo-800"
+
+
+xlHoverFromIndigo900 : Html.Attribute msg
+xlHoverFromIndigo900 =
+    A.class "xl:hover:from-indigo-900"
+
+
+xlHoverFromPurple100 : Html.Attribute msg
+xlHoverFromPurple100 =
+    A.class "xl:hover:from-purple-100"
+
+
+xlHoverFromPurple200 : Html.Attribute msg
+xlHoverFromPurple200 =
+    A.class "xl:hover:from-purple-200"
+
+
+xlHoverFromPurple300 : Html.Attribute msg
+xlHoverFromPurple300 =
+    A.class "xl:hover:from-purple-300"
+
+
+xlHoverFromPurple400 : Html.Attribute msg
+xlHoverFromPurple400 =
+    A.class "xl:hover:from-purple-400"
+
+
+xlHoverFromPurple500 : Html.Attribute msg
+xlHoverFromPurple500 =
+    A.class "xl:hover:from-purple-500"
+
+
+xlHoverFromPurple600 : Html.Attribute msg
+xlHoverFromPurple600 =
+    A.class "xl:hover:from-purple-600"
+
+
+xlHoverFromPurple700 : Html.Attribute msg
+xlHoverFromPurple700 =
+    A.class "xl:hover:from-purple-700"
+
+
+xlHoverFromPurple800 : Html.Attribute msg
+xlHoverFromPurple800 =
+    A.class "xl:hover:from-purple-800"
+
+
+xlHoverFromPurple900 : Html.Attribute msg
+xlHoverFromPurple900 =
+    A.class "xl:hover:from-purple-900"
+
+
+xlHoverFromPink100 : Html.Attribute msg
+xlHoverFromPink100 =
+    A.class "xl:hover:from-pink-100"
+
+
+xlHoverFromPink200 : Html.Attribute msg
+xlHoverFromPink200 =
+    A.class "xl:hover:from-pink-200"
+
+
+xlHoverFromPink300 : Html.Attribute msg
+xlHoverFromPink300 =
+    A.class "xl:hover:from-pink-300"
+
+
+xlHoverFromPink400 : Html.Attribute msg
+xlHoverFromPink400 =
+    A.class "xl:hover:from-pink-400"
+
+
+xlHoverFromPink500 : Html.Attribute msg
+xlHoverFromPink500 =
+    A.class "xl:hover:from-pink-500"
+
+
+xlHoverFromPink600 : Html.Attribute msg
+xlHoverFromPink600 =
+    A.class "xl:hover:from-pink-600"
+
+
+xlHoverFromPink700 : Html.Attribute msg
+xlHoverFromPink700 =
+    A.class "xl:hover:from-pink-700"
+
+
+xlHoverFromPink800 : Html.Attribute msg
+xlHoverFromPink800 =
+    A.class "xl:hover:from-pink-800"
+
+
+xlHoverFromPink900 : Html.Attribute msg
+xlHoverFromPink900 =
+    A.class "xl:hover:from-pink-900"
+
+
+xlHoverViaTransparent : Html.Attribute msg
+xlHoverViaTransparent =
+    A.class "xl:hover:via-transparent"
+
+
+xlHoverViaCurrent : Html.Attribute msg
+xlHoverViaCurrent =
+    A.class "xl:hover:via-current"
+
+
+xlHoverViaBlack : Html.Attribute msg
+xlHoverViaBlack =
+    A.class "xl:hover:via-black"
+
+
+xlHoverViaWhite : Html.Attribute msg
+xlHoverViaWhite =
+    A.class "xl:hover:via-white"
+
+
+xlHoverViaGray100 : Html.Attribute msg
+xlHoverViaGray100 =
+    A.class "xl:hover:via-gray-100"
+
+
+xlHoverViaGray200 : Html.Attribute msg
+xlHoverViaGray200 =
+    A.class "xl:hover:via-gray-200"
+
+
+xlHoverViaGray300 : Html.Attribute msg
+xlHoverViaGray300 =
+    A.class "xl:hover:via-gray-300"
+
+
+xlHoverViaGray400 : Html.Attribute msg
+xlHoverViaGray400 =
+    A.class "xl:hover:via-gray-400"
+
+
+xlHoverViaGray500 : Html.Attribute msg
+xlHoverViaGray500 =
+    A.class "xl:hover:via-gray-500"
+
+
+xlHoverViaGray600 : Html.Attribute msg
+xlHoverViaGray600 =
+    A.class "xl:hover:via-gray-600"
+
+
+xlHoverViaGray700 : Html.Attribute msg
+xlHoverViaGray700 =
+    A.class "xl:hover:via-gray-700"
+
+
+xlHoverViaGray800 : Html.Attribute msg
+xlHoverViaGray800 =
+    A.class "xl:hover:via-gray-800"
+
+
+xlHoverViaGray900 : Html.Attribute msg
+xlHoverViaGray900 =
+    A.class "xl:hover:via-gray-900"
+
+
+xlHoverViaRed100 : Html.Attribute msg
+xlHoverViaRed100 =
+    A.class "xl:hover:via-red-100"
+
+
+xlHoverViaRed200 : Html.Attribute msg
+xlHoverViaRed200 =
+    A.class "xl:hover:via-red-200"
+
+
+xlHoverViaRed300 : Html.Attribute msg
+xlHoverViaRed300 =
+    A.class "xl:hover:via-red-300"
+
+
+xlHoverViaRed400 : Html.Attribute msg
+xlHoverViaRed400 =
+    A.class "xl:hover:via-red-400"
+
+
+xlHoverViaRed500 : Html.Attribute msg
+xlHoverViaRed500 =
+    A.class "xl:hover:via-red-500"
+
+
+xlHoverViaRed600 : Html.Attribute msg
+xlHoverViaRed600 =
+    A.class "xl:hover:via-red-600"
+
+
+xlHoverViaRed700 : Html.Attribute msg
+xlHoverViaRed700 =
+    A.class "xl:hover:via-red-700"
+
+
+xlHoverViaRed800 : Html.Attribute msg
+xlHoverViaRed800 =
+    A.class "xl:hover:via-red-800"
+
+
+xlHoverViaRed900 : Html.Attribute msg
+xlHoverViaRed900 =
+    A.class "xl:hover:via-red-900"
+
+
+xlHoverViaOrange100 : Html.Attribute msg
+xlHoverViaOrange100 =
+    A.class "xl:hover:via-orange-100"
+
+
+xlHoverViaOrange200 : Html.Attribute msg
+xlHoverViaOrange200 =
+    A.class "xl:hover:via-orange-200"
+
+
+xlHoverViaOrange300 : Html.Attribute msg
+xlHoverViaOrange300 =
+    A.class "xl:hover:via-orange-300"
+
+
+xlHoverViaOrange400 : Html.Attribute msg
+xlHoverViaOrange400 =
+    A.class "xl:hover:via-orange-400"
+
+
+xlHoverViaOrange500 : Html.Attribute msg
+xlHoverViaOrange500 =
+    A.class "xl:hover:via-orange-500"
+
+
+xlHoverViaOrange600 : Html.Attribute msg
+xlHoverViaOrange600 =
+    A.class "xl:hover:via-orange-600"
+
+
+xlHoverViaOrange700 : Html.Attribute msg
+xlHoverViaOrange700 =
+    A.class "xl:hover:via-orange-700"
+
+
+xlHoverViaOrange800 : Html.Attribute msg
+xlHoverViaOrange800 =
+    A.class "xl:hover:via-orange-800"
+
+
+xlHoverViaOrange900 : Html.Attribute msg
+xlHoverViaOrange900 =
+    A.class "xl:hover:via-orange-900"
+
+
+xlHoverViaYellow100 : Html.Attribute msg
+xlHoverViaYellow100 =
+    A.class "xl:hover:via-yellow-100"
+
+
+xlHoverViaYellow200 : Html.Attribute msg
+xlHoverViaYellow200 =
+    A.class "xl:hover:via-yellow-200"
+
+
+xlHoverViaYellow300 : Html.Attribute msg
+xlHoverViaYellow300 =
+    A.class "xl:hover:via-yellow-300"
+
+
+xlHoverViaYellow400 : Html.Attribute msg
+xlHoverViaYellow400 =
+    A.class "xl:hover:via-yellow-400"
+
+
+xlHoverViaYellow500 : Html.Attribute msg
+xlHoverViaYellow500 =
+    A.class "xl:hover:via-yellow-500"
+
+
+xlHoverViaYellow600 : Html.Attribute msg
+xlHoverViaYellow600 =
+    A.class "xl:hover:via-yellow-600"
+
+
+xlHoverViaYellow700 : Html.Attribute msg
+xlHoverViaYellow700 =
+    A.class "xl:hover:via-yellow-700"
+
+
+xlHoverViaYellow800 : Html.Attribute msg
+xlHoverViaYellow800 =
+    A.class "xl:hover:via-yellow-800"
+
+
+xlHoverViaYellow900 : Html.Attribute msg
+xlHoverViaYellow900 =
+    A.class "xl:hover:via-yellow-900"
+
+
+xlHoverViaGreen100 : Html.Attribute msg
+xlHoverViaGreen100 =
+    A.class "xl:hover:via-green-100"
+
+
+xlHoverViaGreen200 : Html.Attribute msg
+xlHoverViaGreen200 =
+    A.class "xl:hover:via-green-200"
+
+
+xlHoverViaGreen300 : Html.Attribute msg
+xlHoverViaGreen300 =
+    A.class "xl:hover:via-green-300"
+
+
+xlHoverViaGreen400 : Html.Attribute msg
+xlHoverViaGreen400 =
+    A.class "xl:hover:via-green-400"
+
+
+xlHoverViaGreen500 : Html.Attribute msg
+xlHoverViaGreen500 =
+    A.class "xl:hover:via-green-500"
+
+
+xlHoverViaGreen600 : Html.Attribute msg
+xlHoverViaGreen600 =
+    A.class "xl:hover:via-green-600"
+
+
+xlHoverViaGreen700 : Html.Attribute msg
+xlHoverViaGreen700 =
+    A.class "xl:hover:via-green-700"
+
+
+xlHoverViaGreen800 : Html.Attribute msg
+xlHoverViaGreen800 =
+    A.class "xl:hover:via-green-800"
+
+
+xlHoverViaGreen900 : Html.Attribute msg
+xlHoverViaGreen900 =
+    A.class "xl:hover:via-green-900"
+
+
+xlHoverViaTeal100 : Html.Attribute msg
+xlHoverViaTeal100 =
+    A.class "xl:hover:via-teal-100"
+
+
+xlHoverViaTeal200 : Html.Attribute msg
+xlHoverViaTeal200 =
+    A.class "xl:hover:via-teal-200"
+
+
+xlHoverViaTeal300 : Html.Attribute msg
+xlHoverViaTeal300 =
+    A.class "xl:hover:via-teal-300"
+
+
+xlHoverViaTeal400 : Html.Attribute msg
+xlHoverViaTeal400 =
+    A.class "xl:hover:via-teal-400"
+
+
+xlHoverViaTeal500 : Html.Attribute msg
+xlHoverViaTeal500 =
+    A.class "xl:hover:via-teal-500"
+
+
+xlHoverViaTeal600 : Html.Attribute msg
+xlHoverViaTeal600 =
+    A.class "xl:hover:via-teal-600"
+
+
+xlHoverViaTeal700 : Html.Attribute msg
+xlHoverViaTeal700 =
+    A.class "xl:hover:via-teal-700"
+
+
+xlHoverViaTeal800 : Html.Attribute msg
+xlHoverViaTeal800 =
+    A.class "xl:hover:via-teal-800"
+
+
+xlHoverViaTeal900 : Html.Attribute msg
+xlHoverViaTeal900 =
+    A.class "xl:hover:via-teal-900"
+
+
+xlHoverViaBlue100 : Html.Attribute msg
+xlHoverViaBlue100 =
+    A.class "xl:hover:via-blue-100"
+
+
+xlHoverViaBlue200 : Html.Attribute msg
+xlHoverViaBlue200 =
+    A.class "xl:hover:via-blue-200"
+
+
+xlHoverViaBlue300 : Html.Attribute msg
+xlHoverViaBlue300 =
+    A.class "xl:hover:via-blue-300"
+
+
+xlHoverViaBlue400 : Html.Attribute msg
+xlHoverViaBlue400 =
+    A.class "xl:hover:via-blue-400"
+
+
+xlHoverViaBlue500 : Html.Attribute msg
+xlHoverViaBlue500 =
+    A.class "xl:hover:via-blue-500"
+
+
+xlHoverViaBlue600 : Html.Attribute msg
+xlHoverViaBlue600 =
+    A.class "xl:hover:via-blue-600"
+
+
+xlHoverViaBlue700 : Html.Attribute msg
+xlHoverViaBlue700 =
+    A.class "xl:hover:via-blue-700"
+
+
+xlHoverViaBlue800 : Html.Attribute msg
+xlHoverViaBlue800 =
+    A.class "xl:hover:via-blue-800"
+
+
+xlHoverViaBlue900 : Html.Attribute msg
+xlHoverViaBlue900 =
+    A.class "xl:hover:via-blue-900"
+
+
+xlHoverViaIndigo100 : Html.Attribute msg
+xlHoverViaIndigo100 =
+    A.class "xl:hover:via-indigo-100"
+
+
+xlHoverViaIndigo200 : Html.Attribute msg
+xlHoverViaIndigo200 =
+    A.class "xl:hover:via-indigo-200"
+
+
+xlHoverViaIndigo300 : Html.Attribute msg
+xlHoverViaIndigo300 =
+    A.class "xl:hover:via-indigo-300"
+
+
+xlHoverViaIndigo400 : Html.Attribute msg
+xlHoverViaIndigo400 =
+    A.class "xl:hover:via-indigo-400"
+
+
+xlHoverViaIndigo500 : Html.Attribute msg
+xlHoverViaIndigo500 =
+    A.class "xl:hover:via-indigo-500"
+
+
+xlHoverViaIndigo600 : Html.Attribute msg
+xlHoverViaIndigo600 =
+    A.class "xl:hover:via-indigo-600"
+
+
+xlHoverViaIndigo700 : Html.Attribute msg
+xlHoverViaIndigo700 =
+    A.class "xl:hover:via-indigo-700"
+
+
+xlHoverViaIndigo800 : Html.Attribute msg
+xlHoverViaIndigo800 =
+    A.class "xl:hover:via-indigo-800"
+
+
+xlHoverViaIndigo900 : Html.Attribute msg
+xlHoverViaIndigo900 =
+    A.class "xl:hover:via-indigo-900"
+
+
+xlHoverViaPurple100 : Html.Attribute msg
+xlHoverViaPurple100 =
+    A.class "xl:hover:via-purple-100"
+
+
+xlHoverViaPurple200 : Html.Attribute msg
+xlHoverViaPurple200 =
+    A.class "xl:hover:via-purple-200"
+
+
+xlHoverViaPurple300 : Html.Attribute msg
+xlHoverViaPurple300 =
+    A.class "xl:hover:via-purple-300"
+
+
+xlHoverViaPurple400 : Html.Attribute msg
+xlHoverViaPurple400 =
+    A.class "xl:hover:via-purple-400"
+
+
+xlHoverViaPurple500 : Html.Attribute msg
+xlHoverViaPurple500 =
+    A.class "xl:hover:via-purple-500"
+
+
+xlHoverViaPurple600 : Html.Attribute msg
+xlHoverViaPurple600 =
+    A.class "xl:hover:via-purple-600"
+
+
+xlHoverViaPurple700 : Html.Attribute msg
+xlHoverViaPurple700 =
+    A.class "xl:hover:via-purple-700"
+
+
+xlHoverViaPurple800 : Html.Attribute msg
+xlHoverViaPurple800 =
+    A.class "xl:hover:via-purple-800"
+
+
+xlHoverViaPurple900 : Html.Attribute msg
+xlHoverViaPurple900 =
+    A.class "xl:hover:via-purple-900"
+
+
+xlHoverViaPink100 : Html.Attribute msg
+xlHoverViaPink100 =
+    A.class "xl:hover:via-pink-100"
+
+
+xlHoverViaPink200 : Html.Attribute msg
+xlHoverViaPink200 =
+    A.class "xl:hover:via-pink-200"
+
+
+xlHoverViaPink300 : Html.Attribute msg
+xlHoverViaPink300 =
+    A.class "xl:hover:via-pink-300"
+
+
+xlHoverViaPink400 : Html.Attribute msg
+xlHoverViaPink400 =
+    A.class "xl:hover:via-pink-400"
+
+
+xlHoverViaPink500 : Html.Attribute msg
+xlHoverViaPink500 =
+    A.class "xl:hover:via-pink-500"
+
+
+xlHoverViaPink600 : Html.Attribute msg
+xlHoverViaPink600 =
+    A.class "xl:hover:via-pink-600"
+
+
+xlHoverViaPink700 : Html.Attribute msg
+xlHoverViaPink700 =
+    A.class "xl:hover:via-pink-700"
+
+
+xlHoverViaPink800 : Html.Attribute msg
+xlHoverViaPink800 =
+    A.class "xl:hover:via-pink-800"
+
+
+xlHoverViaPink900 : Html.Attribute msg
+xlHoverViaPink900 =
+    A.class "xl:hover:via-pink-900"
+
+
+xlHoverToTransparent : Html.Attribute msg
+xlHoverToTransparent =
+    A.class "xl:hover:to-transparent"
+
+
+xlHoverToCurrent : Html.Attribute msg
+xlHoverToCurrent =
+    A.class "xl:hover:to-current"
+
+
+xlHoverToBlack : Html.Attribute msg
+xlHoverToBlack =
+    A.class "xl:hover:to-black"
+
+
+xlHoverToWhite : Html.Attribute msg
+xlHoverToWhite =
+    A.class "xl:hover:to-white"
+
+
+xlHoverToGray100 : Html.Attribute msg
+xlHoverToGray100 =
+    A.class "xl:hover:to-gray-100"
+
+
+xlHoverToGray200 : Html.Attribute msg
+xlHoverToGray200 =
+    A.class "xl:hover:to-gray-200"
+
+
+xlHoverToGray300 : Html.Attribute msg
+xlHoverToGray300 =
+    A.class "xl:hover:to-gray-300"
+
+
+xlHoverToGray400 : Html.Attribute msg
+xlHoverToGray400 =
+    A.class "xl:hover:to-gray-400"
+
+
+xlHoverToGray500 : Html.Attribute msg
+xlHoverToGray500 =
+    A.class "xl:hover:to-gray-500"
+
+
+xlHoverToGray600 : Html.Attribute msg
+xlHoverToGray600 =
+    A.class "xl:hover:to-gray-600"
+
+
+xlHoverToGray700 : Html.Attribute msg
+xlHoverToGray700 =
+    A.class "xl:hover:to-gray-700"
+
+
+xlHoverToGray800 : Html.Attribute msg
+xlHoverToGray800 =
+    A.class "xl:hover:to-gray-800"
+
+
+xlHoverToGray900 : Html.Attribute msg
+xlHoverToGray900 =
+    A.class "xl:hover:to-gray-900"
+
+
+xlHoverToRed100 : Html.Attribute msg
+xlHoverToRed100 =
+    A.class "xl:hover:to-red-100"
+
+
+xlHoverToRed200 : Html.Attribute msg
+xlHoverToRed200 =
+    A.class "xl:hover:to-red-200"
+
+
+xlHoverToRed300 : Html.Attribute msg
+xlHoverToRed300 =
+    A.class "xl:hover:to-red-300"
+
+
+xlHoverToRed400 : Html.Attribute msg
+xlHoverToRed400 =
+    A.class "xl:hover:to-red-400"
+
+
+xlHoverToRed500 : Html.Attribute msg
+xlHoverToRed500 =
+    A.class "xl:hover:to-red-500"
+
+
+xlHoverToRed600 : Html.Attribute msg
+xlHoverToRed600 =
+    A.class "xl:hover:to-red-600"
+
+
+xlHoverToRed700 : Html.Attribute msg
+xlHoverToRed700 =
+    A.class "xl:hover:to-red-700"
+
+
+xlHoverToRed800 : Html.Attribute msg
+xlHoverToRed800 =
+    A.class "xl:hover:to-red-800"
+
+
+xlHoverToRed900 : Html.Attribute msg
+xlHoverToRed900 =
+    A.class "xl:hover:to-red-900"
+
+
+xlHoverToOrange100 : Html.Attribute msg
+xlHoverToOrange100 =
+    A.class "xl:hover:to-orange-100"
+
+
+xlHoverToOrange200 : Html.Attribute msg
+xlHoverToOrange200 =
+    A.class "xl:hover:to-orange-200"
+
+
+xlHoverToOrange300 : Html.Attribute msg
+xlHoverToOrange300 =
+    A.class "xl:hover:to-orange-300"
+
+
+xlHoverToOrange400 : Html.Attribute msg
+xlHoverToOrange400 =
+    A.class "xl:hover:to-orange-400"
+
+
+xlHoverToOrange500 : Html.Attribute msg
+xlHoverToOrange500 =
+    A.class "xl:hover:to-orange-500"
+
+
+xlHoverToOrange600 : Html.Attribute msg
+xlHoverToOrange600 =
+    A.class "xl:hover:to-orange-600"
+
+
+xlHoverToOrange700 : Html.Attribute msg
+xlHoverToOrange700 =
+    A.class "xl:hover:to-orange-700"
+
+
+xlHoverToOrange800 : Html.Attribute msg
+xlHoverToOrange800 =
+    A.class "xl:hover:to-orange-800"
+
+
+xlHoverToOrange900 : Html.Attribute msg
+xlHoverToOrange900 =
+    A.class "xl:hover:to-orange-900"
+
+
+xlHoverToYellow100 : Html.Attribute msg
+xlHoverToYellow100 =
+    A.class "xl:hover:to-yellow-100"
+
+
+xlHoverToYellow200 : Html.Attribute msg
+xlHoverToYellow200 =
+    A.class "xl:hover:to-yellow-200"
+
+
+xlHoverToYellow300 : Html.Attribute msg
+xlHoverToYellow300 =
+    A.class "xl:hover:to-yellow-300"
+
+
+xlHoverToYellow400 : Html.Attribute msg
+xlHoverToYellow400 =
+    A.class "xl:hover:to-yellow-400"
+
+
+xlHoverToYellow500 : Html.Attribute msg
+xlHoverToYellow500 =
+    A.class "xl:hover:to-yellow-500"
+
+
+xlHoverToYellow600 : Html.Attribute msg
+xlHoverToYellow600 =
+    A.class "xl:hover:to-yellow-600"
+
+
+xlHoverToYellow700 : Html.Attribute msg
+xlHoverToYellow700 =
+    A.class "xl:hover:to-yellow-700"
+
+
+xlHoverToYellow800 : Html.Attribute msg
+xlHoverToYellow800 =
+    A.class "xl:hover:to-yellow-800"
+
+
+xlHoverToYellow900 : Html.Attribute msg
+xlHoverToYellow900 =
+    A.class "xl:hover:to-yellow-900"
+
+
+xlHoverToGreen100 : Html.Attribute msg
+xlHoverToGreen100 =
+    A.class "xl:hover:to-green-100"
+
+
+xlHoverToGreen200 : Html.Attribute msg
+xlHoverToGreen200 =
+    A.class "xl:hover:to-green-200"
+
+
+xlHoverToGreen300 : Html.Attribute msg
+xlHoverToGreen300 =
+    A.class "xl:hover:to-green-300"
+
+
+xlHoverToGreen400 : Html.Attribute msg
+xlHoverToGreen400 =
+    A.class "xl:hover:to-green-400"
+
+
+xlHoverToGreen500 : Html.Attribute msg
+xlHoverToGreen500 =
+    A.class "xl:hover:to-green-500"
+
+
+xlHoverToGreen600 : Html.Attribute msg
+xlHoverToGreen600 =
+    A.class "xl:hover:to-green-600"
+
+
+xlHoverToGreen700 : Html.Attribute msg
+xlHoverToGreen700 =
+    A.class "xl:hover:to-green-700"
+
+
+xlHoverToGreen800 : Html.Attribute msg
+xlHoverToGreen800 =
+    A.class "xl:hover:to-green-800"
+
+
+xlHoverToGreen900 : Html.Attribute msg
+xlHoverToGreen900 =
+    A.class "xl:hover:to-green-900"
+
+
+xlHoverToTeal100 : Html.Attribute msg
+xlHoverToTeal100 =
+    A.class "xl:hover:to-teal-100"
+
+
+xlHoverToTeal200 : Html.Attribute msg
+xlHoverToTeal200 =
+    A.class "xl:hover:to-teal-200"
+
+
+xlHoverToTeal300 : Html.Attribute msg
+xlHoverToTeal300 =
+    A.class "xl:hover:to-teal-300"
+
+
+xlHoverToTeal400 : Html.Attribute msg
+xlHoverToTeal400 =
+    A.class "xl:hover:to-teal-400"
+
+
+xlHoverToTeal500 : Html.Attribute msg
+xlHoverToTeal500 =
+    A.class "xl:hover:to-teal-500"
+
+
+xlHoverToTeal600 : Html.Attribute msg
+xlHoverToTeal600 =
+    A.class "xl:hover:to-teal-600"
+
+
+xlHoverToTeal700 : Html.Attribute msg
+xlHoverToTeal700 =
+    A.class "xl:hover:to-teal-700"
+
+
+xlHoverToTeal800 : Html.Attribute msg
+xlHoverToTeal800 =
+    A.class "xl:hover:to-teal-800"
+
+
+xlHoverToTeal900 : Html.Attribute msg
+xlHoverToTeal900 =
+    A.class "xl:hover:to-teal-900"
+
+
+xlHoverToBlue100 : Html.Attribute msg
+xlHoverToBlue100 =
+    A.class "xl:hover:to-blue-100"
+
+
+xlHoverToBlue200 : Html.Attribute msg
+xlHoverToBlue200 =
+    A.class "xl:hover:to-blue-200"
+
+
+xlHoverToBlue300 : Html.Attribute msg
+xlHoverToBlue300 =
+    A.class "xl:hover:to-blue-300"
+
+
+xlHoverToBlue400 : Html.Attribute msg
+xlHoverToBlue400 =
+    A.class "xl:hover:to-blue-400"
+
+
+xlHoverToBlue500 : Html.Attribute msg
+xlHoverToBlue500 =
+    A.class "xl:hover:to-blue-500"
+
+
+xlHoverToBlue600 : Html.Attribute msg
+xlHoverToBlue600 =
+    A.class "xl:hover:to-blue-600"
+
+
+xlHoverToBlue700 : Html.Attribute msg
+xlHoverToBlue700 =
+    A.class "xl:hover:to-blue-700"
+
+
+xlHoverToBlue800 : Html.Attribute msg
+xlHoverToBlue800 =
+    A.class "xl:hover:to-blue-800"
+
+
+xlHoverToBlue900 : Html.Attribute msg
+xlHoverToBlue900 =
+    A.class "xl:hover:to-blue-900"
+
+
+xlHoverToIndigo100 : Html.Attribute msg
+xlHoverToIndigo100 =
+    A.class "xl:hover:to-indigo-100"
+
+
+xlHoverToIndigo200 : Html.Attribute msg
+xlHoverToIndigo200 =
+    A.class "xl:hover:to-indigo-200"
+
+
+xlHoverToIndigo300 : Html.Attribute msg
+xlHoverToIndigo300 =
+    A.class "xl:hover:to-indigo-300"
+
+
+xlHoverToIndigo400 : Html.Attribute msg
+xlHoverToIndigo400 =
+    A.class "xl:hover:to-indigo-400"
+
+
+xlHoverToIndigo500 : Html.Attribute msg
+xlHoverToIndigo500 =
+    A.class "xl:hover:to-indigo-500"
+
+
+xlHoverToIndigo600 : Html.Attribute msg
+xlHoverToIndigo600 =
+    A.class "xl:hover:to-indigo-600"
+
+
+xlHoverToIndigo700 : Html.Attribute msg
+xlHoverToIndigo700 =
+    A.class "xl:hover:to-indigo-700"
+
+
+xlHoverToIndigo800 : Html.Attribute msg
+xlHoverToIndigo800 =
+    A.class "xl:hover:to-indigo-800"
+
+
+xlHoverToIndigo900 : Html.Attribute msg
+xlHoverToIndigo900 =
+    A.class "xl:hover:to-indigo-900"
+
+
+xlHoverToPurple100 : Html.Attribute msg
+xlHoverToPurple100 =
+    A.class "xl:hover:to-purple-100"
+
+
+xlHoverToPurple200 : Html.Attribute msg
+xlHoverToPurple200 =
+    A.class "xl:hover:to-purple-200"
+
+
+xlHoverToPurple300 : Html.Attribute msg
+xlHoverToPurple300 =
+    A.class "xl:hover:to-purple-300"
+
+
+xlHoverToPurple400 : Html.Attribute msg
+xlHoverToPurple400 =
+    A.class "xl:hover:to-purple-400"
+
+
+xlHoverToPurple500 : Html.Attribute msg
+xlHoverToPurple500 =
+    A.class "xl:hover:to-purple-500"
+
+
+xlHoverToPurple600 : Html.Attribute msg
+xlHoverToPurple600 =
+    A.class "xl:hover:to-purple-600"
+
+
+xlHoverToPurple700 : Html.Attribute msg
+xlHoverToPurple700 =
+    A.class "xl:hover:to-purple-700"
+
+
+xlHoverToPurple800 : Html.Attribute msg
+xlHoverToPurple800 =
+    A.class "xl:hover:to-purple-800"
+
+
+xlHoverToPurple900 : Html.Attribute msg
+xlHoverToPurple900 =
+    A.class "xl:hover:to-purple-900"
+
+
+xlHoverToPink100 : Html.Attribute msg
+xlHoverToPink100 =
+    A.class "xl:hover:to-pink-100"
+
+
+xlHoverToPink200 : Html.Attribute msg
+xlHoverToPink200 =
+    A.class "xl:hover:to-pink-200"
+
+
+xlHoverToPink300 : Html.Attribute msg
+xlHoverToPink300 =
+    A.class "xl:hover:to-pink-300"
+
+
+xlHoverToPink400 : Html.Attribute msg
+xlHoverToPink400 =
+    A.class "xl:hover:to-pink-400"
+
+
+xlHoverToPink500 : Html.Attribute msg
+xlHoverToPink500 =
+    A.class "xl:hover:to-pink-500"
+
+
+xlHoverToPink600 : Html.Attribute msg
+xlHoverToPink600 =
+    A.class "xl:hover:to-pink-600"
+
+
+xlHoverToPink700 : Html.Attribute msg
+xlHoverToPink700 =
+    A.class "xl:hover:to-pink-700"
+
+
+xlHoverToPink800 : Html.Attribute msg
+xlHoverToPink800 =
+    A.class "xl:hover:to-pink-800"
+
+
+xlHoverToPink900 : Html.Attribute msg
+xlHoverToPink900 =
+    A.class "xl:hover:to-pink-900"
+
+
+xlFocusFromTransparent : Html.Attribute msg
+xlFocusFromTransparent =
+    A.class "xl:focus:from-transparent"
+
+
+xlFocusFromCurrent : Html.Attribute msg
+xlFocusFromCurrent =
+    A.class "xl:focus:from-current"
+
+
+xlFocusFromBlack : Html.Attribute msg
+xlFocusFromBlack =
+    A.class "xl:focus:from-black"
+
+
+xlFocusFromWhite : Html.Attribute msg
+xlFocusFromWhite =
+    A.class "xl:focus:from-white"
+
+
+xlFocusFromGray100 : Html.Attribute msg
+xlFocusFromGray100 =
+    A.class "xl:focus:from-gray-100"
+
+
+xlFocusFromGray200 : Html.Attribute msg
+xlFocusFromGray200 =
+    A.class "xl:focus:from-gray-200"
+
+
+xlFocusFromGray300 : Html.Attribute msg
+xlFocusFromGray300 =
+    A.class "xl:focus:from-gray-300"
+
+
+xlFocusFromGray400 : Html.Attribute msg
+xlFocusFromGray400 =
+    A.class "xl:focus:from-gray-400"
+
+
+xlFocusFromGray500 : Html.Attribute msg
+xlFocusFromGray500 =
+    A.class "xl:focus:from-gray-500"
+
+
+xlFocusFromGray600 : Html.Attribute msg
+xlFocusFromGray600 =
+    A.class "xl:focus:from-gray-600"
+
+
+xlFocusFromGray700 : Html.Attribute msg
+xlFocusFromGray700 =
+    A.class "xl:focus:from-gray-700"
+
+
+xlFocusFromGray800 : Html.Attribute msg
+xlFocusFromGray800 =
+    A.class "xl:focus:from-gray-800"
+
+
+xlFocusFromGray900 : Html.Attribute msg
+xlFocusFromGray900 =
+    A.class "xl:focus:from-gray-900"
+
+
+xlFocusFromRed100 : Html.Attribute msg
+xlFocusFromRed100 =
+    A.class "xl:focus:from-red-100"
+
+
+xlFocusFromRed200 : Html.Attribute msg
+xlFocusFromRed200 =
+    A.class "xl:focus:from-red-200"
+
+
+xlFocusFromRed300 : Html.Attribute msg
+xlFocusFromRed300 =
+    A.class "xl:focus:from-red-300"
+
+
+xlFocusFromRed400 : Html.Attribute msg
+xlFocusFromRed400 =
+    A.class "xl:focus:from-red-400"
+
+
+xlFocusFromRed500 : Html.Attribute msg
+xlFocusFromRed500 =
+    A.class "xl:focus:from-red-500"
+
+
+xlFocusFromRed600 : Html.Attribute msg
+xlFocusFromRed600 =
+    A.class "xl:focus:from-red-600"
+
+
+xlFocusFromRed700 : Html.Attribute msg
+xlFocusFromRed700 =
+    A.class "xl:focus:from-red-700"
+
+
+xlFocusFromRed800 : Html.Attribute msg
+xlFocusFromRed800 =
+    A.class "xl:focus:from-red-800"
+
+
+xlFocusFromRed900 : Html.Attribute msg
+xlFocusFromRed900 =
+    A.class "xl:focus:from-red-900"
+
+
+xlFocusFromOrange100 : Html.Attribute msg
+xlFocusFromOrange100 =
+    A.class "xl:focus:from-orange-100"
+
+
+xlFocusFromOrange200 : Html.Attribute msg
+xlFocusFromOrange200 =
+    A.class "xl:focus:from-orange-200"
+
+
+xlFocusFromOrange300 : Html.Attribute msg
+xlFocusFromOrange300 =
+    A.class "xl:focus:from-orange-300"
+
+
+xlFocusFromOrange400 : Html.Attribute msg
+xlFocusFromOrange400 =
+    A.class "xl:focus:from-orange-400"
+
+
+xlFocusFromOrange500 : Html.Attribute msg
+xlFocusFromOrange500 =
+    A.class "xl:focus:from-orange-500"
+
+
+xlFocusFromOrange600 : Html.Attribute msg
+xlFocusFromOrange600 =
+    A.class "xl:focus:from-orange-600"
+
+
+xlFocusFromOrange700 : Html.Attribute msg
+xlFocusFromOrange700 =
+    A.class "xl:focus:from-orange-700"
+
+
+xlFocusFromOrange800 : Html.Attribute msg
+xlFocusFromOrange800 =
+    A.class "xl:focus:from-orange-800"
+
+
+xlFocusFromOrange900 : Html.Attribute msg
+xlFocusFromOrange900 =
+    A.class "xl:focus:from-orange-900"
+
+
+xlFocusFromYellow100 : Html.Attribute msg
+xlFocusFromYellow100 =
+    A.class "xl:focus:from-yellow-100"
+
+
+xlFocusFromYellow200 : Html.Attribute msg
+xlFocusFromYellow200 =
+    A.class "xl:focus:from-yellow-200"
+
+
+xlFocusFromYellow300 : Html.Attribute msg
+xlFocusFromYellow300 =
+    A.class "xl:focus:from-yellow-300"
+
+
+xlFocusFromYellow400 : Html.Attribute msg
+xlFocusFromYellow400 =
+    A.class "xl:focus:from-yellow-400"
+
+
+xlFocusFromYellow500 : Html.Attribute msg
+xlFocusFromYellow500 =
+    A.class "xl:focus:from-yellow-500"
+
+
+xlFocusFromYellow600 : Html.Attribute msg
+xlFocusFromYellow600 =
+    A.class "xl:focus:from-yellow-600"
+
+
+xlFocusFromYellow700 : Html.Attribute msg
+xlFocusFromYellow700 =
+    A.class "xl:focus:from-yellow-700"
+
+
+xlFocusFromYellow800 : Html.Attribute msg
+xlFocusFromYellow800 =
+    A.class "xl:focus:from-yellow-800"
+
+
+xlFocusFromYellow900 : Html.Attribute msg
+xlFocusFromYellow900 =
+    A.class "xl:focus:from-yellow-900"
+
+
+xlFocusFromGreen100 : Html.Attribute msg
+xlFocusFromGreen100 =
+    A.class "xl:focus:from-green-100"
+
+
+xlFocusFromGreen200 : Html.Attribute msg
+xlFocusFromGreen200 =
+    A.class "xl:focus:from-green-200"
+
+
+xlFocusFromGreen300 : Html.Attribute msg
+xlFocusFromGreen300 =
+    A.class "xl:focus:from-green-300"
+
+
+xlFocusFromGreen400 : Html.Attribute msg
+xlFocusFromGreen400 =
+    A.class "xl:focus:from-green-400"
+
+
+xlFocusFromGreen500 : Html.Attribute msg
+xlFocusFromGreen500 =
+    A.class "xl:focus:from-green-500"
+
+
+xlFocusFromGreen600 : Html.Attribute msg
+xlFocusFromGreen600 =
+    A.class "xl:focus:from-green-600"
+
+
+xlFocusFromGreen700 : Html.Attribute msg
+xlFocusFromGreen700 =
+    A.class "xl:focus:from-green-700"
+
+
+xlFocusFromGreen800 : Html.Attribute msg
+xlFocusFromGreen800 =
+    A.class "xl:focus:from-green-800"
+
+
+xlFocusFromGreen900 : Html.Attribute msg
+xlFocusFromGreen900 =
+    A.class "xl:focus:from-green-900"
+
+
+xlFocusFromTeal100 : Html.Attribute msg
+xlFocusFromTeal100 =
+    A.class "xl:focus:from-teal-100"
+
+
+xlFocusFromTeal200 : Html.Attribute msg
+xlFocusFromTeal200 =
+    A.class "xl:focus:from-teal-200"
+
+
+xlFocusFromTeal300 : Html.Attribute msg
+xlFocusFromTeal300 =
+    A.class "xl:focus:from-teal-300"
+
+
+xlFocusFromTeal400 : Html.Attribute msg
+xlFocusFromTeal400 =
+    A.class "xl:focus:from-teal-400"
+
+
+xlFocusFromTeal500 : Html.Attribute msg
+xlFocusFromTeal500 =
+    A.class "xl:focus:from-teal-500"
+
+
+xlFocusFromTeal600 : Html.Attribute msg
+xlFocusFromTeal600 =
+    A.class "xl:focus:from-teal-600"
+
+
+xlFocusFromTeal700 : Html.Attribute msg
+xlFocusFromTeal700 =
+    A.class "xl:focus:from-teal-700"
+
+
+xlFocusFromTeal800 : Html.Attribute msg
+xlFocusFromTeal800 =
+    A.class "xl:focus:from-teal-800"
+
+
+xlFocusFromTeal900 : Html.Attribute msg
+xlFocusFromTeal900 =
+    A.class "xl:focus:from-teal-900"
+
+
+xlFocusFromBlue100 : Html.Attribute msg
+xlFocusFromBlue100 =
+    A.class "xl:focus:from-blue-100"
+
+
+xlFocusFromBlue200 : Html.Attribute msg
+xlFocusFromBlue200 =
+    A.class "xl:focus:from-blue-200"
+
+
+xlFocusFromBlue300 : Html.Attribute msg
+xlFocusFromBlue300 =
+    A.class "xl:focus:from-blue-300"
+
+
+xlFocusFromBlue400 : Html.Attribute msg
+xlFocusFromBlue400 =
+    A.class "xl:focus:from-blue-400"
+
+
+xlFocusFromBlue500 : Html.Attribute msg
+xlFocusFromBlue500 =
+    A.class "xl:focus:from-blue-500"
+
+
+xlFocusFromBlue600 : Html.Attribute msg
+xlFocusFromBlue600 =
+    A.class "xl:focus:from-blue-600"
+
+
+xlFocusFromBlue700 : Html.Attribute msg
+xlFocusFromBlue700 =
+    A.class "xl:focus:from-blue-700"
+
+
+xlFocusFromBlue800 : Html.Attribute msg
+xlFocusFromBlue800 =
+    A.class "xl:focus:from-blue-800"
+
+
+xlFocusFromBlue900 : Html.Attribute msg
+xlFocusFromBlue900 =
+    A.class "xl:focus:from-blue-900"
+
+
+xlFocusFromIndigo100 : Html.Attribute msg
+xlFocusFromIndigo100 =
+    A.class "xl:focus:from-indigo-100"
+
+
+xlFocusFromIndigo200 : Html.Attribute msg
+xlFocusFromIndigo200 =
+    A.class "xl:focus:from-indigo-200"
+
+
+xlFocusFromIndigo300 : Html.Attribute msg
+xlFocusFromIndigo300 =
+    A.class "xl:focus:from-indigo-300"
+
+
+xlFocusFromIndigo400 : Html.Attribute msg
+xlFocusFromIndigo400 =
+    A.class "xl:focus:from-indigo-400"
+
+
+xlFocusFromIndigo500 : Html.Attribute msg
+xlFocusFromIndigo500 =
+    A.class "xl:focus:from-indigo-500"
+
+
+xlFocusFromIndigo600 : Html.Attribute msg
+xlFocusFromIndigo600 =
+    A.class "xl:focus:from-indigo-600"
+
+
+xlFocusFromIndigo700 : Html.Attribute msg
+xlFocusFromIndigo700 =
+    A.class "xl:focus:from-indigo-700"
+
+
+xlFocusFromIndigo800 : Html.Attribute msg
+xlFocusFromIndigo800 =
+    A.class "xl:focus:from-indigo-800"
+
+
+xlFocusFromIndigo900 : Html.Attribute msg
+xlFocusFromIndigo900 =
+    A.class "xl:focus:from-indigo-900"
+
+
+xlFocusFromPurple100 : Html.Attribute msg
+xlFocusFromPurple100 =
+    A.class "xl:focus:from-purple-100"
+
+
+xlFocusFromPurple200 : Html.Attribute msg
+xlFocusFromPurple200 =
+    A.class "xl:focus:from-purple-200"
+
+
+xlFocusFromPurple300 : Html.Attribute msg
+xlFocusFromPurple300 =
+    A.class "xl:focus:from-purple-300"
+
+
+xlFocusFromPurple400 : Html.Attribute msg
+xlFocusFromPurple400 =
+    A.class "xl:focus:from-purple-400"
+
+
+xlFocusFromPurple500 : Html.Attribute msg
+xlFocusFromPurple500 =
+    A.class "xl:focus:from-purple-500"
+
+
+xlFocusFromPurple600 : Html.Attribute msg
+xlFocusFromPurple600 =
+    A.class "xl:focus:from-purple-600"
+
+
+xlFocusFromPurple700 : Html.Attribute msg
+xlFocusFromPurple700 =
+    A.class "xl:focus:from-purple-700"
+
+
+xlFocusFromPurple800 : Html.Attribute msg
+xlFocusFromPurple800 =
+    A.class "xl:focus:from-purple-800"
+
+
+xlFocusFromPurple900 : Html.Attribute msg
+xlFocusFromPurple900 =
+    A.class "xl:focus:from-purple-900"
+
+
+xlFocusFromPink100 : Html.Attribute msg
+xlFocusFromPink100 =
+    A.class "xl:focus:from-pink-100"
+
+
+xlFocusFromPink200 : Html.Attribute msg
+xlFocusFromPink200 =
+    A.class "xl:focus:from-pink-200"
+
+
+xlFocusFromPink300 : Html.Attribute msg
+xlFocusFromPink300 =
+    A.class "xl:focus:from-pink-300"
+
+
+xlFocusFromPink400 : Html.Attribute msg
+xlFocusFromPink400 =
+    A.class "xl:focus:from-pink-400"
+
+
+xlFocusFromPink500 : Html.Attribute msg
+xlFocusFromPink500 =
+    A.class "xl:focus:from-pink-500"
+
+
+xlFocusFromPink600 : Html.Attribute msg
+xlFocusFromPink600 =
+    A.class "xl:focus:from-pink-600"
+
+
+xlFocusFromPink700 : Html.Attribute msg
+xlFocusFromPink700 =
+    A.class "xl:focus:from-pink-700"
+
+
+xlFocusFromPink800 : Html.Attribute msg
+xlFocusFromPink800 =
+    A.class "xl:focus:from-pink-800"
+
+
+xlFocusFromPink900 : Html.Attribute msg
+xlFocusFromPink900 =
+    A.class "xl:focus:from-pink-900"
+
+
+xlFocusViaTransparent : Html.Attribute msg
+xlFocusViaTransparent =
+    A.class "xl:focus:via-transparent"
+
+
+xlFocusViaCurrent : Html.Attribute msg
+xlFocusViaCurrent =
+    A.class "xl:focus:via-current"
+
+
+xlFocusViaBlack : Html.Attribute msg
+xlFocusViaBlack =
+    A.class "xl:focus:via-black"
+
+
+xlFocusViaWhite : Html.Attribute msg
+xlFocusViaWhite =
+    A.class "xl:focus:via-white"
+
+
+xlFocusViaGray100 : Html.Attribute msg
+xlFocusViaGray100 =
+    A.class "xl:focus:via-gray-100"
+
+
+xlFocusViaGray200 : Html.Attribute msg
+xlFocusViaGray200 =
+    A.class "xl:focus:via-gray-200"
+
+
+xlFocusViaGray300 : Html.Attribute msg
+xlFocusViaGray300 =
+    A.class "xl:focus:via-gray-300"
+
+
+xlFocusViaGray400 : Html.Attribute msg
+xlFocusViaGray400 =
+    A.class "xl:focus:via-gray-400"
+
+
+xlFocusViaGray500 : Html.Attribute msg
+xlFocusViaGray500 =
+    A.class "xl:focus:via-gray-500"
+
+
+xlFocusViaGray600 : Html.Attribute msg
+xlFocusViaGray600 =
+    A.class "xl:focus:via-gray-600"
+
+
+xlFocusViaGray700 : Html.Attribute msg
+xlFocusViaGray700 =
+    A.class "xl:focus:via-gray-700"
+
+
+xlFocusViaGray800 : Html.Attribute msg
+xlFocusViaGray800 =
+    A.class "xl:focus:via-gray-800"
+
+
+xlFocusViaGray900 : Html.Attribute msg
+xlFocusViaGray900 =
+    A.class "xl:focus:via-gray-900"
+
+
+xlFocusViaRed100 : Html.Attribute msg
+xlFocusViaRed100 =
+    A.class "xl:focus:via-red-100"
+
+
+xlFocusViaRed200 : Html.Attribute msg
+xlFocusViaRed200 =
+    A.class "xl:focus:via-red-200"
+
+
+xlFocusViaRed300 : Html.Attribute msg
+xlFocusViaRed300 =
+    A.class "xl:focus:via-red-300"
+
+
+xlFocusViaRed400 : Html.Attribute msg
+xlFocusViaRed400 =
+    A.class "xl:focus:via-red-400"
+
+
+xlFocusViaRed500 : Html.Attribute msg
+xlFocusViaRed500 =
+    A.class "xl:focus:via-red-500"
+
+
+xlFocusViaRed600 : Html.Attribute msg
+xlFocusViaRed600 =
+    A.class "xl:focus:via-red-600"
+
+
+xlFocusViaRed700 : Html.Attribute msg
+xlFocusViaRed700 =
+    A.class "xl:focus:via-red-700"
+
+
+xlFocusViaRed800 : Html.Attribute msg
+xlFocusViaRed800 =
+    A.class "xl:focus:via-red-800"
+
+
+xlFocusViaRed900 : Html.Attribute msg
+xlFocusViaRed900 =
+    A.class "xl:focus:via-red-900"
+
+
+xlFocusViaOrange100 : Html.Attribute msg
+xlFocusViaOrange100 =
+    A.class "xl:focus:via-orange-100"
+
+
+xlFocusViaOrange200 : Html.Attribute msg
+xlFocusViaOrange200 =
+    A.class "xl:focus:via-orange-200"
+
+
+xlFocusViaOrange300 : Html.Attribute msg
+xlFocusViaOrange300 =
+    A.class "xl:focus:via-orange-300"
+
+
+xlFocusViaOrange400 : Html.Attribute msg
+xlFocusViaOrange400 =
+    A.class "xl:focus:via-orange-400"
+
+
+xlFocusViaOrange500 : Html.Attribute msg
+xlFocusViaOrange500 =
+    A.class "xl:focus:via-orange-500"
+
+
+xlFocusViaOrange600 : Html.Attribute msg
+xlFocusViaOrange600 =
+    A.class "xl:focus:via-orange-600"
+
+
+xlFocusViaOrange700 : Html.Attribute msg
+xlFocusViaOrange700 =
+    A.class "xl:focus:via-orange-700"
+
+
+xlFocusViaOrange800 : Html.Attribute msg
+xlFocusViaOrange800 =
+    A.class "xl:focus:via-orange-800"
+
+
+xlFocusViaOrange900 : Html.Attribute msg
+xlFocusViaOrange900 =
+    A.class "xl:focus:via-orange-900"
+
+
+xlFocusViaYellow100 : Html.Attribute msg
+xlFocusViaYellow100 =
+    A.class "xl:focus:via-yellow-100"
+
+
+xlFocusViaYellow200 : Html.Attribute msg
+xlFocusViaYellow200 =
+    A.class "xl:focus:via-yellow-200"
+
+
+xlFocusViaYellow300 : Html.Attribute msg
+xlFocusViaYellow300 =
+    A.class "xl:focus:via-yellow-300"
+
+
+xlFocusViaYellow400 : Html.Attribute msg
+xlFocusViaYellow400 =
+    A.class "xl:focus:via-yellow-400"
+
+
+xlFocusViaYellow500 : Html.Attribute msg
+xlFocusViaYellow500 =
+    A.class "xl:focus:via-yellow-500"
+
+
+xlFocusViaYellow600 : Html.Attribute msg
+xlFocusViaYellow600 =
+    A.class "xl:focus:via-yellow-600"
+
+
+xlFocusViaYellow700 : Html.Attribute msg
+xlFocusViaYellow700 =
+    A.class "xl:focus:via-yellow-700"
+
+
+xlFocusViaYellow800 : Html.Attribute msg
+xlFocusViaYellow800 =
+    A.class "xl:focus:via-yellow-800"
+
+
+xlFocusViaYellow900 : Html.Attribute msg
+xlFocusViaYellow900 =
+    A.class "xl:focus:via-yellow-900"
+
+
+xlFocusViaGreen100 : Html.Attribute msg
+xlFocusViaGreen100 =
+    A.class "xl:focus:via-green-100"
+
+
+xlFocusViaGreen200 : Html.Attribute msg
+xlFocusViaGreen200 =
+    A.class "xl:focus:via-green-200"
+
+
+xlFocusViaGreen300 : Html.Attribute msg
+xlFocusViaGreen300 =
+    A.class "xl:focus:via-green-300"
+
+
+xlFocusViaGreen400 : Html.Attribute msg
+xlFocusViaGreen400 =
+    A.class "xl:focus:via-green-400"
+
+
+xlFocusViaGreen500 : Html.Attribute msg
+xlFocusViaGreen500 =
+    A.class "xl:focus:via-green-500"
+
+
+xlFocusViaGreen600 : Html.Attribute msg
+xlFocusViaGreen600 =
+    A.class "xl:focus:via-green-600"
+
+
+xlFocusViaGreen700 : Html.Attribute msg
+xlFocusViaGreen700 =
+    A.class "xl:focus:via-green-700"
+
+
+xlFocusViaGreen800 : Html.Attribute msg
+xlFocusViaGreen800 =
+    A.class "xl:focus:via-green-800"
+
+
+xlFocusViaGreen900 : Html.Attribute msg
+xlFocusViaGreen900 =
+    A.class "xl:focus:via-green-900"
+
+
+xlFocusViaTeal100 : Html.Attribute msg
+xlFocusViaTeal100 =
+    A.class "xl:focus:via-teal-100"
+
+
+xlFocusViaTeal200 : Html.Attribute msg
+xlFocusViaTeal200 =
+    A.class "xl:focus:via-teal-200"
+
+
+xlFocusViaTeal300 : Html.Attribute msg
+xlFocusViaTeal300 =
+    A.class "xl:focus:via-teal-300"
+
+
+xlFocusViaTeal400 : Html.Attribute msg
+xlFocusViaTeal400 =
+    A.class "xl:focus:via-teal-400"
+
+
+xlFocusViaTeal500 : Html.Attribute msg
+xlFocusViaTeal500 =
+    A.class "xl:focus:via-teal-500"
+
+
+xlFocusViaTeal600 : Html.Attribute msg
+xlFocusViaTeal600 =
+    A.class "xl:focus:via-teal-600"
+
+
+xlFocusViaTeal700 : Html.Attribute msg
+xlFocusViaTeal700 =
+    A.class "xl:focus:via-teal-700"
+
+
+xlFocusViaTeal800 : Html.Attribute msg
+xlFocusViaTeal800 =
+    A.class "xl:focus:via-teal-800"
+
+
+xlFocusViaTeal900 : Html.Attribute msg
+xlFocusViaTeal900 =
+    A.class "xl:focus:via-teal-900"
+
+
+xlFocusViaBlue100 : Html.Attribute msg
+xlFocusViaBlue100 =
+    A.class "xl:focus:via-blue-100"
+
+
+xlFocusViaBlue200 : Html.Attribute msg
+xlFocusViaBlue200 =
+    A.class "xl:focus:via-blue-200"
+
+
+xlFocusViaBlue300 : Html.Attribute msg
+xlFocusViaBlue300 =
+    A.class "xl:focus:via-blue-300"
+
+
+xlFocusViaBlue400 : Html.Attribute msg
+xlFocusViaBlue400 =
+    A.class "xl:focus:via-blue-400"
+
+
+xlFocusViaBlue500 : Html.Attribute msg
+xlFocusViaBlue500 =
+    A.class "xl:focus:via-blue-500"
+
+
+xlFocusViaBlue600 : Html.Attribute msg
+xlFocusViaBlue600 =
+    A.class "xl:focus:via-blue-600"
+
+
+xlFocusViaBlue700 : Html.Attribute msg
+xlFocusViaBlue700 =
+    A.class "xl:focus:via-blue-700"
+
+
+xlFocusViaBlue800 : Html.Attribute msg
+xlFocusViaBlue800 =
+    A.class "xl:focus:via-blue-800"
+
+
+xlFocusViaBlue900 : Html.Attribute msg
+xlFocusViaBlue900 =
+    A.class "xl:focus:via-blue-900"
+
+
+xlFocusViaIndigo100 : Html.Attribute msg
+xlFocusViaIndigo100 =
+    A.class "xl:focus:via-indigo-100"
+
+
+xlFocusViaIndigo200 : Html.Attribute msg
+xlFocusViaIndigo200 =
+    A.class "xl:focus:via-indigo-200"
+
+
+xlFocusViaIndigo300 : Html.Attribute msg
+xlFocusViaIndigo300 =
+    A.class "xl:focus:via-indigo-300"
+
+
+xlFocusViaIndigo400 : Html.Attribute msg
+xlFocusViaIndigo400 =
+    A.class "xl:focus:via-indigo-400"
+
+
+xlFocusViaIndigo500 : Html.Attribute msg
+xlFocusViaIndigo500 =
+    A.class "xl:focus:via-indigo-500"
+
+
+xlFocusViaIndigo600 : Html.Attribute msg
+xlFocusViaIndigo600 =
+    A.class "xl:focus:via-indigo-600"
+
+
+xlFocusViaIndigo700 : Html.Attribute msg
+xlFocusViaIndigo700 =
+    A.class "xl:focus:via-indigo-700"
+
+
+xlFocusViaIndigo800 : Html.Attribute msg
+xlFocusViaIndigo800 =
+    A.class "xl:focus:via-indigo-800"
+
+
+xlFocusViaIndigo900 : Html.Attribute msg
+xlFocusViaIndigo900 =
+    A.class "xl:focus:via-indigo-900"
+
+
+xlFocusViaPurple100 : Html.Attribute msg
+xlFocusViaPurple100 =
+    A.class "xl:focus:via-purple-100"
+
+
+xlFocusViaPurple200 : Html.Attribute msg
+xlFocusViaPurple200 =
+    A.class "xl:focus:via-purple-200"
+
+
+xlFocusViaPurple300 : Html.Attribute msg
+xlFocusViaPurple300 =
+    A.class "xl:focus:via-purple-300"
+
+
+xlFocusViaPurple400 : Html.Attribute msg
+xlFocusViaPurple400 =
+    A.class "xl:focus:via-purple-400"
+
+
+xlFocusViaPurple500 : Html.Attribute msg
+xlFocusViaPurple500 =
+    A.class "xl:focus:via-purple-500"
+
+
+xlFocusViaPurple600 : Html.Attribute msg
+xlFocusViaPurple600 =
+    A.class "xl:focus:via-purple-600"
+
+
+xlFocusViaPurple700 : Html.Attribute msg
+xlFocusViaPurple700 =
+    A.class "xl:focus:via-purple-700"
+
+
+xlFocusViaPurple800 : Html.Attribute msg
+xlFocusViaPurple800 =
+    A.class "xl:focus:via-purple-800"
+
+
+xlFocusViaPurple900 : Html.Attribute msg
+xlFocusViaPurple900 =
+    A.class "xl:focus:via-purple-900"
+
+
+xlFocusViaPink100 : Html.Attribute msg
+xlFocusViaPink100 =
+    A.class "xl:focus:via-pink-100"
+
+
+xlFocusViaPink200 : Html.Attribute msg
+xlFocusViaPink200 =
+    A.class "xl:focus:via-pink-200"
+
+
+xlFocusViaPink300 : Html.Attribute msg
+xlFocusViaPink300 =
+    A.class "xl:focus:via-pink-300"
+
+
+xlFocusViaPink400 : Html.Attribute msg
+xlFocusViaPink400 =
+    A.class "xl:focus:via-pink-400"
+
+
+xlFocusViaPink500 : Html.Attribute msg
+xlFocusViaPink500 =
+    A.class "xl:focus:via-pink-500"
+
+
+xlFocusViaPink600 : Html.Attribute msg
+xlFocusViaPink600 =
+    A.class "xl:focus:via-pink-600"
+
+
+xlFocusViaPink700 : Html.Attribute msg
+xlFocusViaPink700 =
+    A.class "xl:focus:via-pink-700"
+
+
+xlFocusViaPink800 : Html.Attribute msg
+xlFocusViaPink800 =
+    A.class "xl:focus:via-pink-800"
+
+
+xlFocusViaPink900 : Html.Attribute msg
+xlFocusViaPink900 =
+    A.class "xl:focus:via-pink-900"
+
+
+xlFocusToTransparent : Html.Attribute msg
+xlFocusToTransparent =
+    A.class "xl:focus:to-transparent"
+
+
+xlFocusToCurrent : Html.Attribute msg
+xlFocusToCurrent =
+    A.class "xl:focus:to-current"
+
+
+xlFocusToBlack : Html.Attribute msg
+xlFocusToBlack =
+    A.class "xl:focus:to-black"
+
+
+xlFocusToWhite : Html.Attribute msg
+xlFocusToWhite =
+    A.class "xl:focus:to-white"
+
+
+xlFocusToGray100 : Html.Attribute msg
+xlFocusToGray100 =
+    A.class "xl:focus:to-gray-100"
+
+
+xlFocusToGray200 : Html.Attribute msg
+xlFocusToGray200 =
+    A.class "xl:focus:to-gray-200"
+
+
+xlFocusToGray300 : Html.Attribute msg
+xlFocusToGray300 =
+    A.class "xl:focus:to-gray-300"
+
+
+xlFocusToGray400 : Html.Attribute msg
+xlFocusToGray400 =
+    A.class "xl:focus:to-gray-400"
+
+
+xlFocusToGray500 : Html.Attribute msg
+xlFocusToGray500 =
+    A.class "xl:focus:to-gray-500"
+
+
+xlFocusToGray600 : Html.Attribute msg
+xlFocusToGray600 =
+    A.class "xl:focus:to-gray-600"
+
+
+xlFocusToGray700 : Html.Attribute msg
+xlFocusToGray700 =
+    A.class "xl:focus:to-gray-700"
+
+
+xlFocusToGray800 : Html.Attribute msg
+xlFocusToGray800 =
+    A.class "xl:focus:to-gray-800"
+
+
+xlFocusToGray900 : Html.Attribute msg
+xlFocusToGray900 =
+    A.class "xl:focus:to-gray-900"
+
+
+xlFocusToRed100 : Html.Attribute msg
+xlFocusToRed100 =
+    A.class "xl:focus:to-red-100"
+
+
+xlFocusToRed200 : Html.Attribute msg
+xlFocusToRed200 =
+    A.class "xl:focus:to-red-200"
+
+
+xlFocusToRed300 : Html.Attribute msg
+xlFocusToRed300 =
+    A.class "xl:focus:to-red-300"
+
+
+xlFocusToRed400 : Html.Attribute msg
+xlFocusToRed400 =
+    A.class "xl:focus:to-red-400"
+
+
+xlFocusToRed500 : Html.Attribute msg
+xlFocusToRed500 =
+    A.class "xl:focus:to-red-500"
+
+
+xlFocusToRed600 : Html.Attribute msg
+xlFocusToRed600 =
+    A.class "xl:focus:to-red-600"
+
+
+xlFocusToRed700 : Html.Attribute msg
+xlFocusToRed700 =
+    A.class "xl:focus:to-red-700"
+
+
+xlFocusToRed800 : Html.Attribute msg
+xlFocusToRed800 =
+    A.class "xl:focus:to-red-800"
+
+
+xlFocusToRed900 : Html.Attribute msg
+xlFocusToRed900 =
+    A.class "xl:focus:to-red-900"
+
+
+xlFocusToOrange100 : Html.Attribute msg
+xlFocusToOrange100 =
+    A.class "xl:focus:to-orange-100"
+
+
+xlFocusToOrange200 : Html.Attribute msg
+xlFocusToOrange200 =
+    A.class "xl:focus:to-orange-200"
+
+
+xlFocusToOrange300 : Html.Attribute msg
+xlFocusToOrange300 =
+    A.class "xl:focus:to-orange-300"
+
+
+xlFocusToOrange400 : Html.Attribute msg
+xlFocusToOrange400 =
+    A.class "xl:focus:to-orange-400"
+
+
+xlFocusToOrange500 : Html.Attribute msg
+xlFocusToOrange500 =
+    A.class "xl:focus:to-orange-500"
+
+
+xlFocusToOrange600 : Html.Attribute msg
+xlFocusToOrange600 =
+    A.class "xl:focus:to-orange-600"
+
+
+xlFocusToOrange700 : Html.Attribute msg
+xlFocusToOrange700 =
+    A.class "xl:focus:to-orange-700"
+
+
+xlFocusToOrange800 : Html.Attribute msg
+xlFocusToOrange800 =
+    A.class "xl:focus:to-orange-800"
+
+
+xlFocusToOrange900 : Html.Attribute msg
+xlFocusToOrange900 =
+    A.class "xl:focus:to-orange-900"
+
+
+xlFocusToYellow100 : Html.Attribute msg
+xlFocusToYellow100 =
+    A.class "xl:focus:to-yellow-100"
+
+
+xlFocusToYellow200 : Html.Attribute msg
+xlFocusToYellow200 =
+    A.class "xl:focus:to-yellow-200"
+
+
+xlFocusToYellow300 : Html.Attribute msg
+xlFocusToYellow300 =
+    A.class "xl:focus:to-yellow-300"
+
+
+xlFocusToYellow400 : Html.Attribute msg
+xlFocusToYellow400 =
+    A.class "xl:focus:to-yellow-400"
+
+
+xlFocusToYellow500 : Html.Attribute msg
+xlFocusToYellow500 =
+    A.class "xl:focus:to-yellow-500"
+
+
+xlFocusToYellow600 : Html.Attribute msg
+xlFocusToYellow600 =
+    A.class "xl:focus:to-yellow-600"
+
+
+xlFocusToYellow700 : Html.Attribute msg
+xlFocusToYellow700 =
+    A.class "xl:focus:to-yellow-700"
+
+
+xlFocusToYellow800 : Html.Attribute msg
+xlFocusToYellow800 =
+    A.class "xl:focus:to-yellow-800"
+
+
+xlFocusToYellow900 : Html.Attribute msg
+xlFocusToYellow900 =
+    A.class "xl:focus:to-yellow-900"
+
+
+xlFocusToGreen100 : Html.Attribute msg
+xlFocusToGreen100 =
+    A.class "xl:focus:to-green-100"
+
+
+xlFocusToGreen200 : Html.Attribute msg
+xlFocusToGreen200 =
+    A.class "xl:focus:to-green-200"
+
+
+xlFocusToGreen300 : Html.Attribute msg
+xlFocusToGreen300 =
+    A.class "xl:focus:to-green-300"
+
+
+xlFocusToGreen400 : Html.Attribute msg
+xlFocusToGreen400 =
+    A.class "xl:focus:to-green-400"
+
+
+xlFocusToGreen500 : Html.Attribute msg
+xlFocusToGreen500 =
+    A.class "xl:focus:to-green-500"
+
+
+xlFocusToGreen600 : Html.Attribute msg
+xlFocusToGreen600 =
+    A.class "xl:focus:to-green-600"
+
+
+xlFocusToGreen700 : Html.Attribute msg
+xlFocusToGreen700 =
+    A.class "xl:focus:to-green-700"
+
+
+xlFocusToGreen800 : Html.Attribute msg
+xlFocusToGreen800 =
+    A.class "xl:focus:to-green-800"
+
+
+xlFocusToGreen900 : Html.Attribute msg
+xlFocusToGreen900 =
+    A.class "xl:focus:to-green-900"
+
+
+xlFocusToTeal100 : Html.Attribute msg
+xlFocusToTeal100 =
+    A.class "xl:focus:to-teal-100"
+
+
+xlFocusToTeal200 : Html.Attribute msg
+xlFocusToTeal200 =
+    A.class "xl:focus:to-teal-200"
+
+
+xlFocusToTeal300 : Html.Attribute msg
+xlFocusToTeal300 =
+    A.class "xl:focus:to-teal-300"
+
+
+xlFocusToTeal400 : Html.Attribute msg
+xlFocusToTeal400 =
+    A.class "xl:focus:to-teal-400"
+
+
+xlFocusToTeal500 : Html.Attribute msg
+xlFocusToTeal500 =
+    A.class "xl:focus:to-teal-500"
+
+
+xlFocusToTeal600 : Html.Attribute msg
+xlFocusToTeal600 =
+    A.class "xl:focus:to-teal-600"
+
+
+xlFocusToTeal700 : Html.Attribute msg
+xlFocusToTeal700 =
+    A.class "xl:focus:to-teal-700"
+
+
+xlFocusToTeal800 : Html.Attribute msg
+xlFocusToTeal800 =
+    A.class "xl:focus:to-teal-800"
+
+
+xlFocusToTeal900 : Html.Attribute msg
+xlFocusToTeal900 =
+    A.class "xl:focus:to-teal-900"
+
+
+xlFocusToBlue100 : Html.Attribute msg
+xlFocusToBlue100 =
+    A.class "xl:focus:to-blue-100"
+
+
+xlFocusToBlue200 : Html.Attribute msg
+xlFocusToBlue200 =
+    A.class "xl:focus:to-blue-200"
+
+
+xlFocusToBlue300 : Html.Attribute msg
+xlFocusToBlue300 =
+    A.class "xl:focus:to-blue-300"
+
+
+xlFocusToBlue400 : Html.Attribute msg
+xlFocusToBlue400 =
+    A.class "xl:focus:to-blue-400"
+
+
+xlFocusToBlue500 : Html.Attribute msg
+xlFocusToBlue500 =
+    A.class "xl:focus:to-blue-500"
+
+
+xlFocusToBlue600 : Html.Attribute msg
+xlFocusToBlue600 =
+    A.class "xl:focus:to-blue-600"
+
+
+xlFocusToBlue700 : Html.Attribute msg
+xlFocusToBlue700 =
+    A.class "xl:focus:to-blue-700"
+
+
+xlFocusToBlue800 : Html.Attribute msg
+xlFocusToBlue800 =
+    A.class "xl:focus:to-blue-800"
+
+
+xlFocusToBlue900 : Html.Attribute msg
+xlFocusToBlue900 =
+    A.class "xl:focus:to-blue-900"
+
+
+xlFocusToIndigo100 : Html.Attribute msg
+xlFocusToIndigo100 =
+    A.class "xl:focus:to-indigo-100"
+
+
+xlFocusToIndigo200 : Html.Attribute msg
+xlFocusToIndigo200 =
+    A.class "xl:focus:to-indigo-200"
+
+
+xlFocusToIndigo300 : Html.Attribute msg
+xlFocusToIndigo300 =
+    A.class "xl:focus:to-indigo-300"
+
+
+xlFocusToIndigo400 : Html.Attribute msg
+xlFocusToIndigo400 =
+    A.class "xl:focus:to-indigo-400"
+
+
+xlFocusToIndigo500 : Html.Attribute msg
+xlFocusToIndigo500 =
+    A.class "xl:focus:to-indigo-500"
+
+
+xlFocusToIndigo600 : Html.Attribute msg
+xlFocusToIndigo600 =
+    A.class "xl:focus:to-indigo-600"
+
+
+xlFocusToIndigo700 : Html.Attribute msg
+xlFocusToIndigo700 =
+    A.class "xl:focus:to-indigo-700"
+
+
+xlFocusToIndigo800 : Html.Attribute msg
+xlFocusToIndigo800 =
+    A.class "xl:focus:to-indigo-800"
+
+
+xlFocusToIndigo900 : Html.Attribute msg
+xlFocusToIndigo900 =
+    A.class "xl:focus:to-indigo-900"
+
+
+xlFocusToPurple100 : Html.Attribute msg
+xlFocusToPurple100 =
+    A.class "xl:focus:to-purple-100"
+
+
+xlFocusToPurple200 : Html.Attribute msg
+xlFocusToPurple200 =
+    A.class "xl:focus:to-purple-200"
+
+
+xlFocusToPurple300 : Html.Attribute msg
+xlFocusToPurple300 =
+    A.class "xl:focus:to-purple-300"
+
+
+xlFocusToPurple400 : Html.Attribute msg
+xlFocusToPurple400 =
+    A.class "xl:focus:to-purple-400"
+
+
+xlFocusToPurple500 : Html.Attribute msg
+xlFocusToPurple500 =
+    A.class "xl:focus:to-purple-500"
+
+
+xlFocusToPurple600 : Html.Attribute msg
+xlFocusToPurple600 =
+    A.class "xl:focus:to-purple-600"
+
+
+xlFocusToPurple700 : Html.Attribute msg
+xlFocusToPurple700 =
+    A.class "xl:focus:to-purple-700"
+
+
+xlFocusToPurple800 : Html.Attribute msg
+xlFocusToPurple800 =
+    A.class "xl:focus:to-purple-800"
+
+
+xlFocusToPurple900 : Html.Attribute msg
+xlFocusToPurple900 =
+    A.class "xl:focus:to-purple-900"
+
+
+xlFocusToPink100 : Html.Attribute msg
+xlFocusToPink100 =
+    A.class "xl:focus:to-pink-100"
+
+
+xlFocusToPink200 : Html.Attribute msg
+xlFocusToPink200 =
+    A.class "xl:focus:to-pink-200"
+
+
+xlFocusToPink300 : Html.Attribute msg
+xlFocusToPink300 =
+    A.class "xl:focus:to-pink-300"
+
+
+xlFocusToPink400 : Html.Attribute msg
+xlFocusToPink400 =
+    A.class "xl:focus:to-pink-400"
+
+
+xlFocusToPink500 : Html.Attribute msg
+xlFocusToPink500 =
+    A.class "xl:focus:to-pink-500"
+
+
+xlFocusToPink600 : Html.Attribute msg
+xlFocusToPink600 =
+    A.class "xl:focus:to-pink-600"
+
+
+xlFocusToPink700 : Html.Attribute msg
+xlFocusToPink700 =
+    A.class "xl:focus:to-pink-700"
+
+
+xlFocusToPink800 : Html.Attribute msg
+xlFocusToPink800 =
+    A.class "xl:focus:to-pink-800"
+
+
+xlFocusToPink900 : Html.Attribute msg
+xlFocusToPink900 =
+    A.class "xl:focus:to-pink-900"
 
 
 xlBgOpacity0 : Html.Attribute msg
@@ -73337,6 +102956,21 @@ xlRoundedLg =
     A.class "xl:rounded-lg"
 
 
+xlRoundedXl : Html.Attribute msg
+xlRoundedXl =
+    A.class "xl:rounded-xl"
+
+
+xlRounded2xl : Html.Attribute msg
+xlRounded2xl =
+    A.class "xl:rounded-2xl"
+
+
+xlRounded3xl : Html.Attribute msg
+xlRounded3xl =
+    A.class "xl:rounded-3xl"
+
+
 xlRoundedFull : Html.Attribute msg
 xlRoundedFull =
     A.class "xl:rounded-full"
@@ -73440,6 +103074,66 @@ xlRoundedBLg =
 xlRoundedLLg : Html.Attribute msg
 xlRoundedLLg =
     A.class "xl:rounded-l-lg"
+
+
+xlRoundedTXl : Html.Attribute msg
+xlRoundedTXl =
+    A.class "xl:rounded-t-xl"
+
+
+xlRoundedRXl : Html.Attribute msg
+xlRoundedRXl =
+    A.class "xl:rounded-r-xl"
+
+
+xlRoundedBXl : Html.Attribute msg
+xlRoundedBXl =
+    A.class "xl:rounded-b-xl"
+
+
+xlRoundedLXl : Html.Attribute msg
+xlRoundedLXl =
+    A.class "xl:rounded-l-xl"
+
+
+xlRoundedT2xl : Html.Attribute msg
+xlRoundedT2xl =
+    A.class "xl:rounded-t-2xl"
+
+
+xlRoundedR2xl : Html.Attribute msg
+xlRoundedR2xl =
+    A.class "xl:rounded-r-2xl"
+
+
+xlRoundedB2xl : Html.Attribute msg
+xlRoundedB2xl =
+    A.class "xl:rounded-b-2xl"
+
+
+xlRoundedL2xl : Html.Attribute msg
+xlRoundedL2xl =
+    A.class "xl:rounded-l-2xl"
+
+
+xlRoundedT3xl : Html.Attribute msg
+xlRoundedT3xl =
+    A.class "xl:rounded-t-3xl"
+
+
+xlRoundedR3xl : Html.Attribute msg
+xlRoundedR3xl =
+    A.class "xl:rounded-r-3xl"
+
+
+xlRoundedB3xl : Html.Attribute msg
+xlRoundedB3xl =
+    A.class "xl:rounded-b-3xl"
+
+
+xlRoundedL3xl : Html.Attribute msg
+xlRoundedL3xl =
+    A.class "xl:rounded-l-3xl"
 
 
 xlRoundedTFull : Html.Attribute msg
@@ -73560,6 +103254,66 @@ xlRoundedBrLg =
 xlRoundedBlLg : Html.Attribute msg
 xlRoundedBlLg =
     A.class "xl:rounded-bl-lg"
+
+
+xlRoundedTlXl : Html.Attribute msg
+xlRoundedTlXl =
+    A.class "xl:rounded-tl-xl"
+
+
+xlRoundedTrXl : Html.Attribute msg
+xlRoundedTrXl =
+    A.class "xl:rounded-tr-xl"
+
+
+xlRoundedBrXl : Html.Attribute msg
+xlRoundedBrXl =
+    A.class "xl:rounded-br-xl"
+
+
+xlRoundedBlXl : Html.Attribute msg
+xlRoundedBlXl =
+    A.class "xl:rounded-bl-xl"
+
+
+xlRoundedTl2xl : Html.Attribute msg
+xlRoundedTl2xl =
+    A.class "xl:rounded-tl-2xl"
+
+
+xlRoundedTr2xl : Html.Attribute msg
+xlRoundedTr2xl =
+    A.class "xl:rounded-tr-2xl"
+
+
+xlRoundedBr2xl : Html.Attribute msg
+xlRoundedBr2xl =
+    A.class "xl:rounded-br-2xl"
+
+
+xlRoundedBl2xl : Html.Attribute msg
+xlRoundedBl2xl =
+    A.class "xl:rounded-bl-2xl"
+
+
+xlRoundedTl3xl : Html.Attribute msg
+xlRoundedTl3xl =
+    A.class "xl:rounded-tl-3xl"
+
+
+xlRoundedTr3xl : Html.Attribute msg
+xlRoundedTr3xl =
+    A.class "xl:rounded-tr-3xl"
+
+
+xlRoundedBr3xl : Html.Attribute msg
+xlRoundedBr3xl =
+    A.class "xl:rounded-br-3xl"
+
+
+xlRoundedBl3xl : Html.Attribute msg
+xlRoundedBl3xl =
+    A.class "xl:rounded-bl-3xl"
 
 
 xlRoundedTlFull : Html.Attribute msg
@@ -73862,6 +103616,11 @@ xlInlineGrid =
     A.class "xl:inline-grid"
 
 
+xlContents : Html.Attribute msg
+xlContents =
+    A.class "xl:contents"
+
+
 xlHidden : Html.Attribute msg
 xlHidden =
     A.class "xl:hidden"
@@ -73902,6 +103661,91 @@ xlFlexNoWrap =
     A.class "xl:flex-no-wrap"
 
 
+xlPlaceItemsAuto : Html.Attribute msg
+xlPlaceItemsAuto =
+    A.class "xl:place-items-auto"
+
+
+xlPlaceItemsStart : Html.Attribute msg
+xlPlaceItemsStart =
+    A.class "xl:place-items-start"
+
+
+xlPlaceItemsEnd : Html.Attribute msg
+xlPlaceItemsEnd =
+    A.class "xl:place-items-end"
+
+
+xlPlaceItemsCenter : Html.Attribute msg
+xlPlaceItemsCenter =
+    A.class "xl:place-items-center"
+
+
+xlPlaceItemsStretch : Html.Attribute msg
+xlPlaceItemsStretch =
+    A.class "xl:place-items-stretch"
+
+
+xlPlaceContentCenter : Html.Attribute msg
+xlPlaceContentCenter =
+    A.class "xl:place-content-center"
+
+
+xlPlaceContentStart : Html.Attribute msg
+xlPlaceContentStart =
+    A.class "xl:place-content-start"
+
+
+xlPlaceContentEnd : Html.Attribute msg
+xlPlaceContentEnd =
+    A.class "xl:place-content-end"
+
+
+xlPlaceContentBetween : Html.Attribute msg
+xlPlaceContentBetween =
+    A.class "xl:place-content-between"
+
+
+xlPlaceContentAround : Html.Attribute msg
+xlPlaceContentAround =
+    A.class "xl:place-content-around"
+
+
+xlPlaceContentEvenly : Html.Attribute msg
+xlPlaceContentEvenly =
+    A.class "xl:place-content-evenly"
+
+
+xlPlaceContentStretch : Html.Attribute msg
+xlPlaceContentStretch =
+    A.class "xl:place-content-stretch"
+
+
+xlPlaceSelfAuto : Html.Attribute msg
+xlPlaceSelfAuto =
+    A.class "xl:place-self-auto"
+
+
+xlPlaceSelfStart : Html.Attribute msg
+xlPlaceSelfStart =
+    A.class "xl:place-self-start"
+
+
+xlPlaceSelfEnd : Html.Attribute msg
+xlPlaceSelfEnd =
+    A.class "xl:place-self-end"
+
+
+xlPlaceSelfCenter : Html.Attribute msg
+xlPlaceSelfCenter =
+    A.class "xl:place-self-center"
+
+
+xlPlaceSelfStretch : Html.Attribute msg
+xlPlaceSelfStretch =
+    A.class "xl:place-self-stretch"
+
+
 xlItemsStart : Html.Attribute msg
 xlItemsStart =
     A.class "xl:items-start"
@@ -73927,6 +103771,36 @@ xlItemsStretch =
     A.class "xl:items-stretch"
 
 
+xlContentCenter : Html.Attribute msg
+xlContentCenter =
+    A.class "xl:content-center"
+
+
+xlContentStart : Html.Attribute msg
+xlContentStart =
+    A.class "xl:content-start"
+
+
+xlContentEnd : Html.Attribute msg
+xlContentEnd =
+    A.class "xl:content-end"
+
+
+xlContentBetween : Html.Attribute msg
+xlContentBetween =
+    A.class "xl:content-between"
+
+
+xlContentAround : Html.Attribute msg
+xlContentAround =
+    A.class "xl:content-around"
+
+
+xlContentEvenly : Html.Attribute msg
+xlContentEvenly =
+    A.class "xl:content-evenly"
+
+
 xlSelfAuto : Html.Attribute msg
 xlSelfAuto =
     A.class "xl:self-auto"
@@ -73950,6 +103824,31 @@ xlSelfCenter =
 xlSelfStretch : Html.Attribute msg
 xlSelfStretch =
     A.class "xl:self-stretch"
+
+
+xlJustifyItemsAuto : Html.Attribute msg
+xlJustifyItemsAuto =
+    A.class "xl:justify-items-auto"
+
+
+xlJustifyItemsStart : Html.Attribute msg
+xlJustifyItemsStart =
+    A.class "xl:justify-items-start"
+
+
+xlJustifyItemsEnd : Html.Attribute msg
+xlJustifyItemsEnd =
+    A.class "xl:justify-items-end"
+
+
+xlJustifyItemsCenter : Html.Attribute msg
+xlJustifyItemsCenter =
+    A.class "xl:justify-items-center"
+
+
+xlJustifyItemsStretch : Html.Attribute msg
+xlJustifyItemsStretch =
+    A.class "xl:justify-items-stretch"
 
 
 xlJustifyStart : Html.Attribute msg
@@ -73982,29 +103881,29 @@ xlJustifyEvenly =
     A.class "xl:justify-evenly"
 
 
-xlContentCenter : Html.Attribute msg
-xlContentCenter =
-    A.class "xl:content-center"
+xlJustifySelfAuto : Html.Attribute msg
+xlJustifySelfAuto =
+    A.class "xl:justify-self-auto"
 
 
-xlContentStart : Html.Attribute msg
-xlContentStart =
-    A.class "xl:content-start"
+xlJustifySelfStart : Html.Attribute msg
+xlJustifySelfStart =
+    A.class "xl:justify-self-start"
 
 
-xlContentEnd : Html.Attribute msg
-xlContentEnd =
-    A.class "xl:content-end"
+xlJustifySelfEnd : Html.Attribute msg
+xlJustifySelfEnd =
+    A.class "xl:justify-self-end"
 
 
-xlContentBetween : Html.Attribute msg
-xlContentBetween =
-    A.class "xl:content-between"
+xlJustifySelfCenter : Html.Attribute msg
+xlJustifySelfCenter =
+    A.class "xl:justify-self-center"
 
 
-xlContentAround : Html.Attribute msg
-xlContentAround =
-    A.class "xl:content-around"
+xlJustifySelfStretch : Html.Attribute msg
+xlJustifySelfStretch =
+    A.class "xl:justify-self-stretch"
 
 
 xlFlex1 : Html.Attribute msg
@@ -76167,9 +106066,29 @@ xlOutlineNone =
     A.class "xl:outline-none"
 
 
+xlOutlineWhite : Html.Attribute msg
+xlOutlineWhite =
+    A.class "xl:outline-white"
+
+
+xlOutlineBlack : Html.Attribute msg
+xlOutlineBlack =
+    A.class "xl:outline-black"
+
+
 xlFocusOutlineNone : Html.Attribute msg
 xlFocusOutlineNone =
     A.class "xl:focus:outline-none"
+
+
+xlFocusOutlineWhite : Html.Attribute msg
+xlFocusOutlineWhite =
+    A.class "xl:focus:outline-white"
+
+
+xlFocusOutlineBlack : Html.Attribute msg
+xlFocusOutlineBlack =
+    A.class "xl:focus:outline-black"
 
 
 xlOverflowAuto : Html.Attribute msg
@@ -76240,6 +106159,51 @@ xlScrollingTouch =
 xlScrollingAuto : Html.Attribute msg
 xlScrollingAuto =
     A.class "xl:scrolling-auto"
+
+
+xlOverscrollAuto : Html.Attribute msg
+xlOverscrollAuto =
+    A.class "xl:overscroll-auto"
+
+
+xlOverscrollContain : Html.Attribute msg
+xlOverscrollContain =
+    A.class "xl:overscroll-contain"
+
+
+xlOverscrollNone : Html.Attribute msg
+xlOverscrollNone =
+    A.class "xl:overscroll-none"
+
+
+xlOverscrollYAuto : Html.Attribute msg
+xlOverscrollYAuto =
+    A.class "xl:overscroll-y-auto"
+
+
+xlOverscrollYContain : Html.Attribute msg
+xlOverscrollYContain =
+    A.class "xl:overscroll-y-contain"
+
+
+xlOverscrollYNone : Html.Attribute msg
+xlOverscrollYNone =
+    A.class "xl:overscroll-y-none"
+
+
+xlOverscrollXAuto : Html.Attribute msg
+xlOverscrollXAuto =
+    A.class "xl:overscroll-x-auto"
+
+
+xlOverscrollXContain : Html.Attribute msg
+xlOverscrollXContain =
+    A.class "xl:overscroll-x-contain"
+
+
+xlOverscrollXNone : Html.Attribute msg
+xlOverscrollXNone =
+    A.class "xl:overscroll-x-none"
 
 
 xlP0 : Html.Attribute msg
@@ -79797,6 +109761,51 @@ xlSubpixelAntialiased =
     A.class "xl:subpixel-antialiased"
 
 
+xlOrdinal : Html.Attribute msg
+xlOrdinal =
+    A.class "xl:ordinal"
+
+
+xlSlashedZero : Html.Attribute msg
+xlSlashedZero =
+    A.class "xl:slashed-zero"
+
+
+xlLiningNums : Html.Attribute msg
+xlLiningNums =
+    A.class "xl:lining-nums"
+
+
+xlOldstyleNums : Html.Attribute msg
+xlOldstyleNums =
+    A.class "xl:oldstyle-nums"
+
+
+xlProportionalNums : Html.Attribute msg
+xlProportionalNums =
+    A.class "xl:proportional-nums"
+
+
+xlTabularNums : Html.Attribute msg
+xlTabularNums =
+    A.class "xl:tabular-nums"
+
+
+xlDiagonalFractions : Html.Attribute msg
+xlDiagonalFractions =
+    A.class "xl:diagonal-fractions"
+
+
+xlStackedFractions : Html.Attribute msg
+xlStackedFractions =
+    A.class "xl:stacked-fractions"
+
+
+xlNormalNums : Html.Attribute msg
+xlNormalNums =
+    A.class "xl:normal-nums"
+
+
 xlTrackingTighter : Html.Attribute msg
 xlTrackingTighter =
     A.class "xl:tracking-tighter"
@@ -80302,194 +110311,194 @@ xlGapPx =
     A.class "xl:gap-px"
 
 
-xlColGap0 : Html.Attribute msg
-xlColGap0 =
-    A.class "xl:col-gap-0"
+xlGapX0 : Html.Attribute msg
+xlGapX0 =
+    A.class "xl:gap-x-0"
 
 
-xlColGap1 : Html.Attribute msg
-xlColGap1 =
-    A.class "xl:col-gap-1"
+xlGapX1 : Html.Attribute msg
+xlGapX1 =
+    A.class "xl:gap-x-1"
 
 
-xlColGap2 : Html.Attribute msg
-xlColGap2 =
-    A.class "xl:col-gap-2"
+xlGapX2 : Html.Attribute msg
+xlGapX2 =
+    A.class "xl:gap-x-2"
 
 
-xlColGap3 : Html.Attribute msg
-xlColGap3 =
-    A.class "xl:col-gap-3"
+xlGapX3 : Html.Attribute msg
+xlGapX3 =
+    A.class "xl:gap-x-3"
 
 
-xlColGap4 : Html.Attribute msg
-xlColGap4 =
-    A.class "xl:col-gap-4"
+xlGapX4 : Html.Attribute msg
+xlGapX4 =
+    A.class "xl:gap-x-4"
 
 
-xlColGap5 : Html.Attribute msg
-xlColGap5 =
-    A.class "xl:col-gap-5"
+xlGapX5 : Html.Attribute msg
+xlGapX5 =
+    A.class "xl:gap-x-5"
 
 
-xlColGap6 : Html.Attribute msg
-xlColGap6 =
-    A.class "xl:col-gap-6"
+xlGapX6 : Html.Attribute msg
+xlGapX6 =
+    A.class "xl:gap-x-6"
 
 
-xlColGap8 : Html.Attribute msg
-xlColGap8 =
-    A.class "xl:col-gap-8"
+xlGapX8 : Html.Attribute msg
+xlGapX8 =
+    A.class "xl:gap-x-8"
 
 
-xlColGap10 : Html.Attribute msg
-xlColGap10 =
-    A.class "xl:col-gap-10"
+xlGapX10 : Html.Attribute msg
+xlGapX10 =
+    A.class "xl:gap-x-10"
 
 
-xlColGap12 : Html.Attribute msg
-xlColGap12 =
-    A.class "xl:col-gap-12"
+xlGapX12 : Html.Attribute msg
+xlGapX12 =
+    A.class "xl:gap-x-12"
 
 
-xlColGap16 : Html.Attribute msg
-xlColGap16 =
-    A.class "xl:col-gap-16"
+xlGapX16 : Html.Attribute msg
+xlGapX16 =
+    A.class "xl:gap-x-16"
 
 
-xlColGap20 : Html.Attribute msg
-xlColGap20 =
-    A.class "xl:col-gap-20"
+xlGapX20 : Html.Attribute msg
+xlGapX20 =
+    A.class "xl:gap-x-20"
 
 
-xlColGap24 : Html.Attribute msg
-xlColGap24 =
-    A.class "xl:col-gap-24"
+xlGapX24 : Html.Attribute msg
+xlGapX24 =
+    A.class "xl:gap-x-24"
 
 
-xlColGap32 : Html.Attribute msg
-xlColGap32 =
-    A.class "xl:col-gap-32"
+xlGapX32 : Html.Attribute msg
+xlGapX32 =
+    A.class "xl:gap-x-32"
 
 
-xlColGap40 : Html.Attribute msg
-xlColGap40 =
-    A.class "xl:col-gap-40"
+xlGapX40 : Html.Attribute msg
+xlGapX40 =
+    A.class "xl:gap-x-40"
 
 
-xlColGap48 : Html.Attribute msg
-xlColGap48 =
-    A.class "xl:col-gap-48"
+xlGapX48 : Html.Attribute msg
+xlGapX48 =
+    A.class "xl:gap-x-48"
 
 
-xlColGap56 : Html.Attribute msg
-xlColGap56 =
-    A.class "xl:col-gap-56"
+xlGapX56 : Html.Attribute msg
+xlGapX56 =
+    A.class "xl:gap-x-56"
 
 
-xlColGap64 : Html.Attribute msg
-xlColGap64 =
-    A.class "xl:col-gap-64"
+xlGapX64 : Html.Attribute msg
+xlGapX64 =
+    A.class "xl:gap-x-64"
 
 
-xlColGapPx : Html.Attribute msg
-xlColGapPx =
-    A.class "xl:col-gap-px"
+xlGapXPx : Html.Attribute msg
+xlGapXPx =
+    A.class "xl:gap-x-px"
 
 
-xlRowGap0 : Html.Attribute msg
-xlRowGap0 =
-    A.class "xl:row-gap-0"
+xlGapY0 : Html.Attribute msg
+xlGapY0 =
+    A.class "xl:gap-y-0"
 
 
-xlRowGap1 : Html.Attribute msg
-xlRowGap1 =
-    A.class "xl:row-gap-1"
+xlGapY1 : Html.Attribute msg
+xlGapY1 =
+    A.class "xl:gap-y-1"
 
 
-xlRowGap2 : Html.Attribute msg
-xlRowGap2 =
-    A.class "xl:row-gap-2"
+xlGapY2 : Html.Attribute msg
+xlGapY2 =
+    A.class "xl:gap-y-2"
 
 
-xlRowGap3 : Html.Attribute msg
-xlRowGap3 =
-    A.class "xl:row-gap-3"
+xlGapY3 : Html.Attribute msg
+xlGapY3 =
+    A.class "xl:gap-y-3"
 
 
-xlRowGap4 : Html.Attribute msg
-xlRowGap4 =
-    A.class "xl:row-gap-4"
+xlGapY4 : Html.Attribute msg
+xlGapY4 =
+    A.class "xl:gap-y-4"
 
 
-xlRowGap5 : Html.Attribute msg
-xlRowGap5 =
-    A.class "xl:row-gap-5"
+xlGapY5 : Html.Attribute msg
+xlGapY5 =
+    A.class "xl:gap-y-5"
 
 
-xlRowGap6 : Html.Attribute msg
-xlRowGap6 =
-    A.class "xl:row-gap-6"
+xlGapY6 : Html.Attribute msg
+xlGapY6 =
+    A.class "xl:gap-y-6"
 
 
-xlRowGap8 : Html.Attribute msg
-xlRowGap8 =
-    A.class "xl:row-gap-8"
+xlGapY8 : Html.Attribute msg
+xlGapY8 =
+    A.class "xl:gap-y-8"
 
 
-xlRowGap10 : Html.Attribute msg
-xlRowGap10 =
-    A.class "xl:row-gap-10"
+xlGapY10 : Html.Attribute msg
+xlGapY10 =
+    A.class "xl:gap-y-10"
 
 
-xlRowGap12 : Html.Attribute msg
-xlRowGap12 =
-    A.class "xl:row-gap-12"
+xlGapY12 : Html.Attribute msg
+xlGapY12 =
+    A.class "xl:gap-y-12"
 
 
-xlRowGap16 : Html.Attribute msg
-xlRowGap16 =
-    A.class "xl:row-gap-16"
+xlGapY16 : Html.Attribute msg
+xlGapY16 =
+    A.class "xl:gap-y-16"
 
 
-xlRowGap20 : Html.Attribute msg
-xlRowGap20 =
-    A.class "xl:row-gap-20"
+xlGapY20 : Html.Attribute msg
+xlGapY20 =
+    A.class "xl:gap-y-20"
 
 
-xlRowGap24 : Html.Attribute msg
-xlRowGap24 =
-    A.class "xl:row-gap-24"
+xlGapY24 : Html.Attribute msg
+xlGapY24 =
+    A.class "xl:gap-y-24"
 
 
-xlRowGap32 : Html.Attribute msg
-xlRowGap32 =
-    A.class "xl:row-gap-32"
+xlGapY32 : Html.Attribute msg
+xlGapY32 =
+    A.class "xl:gap-y-32"
 
 
-xlRowGap40 : Html.Attribute msg
-xlRowGap40 =
-    A.class "xl:row-gap-40"
+xlGapY40 : Html.Attribute msg
+xlGapY40 =
+    A.class "xl:gap-y-40"
 
 
-xlRowGap48 : Html.Attribute msg
-xlRowGap48 =
-    A.class "xl:row-gap-48"
+xlGapY48 : Html.Attribute msg
+xlGapY48 =
+    A.class "xl:gap-y-48"
 
 
-xlRowGap56 : Html.Attribute msg
-xlRowGap56 =
-    A.class "xl:row-gap-56"
+xlGapY56 : Html.Attribute msg
+xlGapY56 =
+    A.class "xl:gap-y-56"
 
 
-xlRowGap64 : Html.Attribute msg
-xlRowGap64 =
-    A.class "xl:row-gap-64"
+xlGapY64 : Html.Attribute msg
+xlGapY64 =
+    A.class "xl:gap-y-64"
 
 
-xlRowGapPx : Html.Attribute msg
-xlRowGapPx =
-    A.class "xl:row-gap-px"
+xlGapYPx : Html.Attribute msg
+xlGapYPx =
+    A.class "xl:gap-y-px"
 
 
 xlGridFlowRow : Html.Attribute msg
@@ -80577,6 +110586,26 @@ xlGridColsNone =
     A.class "xl:grid-cols-none"
 
 
+xlAutoColsAuto : Html.Attribute msg
+xlAutoColsAuto =
+    A.class "xl:auto-cols-auto"
+
+
+xlAutoColsMin : Html.Attribute msg
+xlAutoColsMin =
+    A.class "xl:auto-cols-min"
+
+
+xlAutoColsMax : Html.Attribute msg
+xlAutoColsMax =
+    A.class "xl:auto-cols-max"
+
+
+xlAutoColsFr : Html.Attribute msg
+xlAutoColsFr =
+    A.class "xl:auto-cols-fr"
+
+
 xlColAuto : Html.Attribute msg
 xlColAuto =
     A.class "xl:col-auto"
@@ -80640,6 +110669,11 @@ xlColSpan11 =
 xlColSpan12 : Html.Attribute msg
 xlColSpan12 =
     A.class "xl:col-span-12"
+
+
+xlColSpanFull : Html.Attribute msg
+xlColSpanFull =
+    A.class "xl:col-span-full"
 
 
 xlColStart1 : Html.Attribute msg
@@ -80817,6 +110851,26 @@ xlGridRowsNone =
     A.class "xl:grid-rows-none"
 
 
+xlAutoRowsAuto : Html.Attribute msg
+xlAutoRowsAuto =
+    A.class "xl:auto-rows-auto"
+
+
+xlAutoRowsMin : Html.Attribute msg
+xlAutoRowsMin =
+    A.class "xl:auto-rows-min"
+
+
+xlAutoRowsMax : Html.Attribute msg
+xlAutoRowsMax =
+    A.class "xl:auto-rows-max"
+
+
+xlAutoRowsFr : Html.Attribute msg
+xlAutoRowsFr =
+    A.class "xl:auto-rows-fr"
+
+
 xlRowAuto : Html.Attribute msg
 xlRowAuto =
     A.class "xl:row-auto"
@@ -80850,6 +110904,11 @@ xlRowSpan5 =
 xlRowSpan6 : Html.Attribute msg
 xlRowSpan6 =
     A.class "xl:row-span-6"
+
+
+xlRowSpanFull : Html.Attribute msg
+xlRowSpanFull =
+    A.class "xl:row-span-full"
 
 
 xlRowStart1 : Html.Attribute msg
@@ -81442,6 +111501,31 @@ xlRotate0 =
     A.class "xl:rotate-0"
 
 
+xlRotate1 : Html.Attribute msg
+xlRotate1 =
+    A.class "xl:rotate-1"
+
+
+xlRotate2 : Html.Attribute msg
+xlRotate2 =
+    A.class "xl:rotate-2"
+
+
+xlRotate3 : Html.Attribute msg
+xlRotate3 =
+    A.class "xl:rotate-3"
+
+
+xlRotate6 : Html.Attribute msg
+xlRotate6 =
+    A.class "xl:rotate-6"
+
+
+xlRotate12 : Html.Attribute msg
+xlRotate12 =
+    A.class "xl:rotate-12"
+
+
 xlRotate45 : Html.Attribute msg
 xlRotate45 =
     A.class "xl:rotate-45"
@@ -81472,9 +111556,59 @@ xlNegRotate45 =
     A.class "xl:-rotate-45"
 
 
+xlNegRotate12 : Html.Attribute msg
+xlNegRotate12 =
+    A.class "xl:-rotate-12"
+
+
+xlNegRotate6 : Html.Attribute msg
+xlNegRotate6 =
+    A.class "xl:-rotate-6"
+
+
+xlNegRotate3 : Html.Attribute msg
+xlNegRotate3 =
+    A.class "xl:-rotate-3"
+
+
+xlNegRotate2 : Html.Attribute msg
+xlNegRotate2 =
+    A.class "xl:-rotate-2"
+
+
+xlNegRotate1 : Html.Attribute msg
+xlNegRotate1 =
+    A.class "xl:-rotate-1"
+
+
 xlHoverRotate0 : Html.Attribute msg
 xlHoverRotate0 =
     A.class "xl:hover:rotate-0"
+
+
+xlHoverRotate1 : Html.Attribute msg
+xlHoverRotate1 =
+    A.class "xl:hover:rotate-1"
+
+
+xlHoverRotate2 : Html.Attribute msg
+xlHoverRotate2 =
+    A.class "xl:hover:rotate-2"
+
+
+xlHoverRotate3 : Html.Attribute msg
+xlHoverRotate3 =
+    A.class "xl:hover:rotate-3"
+
+
+xlHoverRotate6 : Html.Attribute msg
+xlHoverRotate6 =
+    A.class "xl:hover:rotate-6"
+
+
+xlHoverRotate12 : Html.Attribute msg
+xlHoverRotate12 =
+    A.class "xl:hover:rotate-12"
 
 
 xlHoverRotate45 : Html.Attribute msg
@@ -81507,9 +111641,59 @@ xlHoverNegRotate45 =
     A.class "xl:hover:-rotate-45"
 
 
+xlHoverNegRotate12 : Html.Attribute msg
+xlHoverNegRotate12 =
+    A.class "xl:hover:-rotate-12"
+
+
+xlHoverNegRotate6 : Html.Attribute msg
+xlHoverNegRotate6 =
+    A.class "xl:hover:-rotate-6"
+
+
+xlHoverNegRotate3 : Html.Attribute msg
+xlHoverNegRotate3 =
+    A.class "xl:hover:-rotate-3"
+
+
+xlHoverNegRotate2 : Html.Attribute msg
+xlHoverNegRotate2 =
+    A.class "xl:hover:-rotate-2"
+
+
+xlHoverNegRotate1 : Html.Attribute msg
+xlHoverNegRotate1 =
+    A.class "xl:hover:-rotate-1"
+
+
 xlFocusRotate0 : Html.Attribute msg
 xlFocusRotate0 =
     A.class "xl:focus:rotate-0"
+
+
+xlFocusRotate1 : Html.Attribute msg
+xlFocusRotate1 =
+    A.class "xl:focus:rotate-1"
+
+
+xlFocusRotate2 : Html.Attribute msg
+xlFocusRotate2 =
+    A.class "xl:focus:rotate-2"
+
+
+xlFocusRotate3 : Html.Attribute msg
+xlFocusRotate3 =
+    A.class "xl:focus:rotate-3"
+
+
+xlFocusRotate6 : Html.Attribute msg
+xlFocusRotate6 =
+    A.class "xl:focus:rotate-6"
+
+
+xlFocusRotate12 : Html.Attribute msg
+xlFocusRotate12 =
+    A.class "xl:focus:rotate-12"
 
 
 xlFocusRotate45 : Html.Attribute msg
@@ -81540,6 +111724,31 @@ xlFocusNegRotate90 =
 xlFocusNegRotate45 : Html.Attribute msg
 xlFocusNegRotate45 =
     A.class "xl:focus:-rotate-45"
+
+
+xlFocusNegRotate12 : Html.Attribute msg
+xlFocusNegRotate12 =
+    A.class "xl:focus:-rotate-12"
+
+
+xlFocusNegRotate6 : Html.Attribute msg
+xlFocusNegRotate6 =
+    A.class "xl:focus:-rotate-6"
+
+
+xlFocusNegRotate3 : Html.Attribute msg
+xlFocusNegRotate3 =
+    A.class "xl:focus:-rotate-3"
+
+
+xlFocusNegRotate2 : Html.Attribute msg
+xlFocusNegRotate2 =
+    A.class "xl:focus:-rotate-2"
+
+
+xlFocusNegRotate1 : Html.Attribute msg
+xlFocusNegRotate1 =
+    A.class "xl:focus:-rotate-1"
 
 
 xlTranslateX0 : Html.Attribute msg
@@ -82777,6 +112986,16 @@ xlSkewX0 =
     A.class "xl:skew-x-0"
 
 
+xlSkewX1 : Html.Attribute msg
+xlSkewX1 =
+    A.class "xl:skew-x-1"
+
+
+xlSkewX2 : Html.Attribute msg
+xlSkewX2 =
+    A.class "xl:skew-x-2"
+
+
 xlSkewX3 : Html.Attribute msg
 xlSkewX3 =
     A.class "xl:skew-x-3"
@@ -82807,9 +113026,29 @@ xlNegSkewX3 =
     A.class "xl:-skew-x-3"
 
 
+xlNegSkewX2 : Html.Attribute msg
+xlNegSkewX2 =
+    A.class "xl:-skew-x-2"
+
+
+xlNegSkewX1 : Html.Attribute msg
+xlNegSkewX1 =
+    A.class "xl:-skew-x-1"
+
+
 xlSkewY0 : Html.Attribute msg
 xlSkewY0 =
     A.class "xl:skew-y-0"
+
+
+xlSkewY1 : Html.Attribute msg
+xlSkewY1 =
+    A.class "xl:skew-y-1"
+
+
+xlSkewY2 : Html.Attribute msg
+xlSkewY2 =
+    A.class "xl:skew-y-2"
 
 
 xlSkewY3 : Html.Attribute msg
@@ -82842,9 +113081,29 @@ xlNegSkewY3 =
     A.class "xl:-skew-y-3"
 
 
+xlNegSkewY2 : Html.Attribute msg
+xlNegSkewY2 =
+    A.class "xl:-skew-y-2"
+
+
+xlNegSkewY1 : Html.Attribute msg
+xlNegSkewY1 =
+    A.class "xl:-skew-y-1"
+
+
 xlHoverSkewX0 : Html.Attribute msg
 xlHoverSkewX0 =
     A.class "xl:hover:skew-x-0"
+
+
+xlHoverSkewX1 : Html.Attribute msg
+xlHoverSkewX1 =
+    A.class "xl:hover:skew-x-1"
+
+
+xlHoverSkewX2 : Html.Attribute msg
+xlHoverSkewX2 =
+    A.class "xl:hover:skew-x-2"
 
 
 xlHoverSkewX3 : Html.Attribute msg
@@ -82877,9 +113136,29 @@ xlHoverNegSkewX3 =
     A.class "xl:hover:-skew-x-3"
 
 
+xlHoverNegSkewX2 : Html.Attribute msg
+xlHoverNegSkewX2 =
+    A.class "xl:hover:-skew-x-2"
+
+
+xlHoverNegSkewX1 : Html.Attribute msg
+xlHoverNegSkewX1 =
+    A.class "xl:hover:-skew-x-1"
+
+
 xlHoverSkewY0 : Html.Attribute msg
 xlHoverSkewY0 =
     A.class "xl:hover:skew-y-0"
+
+
+xlHoverSkewY1 : Html.Attribute msg
+xlHoverSkewY1 =
+    A.class "xl:hover:skew-y-1"
+
+
+xlHoverSkewY2 : Html.Attribute msg
+xlHoverSkewY2 =
+    A.class "xl:hover:skew-y-2"
 
 
 xlHoverSkewY3 : Html.Attribute msg
@@ -82912,9 +113191,29 @@ xlHoverNegSkewY3 =
     A.class "xl:hover:-skew-y-3"
 
 
+xlHoverNegSkewY2 : Html.Attribute msg
+xlHoverNegSkewY2 =
+    A.class "xl:hover:-skew-y-2"
+
+
+xlHoverNegSkewY1 : Html.Attribute msg
+xlHoverNegSkewY1 =
+    A.class "xl:hover:-skew-y-1"
+
+
 xlFocusSkewX0 : Html.Attribute msg
 xlFocusSkewX0 =
     A.class "xl:focus:skew-x-0"
+
+
+xlFocusSkewX1 : Html.Attribute msg
+xlFocusSkewX1 =
+    A.class "xl:focus:skew-x-1"
+
+
+xlFocusSkewX2 : Html.Attribute msg
+xlFocusSkewX2 =
+    A.class "xl:focus:skew-x-2"
 
 
 xlFocusSkewX3 : Html.Attribute msg
@@ -82947,9 +113246,29 @@ xlFocusNegSkewX3 =
     A.class "xl:focus:-skew-x-3"
 
 
+xlFocusNegSkewX2 : Html.Attribute msg
+xlFocusNegSkewX2 =
+    A.class "xl:focus:-skew-x-2"
+
+
+xlFocusNegSkewX1 : Html.Attribute msg
+xlFocusNegSkewX1 =
+    A.class "xl:focus:-skew-x-1"
+
+
 xlFocusSkewY0 : Html.Attribute msg
 xlFocusSkewY0 =
     A.class "xl:focus:skew-y-0"
+
+
+xlFocusSkewY1 : Html.Attribute msg
+xlFocusSkewY1 =
+    A.class "xl:focus:skew-y-1"
+
+
+xlFocusSkewY2 : Html.Attribute msg
+xlFocusSkewY2 =
+    A.class "xl:focus:skew-y-2"
 
 
 xlFocusSkewY3 : Html.Attribute msg
@@ -82980,6 +113299,16 @@ xlFocusNegSkewY6 =
 xlFocusNegSkewY3 : Html.Attribute msg
 xlFocusNegSkewY3 =
     A.class "xl:focus:-skew-y-3"
+
+
+xlFocusNegSkewY2 : Html.Attribute msg
+xlFocusNegSkewY2 =
+    A.class "xl:focus:-skew-y-2"
+
+
+xlFocusNegSkewY1 : Html.Attribute msg
+xlFocusNegSkewY1 =
+    A.class "xl:focus:-skew-y-1"
 
 
 xlTransitionNone : Html.Attribute msg
@@ -83115,3 +113444,28 @@ xlDelay700 =
 xlDelay1000 : Html.Attribute msg
 xlDelay1000 =
     A.class "xl:delay-1000"
+
+
+xlAnimateNone : Html.Attribute msg
+xlAnimateNone =
+    A.class "xl:animate-none"
+
+
+xlAnimateSpin : Html.Attribute msg
+xlAnimateSpin =
+    A.class "xl:animate-spin"
+
+
+xlAnimatePing : Html.Attribute msg
+xlAnimatePing =
+    A.class "xl:animate-ping"
+
+
+xlAnimatePulse : Html.Attribute msg
+xlAnimatePulse =
+    A.class "xl:animate-pulse"
+
+
+xlAnimateBounce : Html.Attribute msg
+xlAnimateBounce =
+    A.class "xl:animate-bounce"

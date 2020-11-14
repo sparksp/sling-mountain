@@ -117,6 +117,7 @@ disableCurrent list =
 disable : comparable -> TodoList comparable v -> TodoList comparable v
 disable key list =
     let
+        findResult : ( Maybe ( comparable, v ), TodoList comparable v )
         findResult =
             ( Nothing, list )
                 |> findTodoListRemaining key
@@ -136,6 +137,7 @@ disable key list =
 pick : comparable -> TodoList comparable v -> TodoList comparable v
 pick key list =
     let
+        findResult : ( Maybe ( comparable, v ), TodoList comparable v )
         findResult =
             ( Nothing, list )
                 |> findTodoListRemaining key
@@ -158,6 +160,7 @@ pick key list =
 restore : comparable -> TodoList comparable v -> TodoList comparable v
 restore key list =
     let
+        findResult : ( Maybe ( comparable, v ), TodoList comparable v )
         findResult =
             ( Nothing, list )
                 |> findTodoListCompleted key
@@ -483,6 +486,7 @@ pickFromRemaining maybeKey todo =
 
         Just key ->
             let
+                findResult : ( Maybe ( String, v ), TodoList String v )
                 findResult =
                     ( Nothing, todo )
                         |> findTodoListRemaining key

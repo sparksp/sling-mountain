@@ -19,6 +19,7 @@ type alias Card msg =
 view : Card msg -> Html msg
 view ({ frame, body } as card) =
     let
+        baseAttributes : List (Html.Attribute msg)
         baseAttributes =
             [ TW.bgWhite
             , TW.my3

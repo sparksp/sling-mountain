@@ -38,6 +38,7 @@ link options =
 view : List (Html.Attribute msg) -> Action msg -> Html msg
 view attributes action =
     let
+        baseAttributes : List (Html.Attribute msg)
         baseAttributes =
             TW.flex
                 :: TW.flexRow

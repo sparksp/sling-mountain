@@ -18,6 +18,7 @@ import Ports
 import Random
 import SHA1
 import Scenario exposing (Scenario)
+import Svg exposing (Attribute)
 import Svg.Tailwind as STW
 import Task
 import TodoList exposing (TodoList)
@@ -95,16 +96,20 @@ application scenarios =
 init : List Scenario -> Flags -> Url -> Nav.Key -> ( Model, Cmd Msg )
 init list flags url navKey =
     let
+        listWithKeys : List ( Key, Scenario )
         listWithKeys =
             withKeys list
 
+        key : String
         key =
             keyFromUrl url
 
+        todoListFromFlags : Maybe (TodoList String Scenario)
         todoListFromFlags =
             Maybe.andThen (Decode.decodeValue (TodoList.decoder listWithKeys) >> Result.toMaybe) flags
                 |> Maybe.map (TodoList.pick key)
 
+        model : Model
         model =
             initialModel url navKey
     in
@@ -185,6 +190,7 @@ update msg (Model model) =
 
         RestoreAll ->
             let
+                restoreAllFn : TodoList comparable v -> TodoList comparable v
                 restoreAllFn =
                     -- If there's any completed scenarios then restore all
                     -- completed, otherwise restore all disabled instead.
@@ -279,6 +285,7 @@ update msg (Model model) =
 pick : String -> Model -> ( Model, Cmd Msg )
 pick key (Model model) =
     let
+        newTodo : TodoList String Scenario
         newTodo =
             TodoList.pick key model.todo
     in
@@ -380,6 +387,7 @@ currentScenarioTitle todo =
 viewScenarios : Model -> Html Msg
 viewScenarios (Model { embed, todo, width, showCompleted, showRemaining, showDisabled, showInformation }) =
     let
+        options : { embed : Embed, maxWidth : Int }
         options =
             { embed = embed, maxWidth = width }
     in
@@ -417,8 +425,8 @@ viewScenarios (Model { embed, todo, width, showCompleted, showRemaining, showDis
 
 viewTitle : Html Msg
 viewTitle =
-    Html.nav [ TW.text3xl, TW.mdText4xl, TW.mb2, TW.fontTitle ]
-        [ Html.span [ TW.textGray700, TW.text2xl, TW.mdText3xl ] [ Html.text "#" ]
+    Html.nav [ TW.text3xl, TW.mdText4xl, TW.leadingNormal, TW.mb2, TW.fontTitle ]
+        [ Html.span [ TW.textGray700, TW.text2xl, TW.mdText3xl, TW.leadingNormal ] [ Html.text "#" ]
         , Html.text "SlingMountain"
         ]
 
@@ -543,6 +551,7 @@ viewCardList ( headingKey, { title, show } ) cards =
 
         _ ->
             let
+                heading : ( String, Html Msg )
                 heading =
                     ( headingKey, viewHeading title { count = List.length cards, show = show } )
             in
@@ -562,6 +571,7 @@ viewHeading :
     -> Html Msg
 viewHeading heading { count, show } =
     let
+        iconAttr : List (Attribute msg)
         iconAttr =
             [ STW.h4
             , STW.w4
@@ -571,6 +581,7 @@ viewHeading heading { count, show } =
             , STW.transform
             ]
 
+        icon : Html msg
         icon =
             if Tuple.second show then
                 Icons.chevronRight (STW.rotate90 :: iconAttr)
@@ -668,6 +679,7 @@ viewScenarioList :
     -> List ( Key, Html Msg )
 viewScenarioList { options, position, show, heading, footer, scenarios } =
     let
+        makeHeading : ({ count : Int, show : ( ShowSection, Bool ) } -> Html Msg) -> Html Msg
         makeHeading =
             \make ->
                 make
@@ -685,6 +697,7 @@ viewScenarioList { options, position, show, heading, footer, scenarios } =
 
         ( _, True ) ->
             let
+                tail : List ( Key, Html Msg )
                 tail =
                     footer
                         |> Maybe.map List.singleton

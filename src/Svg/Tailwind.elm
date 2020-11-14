@@ -6,8 +6,21 @@ module Svg.Tailwind exposing
     , alignTextBottom
     , alignTextTop
     , alignTop
+    , animateBounce
+    , animateNone
+    , animatePing
+    , animatePulse
+    , animateSpin
     , antialiased
     , appearanceNone
+    , autoColsAuto
+    , autoColsFr
+    , autoColsMax
+    , autoColsMin
+    , autoRowsAuto
+    , autoRowsFr
+    , autoRowsMax
+    , autoRowsMin
     , bgAuto
     , bgBlack
     , bgBlue100
@@ -21,10 +34,22 @@ module Svg.Tailwind exposing
     , bgBlue900
     , bgBottom
     , bgCenter
+    , bgClipBorder
+    , bgClipContent
+    , bgClipPadding
+    , bgClipText
     , bgContain
     , bgCover
     , bgCurrent
     , bgFixed
+    , bgGradientToB
+    , bgGradientToBl
+    , bgGradientToBr
+    , bgGradientToL
+    , bgGradientToR
+    , bgGradientToT
+    , bgGradientToTl
+    , bgGradientToTr
     , bgGray100
     , bgGray200
     , bgGray300
@@ -57,6 +82,7 @@ module Svg.Tailwind exposing
     , bgLeftTop
     , bgLocal
     , bgNoRepeat
+    , bgNone
     , bgOpacity0
     , bgOpacity100
     , bgOpacity25
@@ -289,25 +315,6 @@ module Svg.Tailwind exposing
     , colEnd8
     , colEnd9
     , colEndAuto
-    , colGap0
-    , colGap1
-    , colGap10
-    , colGap12
-    , colGap16
-    , colGap2
-    , colGap20
-    , colGap24
-    , colGap3
-    , colGap32
-    , colGap4
-    , colGap40
-    , colGap48
-    , colGap5
-    , colGap56
-    , colGap6
-    , colGap64
-    , colGap8
-    , colGapPx
     , colSpan1
     , colSpan10
     , colSpan11
@@ -320,6 +327,7 @@ module Svg.Tailwind exposing
     , colSpan7
     , colSpan8
     , colSpan9
+    , colSpanFull
     , colStart1
     , colStart10
     , colStart11
@@ -339,7 +347,9 @@ module Svg.Tailwind exposing
     , contentBetween
     , contentCenter
     , contentEnd
+    , contentEvenly
     , contentStart
+    , contents
     , cursorAuto
     , cursorDefault
     , cursorMove
@@ -355,6 +365,7 @@ module Svg.Tailwind exposing
     , delay500
     , delay700
     , delay75
+    , diagonalFractions
     , divideBlack
     , divideBlue100
     , divideBlue200
@@ -366,6 +377,9 @@ module Svg.Tailwind exposing
     , divideBlue800
     , divideBlue900
     , divideCurrent
+    , divideDashed
+    , divideDotted
+    , divideDouble
     , divideGray100
     , divideGray200
     , divideGray300
@@ -393,6 +407,7 @@ module Svg.Tailwind exposing
     , divideIndigo700
     , divideIndigo800
     , divideIndigo900
+    , divideNone
     , divideOpacity0
     , divideOpacity100
     , divideOpacity25
@@ -434,6 +449,7 @@ module Svg.Tailwind exposing
     , divideRed700
     , divideRed800
     , divideRed900
+    , divideSolid
     , divideTeal100
     , divideTeal200
     , divideTeal300
@@ -707,14 +723,117 @@ module Svg.Tailwind exposing
     , focusFontNormal
     , focusFontSemibold
     , focusFontThin
+    , focusFromBlack
+    , focusFromBlue100
+    , focusFromBlue200
+    , focusFromBlue300
+    , focusFromBlue400
+    , focusFromBlue500
+    , focusFromBlue600
+    , focusFromBlue700
+    , focusFromBlue800
+    , focusFromBlue900
+    , focusFromCurrent
+    , focusFromGray100
+    , focusFromGray200
+    , focusFromGray300
+    , focusFromGray400
+    , focusFromGray500
+    , focusFromGray600
+    , focusFromGray700
+    , focusFromGray800
+    , focusFromGray900
+    , focusFromGreen100
+    , focusFromGreen200
+    , focusFromGreen300
+    , focusFromGreen400
+    , focusFromGreen500
+    , focusFromGreen600
+    , focusFromGreen700
+    , focusFromGreen800
+    , focusFromGreen900
+    , focusFromIndigo100
+    , focusFromIndigo200
+    , focusFromIndigo300
+    , focusFromIndigo400
+    , focusFromIndigo500
+    , focusFromIndigo600
+    , focusFromIndigo700
+    , focusFromIndigo800
+    , focusFromIndigo900
+    , focusFromOrange100
+    , focusFromOrange200
+    , focusFromOrange300
+    , focusFromOrange400
+    , focusFromOrange500
+    , focusFromOrange600
+    , focusFromOrange700
+    , focusFromOrange800
+    , focusFromOrange900
+    , focusFromPink100
+    , focusFromPink200
+    , focusFromPink300
+    , focusFromPink400
+    , focusFromPink500
+    , focusFromPink600
+    , focusFromPink700
+    , focusFromPink800
+    , focusFromPink900
+    , focusFromPurple100
+    , focusFromPurple200
+    , focusFromPurple300
+    , focusFromPurple400
+    , focusFromPurple500
+    , focusFromPurple600
+    , focusFromPurple700
+    , focusFromPurple800
+    , focusFromPurple900
+    , focusFromRed100
+    , focusFromRed200
+    , focusFromRed300
+    , focusFromRed400
+    , focusFromRed500
+    , focusFromRed600
+    , focusFromRed700
+    , focusFromRed800
+    , focusFromRed900
+    , focusFromTeal100
+    , focusFromTeal200
+    , focusFromTeal300
+    , focusFromTeal400
+    , focusFromTeal500
+    , focusFromTeal600
+    , focusFromTeal700
+    , focusFromTeal800
+    , focusFromTeal900
+    , focusFromTransparent
+    , focusFromWhite
+    , focusFromYellow100
+    , focusFromYellow200
+    , focusFromYellow300
+    , focusFromYellow400
+    , focusFromYellow500
+    , focusFromYellow600
+    , focusFromYellow700
+    , focusFromYellow800
+    , focusFromYellow900
     , focusLineThrough
+    , focusNegRotate1
+    , focusNegRotate12
     , focusNegRotate180
+    , focusNegRotate2
+    , focusNegRotate3
     , focusNegRotate45
+    , focusNegRotate6
     , focusNegRotate90
+    , focusNegSkewX1
     , focusNegSkewX12
+    , focusNegSkewX2
     , focusNegSkewX3
     , focusNegSkewX6
+    , focusNegSkewY1
     , focusNegSkewY12
+    , focusNegSkewY2
     , focusNegSkewY3
     , focusNegSkewY6
     , focusNegTranslateX1
@@ -764,7 +883,9 @@ module Svg.Tailwind exposing
     , focusOpacity25
     , focusOpacity50
     , focusOpacity75
+    , focusOutlineBlack
     , focusOutlineNone
+    , focusOutlineWhite
     , focusPlaceholderBlackFocus
     , focusPlaceholderBlue100Focus
     , focusPlaceholderBlue200Focus
@@ -865,8 +986,13 @@ module Svg.Tailwind exposing
     , focusPlaceholderYellow800Focus
     , focusPlaceholderYellow900Focus
     , focusRotate0
+    , focusRotate1
+    , focusRotate12
     , focusRotate180
+    , focusRotate2
+    , focusRotate3
     , focusRotate45
+    , focusRotate6
     , focusRotate90
     , focusScale0
     , focusScale100
@@ -909,11 +1035,15 @@ module Svg.Tailwind exposing
     , focusShadowXl
     , focusShadowXs
     , focusSkewX0
+    , focusSkewX1
     , focusSkewX12
+    , focusSkewX2
     , focusSkewX3
     , focusSkewX6
     , focusSkewY0
+    , focusSkewY1
     , focusSkewY12
+    , focusSkewY2
     , focusSkewY3
     , focusSkewY6
     , focusSrOnly
@@ -1016,6 +1146,100 @@ module Svg.Tailwind exposing
     , focusTextYellow700
     , focusTextYellow800
     , focusTextYellow900
+    , focusToBlack
+    , focusToBlue100
+    , focusToBlue200
+    , focusToBlue300
+    , focusToBlue400
+    , focusToBlue500
+    , focusToBlue600
+    , focusToBlue700
+    , focusToBlue800
+    , focusToBlue900
+    , focusToCurrent
+    , focusToGray100
+    , focusToGray200
+    , focusToGray300
+    , focusToGray400
+    , focusToGray500
+    , focusToGray600
+    , focusToGray700
+    , focusToGray800
+    , focusToGray900
+    , focusToGreen100
+    , focusToGreen200
+    , focusToGreen300
+    , focusToGreen400
+    , focusToGreen500
+    , focusToGreen600
+    , focusToGreen700
+    , focusToGreen800
+    , focusToGreen900
+    , focusToIndigo100
+    , focusToIndigo200
+    , focusToIndigo300
+    , focusToIndigo400
+    , focusToIndigo500
+    , focusToIndigo600
+    , focusToIndigo700
+    , focusToIndigo800
+    , focusToIndigo900
+    , focusToOrange100
+    , focusToOrange200
+    , focusToOrange300
+    , focusToOrange400
+    , focusToOrange500
+    , focusToOrange600
+    , focusToOrange700
+    , focusToOrange800
+    , focusToOrange900
+    , focusToPink100
+    , focusToPink200
+    , focusToPink300
+    , focusToPink400
+    , focusToPink500
+    , focusToPink600
+    , focusToPink700
+    , focusToPink800
+    , focusToPink900
+    , focusToPurple100
+    , focusToPurple200
+    , focusToPurple300
+    , focusToPurple400
+    , focusToPurple500
+    , focusToPurple600
+    , focusToPurple700
+    , focusToPurple800
+    , focusToPurple900
+    , focusToRed100
+    , focusToRed200
+    , focusToRed300
+    , focusToRed400
+    , focusToRed500
+    , focusToRed600
+    , focusToRed700
+    , focusToRed800
+    , focusToRed900
+    , focusToTeal100
+    , focusToTeal200
+    , focusToTeal300
+    , focusToTeal400
+    , focusToTeal500
+    , focusToTeal600
+    , focusToTeal700
+    , focusToTeal800
+    , focusToTeal900
+    , focusToTransparent
+    , focusToWhite
+    , focusToYellow100
+    , focusToYellow200
+    , focusToYellow300
+    , focusToYellow400
+    , focusToYellow500
+    , focusToYellow600
+    , focusToYellow700
+    , focusToYellow800
+    , focusToYellow900
     , focusTranslateX0
     , focusTranslateX1
     , focusTranslateX10
@@ -1059,6 +1283,100 @@ module Svg.Tailwind exposing
     , focusTranslateYFull
     , focusTranslateYPx
     , focusUnderline
+    , focusViaBlack
+    , focusViaBlue100
+    , focusViaBlue200
+    , focusViaBlue300
+    , focusViaBlue400
+    , focusViaBlue500
+    , focusViaBlue600
+    , focusViaBlue700
+    , focusViaBlue800
+    , focusViaBlue900
+    , focusViaCurrent
+    , focusViaGray100
+    , focusViaGray200
+    , focusViaGray300
+    , focusViaGray400
+    , focusViaGray500
+    , focusViaGray600
+    , focusViaGray700
+    , focusViaGray800
+    , focusViaGray900
+    , focusViaGreen100
+    , focusViaGreen200
+    , focusViaGreen300
+    , focusViaGreen400
+    , focusViaGreen500
+    , focusViaGreen600
+    , focusViaGreen700
+    , focusViaGreen800
+    , focusViaGreen900
+    , focusViaIndigo100
+    , focusViaIndigo200
+    , focusViaIndigo300
+    , focusViaIndigo400
+    , focusViaIndigo500
+    , focusViaIndigo600
+    , focusViaIndigo700
+    , focusViaIndigo800
+    , focusViaIndigo900
+    , focusViaOrange100
+    , focusViaOrange200
+    , focusViaOrange300
+    , focusViaOrange400
+    , focusViaOrange500
+    , focusViaOrange600
+    , focusViaOrange700
+    , focusViaOrange800
+    , focusViaOrange900
+    , focusViaPink100
+    , focusViaPink200
+    , focusViaPink300
+    , focusViaPink400
+    , focusViaPink500
+    , focusViaPink600
+    , focusViaPink700
+    , focusViaPink800
+    , focusViaPink900
+    , focusViaPurple100
+    , focusViaPurple200
+    , focusViaPurple300
+    , focusViaPurple400
+    , focusViaPurple500
+    , focusViaPurple600
+    , focusViaPurple700
+    , focusViaPurple800
+    , focusViaPurple900
+    , focusViaRed100
+    , focusViaRed200
+    , focusViaRed300
+    , focusViaRed400
+    , focusViaRed500
+    , focusViaRed600
+    , focusViaRed700
+    , focusViaRed800
+    , focusViaRed900
+    , focusViaTeal100
+    , focusViaTeal200
+    , focusViaTeal300
+    , focusViaTeal400
+    , focusViaTeal500
+    , focusViaTeal600
+    , focusViaTeal700
+    , focusViaTeal800
+    , focusViaTeal900
+    , focusViaTransparent
+    , focusViaWhite
+    , focusViaYellow100
+    , focusViaYellow200
+    , focusViaYellow300
+    , focusViaYellow400
+    , focusViaYellow500
+    , focusViaYellow600
+    , focusViaYellow700
+    , focusViaYellow800
+    , focusViaYellow900
     , fontBlack
     , fontBold
     , fontExtrabold
@@ -1072,6 +1390,100 @@ module Svg.Tailwind exposing
     , fontSerif
     , fontThin
     , fontTitle
+    , fromBlack
+    , fromBlue100
+    , fromBlue200
+    , fromBlue300
+    , fromBlue400
+    , fromBlue500
+    , fromBlue600
+    , fromBlue700
+    , fromBlue800
+    , fromBlue900
+    , fromCurrent
+    , fromGray100
+    , fromGray200
+    , fromGray300
+    , fromGray400
+    , fromGray500
+    , fromGray600
+    , fromGray700
+    , fromGray800
+    , fromGray900
+    , fromGreen100
+    , fromGreen200
+    , fromGreen300
+    , fromGreen400
+    , fromGreen500
+    , fromGreen600
+    , fromGreen700
+    , fromGreen800
+    , fromGreen900
+    , fromIndigo100
+    , fromIndigo200
+    , fromIndigo300
+    , fromIndigo400
+    , fromIndigo500
+    , fromIndigo600
+    , fromIndigo700
+    , fromIndigo800
+    , fromIndigo900
+    , fromOrange100
+    , fromOrange200
+    , fromOrange300
+    , fromOrange400
+    , fromOrange500
+    , fromOrange600
+    , fromOrange700
+    , fromOrange800
+    , fromOrange900
+    , fromPink100
+    , fromPink200
+    , fromPink300
+    , fromPink400
+    , fromPink500
+    , fromPink600
+    , fromPink700
+    , fromPink800
+    , fromPink900
+    , fromPurple100
+    , fromPurple200
+    , fromPurple300
+    , fromPurple400
+    , fromPurple500
+    , fromPurple600
+    , fromPurple700
+    , fromPurple800
+    , fromPurple900
+    , fromRed100
+    , fromRed200
+    , fromRed300
+    , fromRed400
+    , fromRed500
+    , fromRed600
+    , fromRed700
+    , fromRed800
+    , fromRed900
+    , fromTeal100
+    , fromTeal200
+    , fromTeal300
+    , fromTeal400
+    , fromTeal500
+    , fromTeal600
+    , fromTeal700
+    , fromTeal800
+    , fromTeal900
+    , fromTransparent
+    , fromWhite
+    , fromYellow100
+    , fromYellow200
+    , fromYellow300
+    , fromYellow400
+    , fromYellow500
+    , fromYellow600
+    , fromYellow700
+    , fromYellow800
+    , fromYellow900
     , gap0
     , gap1
     , gap10
@@ -1091,6 +1503,44 @@ module Svg.Tailwind exposing
     , gap64
     , gap8
     , gapPx
+    , gapX0
+    , gapX1
+    , gapX10
+    , gapX12
+    , gapX16
+    , gapX2
+    , gapX20
+    , gapX24
+    , gapX3
+    , gapX32
+    , gapX4
+    , gapX40
+    , gapX48
+    , gapX5
+    , gapX56
+    , gapX6
+    , gapX64
+    , gapX8
+    , gapXPx
+    , gapY0
+    , gapY1
+    , gapY10
+    , gapY12
+    , gapY16
+    , gapY2
+    , gapY20
+    , gapY24
+    , gapY3
+    , gapY32
+    , gapY4
+    , gapY40
+    , gapY48
+    , gapY5
+    , gapY56
+    , gapY6
+    , gapY64
+    , gapY8
+    , gapYPx
     , grid
     , gridCols1
     , gridCols10
@@ -1346,14 +1796,117 @@ module Svg.Tailwind exposing
     , hoverFontNormal
     , hoverFontSemibold
     , hoverFontThin
+    , hoverFromBlack
+    , hoverFromBlue100
+    , hoverFromBlue200
+    , hoverFromBlue300
+    , hoverFromBlue400
+    , hoverFromBlue500
+    , hoverFromBlue600
+    , hoverFromBlue700
+    , hoverFromBlue800
+    , hoverFromBlue900
+    , hoverFromCurrent
+    , hoverFromGray100
+    , hoverFromGray200
+    , hoverFromGray300
+    , hoverFromGray400
+    , hoverFromGray500
+    , hoverFromGray600
+    , hoverFromGray700
+    , hoverFromGray800
+    , hoverFromGray900
+    , hoverFromGreen100
+    , hoverFromGreen200
+    , hoverFromGreen300
+    , hoverFromGreen400
+    , hoverFromGreen500
+    , hoverFromGreen600
+    , hoverFromGreen700
+    , hoverFromGreen800
+    , hoverFromGreen900
+    , hoverFromIndigo100
+    , hoverFromIndigo200
+    , hoverFromIndigo300
+    , hoverFromIndigo400
+    , hoverFromIndigo500
+    , hoverFromIndigo600
+    , hoverFromIndigo700
+    , hoverFromIndigo800
+    , hoverFromIndigo900
+    , hoverFromOrange100
+    , hoverFromOrange200
+    , hoverFromOrange300
+    , hoverFromOrange400
+    , hoverFromOrange500
+    , hoverFromOrange600
+    , hoverFromOrange700
+    , hoverFromOrange800
+    , hoverFromOrange900
+    , hoverFromPink100
+    , hoverFromPink200
+    , hoverFromPink300
+    , hoverFromPink400
+    , hoverFromPink500
+    , hoverFromPink600
+    , hoverFromPink700
+    , hoverFromPink800
+    , hoverFromPink900
+    , hoverFromPurple100
+    , hoverFromPurple200
+    , hoverFromPurple300
+    , hoverFromPurple400
+    , hoverFromPurple500
+    , hoverFromPurple600
+    , hoverFromPurple700
+    , hoverFromPurple800
+    , hoverFromPurple900
+    , hoverFromRed100
+    , hoverFromRed200
+    , hoverFromRed300
+    , hoverFromRed400
+    , hoverFromRed500
+    , hoverFromRed600
+    , hoverFromRed700
+    , hoverFromRed800
+    , hoverFromRed900
+    , hoverFromTeal100
+    , hoverFromTeal200
+    , hoverFromTeal300
+    , hoverFromTeal400
+    , hoverFromTeal500
+    , hoverFromTeal600
+    , hoverFromTeal700
+    , hoverFromTeal800
+    , hoverFromTeal900
+    , hoverFromTransparent
+    , hoverFromWhite
+    , hoverFromYellow100
+    , hoverFromYellow200
+    , hoverFromYellow300
+    , hoverFromYellow400
+    , hoverFromYellow500
+    , hoverFromYellow600
+    , hoverFromYellow700
+    , hoverFromYellow800
+    , hoverFromYellow900
     , hoverLineThrough
+    , hoverNegRotate1
+    , hoverNegRotate12
     , hoverNegRotate180
+    , hoverNegRotate2
+    , hoverNegRotate3
     , hoverNegRotate45
+    , hoverNegRotate6
     , hoverNegRotate90
+    , hoverNegSkewX1
     , hoverNegSkewX12
+    , hoverNegSkewX2
     , hoverNegSkewX3
     , hoverNegSkewX6
+    , hoverNegSkewY1
     , hoverNegSkewY12
+    , hoverNegSkewY2
     , hoverNegSkewY3
     , hoverNegSkewY6
     , hoverNegTranslateX1
@@ -1403,8 +1956,13 @@ module Svg.Tailwind exposing
     , hoverOpacity50
     , hoverOpacity75
     , hoverRotate0
+    , hoverRotate1
+    , hoverRotate12
     , hoverRotate180
+    , hoverRotate2
+    , hoverRotate3
     , hoverRotate45
+    , hoverRotate6
     , hoverRotate90
     , hoverScale0
     , hoverScale100
@@ -1447,11 +2005,15 @@ module Svg.Tailwind exposing
     , hoverShadowXl
     , hoverShadowXs
     , hoverSkewX0
+    , hoverSkewX1
     , hoverSkewX12
+    , hoverSkewX2
     , hoverSkewX3
     , hoverSkewX6
     , hoverSkewY0
+    , hoverSkewY1
     , hoverSkewY12
+    , hoverSkewY2
     , hoverSkewY3
     , hoverSkewY6
     , hoverTextBlack
@@ -1553,6 +2115,100 @@ module Svg.Tailwind exposing
     , hoverTextYellow700
     , hoverTextYellow800
     , hoverTextYellow900
+    , hoverToBlack
+    , hoverToBlue100
+    , hoverToBlue200
+    , hoverToBlue300
+    , hoverToBlue400
+    , hoverToBlue500
+    , hoverToBlue600
+    , hoverToBlue700
+    , hoverToBlue800
+    , hoverToBlue900
+    , hoverToCurrent
+    , hoverToGray100
+    , hoverToGray200
+    , hoverToGray300
+    , hoverToGray400
+    , hoverToGray500
+    , hoverToGray600
+    , hoverToGray700
+    , hoverToGray800
+    , hoverToGray900
+    , hoverToGreen100
+    , hoverToGreen200
+    , hoverToGreen300
+    , hoverToGreen400
+    , hoverToGreen500
+    , hoverToGreen600
+    , hoverToGreen700
+    , hoverToGreen800
+    , hoverToGreen900
+    , hoverToIndigo100
+    , hoverToIndigo200
+    , hoverToIndigo300
+    , hoverToIndigo400
+    , hoverToIndigo500
+    , hoverToIndigo600
+    , hoverToIndigo700
+    , hoverToIndigo800
+    , hoverToIndigo900
+    , hoverToOrange100
+    , hoverToOrange200
+    , hoverToOrange300
+    , hoverToOrange400
+    , hoverToOrange500
+    , hoverToOrange600
+    , hoverToOrange700
+    , hoverToOrange800
+    , hoverToOrange900
+    , hoverToPink100
+    , hoverToPink200
+    , hoverToPink300
+    , hoverToPink400
+    , hoverToPink500
+    , hoverToPink600
+    , hoverToPink700
+    , hoverToPink800
+    , hoverToPink900
+    , hoverToPurple100
+    , hoverToPurple200
+    , hoverToPurple300
+    , hoverToPurple400
+    , hoverToPurple500
+    , hoverToPurple600
+    , hoverToPurple700
+    , hoverToPurple800
+    , hoverToPurple900
+    , hoverToRed100
+    , hoverToRed200
+    , hoverToRed300
+    , hoverToRed400
+    , hoverToRed500
+    , hoverToRed600
+    , hoverToRed700
+    , hoverToRed800
+    , hoverToRed900
+    , hoverToTeal100
+    , hoverToTeal200
+    , hoverToTeal300
+    , hoverToTeal400
+    , hoverToTeal500
+    , hoverToTeal600
+    , hoverToTeal700
+    , hoverToTeal800
+    , hoverToTeal900
+    , hoverToTransparent
+    , hoverToWhite
+    , hoverToYellow100
+    , hoverToYellow200
+    , hoverToYellow300
+    , hoverToYellow400
+    , hoverToYellow500
+    , hoverToYellow600
+    , hoverToYellow700
+    , hoverToYellow800
+    , hoverToYellow900
     , hoverTranslateX0
     , hoverTranslateX1
     , hoverTranslateX10
@@ -1596,6 +2252,100 @@ module Svg.Tailwind exposing
     , hoverTranslateYFull
     , hoverTranslateYPx
     , hoverUnderline
+    , hoverViaBlack
+    , hoverViaBlue100
+    , hoverViaBlue200
+    , hoverViaBlue300
+    , hoverViaBlue400
+    , hoverViaBlue500
+    , hoverViaBlue600
+    , hoverViaBlue700
+    , hoverViaBlue800
+    , hoverViaBlue900
+    , hoverViaCurrent
+    , hoverViaGray100
+    , hoverViaGray200
+    , hoverViaGray300
+    , hoverViaGray400
+    , hoverViaGray500
+    , hoverViaGray600
+    , hoverViaGray700
+    , hoverViaGray800
+    , hoverViaGray900
+    , hoverViaGreen100
+    , hoverViaGreen200
+    , hoverViaGreen300
+    , hoverViaGreen400
+    , hoverViaGreen500
+    , hoverViaGreen600
+    , hoverViaGreen700
+    , hoverViaGreen800
+    , hoverViaGreen900
+    , hoverViaIndigo100
+    , hoverViaIndigo200
+    , hoverViaIndigo300
+    , hoverViaIndigo400
+    , hoverViaIndigo500
+    , hoverViaIndigo600
+    , hoverViaIndigo700
+    , hoverViaIndigo800
+    , hoverViaIndigo900
+    , hoverViaOrange100
+    , hoverViaOrange200
+    , hoverViaOrange300
+    , hoverViaOrange400
+    , hoverViaOrange500
+    , hoverViaOrange600
+    , hoverViaOrange700
+    , hoverViaOrange800
+    , hoverViaOrange900
+    , hoverViaPink100
+    , hoverViaPink200
+    , hoverViaPink300
+    , hoverViaPink400
+    , hoverViaPink500
+    , hoverViaPink600
+    , hoverViaPink700
+    , hoverViaPink800
+    , hoverViaPink900
+    , hoverViaPurple100
+    , hoverViaPurple200
+    , hoverViaPurple300
+    , hoverViaPurple400
+    , hoverViaPurple500
+    , hoverViaPurple600
+    , hoverViaPurple700
+    , hoverViaPurple800
+    , hoverViaPurple900
+    , hoverViaRed100
+    , hoverViaRed200
+    , hoverViaRed300
+    , hoverViaRed400
+    , hoverViaRed500
+    , hoverViaRed600
+    , hoverViaRed700
+    , hoverViaRed800
+    , hoverViaRed900
+    , hoverViaTeal100
+    , hoverViaTeal200
+    , hoverViaTeal300
+    , hoverViaTeal400
+    , hoverViaTeal500
+    , hoverViaTeal600
+    , hoverViaTeal700
+    , hoverViaTeal800
+    , hoverViaTeal900
+    , hoverViaTransparent
+    , hoverViaWhite
+    , hoverViaYellow100
+    , hoverViaYellow200
+    , hoverViaYellow300
+    , hoverViaYellow400
+    , hoverViaYellow500
+    , hoverViaYellow600
+    , hoverViaYellow700
+    , hoverViaYellow800
+    , hoverViaYellow900
     , inline
     , inlineBlock
     , inlineFlex
@@ -1618,6 +2368,16 @@ module Svg.Tailwind exposing
     , justifyCenter
     , justifyEnd
     , justifyEvenly
+    , justifyItemsAuto
+    , justifyItemsCenter
+    , justifyItemsEnd
+    , justifyItemsStart
+    , justifyItemsStretch
+    , justifySelfAuto
+    , justifySelfCenter
+    , justifySelfEnd
+    , justifySelfStart
+    , justifySelfStretch
     , justifyStart
     , leading10
     , leading3
@@ -1642,8 +2402,21 @@ module Svg.Tailwind exposing
     , lgAlignTextBottom
     , lgAlignTextTop
     , lgAlignTop
+    , lgAnimateBounce
+    , lgAnimateNone
+    , lgAnimatePing
+    , lgAnimatePulse
+    , lgAnimateSpin
     , lgAntialiased
     , lgAppearanceNone
+    , lgAutoColsAuto
+    , lgAutoColsFr
+    , lgAutoColsMax
+    , lgAutoColsMin
+    , lgAutoRowsAuto
+    , lgAutoRowsFr
+    , lgAutoRowsMax
+    , lgAutoRowsMin
     , lgBgAuto
     , lgBgBlack
     , lgBgBlue100
@@ -1657,10 +2430,22 @@ module Svg.Tailwind exposing
     , lgBgBlue900
     , lgBgBottom
     , lgBgCenter
+    , lgBgClipBorder
+    , lgBgClipContent
+    , lgBgClipPadding
+    , lgBgClipText
     , lgBgContain
     , lgBgCover
     , lgBgCurrent
     , lgBgFixed
+    , lgBgGradientToB
+    , lgBgGradientToBl
+    , lgBgGradientToBr
+    , lgBgGradientToL
+    , lgBgGradientToR
+    , lgBgGradientToT
+    , lgBgGradientToTl
+    , lgBgGradientToTr
     , lgBgGray100
     , lgBgGray200
     , lgBgGray300
@@ -1693,6 +2478,7 @@ module Svg.Tailwind exposing
     , lgBgLeftTop
     , lgBgLocal
     , lgBgNoRepeat
+    , lgBgNone
     , lgBgOpacity0
     , lgBgOpacity100
     , lgBgOpacity25
@@ -1924,25 +2710,6 @@ module Svg.Tailwind exposing
     , lgColEnd8
     , lgColEnd9
     , lgColEndAuto
-    , lgColGap0
-    , lgColGap1
-    , lgColGap10
-    , lgColGap12
-    , lgColGap16
-    , lgColGap2
-    , lgColGap20
-    , lgColGap24
-    , lgColGap3
-    , lgColGap32
-    , lgColGap4
-    , lgColGap40
-    , lgColGap48
-    , lgColGap5
-    , lgColGap56
-    , lgColGap6
-    , lgColGap64
-    , lgColGap8
-    , lgColGapPx
     , lgColSpan1
     , lgColSpan10
     , lgColSpan11
@@ -1955,6 +2722,7 @@ module Svg.Tailwind exposing
     , lgColSpan7
     , lgColSpan8
     , lgColSpan9
+    , lgColSpanFull
     , lgColStart1
     , lgColStart10
     , lgColStart11
@@ -1969,11 +2737,14 @@ module Svg.Tailwind exposing
     , lgColStart8
     , lgColStart9
     , lgColStartAuto
+    , lgContainer
     , lgContentAround
     , lgContentBetween
     , lgContentCenter
     , lgContentEnd
+    , lgContentEvenly
     , lgContentStart
+    , lgContents
     , lgCursorAuto
     , lgCursorDefault
     , lgCursorMove
@@ -1989,6 +2760,7 @@ module Svg.Tailwind exposing
     , lgDelay500
     , lgDelay700
     , lgDelay75
+    , lgDiagonalFractions
     , lgDivideBlack
     , lgDivideBlue100
     , lgDivideBlue200
@@ -2000,6 +2772,9 @@ module Svg.Tailwind exposing
     , lgDivideBlue800
     , lgDivideBlue900
     , lgDivideCurrent
+    , lgDivideDashed
+    , lgDivideDotted
+    , lgDivideDouble
     , lgDivideGray100
     , lgDivideGray200
     , lgDivideGray300
@@ -2027,6 +2802,7 @@ module Svg.Tailwind exposing
     , lgDivideIndigo700
     , lgDivideIndigo800
     , lgDivideIndigo900
+    , lgDivideNone
     , lgDivideOpacity0
     , lgDivideOpacity100
     , lgDivideOpacity25
@@ -2068,6 +2844,7 @@ module Svg.Tailwind exposing
     , lgDivideRed700
     , lgDivideRed800
     , lgDivideRed900
+    , lgDivideSolid
     , lgDivideTeal100
     , lgDivideTeal200
     , lgDivideTeal300
@@ -2341,14 +3118,117 @@ module Svg.Tailwind exposing
     , lgFocusFontNormal
     , lgFocusFontSemibold
     , lgFocusFontThin
+    , lgFocusFromBlack
+    , lgFocusFromBlue100
+    , lgFocusFromBlue200
+    , lgFocusFromBlue300
+    , lgFocusFromBlue400
+    , lgFocusFromBlue500
+    , lgFocusFromBlue600
+    , lgFocusFromBlue700
+    , lgFocusFromBlue800
+    , lgFocusFromBlue900
+    , lgFocusFromCurrent
+    , lgFocusFromGray100
+    , lgFocusFromGray200
+    , lgFocusFromGray300
+    , lgFocusFromGray400
+    , lgFocusFromGray500
+    , lgFocusFromGray600
+    , lgFocusFromGray700
+    , lgFocusFromGray800
+    , lgFocusFromGray900
+    , lgFocusFromGreen100
+    , lgFocusFromGreen200
+    , lgFocusFromGreen300
+    , lgFocusFromGreen400
+    , lgFocusFromGreen500
+    , lgFocusFromGreen600
+    , lgFocusFromGreen700
+    , lgFocusFromGreen800
+    , lgFocusFromGreen900
+    , lgFocusFromIndigo100
+    , lgFocusFromIndigo200
+    , lgFocusFromIndigo300
+    , lgFocusFromIndigo400
+    , lgFocusFromIndigo500
+    , lgFocusFromIndigo600
+    , lgFocusFromIndigo700
+    , lgFocusFromIndigo800
+    , lgFocusFromIndigo900
+    , lgFocusFromOrange100
+    , lgFocusFromOrange200
+    , lgFocusFromOrange300
+    , lgFocusFromOrange400
+    , lgFocusFromOrange500
+    , lgFocusFromOrange600
+    , lgFocusFromOrange700
+    , lgFocusFromOrange800
+    , lgFocusFromOrange900
+    , lgFocusFromPink100
+    , lgFocusFromPink200
+    , lgFocusFromPink300
+    , lgFocusFromPink400
+    , lgFocusFromPink500
+    , lgFocusFromPink600
+    , lgFocusFromPink700
+    , lgFocusFromPink800
+    , lgFocusFromPink900
+    , lgFocusFromPurple100
+    , lgFocusFromPurple200
+    , lgFocusFromPurple300
+    , lgFocusFromPurple400
+    , lgFocusFromPurple500
+    , lgFocusFromPurple600
+    , lgFocusFromPurple700
+    , lgFocusFromPurple800
+    , lgFocusFromPurple900
+    , lgFocusFromRed100
+    , lgFocusFromRed200
+    , lgFocusFromRed300
+    , lgFocusFromRed400
+    , lgFocusFromRed500
+    , lgFocusFromRed600
+    , lgFocusFromRed700
+    , lgFocusFromRed800
+    , lgFocusFromRed900
+    , lgFocusFromTeal100
+    , lgFocusFromTeal200
+    , lgFocusFromTeal300
+    , lgFocusFromTeal400
+    , lgFocusFromTeal500
+    , lgFocusFromTeal600
+    , lgFocusFromTeal700
+    , lgFocusFromTeal800
+    , lgFocusFromTeal900
+    , lgFocusFromTransparent
+    , lgFocusFromWhite
+    , lgFocusFromYellow100
+    , lgFocusFromYellow200
+    , lgFocusFromYellow300
+    , lgFocusFromYellow400
+    , lgFocusFromYellow500
+    , lgFocusFromYellow600
+    , lgFocusFromYellow700
+    , lgFocusFromYellow800
+    , lgFocusFromYellow900
     , lgFocusLineThrough
+    , lgFocusNegRotate1
+    , lgFocusNegRotate12
     , lgFocusNegRotate180
+    , lgFocusNegRotate2
+    , lgFocusNegRotate3
     , lgFocusNegRotate45
+    , lgFocusNegRotate6
     , lgFocusNegRotate90
+    , lgFocusNegSkewX1
     , lgFocusNegSkewX12
+    , lgFocusNegSkewX2
     , lgFocusNegSkewX3
     , lgFocusNegSkewX6
+    , lgFocusNegSkewY1
     , lgFocusNegSkewY12
+    , lgFocusNegSkewY2
     , lgFocusNegSkewY3
     , lgFocusNegSkewY6
     , lgFocusNegTranslateX1
@@ -2398,7 +3278,9 @@ module Svg.Tailwind exposing
     , lgFocusOpacity25
     , lgFocusOpacity50
     , lgFocusOpacity75
+    , lgFocusOutlineBlack
     , lgFocusOutlineNone
+    , lgFocusOutlineWhite
     , lgFocusPlaceholderBlackFocus
     , lgFocusPlaceholderBlue100Focus
     , lgFocusPlaceholderBlue200Focus
@@ -2499,8 +3381,13 @@ module Svg.Tailwind exposing
     , lgFocusPlaceholderYellow800Focus
     , lgFocusPlaceholderYellow900Focus
     , lgFocusRotate0
+    , lgFocusRotate1
+    , lgFocusRotate12
     , lgFocusRotate180
+    , lgFocusRotate2
+    , lgFocusRotate3
     , lgFocusRotate45
+    , lgFocusRotate6
     , lgFocusRotate90
     , lgFocusScale0
     , lgFocusScale100
@@ -2543,11 +3430,15 @@ module Svg.Tailwind exposing
     , lgFocusShadowXl
     , lgFocusShadowXs
     , lgFocusSkewX0
+    , lgFocusSkewX1
     , lgFocusSkewX12
+    , lgFocusSkewX2
     , lgFocusSkewX3
     , lgFocusSkewX6
     , lgFocusSkewY0
+    , lgFocusSkewY1
     , lgFocusSkewY12
+    , lgFocusSkewY2
     , lgFocusSkewY3
     , lgFocusSkewY6
     , lgFocusSrOnly
@@ -2650,6 +3541,100 @@ module Svg.Tailwind exposing
     , lgFocusTextYellow700
     , lgFocusTextYellow800
     , lgFocusTextYellow900
+    , lgFocusToBlack
+    , lgFocusToBlue100
+    , lgFocusToBlue200
+    , lgFocusToBlue300
+    , lgFocusToBlue400
+    , lgFocusToBlue500
+    , lgFocusToBlue600
+    , lgFocusToBlue700
+    , lgFocusToBlue800
+    , lgFocusToBlue900
+    , lgFocusToCurrent
+    , lgFocusToGray100
+    , lgFocusToGray200
+    , lgFocusToGray300
+    , lgFocusToGray400
+    , lgFocusToGray500
+    , lgFocusToGray600
+    , lgFocusToGray700
+    , lgFocusToGray800
+    , lgFocusToGray900
+    , lgFocusToGreen100
+    , lgFocusToGreen200
+    , lgFocusToGreen300
+    , lgFocusToGreen400
+    , lgFocusToGreen500
+    , lgFocusToGreen600
+    , lgFocusToGreen700
+    , lgFocusToGreen800
+    , lgFocusToGreen900
+    , lgFocusToIndigo100
+    , lgFocusToIndigo200
+    , lgFocusToIndigo300
+    , lgFocusToIndigo400
+    , lgFocusToIndigo500
+    , lgFocusToIndigo600
+    , lgFocusToIndigo700
+    , lgFocusToIndigo800
+    , lgFocusToIndigo900
+    , lgFocusToOrange100
+    , lgFocusToOrange200
+    , lgFocusToOrange300
+    , lgFocusToOrange400
+    , lgFocusToOrange500
+    , lgFocusToOrange600
+    , lgFocusToOrange700
+    , lgFocusToOrange800
+    , lgFocusToOrange900
+    , lgFocusToPink100
+    , lgFocusToPink200
+    , lgFocusToPink300
+    , lgFocusToPink400
+    , lgFocusToPink500
+    , lgFocusToPink600
+    , lgFocusToPink700
+    , lgFocusToPink800
+    , lgFocusToPink900
+    , lgFocusToPurple100
+    , lgFocusToPurple200
+    , lgFocusToPurple300
+    , lgFocusToPurple400
+    , lgFocusToPurple500
+    , lgFocusToPurple600
+    , lgFocusToPurple700
+    , lgFocusToPurple800
+    , lgFocusToPurple900
+    , lgFocusToRed100
+    , lgFocusToRed200
+    , lgFocusToRed300
+    , lgFocusToRed400
+    , lgFocusToRed500
+    , lgFocusToRed600
+    , lgFocusToRed700
+    , lgFocusToRed800
+    , lgFocusToRed900
+    , lgFocusToTeal100
+    , lgFocusToTeal200
+    , lgFocusToTeal300
+    , lgFocusToTeal400
+    , lgFocusToTeal500
+    , lgFocusToTeal600
+    , lgFocusToTeal700
+    , lgFocusToTeal800
+    , lgFocusToTeal900
+    , lgFocusToTransparent
+    , lgFocusToWhite
+    , lgFocusToYellow100
+    , lgFocusToYellow200
+    , lgFocusToYellow300
+    , lgFocusToYellow400
+    , lgFocusToYellow500
+    , lgFocusToYellow600
+    , lgFocusToYellow700
+    , lgFocusToYellow800
+    , lgFocusToYellow900
     , lgFocusTranslateX0
     , lgFocusTranslateX1
     , lgFocusTranslateX10
@@ -2693,6 +3678,100 @@ module Svg.Tailwind exposing
     , lgFocusTranslateYFull
     , lgFocusTranslateYPx
     , lgFocusUnderline
+    , lgFocusViaBlack
+    , lgFocusViaBlue100
+    , lgFocusViaBlue200
+    , lgFocusViaBlue300
+    , lgFocusViaBlue400
+    , lgFocusViaBlue500
+    , lgFocusViaBlue600
+    , lgFocusViaBlue700
+    , lgFocusViaBlue800
+    , lgFocusViaBlue900
+    , lgFocusViaCurrent
+    , lgFocusViaGray100
+    , lgFocusViaGray200
+    , lgFocusViaGray300
+    , lgFocusViaGray400
+    , lgFocusViaGray500
+    , lgFocusViaGray600
+    , lgFocusViaGray700
+    , lgFocusViaGray800
+    , lgFocusViaGray900
+    , lgFocusViaGreen100
+    , lgFocusViaGreen200
+    , lgFocusViaGreen300
+    , lgFocusViaGreen400
+    , lgFocusViaGreen500
+    , lgFocusViaGreen600
+    , lgFocusViaGreen700
+    , lgFocusViaGreen800
+    , lgFocusViaGreen900
+    , lgFocusViaIndigo100
+    , lgFocusViaIndigo200
+    , lgFocusViaIndigo300
+    , lgFocusViaIndigo400
+    , lgFocusViaIndigo500
+    , lgFocusViaIndigo600
+    , lgFocusViaIndigo700
+    , lgFocusViaIndigo800
+    , lgFocusViaIndigo900
+    , lgFocusViaOrange100
+    , lgFocusViaOrange200
+    , lgFocusViaOrange300
+    , lgFocusViaOrange400
+    , lgFocusViaOrange500
+    , lgFocusViaOrange600
+    , lgFocusViaOrange700
+    , lgFocusViaOrange800
+    , lgFocusViaOrange900
+    , lgFocusViaPink100
+    , lgFocusViaPink200
+    , lgFocusViaPink300
+    , lgFocusViaPink400
+    , lgFocusViaPink500
+    , lgFocusViaPink600
+    , lgFocusViaPink700
+    , lgFocusViaPink800
+    , lgFocusViaPink900
+    , lgFocusViaPurple100
+    , lgFocusViaPurple200
+    , lgFocusViaPurple300
+    , lgFocusViaPurple400
+    , lgFocusViaPurple500
+    , lgFocusViaPurple600
+    , lgFocusViaPurple700
+    , lgFocusViaPurple800
+    , lgFocusViaPurple900
+    , lgFocusViaRed100
+    , lgFocusViaRed200
+    , lgFocusViaRed300
+    , lgFocusViaRed400
+    , lgFocusViaRed500
+    , lgFocusViaRed600
+    , lgFocusViaRed700
+    , lgFocusViaRed800
+    , lgFocusViaRed900
+    , lgFocusViaTeal100
+    , lgFocusViaTeal200
+    , lgFocusViaTeal300
+    , lgFocusViaTeal400
+    , lgFocusViaTeal500
+    , lgFocusViaTeal600
+    , lgFocusViaTeal700
+    , lgFocusViaTeal800
+    , lgFocusViaTeal900
+    , lgFocusViaTransparent
+    , lgFocusViaWhite
+    , lgFocusViaYellow100
+    , lgFocusViaYellow200
+    , lgFocusViaYellow300
+    , lgFocusViaYellow400
+    , lgFocusViaYellow500
+    , lgFocusViaYellow600
+    , lgFocusViaYellow700
+    , lgFocusViaYellow800
+    , lgFocusViaYellow900
     , lgFontBlack
     , lgFontBold
     , lgFontExtrabold
@@ -2706,6 +3785,100 @@ module Svg.Tailwind exposing
     , lgFontSerif
     , lgFontThin
     , lgFontTitle
+    , lgFromBlack
+    , lgFromBlue100
+    , lgFromBlue200
+    , lgFromBlue300
+    , lgFromBlue400
+    , lgFromBlue500
+    , lgFromBlue600
+    , lgFromBlue700
+    , lgFromBlue800
+    , lgFromBlue900
+    , lgFromCurrent
+    , lgFromGray100
+    , lgFromGray200
+    , lgFromGray300
+    , lgFromGray400
+    , lgFromGray500
+    , lgFromGray600
+    , lgFromGray700
+    , lgFromGray800
+    , lgFromGray900
+    , lgFromGreen100
+    , lgFromGreen200
+    , lgFromGreen300
+    , lgFromGreen400
+    , lgFromGreen500
+    , lgFromGreen600
+    , lgFromGreen700
+    , lgFromGreen800
+    , lgFromGreen900
+    , lgFromIndigo100
+    , lgFromIndigo200
+    , lgFromIndigo300
+    , lgFromIndigo400
+    , lgFromIndigo500
+    , lgFromIndigo600
+    , lgFromIndigo700
+    , lgFromIndigo800
+    , lgFromIndigo900
+    , lgFromOrange100
+    , lgFromOrange200
+    , lgFromOrange300
+    , lgFromOrange400
+    , lgFromOrange500
+    , lgFromOrange600
+    , lgFromOrange700
+    , lgFromOrange800
+    , lgFromOrange900
+    , lgFromPink100
+    , lgFromPink200
+    , lgFromPink300
+    , lgFromPink400
+    , lgFromPink500
+    , lgFromPink600
+    , lgFromPink700
+    , lgFromPink800
+    , lgFromPink900
+    , lgFromPurple100
+    , lgFromPurple200
+    , lgFromPurple300
+    , lgFromPurple400
+    , lgFromPurple500
+    , lgFromPurple600
+    , lgFromPurple700
+    , lgFromPurple800
+    , lgFromPurple900
+    , lgFromRed100
+    , lgFromRed200
+    , lgFromRed300
+    , lgFromRed400
+    , lgFromRed500
+    , lgFromRed600
+    , lgFromRed700
+    , lgFromRed800
+    , lgFromRed900
+    , lgFromTeal100
+    , lgFromTeal200
+    , lgFromTeal300
+    , lgFromTeal400
+    , lgFromTeal500
+    , lgFromTeal600
+    , lgFromTeal700
+    , lgFromTeal800
+    , lgFromTeal900
+    , lgFromTransparent
+    , lgFromWhite
+    , lgFromYellow100
+    , lgFromYellow200
+    , lgFromYellow300
+    , lgFromYellow400
+    , lgFromYellow500
+    , lgFromYellow600
+    , lgFromYellow700
+    , lgFromYellow800
+    , lgFromYellow900
     , lgGap0
     , lgGap1
     , lgGap10
@@ -2725,6 +3898,44 @@ module Svg.Tailwind exposing
     , lgGap64
     , lgGap8
     , lgGapPx
+    , lgGapX0
+    , lgGapX1
+    , lgGapX10
+    , lgGapX12
+    , lgGapX16
+    , lgGapX2
+    , lgGapX20
+    , lgGapX24
+    , lgGapX3
+    , lgGapX32
+    , lgGapX4
+    , lgGapX40
+    , lgGapX48
+    , lgGapX5
+    , lgGapX56
+    , lgGapX6
+    , lgGapX64
+    , lgGapX8
+    , lgGapXPx
+    , lgGapY0
+    , lgGapY1
+    , lgGapY10
+    , lgGapY12
+    , lgGapY16
+    , lgGapY2
+    , lgGapY20
+    , lgGapY24
+    , lgGapY3
+    , lgGapY32
+    , lgGapY4
+    , lgGapY40
+    , lgGapY48
+    , lgGapY5
+    , lgGapY56
+    , lgGapY6
+    , lgGapY64
+    , lgGapY8
+    , lgGapYPx
     , lgGrid
     , lgGridCols1
     , lgGridCols10
@@ -2980,14 +4191,117 @@ module Svg.Tailwind exposing
     , lgHoverFontNormal
     , lgHoverFontSemibold
     , lgHoverFontThin
+    , lgHoverFromBlack
+    , lgHoverFromBlue100
+    , lgHoverFromBlue200
+    , lgHoverFromBlue300
+    , lgHoverFromBlue400
+    , lgHoverFromBlue500
+    , lgHoverFromBlue600
+    , lgHoverFromBlue700
+    , lgHoverFromBlue800
+    , lgHoverFromBlue900
+    , lgHoverFromCurrent
+    , lgHoverFromGray100
+    , lgHoverFromGray200
+    , lgHoverFromGray300
+    , lgHoverFromGray400
+    , lgHoverFromGray500
+    , lgHoverFromGray600
+    , lgHoverFromGray700
+    , lgHoverFromGray800
+    , lgHoverFromGray900
+    , lgHoverFromGreen100
+    , lgHoverFromGreen200
+    , lgHoverFromGreen300
+    , lgHoverFromGreen400
+    , lgHoverFromGreen500
+    , lgHoverFromGreen600
+    , lgHoverFromGreen700
+    , lgHoverFromGreen800
+    , lgHoverFromGreen900
+    , lgHoverFromIndigo100
+    , lgHoverFromIndigo200
+    , lgHoverFromIndigo300
+    , lgHoverFromIndigo400
+    , lgHoverFromIndigo500
+    , lgHoverFromIndigo600
+    , lgHoverFromIndigo700
+    , lgHoverFromIndigo800
+    , lgHoverFromIndigo900
+    , lgHoverFromOrange100
+    , lgHoverFromOrange200
+    , lgHoverFromOrange300
+    , lgHoverFromOrange400
+    , lgHoverFromOrange500
+    , lgHoverFromOrange600
+    , lgHoverFromOrange700
+    , lgHoverFromOrange800
+    , lgHoverFromOrange900
+    , lgHoverFromPink100
+    , lgHoverFromPink200
+    , lgHoverFromPink300
+    , lgHoverFromPink400
+    , lgHoverFromPink500
+    , lgHoverFromPink600
+    , lgHoverFromPink700
+    , lgHoverFromPink800
+    , lgHoverFromPink900
+    , lgHoverFromPurple100
+    , lgHoverFromPurple200
+    , lgHoverFromPurple300
+    , lgHoverFromPurple400
+    , lgHoverFromPurple500
+    , lgHoverFromPurple600
+    , lgHoverFromPurple700
+    , lgHoverFromPurple800
+    , lgHoverFromPurple900
+    , lgHoverFromRed100
+    , lgHoverFromRed200
+    , lgHoverFromRed300
+    , lgHoverFromRed400
+    , lgHoverFromRed500
+    , lgHoverFromRed600
+    , lgHoverFromRed700
+    , lgHoverFromRed800
+    , lgHoverFromRed900
+    , lgHoverFromTeal100
+    , lgHoverFromTeal200
+    , lgHoverFromTeal300
+    , lgHoverFromTeal400
+    , lgHoverFromTeal500
+    , lgHoverFromTeal600
+    , lgHoverFromTeal700
+    , lgHoverFromTeal800
+    , lgHoverFromTeal900
+    , lgHoverFromTransparent
+    , lgHoverFromWhite
+    , lgHoverFromYellow100
+    , lgHoverFromYellow200
+    , lgHoverFromYellow300
+    , lgHoverFromYellow400
+    , lgHoverFromYellow500
+    , lgHoverFromYellow600
+    , lgHoverFromYellow700
+    , lgHoverFromYellow800
+    , lgHoverFromYellow900
     , lgHoverLineThrough
+    , lgHoverNegRotate1
+    , lgHoverNegRotate12
     , lgHoverNegRotate180
+    , lgHoverNegRotate2
+    , lgHoverNegRotate3
     , lgHoverNegRotate45
+    , lgHoverNegRotate6
     , lgHoverNegRotate90
+    , lgHoverNegSkewX1
     , lgHoverNegSkewX12
+    , lgHoverNegSkewX2
     , lgHoverNegSkewX3
     , lgHoverNegSkewX6
+    , lgHoverNegSkewY1
     , lgHoverNegSkewY12
+    , lgHoverNegSkewY2
     , lgHoverNegSkewY3
     , lgHoverNegSkewY6
     , lgHoverNegTranslateX1
@@ -3037,8 +4351,13 @@ module Svg.Tailwind exposing
     , lgHoverOpacity50
     , lgHoverOpacity75
     , lgHoverRotate0
+    , lgHoverRotate1
+    , lgHoverRotate12
     , lgHoverRotate180
+    , lgHoverRotate2
+    , lgHoverRotate3
     , lgHoverRotate45
+    , lgHoverRotate6
     , lgHoverRotate90
     , lgHoverScale0
     , lgHoverScale100
@@ -3081,11 +4400,15 @@ module Svg.Tailwind exposing
     , lgHoverShadowXl
     , lgHoverShadowXs
     , lgHoverSkewX0
+    , lgHoverSkewX1
     , lgHoverSkewX12
+    , lgHoverSkewX2
     , lgHoverSkewX3
     , lgHoverSkewX6
     , lgHoverSkewY0
+    , lgHoverSkewY1
     , lgHoverSkewY12
+    , lgHoverSkewY2
     , lgHoverSkewY3
     , lgHoverSkewY6
     , lgHoverTextBlack
@@ -3187,6 +4510,100 @@ module Svg.Tailwind exposing
     , lgHoverTextYellow700
     , lgHoverTextYellow800
     , lgHoverTextYellow900
+    , lgHoverToBlack
+    , lgHoverToBlue100
+    , lgHoverToBlue200
+    , lgHoverToBlue300
+    , lgHoverToBlue400
+    , lgHoverToBlue500
+    , lgHoverToBlue600
+    , lgHoverToBlue700
+    , lgHoverToBlue800
+    , lgHoverToBlue900
+    , lgHoverToCurrent
+    , lgHoverToGray100
+    , lgHoverToGray200
+    , lgHoverToGray300
+    , lgHoverToGray400
+    , lgHoverToGray500
+    , lgHoverToGray600
+    , lgHoverToGray700
+    , lgHoverToGray800
+    , lgHoverToGray900
+    , lgHoverToGreen100
+    , lgHoverToGreen200
+    , lgHoverToGreen300
+    , lgHoverToGreen400
+    , lgHoverToGreen500
+    , lgHoverToGreen600
+    , lgHoverToGreen700
+    , lgHoverToGreen800
+    , lgHoverToGreen900
+    , lgHoverToIndigo100
+    , lgHoverToIndigo200
+    , lgHoverToIndigo300
+    , lgHoverToIndigo400
+    , lgHoverToIndigo500
+    , lgHoverToIndigo600
+    , lgHoverToIndigo700
+    , lgHoverToIndigo800
+    , lgHoverToIndigo900
+    , lgHoverToOrange100
+    , lgHoverToOrange200
+    , lgHoverToOrange300
+    , lgHoverToOrange400
+    , lgHoverToOrange500
+    , lgHoverToOrange600
+    , lgHoverToOrange700
+    , lgHoverToOrange800
+    , lgHoverToOrange900
+    , lgHoverToPink100
+    , lgHoverToPink200
+    , lgHoverToPink300
+    , lgHoverToPink400
+    , lgHoverToPink500
+    , lgHoverToPink600
+    , lgHoverToPink700
+    , lgHoverToPink800
+    , lgHoverToPink900
+    , lgHoverToPurple100
+    , lgHoverToPurple200
+    , lgHoverToPurple300
+    , lgHoverToPurple400
+    , lgHoverToPurple500
+    , lgHoverToPurple600
+    , lgHoverToPurple700
+    , lgHoverToPurple800
+    , lgHoverToPurple900
+    , lgHoverToRed100
+    , lgHoverToRed200
+    , lgHoverToRed300
+    , lgHoverToRed400
+    , lgHoverToRed500
+    , lgHoverToRed600
+    , lgHoverToRed700
+    , lgHoverToRed800
+    , lgHoverToRed900
+    , lgHoverToTeal100
+    , lgHoverToTeal200
+    , lgHoverToTeal300
+    , lgHoverToTeal400
+    , lgHoverToTeal500
+    , lgHoverToTeal600
+    , lgHoverToTeal700
+    , lgHoverToTeal800
+    , lgHoverToTeal900
+    , lgHoverToTransparent
+    , lgHoverToWhite
+    , lgHoverToYellow100
+    , lgHoverToYellow200
+    , lgHoverToYellow300
+    , lgHoverToYellow400
+    , lgHoverToYellow500
+    , lgHoverToYellow600
+    , lgHoverToYellow700
+    , lgHoverToYellow800
+    , lgHoverToYellow900
     , lgHoverTranslateX0
     , lgHoverTranslateX1
     , lgHoverTranslateX10
@@ -3230,6 +4647,100 @@ module Svg.Tailwind exposing
     , lgHoverTranslateYFull
     , lgHoverTranslateYPx
     , lgHoverUnderline
+    , lgHoverViaBlack
+    , lgHoverViaBlue100
+    , lgHoverViaBlue200
+    , lgHoverViaBlue300
+    , lgHoverViaBlue400
+    , lgHoverViaBlue500
+    , lgHoverViaBlue600
+    , lgHoverViaBlue700
+    , lgHoverViaBlue800
+    , lgHoverViaBlue900
+    , lgHoverViaCurrent
+    , lgHoverViaGray100
+    , lgHoverViaGray200
+    , lgHoverViaGray300
+    , lgHoverViaGray400
+    , lgHoverViaGray500
+    , lgHoverViaGray600
+    , lgHoverViaGray700
+    , lgHoverViaGray800
+    , lgHoverViaGray900
+    , lgHoverViaGreen100
+    , lgHoverViaGreen200
+    , lgHoverViaGreen300
+    , lgHoverViaGreen400
+    , lgHoverViaGreen500
+    , lgHoverViaGreen600
+    , lgHoverViaGreen700
+    , lgHoverViaGreen800
+    , lgHoverViaGreen900
+    , lgHoverViaIndigo100
+    , lgHoverViaIndigo200
+    , lgHoverViaIndigo300
+    , lgHoverViaIndigo400
+    , lgHoverViaIndigo500
+    , lgHoverViaIndigo600
+    , lgHoverViaIndigo700
+    , lgHoverViaIndigo800
+    , lgHoverViaIndigo900
+    , lgHoverViaOrange100
+    , lgHoverViaOrange200
+    , lgHoverViaOrange300
+    , lgHoverViaOrange400
+    , lgHoverViaOrange500
+    , lgHoverViaOrange600
+    , lgHoverViaOrange700
+    , lgHoverViaOrange800
+    , lgHoverViaOrange900
+    , lgHoverViaPink100
+    , lgHoverViaPink200
+    , lgHoverViaPink300
+    , lgHoverViaPink400
+    , lgHoverViaPink500
+    , lgHoverViaPink600
+    , lgHoverViaPink700
+    , lgHoverViaPink800
+    , lgHoverViaPink900
+    , lgHoverViaPurple100
+    , lgHoverViaPurple200
+    , lgHoverViaPurple300
+    , lgHoverViaPurple400
+    , lgHoverViaPurple500
+    , lgHoverViaPurple600
+    , lgHoverViaPurple700
+    , lgHoverViaPurple800
+    , lgHoverViaPurple900
+    , lgHoverViaRed100
+    , lgHoverViaRed200
+    , lgHoverViaRed300
+    , lgHoverViaRed400
+    , lgHoverViaRed500
+    , lgHoverViaRed600
+    , lgHoverViaRed700
+    , lgHoverViaRed800
+    , lgHoverViaRed900
+    , lgHoverViaTeal100
+    , lgHoverViaTeal200
+    , lgHoverViaTeal300
+    , lgHoverViaTeal400
+    , lgHoverViaTeal500
+    , lgHoverViaTeal600
+    , lgHoverViaTeal700
+    , lgHoverViaTeal800
+    , lgHoverViaTeal900
+    , lgHoverViaTransparent
+    , lgHoverViaWhite
+    , lgHoverViaYellow100
+    , lgHoverViaYellow200
+    , lgHoverViaYellow300
+    , lgHoverViaYellow400
+    , lgHoverViaYellow500
+    , lgHoverViaYellow600
+    , lgHoverViaYellow700
+    , lgHoverViaYellow800
+    , lgHoverViaYellow900
     , lgInline
     , lgInlineBlock
     , lgInlineFlex
@@ -3252,6 +4763,16 @@ module Svg.Tailwind exposing
     , lgJustifyCenter
     , lgJustifyEnd
     , lgJustifyEvenly
+    , lgJustifyItemsAuto
+    , lgJustifyItemsCenter
+    , lgJustifyItemsEnd
+    , lgJustifyItemsStart
+    , lgJustifyItemsStretch
+    , lgJustifySelfAuto
+    , lgJustifySelfCenter
+    , lgJustifySelfEnd
+    , lgJustifySelfStart
+    , lgJustifySelfStretch
     , lgJustifyStart
     , lgLeading10
     , lgLeading3
@@ -3270,6 +4791,7 @@ module Svg.Tailwind exposing
     , lgLeft0
     , lgLeftAuto
     , lgLineThrough
+    , lgLiningNums
     , lgListDecimal
     , lgListDisc
     , lgListInside
@@ -3565,13 +5087,22 @@ module Svg.Tailwind exposing
     , lgNegMy64
     , lgNegMy8
     , lgNegMyPx
+    , lgNegRotate1
+    , lgNegRotate12
     , lgNegRotate180
+    , lgNegRotate2
+    , lgNegRotate3
     , lgNegRotate45
+    , lgNegRotate6
     , lgNegRotate90
+    , lgNegSkewX1
     , lgNegSkewX12
+    , lgNegSkewX2
     , lgNegSkewX3
     , lgNegSkewX6
+    , lgNegSkewY1
     , lgNegSkewY12
+    , lgNegSkewY2
     , lgNegSkewY3
     , lgNegSkewY6
     , lgNegSpaceX1
@@ -3652,6 +5183,7 @@ module Svg.Tailwind exposing
     , lgNegTranslateYPx
     , lgNoUnderline
     , lgNormalCase
+    , lgNormalNums
     , lgNotItalic
     , lgNotSrOnly
     , lgObjectBottom
@@ -3668,6 +5200,7 @@ module Svg.Tailwind exposing
     , lgObjectRightTop
     , lgObjectScaleDown
     , lgObjectTop
+    , lgOldstyleNums
     , lgOpacity0
     , lgOpacity100
     , lgOpacity25
@@ -3688,6 +5221,7 @@ module Svg.Tailwind exposing
     , lgOrderFirst
     , lgOrderLast
     , lgOrderNone
+    , lgOrdinal
     , lgOriginBottom
     , lgOriginBottomLeft
     , lgOriginBottomRight
@@ -3697,7 +5231,9 @@ module Svg.Tailwind exposing
     , lgOriginTop
     , lgOriginTopLeft
     , lgOriginTopRight
+    , lgOutlineBlack
     , lgOutlineNone
+    , lgOutlineWhite
     , lgOverflowAuto
     , lgOverflowHidden
     , lgOverflowScroll
@@ -3710,6 +5246,15 @@ module Svg.Tailwind exposing
     , lgOverflowYHidden
     , lgOverflowYScroll
     , lgOverflowYVisible
+    , lgOverscrollAuto
+    , lgOverscrollContain
+    , lgOverscrollNone
+    , lgOverscrollXAuto
+    , lgOverscrollXContain
+    , lgOverscrollXNone
+    , lgOverscrollYAuto
+    , lgOverscrollYContain
+    , lgOverscrollYNone
     , lgP0
     , lgP1
     , lgP10
@@ -3767,6 +5312,23 @@ module Svg.Tailwind exposing
     , lgPl64
     , lgPl8
     , lgPlPx
+    , lgPlaceContentAround
+    , lgPlaceContentBetween
+    , lgPlaceContentCenter
+    , lgPlaceContentEnd
+    , lgPlaceContentEvenly
+    , lgPlaceContentStart
+    , lgPlaceContentStretch
+    , lgPlaceItemsAuto
+    , lgPlaceItemsCenter
+    , lgPlaceItemsEnd
+    , lgPlaceItemsStart
+    , lgPlaceItemsStretch
+    , lgPlaceSelfAuto
+    , lgPlaceSelfCenter
+    , lgPlaceSelfEnd
+    , lgPlaceSelfStart
+    , lgPlaceSelfStretch
     , lgPlaceholderBlack
     , lgPlaceholderBlue100
     , lgPlaceholderBlue200
@@ -3887,6 +5449,7 @@ module Svg.Tailwind exposing
     , lgPr64
     , lgPr8
     , lgPrPx
+    , lgProportionalNums
     , lgPt0
     , lgPt1
     , lgPt10
@@ -3952,63 +5515,95 @@ module Svg.Tailwind exposing
     , lgRight0
     , lgRightAuto
     , lgRotate0
+    , lgRotate1
+    , lgRotate12
     , lgRotate180
+    , lgRotate2
+    , lgRotate3
     , lgRotate45
+    , lgRotate6
     , lgRotate90
     , lgRounded
+    , lgRounded2xl
+    , lgRounded3xl
     , lgRoundedB
+    , lgRoundedB2xl
+    , lgRoundedB3xl
     , lgRoundedBFull
     , lgRoundedBLg
     , lgRoundedBMd
     , lgRoundedBNone
     , lgRoundedBSm
+    , lgRoundedBXl
     , lgRoundedBl
+    , lgRoundedBl2xl
+    , lgRoundedBl3xl
     , lgRoundedBlFull
     , lgRoundedBlLg
     , lgRoundedBlMd
     , lgRoundedBlNone
     , lgRoundedBlSm
+    , lgRoundedBlXl
     , lgRoundedBr
+    , lgRoundedBr2xl
+    , lgRoundedBr3xl
     , lgRoundedBrFull
     , lgRoundedBrLg
     , lgRoundedBrMd
     , lgRoundedBrNone
     , lgRoundedBrSm
+    , lgRoundedBrXl
     , lgRoundedFull
     , lgRoundedL
+    , lgRoundedL2xl
+    , lgRoundedL3xl
     , lgRoundedLFull
     , lgRoundedLLg
     , lgRoundedLMd
     , lgRoundedLNone
     , lgRoundedLSm
+    , lgRoundedLXl
     , lgRoundedLg
     , lgRoundedMd
     , lgRoundedNone
     , lgRoundedR
+    , lgRoundedR2xl
+    , lgRoundedR3xl
     , lgRoundedRFull
     , lgRoundedRLg
     , lgRoundedRMd
     , lgRoundedRNone
     , lgRoundedRSm
+    , lgRoundedRXl
     , lgRoundedSm
     , lgRoundedT
+    , lgRoundedT2xl
+    , lgRoundedT3xl
     , lgRoundedTFull
     , lgRoundedTLg
     , lgRoundedTMd
     , lgRoundedTNone
     , lgRoundedTSm
+    , lgRoundedTXl
     , lgRoundedTl
+    , lgRoundedTl2xl
+    , lgRoundedTl3xl
     , lgRoundedTlFull
     , lgRoundedTlLg
     , lgRoundedTlMd
     , lgRoundedTlNone
     , lgRoundedTlSm
+    , lgRoundedTlXl
     , lgRoundedTr
+    , lgRoundedTr2xl
+    , lgRoundedTr3xl
     , lgRoundedTrFull
     , lgRoundedTrLg
     , lgRoundedTrMd
     , lgRoundedTrNone
     , lgRoundedTrSm
+    , lgRoundedTrXl
+    , lgRoundedXl
     , lgRowAuto
     , lgRowEnd1
     , lgRowEnd2
@@ -4018,31 +5613,13 @@ module Svg.Tailwind exposing
     , lgRowEnd6
     , lgRowEnd7
     , lgRowEndAuto
-    , lgRowGap0
-    , lgRowGap1
-    , lgRowGap10
-    , lgRowGap12
-    , lgRowGap16
-    , lgRowGap2
-    , lgRowGap20
-    , lgRowGap24
-    , lgRowGap3
-    , lgRowGap32
-    , lgRowGap4
-    , lgRowGap40
-    , lgRowGap48
-    , lgRowGap5
-    , lgRowGap56
-    , lgRowGap6
-    , lgRowGap64
-    , lgRowGap8
-    , lgRowGapPx
     , lgRowSpan1
     , lgRowSpan2
     , lgRowSpan3
     , lgRowSpan4
     , lgRowSpan5
     , lgRowSpan6
+    , lgRowSpanFull
     , lgRowStart1
     , lgRowStart2
     , lgRowStart3
@@ -4103,13 +5680,18 @@ module Svg.Tailwind exposing
     , lgShadowXl
     , lgShadowXs
     , lgSkewX0
+    , lgSkewX1
     , lgSkewX12
+    , lgSkewX2
     , lgSkewX3
     , lgSkewX6
     , lgSkewY0
+    , lgSkewY1
     , lgSkewY12
+    , lgSkewY2
     , lgSkewY3
     , lgSkewY6
+    , lgSlashedZero
     , lgSpaceX0
     , lgSpaceX1
     , lgSpaceX10
@@ -4151,6 +5733,7 @@ module Svg.Tailwind exposing
     , lgSpaceYPx
     , lgSpaceYReverse
     , lgSrOnly
+    , lgStackedFractions
     , lgStatic
     , lgSticky
     , lgStroke0
@@ -4169,6 +5752,7 @@ module Svg.Tailwind exposing
     , lgTableHeaderGroup
     , lgTableRow
     , lgTableRowGroup
+    , lgTabularNums
     , lgText2xl
     , lgText3xl
     , lgText4xl
@@ -4282,6 +5866,100 @@ module Svg.Tailwind exposing
     , lgTextYellow700
     , lgTextYellow800
     , lgTextYellow900
+    , lgToBlack
+    , lgToBlue100
+    , lgToBlue200
+    , lgToBlue300
+    , lgToBlue400
+    , lgToBlue500
+    , lgToBlue600
+    , lgToBlue700
+    , lgToBlue800
+    , lgToBlue900
+    , lgToCurrent
+    , lgToGray100
+    , lgToGray200
+    , lgToGray300
+    , lgToGray400
+    , lgToGray500
+    , lgToGray600
+    , lgToGray700
+    , lgToGray800
+    , lgToGray900
+    , lgToGreen100
+    , lgToGreen200
+    , lgToGreen300
+    , lgToGreen400
+    , lgToGreen500
+    , lgToGreen600
+    , lgToGreen700
+    , lgToGreen800
+    , lgToGreen900
+    , lgToIndigo100
+    , lgToIndigo200
+    , lgToIndigo300
+    , lgToIndigo400
+    , lgToIndigo500
+    , lgToIndigo600
+    , lgToIndigo700
+    , lgToIndigo800
+    , lgToIndigo900
+    , lgToOrange100
+    , lgToOrange200
+    , lgToOrange300
+    , lgToOrange400
+    , lgToOrange500
+    , lgToOrange600
+    , lgToOrange700
+    , lgToOrange800
+    , lgToOrange900
+    , lgToPink100
+    , lgToPink200
+    , lgToPink300
+    , lgToPink400
+    , lgToPink500
+    , lgToPink600
+    , lgToPink700
+    , lgToPink800
+    , lgToPink900
+    , lgToPurple100
+    , lgToPurple200
+    , lgToPurple300
+    , lgToPurple400
+    , lgToPurple500
+    , lgToPurple600
+    , lgToPurple700
+    , lgToPurple800
+    , lgToPurple900
+    , lgToRed100
+    , lgToRed200
+    , lgToRed300
+    , lgToRed400
+    , lgToRed500
+    , lgToRed600
+    , lgToRed700
+    , lgToRed800
+    , lgToRed900
+    , lgToTeal100
+    , lgToTeal200
+    , lgToTeal300
+    , lgToTeal400
+    , lgToTeal500
+    , lgToTeal600
+    , lgToTeal700
+    , lgToTeal800
+    , lgToTeal900
+    , lgToTransparent
+    , lgToWhite
+    , lgToYellow100
+    , lgToYellow200
+    , lgToYellow300
+    , lgToYellow400
+    , lgToYellow500
+    , lgToYellow600
+    , lgToYellow700
+    , lgToYellow800
+    , lgToYellow900
     , lgTop0
     , lgTopAuto
     , lgTrackingNormal
@@ -4344,6 +6022,100 @@ module Svg.Tailwind exposing
     , lgTruncate
     , lgUnderline
     , lgUppercase
+    , lgViaBlack
+    , lgViaBlue100
+    , lgViaBlue200
+    , lgViaBlue300
+    , lgViaBlue400
+    , lgViaBlue500
+    , lgViaBlue600
+    , lgViaBlue700
+    , lgViaBlue800
+    , lgViaBlue900
+    , lgViaCurrent
+    , lgViaGray100
+    , lgViaGray200
+    , lgViaGray300
+    , lgViaGray400
+    , lgViaGray500
+    , lgViaGray600
+    , lgViaGray700
+    , lgViaGray800
+    , lgViaGray900
+    , lgViaGreen100
+    , lgViaGreen200
+    , lgViaGreen300
+    , lgViaGreen400
+    , lgViaGreen500
+    , lgViaGreen600
+    , lgViaGreen700
+    , lgViaGreen800
+    , lgViaGreen900
+    , lgViaIndigo100
+    , lgViaIndigo200
+    , lgViaIndigo300
+    , lgViaIndigo400
+    , lgViaIndigo500
+    , lgViaIndigo600
+    , lgViaIndigo700
+    , lgViaIndigo800
+    , lgViaIndigo900
+    , lgViaOrange100
+    , lgViaOrange200
+    , lgViaOrange300
+    , lgViaOrange400
+    , lgViaOrange500
+    , lgViaOrange600
+    , lgViaOrange700
+    , lgViaOrange800
+    , lgViaOrange900
+    , lgViaPink100
+    , lgViaPink200
+    , lgViaPink300
+    , lgViaPink400
+    , lgViaPink500
+    , lgViaPink600
+    , lgViaPink700
+    , lgViaPink800
+    , lgViaPink900
+    , lgViaPurple100
+    , lgViaPurple200
+    , lgViaPurple300
+    , lgViaPurple400
+    , lgViaPurple500
+    , lgViaPurple600
+    , lgViaPurple700
+    , lgViaPurple800
+    , lgViaPurple900
+    , lgViaRed100
+    , lgViaRed200
+    , lgViaRed300
+    , lgViaRed400
+    , lgViaRed500
+    , lgViaRed600
+    , lgViaRed700
+    , lgViaRed800
+    , lgViaRed900
+    , lgViaTeal100
+    , lgViaTeal200
+    , lgViaTeal300
+    , lgViaTeal400
+    , lgViaTeal500
+    , lgViaTeal600
+    , lgViaTeal700
+    , lgViaTeal800
+    , lgViaTeal900
+    , lgViaTransparent
+    , lgViaWhite
+    , lgViaYellow100
+    , lgViaYellow200
+    , lgViaYellow300
+    , lgViaYellow400
+    , lgViaYellow500
+    , lgViaYellow600
+    , lgViaYellow700
+    , lgViaYellow800
+    , lgViaYellow900
     , lgVisible
     , lgW0
     , lgW1
@@ -4406,6 +6178,7 @@ module Svg.Tailwind exposing
     , lgZ50
     , lgZAuto
     , lineThrough
+    , liningNums
     , listDecimal
     , listDisc
     , listInside
@@ -4477,8 +6250,21 @@ module Svg.Tailwind exposing
     , mdAlignTextBottom
     , mdAlignTextTop
     , mdAlignTop
+    , mdAnimateBounce
+    , mdAnimateNone
+    , mdAnimatePing
+    , mdAnimatePulse
+    , mdAnimateSpin
     , mdAntialiased
     , mdAppearanceNone
+    , mdAutoColsAuto
+    , mdAutoColsFr
+    , mdAutoColsMax
+    , mdAutoColsMin
+    , mdAutoRowsAuto
+    , mdAutoRowsFr
+    , mdAutoRowsMax
+    , mdAutoRowsMin
     , mdBgAuto
     , mdBgBlack
     , mdBgBlue100
@@ -4492,10 +6278,22 @@ module Svg.Tailwind exposing
     , mdBgBlue900
     , mdBgBottom
     , mdBgCenter
+    , mdBgClipBorder
+    , mdBgClipContent
+    , mdBgClipPadding
+    , mdBgClipText
     , mdBgContain
     , mdBgCover
     , mdBgCurrent
     , mdBgFixed
+    , mdBgGradientToB
+    , mdBgGradientToBl
+    , mdBgGradientToBr
+    , mdBgGradientToL
+    , mdBgGradientToR
+    , mdBgGradientToT
+    , mdBgGradientToTl
+    , mdBgGradientToTr
     , mdBgGray100
     , mdBgGray200
     , mdBgGray300
@@ -4528,6 +6326,7 @@ module Svg.Tailwind exposing
     , mdBgLeftTop
     , mdBgLocal
     , mdBgNoRepeat
+    , mdBgNone
     , mdBgOpacity0
     , mdBgOpacity100
     , mdBgOpacity25
@@ -4759,25 +6558,6 @@ module Svg.Tailwind exposing
     , mdColEnd8
     , mdColEnd9
     , mdColEndAuto
-    , mdColGap0
-    , mdColGap1
-    , mdColGap10
-    , mdColGap12
-    , mdColGap16
-    , mdColGap2
-    , mdColGap20
-    , mdColGap24
-    , mdColGap3
-    , mdColGap32
-    , mdColGap4
-    , mdColGap40
-    , mdColGap48
-    , mdColGap5
-    , mdColGap56
-    , mdColGap6
-    , mdColGap64
-    , mdColGap8
-    , mdColGapPx
     , mdColSpan1
     , mdColSpan10
     , mdColSpan11
@@ -4790,6 +6570,7 @@ module Svg.Tailwind exposing
     , mdColSpan7
     , mdColSpan8
     , mdColSpan9
+    , mdColSpanFull
     , mdColStart1
     , mdColStart10
     , mdColStart11
@@ -4804,11 +6585,14 @@ module Svg.Tailwind exposing
     , mdColStart8
     , mdColStart9
     , mdColStartAuto
+    , mdContainer
     , mdContentAround
     , mdContentBetween
     , mdContentCenter
     , mdContentEnd
+    , mdContentEvenly
     , mdContentStart
+    , mdContents
     , mdCursorAuto
     , mdCursorDefault
     , mdCursorMove
@@ -4824,6 +6608,7 @@ module Svg.Tailwind exposing
     , mdDelay500
     , mdDelay700
     , mdDelay75
+    , mdDiagonalFractions
     , mdDivideBlack
     , mdDivideBlue100
     , mdDivideBlue200
@@ -4835,6 +6620,9 @@ module Svg.Tailwind exposing
     , mdDivideBlue800
     , mdDivideBlue900
     , mdDivideCurrent
+    , mdDivideDashed
+    , mdDivideDotted
+    , mdDivideDouble
     , mdDivideGray100
     , mdDivideGray200
     , mdDivideGray300
@@ -4862,6 +6650,7 @@ module Svg.Tailwind exposing
     , mdDivideIndigo700
     , mdDivideIndigo800
     , mdDivideIndigo900
+    , mdDivideNone
     , mdDivideOpacity0
     , mdDivideOpacity100
     , mdDivideOpacity25
@@ -4903,6 +6692,7 @@ module Svg.Tailwind exposing
     , mdDivideRed700
     , mdDivideRed800
     , mdDivideRed900
+    , mdDivideSolid
     , mdDivideTeal100
     , mdDivideTeal200
     , mdDivideTeal300
@@ -5176,14 +6966,117 @@ module Svg.Tailwind exposing
     , mdFocusFontNormal
     , mdFocusFontSemibold
     , mdFocusFontThin
+    , mdFocusFromBlack
+    , mdFocusFromBlue100
+    , mdFocusFromBlue200
+    , mdFocusFromBlue300
+    , mdFocusFromBlue400
+    , mdFocusFromBlue500
+    , mdFocusFromBlue600
+    , mdFocusFromBlue700
+    , mdFocusFromBlue800
+    , mdFocusFromBlue900
+    , mdFocusFromCurrent
+    , mdFocusFromGray100
+    , mdFocusFromGray200
+    , mdFocusFromGray300
+    , mdFocusFromGray400
+    , mdFocusFromGray500
+    , mdFocusFromGray600
+    , mdFocusFromGray700
+    , mdFocusFromGray800
+    , mdFocusFromGray900
+    , mdFocusFromGreen100
+    , mdFocusFromGreen200
+    , mdFocusFromGreen300
+    , mdFocusFromGreen400
+    , mdFocusFromGreen500
+    , mdFocusFromGreen600
+    , mdFocusFromGreen700
+    , mdFocusFromGreen800
+    , mdFocusFromGreen900
+    , mdFocusFromIndigo100
+    , mdFocusFromIndigo200
+    , mdFocusFromIndigo300
+    , mdFocusFromIndigo400
+    , mdFocusFromIndigo500
+    , mdFocusFromIndigo600
+    , mdFocusFromIndigo700
+    , mdFocusFromIndigo800
+    , mdFocusFromIndigo900
+    , mdFocusFromOrange100
+    , mdFocusFromOrange200
+    , mdFocusFromOrange300
+    , mdFocusFromOrange400
+    , mdFocusFromOrange500
+    , mdFocusFromOrange600
+    , mdFocusFromOrange700
+    , mdFocusFromOrange800
+    , mdFocusFromOrange900
+    , mdFocusFromPink100
+    , mdFocusFromPink200
+    , mdFocusFromPink300
+    , mdFocusFromPink400
+    , mdFocusFromPink500
+    , mdFocusFromPink600
+    , mdFocusFromPink700
+    , mdFocusFromPink800
+    , mdFocusFromPink900
+    , mdFocusFromPurple100
+    , mdFocusFromPurple200
+    , mdFocusFromPurple300
+    , mdFocusFromPurple400
+    , mdFocusFromPurple500
+    , mdFocusFromPurple600
+    , mdFocusFromPurple700
+    , mdFocusFromPurple800
+    , mdFocusFromPurple900
+    , mdFocusFromRed100
+    , mdFocusFromRed200
+    , mdFocusFromRed300
+    , mdFocusFromRed400
+    , mdFocusFromRed500
+    , mdFocusFromRed600
+    , mdFocusFromRed700
+    , mdFocusFromRed800
+    , mdFocusFromRed900
+    , mdFocusFromTeal100
+    , mdFocusFromTeal200
+    , mdFocusFromTeal300
+    , mdFocusFromTeal400
+    , mdFocusFromTeal500
+    , mdFocusFromTeal600
+    , mdFocusFromTeal700
+    , mdFocusFromTeal800
+    , mdFocusFromTeal900
+    , mdFocusFromTransparent
+    , mdFocusFromWhite
+    , mdFocusFromYellow100
+    , mdFocusFromYellow200
+    , mdFocusFromYellow300
+    , mdFocusFromYellow400
+    , mdFocusFromYellow500
+    , mdFocusFromYellow600
+    , mdFocusFromYellow700
+    , mdFocusFromYellow800
+    , mdFocusFromYellow900
     , mdFocusLineThrough
+    , mdFocusNegRotate1
+    , mdFocusNegRotate12
     , mdFocusNegRotate180
+    , mdFocusNegRotate2
+    , mdFocusNegRotate3
     , mdFocusNegRotate45
+    , mdFocusNegRotate6
     , mdFocusNegRotate90
+    , mdFocusNegSkewX1
     , mdFocusNegSkewX12
+    , mdFocusNegSkewX2
     , mdFocusNegSkewX3
     , mdFocusNegSkewX6
+    , mdFocusNegSkewY1
     , mdFocusNegSkewY12
+    , mdFocusNegSkewY2
     , mdFocusNegSkewY3
     , mdFocusNegSkewY6
     , mdFocusNegTranslateX1
@@ -5233,7 +7126,9 @@ module Svg.Tailwind exposing
     , mdFocusOpacity25
     , mdFocusOpacity50
     , mdFocusOpacity75
+    , mdFocusOutlineBlack
     , mdFocusOutlineNone
+    , mdFocusOutlineWhite
     , mdFocusPlaceholderBlackFocus
     , mdFocusPlaceholderBlue100Focus
     , mdFocusPlaceholderBlue200Focus
@@ -5334,8 +7229,13 @@ module Svg.Tailwind exposing
     , mdFocusPlaceholderYellow800Focus
     , mdFocusPlaceholderYellow900Focus
     , mdFocusRotate0
+    , mdFocusRotate1
+    , mdFocusRotate12
     , mdFocusRotate180
+    , mdFocusRotate2
+    , mdFocusRotate3
     , mdFocusRotate45
+    , mdFocusRotate6
     , mdFocusRotate90
     , mdFocusScale0
     , mdFocusScale100
@@ -5378,11 +7278,15 @@ module Svg.Tailwind exposing
     , mdFocusShadowXl
     , mdFocusShadowXs
     , mdFocusSkewX0
+    , mdFocusSkewX1
     , mdFocusSkewX12
+    , mdFocusSkewX2
     , mdFocusSkewX3
     , mdFocusSkewX6
     , mdFocusSkewY0
+    , mdFocusSkewY1
     , mdFocusSkewY12
+    , mdFocusSkewY2
     , mdFocusSkewY3
     , mdFocusSkewY6
     , mdFocusSrOnly
@@ -5485,6 +7389,100 @@ module Svg.Tailwind exposing
     , mdFocusTextYellow700
     , mdFocusTextYellow800
     , mdFocusTextYellow900
+    , mdFocusToBlack
+    , mdFocusToBlue100
+    , mdFocusToBlue200
+    , mdFocusToBlue300
+    , mdFocusToBlue400
+    , mdFocusToBlue500
+    , mdFocusToBlue600
+    , mdFocusToBlue700
+    , mdFocusToBlue800
+    , mdFocusToBlue900
+    , mdFocusToCurrent
+    , mdFocusToGray100
+    , mdFocusToGray200
+    , mdFocusToGray300
+    , mdFocusToGray400
+    , mdFocusToGray500
+    , mdFocusToGray600
+    , mdFocusToGray700
+    , mdFocusToGray800
+    , mdFocusToGray900
+    , mdFocusToGreen100
+    , mdFocusToGreen200
+    , mdFocusToGreen300
+    , mdFocusToGreen400
+    , mdFocusToGreen500
+    , mdFocusToGreen600
+    , mdFocusToGreen700
+    , mdFocusToGreen800
+    , mdFocusToGreen900
+    , mdFocusToIndigo100
+    , mdFocusToIndigo200
+    , mdFocusToIndigo300
+    , mdFocusToIndigo400
+    , mdFocusToIndigo500
+    , mdFocusToIndigo600
+    , mdFocusToIndigo700
+    , mdFocusToIndigo800
+    , mdFocusToIndigo900
+    , mdFocusToOrange100
+    , mdFocusToOrange200
+    , mdFocusToOrange300
+    , mdFocusToOrange400
+    , mdFocusToOrange500
+    , mdFocusToOrange600
+    , mdFocusToOrange700
+    , mdFocusToOrange800
+    , mdFocusToOrange900
+    , mdFocusToPink100
+    , mdFocusToPink200
+    , mdFocusToPink300
+    , mdFocusToPink400
+    , mdFocusToPink500
+    , mdFocusToPink600
+    , mdFocusToPink700
+    , mdFocusToPink800
+    , mdFocusToPink900
+    , mdFocusToPurple100
+    , mdFocusToPurple200
+    , mdFocusToPurple300
+    , mdFocusToPurple400
+    , mdFocusToPurple500
+    , mdFocusToPurple600
+    , mdFocusToPurple700
+    , mdFocusToPurple800
+    , mdFocusToPurple900
+    , mdFocusToRed100
+    , mdFocusToRed200
+    , mdFocusToRed300
+    , mdFocusToRed400
+    , mdFocusToRed500
+    , mdFocusToRed600
+    , mdFocusToRed700
+    , mdFocusToRed800
+    , mdFocusToRed900
+    , mdFocusToTeal100
+    , mdFocusToTeal200
+    , mdFocusToTeal300
+    , mdFocusToTeal400
+    , mdFocusToTeal500
+    , mdFocusToTeal600
+    , mdFocusToTeal700
+    , mdFocusToTeal800
+    , mdFocusToTeal900
+    , mdFocusToTransparent
+    , mdFocusToWhite
+    , mdFocusToYellow100
+    , mdFocusToYellow200
+    , mdFocusToYellow300
+    , mdFocusToYellow400
+    , mdFocusToYellow500
+    , mdFocusToYellow600
+    , mdFocusToYellow700
+    , mdFocusToYellow800
+    , mdFocusToYellow900
     , mdFocusTranslateX0
     , mdFocusTranslateX1
     , mdFocusTranslateX10
@@ -5528,6 +7526,100 @@ module Svg.Tailwind exposing
     , mdFocusTranslateYFull
     , mdFocusTranslateYPx
     , mdFocusUnderline
+    , mdFocusViaBlack
+    , mdFocusViaBlue100
+    , mdFocusViaBlue200
+    , mdFocusViaBlue300
+    , mdFocusViaBlue400
+    , mdFocusViaBlue500
+    , mdFocusViaBlue600
+    , mdFocusViaBlue700
+    , mdFocusViaBlue800
+    , mdFocusViaBlue900
+    , mdFocusViaCurrent
+    , mdFocusViaGray100
+    , mdFocusViaGray200
+    , mdFocusViaGray300
+    , mdFocusViaGray400
+    , mdFocusViaGray500
+    , mdFocusViaGray600
+    , mdFocusViaGray700
+    , mdFocusViaGray800
+    , mdFocusViaGray900
+    , mdFocusViaGreen100
+    , mdFocusViaGreen200
+    , mdFocusViaGreen300
+    , mdFocusViaGreen400
+    , mdFocusViaGreen500
+    , mdFocusViaGreen600
+    , mdFocusViaGreen700
+    , mdFocusViaGreen800
+    , mdFocusViaGreen900
+    , mdFocusViaIndigo100
+    , mdFocusViaIndigo200
+    , mdFocusViaIndigo300
+    , mdFocusViaIndigo400
+    , mdFocusViaIndigo500
+    , mdFocusViaIndigo600
+    , mdFocusViaIndigo700
+    , mdFocusViaIndigo800
+    , mdFocusViaIndigo900
+    , mdFocusViaOrange100
+    , mdFocusViaOrange200
+    , mdFocusViaOrange300
+    , mdFocusViaOrange400
+    , mdFocusViaOrange500
+    , mdFocusViaOrange600
+    , mdFocusViaOrange700
+    , mdFocusViaOrange800
+    , mdFocusViaOrange900
+    , mdFocusViaPink100
+    , mdFocusViaPink200
+    , mdFocusViaPink300
+    , mdFocusViaPink400
+    , mdFocusViaPink500
+    , mdFocusViaPink600
+    , mdFocusViaPink700
+    , mdFocusViaPink800
+    , mdFocusViaPink900
+    , mdFocusViaPurple100
+    , mdFocusViaPurple200
+    , mdFocusViaPurple300
+    , mdFocusViaPurple400
+    , mdFocusViaPurple500
+    , mdFocusViaPurple600
+    , mdFocusViaPurple700
+    , mdFocusViaPurple800
+    , mdFocusViaPurple900
+    , mdFocusViaRed100
+    , mdFocusViaRed200
+    , mdFocusViaRed300
+    , mdFocusViaRed400
+    , mdFocusViaRed500
+    , mdFocusViaRed600
+    , mdFocusViaRed700
+    , mdFocusViaRed800
+    , mdFocusViaRed900
+    , mdFocusViaTeal100
+    , mdFocusViaTeal200
+    , mdFocusViaTeal300
+    , mdFocusViaTeal400
+    , mdFocusViaTeal500
+    , mdFocusViaTeal600
+    , mdFocusViaTeal700
+    , mdFocusViaTeal800
+    , mdFocusViaTeal900
+    , mdFocusViaTransparent
+    , mdFocusViaWhite
+    , mdFocusViaYellow100
+    , mdFocusViaYellow200
+    , mdFocusViaYellow300
+    , mdFocusViaYellow400
+    , mdFocusViaYellow500
+    , mdFocusViaYellow600
+    , mdFocusViaYellow700
+    , mdFocusViaYellow800
+    , mdFocusViaYellow900
     , mdFontBlack
     , mdFontBold
     , mdFontExtrabold
@@ -5541,6 +7633,100 @@ module Svg.Tailwind exposing
     , mdFontSerif
     , mdFontThin
     , mdFontTitle
+    , mdFromBlack
+    , mdFromBlue100
+    , mdFromBlue200
+    , mdFromBlue300
+    , mdFromBlue400
+    , mdFromBlue500
+    , mdFromBlue600
+    , mdFromBlue700
+    , mdFromBlue800
+    , mdFromBlue900
+    , mdFromCurrent
+    , mdFromGray100
+    , mdFromGray200
+    , mdFromGray300
+    , mdFromGray400
+    , mdFromGray500
+    , mdFromGray600
+    , mdFromGray700
+    , mdFromGray800
+    , mdFromGray900
+    , mdFromGreen100
+    , mdFromGreen200
+    , mdFromGreen300
+    , mdFromGreen400
+    , mdFromGreen500
+    , mdFromGreen600
+    , mdFromGreen700
+    , mdFromGreen800
+    , mdFromGreen900
+    , mdFromIndigo100
+    , mdFromIndigo200
+    , mdFromIndigo300
+    , mdFromIndigo400
+    , mdFromIndigo500
+    , mdFromIndigo600
+    , mdFromIndigo700
+    , mdFromIndigo800
+    , mdFromIndigo900
+    , mdFromOrange100
+    , mdFromOrange200
+    , mdFromOrange300
+    , mdFromOrange400
+    , mdFromOrange500
+    , mdFromOrange600
+    , mdFromOrange700
+    , mdFromOrange800
+    , mdFromOrange900
+    , mdFromPink100
+    , mdFromPink200
+    , mdFromPink300
+    , mdFromPink400
+    , mdFromPink500
+    , mdFromPink600
+    , mdFromPink700
+    , mdFromPink800
+    , mdFromPink900
+    , mdFromPurple100
+    , mdFromPurple200
+    , mdFromPurple300
+    , mdFromPurple400
+    , mdFromPurple500
+    , mdFromPurple600
+    , mdFromPurple700
+    , mdFromPurple800
+    , mdFromPurple900
+    , mdFromRed100
+    , mdFromRed200
+    , mdFromRed300
+    , mdFromRed400
+    , mdFromRed500
+    , mdFromRed600
+    , mdFromRed700
+    , mdFromRed800
+    , mdFromRed900
+    , mdFromTeal100
+    , mdFromTeal200
+    , mdFromTeal300
+    , mdFromTeal400
+    , mdFromTeal500
+    , mdFromTeal600
+    , mdFromTeal700
+    , mdFromTeal800
+    , mdFromTeal900
+    , mdFromTransparent
+    , mdFromWhite
+    , mdFromYellow100
+    , mdFromYellow200
+    , mdFromYellow300
+    , mdFromYellow400
+    , mdFromYellow500
+    , mdFromYellow600
+    , mdFromYellow700
+    , mdFromYellow800
+    , mdFromYellow900
     , mdGap0
     , mdGap1
     , mdGap10
@@ -5560,6 +7746,44 @@ module Svg.Tailwind exposing
     , mdGap64
     , mdGap8
     , mdGapPx
+    , mdGapX0
+    , mdGapX1
+    , mdGapX10
+    , mdGapX12
+    , mdGapX16
+    , mdGapX2
+    , mdGapX20
+    , mdGapX24
+    , mdGapX3
+    , mdGapX32
+    , mdGapX4
+    , mdGapX40
+    , mdGapX48
+    , mdGapX5
+    , mdGapX56
+    , mdGapX6
+    , mdGapX64
+    , mdGapX8
+    , mdGapXPx
+    , mdGapY0
+    , mdGapY1
+    , mdGapY10
+    , mdGapY12
+    , mdGapY16
+    , mdGapY2
+    , mdGapY20
+    , mdGapY24
+    , mdGapY3
+    , mdGapY32
+    , mdGapY4
+    , mdGapY40
+    , mdGapY48
+    , mdGapY5
+    , mdGapY56
+    , mdGapY6
+    , mdGapY64
+    , mdGapY8
+    , mdGapYPx
     , mdGrid
     , mdGridCols1
     , mdGridCols10
@@ -5815,14 +8039,117 @@ module Svg.Tailwind exposing
     , mdHoverFontNormal
     , mdHoverFontSemibold
     , mdHoverFontThin
+    , mdHoverFromBlack
+    , mdHoverFromBlue100
+    , mdHoverFromBlue200
+    , mdHoverFromBlue300
+    , mdHoverFromBlue400
+    , mdHoverFromBlue500
+    , mdHoverFromBlue600
+    , mdHoverFromBlue700
+    , mdHoverFromBlue800
+    , mdHoverFromBlue900
+    , mdHoverFromCurrent
+    , mdHoverFromGray100
+    , mdHoverFromGray200
+    , mdHoverFromGray300
+    , mdHoverFromGray400
+    , mdHoverFromGray500
+    , mdHoverFromGray600
+    , mdHoverFromGray700
+    , mdHoverFromGray800
+    , mdHoverFromGray900
+    , mdHoverFromGreen100
+    , mdHoverFromGreen200
+    , mdHoverFromGreen300
+    , mdHoverFromGreen400
+    , mdHoverFromGreen500
+    , mdHoverFromGreen600
+    , mdHoverFromGreen700
+    , mdHoverFromGreen800
+    , mdHoverFromGreen900
+    , mdHoverFromIndigo100
+    , mdHoverFromIndigo200
+    , mdHoverFromIndigo300
+    , mdHoverFromIndigo400
+    , mdHoverFromIndigo500
+    , mdHoverFromIndigo600
+    , mdHoverFromIndigo700
+    , mdHoverFromIndigo800
+    , mdHoverFromIndigo900
+    , mdHoverFromOrange100
+    , mdHoverFromOrange200
+    , mdHoverFromOrange300
+    , mdHoverFromOrange400
+    , mdHoverFromOrange500
+    , mdHoverFromOrange600
+    , mdHoverFromOrange700
+    , mdHoverFromOrange800
+    , mdHoverFromOrange900
+    , mdHoverFromPink100
+    , mdHoverFromPink200
+    , mdHoverFromPink300
+    , mdHoverFromPink400
+    , mdHoverFromPink500
+    , mdHoverFromPink600
+    , mdHoverFromPink700
+    , mdHoverFromPink800
+    , mdHoverFromPink900
+    , mdHoverFromPurple100
+    , mdHoverFromPurple200
+    , mdHoverFromPurple300
+    , mdHoverFromPurple400
+    , mdHoverFromPurple500
+    , mdHoverFromPurple600
+    , mdHoverFromPurple700
+    , mdHoverFromPurple800
+    , mdHoverFromPurple900
+    , mdHoverFromRed100
+    , mdHoverFromRed200
+    , mdHoverFromRed300
+    , mdHoverFromRed400
+    , mdHoverFromRed500
+    , mdHoverFromRed600
+    , mdHoverFromRed700
+    , mdHoverFromRed800
+    , mdHoverFromRed900
+    , mdHoverFromTeal100
+    , mdHoverFromTeal200
+    , mdHoverFromTeal300
+    , mdHoverFromTeal400
+    , mdHoverFromTeal500
+    , mdHoverFromTeal600
+    , mdHoverFromTeal700
+    , mdHoverFromTeal800
+    , mdHoverFromTeal900
+    , mdHoverFromTransparent
+    , mdHoverFromWhite
+    , mdHoverFromYellow100
+    , mdHoverFromYellow200
+    , mdHoverFromYellow300
+    , mdHoverFromYellow400
+    , mdHoverFromYellow500
+    , mdHoverFromYellow600
+    , mdHoverFromYellow700
+    , mdHoverFromYellow800
+    , mdHoverFromYellow900
     , mdHoverLineThrough
+    , mdHoverNegRotate1
+    , mdHoverNegRotate12
     , mdHoverNegRotate180
+    , mdHoverNegRotate2
+    , mdHoverNegRotate3
     , mdHoverNegRotate45
+    , mdHoverNegRotate6
     , mdHoverNegRotate90
+    , mdHoverNegSkewX1
     , mdHoverNegSkewX12
+    , mdHoverNegSkewX2
     , mdHoverNegSkewX3
     , mdHoverNegSkewX6
+    , mdHoverNegSkewY1
     , mdHoverNegSkewY12
+    , mdHoverNegSkewY2
     , mdHoverNegSkewY3
     , mdHoverNegSkewY6
     , mdHoverNegTranslateX1
@@ -5872,8 +8199,13 @@ module Svg.Tailwind exposing
     , mdHoverOpacity50
     , mdHoverOpacity75
     , mdHoverRotate0
+    , mdHoverRotate1
+    , mdHoverRotate12
     , mdHoverRotate180
+    , mdHoverRotate2
+    , mdHoverRotate3
     , mdHoverRotate45
+    , mdHoverRotate6
     , mdHoverRotate90
     , mdHoverScale0
     , mdHoverScale100
@@ -5916,11 +8248,15 @@ module Svg.Tailwind exposing
     , mdHoverShadowXl
     , mdHoverShadowXs
     , mdHoverSkewX0
+    , mdHoverSkewX1
     , mdHoverSkewX12
+    , mdHoverSkewX2
     , mdHoverSkewX3
     , mdHoverSkewX6
     , mdHoverSkewY0
+    , mdHoverSkewY1
     , mdHoverSkewY12
+    , mdHoverSkewY2
     , mdHoverSkewY3
     , mdHoverSkewY6
     , mdHoverTextBlack
@@ -6022,6 +8358,100 @@ module Svg.Tailwind exposing
     , mdHoverTextYellow700
     , mdHoverTextYellow800
     , mdHoverTextYellow900
+    , mdHoverToBlack
+    , mdHoverToBlue100
+    , mdHoverToBlue200
+    , mdHoverToBlue300
+    , mdHoverToBlue400
+    , mdHoverToBlue500
+    , mdHoverToBlue600
+    , mdHoverToBlue700
+    , mdHoverToBlue800
+    , mdHoverToBlue900
+    , mdHoverToCurrent
+    , mdHoverToGray100
+    , mdHoverToGray200
+    , mdHoverToGray300
+    , mdHoverToGray400
+    , mdHoverToGray500
+    , mdHoverToGray600
+    , mdHoverToGray700
+    , mdHoverToGray800
+    , mdHoverToGray900
+    , mdHoverToGreen100
+    , mdHoverToGreen200
+    , mdHoverToGreen300
+    , mdHoverToGreen400
+    , mdHoverToGreen500
+    , mdHoverToGreen600
+    , mdHoverToGreen700
+    , mdHoverToGreen800
+    , mdHoverToGreen900
+    , mdHoverToIndigo100
+    , mdHoverToIndigo200
+    , mdHoverToIndigo300
+    , mdHoverToIndigo400
+    , mdHoverToIndigo500
+    , mdHoverToIndigo600
+    , mdHoverToIndigo700
+    , mdHoverToIndigo800
+    , mdHoverToIndigo900
+    , mdHoverToOrange100
+    , mdHoverToOrange200
+    , mdHoverToOrange300
+    , mdHoverToOrange400
+    , mdHoverToOrange500
+    , mdHoverToOrange600
+    , mdHoverToOrange700
+    , mdHoverToOrange800
+    , mdHoverToOrange900
+    , mdHoverToPink100
+    , mdHoverToPink200
+    , mdHoverToPink300
+    , mdHoverToPink400
+    , mdHoverToPink500
+    , mdHoverToPink600
+    , mdHoverToPink700
+    , mdHoverToPink800
+    , mdHoverToPink900
+    , mdHoverToPurple100
+    , mdHoverToPurple200
+    , mdHoverToPurple300
+    , mdHoverToPurple400
+    , mdHoverToPurple500
+    , mdHoverToPurple600
+    , mdHoverToPurple700
+    , mdHoverToPurple800
+    , mdHoverToPurple900
+    , mdHoverToRed100
+    , mdHoverToRed200
+    , mdHoverToRed300
+    , mdHoverToRed400
+    , mdHoverToRed500
+    , mdHoverToRed600
+    , mdHoverToRed700
+    , mdHoverToRed800
+    , mdHoverToRed900
+    , mdHoverToTeal100
+    , mdHoverToTeal200
+    , mdHoverToTeal300
+    , mdHoverToTeal400
+    , mdHoverToTeal500
+    , mdHoverToTeal600
+    , mdHoverToTeal700
+    , mdHoverToTeal800
+    , mdHoverToTeal900
+    , mdHoverToTransparent
+    , mdHoverToWhite
+    , mdHoverToYellow100
+    , mdHoverToYellow200
+    , mdHoverToYellow300
+    , mdHoverToYellow400
+    , mdHoverToYellow500
+    , mdHoverToYellow600
+    , mdHoverToYellow700
+    , mdHoverToYellow800
+    , mdHoverToYellow900
     , mdHoverTranslateX0
     , mdHoverTranslateX1
     , mdHoverTranslateX10
@@ -6065,6 +8495,100 @@ module Svg.Tailwind exposing
     , mdHoverTranslateYFull
     , mdHoverTranslateYPx
     , mdHoverUnderline
+    , mdHoverViaBlack
+    , mdHoverViaBlue100
+    , mdHoverViaBlue200
+    , mdHoverViaBlue300
+    , mdHoverViaBlue400
+    , mdHoverViaBlue500
+    , mdHoverViaBlue600
+    , mdHoverViaBlue700
+    , mdHoverViaBlue800
+    , mdHoverViaBlue900
+    , mdHoverViaCurrent
+    , mdHoverViaGray100
+    , mdHoverViaGray200
+    , mdHoverViaGray300
+    , mdHoverViaGray400
+    , mdHoverViaGray500
+    , mdHoverViaGray600
+    , mdHoverViaGray700
+    , mdHoverViaGray800
+    , mdHoverViaGray900
+    , mdHoverViaGreen100
+    , mdHoverViaGreen200
+    , mdHoverViaGreen300
+    , mdHoverViaGreen400
+    , mdHoverViaGreen500
+    , mdHoverViaGreen600
+    , mdHoverViaGreen700
+    , mdHoverViaGreen800
+    , mdHoverViaGreen900
+    , mdHoverViaIndigo100
+    , mdHoverViaIndigo200
+    , mdHoverViaIndigo300
+    , mdHoverViaIndigo400
+    , mdHoverViaIndigo500
+    , mdHoverViaIndigo600
+    , mdHoverViaIndigo700
+    , mdHoverViaIndigo800
+    , mdHoverViaIndigo900
+    , mdHoverViaOrange100
+    , mdHoverViaOrange200
+    , mdHoverViaOrange300
+    , mdHoverViaOrange400
+    , mdHoverViaOrange500
+    , mdHoverViaOrange600
+    , mdHoverViaOrange700
+    , mdHoverViaOrange800
+    , mdHoverViaOrange900
+    , mdHoverViaPink100
+    , mdHoverViaPink200
+    , mdHoverViaPink300
+    , mdHoverViaPink400
+    , mdHoverViaPink500
+    , mdHoverViaPink600
+    , mdHoverViaPink700
+    , mdHoverViaPink800
+    , mdHoverViaPink900
+    , mdHoverViaPurple100
+    , mdHoverViaPurple200
+    , mdHoverViaPurple300
+    , mdHoverViaPurple400
+    , mdHoverViaPurple500
+    , mdHoverViaPurple600
+    , mdHoverViaPurple700
+    , mdHoverViaPurple800
+    , mdHoverViaPurple900
+    , mdHoverViaRed100
+    , mdHoverViaRed200
+    , mdHoverViaRed300
+    , mdHoverViaRed400
+    , mdHoverViaRed500
+    , mdHoverViaRed600
+    , mdHoverViaRed700
+    , mdHoverViaRed800
+    , mdHoverViaRed900
+    , mdHoverViaTeal100
+    , mdHoverViaTeal200
+    , mdHoverViaTeal300
+    , mdHoverViaTeal400
+    , mdHoverViaTeal500
+    , mdHoverViaTeal600
+    , mdHoverViaTeal700
+    , mdHoverViaTeal800
+    , mdHoverViaTeal900
+    , mdHoverViaTransparent
+    , mdHoverViaWhite
+    , mdHoverViaYellow100
+    , mdHoverViaYellow200
+    , mdHoverViaYellow300
+    , mdHoverViaYellow400
+    , mdHoverViaYellow500
+    , mdHoverViaYellow600
+    , mdHoverViaYellow700
+    , mdHoverViaYellow800
+    , mdHoverViaYellow900
     , mdInline
     , mdInlineBlock
     , mdInlineFlex
@@ -6087,6 +8611,16 @@ module Svg.Tailwind exposing
     , mdJustifyCenter
     , mdJustifyEnd
     , mdJustifyEvenly
+    , mdJustifyItemsAuto
+    , mdJustifyItemsCenter
+    , mdJustifyItemsEnd
+    , mdJustifyItemsStart
+    , mdJustifyItemsStretch
+    , mdJustifySelfAuto
+    , mdJustifySelfCenter
+    , mdJustifySelfEnd
+    , mdJustifySelfStart
+    , mdJustifySelfStretch
     , mdJustifyStart
     , mdLeading10
     , mdLeading3
@@ -6105,6 +8639,7 @@ module Svg.Tailwind exposing
     , mdLeft0
     , mdLeftAuto
     , mdLineThrough
+    , mdLiningNums
     , mdListDecimal
     , mdListDisc
     , mdListInside
@@ -6400,13 +8935,22 @@ module Svg.Tailwind exposing
     , mdNegMy64
     , mdNegMy8
     , mdNegMyPx
+    , mdNegRotate1
+    , mdNegRotate12
     , mdNegRotate180
+    , mdNegRotate2
+    , mdNegRotate3
     , mdNegRotate45
+    , mdNegRotate6
     , mdNegRotate90
+    , mdNegSkewX1
     , mdNegSkewX12
+    , mdNegSkewX2
     , mdNegSkewX3
     , mdNegSkewX6
+    , mdNegSkewY1
     , mdNegSkewY12
+    , mdNegSkewY2
     , mdNegSkewY3
     , mdNegSkewY6
     , mdNegSpaceX1
@@ -6487,6 +9031,7 @@ module Svg.Tailwind exposing
     , mdNegTranslateYPx
     , mdNoUnderline
     , mdNormalCase
+    , mdNormalNums
     , mdNotItalic
     , mdNotSrOnly
     , mdObjectBottom
@@ -6503,6 +9048,7 @@ module Svg.Tailwind exposing
     , mdObjectRightTop
     , mdObjectScaleDown
     , mdObjectTop
+    , mdOldstyleNums
     , mdOpacity0
     , mdOpacity100
     , mdOpacity25
@@ -6523,6 +9069,7 @@ module Svg.Tailwind exposing
     , mdOrderFirst
     , mdOrderLast
     , mdOrderNone
+    , mdOrdinal
     , mdOriginBottom
     , mdOriginBottomLeft
     , mdOriginBottomRight
@@ -6532,7 +9079,9 @@ module Svg.Tailwind exposing
     , mdOriginTop
     , mdOriginTopLeft
     , mdOriginTopRight
+    , mdOutlineBlack
     , mdOutlineNone
+    , mdOutlineWhite
     , mdOverflowAuto
     , mdOverflowHidden
     , mdOverflowScroll
@@ -6545,6 +9094,15 @@ module Svg.Tailwind exposing
     , mdOverflowYHidden
     , mdOverflowYScroll
     , mdOverflowYVisible
+    , mdOverscrollAuto
+    , mdOverscrollContain
+    , mdOverscrollNone
+    , mdOverscrollXAuto
+    , mdOverscrollXContain
+    , mdOverscrollXNone
+    , mdOverscrollYAuto
+    , mdOverscrollYContain
+    , mdOverscrollYNone
     , mdP0
     , mdP1
     , mdP10
@@ -6602,6 +9160,23 @@ module Svg.Tailwind exposing
     , mdPl64
     , mdPl8
     , mdPlPx
+    , mdPlaceContentAround
+    , mdPlaceContentBetween
+    , mdPlaceContentCenter
+    , mdPlaceContentEnd
+    , mdPlaceContentEvenly
+    , mdPlaceContentStart
+    , mdPlaceContentStretch
+    , mdPlaceItemsAuto
+    , mdPlaceItemsCenter
+    , mdPlaceItemsEnd
+    , mdPlaceItemsStart
+    , mdPlaceItemsStretch
+    , mdPlaceSelfAuto
+    , mdPlaceSelfCenter
+    , mdPlaceSelfEnd
+    , mdPlaceSelfStart
+    , mdPlaceSelfStretch
     , mdPlaceholderBlack
     , mdPlaceholderBlue100
     , mdPlaceholderBlue200
@@ -6722,6 +9297,7 @@ module Svg.Tailwind exposing
     , mdPr64
     , mdPr8
     , mdPrPx
+    , mdProportionalNums
     , mdPt0
     , mdPt1
     , mdPt10
@@ -6787,63 +9363,95 @@ module Svg.Tailwind exposing
     , mdRight0
     , mdRightAuto
     , mdRotate0
+    , mdRotate1
+    , mdRotate12
     , mdRotate180
+    , mdRotate2
+    , mdRotate3
     , mdRotate45
+    , mdRotate6
     , mdRotate90
     , mdRounded
+    , mdRounded2xl
+    , mdRounded3xl
     , mdRoundedB
+    , mdRoundedB2xl
+    , mdRoundedB3xl
     , mdRoundedBFull
     , mdRoundedBLg
     , mdRoundedBMd
     , mdRoundedBNone
     , mdRoundedBSm
+    , mdRoundedBXl
     , mdRoundedBl
+    , mdRoundedBl2xl
+    , mdRoundedBl3xl
     , mdRoundedBlFull
     , mdRoundedBlLg
     , mdRoundedBlMd
     , mdRoundedBlNone
     , mdRoundedBlSm
+    , mdRoundedBlXl
     , mdRoundedBr
+    , mdRoundedBr2xl
+    , mdRoundedBr3xl
     , mdRoundedBrFull
     , mdRoundedBrLg
     , mdRoundedBrMd
     , mdRoundedBrNone
     , mdRoundedBrSm
+    , mdRoundedBrXl
     , mdRoundedFull
     , mdRoundedL
+    , mdRoundedL2xl
+    , mdRoundedL3xl
     , mdRoundedLFull
     , mdRoundedLLg
     , mdRoundedLMd
     , mdRoundedLNone
     , mdRoundedLSm
+    , mdRoundedLXl
     , mdRoundedLg
     , mdRoundedMd
     , mdRoundedNone
     , mdRoundedR
+    , mdRoundedR2xl
+    , mdRoundedR3xl
     , mdRoundedRFull
     , mdRoundedRLg
     , mdRoundedRMd
     , mdRoundedRNone
     , mdRoundedRSm
+    , mdRoundedRXl
     , mdRoundedSm
     , mdRoundedT
+    , mdRoundedT2xl
+    , mdRoundedT3xl
     , mdRoundedTFull
     , mdRoundedTLg
     , mdRoundedTMd
     , mdRoundedTNone
     , mdRoundedTSm
+    , mdRoundedTXl
     , mdRoundedTl
+    , mdRoundedTl2xl
+    , mdRoundedTl3xl
     , mdRoundedTlFull
     , mdRoundedTlLg
     , mdRoundedTlMd
     , mdRoundedTlNone
     , mdRoundedTlSm
+    , mdRoundedTlXl
     , mdRoundedTr
+    , mdRoundedTr2xl
+    , mdRoundedTr3xl
     , mdRoundedTrFull
     , mdRoundedTrLg
     , mdRoundedTrMd
     , mdRoundedTrNone
     , mdRoundedTrSm
+    , mdRoundedTrXl
+    , mdRoundedXl
     , mdRowAuto
     , mdRowEnd1
     , mdRowEnd2
@@ -6853,31 +9461,13 @@ module Svg.Tailwind exposing
     , mdRowEnd6
     , mdRowEnd7
     , mdRowEndAuto
-    , mdRowGap0
-    , mdRowGap1
-    , mdRowGap10
-    , mdRowGap12
-    , mdRowGap16
-    , mdRowGap2
-    , mdRowGap20
-    , mdRowGap24
-    , mdRowGap3
-    , mdRowGap32
-    , mdRowGap4
-    , mdRowGap40
-    , mdRowGap48
-    , mdRowGap5
-    , mdRowGap56
-    , mdRowGap6
-    , mdRowGap64
-    , mdRowGap8
-    , mdRowGapPx
     , mdRowSpan1
     , mdRowSpan2
     , mdRowSpan3
     , mdRowSpan4
     , mdRowSpan5
     , mdRowSpan6
+    , mdRowSpanFull
     , mdRowStart1
     , mdRowStart2
     , mdRowStart3
@@ -6938,13 +9528,18 @@ module Svg.Tailwind exposing
     , mdShadowXl
     , mdShadowXs
     , mdSkewX0
+    , mdSkewX1
     , mdSkewX12
+    , mdSkewX2
     , mdSkewX3
     , mdSkewX6
     , mdSkewY0
+    , mdSkewY1
     , mdSkewY12
+    , mdSkewY2
     , mdSkewY3
     , mdSkewY6
+    , mdSlashedZero
     , mdSpaceX0
     , mdSpaceX1
     , mdSpaceX10
@@ -6986,6 +9581,7 @@ module Svg.Tailwind exposing
     , mdSpaceYPx
     , mdSpaceYReverse
     , mdSrOnly
+    , mdStackedFractions
     , mdStatic
     , mdSticky
     , mdStroke0
@@ -7004,6 +9600,7 @@ module Svg.Tailwind exposing
     , mdTableHeaderGroup
     , mdTableRow
     , mdTableRowGroup
+    , mdTabularNums
     , mdText2xl
     , mdText3xl
     , mdText4xl
@@ -7117,6 +9714,100 @@ module Svg.Tailwind exposing
     , mdTextYellow700
     , mdTextYellow800
     , mdTextYellow900
+    , mdToBlack
+    , mdToBlue100
+    , mdToBlue200
+    , mdToBlue300
+    , mdToBlue400
+    , mdToBlue500
+    , mdToBlue600
+    , mdToBlue700
+    , mdToBlue800
+    , mdToBlue900
+    , mdToCurrent
+    , mdToGray100
+    , mdToGray200
+    , mdToGray300
+    , mdToGray400
+    , mdToGray500
+    , mdToGray600
+    , mdToGray700
+    , mdToGray800
+    , mdToGray900
+    , mdToGreen100
+    , mdToGreen200
+    , mdToGreen300
+    , mdToGreen400
+    , mdToGreen500
+    , mdToGreen600
+    , mdToGreen700
+    , mdToGreen800
+    , mdToGreen900
+    , mdToIndigo100
+    , mdToIndigo200
+    , mdToIndigo300
+    , mdToIndigo400
+    , mdToIndigo500
+    , mdToIndigo600
+    , mdToIndigo700
+    , mdToIndigo800
+    , mdToIndigo900
+    , mdToOrange100
+    , mdToOrange200
+    , mdToOrange300
+    , mdToOrange400
+    , mdToOrange500
+    , mdToOrange600
+    , mdToOrange700
+    , mdToOrange800
+    , mdToOrange900
+    , mdToPink100
+    , mdToPink200
+    , mdToPink300
+    , mdToPink400
+    , mdToPink500
+    , mdToPink600
+    , mdToPink700
+    , mdToPink800
+    , mdToPink900
+    , mdToPurple100
+    , mdToPurple200
+    , mdToPurple300
+    , mdToPurple400
+    , mdToPurple500
+    , mdToPurple600
+    , mdToPurple700
+    , mdToPurple800
+    , mdToPurple900
+    , mdToRed100
+    , mdToRed200
+    , mdToRed300
+    , mdToRed400
+    , mdToRed500
+    , mdToRed600
+    , mdToRed700
+    , mdToRed800
+    , mdToRed900
+    , mdToTeal100
+    , mdToTeal200
+    , mdToTeal300
+    , mdToTeal400
+    , mdToTeal500
+    , mdToTeal600
+    , mdToTeal700
+    , mdToTeal800
+    , mdToTeal900
+    , mdToTransparent
+    , mdToWhite
+    , mdToYellow100
+    , mdToYellow200
+    , mdToYellow300
+    , mdToYellow400
+    , mdToYellow500
+    , mdToYellow600
+    , mdToYellow700
+    , mdToYellow800
+    , mdToYellow900
     , mdTop0
     , mdTopAuto
     , mdTrackingNormal
@@ -7179,6 +9870,100 @@ module Svg.Tailwind exposing
     , mdTruncate
     , mdUnderline
     , mdUppercase
+    , mdViaBlack
+    , mdViaBlue100
+    , mdViaBlue200
+    , mdViaBlue300
+    , mdViaBlue400
+    , mdViaBlue500
+    , mdViaBlue600
+    , mdViaBlue700
+    , mdViaBlue800
+    , mdViaBlue900
+    , mdViaCurrent
+    , mdViaGray100
+    , mdViaGray200
+    , mdViaGray300
+    , mdViaGray400
+    , mdViaGray500
+    , mdViaGray600
+    , mdViaGray700
+    , mdViaGray800
+    , mdViaGray900
+    , mdViaGreen100
+    , mdViaGreen200
+    , mdViaGreen300
+    , mdViaGreen400
+    , mdViaGreen500
+    , mdViaGreen600
+    , mdViaGreen700
+    , mdViaGreen800
+    , mdViaGreen900
+    , mdViaIndigo100
+    , mdViaIndigo200
+    , mdViaIndigo300
+    , mdViaIndigo400
+    , mdViaIndigo500
+    , mdViaIndigo600
+    , mdViaIndigo700
+    , mdViaIndigo800
+    , mdViaIndigo900
+    , mdViaOrange100
+    , mdViaOrange200
+    , mdViaOrange300
+    , mdViaOrange400
+    , mdViaOrange500
+    , mdViaOrange600
+    , mdViaOrange700
+    , mdViaOrange800
+    , mdViaOrange900
+    , mdViaPink100
+    , mdViaPink200
+    , mdViaPink300
+    , mdViaPink400
+    , mdViaPink500
+    , mdViaPink600
+    , mdViaPink700
+    , mdViaPink800
+    , mdViaPink900
+    , mdViaPurple100
+    , mdViaPurple200
+    , mdViaPurple300
+    , mdViaPurple400
+    , mdViaPurple500
+    , mdViaPurple600
+    , mdViaPurple700
+    , mdViaPurple800
+    , mdViaPurple900
+    , mdViaRed100
+    , mdViaRed200
+    , mdViaRed300
+    , mdViaRed400
+    , mdViaRed500
+    , mdViaRed600
+    , mdViaRed700
+    , mdViaRed800
+    , mdViaRed900
+    , mdViaTeal100
+    , mdViaTeal200
+    , mdViaTeal300
+    , mdViaTeal400
+    , mdViaTeal500
+    , mdViaTeal600
+    , mdViaTeal700
+    , mdViaTeal800
+    , mdViaTeal900
+    , mdViaTransparent
+    , mdViaWhite
+    , mdViaYellow100
+    , mdViaYellow200
+    , mdViaYellow300
+    , mdViaYellow400
+    , mdViaYellow500
+    , mdViaYellow600
+    , mdViaYellow700
+    , mdViaYellow800
+    , mdViaYellow900
     , mdVisible
     , mdW0
     , mdW1
@@ -7471,13 +10256,22 @@ module Svg.Tailwind exposing
     , negMy64
     , negMy8
     , negMyPx
+    , negRotate1
+    , negRotate12
     , negRotate180
+    , negRotate2
+    , negRotate3
     , negRotate45
+    , negRotate6
     , negRotate90
+    , negSkewX1
     , negSkewX12
+    , negSkewX2
     , negSkewX3
     , negSkewX6
+    , negSkewY1
     , negSkewY12
+    , negSkewY2
     , negSkewY3
     , negSkewY6
     , negSpaceX1
@@ -7558,6 +10352,7 @@ module Svg.Tailwind exposing
     , negTranslateYPx
     , noUnderline
     , normalCase
+    , normalNums
     , notItalic
     , notSrOnly
     , objectBottom
@@ -7574,6 +10369,7 @@ module Svg.Tailwind exposing
     , objectRightTop
     , objectScaleDown
     , objectTop
+    , oldstyleNums
     , opacity0
     , opacity100
     , opacity25
@@ -7594,6 +10390,7 @@ module Svg.Tailwind exposing
     , orderFirst
     , orderLast
     , orderNone
+    , ordinal
     , originBottom
     , originBottomLeft
     , originBottomRight
@@ -7603,7 +10400,9 @@ module Svg.Tailwind exposing
     , originTop
     , originTopLeft
     , originTopRight
+    , outlineBlack
     , outlineNone
+    , outlineWhite
     , overflowAuto
     , overflowHidden
     , overflowScroll
@@ -7616,6 +10415,15 @@ module Svg.Tailwind exposing
     , overflowYHidden
     , overflowYScroll
     , overflowYVisible
+    , overscrollAuto
+    , overscrollContain
+    , overscrollNone
+    , overscrollXAuto
+    , overscrollXContain
+    , overscrollXNone
+    , overscrollYAuto
+    , overscrollYContain
+    , overscrollYNone
     , p0
     , p1
     , p10
@@ -7673,6 +10481,23 @@ module Svg.Tailwind exposing
     , pl64
     , pl8
     , plPx
+    , placeContentAround
+    , placeContentBetween
+    , placeContentCenter
+    , placeContentEnd
+    , placeContentEvenly
+    , placeContentStart
+    , placeContentStretch
+    , placeItemsAuto
+    , placeItemsCenter
+    , placeItemsEnd
+    , placeItemsStart
+    , placeItemsStretch
+    , placeSelfAuto
+    , placeSelfCenter
+    , placeSelfEnd
+    , placeSelfStart
+    , placeSelfStretch
     , placeholderBlack
     , placeholderBlue100
     , placeholderBlue200
@@ -7793,6 +10618,7 @@ module Svg.Tailwind exposing
     , pr64
     , pr8
     , prPx
+    , proportionalNums
     , pt0
     , pt1
     , pt10
@@ -7858,63 +10684,95 @@ module Svg.Tailwind exposing
     , right0
     , rightAuto
     , rotate0
+    , rotate1
+    , rotate12
     , rotate180
+    , rotate2
+    , rotate3
     , rotate45
+    , rotate6
     , rotate90
     , rounded
+    , rounded2xl
+    , rounded3xl
     , roundedB
+    , roundedB2xl
+    , roundedB3xl
     , roundedBFull
     , roundedBLg
     , roundedBMd
     , roundedBNone
     , roundedBSm
+    , roundedBXl
     , roundedBl
+    , roundedBl2xl
+    , roundedBl3xl
     , roundedBlFull
     , roundedBlLg
     , roundedBlMd
     , roundedBlNone
     , roundedBlSm
+    , roundedBlXl
     , roundedBr
+    , roundedBr2xl
+    , roundedBr3xl
     , roundedBrFull
     , roundedBrLg
     , roundedBrMd
     , roundedBrNone
     , roundedBrSm
+    , roundedBrXl
     , roundedFull
     , roundedL
+    , roundedL2xl
+    , roundedL3xl
     , roundedLFull
     , roundedLLg
     , roundedLMd
     , roundedLNone
     , roundedLSm
+    , roundedLXl
     , roundedLg
     , roundedMd
     , roundedNone
     , roundedR
+    , roundedR2xl
+    , roundedR3xl
     , roundedRFull
     , roundedRLg
     , roundedRMd
     , roundedRNone
     , roundedRSm
+    , roundedRXl
     , roundedSm
     , roundedT
+    , roundedT2xl
+    , roundedT3xl
     , roundedTFull
     , roundedTLg
     , roundedTMd
     , roundedTNone
     , roundedTSm
+    , roundedTXl
     , roundedTl
+    , roundedTl2xl
+    , roundedTl3xl
     , roundedTlFull
     , roundedTlLg
     , roundedTlMd
     , roundedTlNone
     , roundedTlSm
+    , roundedTlXl
     , roundedTr
+    , roundedTr2xl
+    , roundedTr3xl
     , roundedTrFull
     , roundedTrLg
     , roundedTrMd
     , roundedTrNone
     , roundedTrSm
+    , roundedTrXl
+    , roundedXl
     , rowAuto
     , rowEnd1
     , rowEnd2
@@ -7924,31 +10782,13 @@ module Svg.Tailwind exposing
     , rowEnd6
     , rowEnd7
     , rowEndAuto
-    , rowGap0
-    , rowGap1
-    , rowGap10
-    , rowGap12
-    , rowGap16
-    , rowGap2
-    , rowGap20
-    , rowGap24
-    , rowGap3
-    , rowGap32
-    , rowGap4
-    , rowGap40
-    , rowGap48
-    , rowGap5
-    , rowGap56
-    , rowGap6
-    , rowGap64
-    , rowGap8
-    , rowGapPx
     , rowSpan1
     , rowSpan2
     , rowSpan3
     , rowSpan4
     , rowSpan5
     , rowSpan6
+    , rowSpanFull
     , rowStart1
     , rowStart2
     , rowStart3
@@ -8009,13 +10849,18 @@ module Svg.Tailwind exposing
     , shadowXl
     , shadowXs
     , skewX0
+    , skewX1
     , skewX12
+    , skewX2
     , skewX3
     , skewX6
     , skewY0
+    , skewY1
     , skewY12
+    , skewY2
     , skewY3
     , skewY6
+    , slashedZero
     , smAbsolute
     , smAlignBaseline
     , smAlignBottom
@@ -8023,8 +10868,21 @@ module Svg.Tailwind exposing
     , smAlignTextBottom
     , smAlignTextTop
     , smAlignTop
+    , smAnimateBounce
+    , smAnimateNone
+    , smAnimatePing
+    , smAnimatePulse
+    , smAnimateSpin
     , smAntialiased
     , smAppearanceNone
+    , smAutoColsAuto
+    , smAutoColsFr
+    , smAutoColsMax
+    , smAutoColsMin
+    , smAutoRowsAuto
+    , smAutoRowsFr
+    , smAutoRowsMax
+    , smAutoRowsMin
     , smBgAuto
     , smBgBlack
     , smBgBlue100
@@ -8038,10 +10896,22 @@ module Svg.Tailwind exposing
     , smBgBlue900
     , smBgBottom
     , smBgCenter
+    , smBgClipBorder
+    , smBgClipContent
+    , smBgClipPadding
+    , smBgClipText
     , smBgContain
     , smBgCover
     , smBgCurrent
     , smBgFixed
+    , smBgGradientToB
+    , smBgGradientToBl
+    , smBgGradientToBr
+    , smBgGradientToL
+    , smBgGradientToR
+    , smBgGradientToT
+    , smBgGradientToTl
+    , smBgGradientToTr
     , smBgGray100
     , smBgGray200
     , smBgGray300
@@ -8074,6 +10944,7 @@ module Svg.Tailwind exposing
     , smBgLeftTop
     , smBgLocal
     , smBgNoRepeat
+    , smBgNone
     , smBgOpacity0
     , smBgOpacity100
     , smBgOpacity25
@@ -8305,25 +11176,6 @@ module Svg.Tailwind exposing
     , smColEnd8
     , smColEnd9
     , smColEndAuto
-    , smColGap0
-    , smColGap1
-    , smColGap10
-    , smColGap12
-    , smColGap16
-    , smColGap2
-    , smColGap20
-    , smColGap24
-    , smColGap3
-    , smColGap32
-    , smColGap4
-    , smColGap40
-    , smColGap48
-    , smColGap5
-    , smColGap56
-    , smColGap6
-    , smColGap64
-    , smColGap8
-    , smColGapPx
     , smColSpan1
     , smColSpan10
     , smColSpan11
@@ -8336,6 +11188,7 @@ module Svg.Tailwind exposing
     , smColSpan7
     , smColSpan8
     , smColSpan9
+    , smColSpanFull
     , smColStart1
     , smColStart10
     , smColStart11
@@ -8350,11 +11203,14 @@ module Svg.Tailwind exposing
     , smColStart8
     , smColStart9
     , smColStartAuto
+    , smContainer
     , smContentAround
     , smContentBetween
     , smContentCenter
     , smContentEnd
+    , smContentEvenly
     , smContentStart
+    , smContents
     , smCursorAuto
     , smCursorDefault
     , smCursorMove
@@ -8370,6 +11226,7 @@ module Svg.Tailwind exposing
     , smDelay500
     , smDelay700
     , smDelay75
+    , smDiagonalFractions
     , smDivideBlack
     , smDivideBlue100
     , smDivideBlue200
@@ -8381,6 +11238,9 @@ module Svg.Tailwind exposing
     , smDivideBlue800
     , smDivideBlue900
     , smDivideCurrent
+    , smDivideDashed
+    , smDivideDotted
+    , smDivideDouble
     , smDivideGray100
     , smDivideGray200
     , smDivideGray300
@@ -8408,6 +11268,7 @@ module Svg.Tailwind exposing
     , smDivideIndigo700
     , smDivideIndigo800
     , smDivideIndigo900
+    , smDivideNone
     , smDivideOpacity0
     , smDivideOpacity100
     , smDivideOpacity25
@@ -8449,6 +11310,7 @@ module Svg.Tailwind exposing
     , smDivideRed700
     , smDivideRed800
     , smDivideRed900
+    , smDivideSolid
     , smDivideTeal100
     , smDivideTeal200
     , smDivideTeal300
@@ -8722,14 +11584,117 @@ module Svg.Tailwind exposing
     , smFocusFontNormal
     , smFocusFontSemibold
     , smFocusFontThin
+    , smFocusFromBlack
+    , smFocusFromBlue100
+    , smFocusFromBlue200
+    , smFocusFromBlue300
+    , smFocusFromBlue400
+    , smFocusFromBlue500
+    , smFocusFromBlue600
+    , smFocusFromBlue700
+    , smFocusFromBlue800
+    , smFocusFromBlue900
+    , smFocusFromCurrent
+    , smFocusFromGray100
+    , smFocusFromGray200
+    , smFocusFromGray300
+    , smFocusFromGray400
+    , smFocusFromGray500
+    , smFocusFromGray600
+    , smFocusFromGray700
+    , smFocusFromGray800
+    , smFocusFromGray900
+    , smFocusFromGreen100
+    , smFocusFromGreen200
+    , smFocusFromGreen300
+    , smFocusFromGreen400
+    , smFocusFromGreen500
+    , smFocusFromGreen600
+    , smFocusFromGreen700
+    , smFocusFromGreen800
+    , smFocusFromGreen900
+    , smFocusFromIndigo100
+    , smFocusFromIndigo200
+    , smFocusFromIndigo300
+    , smFocusFromIndigo400
+    , smFocusFromIndigo500
+    , smFocusFromIndigo600
+    , smFocusFromIndigo700
+    , smFocusFromIndigo800
+    , smFocusFromIndigo900
+    , smFocusFromOrange100
+    , smFocusFromOrange200
+    , smFocusFromOrange300
+    , smFocusFromOrange400
+    , smFocusFromOrange500
+    , smFocusFromOrange600
+    , smFocusFromOrange700
+    , smFocusFromOrange800
+    , smFocusFromOrange900
+    , smFocusFromPink100
+    , smFocusFromPink200
+    , smFocusFromPink300
+    , smFocusFromPink400
+    , smFocusFromPink500
+    , smFocusFromPink600
+    , smFocusFromPink700
+    , smFocusFromPink800
+    , smFocusFromPink900
+    , smFocusFromPurple100
+    , smFocusFromPurple200
+    , smFocusFromPurple300
+    , smFocusFromPurple400
+    , smFocusFromPurple500
+    , smFocusFromPurple600
+    , smFocusFromPurple700
+    , smFocusFromPurple800
+    , smFocusFromPurple900
+    , smFocusFromRed100
+    , smFocusFromRed200
+    , smFocusFromRed300
+    , smFocusFromRed400
+    , smFocusFromRed500
+    , smFocusFromRed600
+    , smFocusFromRed700
+    , smFocusFromRed800
+    , smFocusFromRed900
+    , smFocusFromTeal100
+    , smFocusFromTeal200
+    , smFocusFromTeal300
+    , smFocusFromTeal400
+    , smFocusFromTeal500
+    , smFocusFromTeal600
+    , smFocusFromTeal700
+    , smFocusFromTeal800
+    , smFocusFromTeal900
+    , smFocusFromTransparent
+    , smFocusFromWhite
+    , smFocusFromYellow100
+    , smFocusFromYellow200
+    , smFocusFromYellow300
+    , smFocusFromYellow400
+    , smFocusFromYellow500
+    , smFocusFromYellow600
+    , smFocusFromYellow700
+    , smFocusFromYellow800
+    , smFocusFromYellow900
     , smFocusLineThrough
+    , smFocusNegRotate1
+    , smFocusNegRotate12
     , smFocusNegRotate180
+    , smFocusNegRotate2
+    , smFocusNegRotate3
     , smFocusNegRotate45
+    , smFocusNegRotate6
     , smFocusNegRotate90
+    , smFocusNegSkewX1
     , smFocusNegSkewX12
+    , smFocusNegSkewX2
     , smFocusNegSkewX3
     , smFocusNegSkewX6
+    , smFocusNegSkewY1
     , smFocusNegSkewY12
+    , smFocusNegSkewY2
     , smFocusNegSkewY3
     , smFocusNegSkewY6
     , smFocusNegTranslateX1
@@ -8779,7 +11744,9 @@ module Svg.Tailwind exposing
     , smFocusOpacity25
     , smFocusOpacity50
     , smFocusOpacity75
+    , smFocusOutlineBlack
     , smFocusOutlineNone
+    , smFocusOutlineWhite
     , smFocusPlaceholderBlackFocus
     , smFocusPlaceholderBlue100Focus
     , smFocusPlaceholderBlue200Focus
@@ -8880,8 +11847,13 @@ module Svg.Tailwind exposing
     , smFocusPlaceholderYellow800Focus
     , smFocusPlaceholderYellow900Focus
     , smFocusRotate0
+    , smFocusRotate1
+    , smFocusRotate12
     , smFocusRotate180
+    , smFocusRotate2
+    , smFocusRotate3
     , smFocusRotate45
+    , smFocusRotate6
     , smFocusRotate90
     , smFocusScale0
     , smFocusScale100
@@ -8924,11 +11896,15 @@ module Svg.Tailwind exposing
     , smFocusShadowXl
     , smFocusShadowXs
     , smFocusSkewX0
+    , smFocusSkewX1
     , smFocusSkewX12
+    , smFocusSkewX2
     , smFocusSkewX3
     , smFocusSkewX6
     , smFocusSkewY0
+    , smFocusSkewY1
     , smFocusSkewY12
+    , smFocusSkewY2
     , smFocusSkewY3
     , smFocusSkewY6
     , smFocusSrOnly
@@ -9031,6 +12007,100 @@ module Svg.Tailwind exposing
     , smFocusTextYellow700
     , smFocusTextYellow800
     , smFocusTextYellow900
+    , smFocusToBlack
+    , smFocusToBlue100
+    , smFocusToBlue200
+    , smFocusToBlue300
+    , smFocusToBlue400
+    , smFocusToBlue500
+    , smFocusToBlue600
+    , smFocusToBlue700
+    , smFocusToBlue800
+    , smFocusToBlue900
+    , smFocusToCurrent
+    , smFocusToGray100
+    , smFocusToGray200
+    , smFocusToGray300
+    , smFocusToGray400
+    , smFocusToGray500
+    , smFocusToGray600
+    , smFocusToGray700
+    , smFocusToGray800
+    , smFocusToGray900
+    , smFocusToGreen100
+    , smFocusToGreen200
+    , smFocusToGreen300
+    , smFocusToGreen400
+    , smFocusToGreen500
+    , smFocusToGreen600
+    , smFocusToGreen700
+    , smFocusToGreen800
+    , smFocusToGreen900
+    , smFocusToIndigo100
+    , smFocusToIndigo200
+    , smFocusToIndigo300
+    , smFocusToIndigo400
+    , smFocusToIndigo500
+    , smFocusToIndigo600
+    , smFocusToIndigo700
+    , smFocusToIndigo800
+    , smFocusToIndigo900
+    , smFocusToOrange100
+    , smFocusToOrange200
+    , smFocusToOrange300
+    , smFocusToOrange400
+    , smFocusToOrange500
+    , smFocusToOrange600
+    , smFocusToOrange700
+    , smFocusToOrange800
+    , smFocusToOrange900
+    , smFocusToPink100
+    , smFocusToPink200
+    , smFocusToPink300
+    , smFocusToPink400
+    , smFocusToPink500
+    , smFocusToPink600
+    , smFocusToPink700
+    , smFocusToPink800
+    , smFocusToPink900
+    , smFocusToPurple100
+    , smFocusToPurple200
+    , smFocusToPurple300
+    , smFocusToPurple400
+    , smFocusToPurple500
+    , smFocusToPurple600
+    , smFocusToPurple700
+    , smFocusToPurple800
+    , smFocusToPurple900
+    , smFocusToRed100
+    , smFocusToRed200
+    , smFocusToRed300
+    , smFocusToRed400
+    , smFocusToRed500
+    , smFocusToRed600
+    , smFocusToRed700
+    , smFocusToRed800
+    , smFocusToRed900
+    , smFocusToTeal100
+    , smFocusToTeal200
+    , smFocusToTeal300
+    , smFocusToTeal400
+    , smFocusToTeal500
+    , smFocusToTeal600
+    , smFocusToTeal700
+    , smFocusToTeal800
+    , smFocusToTeal900
+    , smFocusToTransparent
+    , smFocusToWhite
+    , smFocusToYellow100
+    , smFocusToYellow200
+    , smFocusToYellow300
+    , smFocusToYellow400
+    , smFocusToYellow500
+    , smFocusToYellow600
+    , smFocusToYellow700
+    , smFocusToYellow800
+    , smFocusToYellow900
     , smFocusTranslateX0
     , smFocusTranslateX1
     , smFocusTranslateX10
@@ -9074,6 +12144,100 @@ module Svg.Tailwind exposing
     , smFocusTranslateYFull
     , smFocusTranslateYPx
     , smFocusUnderline
+    , smFocusViaBlack
+    , smFocusViaBlue100
+    , smFocusViaBlue200
+    , smFocusViaBlue300
+    , smFocusViaBlue400
+    , smFocusViaBlue500
+    , smFocusViaBlue600
+    , smFocusViaBlue700
+    , smFocusViaBlue800
+    , smFocusViaBlue900
+    , smFocusViaCurrent
+    , smFocusViaGray100
+    , smFocusViaGray200
+    , smFocusViaGray300
+    , smFocusViaGray400
+    , smFocusViaGray500
+    , smFocusViaGray600
+    , smFocusViaGray700
+    , smFocusViaGray800
+    , smFocusViaGray900
+    , smFocusViaGreen100
+    , smFocusViaGreen200
+    , smFocusViaGreen300
+    , smFocusViaGreen400
+    , smFocusViaGreen500
+    , smFocusViaGreen600
+    , smFocusViaGreen700
+    , smFocusViaGreen800
+    , smFocusViaGreen900
+    , smFocusViaIndigo100
+    , smFocusViaIndigo200
+    , smFocusViaIndigo300
+    , smFocusViaIndigo400
+    , smFocusViaIndigo500
+    , smFocusViaIndigo600
+    , smFocusViaIndigo700
+    , smFocusViaIndigo800
+    , smFocusViaIndigo900
+    , smFocusViaOrange100
+    , smFocusViaOrange200
+    , smFocusViaOrange300
+    , smFocusViaOrange400
+    , smFocusViaOrange500
+    , smFocusViaOrange600
+    , smFocusViaOrange700
+    , smFocusViaOrange800
+    , smFocusViaOrange900
+    , smFocusViaPink100
+    , smFocusViaPink200
+    , smFocusViaPink300
+    , smFocusViaPink400
+    , smFocusViaPink500
+    , smFocusViaPink600
+    , smFocusViaPink700
+    , smFocusViaPink800
+    , smFocusViaPink900
+    , smFocusViaPurple100
+    , smFocusViaPurple200
+    , smFocusViaPurple300
+    , smFocusViaPurple400
+    , smFocusViaPurple500
+    , smFocusViaPurple600
+    , smFocusViaPurple700
+    , smFocusViaPurple800
+    , smFocusViaPurple900
+    , smFocusViaRed100
+    , smFocusViaRed200
+    , smFocusViaRed300
+    , smFocusViaRed400
+    , smFocusViaRed500
+    , smFocusViaRed600
+    , smFocusViaRed700
+    , smFocusViaRed800
+    , smFocusViaRed900
+    , smFocusViaTeal100
+    , smFocusViaTeal200
+    , smFocusViaTeal300
+    , smFocusViaTeal400
+    , smFocusViaTeal500
+    , smFocusViaTeal600
+    , smFocusViaTeal700
+    , smFocusViaTeal800
+    , smFocusViaTeal900
+    , smFocusViaTransparent
+    , smFocusViaWhite
+    , smFocusViaYellow100
+    , smFocusViaYellow200
+    , smFocusViaYellow300
+    , smFocusViaYellow400
+    , smFocusViaYellow500
+    , smFocusViaYellow600
+    , smFocusViaYellow700
+    , smFocusViaYellow800
+    , smFocusViaYellow900
     , smFontBlack
     , smFontBold
     , smFontExtrabold
@@ -9087,6 +12251,100 @@ module Svg.Tailwind exposing
     , smFontSerif
     , smFontThin
     , smFontTitle
+    , smFromBlack
+    , smFromBlue100
+    , smFromBlue200
+    , smFromBlue300
+    , smFromBlue400
+    , smFromBlue500
+    , smFromBlue600
+    , smFromBlue700
+    , smFromBlue800
+    , smFromBlue900
+    , smFromCurrent
+    , smFromGray100
+    , smFromGray200
+    , smFromGray300
+    , smFromGray400
+    , smFromGray500
+    , smFromGray600
+    , smFromGray700
+    , smFromGray800
+    , smFromGray900
+    , smFromGreen100
+    , smFromGreen200
+    , smFromGreen300
+    , smFromGreen400
+    , smFromGreen500
+    , smFromGreen600
+    , smFromGreen700
+    , smFromGreen800
+    , smFromGreen900
+    , smFromIndigo100
+    , smFromIndigo200
+    , smFromIndigo300
+    , smFromIndigo400
+    , smFromIndigo500
+    , smFromIndigo600
+    , smFromIndigo700
+    , smFromIndigo800
+    , smFromIndigo900
+    , smFromOrange100
+    , smFromOrange200
+    , smFromOrange300
+    , smFromOrange400
+    , smFromOrange500
+    , smFromOrange600
+    , smFromOrange700
+    , smFromOrange800
+    , smFromOrange900
+    , smFromPink100
+    , smFromPink200
+    , smFromPink300
+    , smFromPink400
+    , smFromPink500
+    , smFromPink600
+    , smFromPink700
+    , smFromPink800
+    , smFromPink900
+    , smFromPurple100
+    , smFromPurple200
+    , smFromPurple300
+    , smFromPurple400
+    , smFromPurple500
+    , smFromPurple600
+    , smFromPurple700
+    , smFromPurple800
+    , smFromPurple900
+    , smFromRed100
+    , smFromRed200
+    , smFromRed300
+    , smFromRed400
+    , smFromRed500
+    , smFromRed600
+    , smFromRed700
+    , smFromRed800
+    , smFromRed900
+    , smFromTeal100
+    , smFromTeal200
+    , smFromTeal300
+    , smFromTeal400
+    , smFromTeal500
+    , smFromTeal600
+    , smFromTeal700
+    , smFromTeal800
+    , smFromTeal900
+    , smFromTransparent
+    , smFromWhite
+    , smFromYellow100
+    , smFromYellow200
+    , smFromYellow300
+    , smFromYellow400
+    , smFromYellow500
+    , smFromYellow600
+    , smFromYellow700
+    , smFromYellow800
+    , smFromYellow900
     , smGap0
     , smGap1
     , smGap10
@@ -9106,6 +12364,44 @@ module Svg.Tailwind exposing
     , smGap64
     , smGap8
     , smGapPx
+    , smGapX0
+    , smGapX1
+    , smGapX10
+    , smGapX12
+    , smGapX16
+    , smGapX2
+    , smGapX20
+    , smGapX24
+    , smGapX3
+    , smGapX32
+    , smGapX4
+    , smGapX40
+    , smGapX48
+    , smGapX5
+    , smGapX56
+    , smGapX6
+    , smGapX64
+    , smGapX8
+    , smGapXPx
+    , smGapY0
+    , smGapY1
+    , smGapY10
+    , smGapY12
+    , smGapY16
+    , smGapY2
+    , smGapY20
+    , smGapY24
+    , smGapY3
+    , smGapY32
+    , smGapY4
+    , smGapY40
+    , smGapY48
+    , smGapY5
+    , smGapY56
+    , smGapY6
+    , smGapY64
+    , smGapY8
+    , smGapYPx
     , smGrid
     , smGridCols1
     , smGridCols10
@@ -9361,14 +12657,117 @@ module Svg.Tailwind exposing
     , smHoverFontNormal
     , smHoverFontSemibold
     , smHoverFontThin
+    , smHoverFromBlack
+    , smHoverFromBlue100
+    , smHoverFromBlue200
+    , smHoverFromBlue300
+    , smHoverFromBlue400
+    , smHoverFromBlue500
+    , smHoverFromBlue600
+    , smHoverFromBlue700
+    , smHoverFromBlue800
+    , smHoverFromBlue900
+    , smHoverFromCurrent
+    , smHoverFromGray100
+    , smHoverFromGray200
+    , smHoverFromGray300
+    , smHoverFromGray400
+    , smHoverFromGray500
+    , smHoverFromGray600
+    , smHoverFromGray700
+    , smHoverFromGray800
+    , smHoverFromGray900
+    , smHoverFromGreen100
+    , smHoverFromGreen200
+    , smHoverFromGreen300
+    , smHoverFromGreen400
+    , smHoverFromGreen500
+    , smHoverFromGreen600
+    , smHoverFromGreen700
+    , smHoverFromGreen800
+    , smHoverFromGreen900
+    , smHoverFromIndigo100
+    , smHoverFromIndigo200
+    , smHoverFromIndigo300
+    , smHoverFromIndigo400
+    , smHoverFromIndigo500
+    , smHoverFromIndigo600
+    , smHoverFromIndigo700
+    , smHoverFromIndigo800
+    , smHoverFromIndigo900
+    , smHoverFromOrange100
+    , smHoverFromOrange200
+    , smHoverFromOrange300
+    , smHoverFromOrange400
+    , smHoverFromOrange500
+    , smHoverFromOrange600
+    , smHoverFromOrange700
+    , smHoverFromOrange800
+    , smHoverFromOrange900
+    , smHoverFromPink100
+    , smHoverFromPink200
+    , smHoverFromPink300
+    , smHoverFromPink400
+    , smHoverFromPink500
+    , smHoverFromPink600
+    , smHoverFromPink700
+    , smHoverFromPink800
+    , smHoverFromPink900
+    , smHoverFromPurple100
+    , smHoverFromPurple200
+    , smHoverFromPurple300
+    , smHoverFromPurple400
+    , smHoverFromPurple500
+    , smHoverFromPurple600
+    , smHoverFromPurple700
+    , smHoverFromPurple800
+    , smHoverFromPurple900
+    , smHoverFromRed100
+    , smHoverFromRed200
+    , smHoverFromRed300
+    , smHoverFromRed400
+    , smHoverFromRed500
+    , smHoverFromRed600
+    , smHoverFromRed700
+    , smHoverFromRed800
+    , smHoverFromRed900
+    , smHoverFromTeal100
+    , smHoverFromTeal200
+    , smHoverFromTeal300
+    , smHoverFromTeal400
+    , smHoverFromTeal500
+    , smHoverFromTeal600
+    , smHoverFromTeal700
+    , smHoverFromTeal800
+    , smHoverFromTeal900
+    , smHoverFromTransparent
+    , smHoverFromWhite
+    , smHoverFromYellow100
+    , smHoverFromYellow200
+    , smHoverFromYellow300
+    , smHoverFromYellow400
+    , smHoverFromYellow500
+    , smHoverFromYellow600
+    , smHoverFromYellow700
+    , smHoverFromYellow800
+    , smHoverFromYellow900
     , smHoverLineThrough
+    , smHoverNegRotate1
+    , smHoverNegRotate12
     , smHoverNegRotate180
+    , smHoverNegRotate2
+    , smHoverNegRotate3
     , smHoverNegRotate45
+    , smHoverNegRotate6
     , smHoverNegRotate90
+    , smHoverNegSkewX1
     , smHoverNegSkewX12
+    , smHoverNegSkewX2
     , smHoverNegSkewX3
     , smHoverNegSkewX6
+    , smHoverNegSkewY1
     , smHoverNegSkewY12
+    , smHoverNegSkewY2
     , smHoverNegSkewY3
     , smHoverNegSkewY6
     , smHoverNegTranslateX1
@@ -9418,8 +12817,13 @@ module Svg.Tailwind exposing
     , smHoverOpacity50
     , smHoverOpacity75
     , smHoverRotate0
+    , smHoverRotate1
+    , smHoverRotate12
     , smHoverRotate180
+    , smHoverRotate2
+    , smHoverRotate3
     , smHoverRotate45
+    , smHoverRotate6
     , smHoverRotate90
     , smHoverScale0
     , smHoverScale100
@@ -9462,11 +12866,15 @@ module Svg.Tailwind exposing
     , smHoverShadowXl
     , smHoverShadowXs
     , smHoverSkewX0
+    , smHoverSkewX1
     , smHoverSkewX12
+    , smHoverSkewX2
     , smHoverSkewX3
     , smHoverSkewX6
     , smHoverSkewY0
+    , smHoverSkewY1
     , smHoverSkewY12
+    , smHoverSkewY2
     , smHoverSkewY3
     , smHoverSkewY6
     , smHoverTextBlack
@@ -9568,6 +12976,100 @@ module Svg.Tailwind exposing
     , smHoverTextYellow700
     , smHoverTextYellow800
     , smHoverTextYellow900
+    , smHoverToBlack
+    , smHoverToBlue100
+    , smHoverToBlue200
+    , smHoverToBlue300
+    , smHoverToBlue400
+    , smHoverToBlue500
+    , smHoverToBlue600
+    , smHoverToBlue700
+    , smHoverToBlue800
+    , smHoverToBlue900
+    , smHoverToCurrent
+    , smHoverToGray100
+    , smHoverToGray200
+    , smHoverToGray300
+    , smHoverToGray400
+    , smHoverToGray500
+    , smHoverToGray600
+    , smHoverToGray700
+    , smHoverToGray800
+    , smHoverToGray900
+    , smHoverToGreen100
+    , smHoverToGreen200
+    , smHoverToGreen300
+    , smHoverToGreen400
+    , smHoverToGreen500
+    , smHoverToGreen600
+    , smHoverToGreen700
+    , smHoverToGreen800
+    , smHoverToGreen900
+    , smHoverToIndigo100
+    , smHoverToIndigo200
+    , smHoverToIndigo300
+    , smHoverToIndigo400
+    , smHoverToIndigo500
+    , smHoverToIndigo600
+    , smHoverToIndigo700
+    , smHoverToIndigo800
+    , smHoverToIndigo900
+    , smHoverToOrange100
+    , smHoverToOrange200
+    , smHoverToOrange300
+    , smHoverToOrange400
+    , smHoverToOrange500
+    , smHoverToOrange600
+    , smHoverToOrange700
+    , smHoverToOrange800
+    , smHoverToOrange900
+    , smHoverToPink100
+    , smHoverToPink200
+    , smHoverToPink300
+    , smHoverToPink400
+    , smHoverToPink500
+    , smHoverToPink600
+    , smHoverToPink700
+    , smHoverToPink800
+    , smHoverToPink900
+    , smHoverToPurple100
+    , smHoverToPurple200
+    , smHoverToPurple300
+    , smHoverToPurple400
+    , smHoverToPurple500
+    , smHoverToPurple600
+    , smHoverToPurple700
+    , smHoverToPurple800
+    , smHoverToPurple900
+    , smHoverToRed100
+    , smHoverToRed200
+    , smHoverToRed300
+    , smHoverToRed400
+    , smHoverToRed500
+    , smHoverToRed600
+    , smHoverToRed700
+    , smHoverToRed800
+    , smHoverToRed900
+    , smHoverToTeal100
+    , smHoverToTeal200
+    , smHoverToTeal300
+    , smHoverToTeal400
+    , smHoverToTeal500
+    , smHoverToTeal600
+    , smHoverToTeal700
+    , smHoverToTeal800
+    , smHoverToTeal900
+    , smHoverToTransparent
+    , smHoverToWhite
+    , smHoverToYellow100
+    , smHoverToYellow200
+    , smHoverToYellow300
+    , smHoverToYellow400
+    , smHoverToYellow500
+    , smHoverToYellow600
+    , smHoverToYellow700
+    , smHoverToYellow800
+    , smHoverToYellow900
     , smHoverTranslateX0
     , smHoverTranslateX1
     , smHoverTranslateX10
@@ -9611,6 +13113,100 @@ module Svg.Tailwind exposing
     , smHoverTranslateYFull
     , smHoverTranslateYPx
     , smHoverUnderline
+    , smHoverViaBlack
+    , smHoverViaBlue100
+    , smHoverViaBlue200
+    , smHoverViaBlue300
+    , smHoverViaBlue400
+    , smHoverViaBlue500
+    , smHoverViaBlue600
+    , smHoverViaBlue700
+    , smHoverViaBlue800
+    , smHoverViaBlue900
+    , smHoverViaCurrent
+    , smHoverViaGray100
+    , smHoverViaGray200
+    , smHoverViaGray300
+    , smHoverViaGray400
+    , smHoverViaGray500
+    , smHoverViaGray600
+    , smHoverViaGray700
+    , smHoverViaGray800
+    , smHoverViaGray900
+    , smHoverViaGreen100
+    , smHoverViaGreen200
+    , smHoverViaGreen300
+    , smHoverViaGreen400
+    , smHoverViaGreen500
+    , smHoverViaGreen600
+    , smHoverViaGreen700
+    , smHoverViaGreen800
+    , smHoverViaGreen900
+    , smHoverViaIndigo100
+    , smHoverViaIndigo200
+    , smHoverViaIndigo300
+    , smHoverViaIndigo400
+    , smHoverViaIndigo500
+    , smHoverViaIndigo600
+    , smHoverViaIndigo700
+    , smHoverViaIndigo800
+    , smHoverViaIndigo900
+    , smHoverViaOrange100
+    , smHoverViaOrange200
+    , smHoverViaOrange300
+    , smHoverViaOrange400
+    , smHoverViaOrange500
+    , smHoverViaOrange600
+    , smHoverViaOrange700
+    , smHoverViaOrange800
+    , smHoverViaOrange900
+    , smHoverViaPink100
+    , smHoverViaPink200
+    , smHoverViaPink300
+    , smHoverViaPink400
+    , smHoverViaPink500
+    , smHoverViaPink600
+    , smHoverViaPink700
+    , smHoverViaPink800
+    , smHoverViaPink900
+    , smHoverViaPurple100
+    , smHoverViaPurple200
+    , smHoverViaPurple300
+    , smHoverViaPurple400
+    , smHoverViaPurple500
+    , smHoverViaPurple600
+    , smHoverViaPurple700
+    , smHoverViaPurple800
+    , smHoverViaPurple900
+    , smHoverViaRed100
+    , smHoverViaRed200
+    , smHoverViaRed300
+    , smHoverViaRed400
+    , smHoverViaRed500
+    , smHoverViaRed600
+    , smHoverViaRed700
+    , smHoverViaRed800
+    , smHoverViaRed900
+    , smHoverViaTeal100
+    , smHoverViaTeal200
+    , smHoverViaTeal300
+    , smHoverViaTeal400
+    , smHoverViaTeal500
+    , smHoverViaTeal600
+    , smHoverViaTeal700
+    , smHoverViaTeal800
+    , smHoverViaTeal900
+    , smHoverViaTransparent
+    , smHoverViaWhite
+    , smHoverViaYellow100
+    , smHoverViaYellow200
+    , smHoverViaYellow300
+    , smHoverViaYellow400
+    , smHoverViaYellow500
+    , smHoverViaYellow600
+    , smHoverViaYellow700
+    , smHoverViaYellow800
+    , smHoverViaYellow900
     , smInline
     , smInlineBlock
     , smInlineFlex
@@ -9633,6 +13229,16 @@ module Svg.Tailwind exposing
     , smJustifyCenter
     , smJustifyEnd
     , smJustifyEvenly
+    , smJustifyItemsAuto
+    , smJustifyItemsCenter
+    , smJustifyItemsEnd
+    , smJustifyItemsStart
+    , smJustifyItemsStretch
+    , smJustifySelfAuto
+    , smJustifySelfCenter
+    , smJustifySelfEnd
+    , smJustifySelfStart
+    , smJustifySelfStretch
     , smJustifyStart
     , smLeading10
     , smLeading3
@@ -9651,6 +13257,7 @@ module Svg.Tailwind exposing
     , smLeft0
     , smLeftAuto
     , smLineThrough
+    , smLiningNums
     , smListDecimal
     , smListDisc
     , smListInside
@@ -9946,13 +13553,22 @@ module Svg.Tailwind exposing
     , smNegMy64
     , smNegMy8
     , smNegMyPx
+    , smNegRotate1
+    , smNegRotate12
     , smNegRotate180
+    , smNegRotate2
+    , smNegRotate3
     , smNegRotate45
+    , smNegRotate6
     , smNegRotate90
+    , smNegSkewX1
     , smNegSkewX12
+    , smNegSkewX2
     , smNegSkewX3
     , smNegSkewX6
+    , smNegSkewY1
     , smNegSkewY12
+    , smNegSkewY2
     , smNegSkewY3
     , smNegSkewY6
     , smNegSpaceX1
@@ -10033,6 +13649,7 @@ module Svg.Tailwind exposing
     , smNegTranslateYPx
     , smNoUnderline
     , smNormalCase
+    , smNormalNums
     , smNotItalic
     , smNotSrOnly
     , smObjectBottom
@@ -10049,6 +13666,7 @@ module Svg.Tailwind exposing
     , smObjectRightTop
     , smObjectScaleDown
     , smObjectTop
+    , smOldstyleNums
     , smOpacity0
     , smOpacity100
     , smOpacity25
@@ -10069,6 +13687,7 @@ module Svg.Tailwind exposing
     , smOrderFirst
     , smOrderLast
     , smOrderNone
+    , smOrdinal
     , smOriginBottom
     , smOriginBottomLeft
     , smOriginBottomRight
@@ -10078,7 +13697,9 @@ module Svg.Tailwind exposing
     , smOriginTop
     , smOriginTopLeft
     , smOriginTopRight
+    , smOutlineBlack
     , smOutlineNone
+    , smOutlineWhite
     , smOverflowAuto
     , smOverflowHidden
     , smOverflowScroll
@@ -10091,6 +13712,15 @@ module Svg.Tailwind exposing
     , smOverflowYHidden
     , smOverflowYScroll
     , smOverflowYVisible
+    , smOverscrollAuto
+    , smOverscrollContain
+    , smOverscrollNone
+    , smOverscrollXAuto
+    , smOverscrollXContain
+    , smOverscrollXNone
+    , smOverscrollYAuto
+    , smOverscrollYContain
+    , smOverscrollYNone
     , smP0
     , smP1
     , smP10
@@ -10148,6 +13778,23 @@ module Svg.Tailwind exposing
     , smPl64
     , smPl8
     , smPlPx
+    , smPlaceContentAround
+    , smPlaceContentBetween
+    , smPlaceContentCenter
+    , smPlaceContentEnd
+    , smPlaceContentEvenly
+    , smPlaceContentStart
+    , smPlaceContentStretch
+    , smPlaceItemsAuto
+    , smPlaceItemsCenter
+    , smPlaceItemsEnd
+    , smPlaceItemsStart
+    , smPlaceItemsStretch
+    , smPlaceSelfAuto
+    , smPlaceSelfCenter
+    , smPlaceSelfEnd
+    , smPlaceSelfStart
+    , smPlaceSelfStretch
     , smPlaceholderBlack
     , smPlaceholderBlue100
     , smPlaceholderBlue200
@@ -10268,6 +13915,7 @@ module Svg.Tailwind exposing
     , smPr64
     , smPr8
     , smPrPx
+    , smProportionalNums
     , smPt0
     , smPt1
     , smPt10
@@ -10333,63 +13981,95 @@ module Svg.Tailwind exposing
     , smRight0
     , smRightAuto
     , smRotate0
+    , smRotate1
+    , smRotate12
     , smRotate180
+    , smRotate2
+    , smRotate3
     , smRotate45
+    , smRotate6
     , smRotate90
     , smRounded
+    , smRounded2xl
+    , smRounded3xl
     , smRoundedB
+    , smRoundedB2xl
+    , smRoundedB3xl
     , smRoundedBFull
     , smRoundedBLg
     , smRoundedBMd
     , smRoundedBNone
     , smRoundedBSm
+    , smRoundedBXl
     , smRoundedBl
+    , smRoundedBl2xl
+    , smRoundedBl3xl
     , smRoundedBlFull
     , smRoundedBlLg
     , smRoundedBlMd
     , smRoundedBlNone
     , smRoundedBlSm
+    , smRoundedBlXl
     , smRoundedBr
+    , smRoundedBr2xl
+    , smRoundedBr3xl
     , smRoundedBrFull
     , smRoundedBrLg
     , smRoundedBrMd
     , smRoundedBrNone
     , smRoundedBrSm
+    , smRoundedBrXl
     , smRoundedFull
     , smRoundedL
+    , smRoundedL2xl
+    , smRoundedL3xl
     , smRoundedLFull
     , smRoundedLLg
     , smRoundedLMd
     , smRoundedLNone
     , smRoundedLSm
+    , smRoundedLXl
     , smRoundedLg
     , smRoundedMd
     , smRoundedNone
     , smRoundedR
+    , smRoundedR2xl
+    , smRoundedR3xl
     , smRoundedRFull
     , smRoundedRLg
     , smRoundedRMd
     , smRoundedRNone
     , smRoundedRSm
+    , smRoundedRXl
     , smRoundedSm
     , smRoundedT
+    , smRoundedT2xl
+    , smRoundedT3xl
     , smRoundedTFull
     , smRoundedTLg
     , smRoundedTMd
     , smRoundedTNone
     , smRoundedTSm
+    , smRoundedTXl
     , smRoundedTl
+    , smRoundedTl2xl
+    , smRoundedTl3xl
     , smRoundedTlFull
     , smRoundedTlLg
     , smRoundedTlMd
     , smRoundedTlNone
     , smRoundedTlSm
+    , smRoundedTlXl
     , smRoundedTr
+    , smRoundedTr2xl
+    , smRoundedTr3xl
     , smRoundedTrFull
     , smRoundedTrLg
     , smRoundedTrMd
     , smRoundedTrNone
     , smRoundedTrSm
+    , smRoundedTrXl
+    , smRoundedXl
     , smRowAuto
     , smRowEnd1
     , smRowEnd2
@@ -10399,31 +14079,13 @@ module Svg.Tailwind exposing
     , smRowEnd6
     , smRowEnd7
     , smRowEndAuto
-    , smRowGap0
-    , smRowGap1
-    , smRowGap10
-    , smRowGap12
-    , smRowGap16
-    , smRowGap2
-    , smRowGap20
-    , smRowGap24
-    , smRowGap3
-    , smRowGap32
-    , smRowGap4
-    , smRowGap40
-    , smRowGap48
-    , smRowGap5
-    , smRowGap56
-    , smRowGap6
-    , smRowGap64
-    , smRowGap8
-    , smRowGapPx
     , smRowSpan1
     , smRowSpan2
     , smRowSpan3
     , smRowSpan4
     , smRowSpan5
     , smRowSpan6
+    , smRowSpanFull
     , smRowStart1
     , smRowStart2
     , smRowStart3
@@ -10484,13 +14146,18 @@ module Svg.Tailwind exposing
     , smShadowXl
     , smShadowXs
     , smSkewX0
+    , smSkewX1
     , smSkewX12
+    , smSkewX2
     , smSkewX3
     , smSkewX6
     , smSkewY0
+    , smSkewY1
     , smSkewY12
+    , smSkewY2
     , smSkewY3
     , smSkewY6
+    , smSlashedZero
     , smSpaceX0
     , smSpaceX1
     , smSpaceX10
@@ -10532,6 +14199,7 @@ module Svg.Tailwind exposing
     , smSpaceYPx
     , smSpaceYReverse
     , smSrOnly
+    , smStackedFractions
     , smStatic
     , smSticky
     , smStroke0
@@ -10550,6 +14218,7 @@ module Svg.Tailwind exposing
     , smTableHeaderGroup
     , smTableRow
     , smTableRowGroup
+    , smTabularNums
     , smText2xl
     , smText3xl
     , smText4xl
@@ -10663,6 +14332,100 @@ module Svg.Tailwind exposing
     , smTextYellow700
     , smTextYellow800
     , smTextYellow900
+    , smToBlack
+    , smToBlue100
+    , smToBlue200
+    , smToBlue300
+    , smToBlue400
+    , smToBlue500
+    , smToBlue600
+    , smToBlue700
+    , smToBlue800
+    , smToBlue900
+    , smToCurrent
+    , smToGray100
+    , smToGray200
+    , smToGray300
+    , smToGray400
+    , smToGray500
+    , smToGray600
+    , smToGray700
+    , smToGray800
+    , smToGray900
+    , smToGreen100
+    , smToGreen200
+    , smToGreen300
+    , smToGreen400
+    , smToGreen500
+    , smToGreen600
+    , smToGreen700
+    , smToGreen800
+    , smToGreen900
+    , smToIndigo100
+    , smToIndigo200
+    , smToIndigo300
+    , smToIndigo400
+    , smToIndigo500
+    , smToIndigo600
+    , smToIndigo700
+    , smToIndigo800
+    , smToIndigo900
+    , smToOrange100
+    , smToOrange200
+    , smToOrange300
+    , smToOrange400
+    , smToOrange500
+    , smToOrange600
+    , smToOrange700
+    , smToOrange800
+    , smToOrange900
+    , smToPink100
+    , smToPink200
+    , smToPink300
+    , smToPink400
+    , smToPink500
+    , smToPink600
+    , smToPink700
+    , smToPink800
+    , smToPink900
+    , smToPurple100
+    , smToPurple200
+    , smToPurple300
+    , smToPurple400
+    , smToPurple500
+    , smToPurple600
+    , smToPurple700
+    , smToPurple800
+    , smToPurple900
+    , smToRed100
+    , smToRed200
+    , smToRed300
+    , smToRed400
+    , smToRed500
+    , smToRed600
+    , smToRed700
+    , smToRed800
+    , smToRed900
+    , smToTeal100
+    , smToTeal200
+    , smToTeal300
+    , smToTeal400
+    , smToTeal500
+    , smToTeal600
+    , smToTeal700
+    , smToTeal800
+    , smToTeal900
+    , smToTransparent
+    , smToWhite
+    , smToYellow100
+    , smToYellow200
+    , smToYellow300
+    , smToYellow400
+    , smToYellow500
+    , smToYellow600
+    , smToYellow700
+    , smToYellow800
+    , smToYellow900
     , smTop0
     , smTopAuto
     , smTrackingNormal
@@ -10725,6 +14488,100 @@ module Svg.Tailwind exposing
     , smTruncate
     , smUnderline
     , smUppercase
+    , smViaBlack
+    , smViaBlue100
+    , smViaBlue200
+    , smViaBlue300
+    , smViaBlue400
+    , smViaBlue500
+    , smViaBlue600
+    , smViaBlue700
+    , smViaBlue800
+    , smViaBlue900
+    , smViaCurrent
+    , smViaGray100
+    , smViaGray200
+    , smViaGray300
+    , smViaGray400
+    , smViaGray500
+    , smViaGray600
+    , smViaGray700
+    , smViaGray800
+    , smViaGray900
+    , smViaGreen100
+    , smViaGreen200
+    , smViaGreen300
+    , smViaGreen400
+    , smViaGreen500
+    , smViaGreen600
+    , smViaGreen700
+    , smViaGreen800
+    , smViaGreen900
+    , smViaIndigo100
+    , smViaIndigo200
+    , smViaIndigo300
+    , smViaIndigo400
+    , smViaIndigo500
+    , smViaIndigo600
+    , smViaIndigo700
+    , smViaIndigo800
+    , smViaIndigo900
+    , smViaOrange100
+    , smViaOrange200
+    , smViaOrange300
+    , smViaOrange400
+    , smViaOrange500
+    , smViaOrange600
+    , smViaOrange700
+    , smViaOrange800
+    , smViaOrange900
+    , smViaPink100
+    , smViaPink200
+    , smViaPink300
+    , smViaPink400
+    , smViaPink500
+    , smViaPink600
+    , smViaPink700
+    , smViaPink800
+    , smViaPink900
+    , smViaPurple100
+    , smViaPurple200
+    , smViaPurple300
+    , smViaPurple400
+    , smViaPurple500
+    , smViaPurple600
+    , smViaPurple700
+    , smViaPurple800
+    , smViaPurple900
+    , smViaRed100
+    , smViaRed200
+    , smViaRed300
+    , smViaRed400
+    , smViaRed500
+    , smViaRed600
+    , smViaRed700
+    , smViaRed800
+    , smViaRed900
+    , smViaTeal100
+    , smViaTeal200
+    , smViaTeal300
+    , smViaTeal400
+    , smViaTeal500
+    , smViaTeal600
+    , smViaTeal700
+    , smViaTeal800
+    , smViaTeal900
+    , smViaTransparent
+    , smViaWhite
+    , smViaYellow100
+    , smViaYellow200
+    , smViaYellow300
+    , smViaYellow400
+    , smViaYellow500
+    , smViaYellow600
+    , smViaYellow700
+    , smViaYellow800
+    , smViaYellow900
     , smVisible
     , smW0
     , smW1
@@ -10827,6 +14684,7 @@ module Svg.Tailwind exposing
     , spaceYPx
     , spaceYReverse
     , srOnly
+    , stackedFractions
     , static
     , sticky
     , stroke0
@@ -10845,6 +14703,7 @@ module Svg.Tailwind exposing
     , tableHeaderGroup
     , tableRow
     , tableRowGroup
+    , tabularNums
     , text2xl
     , text3xl
     , text4xl
@@ -10958,6 +14817,100 @@ module Svg.Tailwind exposing
     , textYellow700
     , textYellow800
     , textYellow900
+    , toBlack
+    , toBlue100
+    , toBlue200
+    , toBlue300
+    , toBlue400
+    , toBlue500
+    , toBlue600
+    , toBlue700
+    , toBlue800
+    , toBlue900
+    , toCurrent
+    , toGray100
+    , toGray200
+    , toGray300
+    , toGray400
+    , toGray500
+    , toGray600
+    , toGray700
+    , toGray800
+    , toGray900
+    , toGreen100
+    , toGreen200
+    , toGreen300
+    , toGreen400
+    , toGreen500
+    , toGreen600
+    , toGreen700
+    , toGreen800
+    , toGreen900
+    , toIndigo100
+    , toIndigo200
+    , toIndigo300
+    , toIndigo400
+    , toIndigo500
+    , toIndigo600
+    , toIndigo700
+    , toIndigo800
+    , toIndigo900
+    , toOrange100
+    , toOrange200
+    , toOrange300
+    , toOrange400
+    , toOrange500
+    , toOrange600
+    , toOrange700
+    , toOrange800
+    , toOrange900
+    , toPink100
+    , toPink200
+    , toPink300
+    , toPink400
+    , toPink500
+    , toPink600
+    , toPink700
+    , toPink800
+    , toPink900
+    , toPurple100
+    , toPurple200
+    , toPurple300
+    , toPurple400
+    , toPurple500
+    , toPurple600
+    , toPurple700
+    , toPurple800
+    , toPurple900
+    , toRed100
+    , toRed200
+    , toRed300
+    , toRed400
+    , toRed500
+    , toRed600
+    , toRed700
+    , toRed800
+    , toRed900
+    , toTeal100
+    , toTeal200
+    , toTeal300
+    , toTeal400
+    , toTeal500
+    , toTeal600
+    , toTeal700
+    , toTeal800
+    , toTeal900
+    , toTransparent
+    , toWhite
+    , toYellow100
+    , toYellow200
+    , toYellow300
+    , toYellow400
+    , toYellow500
+    , toYellow600
+    , toYellow700
+    , toYellow800
+    , toYellow900
     , top0
     , topAuto
     , trackingNormal
@@ -11020,6 +14973,100 @@ module Svg.Tailwind exposing
     , truncate
     , underline
     , uppercase
+    , viaBlack
+    , viaBlue100
+    , viaBlue200
+    , viaBlue300
+    , viaBlue400
+    , viaBlue500
+    , viaBlue600
+    , viaBlue700
+    , viaBlue800
+    , viaBlue900
+    , viaCurrent
+    , viaGray100
+    , viaGray200
+    , viaGray300
+    , viaGray400
+    , viaGray500
+    , viaGray600
+    , viaGray700
+    , viaGray800
+    , viaGray900
+    , viaGreen100
+    , viaGreen200
+    , viaGreen300
+    , viaGreen400
+    , viaGreen500
+    , viaGreen600
+    , viaGreen700
+    , viaGreen800
+    , viaGreen900
+    , viaIndigo100
+    , viaIndigo200
+    , viaIndigo300
+    , viaIndigo400
+    , viaIndigo500
+    , viaIndigo600
+    , viaIndigo700
+    , viaIndigo800
+    , viaIndigo900
+    , viaOrange100
+    , viaOrange200
+    , viaOrange300
+    , viaOrange400
+    , viaOrange500
+    , viaOrange600
+    , viaOrange700
+    , viaOrange800
+    , viaOrange900
+    , viaPink100
+    , viaPink200
+    , viaPink300
+    , viaPink400
+    , viaPink500
+    , viaPink600
+    , viaPink700
+    , viaPink800
+    , viaPink900
+    , viaPurple100
+    , viaPurple200
+    , viaPurple300
+    , viaPurple400
+    , viaPurple500
+    , viaPurple600
+    , viaPurple700
+    , viaPurple800
+    , viaPurple900
+    , viaRed100
+    , viaRed200
+    , viaRed300
+    , viaRed400
+    , viaRed500
+    , viaRed600
+    , viaRed700
+    , viaRed800
+    , viaRed900
+    , viaTeal100
+    , viaTeal200
+    , viaTeal300
+    , viaTeal400
+    , viaTeal500
+    , viaTeal600
+    , viaTeal700
+    , viaTeal800
+    , viaTeal900
+    , viaTransparent
+    , viaWhite
+    , viaYellow100
+    , viaYellow200
+    , viaYellow300
+    , viaYellow400
+    , viaYellow500
+    , viaYellow600
+    , viaYellow700
+    , viaYellow800
+    , viaYellow900
     , visible
     , w0
     , w1
@@ -11081,8 +15128,21 @@ module Svg.Tailwind exposing
     , xlAlignTextBottom
     , xlAlignTextTop
     , xlAlignTop
+    , xlAnimateBounce
+    , xlAnimateNone
+    , xlAnimatePing
+    , xlAnimatePulse
+    , xlAnimateSpin
     , xlAntialiased
     , xlAppearanceNone
+    , xlAutoColsAuto
+    , xlAutoColsFr
+    , xlAutoColsMax
+    , xlAutoColsMin
+    , xlAutoRowsAuto
+    , xlAutoRowsFr
+    , xlAutoRowsMax
+    , xlAutoRowsMin
     , xlBgAuto
     , xlBgBlack
     , xlBgBlue100
@@ -11096,10 +15156,22 @@ module Svg.Tailwind exposing
     , xlBgBlue900
     , xlBgBottom
     , xlBgCenter
+    , xlBgClipBorder
+    , xlBgClipContent
+    , xlBgClipPadding
+    , xlBgClipText
     , xlBgContain
     , xlBgCover
     , xlBgCurrent
     , xlBgFixed
+    , xlBgGradientToB
+    , xlBgGradientToBl
+    , xlBgGradientToBr
+    , xlBgGradientToL
+    , xlBgGradientToR
+    , xlBgGradientToT
+    , xlBgGradientToTl
+    , xlBgGradientToTr
     , xlBgGray100
     , xlBgGray200
     , xlBgGray300
@@ -11132,6 +15204,7 @@ module Svg.Tailwind exposing
     , xlBgLeftTop
     , xlBgLocal
     , xlBgNoRepeat
+    , xlBgNone
     , xlBgOpacity0
     , xlBgOpacity100
     , xlBgOpacity25
@@ -11363,25 +15436,6 @@ module Svg.Tailwind exposing
     , xlColEnd8
     , xlColEnd9
     , xlColEndAuto
-    , xlColGap0
-    , xlColGap1
-    , xlColGap10
-    , xlColGap12
-    , xlColGap16
-    , xlColGap2
-    , xlColGap20
-    , xlColGap24
-    , xlColGap3
-    , xlColGap32
-    , xlColGap4
-    , xlColGap40
-    , xlColGap48
-    , xlColGap5
-    , xlColGap56
-    , xlColGap6
-    , xlColGap64
-    , xlColGap8
-    , xlColGapPx
     , xlColSpan1
     , xlColSpan10
     , xlColSpan11
@@ -11394,6 +15448,7 @@ module Svg.Tailwind exposing
     , xlColSpan7
     , xlColSpan8
     , xlColSpan9
+    , xlColSpanFull
     , xlColStart1
     , xlColStart10
     , xlColStart11
@@ -11408,11 +15463,14 @@ module Svg.Tailwind exposing
     , xlColStart8
     , xlColStart9
     , xlColStartAuto
+    , xlContainer
     , xlContentAround
     , xlContentBetween
     , xlContentCenter
     , xlContentEnd
+    , xlContentEvenly
     , xlContentStart
+    , xlContents
     , xlCursorAuto
     , xlCursorDefault
     , xlCursorMove
@@ -11428,6 +15486,7 @@ module Svg.Tailwind exposing
     , xlDelay500
     , xlDelay700
     , xlDelay75
+    , xlDiagonalFractions
     , xlDivideBlack
     , xlDivideBlue100
     , xlDivideBlue200
@@ -11439,6 +15498,9 @@ module Svg.Tailwind exposing
     , xlDivideBlue800
     , xlDivideBlue900
     , xlDivideCurrent
+    , xlDivideDashed
+    , xlDivideDotted
+    , xlDivideDouble
     , xlDivideGray100
     , xlDivideGray200
     , xlDivideGray300
@@ -11466,6 +15528,7 @@ module Svg.Tailwind exposing
     , xlDivideIndigo700
     , xlDivideIndigo800
     , xlDivideIndigo900
+    , xlDivideNone
     , xlDivideOpacity0
     , xlDivideOpacity100
     , xlDivideOpacity25
@@ -11507,6 +15570,7 @@ module Svg.Tailwind exposing
     , xlDivideRed700
     , xlDivideRed800
     , xlDivideRed900
+    , xlDivideSolid
     , xlDivideTeal100
     , xlDivideTeal200
     , xlDivideTeal300
@@ -11780,14 +15844,117 @@ module Svg.Tailwind exposing
     , xlFocusFontNormal
     , xlFocusFontSemibold
     , xlFocusFontThin
+    , xlFocusFromBlack
+    , xlFocusFromBlue100
+    , xlFocusFromBlue200
+    , xlFocusFromBlue300
+    , xlFocusFromBlue400
+    , xlFocusFromBlue500
+    , xlFocusFromBlue600
+    , xlFocusFromBlue700
+    , xlFocusFromBlue800
+    , xlFocusFromBlue900
+    , xlFocusFromCurrent
+    , xlFocusFromGray100
+    , xlFocusFromGray200
+    , xlFocusFromGray300
+    , xlFocusFromGray400
+    , xlFocusFromGray500
+    , xlFocusFromGray600
+    , xlFocusFromGray700
+    , xlFocusFromGray800
+    , xlFocusFromGray900
+    , xlFocusFromGreen100
+    , xlFocusFromGreen200
+    , xlFocusFromGreen300
+    , xlFocusFromGreen400
+    , xlFocusFromGreen500
+    , xlFocusFromGreen600
+    , xlFocusFromGreen700
+    , xlFocusFromGreen800
+    , xlFocusFromGreen900
+    , xlFocusFromIndigo100
+    , xlFocusFromIndigo200
+    , xlFocusFromIndigo300
+    , xlFocusFromIndigo400
+    , xlFocusFromIndigo500
+    , xlFocusFromIndigo600
+    , xlFocusFromIndigo700
+    , xlFocusFromIndigo800
+    , xlFocusFromIndigo900
+    , xlFocusFromOrange100
+    , xlFocusFromOrange200
+    , xlFocusFromOrange300
+    , xlFocusFromOrange400
+    , xlFocusFromOrange500
+    , xlFocusFromOrange600
+    , xlFocusFromOrange700
+    , xlFocusFromOrange800
+    , xlFocusFromOrange900
+    , xlFocusFromPink100
+    , xlFocusFromPink200
+    , xlFocusFromPink300
+    , xlFocusFromPink400
+    , xlFocusFromPink500
+    , xlFocusFromPink600
+    , xlFocusFromPink700
+    , xlFocusFromPink800
+    , xlFocusFromPink900
+    , xlFocusFromPurple100
+    , xlFocusFromPurple200
+    , xlFocusFromPurple300
+    , xlFocusFromPurple400
+    , xlFocusFromPurple500
+    , xlFocusFromPurple600
+    , xlFocusFromPurple700
+    , xlFocusFromPurple800
+    , xlFocusFromPurple900
+    , xlFocusFromRed100
+    , xlFocusFromRed200
+    , xlFocusFromRed300
+    , xlFocusFromRed400
+    , xlFocusFromRed500
+    , xlFocusFromRed600
+    , xlFocusFromRed700
+    , xlFocusFromRed800
+    , xlFocusFromRed900
+    , xlFocusFromTeal100
+    , xlFocusFromTeal200
+    , xlFocusFromTeal300
+    , xlFocusFromTeal400
+    , xlFocusFromTeal500
+    , xlFocusFromTeal600
+    , xlFocusFromTeal700
+    , xlFocusFromTeal800
+    , xlFocusFromTeal900
+    , xlFocusFromTransparent
+    , xlFocusFromWhite
+    , xlFocusFromYellow100
+    , xlFocusFromYellow200
+    , xlFocusFromYellow300
+    , xlFocusFromYellow400
+    , xlFocusFromYellow500
+    , xlFocusFromYellow600
+    , xlFocusFromYellow700
+    , xlFocusFromYellow800
+    , xlFocusFromYellow900
     , xlFocusLineThrough
+    , xlFocusNegRotate1
+    , xlFocusNegRotate12
     , xlFocusNegRotate180
+    , xlFocusNegRotate2
+    , xlFocusNegRotate3
     , xlFocusNegRotate45
+    , xlFocusNegRotate6
     , xlFocusNegRotate90
+    , xlFocusNegSkewX1
     , xlFocusNegSkewX12
+    , xlFocusNegSkewX2
     , xlFocusNegSkewX3
     , xlFocusNegSkewX6
+    , xlFocusNegSkewY1
     , xlFocusNegSkewY12
+    , xlFocusNegSkewY2
     , xlFocusNegSkewY3
     , xlFocusNegSkewY6
     , xlFocusNegTranslateX1
@@ -11837,7 +16004,9 @@ module Svg.Tailwind exposing
     , xlFocusOpacity25
     , xlFocusOpacity50
     , xlFocusOpacity75
+    , xlFocusOutlineBlack
     , xlFocusOutlineNone
+    , xlFocusOutlineWhite
     , xlFocusPlaceholderBlackFocus
     , xlFocusPlaceholderBlue100Focus
     , xlFocusPlaceholderBlue200Focus
@@ -11938,8 +16107,13 @@ module Svg.Tailwind exposing
     , xlFocusPlaceholderYellow800Focus
     , xlFocusPlaceholderYellow900Focus
     , xlFocusRotate0
+    , xlFocusRotate1
+    , xlFocusRotate12
     , xlFocusRotate180
+    , xlFocusRotate2
+    , xlFocusRotate3
     , xlFocusRotate45
+    , xlFocusRotate6
     , xlFocusRotate90
     , xlFocusScale0
     , xlFocusScale100
@@ -11982,11 +16156,15 @@ module Svg.Tailwind exposing
     , xlFocusShadowXl
     , xlFocusShadowXs
     , xlFocusSkewX0
+    , xlFocusSkewX1
     , xlFocusSkewX12
+    , xlFocusSkewX2
     , xlFocusSkewX3
     , xlFocusSkewX6
     , xlFocusSkewY0
+    , xlFocusSkewY1
     , xlFocusSkewY12
+    , xlFocusSkewY2
     , xlFocusSkewY3
     , xlFocusSkewY6
     , xlFocusSrOnly
@@ -12089,6 +16267,100 @@ module Svg.Tailwind exposing
     , xlFocusTextYellow700
     , xlFocusTextYellow800
     , xlFocusTextYellow900
+    , xlFocusToBlack
+    , xlFocusToBlue100
+    , xlFocusToBlue200
+    , xlFocusToBlue300
+    , xlFocusToBlue400
+    , xlFocusToBlue500
+    , xlFocusToBlue600
+    , xlFocusToBlue700
+    , xlFocusToBlue800
+    , xlFocusToBlue900
+    , xlFocusToCurrent
+    , xlFocusToGray100
+    , xlFocusToGray200
+    , xlFocusToGray300
+    , xlFocusToGray400
+    , xlFocusToGray500
+    , xlFocusToGray600
+    , xlFocusToGray700
+    , xlFocusToGray800
+    , xlFocusToGray900
+    , xlFocusToGreen100
+    , xlFocusToGreen200
+    , xlFocusToGreen300
+    , xlFocusToGreen400
+    , xlFocusToGreen500
+    , xlFocusToGreen600
+    , xlFocusToGreen700
+    , xlFocusToGreen800
+    , xlFocusToGreen900
+    , xlFocusToIndigo100
+    , xlFocusToIndigo200
+    , xlFocusToIndigo300
+    , xlFocusToIndigo400
+    , xlFocusToIndigo500
+    , xlFocusToIndigo600
+    , xlFocusToIndigo700
+    , xlFocusToIndigo800
+    , xlFocusToIndigo900
+    , xlFocusToOrange100
+    , xlFocusToOrange200
+    , xlFocusToOrange300
+    , xlFocusToOrange400
+    , xlFocusToOrange500
+    , xlFocusToOrange600
+    , xlFocusToOrange700
+    , xlFocusToOrange800
+    , xlFocusToOrange900
+    , xlFocusToPink100
+    , xlFocusToPink200
+    , xlFocusToPink300
+    , xlFocusToPink400
+    , xlFocusToPink500
+    , xlFocusToPink600
+    , xlFocusToPink700
+    , xlFocusToPink800
+    , xlFocusToPink900
+    , xlFocusToPurple100
+    , xlFocusToPurple200
+    , xlFocusToPurple300
+    , xlFocusToPurple400
+    , xlFocusToPurple500
+    , xlFocusToPurple600
+    , xlFocusToPurple700
+    , xlFocusToPurple800
+    , xlFocusToPurple900
+    , xlFocusToRed100
+    , xlFocusToRed200
+    , xlFocusToRed300
+    , xlFocusToRed400
+    , xlFocusToRed500
+    , xlFocusToRed600
+    , xlFocusToRed700
+    , xlFocusToRed800
+    , xlFocusToRed900
+    , xlFocusToTeal100
+    , xlFocusToTeal200
+    , xlFocusToTeal300
+    , xlFocusToTeal400
+    , xlFocusToTeal500
+    , xlFocusToTeal600
+    , xlFocusToTeal700
+    , xlFocusToTeal800
+    , xlFocusToTeal900
+    , xlFocusToTransparent
+    , xlFocusToWhite
+    , xlFocusToYellow100
+    , xlFocusToYellow200
+    , xlFocusToYellow300
+    , xlFocusToYellow400
+    , xlFocusToYellow500
+    , xlFocusToYellow600
+    , xlFocusToYellow700
+    , xlFocusToYellow800
+    , xlFocusToYellow900
     , xlFocusTranslateX0
     , xlFocusTranslateX1
     , xlFocusTranslateX10
@@ -12132,6 +16404,100 @@ module Svg.Tailwind exposing
     , xlFocusTranslateYFull
     , xlFocusTranslateYPx
     , xlFocusUnderline
+    , xlFocusViaBlack
+    , xlFocusViaBlue100
+    , xlFocusViaBlue200
+    , xlFocusViaBlue300
+    , xlFocusViaBlue400
+    , xlFocusViaBlue500
+    , xlFocusViaBlue600
+    , xlFocusViaBlue700
+    , xlFocusViaBlue800
+    , xlFocusViaBlue900
+    , xlFocusViaCurrent
+    , xlFocusViaGray100
+    , xlFocusViaGray200
+    , xlFocusViaGray300
+    , xlFocusViaGray400
+    , xlFocusViaGray500
+    , xlFocusViaGray600
+    , xlFocusViaGray700
+    , xlFocusViaGray800
+    , xlFocusViaGray900
+    , xlFocusViaGreen100
+    , xlFocusViaGreen200
+    , xlFocusViaGreen300
+    , xlFocusViaGreen400
+    , xlFocusViaGreen500
+    , xlFocusViaGreen600
+    , xlFocusViaGreen700
+    , xlFocusViaGreen800
+    , xlFocusViaGreen900
+    , xlFocusViaIndigo100
+    , xlFocusViaIndigo200
+    , xlFocusViaIndigo300
+    , xlFocusViaIndigo400
+    , xlFocusViaIndigo500
+    , xlFocusViaIndigo600
+    , xlFocusViaIndigo700
+    , xlFocusViaIndigo800
+    , xlFocusViaIndigo900
+    , xlFocusViaOrange100
+    , xlFocusViaOrange200
+    , xlFocusViaOrange300
+    , xlFocusViaOrange400
+    , xlFocusViaOrange500
+    , xlFocusViaOrange600
+    , xlFocusViaOrange700
+    , xlFocusViaOrange800
+    , xlFocusViaOrange900
+    , xlFocusViaPink100
+    , xlFocusViaPink200
+    , xlFocusViaPink300
+    , xlFocusViaPink400
+    , xlFocusViaPink500
+    , xlFocusViaPink600
+    , xlFocusViaPink700
+    , xlFocusViaPink800
+    , xlFocusViaPink900
+    , xlFocusViaPurple100
+    , xlFocusViaPurple200
+    , xlFocusViaPurple300
+    , xlFocusViaPurple400
+    , xlFocusViaPurple500
+    , xlFocusViaPurple600
+    , xlFocusViaPurple700
+    , xlFocusViaPurple800
+    , xlFocusViaPurple900
+    , xlFocusViaRed100
+    , xlFocusViaRed200
+    , xlFocusViaRed300
+    , xlFocusViaRed400
+    , xlFocusViaRed500
+    , xlFocusViaRed600
+    , xlFocusViaRed700
+    , xlFocusViaRed800
+    , xlFocusViaRed900
+    , xlFocusViaTeal100
+    , xlFocusViaTeal200
+    , xlFocusViaTeal300
+    , xlFocusViaTeal400
+    , xlFocusViaTeal500
+    , xlFocusViaTeal600
+    , xlFocusViaTeal700
+    , xlFocusViaTeal800
+    , xlFocusViaTeal900
+    , xlFocusViaTransparent
+    , xlFocusViaWhite
+    , xlFocusViaYellow100
+    , xlFocusViaYellow200
+    , xlFocusViaYellow300
+    , xlFocusViaYellow400
+    , xlFocusViaYellow500
+    , xlFocusViaYellow600
+    , xlFocusViaYellow700
+    , xlFocusViaYellow800
+    , xlFocusViaYellow900
     , xlFontBlack
     , xlFontBold
     , xlFontExtrabold
@@ -12145,6 +16511,100 @@ module Svg.Tailwind exposing
     , xlFontSerif
     , xlFontThin
     , xlFontTitle
+    , xlFromBlack
+    , xlFromBlue100
+    , xlFromBlue200
+    , xlFromBlue300
+    , xlFromBlue400
+    , xlFromBlue500
+    , xlFromBlue600
+    , xlFromBlue700
+    , xlFromBlue800
+    , xlFromBlue900
+    , xlFromCurrent
+    , xlFromGray100
+    , xlFromGray200
+    , xlFromGray300
+    , xlFromGray400
+    , xlFromGray500
+    , xlFromGray600
+    , xlFromGray700
+    , xlFromGray800
+    , xlFromGray900
+    , xlFromGreen100
+    , xlFromGreen200
+    , xlFromGreen300
+    , xlFromGreen400
+    , xlFromGreen500
+    , xlFromGreen600
+    , xlFromGreen700
+    , xlFromGreen800
+    , xlFromGreen900
+    , xlFromIndigo100
+    , xlFromIndigo200
+    , xlFromIndigo300
+    , xlFromIndigo400
+    , xlFromIndigo500
+    , xlFromIndigo600
+    , xlFromIndigo700
+    , xlFromIndigo800
+    , xlFromIndigo900
+    , xlFromOrange100
+    , xlFromOrange200
+    , xlFromOrange300
+    , xlFromOrange400
+    , xlFromOrange500
+    , xlFromOrange600
+    , xlFromOrange700
+    , xlFromOrange800
+    , xlFromOrange900
+    , xlFromPink100
+    , xlFromPink200
+    , xlFromPink300
+    , xlFromPink400
+    , xlFromPink500
+    , xlFromPink600
+    , xlFromPink700
+    , xlFromPink800
+    , xlFromPink900
+    , xlFromPurple100
+    , xlFromPurple200
+    , xlFromPurple300
+    , xlFromPurple400
+    , xlFromPurple500
+    , xlFromPurple600
+    , xlFromPurple700
+    , xlFromPurple800
+    , xlFromPurple900
+    , xlFromRed100
+    , xlFromRed200
+    , xlFromRed300
+    , xlFromRed400
+    , xlFromRed500
+    , xlFromRed600
+    , xlFromRed700
+    , xlFromRed800
+    , xlFromRed900
+    , xlFromTeal100
+    , xlFromTeal200
+    , xlFromTeal300
+    , xlFromTeal400
+    , xlFromTeal500
+    , xlFromTeal600
+    , xlFromTeal700
+    , xlFromTeal800
+    , xlFromTeal900
+    , xlFromTransparent
+    , xlFromWhite
+    , xlFromYellow100
+    , xlFromYellow200
+    , xlFromYellow300
+    , xlFromYellow400
+    , xlFromYellow500
+    , xlFromYellow600
+    , xlFromYellow700
+    , xlFromYellow800
+    , xlFromYellow900
     , xlGap0
     , xlGap1
     , xlGap10
@@ -12164,6 +16624,44 @@ module Svg.Tailwind exposing
     , xlGap64
     , xlGap8
     , xlGapPx
+    , xlGapX0
+    , xlGapX1
+    , xlGapX10
+    , xlGapX12
+    , xlGapX16
+    , xlGapX2
+    , xlGapX20
+    , xlGapX24
+    , xlGapX3
+    , xlGapX32
+    , xlGapX4
+    , xlGapX40
+    , xlGapX48
+    , xlGapX5
+    , xlGapX56
+    , xlGapX6
+    , xlGapX64
+    , xlGapX8
+    , xlGapXPx
+    , xlGapY0
+    , xlGapY1
+    , xlGapY10
+    , xlGapY12
+    , xlGapY16
+    , xlGapY2
+    , xlGapY20
+    , xlGapY24
+    , xlGapY3
+    , xlGapY32
+    , xlGapY4
+    , xlGapY40
+    , xlGapY48
+    , xlGapY5
+    , xlGapY56
+    , xlGapY6
+    , xlGapY64
+    , xlGapY8
+    , xlGapYPx
     , xlGrid
     , xlGridCols1
     , xlGridCols10
@@ -12419,14 +16917,117 @@ module Svg.Tailwind exposing
     , xlHoverFontNormal
     , xlHoverFontSemibold
     , xlHoverFontThin
+    , xlHoverFromBlack
+    , xlHoverFromBlue100
+    , xlHoverFromBlue200
+    , xlHoverFromBlue300
+    , xlHoverFromBlue400
+    , xlHoverFromBlue500
+    , xlHoverFromBlue600
+    , xlHoverFromBlue700
+    , xlHoverFromBlue800
+    , xlHoverFromBlue900
+    , xlHoverFromCurrent
+    , xlHoverFromGray100
+    , xlHoverFromGray200
+    , xlHoverFromGray300
+    , xlHoverFromGray400
+    , xlHoverFromGray500
+    , xlHoverFromGray600
+    , xlHoverFromGray700
+    , xlHoverFromGray800
+    , xlHoverFromGray900
+    , xlHoverFromGreen100
+    , xlHoverFromGreen200
+    , xlHoverFromGreen300
+    , xlHoverFromGreen400
+    , xlHoverFromGreen500
+    , xlHoverFromGreen600
+    , xlHoverFromGreen700
+    , xlHoverFromGreen800
+    , xlHoverFromGreen900
+    , xlHoverFromIndigo100
+    , xlHoverFromIndigo200
+    , xlHoverFromIndigo300
+    , xlHoverFromIndigo400
+    , xlHoverFromIndigo500
+    , xlHoverFromIndigo600
+    , xlHoverFromIndigo700
+    , xlHoverFromIndigo800
+    , xlHoverFromIndigo900
+    , xlHoverFromOrange100
+    , xlHoverFromOrange200
+    , xlHoverFromOrange300
+    , xlHoverFromOrange400
+    , xlHoverFromOrange500
+    , xlHoverFromOrange600
+    , xlHoverFromOrange700
+    , xlHoverFromOrange800
+    , xlHoverFromOrange900
+    , xlHoverFromPink100
+    , xlHoverFromPink200
+    , xlHoverFromPink300
+    , xlHoverFromPink400
+    , xlHoverFromPink500
+    , xlHoverFromPink600
+    , xlHoverFromPink700
+    , xlHoverFromPink800
+    , xlHoverFromPink900
+    , xlHoverFromPurple100
+    , xlHoverFromPurple200
+    , xlHoverFromPurple300
+    , xlHoverFromPurple400
+    , xlHoverFromPurple500
+    , xlHoverFromPurple600
+    , xlHoverFromPurple700
+    , xlHoverFromPurple800
+    , xlHoverFromPurple900
+    , xlHoverFromRed100
+    , xlHoverFromRed200
+    , xlHoverFromRed300
+    , xlHoverFromRed400
+    , xlHoverFromRed500
+    , xlHoverFromRed600
+    , xlHoverFromRed700
+    , xlHoverFromRed800
+    , xlHoverFromRed900
+    , xlHoverFromTeal100
+    , xlHoverFromTeal200
+    , xlHoverFromTeal300
+    , xlHoverFromTeal400
+    , xlHoverFromTeal500
+    , xlHoverFromTeal600
+    , xlHoverFromTeal700
+    , xlHoverFromTeal800
+    , xlHoverFromTeal900
+    , xlHoverFromTransparent
+    , xlHoverFromWhite
+    , xlHoverFromYellow100
+    , xlHoverFromYellow200
+    , xlHoverFromYellow300
+    , xlHoverFromYellow400
+    , xlHoverFromYellow500
+    , xlHoverFromYellow600
+    , xlHoverFromYellow700
+    , xlHoverFromYellow800
+    , xlHoverFromYellow900
     , xlHoverLineThrough
+    , xlHoverNegRotate1
+    , xlHoverNegRotate12
     , xlHoverNegRotate180
+    , xlHoverNegRotate2
+    , xlHoverNegRotate3
     , xlHoverNegRotate45
+    , xlHoverNegRotate6
     , xlHoverNegRotate90
+    , xlHoverNegSkewX1
     , xlHoverNegSkewX12
+    , xlHoverNegSkewX2
     , xlHoverNegSkewX3
     , xlHoverNegSkewX6
+    , xlHoverNegSkewY1
     , xlHoverNegSkewY12
+    , xlHoverNegSkewY2
     , xlHoverNegSkewY3
     , xlHoverNegSkewY6
     , xlHoverNegTranslateX1
@@ -12476,8 +17077,13 @@ module Svg.Tailwind exposing
     , xlHoverOpacity50
     , xlHoverOpacity75
     , xlHoverRotate0
+    , xlHoverRotate1
+    , xlHoverRotate12
     , xlHoverRotate180
+    , xlHoverRotate2
+    , xlHoverRotate3
     , xlHoverRotate45
+    , xlHoverRotate6
     , xlHoverRotate90
     , xlHoverScale0
     , xlHoverScale100
@@ -12520,11 +17126,15 @@ module Svg.Tailwind exposing
     , xlHoverShadowXl
     , xlHoverShadowXs
     , xlHoverSkewX0
+    , xlHoverSkewX1
     , xlHoverSkewX12
+    , xlHoverSkewX2
     , xlHoverSkewX3
     , xlHoverSkewX6
     , xlHoverSkewY0
+    , xlHoverSkewY1
     , xlHoverSkewY12
+    , xlHoverSkewY2
     , xlHoverSkewY3
     , xlHoverSkewY6
     , xlHoverTextBlack
@@ -12626,6 +17236,100 @@ module Svg.Tailwind exposing
     , xlHoverTextYellow700
     , xlHoverTextYellow800
     , xlHoverTextYellow900
+    , xlHoverToBlack
+    , xlHoverToBlue100
+    , xlHoverToBlue200
+    , xlHoverToBlue300
+    , xlHoverToBlue400
+    , xlHoverToBlue500
+    , xlHoverToBlue600
+    , xlHoverToBlue700
+    , xlHoverToBlue800
+    , xlHoverToBlue900
+    , xlHoverToCurrent
+    , xlHoverToGray100
+    , xlHoverToGray200
+    , xlHoverToGray300
+    , xlHoverToGray400
+    , xlHoverToGray500
+    , xlHoverToGray600
+    , xlHoverToGray700
+    , xlHoverToGray800
+    , xlHoverToGray900
+    , xlHoverToGreen100
+    , xlHoverToGreen200
+    , xlHoverToGreen300
+    , xlHoverToGreen400
+    , xlHoverToGreen500
+    , xlHoverToGreen600
+    , xlHoverToGreen700
+    , xlHoverToGreen800
+    , xlHoverToGreen900
+    , xlHoverToIndigo100
+    , xlHoverToIndigo200
+    , xlHoverToIndigo300
+    , xlHoverToIndigo400
+    , xlHoverToIndigo500
+    , xlHoverToIndigo600
+    , xlHoverToIndigo700
+    , xlHoverToIndigo800
+    , xlHoverToIndigo900
+    , xlHoverToOrange100
+    , xlHoverToOrange200
+    , xlHoverToOrange300
+    , xlHoverToOrange400
+    , xlHoverToOrange500
+    , xlHoverToOrange600
+    , xlHoverToOrange700
+    , xlHoverToOrange800
+    , xlHoverToOrange900
+    , xlHoverToPink100
+    , xlHoverToPink200
+    , xlHoverToPink300
+    , xlHoverToPink400
+    , xlHoverToPink500
+    , xlHoverToPink600
+    , xlHoverToPink700
+    , xlHoverToPink800
+    , xlHoverToPink900
+    , xlHoverToPurple100
+    , xlHoverToPurple200
+    , xlHoverToPurple300
+    , xlHoverToPurple400
+    , xlHoverToPurple500
+    , xlHoverToPurple600
+    , xlHoverToPurple700
+    , xlHoverToPurple800
+    , xlHoverToPurple900
+    , xlHoverToRed100
+    , xlHoverToRed200
+    , xlHoverToRed300
+    , xlHoverToRed400
+    , xlHoverToRed500
+    , xlHoverToRed600
+    , xlHoverToRed700
+    , xlHoverToRed800
+    , xlHoverToRed900
+    , xlHoverToTeal100
+    , xlHoverToTeal200
+    , xlHoverToTeal300
+    , xlHoverToTeal400
+    , xlHoverToTeal500
+    , xlHoverToTeal600
+    , xlHoverToTeal700
+    , xlHoverToTeal800
+    , xlHoverToTeal900
+    , xlHoverToTransparent
+    , xlHoverToWhite
+    , xlHoverToYellow100
+    , xlHoverToYellow200
+    , xlHoverToYellow300
+    , xlHoverToYellow400
+    , xlHoverToYellow500
+    , xlHoverToYellow600
+    , xlHoverToYellow700
+    , xlHoverToYellow800
+    , xlHoverToYellow900
     , xlHoverTranslateX0
     , xlHoverTranslateX1
     , xlHoverTranslateX10
@@ -12669,6 +17373,100 @@ module Svg.Tailwind exposing
     , xlHoverTranslateYFull
     , xlHoverTranslateYPx
     , xlHoverUnderline
+    , xlHoverViaBlack
+    , xlHoverViaBlue100
+    , xlHoverViaBlue200
+    , xlHoverViaBlue300
+    , xlHoverViaBlue400
+    , xlHoverViaBlue500
+    , xlHoverViaBlue600
+    , xlHoverViaBlue700
+    , xlHoverViaBlue800
+    , xlHoverViaBlue900
+    , xlHoverViaCurrent
+    , xlHoverViaGray100
+    , xlHoverViaGray200
+    , xlHoverViaGray300
+    , xlHoverViaGray400
+    , xlHoverViaGray500
+    , xlHoverViaGray600
+    , xlHoverViaGray700
+    , xlHoverViaGray800
+    , xlHoverViaGray900
+    , xlHoverViaGreen100
+    , xlHoverViaGreen200
+    , xlHoverViaGreen300
+    , xlHoverViaGreen400
+    , xlHoverViaGreen500
+    , xlHoverViaGreen600
+    , xlHoverViaGreen700
+    , xlHoverViaGreen800
+    , xlHoverViaGreen900
+    , xlHoverViaIndigo100
+    , xlHoverViaIndigo200
+    , xlHoverViaIndigo300
+    , xlHoverViaIndigo400
+    , xlHoverViaIndigo500
+    , xlHoverViaIndigo600
+    , xlHoverViaIndigo700
+    , xlHoverViaIndigo800
+    , xlHoverViaIndigo900
+    , xlHoverViaOrange100
+    , xlHoverViaOrange200
+    , xlHoverViaOrange300
+    , xlHoverViaOrange400
+    , xlHoverViaOrange500
+    , xlHoverViaOrange600
+    , xlHoverViaOrange700
+    , xlHoverViaOrange800
+    , xlHoverViaOrange900
+    , xlHoverViaPink100
+    , xlHoverViaPink200
+    , xlHoverViaPink300
+    , xlHoverViaPink400
+    , xlHoverViaPink500
+    , xlHoverViaPink600
+    , xlHoverViaPink700
+    , xlHoverViaPink800
+    , xlHoverViaPink900
+    , xlHoverViaPurple100
+    , xlHoverViaPurple200
+    , xlHoverViaPurple300
+    , xlHoverViaPurple400
+    , xlHoverViaPurple500
+    , xlHoverViaPurple600
+    , xlHoverViaPurple700
+    , xlHoverViaPurple800
+    , xlHoverViaPurple900
+    , xlHoverViaRed100
+    , xlHoverViaRed200
+    , xlHoverViaRed300
+    , xlHoverViaRed400
+    , xlHoverViaRed500
+    , xlHoverViaRed600
+    , xlHoverViaRed700
+    , xlHoverViaRed800
+    , xlHoverViaRed900
+    , xlHoverViaTeal100
+    , xlHoverViaTeal200
+    , xlHoverViaTeal300
+    , xlHoverViaTeal400
+    , xlHoverViaTeal500
+    , xlHoverViaTeal600
+    , xlHoverViaTeal700
+    , xlHoverViaTeal800
+    , xlHoverViaTeal900
+    , xlHoverViaTransparent
+    , xlHoverViaWhite
+    , xlHoverViaYellow100
+    , xlHoverViaYellow200
+    , xlHoverViaYellow300
+    , xlHoverViaYellow400
+    , xlHoverViaYellow500
+    , xlHoverViaYellow600
+    , xlHoverViaYellow700
+    , xlHoverViaYellow800
+    , xlHoverViaYellow900
     , xlInline
     , xlInlineBlock
     , xlInlineFlex
@@ -12691,6 +17489,16 @@ module Svg.Tailwind exposing
     , xlJustifyCenter
     , xlJustifyEnd
     , xlJustifyEvenly
+    , xlJustifyItemsAuto
+    , xlJustifyItemsCenter
+    , xlJustifyItemsEnd
+    , xlJustifyItemsStart
+    , xlJustifyItemsStretch
+    , xlJustifySelfAuto
+    , xlJustifySelfCenter
+    , xlJustifySelfEnd
+    , xlJustifySelfStart
+    , xlJustifySelfStretch
     , xlJustifyStart
     , xlLeading10
     , xlLeading3
@@ -12709,6 +17517,7 @@ module Svg.Tailwind exposing
     , xlLeft0
     , xlLeftAuto
     , xlLineThrough
+    , xlLiningNums
     , xlListDecimal
     , xlListDisc
     , xlListInside
@@ -13004,13 +17813,22 @@ module Svg.Tailwind exposing
     , xlNegMy64
     , xlNegMy8
     , xlNegMyPx
+    , xlNegRotate1
+    , xlNegRotate12
     , xlNegRotate180
+    , xlNegRotate2
+    , xlNegRotate3
     , xlNegRotate45
+    , xlNegRotate6
     , xlNegRotate90
+    , xlNegSkewX1
     , xlNegSkewX12
+    , xlNegSkewX2
     , xlNegSkewX3
     , xlNegSkewX6
+    , xlNegSkewY1
     , xlNegSkewY12
+    , xlNegSkewY2
     , xlNegSkewY3
     , xlNegSkewY6
     , xlNegSpaceX1
@@ -13091,6 +17909,7 @@ module Svg.Tailwind exposing
     , xlNegTranslateYPx
     , xlNoUnderline
     , xlNormalCase
+    , xlNormalNums
     , xlNotItalic
     , xlNotSrOnly
     , xlObjectBottom
@@ -13107,6 +17926,7 @@ module Svg.Tailwind exposing
     , xlObjectRightTop
     , xlObjectScaleDown
     , xlObjectTop
+    , xlOldstyleNums
     , xlOpacity0
     , xlOpacity100
     , xlOpacity25
@@ -13127,6 +17947,7 @@ module Svg.Tailwind exposing
     , xlOrderFirst
     , xlOrderLast
     , xlOrderNone
+    , xlOrdinal
     , xlOriginBottom
     , xlOriginBottomLeft
     , xlOriginBottomRight
@@ -13136,7 +17957,9 @@ module Svg.Tailwind exposing
     , xlOriginTop
     , xlOriginTopLeft
     , xlOriginTopRight
+    , xlOutlineBlack
     , xlOutlineNone
+    , xlOutlineWhite
     , xlOverflowAuto
     , xlOverflowHidden
     , xlOverflowScroll
@@ -13149,6 +17972,15 @@ module Svg.Tailwind exposing
     , xlOverflowYHidden
     , xlOverflowYScroll
     , xlOverflowYVisible
+    , xlOverscrollAuto
+    , xlOverscrollContain
+    , xlOverscrollNone
+    , xlOverscrollXAuto
+    , xlOverscrollXContain
+    , xlOverscrollXNone
+    , xlOverscrollYAuto
+    , xlOverscrollYContain
+    , xlOverscrollYNone
     , xlP0
     , xlP1
     , xlP10
@@ -13206,6 +18038,23 @@ module Svg.Tailwind exposing
     , xlPl64
     , xlPl8
     , xlPlPx
+    , xlPlaceContentAround
+    , xlPlaceContentBetween
+    , xlPlaceContentCenter
+    , xlPlaceContentEnd
+    , xlPlaceContentEvenly
+    , xlPlaceContentStart
+    , xlPlaceContentStretch
+    , xlPlaceItemsAuto
+    , xlPlaceItemsCenter
+    , xlPlaceItemsEnd
+    , xlPlaceItemsStart
+    , xlPlaceItemsStretch
+    , xlPlaceSelfAuto
+    , xlPlaceSelfCenter
+    , xlPlaceSelfEnd
+    , xlPlaceSelfStart
+    , xlPlaceSelfStretch
     , xlPlaceholderBlack
     , xlPlaceholderBlue100
     , xlPlaceholderBlue200
@@ -13326,6 +18175,7 @@ module Svg.Tailwind exposing
     , xlPr64
     , xlPr8
     , xlPrPx
+    , xlProportionalNums
     , xlPt0
     , xlPt1
     , xlPt10
@@ -13391,63 +18241,95 @@ module Svg.Tailwind exposing
     , xlRight0
     , xlRightAuto
     , xlRotate0
+    , xlRotate1
+    , xlRotate12
     , xlRotate180
+    , xlRotate2
+    , xlRotate3
     , xlRotate45
+    , xlRotate6
     , xlRotate90
     , xlRounded
+    , xlRounded2xl
+    , xlRounded3xl
     , xlRoundedB
+    , xlRoundedB2xl
+    , xlRoundedB3xl
     , xlRoundedBFull
     , xlRoundedBLg
     , xlRoundedBMd
     , xlRoundedBNone
     , xlRoundedBSm
+    , xlRoundedBXl
     , xlRoundedBl
+    , xlRoundedBl2xl
+    , xlRoundedBl3xl
     , xlRoundedBlFull
     , xlRoundedBlLg
     , xlRoundedBlMd
     , xlRoundedBlNone
     , xlRoundedBlSm
+    , xlRoundedBlXl
     , xlRoundedBr
+    , xlRoundedBr2xl
+    , xlRoundedBr3xl
     , xlRoundedBrFull
     , xlRoundedBrLg
     , xlRoundedBrMd
     , xlRoundedBrNone
     , xlRoundedBrSm
+    , xlRoundedBrXl
     , xlRoundedFull
     , xlRoundedL
+    , xlRoundedL2xl
+    , xlRoundedL3xl
     , xlRoundedLFull
     , xlRoundedLLg
     , xlRoundedLMd
     , xlRoundedLNone
     , xlRoundedLSm
+    , xlRoundedLXl
     , xlRoundedLg
     , xlRoundedMd
     , xlRoundedNone
     , xlRoundedR
+    , xlRoundedR2xl
+    , xlRoundedR3xl
     , xlRoundedRFull
     , xlRoundedRLg
     , xlRoundedRMd
     , xlRoundedRNone
     , xlRoundedRSm
+    , xlRoundedRXl
     , xlRoundedSm
     , xlRoundedT
+    , xlRoundedT2xl
+    , xlRoundedT3xl
     , xlRoundedTFull
     , xlRoundedTLg
     , xlRoundedTMd
     , xlRoundedTNone
     , xlRoundedTSm
+    , xlRoundedTXl
     , xlRoundedTl
+    , xlRoundedTl2xl
+    , xlRoundedTl3xl
     , xlRoundedTlFull
     , xlRoundedTlLg
     , xlRoundedTlMd
     , xlRoundedTlNone
     , xlRoundedTlSm
+    , xlRoundedTlXl
     , xlRoundedTr
+    , xlRoundedTr2xl
+    , xlRoundedTr3xl
     , xlRoundedTrFull
     , xlRoundedTrLg
     , xlRoundedTrMd
     , xlRoundedTrNone
     , xlRoundedTrSm
+    , xlRoundedTrXl
+    , xlRoundedXl
     , xlRowAuto
     , xlRowEnd1
     , xlRowEnd2
@@ -13457,31 +18339,13 @@ module Svg.Tailwind exposing
     , xlRowEnd6
     , xlRowEnd7
     , xlRowEndAuto
-    , xlRowGap0
-    , xlRowGap1
-    , xlRowGap10
-    , xlRowGap12
-    , xlRowGap16
-    , xlRowGap2
-    , xlRowGap20
-    , xlRowGap24
-    , xlRowGap3
-    , xlRowGap32
-    , xlRowGap4
-    , xlRowGap40
-    , xlRowGap48
-    , xlRowGap5
-    , xlRowGap56
-    , xlRowGap6
-    , xlRowGap64
-    , xlRowGap8
-    , xlRowGapPx
     , xlRowSpan1
     , xlRowSpan2
     , xlRowSpan3
     , xlRowSpan4
     , xlRowSpan5
     , xlRowSpan6
+    , xlRowSpanFull
     , xlRowStart1
     , xlRowStart2
     , xlRowStart3
@@ -13542,13 +18406,18 @@ module Svg.Tailwind exposing
     , xlShadowXl
     , xlShadowXs
     , xlSkewX0
+    , xlSkewX1
     , xlSkewX12
+    , xlSkewX2
     , xlSkewX3
     , xlSkewX6
     , xlSkewY0
+    , xlSkewY1
     , xlSkewY12
+    , xlSkewY2
     , xlSkewY3
     , xlSkewY6
+    , xlSlashedZero
     , xlSpaceX0
     , xlSpaceX1
     , xlSpaceX10
@@ -13590,6 +18459,7 @@ module Svg.Tailwind exposing
     , xlSpaceYPx
     , xlSpaceYReverse
     , xlSrOnly
+    , xlStackedFractions
     , xlStatic
     , xlSticky
     , xlStroke0
@@ -13608,6 +18478,7 @@ module Svg.Tailwind exposing
     , xlTableHeaderGroup
     , xlTableRow
     , xlTableRowGroup
+    , xlTabularNums
     , xlText2xl
     , xlText3xl
     , xlText4xl
@@ -13721,6 +18592,100 @@ module Svg.Tailwind exposing
     , xlTextYellow700
     , xlTextYellow800
     , xlTextYellow900
+    , xlToBlack
+    , xlToBlue100
+    , xlToBlue200
+    , xlToBlue300
+    , xlToBlue400
+    , xlToBlue500
+    , xlToBlue600
+    , xlToBlue700
+    , xlToBlue800
+    , xlToBlue900
+    , xlToCurrent
+    , xlToGray100
+    , xlToGray200
+    , xlToGray300
+    , xlToGray400
+    , xlToGray500
+    , xlToGray600
+    , xlToGray700
+    , xlToGray800
+    , xlToGray900
+    , xlToGreen100
+    , xlToGreen200
+    , xlToGreen300
+    , xlToGreen400
+    , xlToGreen500
+    , xlToGreen600
+    , xlToGreen700
+    , xlToGreen800
+    , xlToGreen900
+    , xlToIndigo100
+    , xlToIndigo200
+    , xlToIndigo300
+    , xlToIndigo400
+    , xlToIndigo500
+    , xlToIndigo600
+    , xlToIndigo700
+    , xlToIndigo800
+    , xlToIndigo900
+    , xlToOrange100
+    , xlToOrange200
+    , xlToOrange300
+    , xlToOrange400
+    , xlToOrange500
+    , xlToOrange600
+    , xlToOrange700
+    , xlToOrange800
+    , xlToOrange900
+    , xlToPink100
+    , xlToPink200
+    , xlToPink300
+    , xlToPink400
+    , xlToPink500
+    , xlToPink600
+    , xlToPink700
+    , xlToPink800
+    , xlToPink900
+    , xlToPurple100
+    , xlToPurple200
+    , xlToPurple300
+    , xlToPurple400
+    , xlToPurple500
+    , xlToPurple600
+    , xlToPurple700
+    , xlToPurple800
+    , xlToPurple900
+    , xlToRed100
+    , xlToRed200
+    , xlToRed300
+    , xlToRed400
+    , xlToRed500
+    , xlToRed600
+    , xlToRed700
+    , xlToRed800
+    , xlToRed900
+    , xlToTeal100
+    , xlToTeal200
+    , xlToTeal300
+    , xlToTeal400
+    , xlToTeal500
+    , xlToTeal600
+    , xlToTeal700
+    , xlToTeal800
+    , xlToTeal900
+    , xlToTransparent
+    , xlToWhite
+    , xlToYellow100
+    , xlToYellow200
+    , xlToYellow300
+    , xlToYellow400
+    , xlToYellow500
+    , xlToYellow600
+    , xlToYellow700
+    , xlToYellow800
+    , xlToYellow900
     , xlTop0
     , xlTopAuto
     , xlTrackingNormal
@@ -13783,6 +18748,100 @@ module Svg.Tailwind exposing
     , xlTruncate
     , xlUnderline
     , xlUppercase
+    , xlViaBlack
+    , xlViaBlue100
+    , xlViaBlue200
+    , xlViaBlue300
+    , xlViaBlue400
+    , xlViaBlue500
+    , xlViaBlue600
+    , xlViaBlue700
+    , xlViaBlue800
+    , xlViaBlue900
+    , xlViaCurrent
+    , xlViaGray100
+    , xlViaGray200
+    , xlViaGray300
+    , xlViaGray400
+    , xlViaGray500
+    , xlViaGray600
+    , xlViaGray700
+    , xlViaGray800
+    , xlViaGray900
+    , xlViaGreen100
+    , xlViaGreen200
+    , xlViaGreen300
+    , xlViaGreen400
+    , xlViaGreen500
+    , xlViaGreen600
+    , xlViaGreen700
+    , xlViaGreen800
+    , xlViaGreen900
+    , xlViaIndigo100
+    , xlViaIndigo200
+    , xlViaIndigo300
+    , xlViaIndigo400
+    , xlViaIndigo500
+    , xlViaIndigo600
+    , xlViaIndigo700
+    , xlViaIndigo800
+    , xlViaIndigo900
+    , xlViaOrange100
+    , xlViaOrange200
+    , xlViaOrange300
+    , xlViaOrange400
+    , xlViaOrange500
+    , xlViaOrange600
+    , xlViaOrange700
+    , xlViaOrange800
+    , xlViaOrange900
+    , xlViaPink100
+    , xlViaPink200
+    , xlViaPink300
+    , xlViaPink400
+    , xlViaPink500
+    , xlViaPink600
+    , xlViaPink700
+    , xlViaPink800
+    , xlViaPink900
+    , xlViaPurple100
+    , xlViaPurple200
+    , xlViaPurple300
+    , xlViaPurple400
+    , xlViaPurple500
+    , xlViaPurple600
+    , xlViaPurple700
+    , xlViaPurple800
+    , xlViaPurple900
+    , xlViaRed100
+    , xlViaRed200
+    , xlViaRed300
+    , xlViaRed400
+    , xlViaRed500
+    , xlViaRed600
+    , xlViaRed700
+    , xlViaRed800
+    , xlViaRed900
+    , xlViaTeal100
+    , xlViaTeal200
+    , xlViaTeal300
+    , xlViaTeal400
+    , xlViaTeal500
+    , xlViaTeal600
+    , xlViaTeal700
+    , xlViaTeal800
+    , xlViaTeal900
+    , xlViaTransparent
+    , xlViaWhite
+    , xlViaYellow100
+    , xlViaYellow200
+    , xlViaYellow300
+    , xlViaYellow400
+    , xlViaYellow500
+    , xlViaYellow600
+    , xlViaYellow700
+    , xlViaYellow800
+    , xlViaYellow900
     , xlVisible
     , xlW0
     , xlW1
@@ -14777,6 +19836,31 @@ dividePink900 =
     A.class "divide-pink-900"
 
 
+divideSolid : Svg.Attribute msg
+divideSolid =
+    A.class "divide-solid"
+
+
+divideDashed : Svg.Attribute msg
+divideDashed =
+    A.class "divide-dashed"
+
+
+divideDotted : Svg.Attribute msg
+divideDotted =
+    A.class "divide-dotted"
+
+
+divideDouble : Svg.Attribute msg
+divideDouble =
+    A.class "divide-double"
+
+
+divideNone : Svg.Attribute msg
+divideNone =
+    A.class "divide-none"
+
+
 divideOpacity0 : Svg.Attribute msg
 divideOpacity0 =
     A.class "divide-opacity-0"
@@ -14840,6 +19924,26 @@ bgLocal =
 bgScroll : Svg.Attribute msg
 bgScroll =
     A.class "bg-scroll"
+
+
+bgClipBorder : Svg.Attribute msg
+bgClipBorder =
+    A.class "bg-clip-border"
+
+
+bgClipPadding : Svg.Attribute msg
+bgClipPadding =
+    A.class "bg-clip-padding"
+
+
+bgClipContent : Svg.Attribute msg
+bgClipContent =
+    A.class "bg-clip-content"
+
+
+bgClipText : Svg.Attribute msg
+bgClipText =
+    A.class "bg-clip-text"
 
 
 bgTransparent : Svg.Attribute msg
@@ -16250,6 +21354,4281 @@ focusBgPink800 =
 focusBgPink900 : Svg.Attribute msg
 focusBgPink900 =
     A.class "focus:bg-pink-900"
+
+
+bgNone : Svg.Attribute msg
+bgNone =
+    A.class "bg-none"
+
+
+bgGradientToT : Svg.Attribute msg
+bgGradientToT =
+    A.class "bg-gradient-to-t"
+
+
+bgGradientToTr : Svg.Attribute msg
+bgGradientToTr =
+    A.class "bg-gradient-to-tr"
+
+
+bgGradientToR : Svg.Attribute msg
+bgGradientToR =
+    A.class "bg-gradient-to-r"
+
+
+bgGradientToBr : Svg.Attribute msg
+bgGradientToBr =
+    A.class "bg-gradient-to-br"
+
+
+bgGradientToB : Svg.Attribute msg
+bgGradientToB =
+    A.class "bg-gradient-to-b"
+
+
+bgGradientToBl : Svg.Attribute msg
+bgGradientToBl =
+    A.class "bg-gradient-to-bl"
+
+
+bgGradientToL : Svg.Attribute msg
+bgGradientToL =
+    A.class "bg-gradient-to-l"
+
+
+bgGradientToTl : Svg.Attribute msg
+bgGradientToTl =
+    A.class "bg-gradient-to-tl"
+
+
+fromTransparent : Svg.Attribute msg
+fromTransparent =
+    A.class "from-transparent"
+
+
+fromCurrent : Svg.Attribute msg
+fromCurrent =
+    A.class "from-current"
+
+
+fromBlack : Svg.Attribute msg
+fromBlack =
+    A.class "from-black"
+
+
+fromWhite : Svg.Attribute msg
+fromWhite =
+    A.class "from-white"
+
+
+fromGray100 : Svg.Attribute msg
+fromGray100 =
+    A.class "from-gray-100"
+
+
+fromGray200 : Svg.Attribute msg
+fromGray200 =
+    A.class "from-gray-200"
+
+
+fromGray300 : Svg.Attribute msg
+fromGray300 =
+    A.class "from-gray-300"
+
+
+fromGray400 : Svg.Attribute msg
+fromGray400 =
+    A.class "from-gray-400"
+
+
+fromGray500 : Svg.Attribute msg
+fromGray500 =
+    A.class "from-gray-500"
+
+
+fromGray600 : Svg.Attribute msg
+fromGray600 =
+    A.class "from-gray-600"
+
+
+fromGray700 : Svg.Attribute msg
+fromGray700 =
+    A.class "from-gray-700"
+
+
+fromGray800 : Svg.Attribute msg
+fromGray800 =
+    A.class "from-gray-800"
+
+
+fromGray900 : Svg.Attribute msg
+fromGray900 =
+    A.class "from-gray-900"
+
+
+fromRed100 : Svg.Attribute msg
+fromRed100 =
+    A.class "from-red-100"
+
+
+fromRed200 : Svg.Attribute msg
+fromRed200 =
+    A.class "from-red-200"
+
+
+fromRed300 : Svg.Attribute msg
+fromRed300 =
+    A.class "from-red-300"
+
+
+fromRed400 : Svg.Attribute msg
+fromRed400 =
+    A.class "from-red-400"
+
+
+fromRed500 : Svg.Attribute msg
+fromRed500 =
+    A.class "from-red-500"
+
+
+fromRed600 : Svg.Attribute msg
+fromRed600 =
+    A.class "from-red-600"
+
+
+fromRed700 : Svg.Attribute msg
+fromRed700 =
+    A.class "from-red-700"
+
+
+fromRed800 : Svg.Attribute msg
+fromRed800 =
+    A.class "from-red-800"
+
+
+fromRed900 : Svg.Attribute msg
+fromRed900 =
+    A.class "from-red-900"
+
+
+fromOrange100 : Svg.Attribute msg
+fromOrange100 =
+    A.class "from-orange-100"
+
+
+fromOrange200 : Svg.Attribute msg
+fromOrange200 =
+    A.class "from-orange-200"
+
+
+fromOrange300 : Svg.Attribute msg
+fromOrange300 =
+    A.class "from-orange-300"
+
+
+fromOrange400 : Svg.Attribute msg
+fromOrange400 =
+    A.class "from-orange-400"
+
+
+fromOrange500 : Svg.Attribute msg
+fromOrange500 =
+    A.class "from-orange-500"
+
+
+fromOrange600 : Svg.Attribute msg
+fromOrange600 =
+    A.class "from-orange-600"
+
+
+fromOrange700 : Svg.Attribute msg
+fromOrange700 =
+    A.class "from-orange-700"
+
+
+fromOrange800 : Svg.Attribute msg
+fromOrange800 =
+    A.class "from-orange-800"
+
+
+fromOrange900 : Svg.Attribute msg
+fromOrange900 =
+    A.class "from-orange-900"
+
+
+fromYellow100 : Svg.Attribute msg
+fromYellow100 =
+    A.class "from-yellow-100"
+
+
+fromYellow200 : Svg.Attribute msg
+fromYellow200 =
+    A.class "from-yellow-200"
+
+
+fromYellow300 : Svg.Attribute msg
+fromYellow300 =
+    A.class "from-yellow-300"
+
+
+fromYellow400 : Svg.Attribute msg
+fromYellow400 =
+    A.class "from-yellow-400"
+
+
+fromYellow500 : Svg.Attribute msg
+fromYellow500 =
+    A.class "from-yellow-500"
+
+
+fromYellow600 : Svg.Attribute msg
+fromYellow600 =
+    A.class "from-yellow-600"
+
+
+fromYellow700 : Svg.Attribute msg
+fromYellow700 =
+    A.class "from-yellow-700"
+
+
+fromYellow800 : Svg.Attribute msg
+fromYellow800 =
+    A.class "from-yellow-800"
+
+
+fromYellow900 : Svg.Attribute msg
+fromYellow900 =
+    A.class "from-yellow-900"
+
+
+fromGreen100 : Svg.Attribute msg
+fromGreen100 =
+    A.class "from-green-100"
+
+
+fromGreen200 : Svg.Attribute msg
+fromGreen200 =
+    A.class "from-green-200"
+
+
+fromGreen300 : Svg.Attribute msg
+fromGreen300 =
+    A.class "from-green-300"
+
+
+fromGreen400 : Svg.Attribute msg
+fromGreen400 =
+    A.class "from-green-400"
+
+
+fromGreen500 : Svg.Attribute msg
+fromGreen500 =
+    A.class "from-green-500"
+
+
+fromGreen600 : Svg.Attribute msg
+fromGreen600 =
+    A.class "from-green-600"
+
+
+fromGreen700 : Svg.Attribute msg
+fromGreen700 =
+    A.class "from-green-700"
+
+
+fromGreen800 : Svg.Attribute msg
+fromGreen800 =
+    A.class "from-green-800"
+
+
+fromGreen900 : Svg.Attribute msg
+fromGreen900 =
+    A.class "from-green-900"
+
+
+fromTeal100 : Svg.Attribute msg
+fromTeal100 =
+    A.class "from-teal-100"
+
+
+fromTeal200 : Svg.Attribute msg
+fromTeal200 =
+    A.class "from-teal-200"
+
+
+fromTeal300 : Svg.Attribute msg
+fromTeal300 =
+    A.class "from-teal-300"
+
+
+fromTeal400 : Svg.Attribute msg
+fromTeal400 =
+    A.class "from-teal-400"
+
+
+fromTeal500 : Svg.Attribute msg
+fromTeal500 =
+    A.class "from-teal-500"
+
+
+fromTeal600 : Svg.Attribute msg
+fromTeal600 =
+    A.class "from-teal-600"
+
+
+fromTeal700 : Svg.Attribute msg
+fromTeal700 =
+    A.class "from-teal-700"
+
+
+fromTeal800 : Svg.Attribute msg
+fromTeal800 =
+    A.class "from-teal-800"
+
+
+fromTeal900 : Svg.Attribute msg
+fromTeal900 =
+    A.class "from-teal-900"
+
+
+fromBlue100 : Svg.Attribute msg
+fromBlue100 =
+    A.class "from-blue-100"
+
+
+fromBlue200 : Svg.Attribute msg
+fromBlue200 =
+    A.class "from-blue-200"
+
+
+fromBlue300 : Svg.Attribute msg
+fromBlue300 =
+    A.class "from-blue-300"
+
+
+fromBlue400 : Svg.Attribute msg
+fromBlue400 =
+    A.class "from-blue-400"
+
+
+fromBlue500 : Svg.Attribute msg
+fromBlue500 =
+    A.class "from-blue-500"
+
+
+fromBlue600 : Svg.Attribute msg
+fromBlue600 =
+    A.class "from-blue-600"
+
+
+fromBlue700 : Svg.Attribute msg
+fromBlue700 =
+    A.class "from-blue-700"
+
+
+fromBlue800 : Svg.Attribute msg
+fromBlue800 =
+    A.class "from-blue-800"
+
+
+fromBlue900 : Svg.Attribute msg
+fromBlue900 =
+    A.class "from-blue-900"
+
+
+fromIndigo100 : Svg.Attribute msg
+fromIndigo100 =
+    A.class "from-indigo-100"
+
+
+fromIndigo200 : Svg.Attribute msg
+fromIndigo200 =
+    A.class "from-indigo-200"
+
+
+fromIndigo300 : Svg.Attribute msg
+fromIndigo300 =
+    A.class "from-indigo-300"
+
+
+fromIndigo400 : Svg.Attribute msg
+fromIndigo400 =
+    A.class "from-indigo-400"
+
+
+fromIndigo500 : Svg.Attribute msg
+fromIndigo500 =
+    A.class "from-indigo-500"
+
+
+fromIndigo600 : Svg.Attribute msg
+fromIndigo600 =
+    A.class "from-indigo-600"
+
+
+fromIndigo700 : Svg.Attribute msg
+fromIndigo700 =
+    A.class "from-indigo-700"
+
+
+fromIndigo800 : Svg.Attribute msg
+fromIndigo800 =
+    A.class "from-indigo-800"
+
+
+fromIndigo900 : Svg.Attribute msg
+fromIndigo900 =
+    A.class "from-indigo-900"
+
+
+fromPurple100 : Svg.Attribute msg
+fromPurple100 =
+    A.class "from-purple-100"
+
+
+fromPurple200 : Svg.Attribute msg
+fromPurple200 =
+    A.class "from-purple-200"
+
+
+fromPurple300 : Svg.Attribute msg
+fromPurple300 =
+    A.class "from-purple-300"
+
+
+fromPurple400 : Svg.Attribute msg
+fromPurple400 =
+    A.class "from-purple-400"
+
+
+fromPurple500 : Svg.Attribute msg
+fromPurple500 =
+    A.class "from-purple-500"
+
+
+fromPurple600 : Svg.Attribute msg
+fromPurple600 =
+    A.class "from-purple-600"
+
+
+fromPurple700 : Svg.Attribute msg
+fromPurple700 =
+    A.class "from-purple-700"
+
+
+fromPurple800 : Svg.Attribute msg
+fromPurple800 =
+    A.class "from-purple-800"
+
+
+fromPurple900 : Svg.Attribute msg
+fromPurple900 =
+    A.class "from-purple-900"
+
+
+fromPink100 : Svg.Attribute msg
+fromPink100 =
+    A.class "from-pink-100"
+
+
+fromPink200 : Svg.Attribute msg
+fromPink200 =
+    A.class "from-pink-200"
+
+
+fromPink300 : Svg.Attribute msg
+fromPink300 =
+    A.class "from-pink-300"
+
+
+fromPink400 : Svg.Attribute msg
+fromPink400 =
+    A.class "from-pink-400"
+
+
+fromPink500 : Svg.Attribute msg
+fromPink500 =
+    A.class "from-pink-500"
+
+
+fromPink600 : Svg.Attribute msg
+fromPink600 =
+    A.class "from-pink-600"
+
+
+fromPink700 : Svg.Attribute msg
+fromPink700 =
+    A.class "from-pink-700"
+
+
+fromPink800 : Svg.Attribute msg
+fromPink800 =
+    A.class "from-pink-800"
+
+
+fromPink900 : Svg.Attribute msg
+fromPink900 =
+    A.class "from-pink-900"
+
+
+viaTransparent : Svg.Attribute msg
+viaTransparent =
+    A.class "via-transparent"
+
+
+viaCurrent : Svg.Attribute msg
+viaCurrent =
+    A.class "via-current"
+
+
+viaBlack : Svg.Attribute msg
+viaBlack =
+    A.class "via-black"
+
+
+viaWhite : Svg.Attribute msg
+viaWhite =
+    A.class "via-white"
+
+
+viaGray100 : Svg.Attribute msg
+viaGray100 =
+    A.class "via-gray-100"
+
+
+viaGray200 : Svg.Attribute msg
+viaGray200 =
+    A.class "via-gray-200"
+
+
+viaGray300 : Svg.Attribute msg
+viaGray300 =
+    A.class "via-gray-300"
+
+
+viaGray400 : Svg.Attribute msg
+viaGray400 =
+    A.class "via-gray-400"
+
+
+viaGray500 : Svg.Attribute msg
+viaGray500 =
+    A.class "via-gray-500"
+
+
+viaGray600 : Svg.Attribute msg
+viaGray600 =
+    A.class "via-gray-600"
+
+
+viaGray700 : Svg.Attribute msg
+viaGray700 =
+    A.class "via-gray-700"
+
+
+viaGray800 : Svg.Attribute msg
+viaGray800 =
+    A.class "via-gray-800"
+
+
+viaGray900 : Svg.Attribute msg
+viaGray900 =
+    A.class "via-gray-900"
+
+
+viaRed100 : Svg.Attribute msg
+viaRed100 =
+    A.class "via-red-100"
+
+
+viaRed200 : Svg.Attribute msg
+viaRed200 =
+    A.class "via-red-200"
+
+
+viaRed300 : Svg.Attribute msg
+viaRed300 =
+    A.class "via-red-300"
+
+
+viaRed400 : Svg.Attribute msg
+viaRed400 =
+    A.class "via-red-400"
+
+
+viaRed500 : Svg.Attribute msg
+viaRed500 =
+    A.class "via-red-500"
+
+
+viaRed600 : Svg.Attribute msg
+viaRed600 =
+    A.class "via-red-600"
+
+
+viaRed700 : Svg.Attribute msg
+viaRed700 =
+    A.class "via-red-700"
+
+
+viaRed800 : Svg.Attribute msg
+viaRed800 =
+    A.class "via-red-800"
+
+
+viaRed900 : Svg.Attribute msg
+viaRed900 =
+    A.class "via-red-900"
+
+
+viaOrange100 : Svg.Attribute msg
+viaOrange100 =
+    A.class "via-orange-100"
+
+
+viaOrange200 : Svg.Attribute msg
+viaOrange200 =
+    A.class "via-orange-200"
+
+
+viaOrange300 : Svg.Attribute msg
+viaOrange300 =
+    A.class "via-orange-300"
+
+
+viaOrange400 : Svg.Attribute msg
+viaOrange400 =
+    A.class "via-orange-400"
+
+
+viaOrange500 : Svg.Attribute msg
+viaOrange500 =
+    A.class "via-orange-500"
+
+
+viaOrange600 : Svg.Attribute msg
+viaOrange600 =
+    A.class "via-orange-600"
+
+
+viaOrange700 : Svg.Attribute msg
+viaOrange700 =
+    A.class "via-orange-700"
+
+
+viaOrange800 : Svg.Attribute msg
+viaOrange800 =
+    A.class "via-orange-800"
+
+
+viaOrange900 : Svg.Attribute msg
+viaOrange900 =
+    A.class "via-orange-900"
+
+
+viaYellow100 : Svg.Attribute msg
+viaYellow100 =
+    A.class "via-yellow-100"
+
+
+viaYellow200 : Svg.Attribute msg
+viaYellow200 =
+    A.class "via-yellow-200"
+
+
+viaYellow300 : Svg.Attribute msg
+viaYellow300 =
+    A.class "via-yellow-300"
+
+
+viaYellow400 : Svg.Attribute msg
+viaYellow400 =
+    A.class "via-yellow-400"
+
+
+viaYellow500 : Svg.Attribute msg
+viaYellow500 =
+    A.class "via-yellow-500"
+
+
+viaYellow600 : Svg.Attribute msg
+viaYellow600 =
+    A.class "via-yellow-600"
+
+
+viaYellow700 : Svg.Attribute msg
+viaYellow700 =
+    A.class "via-yellow-700"
+
+
+viaYellow800 : Svg.Attribute msg
+viaYellow800 =
+    A.class "via-yellow-800"
+
+
+viaYellow900 : Svg.Attribute msg
+viaYellow900 =
+    A.class "via-yellow-900"
+
+
+viaGreen100 : Svg.Attribute msg
+viaGreen100 =
+    A.class "via-green-100"
+
+
+viaGreen200 : Svg.Attribute msg
+viaGreen200 =
+    A.class "via-green-200"
+
+
+viaGreen300 : Svg.Attribute msg
+viaGreen300 =
+    A.class "via-green-300"
+
+
+viaGreen400 : Svg.Attribute msg
+viaGreen400 =
+    A.class "via-green-400"
+
+
+viaGreen500 : Svg.Attribute msg
+viaGreen500 =
+    A.class "via-green-500"
+
+
+viaGreen600 : Svg.Attribute msg
+viaGreen600 =
+    A.class "via-green-600"
+
+
+viaGreen700 : Svg.Attribute msg
+viaGreen700 =
+    A.class "via-green-700"
+
+
+viaGreen800 : Svg.Attribute msg
+viaGreen800 =
+    A.class "via-green-800"
+
+
+viaGreen900 : Svg.Attribute msg
+viaGreen900 =
+    A.class "via-green-900"
+
+
+viaTeal100 : Svg.Attribute msg
+viaTeal100 =
+    A.class "via-teal-100"
+
+
+viaTeal200 : Svg.Attribute msg
+viaTeal200 =
+    A.class "via-teal-200"
+
+
+viaTeal300 : Svg.Attribute msg
+viaTeal300 =
+    A.class "via-teal-300"
+
+
+viaTeal400 : Svg.Attribute msg
+viaTeal400 =
+    A.class "via-teal-400"
+
+
+viaTeal500 : Svg.Attribute msg
+viaTeal500 =
+    A.class "via-teal-500"
+
+
+viaTeal600 : Svg.Attribute msg
+viaTeal600 =
+    A.class "via-teal-600"
+
+
+viaTeal700 : Svg.Attribute msg
+viaTeal700 =
+    A.class "via-teal-700"
+
+
+viaTeal800 : Svg.Attribute msg
+viaTeal800 =
+    A.class "via-teal-800"
+
+
+viaTeal900 : Svg.Attribute msg
+viaTeal900 =
+    A.class "via-teal-900"
+
+
+viaBlue100 : Svg.Attribute msg
+viaBlue100 =
+    A.class "via-blue-100"
+
+
+viaBlue200 : Svg.Attribute msg
+viaBlue200 =
+    A.class "via-blue-200"
+
+
+viaBlue300 : Svg.Attribute msg
+viaBlue300 =
+    A.class "via-blue-300"
+
+
+viaBlue400 : Svg.Attribute msg
+viaBlue400 =
+    A.class "via-blue-400"
+
+
+viaBlue500 : Svg.Attribute msg
+viaBlue500 =
+    A.class "via-blue-500"
+
+
+viaBlue600 : Svg.Attribute msg
+viaBlue600 =
+    A.class "via-blue-600"
+
+
+viaBlue700 : Svg.Attribute msg
+viaBlue700 =
+    A.class "via-blue-700"
+
+
+viaBlue800 : Svg.Attribute msg
+viaBlue800 =
+    A.class "via-blue-800"
+
+
+viaBlue900 : Svg.Attribute msg
+viaBlue900 =
+    A.class "via-blue-900"
+
+
+viaIndigo100 : Svg.Attribute msg
+viaIndigo100 =
+    A.class "via-indigo-100"
+
+
+viaIndigo200 : Svg.Attribute msg
+viaIndigo200 =
+    A.class "via-indigo-200"
+
+
+viaIndigo300 : Svg.Attribute msg
+viaIndigo300 =
+    A.class "via-indigo-300"
+
+
+viaIndigo400 : Svg.Attribute msg
+viaIndigo400 =
+    A.class "via-indigo-400"
+
+
+viaIndigo500 : Svg.Attribute msg
+viaIndigo500 =
+    A.class "via-indigo-500"
+
+
+viaIndigo600 : Svg.Attribute msg
+viaIndigo600 =
+    A.class "via-indigo-600"
+
+
+viaIndigo700 : Svg.Attribute msg
+viaIndigo700 =
+    A.class "via-indigo-700"
+
+
+viaIndigo800 : Svg.Attribute msg
+viaIndigo800 =
+    A.class "via-indigo-800"
+
+
+viaIndigo900 : Svg.Attribute msg
+viaIndigo900 =
+    A.class "via-indigo-900"
+
+
+viaPurple100 : Svg.Attribute msg
+viaPurple100 =
+    A.class "via-purple-100"
+
+
+viaPurple200 : Svg.Attribute msg
+viaPurple200 =
+    A.class "via-purple-200"
+
+
+viaPurple300 : Svg.Attribute msg
+viaPurple300 =
+    A.class "via-purple-300"
+
+
+viaPurple400 : Svg.Attribute msg
+viaPurple400 =
+    A.class "via-purple-400"
+
+
+viaPurple500 : Svg.Attribute msg
+viaPurple500 =
+    A.class "via-purple-500"
+
+
+viaPurple600 : Svg.Attribute msg
+viaPurple600 =
+    A.class "via-purple-600"
+
+
+viaPurple700 : Svg.Attribute msg
+viaPurple700 =
+    A.class "via-purple-700"
+
+
+viaPurple800 : Svg.Attribute msg
+viaPurple800 =
+    A.class "via-purple-800"
+
+
+viaPurple900 : Svg.Attribute msg
+viaPurple900 =
+    A.class "via-purple-900"
+
+
+viaPink100 : Svg.Attribute msg
+viaPink100 =
+    A.class "via-pink-100"
+
+
+viaPink200 : Svg.Attribute msg
+viaPink200 =
+    A.class "via-pink-200"
+
+
+viaPink300 : Svg.Attribute msg
+viaPink300 =
+    A.class "via-pink-300"
+
+
+viaPink400 : Svg.Attribute msg
+viaPink400 =
+    A.class "via-pink-400"
+
+
+viaPink500 : Svg.Attribute msg
+viaPink500 =
+    A.class "via-pink-500"
+
+
+viaPink600 : Svg.Attribute msg
+viaPink600 =
+    A.class "via-pink-600"
+
+
+viaPink700 : Svg.Attribute msg
+viaPink700 =
+    A.class "via-pink-700"
+
+
+viaPink800 : Svg.Attribute msg
+viaPink800 =
+    A.class "via-pink-800"
+
+
+viaPink900 : Svg.Attribute msg
+viaPink900 =
+    A.class "via-pink-900"
+
+
+toTransparent : Svg.Attribute msg
+toTransparent =
+    A.class "to-transparent"
+
+
+toCurrent : Svg.Attribute msg
+toCurrent =
+    A.class "to-current"
+
+
+toBlack : Svg.Attribute msg
+toBlack =
+    A.class "to-black"
+
+
+toWhite : Svg.Attribute msg
+toWhite =
+    A.class "to-white"
+
+
+toGray100 : Svg.Attribute msg
+toGray100 =
+    A.class "to-gray-100"
+
+
+toGray200 : Svg.Attribute msg
+toGray200 =
+    A.class "to-gray-200"
+
+
+toGray300 : Svg.Attribute msg
+toGray300 =
+    A.class "to-gray-300"
+
+
+toGray400 : Svg.Attribute msg
+toGray400 =
+    A.class "to-gray-400"
+
+
+toGray500 : Svg.Attribute msg
+toGray500 =
+    A.class "to-gray-500"
+
+
+toGray600 : Svg.Attribute msg
+toGray600 =
+    A.class "to-gray-600"
+
+
+toGray700 : Svg.Attribute msg
+toGray700 =
+    A.class "to-gray-700"
+
+
+toGray800 : Svg.Attribute msg
+toGray800 =
+    A.class "to-gray-800"
+
+
+toGray900 : Svg.Attribute msg
+toGray900 =
+    A.class "to-gray-900"
+
+
+toRed100 : Svg.Attribute msg
+toRed100 =
+    A.class "to-red-100"
+
+
+toRed200 : Svg.Attribute msg
+toRed200 =
+    A.class "to-red-200"
+
+
+toRed300 : Svg.Attribute msg
+toRed300 =
+    A.class "to-red-300"
+
+
+toRed400 : Svg.Attribute msg
+toRed400 =
+    A.class "to-red-400"
+
+
+toRed500 : Svg.Attribute msg
+toRed500 =
+    A.class "to-red-500"
+
+
+toRed600 : Svg.Attribute msg
+toRed600 =
+    A.class "to-red-600"
+
+
+toRed700 : Svg.Attribute msg
+toRed700 =
+    A.class "to-red-700"
+
+
+toRed800 : Svg.Attribute msg
+toRed800 =
+    A.class "to-red-800"
+
+
+toRed900 : Svg.Attribute msg
+toRed900 =
+    A.class "to-red-900"
+
+
+toOrange100 : Svg.Attribute msg
+toOrange100 =
+    A.class "to-orange-100"
+
+
+toOrange200 : Svg.Attribute msg
+toOrange200 =
+    A.class "to-orange-200"
+
+
+toOrange300 : Svg.Attribute msg
+toOrange300 =
+    A.class "to-orange-300"
+
+
+toOrange400 : Svg.Attribute msg
+toOrange400 =
+    A.class "to-orange-400"
+
+
+toOrange500 : Svg.Attribute msg
+toOrange500 =
+    A.class "to-orange-500"
+
+
+toOrange600 : Svg.Attribute msg
+toOrange600 =
+    A.class "to-orange-600"
+
+
+toOrange700 : Svg.Attribute msg
+toOrange700 =
+    A.class "to-orange-700"
+
+
+toOrange800 : Svg.Attribute msg
+toOrange800 =
+    A.class "to-orange-800"
+
+
+toOrange900 : Svg.Attribute msg
+toOrange900 =
+    A.class "to-orange-900"
+
+
+toYellow100 : Svg.Attribute msg
+toYellow100 =
+    A.class "to-yellow-100"
+
+
+toYellow200 : Svg.Attribute msg
+toYellow200 =
+    A.class "to-yellow-200"
+
+
+toYellow300 : Svg.Attribute msg
+toYellow300 =
+    A.class "to-yellow-300"
+
+
+toYellow400 : Svg.Attribute msg
+toYellow400 =
+    A.class "to-yellow-400"
+
+
+toYellow500 : Svg.Attribute msg
+toYellow500 =
+    A.class "to-yellow-500"
+
+
+toYellow600 : Svg.Attribute msg
+toYellow600 =
+    A.class "to-yellow-600"
+
+
+toYellow700 : Svg.Attribute msg
+toYellow700 =
+    A.class "to-yellow-700"
+
+
+toYellow800 : Svg.Attribute msg
+toYellow800 =
+    A.class "to-yellow-800"
+
+
+toYellow900 : Svg.Attribute msg
+toYellow900 =
+    A.class "to-yellow-900"
+
+
+toGreen100 : Svg.Attribute msg
+toGreen100 =
+    A.class "to-green-100"
+
+
+toGreen200 : Svg.Attribute msg
+toGreen200 =
+    A.class "to-green-200"
+
+
+toGreen300 : Svg.Attribute msg
+toGreen300 =
+    A.class "to-green-300"
+
+
+toGreen400 : Svg.Attribute msg
+toGreen400 =
+    A.class "to-green-400"
+
+
+toGreen500 : Svg.Attribute msg
+toGreen500 =
+    A.class "to-green-500"
+
+
+toGreen600 : Svg.Attribute msg
+toGreen600 =
+    A.class "to-green-600"
+
+
+toGreen700 : Svg.Attribute msg
+toGreen700 =
+    A.class "to-green-700"
+
+
+toGreen800 : Svg.Attribute msg
+toGreen800 =
+    A.class "to-green-800"
+
+
+toGreen900 : Svg.Attribute msg
+toGreen900 =
+    A.class "to-green-900"
+
+
+toTeal100 : Svg.Attribute msg
+toTeal100 =
+    A.class "to-teal-100"
+
+
+toTeal200 : Svg.Attribute msg
+toTeal200 =
+    A.class "to-teal-200"
+
+
+toTeal300 : Svg.Attribute msg
+toTeal300 =
+    A.class "to-teal-300"
+
+
+toTeal400 : Svg.Attribute msg
+toTeal400 =
+    A.class "to-teal-400"
+
+
+toTeal500 : Svg.Attribute msg
+toTeal500 =
+    A.class "to-teal-500"
+
+
+toTeal600 : Svg.Attribute msg
+toTeal600 =
+    A.class "to-teal-600"
+
+
+toTeal700 : Svg.Attribute msg
+toTeal700 =
+    A.class "to-teal-700"
+
+
+toTeal800 : Svg.Attribute msg
+toTeal800 =
+    A.class "to-teal-800"
+
+
+toTeal900 : Svg.Attribute msg
+toTeal900 =
+    A.class "to-teal-900"
+
+
+toBlue100 : Svg.Attribute msg
+toBlue100 =
+    A.class "to-blue-100"
+
+
+toBlue200 : Svg.Attribute msg
+toBlue200 =
+    A.class "to-blue-200"
+
+
+toBlue300 : Svg.Attribute msg
+toBlue300 =
+    A.class "to-blue-300"
+
+
+toBlue400 : Svg.Attribute msg
+toBlue400 =
+    A.class "to-blue-400"
+
+
+toBlue500 : Svg.Attribute msg
+toBlue500 =
+    A.class "to-blue-500"
+
+
+toBlue600 : Svg.Attribute msg
+toBlue600 =
+    A.class "to-blue-600"
+
+
+toBlue700 : Svg.Attribute msg
+toBlue700 =
+    A.class "to-blue-700"
+
+
+toBlue800 : Svg.Attribute msg
+toBlue800 =
+    A.class "to-blue-800"
+
+
+toBlue900 : Svg.Attribute msg
+toBlue900 =
+    A.class "to-blue-900"
+
+
+toIndigo100 : Svg.Attribute msg
+toIndigo100 =
+    A.class "to-indigo-100"
+
+
+toIndigo200 : Svg.Attribute msg
+toIndigo200 =
+    A.class "to-indigo-200"
+
+
+toIndigo300 : Svg.Attribute msg
+toIndigo300 =
+    A.class "to-indigo-300"
+
+
+toIndigo400 : Svg.Attribute msg
+toIndigo400 =
+    A.class "to-indigo-400"
+
+
+toIndigo500 : Svg.Attribute msg
+toIndigo500 =
+    A.class "to-indigo-500"
+
+
+toIndigo600 : Svg.Attribute msg
+toIndigo600 =
+    A.class "to-indigo-600"
+
+
+toIndigo700 : Svg.Attribute msg
+toIndigo700 =
+    A.class "to-indigo-700"
+
+
+toIndigo800 : Svg.Attribute msg
+toIndigo800 =
+    A.class "to-indigo-800"
+
+
+toIndigo900 : Svg.Attribute msg
+toIndigo900 =
+    A.class "to-indigo-900"
+
+
+toPurple100 : Svg.Attribute msg
+toPurple100 =
+    A.class "to-purple-100"
+
+
+toPurple200 : Svg.Attribute msg
+toPurple200 =
+    A.class "to-purple-200"
+
+
+toPurple300 : Svg.Attribute msg
+toPurple300 =
+    A.class "to-purple-300"
+
+
+toPurple400 : Svg.Attribute msg
+toPurple400 =
+    A.class "to-purple-400"
+
+
+toPurple500 : Svg.Attribute msg
+toPurple500 =
+    A.class "to-purple-500"
+
+
+toPurple600 : Svg.Attribute msg
+toPurple600 =
+    A.class "to-purple-600"
+
+
+toPurple700 : Svg.Attribute msg
+toPurple700 =
+    A.class "to-purple-700"
+
+
+toPurple800 : Svg.Attribute msg
+toPurple800 =
+    A.class "to-purple-800"
+
+
+toPurple900 : Svg.Attribute msg
+toPurple900 =
+    A.class "to-purple-900"
+
+
+toPink100 : Svg.Attribute msg
+toPink100 =
+    A.class "to-pink-100"
+
+
+toPink200 : Svg.Attribute msg
+toPink200 =
+    A.class "to-pink-200"
+
+
+toPink300 : Svg.Attribute msg
+toPink300 =
+    A.class "to-pink-300"
+
+
+toPink400 : Svg.Attribute msg
+toPink400 =
+    A.class "to-pink-400"
+
+
+toPink500 : Svg.Attribute msg
+toPink500 =
+    A.class "to-pink-500"
+
+
+toPink600 : Svg.Attribute msg
+toPink600 =
+    A.class "to-pink-600"
+
+
+toPink700 : Svg.Attribute msg
+toPink700 =
+    A.class "to-pink-700"
+
+
+toPink800 : Svg.Attribute msg
+toPink800 =
+    A.class "to-pink-800"
+
+
+toPink900 : Svg.Attribute msg
+toPink900 =
+    A.class "to-pink-900"
+
+
+hoverFromTransparent : Svg.Attribute msg
+hoverFromTransparent =
+    A.class "hover:from-transparent"
+
+
+hoverFromCurrent : Svg.Attribute msg
+hoverFromCurrent =
+    A.class "hover:from-current"
+
+
+hoverFromBlack : Svg.Attribute msg
+hoverFromBlack =
+    A.class "hover:from-black"
+
+
+hoverFromWhite : Svg.Attribute msg
+hoverFromWhite =
+    A.class "hover:from-white"
+
+
+hoverFromGray100 : Svg.Attribute msg
+hoverFromGray100 =
+    A.class "hover:from-gray-100"
+
+
+hoverFromGray200 : Svg.Attribute msg
+hoverFromGray200 =
+    A.class "hover:from-gray-200"
+
+
+hoverFromGray300 : Svg.Attribute msg
+hoverFromGray300 =
+    A.class "hover:from-gray-300"
+
+
+hoverFromGray400 : Svg.Attribute msg
+hoverFromGray400 =
+    A.class "hover:from-gray-400"
+
+
+hoverFromGray500 : Svg.Attribute msg
+hoverFromGray500 =
+    A.class "hover:from-gray-500"
+
+
+hoverFromGray600 : Svg.Attribute msg
+hoverFromGray600 =
+    A.class "hover:from-gray-600"
+
+
+hoverFromGray700 : Svg.Attribute msg
+hoverFromGray700 =
+    A.class "hover:from-gray-700"
+
+
+hoverFromGray800 : Svg.Attribute msg
+hoverFromGray800 =
+    A.class "hover:from-gray-800"
+
+
+hoverFromGray900 : Svg.Attribute msg
+hoverFromGray900 =
+    A.class "hover:from-gray-900"
+
+
+hoverFromRed100 : Svg.Attribute msg
+hoverFromRed100 =
+    A.class "hover:from-red-100"
+
+
+hoverFromRed200 : Svg.Attribute msg
+hoverFromRed200 =
+    A.class "hover:from-red-200"
+
+
+hoverFromRed300 : Svg.Attribute msg
+hoverFromRed300 =
+    A.class "hover:from-red-300"
+
+
+hoverFromRed400 : Svg.Attribute msg
+hoverFromRed400 =
+    A.class "hover:from-red-400"
+
+
+hoverFromRed500 : Svg.Attribute msg
+hoverFromRed500 =
+    A.class "hover:from-red-500"
+
+
+hoverFromRed600 : Svg.Attribute msg
+hoverFromRed600 =
+    A.class "hover:from-red-600"
+
+
+hoverFromRed700 : Svg.Attribute msg
+hoverFromRed700 =
+    A.class "hover:from-red-700"
+
+
+hoverFromRed800 : Svg.Attribute msg
+hoverFromRed800 =
+    A.class "hover:from-red-800"
+
+
+hoverFromRed900 : Svg.Attribute msg
+hoverFromRed900 =
+    A.class "hover:from-red-900"
+
+
+hoverFromOrange100 : Svg.Attribute msg
+hoverFromOrange100 =
+    A.class "hover:from-orange-100"
+
+
+hoverFromOrange200 : Svg.Attribute msg
+hoverFromOrange200 =
+    A.class "hover:from-orange-200"
+
+
+hoverFromOrange300 : Svg.Attribute msg
+hoverFromOrange300 =
+    A.class "hover:from-orange-300"
+
+
+hoverFromOrange400 : Svg.Attribute msg
+hoverFromOrange400 =
+    A.class "hover:from-orange-400"
+
+
+hoverFromOrange500 : Svg.Attribute msg
+hoverFromOrange500 =
+    A.class "hover:from-orange-500"
+
+
+hoverFromOrange600 : Svg.Attribute msg
+hoverFromOrange600 =
+    A.class "hover:from-orange-600"
+
+
+hoverFromOrange700 : Svg.Attribute msg
+hoverFromOrange700 =
+    A.class "hover:from-orange-700"
+
+
+hoverFromOrange800 : Svg.Attribute msg
+hoverFromOrange800 =
+    A.class "hover:from-orange-800"
+
+
+hoverFromOrange900 : Svg.Attribute msg
+hoverFromOrange900 =
+    A.class "hover:from-orange-900"
+
+
+hoverFromYellow100 : Svg.Attribute msg
+hoverFromYellow100 =
+    A.class "hover:from-yellow-100"
+
+
+hoverFromYellow200 : Svg.Attribute msg
+hoverFromYellow200 =
+    A.class "hover:from-yellow-200"
+
+
+hoverFromYellow300 : Svg.Attribute msg
+hoverFromYellow300 =
+    A.class "hover:from-yellow-300"
+
+
+hoverFromYellow400 : Svg.Attribute msg
+hoverFromYellow400 =
+    A.class "hover:from-yellow-400"
+
+
+hoverFromYellow500 : Svg.Attribute msg
+hoverFromYellow500 =
+    A.class "hover:from-yellow-500"
+
+
+hoverFromYellow600 : Svg.Attribute msg
+hoverFromYellow600 =
+    A.class "hover:from-yellow-600"
+
+
+hoverFromYellow700 : Svg.Attribute msg
+hoverFromYellow700 =
+    A.class "hover:from-yellow-700"
+
+
+hoverFromYellow800 : Svg.Attribute msg
+hoverFromYellow800 =
+    A.class "hover:from-yellow-800"
+
+
+hoverFromYellow900 : Svg.Attribute msg
+hoverFromYellow900 =
+    A.class "hover:from-yellow-900"
+
+
+hoverFromGreen100 : Svg.Attribute msg
+hoverFromGreen100 =
+    A.class "hover:from-green-100"
+
+
+hoverFromGreen200 : Svg.Attribute msg
+hoverFromGreen200 =
+    A.class "hover:from-green-200"
+
+
+hoverFromGreen300 : Svg.Attribute msg
+hoverFromGreen300 =
+    A.class "hover:from-green-300"
+
+
+hoverFromGreen400 : Svg.Attribute msg
+hoverFromGreen400 =
+    A.class "hover:from-green-400"
+
+
+hoverFromGreen500 : Svg.Attribute msg
+hoverFromGreen500 =
+    A.class "hover:from-green-500"
+
+
+hoverFromGreen600 : Svg.Attribute msg
+hoverFromGreen600 =
+    A.class "hover:from-green-600"
+
+
+hoverFromGreen700 : Svg.Attribute msg
+hoverFromGreen700 =
+    A.class "hover:from-green-700"
+
+
+hoverFromGreen800 : Svg.Attribute msg
+hoverFromGreen800 =
+    A.class "hover:from-green-800"
+
+
+hoverFromGreen900 : Svg.Attribute msg
+hoverFromGreen900 =
+    A.class "hover:from-green-900"
+
+
+hoverFromTeal100 : Svg.Attribute msg
+hoverFromTeal100 =
+    A.class "hover:from-teal-100"
+
+
+hoverFromTeal200 : Svg.Attribute msg
+hoverFromTeal200 =
+    A.class "hover:from-teal-200"
+
+
+hoverFromTeal300 : Svg.Attribute msg
+hoverFromTeal300 =
+    A.class "hover:from-teal-300"
+
+
+hoverFromTeal400 : Svg.Attribute msg
+hoverFromTeal400 =
+    A.class "hover:from-teal-400"
+
+
+hoverFromTeal500 : Svg.Attribute msg
+hoverFromTeal500 =
+    A.class "hover:from-teal-500"
+
+
+hoverFromTeal600 : Svg.Attribute msg
+hoverFromTeal600 =
+    A.class "hover:from-teal-600"
+
+
+hoverFromTeal700 : Svg.Attribute msg
+hoverFromTeal700 =
+    A.class "hover:from-teal-700"
+
+
+hoverFromTeal800 : Svg.Attribute msg
+hoverFromTeal800 =
+    A.class "hover:from-teal-800"
+
+
+hoverFromTeal900 : Svg.Attribute msg
+hoverFromTeal900 =
+    A.class "hover:from-teal-900"
+
+
+hoverFromBlue100 : Svg.Attribute msg
+hoverFromBlue100 =
+    A.class "hover:from-blue-100"
+
+
+hoverFromBlue200 : Svg.Attribute msg
+hoverFromBlue200 =
+    A.class "hover:from-blue-200"
+
+
+hoverFromBlue300 : Svg.Attribute msg
+hoverFromBlue300 =
+    A.class "hover:from-blue-300"
+
+
+hoverFromBlue400 : Svg.Attribute msg
+hoverFromBlue400 =
+    A.class "hover:from-blue-400"
+
+
+hoverFromBlue500 : Svg.Attribute msg
+hoverFromBlue500 =
+    A.class "hover:from-blue-500"
+
+
+hoverFromBlue600 : Svg.Attribute msg
+hoverFromBlue600 =
+    A.class "hover:from-blue-600"
+
+
+hoverFromBlue700 : Svg.Attribute msg
+hoverFromBlue700 =
+    A.class "hover:from-blue-700"
+
+
+hoverFromBlue800 : Svg.Attribute msg
+hoverFromBlue800 =
+    A.class "hover:from-blue-800"
+
+
+hoverFromBlue900 : Svg.Attribute msg
+hoverFromBlue900 =
+    A.class "hover:from-blue-900"
+
+
+hoverFromIndigo100 : Svg.Attribute msg
+hoverFromIndigo100 =
+    A.class "hover:from-indigo-100"
+
+
+hoverFromIndigo200 : Svg.Attribute msg
+hoverFromIndigo200 =
+    A.class "hover:from-indigo-200"
+
+
+hoverFromIndigo300 : Svg.Attribute msg
+hoverFromIndigo300 =
+    A.class "hover:from-indigo-300"
+
+
+hoverFromIndigo400 : Svg.Attribute msg
+hoverFromIndigo400 =
+    A.class "hover:from-indigo-400"
+
+
+hoverFromIndigo500 : Svg.Attribute msg
+hoverFromIndigo500 =
+    A.class "hover:from-indigo-500"
+
+
+hoverFromIndigo600 : Svg.Attribute msg
+hoverFromIndigo600 =
+    A.class "hover:from-indigo-600"
+
+
+hoverFromIndigo700 : Svg.Attribute msg
+hoverFromIndigo700 =
+    A.class "hover:from-indigo-700"
+
+
+hoverFromIndigo800 : Svg.Attribute msg
+hoverFromIndigo800 =
+    A.class "hover:from-indigo-800"
+
+
+hoverFromIndigo900 : Svg.Attribute msg
+hoverFromIndigo900 =
+    A.class "hover:from-indigo-900"
+
+
+hoverFromPurple100 : Svg.Attribute msg
+hoverFromPurple100 =
+    A.class "hover:from-purple-100"
+
+
+hoverFromPurple200 : Svg.Attribute msg
+hoverFromPurple200 =
+    A.class "hover:from-purple-200"
+
+
+hoverFromPurple300 : Svg.Attribute msg
+hoverFromPurple300 =
+    A.class "hover:from-purple-300"
+
+
+hoverFromPurple400 : Svg.Attribute msg
+hoverFromPurple400 =
+    A.class "hover:from-purple-400"
+
+
+hoverFromPurple500 : Svg.Attribute msg
+hoverFromPurple500 =
+    A.class "hover:from-purple-500"
+
+
+hoverFromPurple600 : Svg.Attribute msg
+hoverFromPurple600 =
+    A.class "hover:from-purple-600"
+
+
+hoverFromPurple700 : Svg.Attribute msg
+hoverFromPurple700 =
+    A.class "hover:from-purple-700"
+
+
+hoverFromPurple800 : Svg.Attribute msg
+hoverFromPurple800 =
+    A.class "hover:from-purple-800"
+
+
+hoverFromPurple900 : Svg.Attribute msg
+hoverFromPurple900 =
+    A.class "hover:from-purple-900"
+
+
+hoverFromPink100 : Svg.Attribute msg
+hoverFromPink100 =
+    A.class "hover:from-pink-100"
+
+
+hoverFromPink200 : Svg.Attribute msg
+hoverFromPink200 =
+    A.class "hover:from-pink-200"
+
+
+hoverFromPink300 : Svg.Attribute msg
+hoverFromPink300 =
+    A.class "hover:from-pink-300"
+
+
+hoverFromPink400 : Svg.Attribute msg
+hoverFromPink400 =
+    A.class "hover:from-pink-400"
+
+
+hoverFromPink500 : Svg.Attribute msg
+hoverFromPink500 =
+    A.class "hover:from-pink-500"
+
+
+hoverFromPink600 : Svg.Attribute msg
+hoverFromPink600 =
+    A.class "hover:from-pink-600"
+
+
+hoverFromPink700 : Svg.Attribute msg
+hoverFromPink700 =
+    A.class "hover:from-pink-700"
+
+
+hoverFromPink800 : Svg.Attribute msg
+hoverFromPink800 =
+    A.class "hover:from-pink-800"
+
+
+hoverFromPink900 : Svg.Attribute msg
+hoverFromPink900 =
+    A.class "hover:from-pink-900"
+
+
+hoverViaTransparent : Svg.Attribute msg
+hoverViaTransparent =
+    A.class "hover:via-transparent"
+
+
+hoverViaCurrent : Svg.Attribute msg
+hoverViaCurrent =
+    A.class "hover:via-current"
+
+
+hoverViaBlack : Svg.Attribute msg
+hoverViaBlack =
+    A.class "hover:via-black"
+
+
+hoverViaWhite : Svg.Attribute msg
+hoverViaWhite =
+    A.class "hover:via-white"
+
+
+hoverViaGray100 : Svg.Attribute msg
+hoverViaGray100 =
+    A.class "hover:via-gray-100"
+
+
+hoverViaGray200 : Svg.Attribute msg
+hoverViaGray200 =
+    A.class "hover:via-gray-200"
+
+
+hoverViaGray300 : Svg.Attribute msg
+hoverViaGray300 =
+    A.class "hover:via-gray-300"
+
+
+hoverViaGray400 : Svg.Attribute msg
+hoverViaGray400 =
+    A.class "hover:via-gray-400"
+
+
+hoverViaGray500 : Svg.Attribute msg
+hoverViaGray500 =
+    A.class "hover:via-gray-500"
+
+
+hoverViaGray600 : Svg.Attribute msg
+hoverViaGray600 =
+    A.class "hover:via-gray-600"
+
+
+hoverViaGray700 : Svg.Attribute msg
+hoverViaGray700 =
+    A.class "hover:via-gray-700"
+
+
+hoverViaGray800 : Svg.Attribute msg
+hoverViaGray800 =
+    A.class "hover:via-gray-800"
+
+
+hoverViaGray900 : Svg.Attribute msg
+hoverViaGray900 =
+    A.class "hover:via-gray-900"
+
+
+hoverViaRed100 : Svg.Attribute msg
+hoverViaRed100 =
+    A.class "hover:via-red-100"
+
+
+hoverViaRed200 : Svg.Attribute msg
+hoverViaRed200 =
+    A.class "hover:via-red-200"
+
+
+hoverViaRed300 : Svg.Attribute msg
+hoverViaRed300 =
+    A.class "hover:via-red-300"
+
+
+hoverViaRed400 : Svg.Attribute msg
+hoverViaRed400 =
+    A.class "hover:via-red-400"
+
+
+hoverViaRed500 : Svg.Attribute msg
+hoverViaRed500 =
+    A.class "hover:via-red-500"
+
+
+hoverViaRed600 : Svg.Attribute msg
+hoverViaRed600 =
+    A.class "hover:via-red-600"
+
+
+hoverViaRed700 : Svg.Attribute msg
+hoverViaRed700 =
+    A.class "hover:via-red-700"
+
+
+hoverViaRed800 : Svg.Attribute msg
+hoverViaRed800 =
+    A.class "hover:via-red-800"
+
+
+hoverViaRed900 : Svg.Attribute msg
+hoverViaRed900 =
+    A.class "hover:via-red-900"
+
+
+hoverViaOrange100 : Svg.Attribute msg
+hoverViaOrange100 =
+    A.class "hover:via-orange-100"
+
+
+hoverViaOrange200 : Svg.Attribute msg
+hoverViaOrange200 =
+    A.class "hover:via-orange-200"
+
+
+hoverViaOrange300 : Svg.Attribute msg
+hoverViaOrange300 =
+    A.class "hover:via-orange-300"
+
+
+hoverViaOrange400 : Svg.Attribute msg
+hoverViaOrange400 =
+    A.class "hover:via-orange-400"
+
+
+hoverViaOrange500 : Svg.Attribute msg
+hoverViaOrange500 =
+    A.class "hover:via-orange-500"
+
+
+hoverViaOrange600 : Svg.Attribute msg
+hoverViaOrange600 =
+    A.class "hover:via-orange-600"
+
+
+hoverViaOrange700 : Svg.Attribute msg
+hoverViaOrange700 =
+    A.class "hover:via-orange-700"
+
+
+hoverViaOrange800 : Svg.Attribute msg
+hoverViaOrange800 =
+    A.class "hover:via-orange-800"
+
+
+hoverViaOrange900 : Svg.Attribute msg
+hoverViaOrange900 =
+    A.class "hover:via-orange-900"
+
+
+hoverViaYellow100 : Svg.Attribute msg
+hoverViaYellow100 =
+    A.class "hover:via-yellow-100"
+
+
+hoverViaYellow200 : Svg.Attribute msg
+hoverViaYellow200 =
+    A.class "hover:via-yellow-200"
+
+
+hoverViaYellow300 : Svg.Attribute msg
+hoverViaYellow300 =
+    A.class "hover:via-yellow-300"
+
+
+hoverViaYellow400 : Svg.Attribute msg
+hoverViaYellow400 =
+    A.class "hover:via-yellow-400"
+
+
+hoverViaYellow500 : Svg.Attribute msg
+hoverViaYellow500 =
+    A.class "hover:via-yellow-500"
+
+
+hoverViaYellow600 : Svg.Attribute msg
+hoverViaYellow600 =
+    A.class "hover:via-yellow-600"
+
+
+hoverViaYellow700 : Svg.Attribute msg
+hoverViaYellow700 =
+    A.class "hover:via-yellow-700"
+
+
+hoverViaYellow800 : Svg.Attribute msg
+hoverViaYellow800 =
+    A.class "hover:via-yellow-800"
+
+
+hoverViaYellow900 : Svg.Attribute msg
+hoverViaYellow900 =
+    A.class "hover:via-yellow-900"
+
+
+hoverViaGreen100 : Svg.Attribute msg
+hoverViaGreen100 =
+    A.class "hover:via-green-100"
+
+
+hoverViaGreen200 : Svg.Attribute msg
+hoverViaGreen200 =
+    A.class "hover:via-green-200"
+
+
+hoverViaGreen300 : Svg.Attribute msg
+hoverViaGreen300 =
+    A.class "hover:via-green-300"
+
+
+hoverViaGreen400 : Svg.Attribute msg
+hoverViaGreen400 =
+    A.class "hover:via-green-400"
+
+
+hoverViaGreen500 : Svg.Attribute msg
+hoverViaGreen500 =
+    A.class "hover:via-green-500"
+
+
+hoverViaGreen600 : Svg.Attribute msg
+hoverViaGreen600 =
+    A.class "hover:via-green-600"
+
+
+hoverViaGreen700 : Svg.Attribute msg
+hoverViaGreen700 =
+    A.class "hover:via-green-700"
+
+
+hoverViaGreen800 : Svg.Attribute msg
+hoverViaGreen800 =
+    A.class "hover:via-green-800"
+
+
+hoverViaGreen900 : Svg.Attribute msg
+hoverViaGreen900 =
+    A.class "hover:via-green-900"
+
+
+hoverViaTeal100 : Svg.Attribute msg
+hoverViaTeal100 =
+    A.class "hover:via-teal-100"
+
+
+hoverViaTeal200 : Svg.Attribute msg
+hoverViaTeal200 =
+    A.class "hover:via-teal-200"
+
+
+hoverViaTeal300 : Svg.Attribute msg
+hoverViaTeal300 =
+    A.class "hover:via-teal-300"
+
+
+hoverViaTeal400 : Svg.Attribute msg
+hoverViaTeal400 =
+    A.class "hover:via-teal-400"
+
+
+hoverViaTeal500 : Svg.Attribute msg
+hoverViaTeal500 =
+    A.class "hover:via-teal-500"
+
+
+hoverViaTeal600 : Svg.Attribute msg
+hoverViaTeal600 =
+    A.class "hover:via-teal-600"
+
+
+hoverViaTeal700 : Svg.Attribute msg
+hoverViaTeal700 =
+    A.class "hover:via-teal-700"
+
+
+hoverViaTeal800 : Svg.Attribute msg
+hoverViaTeal800 =
+    A.class "hover:via-teal-800"
+
+
+hoverViaTeal900 : Svg.Attribute msg
+hoverViaTeal900 =
+    A.class "hover:via-teal-900"
+
+
+hoverViaBlue100 : Svg.Attribute msg
+hoverViaBlue100 =
+    A.class "hover:via-blue-100"
+
+
+hoverViaBlue200 : Svg.Attribute msg
+hoverViaBlue200 =
+    A.class "hover:via-blue-200"
+
+
+hoverViaBlue300 : Svg.Attribute msg
+hoverViaBlue300 =
+    A.class "hover:via-blue-300"
+
+
+hoverViaBlue400 : Svg.Attribute msg
+hoverViaBlue400 =
+    A.class "hover:via-blue-400"
+
+
+hoverViaBlue500 : Svg.Attribute msg
+hoverViaBlue500 =
+    A.class "hover:via-blue-500"
+
+
+hoverViaBlue600 : Svg.Attribute msg
+hoverViaBlue600 =
+    A.class "hover:via-blue-600"
+
+
+hoverViaBlue700 : Svg.Attribute msg
+hoverViaBlue700 =
+    A.class "hover:via-blue-700"
+
+
+hoverViaBlue800 : Svg.Attribute msg
+hoverViaBlue800 =
+    A.class "hover:via-blue-800"
+
+
+hoverViaBlue900 : Svg.Attribute msg
+hoverViaBlue900 =
+    A.class "hover:via-blue-900"
+
+
+hoverViaIndigo100 : Svg.Attribute msg
+hoverViaIndigo100 =
+    A.class "hover:via-indigo-100"
+
+
+hoverViaIndigo200 : Svg.Attribute msg
+hoverViaIndigo200 =
+    A.class "hover:via-indigo-200"
+
+
+hoverViaIndigo300 : Svg.Attribute msg
+hoverViaIndigo300 =
+    A.class "hover:via-indigo-300"
+
+
+hoverViaIndigo400 : Svg.Attribute msg
+hoverViaIndigo400 =
+    A.class "hover:via-indigo-400"
+
+
+hoverViaIndigo500 : Svg.Attribute msg
+hoverViaIndigo500 =
+    A.class "hover:via-indigo-500"
+
+
+hoverViaIndigo600 : Svg.Attribute msg
+hoverViaIndigo600 =
+    A.class "hover:via-indigo-600"
+
+
+hoverViaIndigo700 : Svg.Attribute msg
+hoverViaIndigo700 =
+    A.class "hover:via-indigo-700"
+
+
+hoverViaIndigo800 : Svg.Attribute msg
+hoverViaIndigo800 =
+    A.class "hover:via-indigo-800"
+
+
+hoverViaIndigo900 : Svg.Attribute msg
+hoverViaIndigo900 =
+    A.class "hover:via-indigo-900"
+
+
+hoverViaPurple100 : Svg.Attribute msg
+hoverViaPurple100 =
+    A.class "hover:via-purple-100"
+
+
+hoverViaPurple200 : Svg.Attribute msg
+hoverViaPurple200 =
+    A.class "hover:via-purple-200"
+
+
+hoverViaPurple300 : Svg.Attribute msg
+hoverViaPurple300 =
+    A.class "hover:via-purple-300"
+
+
+hoverViaPurple400 : Svg.Attribute msg
+hoverViaPurple400 =
+    A.class "hover:via-purple-400"
+
+
+hoverViaPurple500 : Svg.Attribute msg
+hoverViaPurple500 =
+    A.class "hover:via-purple-500"
+
+
+hoverViaPurple600 : Svg.Attribute msg
+hoverViaPurple600 =
+    A.class "hover:via-purple-600"
+
+
+hoverViaPurple700 : Svg.Attribute msg
+hoverViaPurple700 =
+    A.class "hover:via-purple-700"
+
+
+hoverViaPurple800 : Svg.Attribute msg
+hoverViaPurple800 =
+    A.class "hover:via-purple-800"
+
+
+hoverViaPurple900 : Svg.Attribute msg
+hoverViaPurple900 =
+    A.class "hover:via-purple-900"
+
+
+hoverViaPink100 : Svg.Attribute msg
+hoverViaPink100 =
+    A.class "hover:via-pink-100"
+
+
+hoverViaPink200 : Svg.Attribute msg
+hoverViaPink200 =
+    A.class "hover:via-pink-200"
+
+
+hoverViaPink300 : Svg.Attribute msg
+hoverViaPink300 =
+    A.class "hover:via-pink-300"
+
+
+hoverViaPink400 : Svg.Attribute msg
+hoverViaPink400 =
+    A.class "hover:via-pink-400"
+
+
+hoverViaPink500 : Svg.Attribute msg
+hoverViaPink500 =
+    A.class "hover:via-pink-500"
+
+
+hoverViaPink600 : Svg.Attribute msg
+hoverViaPink600 =
+    A.class "hover:via-pink-600"
+
+
+hoverViaPink700 : Svg.Attribute msg
+hoverViaPink700 =
+    A.class "hover:via-pink-700"
+
+
+hoverViaPink800 : Svg.Attribute msg
+hoverViaPink800 =
+    A.class "hover:via-pink-800"
+
+
+hoverViaPink900 : Svg.Attribute msg
+hoverViaPink900 =
+    A.class "hover:via-pink-900"
+
+
+hoverToTransparent : Svg.Attribute msg
+hoverToTransparent =
+    A.class "hover:to-transparent"
+
+
+hoverToCurrent : Svg.Attribute msg
+hoverToCurrent =
+    A.class "hover:to-current"
+
+
+hoverToBlack : Svg.Attribute msg
+hoverToBlack =
+    A.class "hover:to-black"
+
+
+hoverToWhite : Svg.Attribute msg
+hoverToWhite =
+    A.class "hover:to-white"
+
+
+hoverToGray100 : Svg.Attribute msg
+hoverToGray100 =
+    A.class "hover:to-gray-100"
+
+
+hoverToGray200 : Svg.Attribute msg
+hoverToGray200 =
+    A.class "hover:to-gray-200"
+
+
+hoverToGray300 : Svg.Attribute msg
+hoverToGray300 =
+    A.class "hover:to-gray-300"
+
+
+hoverToGray400 : Svg.Attribute msg
+hoverToGray400 =
+    A.class "hover:to-gray-400"
+
+
+hoverToGray500 : Svg.Attribute msg
+hoverToGray500 =
+    A.class "hover:to-gray-500"
+
+
+hoverToGray600 : Svg.Attribute msg
+hoverToGray600 =
+    A.class "hover:to-gray-600"
+
+
+hoverToGray700 : Svg.Attribute msg
+hoverToGray700 =
+    A.class "hover:to-gray-700"
+
+
+hoverToGray800 : Svg.Attribute msg
+hoverToGray800 =
+    A.class "hover:to-gray-800"
+
+
+hoverToGray900 : Svg.Attribute msg
+hoverToGray900 =
+    A.class "hover:to-gray-900"
+
+
+hoverToRed100 : Svg.Attribute msg
+hoverToRed100 =
+    A.class "hover:to-red-100"
+
+
+hoverToRed200 : Svg.Attribute msg
+hoverToRed200 =
+    A.class "hover:to-red-200"
+
+
+hoverToRed300 : Svg.Attribute msg
+hoverToRed300 =
+    A.class "hover:to-red-300"
+
+
+hoverToRed400 : Svg.Attribute msg
+hoverToRed400 =
+    A.class "hover:to-red-400"
+
+
+hoverToRed500 : Svg.Attribute msg
+hoverToRed500 =
+    A.class "hover:to-red-500"
+
+
+hoverToRed600 : Svg.Attribute msg
+hoverToRed600 =
+    A.class "hover:to-red-600"
+
+
+hoverToRed700 : Svg.Attribute msg
+hoverToRed700 =
+    A.class "hover:to-red-700"
+
+
+hoverToRed800 : Svg.Attribute msg
+hoverToRed800 =
+    A.class "hover:to-red-800"
+
+
+hoverToRed900 : Svg.Attribute msg
+hoverToRed900 =
+    A.class "hover:to-red-900"
+
+
+hoverToOrange100 : Svg.Attribute msg
+hoverToOrange100 =
+    A.class "hover:to-orange-100"
+
+
+hoverToOrange200 : Svg.Attribute msg
+hoverToOrange200 =
+    A.class "hover:to-orange-200"
+
+
+hoverToOrange300 : Svg.Attribute msg
+hoverToOrange300 =
+    A.class "hover:to-orange-300"
+
+
+hoverToOrange400 : Svg.Attribute msg
+hoverToOrange400 =
+    A.class "hover:to-orange-400"
+
+
+hoverToOrange500 : Svg.Attribute msg
+hoverToOrange500 =
+    A.class "hover:to-orange-500"
+
+
+hoverToOrange600 : Svg.Attribute msg
+hoverToOrange600 =
+    A.class "hover:to-orange-600"
+
+
+hoverToOrange700 : Svg.Attribute msg
+hoverToOrange700 =
+    A.class "hover:to-orange-700"
+
+
+hoverToOrange800 : Svg.Attribute msg
+hoverToOrange800 =
+    A.class "hover:to-orange-800"
+
+
+hoverToOrange900 : Svg.Attribute msg
+hoverToOrange900 =
+    A.class "hover:to-orange-900"
+
+
+hoverToYellow100 : Svg.Attribute msg
+hoverToYellow100 =
+    A.class "hover:to-yellow-100"
+
+
+hoverToYellow200 : Svg.Attribute msg
+hoverToYellow200 =
+    A.class "hover:to-yellow-200"
+
+
+hoverToYellow300 : Svg.Attribute msg
+hoverToYellow300 =
+    A.class "hover:to-yellow-300"
+
+
+hoverToYellow400 : Svg.Attribute msg
+hoverToYellow400 =
+    A.class "hover:to-yellow-400"
+
+
+hoverToYellow500 : Svg.Attribute msg
+hoverToYellow500 =
+    A.class "hover:to-yellow-500"
+
+
+hoverToYellow600 : Svg.Attribute msg
+hoverToYellow600 =
+    A.class "hover:to-yellow-600"
+
+
+hoverToYellow700 : Svg.Attribute msg
+hoverToYellow700 =
+    A.class "hover:to-yellow-700"
+
+
+hoverToYellow800 : Svg.Attribute msg
+hoverToYellow800 =
+    A.class "hover:to-yellow-800"
+
+
+hoverToYellow900 : Svg.Attribute msg
+hoverToYellow900 =
+    A.class "hover:to-yellow-900"
+
+
+hoverToGreen100 : Svg.Attribute msg
+hoverToGreen100 =
+    A.class "hover:to-green-100"
+
+
+hoverToGreen200 : Svg.Attribute msg
+hoverToGreen200 =
+    A.class "hover:to-green-200"
+
+
+hoverToGreen300 : Svg.Attribute msg
+hoverToGreen300 =
+    A.class "hover:to-green-300"
+
+
+hoverToGreen400 : Svg.Attribute msg
+hoverToGreen400 =
+    A.class "hover:to-green-400"
+
+
+hoverToGreen500 : Svg.Attribute msg
+hoverToGreen500 =
+    A.class "hover:to-green-500"
+
+
+hoverToGreen600 : Svg.Attribute msg
+hoverToGreen600 =
+    A.class "hover:to-green-600"
+
+
+hoverToGreen700 : Svg.Attribute msg
+hoverToGreen700 =
+    A.class "hover:to-green-700"
+
+
+hoverToGreen800 : Svg.Attribute msg
+hoverToGreen800 =
+    A.class "hover:to-green-800"
+
+
+hoverToGreen900 : Svg.Attribute msg
+hoverToGreen900 =
+    A.class "hover:to-green-900"
+
+
+hoverToTeal100 : Svg.Attribute msg
+hoverToTeal100 =
+    A.class "hover:to-teal-100"
+
+
+hoverToTeal200 : Svg.Attribute msg
+hoverToTeal200 =
+    A.class "hover:to-teal-200"
+
+
+hoverToTeal300 : Svg.Attribute msg
+hoverToTeal300 =
+    A.class "hover:to-teal-300"
+
+
+hoverToTeal400 : Svg.Attribute msg
+hoverToTeal400 =
+    A.class "hover:to-teal-400"
+
+
+hoverToTeal500 : Svg.Attribute msg
+hoverToTeal500 =
+    A.class "hover:to-teal-500"
+
+
+hoverToTeal600 : Svg.Attribute msg
+hoverToTeal600 =
+    A.class "hover:to-teal-600"
+
+
+hoverToTeal700 : Svg.Attribute msg
+hoverToTeal700 =
+    A.class "hover:to-teal-700"
+
+
+hoverToTeal800 : Svg.Attribute msg
+hoverToTeal800 =
+    A.class "hover:to-teal-800"
+
+
+hoverToTeal900 : Svg.Attribute msg
+hoverToTeal900 =
+    A.class "hover:to-teal-900"
+
+
+hoverToBlue100 : Svg.Attribute msg
+hoverToBlue100 =
+    A.class "hover:to-blue-100"
+
+
+hoverToBlue200 : Svg.Attribute msg
+hoverToBlue200 =
+    A.class "hover:to-blue-200"
+
+
+hoverToBlue300 : Svg.Attribute msg
+hoverToBlue300 =
+    A.class "hover:to-blue-300"
+
+
+hoverToBlue400 : Svg.Attribute msg
+hoverToBlue400 =
+    A.class "hover:to-blue-400"
+
+
+hoverToBlue500 : Svg.Attribute msg
+hoverToBlue500 =
+    A.class "hover:to-blue-500"
+
+
+hoverToBlue600 : Svg.Attribute msg
+hoverToBlue600 =
+    A.class "hover:to-blue-600"
+
+
+hoverToBlue700 : Svg.Attribute msg
+hoverToBlue700 =
+    A.class "hover:to-blue-700"
+
+
+hoverToBlue800 : Svg.Attribute msg
+hoverToBlue800 =
+    A.class "hover:to-blue-800"
+
+
+hoverToBlue900 : Svg.Attribute msg
+hoverToBlue900 =
+    A.class "hover:to-blue-900"
+
+
+hoverToIndigo100 : Svg.Attribute msg
+hoverToIndigo100 =
+    A.class "hover:to-indigo-100"
+
+
+hoverToIndigo200 : Svg.Attribute msg
+hoverToIndigo200 =
+    A.class "hover:to-indigo-200"
+
+
+hoverToIndigo300 : Svg.Attribute msg
+hoverToIndigo300 =
+    A.class "hover:to-indigo-300"
+
+
+hoverToIndigo400 : Svg.Attribute msg
+hoverToIndigo400 =
+    A.class "hover:to-indigo-400"
+
+
+hoverToIndigo500 : Svg.Attribute msg
+hoverToIndigo500 =
+    A.class "hover:to-indigo-500"
+
+
+hoverToIndigo600 : Svg.Attribute msg
+hoverToIndigo600 =
+    A.class "hover:to-indigo-600"
+
+
+hoverToIndigo700 : Svg.Attribute msg
+hoverToIndigo700 =
+    A.class "hover:to-indigo-700"
+
+
+hoverToIndigo800 : Svg.Attribute msg
+hoverToIndigo800 =
+    A.class "hover:to-indigo-800"
+
+
+hoverToIndigo900 : Svg.Attribute msg
+hoverToIndigo900 =
+    A.class "hover:to-indigo-900"
+
+
+hoverToPurple100 : Svg.Attribute msg
+hoverToPurple100 =
+    A.class "hover:to-purple-100"
+
+
+hoverToPurple200 : Svg.Attribute msg
+hoverToPurple200 =
+    A.class "hover:to-purple-200"
+
+
+hoverToPurple300 : Svg.Attribute msg
+hoverToPurple300 =
+    A.class "hover:to-purple-300"
+
+
+hoverToPurple400 : Svg.Attribute msg
+hoverToPurple400 =
+    A.class "hover:to-purple-400"
+
+
+hoverToPurple500 : Svg.Attribute msg
+hoverToPurple500 =
+    A.class "hover:to-purple-500"
+
+
+hoverToPurple600 : Svg.Attribute msg
+hoverToPurple600 =
+    A.class "hover:to-purple-600"
+
+
+hoverToPurple700 : Svg.Attribute msg
+hoverToPurple700 =
+    A.class "hover:to-purple-700"
+
+
+hoverToPurple800 : Svg.Attribute msg
+hoverToPurple800 =
+    A.class "hover:to-purple-800"
+
+
+hoverToPurple900 : Svg.Attribute msg
+hoverToPurple900 =
+    A.class "hover:to-purple-900"
+
+
+hoverToPink100 : Svg.Attribute msg
+hoverToPink100 =
+    A.class "hover:to-pink-100"
+
+
+hoverToPink200 : Svg.Attribute msg
+hoverToPink200 =
+    A.class "hover:to-pink-200"
+
+
+hoverToPink300 : Svg.Attribute msg
+hoverToPink300 =
+    A.class "hover:to-pink-300"
+
+
+hoverToPink400 : Svg.Attribute msg
+hoverToPink400 =
+    A.class "hover:to-pink-400"
+
+
+hoverToPink500 : Svg.Attribute msg
+hoverToPink500 =
+    A.class "hover:to-pink-500"
+
+
+hoverToPink600 : Svg.Attribute msg
+hoverToPink600 =
+    A.class "hover:to-pink-600"
+
+
+hoverToPink700 : Svg.Attribute msg
+hoverToPink700 =
+    A.class "hover:to-pink-700"
+
+
+hoverToPink800 : Svg.Attribute msg
+hoverToPink800 =
+    A.class "hover:to-pink-800"
+
+
+hoverToPink900 : Svg.Attribute msg
+hoverToPink900 =
+    A.class "hover:to-pink-900"
+
+
+focusFromTransparent : Svg.Attribute msg
+focusFromTransparent =
+    A.class "focus:from-transparent"
+
+
+focusFromCurrent : Svg.Attribute msg
+focusFromCurrent =
+    A.class "focus:from-current"
+
+
+focusFromBlack : Svg.Attribute msg
+focusFromBlack =
+    A.class "focus:from-black"
+
+
+focusFromWhite : Svg.Attribute msg
+focusFromWhite =
+    A.class "focus:from-white"
+
+
+focusFromGray100 : Svg.Attribute msg
+focusFromGray100 =
+    A.class "focus:from-gray-100"
+
+
+focusFromGray200 : Svg.Attribute msg
+focusFromGray200 =
+    A.class "focus:from-gray-200"
+
+
+focusFromGray300 : Svg.Attribute msg
+focusFromGray300 =
+    A.class "focus:from-gray-300"
+
+
+focusFromGray400 : Svg.Attribute msg
+focusFromGray400 =
+    A.class "focus:from-gray-400"
+
+
+focusFromGray500 : Svg.Attribute msg
+focusFromGray500 =
+    A.class "focus:from-gray-500"
+
+
+focusFromGray600 : Svg.Attribute msg
+focusFromGray600 =
+    A.class "focus:from-gray-600"
+
+
+focusFromGray700 : Svg.Attribute msg
+focusFromGray700 =
+    A.class "focus:from-gray-700"
+
+
+focusFromGray800 : Svg.Attribute msg
+focusFromGray800 =
+    A.class "focus:from-gray-800"
+
+
+focusFromGray900 : Svg.Attribute msg
+focusFromGray900 =
+    A.class "focus:from-gray-900"
+
+
+focusFromRed100 : Svg.Attribute msg
+focusFromRed100 =
+    A.class "focus:from-red-100"
+
+
+focusFromRed200 : Svg.Attribute msg
+focusFromRed200 =
+    A.class "focus:from-red-200"
+
+
+focusFromRed300 : Svg.Attribute msg
+focusFromRed300 =
+    A.class "focus:from-red-300"
+
+
+focusFromRed400 : Svg.Attribute msg
+focusFromRed400 =
+    A.class "focus:from-red-400"
+
+
+focusFromRed500 : Svg.Attribute msg
+focusFromRed500 =
+    A.class "focus:from-red-500"
+
+
+focusFromRed600 : Svg.Attribute msg
+focusFromRed600 =
+    A.class "focus:from-red-600"
+
+
+focusFromRed700 : Svg.Attribute msg
+focusFromRed700 =
+    A.class "focus:from-red-700"
+
+
+focusFromRed800 : Svg.Attribute msg
+focusFromRed800 =
+    A.class "focus:from-red-800"
+
+
+focusFromRed900 : Svg.Attribute msg
+focusFromRed900 =
+    A.class "focus:from-red-900"
+
+
+focusFromOrange100 : Svg.Attribute msg
+focusFromOrange100 =
+    A.class "focus:from-orange-100"
+
+
+focusFromOrange200 : Svg.Attribute msg
+focusFromOrange200 =
+    A.class "focus:from-orange-200"
+
+
+focusFromOrange300 : Svg.Attribute msg
+focusFromOrange300 =
+    A.class "focus:from-orange-300"
+
+
+focusFromOrange400 : Svg.Attribute msg
+focusFromOrange400 =
+    A.class "focus:from-orange-400"
+
+
+focusFromOrange500 : Svg.Attribute msg
+focusFromOrange500 =
+    A.class "focus:from-orange-500"
+
+
+focusFromOrange600 : Svg.Attribute msg
+focusFromOrange600 =
+    A.class "focus:from-orange-600"
+
+
+focusFromOrange700 : Svg.Attribute msg
+focusFromOrange700 =
+    A.class "focus:from-orange-700"
+
+
+focusFromOrange800 : Svg.Attribute msg
+focusFromOrange800 =
+    A.class "focus:from-orange-800"
+
+
+focusFromOrange900 : Svg.Attribute msg
+focusFromOrange900 =
+    A.class "focus:from-orange-900"
+
+
+focusFromYellow100 : Svg.Attribute msg
+focusFromYellow100 =
+    A.class "focus:from-yellow-100"
+
+
+focusFromYellow200 : Svg.Attribute msg
+focusFromYellow200 =
+    A.class "focus:from-yellow-200"
+
+
+focusFromYellow300 : Svg.Attribute msg
+focusFromYellow300 =
+    A.class "focus:from-yellow-300"
+
+
+focusFromYellow400 : Svg.Attribute msg
+focusFromYellow400 =
+    A.class "focus:from-yellow-400"
+
+
+focusFromYellow500 : Svg.Attribute msg
+focusFromYellow500 =
+    A.class "focus:from-yellow-500"
+
+
+focusFromYellow600 : Svg.Attribute msg
+focusFromYellow600 =
+    A.class "focus:from-yellow-600"
+
+
+focusFromYellow700 : Svg.Attribute msg
+focusFromYellow700 =
+    A.class "focus:from-yellow-700"
+
+
+focusFromYellow800 : Svg.Attribute msg
+focusFromYellow800 =
+    A.class "focus:from-yellow-800"
+
+
+focusFromYellow900 : Svg.Attribute msg
+focusFromYellow900 =
+    A.class "focus:from-yellow-900"
+
+
+focusFromGreen100 : Svg.Attribute msg
+focusFromGreen100 =
+    A.class "focus:from-green-100"
+
+
+focusFromGreen200 : Svg.Attribute msg
+focusFromGreen200 =
+    A.class "focus:from-green-200"
+
+
+focusFromGreen300 : Svg.Attribute msg
+focusFromGreen300 =
+    A.class "focus:from-green-300"
+
+
+focusFromGreen400 : Svg.Attribute msg
+focusFromGreen400 =
+    A.class "focus:from-green-400"
+
+
+focusFromGreen500 : Svg.Attribute msg
+focusFromGreen500 =
+    A.class "focus:from-green-500"
+
+
+focusFromGreen600 : Svg.Attribute msg
+focusFromGreen600 =
+    A.class "focus:from-green-600"
+
+
+focusFromGreen700 : Svg.Attribute msg
+focusFromGreen700 =
+    A.class "focus:from-green-700"
+
+
+focusFromGreen800 : Svg.Attribute msg
+focusFromGreen800 =
+    A.class "focus:from-green-800"
+
+
+focusFromGreen900 : Svg.Attribute msg
+focusFromGreen900 =
+    A.class "focus:from-green-900"
+
+
+focusFromTeal100 : Svg.Attribute msg
+focusFromTeal100 =
+    A.class "focus:from-teal-100"
+
+
+focusFromTeal200 : Svg.Attribute msg
+focusFromTeal200 =
+    A.class "focus:from-teal-200"
+
+
+focusFromTeal300 : Svg.Attribute msg
+focusFromTeal300 =
+    A.class "focus:from-teal-300"
+
+
+focusFromTeal400 : Svg.Attribute msg
+focusFromTeal400 =
+    A.class "focus:from-teal-400"
+
+
+focusFromTeal500 : Svg.Attribute msg
+focusFromTeal500 =
+    A.class "focus:from-teal-500"
+
+
+focusFromTeal600 : Svg.Attribute msg
+focusFromTeal600 =
+    A.class "focus:from-teal-600"
+
+
+focusFromTeal700 : Svg.Attribute msg
+focusFromTeal700 =
+    A.class "focus:from-teal-700"
+
+
+focusFromTeal800 : Svg.Attribute msg
+focusFromTeal800 =
+    A.class "focus:from-teal-800"
+
+
+focusFromTeal900 : Svg.Attribute msg
+focusFromTeal900 =
+    A.class "focus:from-teal-900"
+
+
+focusFromBlue100 : Svg.Attribute msg
+focusFromBlue100 =
+    A.class "focus:from-blue-100"
+
+
+focusFromBlue200 : Svg.Attribute msg
+focusFromBlue200 =
+    A.class "focus:from-blue-200"
+
+
+focusFromBlue300 : Svg.Attribute msg
+focusFromBlue300 =
+    A.class "focus:from-blue-300"
+
+
+focusFromBlue400 : Svg.Attribute msg
+focusFromBlue400 =
+    A.class "focus:from-blue-400"
+
+
+focusFromBlue500 : Svg.Attribute msg
+focusFromBlue500 =
+    A.class "focus:from-blue-500"
+
+
+focusFromBlue600 : Svg.Attribute msg
+focusFromBlue600 =
+    A.class "focus:from-blue-600"
+
+
+focusFromBlue700 : Svg.Attribute msg
+focusFromBlue700 =
+    A.class "focus:from-blue-700"
+
+
+focusFromBlue800 : Svg.Attribute msg
+focusFromBlue800 =
+    A.class "focus:from-blue-800"
+
+
+focusFromBlue900 : Svg.Attribute msg
+focusFromBlue900 =
+    A.class "focus:from-blue-900"
+
+
+focusFromIndigo100 : Svg.Attribute msg
+focusFromIndigo100 =
+    A.class "focus:from-indigo-100"
+
+
+focusFromIndigo200 : Svg.Attribute msg
+focusFromIndigo200 =
+    A.class "focus:from-indigo-200"
+
+
+focusFromIndigo300 : Svg.Attribute msg
+focusFromIndigo300 =
+    A.class "focus:from-indigo-300"
+
+
+focusFromIndigo400 : Svg.Attribute msg
+focusFromIndigo400 =
+    A.class "focus:from-indigo-400"
+
+
+focusFromIndigo500 : Svg.Attribute msg
+focusFromIndigo500 =
+    A.class "focus:from-indigo-500"
+
+
+focusFromIndigo600 : Svg.Attribute msg
+focusFromIndigo600 =
+    A.class "focus:from-indigo-600"
+
+
+focusFromIndigo700 : Svg.Attribute msg
+focusFromIndigo700 =
+    A.class "focus:from-indigo-700"
+
+
+focusFromIndigo800 : Svg.Attribute msg
+focusFromIndigo800 =
+    A.class "focus:from-indigo-800"
+
+
+focusFromIndigo900 : Svg.Attribute msg
+focusFromIndigo900 =
+    A.class "focus:from-indigo-900"
+
+
+focusFromPurple100 : Svg.Attribute msg
+focusFromPurple100 =
+    A.class "focus:from-purple-100"
+
+
+focusFromPurple200 : Svg.Attribute msg
+focusFromPurple200 =
+    A.class "focus:from-purple-200"
+
+
+focusFromPurple300 : Svg.Attribute msg
+focusFromPurple300 =
+    A.class "focus:from-purple-300"
+
+
+focusFromPurple400 : Svg.Attribute msg
+focusFromPurple400 =
+    A.class "focus:from-purple-400"
+
+
+focusFromPurple500 : Svg.Attribute msg
+focusFromPurple500 =
+    A.class "focus:from-purple-500"
+
+
+focusFromPurple600 : Svg.Attribute msg
+focusFromPurple600 =
+    A.class "focus:from-purple-600"
+
+
+focusFromPurple700 : Svg.Attribute msg
+focusFromPurple700 =
+    A.class "focus:from-purple-700"
+
+
+focusFromPurple800 : Svg.Attribute msg
+focusFromPurple800 =
+    A.class "focus:from-purple-800"
+
+
+focusFromPurple900 : Svg.Attribute msg
+focusFromPurple900 =
+    A.class "focus:from-purple-900"
+
+
+focusFromPink100 : Svg.Attribute msg
+focusFromPink100 =
+    A.class "focus:from-pink-100"
+
+
+focusFromPink200 : Svg.Attribute msg
+focusFromPink200 =
+    A.class "focus:from-pink-200"
+
+
+focusFromPink300 : Svg.Attribute msg
+focusFromPink300 =
+    A.class "focus:from-pink-300"
+
+
+focusFromPink400 : Svg.Attribute msg
+focusFromPink400 =
+    A.class "focus:from-pink-400"
+
+
+focusFromPink500 : Svg.Attribute msg
+focusFromPink500 =
+    A.class "focus:from-pink-500"
+
+
+focusFromPink600 : Svg.Attribute msg
+focusFromPink600 =
+    A.class "focus:from-pink-600"
+
+
+focusFromPink700 : Svg.Attribute msg
+focusFromPink700 =
+    A.class "focus:from-pink-700"
+
+
+focusFromPink800 : Svg.Attribute msg
+focusFromPink800 =
+    A.class "focus:from-pink-800"
+
+
+focusFromPink900 : Svg.Attribute msg
+focusFromPink900 =
+    A.class "focus:from-pink-900"
+
+
+focusViaTransparent : Svg.Attribute msg
+focusViaTransparent =
+    A.class "focus:via-transparent"
+
+
+focusViaCurrent : Svg.Attribute msg
+focusViaCurrent =
+    A.class "focus:via-current"
+
+
+focusViaBlack : Svg.Attribute msg
+focusViaBlack =
+    A.class "focus:via-black"
+
+
+focusViaWhite : Svg.Attribute msg
+focusViaWhite =
+    A.class "focus:via-white"
+
+
+focusViaGray100 : Svg.Attribute msg
+focusViaGray100 =
+    A.class "focus:via-gray-100"
+
+
+focusViaGray200 : Svg.Attribute msg
+focusViaGray200 =
+    A.class "focus:via-gray-200"
+
+
+focusViaGray300 : Svg.Attribute msg
+focusViaGray300 =
+    A.class "focus:via-gray-300"
+
+
+focusViaGray400 : Svg.Attribute msg
+focusViaGray400 =
+    A.class "focus:via-gray-400"
+
+
+focusViaGray500 : Svg.Attribute msg
+focusViaGray500 =
+    A.class "focus:via-gray-500"
+
+
+focusViaGray600 : Svg.Attribute msg
+focusViaGray600 =
+    A.class "focus:via-gray-600"
+
+
+focusViaGray700 : Svg.Attribute msg
+focusViaGray700 =
+    A.class "focus:via-gray-700"
+
+
+focusViaGray800 : Svg.Attribute msg
+focusViaGray800 =
+    A.class "focus:via-gray-800"
+
+
+focusViaGray900 : Svg.Attribute msg
+focusViaGray900 =
+    A.class "focus:via-gray-900"
+
+
+focusViaRed100 : Svg.Attribute msg
+focusViaRed100 =
+    A.class "focus:via-red-100"
+
+
+focusViaRed200 : Svg.Attribute msg
+focusViaRed200 =
+    A.class "focus:via-red-200"
+
+
+focusViaRed300 : Svg.Attribute msg
+focusViaRed300 =
+    A.class "focus:via-red-300"
+
+
+focusViaRed400 : Svg.Attribute msg
+focusViaRed400 =
+    A.class "focus:via-red-400"
+
+
+focusViaRed500 : Svg.Attribute msg
+focusViaRed500 =
+    A.class "focus:via-red-500"
+
+
+focusViaRed600 : Svg.Attribute msg
+focusViaRed600 =
+    A.class "focus:via-red-600"
+
+
+focusViaRed700 : Svg.Attribute msg
+focusViaRed700 =
+    A.class "focus:via-red-700"
+
+
+focusViaRed800 : Svg.Attribute msg
+focusViaRed800 =
+    A.class "focus:via-red-800"
+
+
+focusViaRed900 : Svg.Attribute msg
+focusViaRed900 =
+    A.class "focus:via-red-900"
+
+
+focusViaOrange100 : Svg.Attribute msg
+focusViaOrange100 =
+    A.class "focus:via-orange-100"
+
+
+focusViaOrange200 : Svg.Attribute msg
+focusViaOrange200 =
+    A.class "focus:via-orange-200"
+
+
+focusViaOrange300 : Svg.Attribute msg
+focusViaOrange300 =
+    A.class "focus:via-orange-300"
+
+
+focusViaOrange400 : Svg.Attribute msg
+focusViaOrange400 =
+    A.class "focus:via-orange-400"
+
+
+focusViaOrange500 : Svg.Attribute msg
+focusViaOrange500 =
+    A.class "focus:via-orange-500"
+
+
+focusViaOrange600 : Svg.Attribute msg
+focusViaOrange600 =
+    A.class "focus:via-orange-600"
+
+
+focusViaOrange700 : Svg.Attribute msg
+focusViaOrange700 =
+    A.class "focus:via-orange-700"
+
+
+focusViaOrange800 : Svg.Attribute msg
+focusViaOrange800 =
+    A.class "focus:via-orange-800"
+
+
+focusViaOrange900 : Svg.Attribute msg
+focusViaOrange900 =
+    A.class "focus:via-orange-900"
+
+
+focusViaYellow100 : Svg.Attribute msg
+focusViaYellow100 =
+    A.class "focus:via-yellow-100"
+
+
+focusViaYellow200 : Svg.Attribute msg
+focusViaYellow200 =
+    A.class "focus:via-yellow-200"
+
+
+focusViaYellow300 : Svg.Attribute msg
+focusViaYellow300 =
+    A.class "focus:via-yellow-300"
+
+
+focusViaYellow400 : Svg.Attribute msg
+focusViaYellow400 =
+    A.class "focus:via-yellow-400"
+
+
+focusViaYellow500 : Svg.Attribute msg
+focusViaYellow500 =
+    A.class "focus:via-yellow-500"
+
+
+focusViaYellow600 : Svg.Attribute msg
+focusViaYellow600 =
+    A.class "focus:via-yellow-600"
+
+
+focusViaYellow700 : Svg.Attribute msg
+focusViaYellow700 =
+    A.class "focus:via-yellow-700"
+
+
+focusViaYellow800 : Svg.Attribute msg
+focusViaYellow800 =
+    A.class "focus:via-yellow-800"
+
+
+focusViaYellow900 : Svg.Attribute msg
+focusViaYellow900 =
+    A.class "focus:via-yellow-900"
+
+
+focusViaGreen100 : Svg.Attribute msg
+focusViaGreen100 =
+    A.class "focus:via-green-100"
+
+
+focusViaGreen200 : Svg.Attribute msg
+focusViaGreen200 =
+    A.class "focus:via-green-200"
+
+
+focusViaGreen300 : Svg.Attribute msg
+focusViaGreen300 =
+    A.class "focus:via-green-300"
+
+
+focusViaGreen400 : Svg.Attribute msg
+focusViaGreen400 =
+    A.class "focus:via-green-400"
+
+
+focusViaGreen500 : Svg.Attribute msg
+focusViaGreen500 =
+    A.class "focus:via-green-500"
+
+
+focusViaGreen600 : Svg.Attribute msg
+focusViaGreen600 =
+    A.class "focus:via-green-600"
+
+
+focusViaGreen700 : Svg.Attribute msg
+focusViaGreen700 =
+    A.class "focus:via-green-700"
+
+
+focusViaGreen800 : Svg.Attribute msg
+focusViaGreen800 =
+    A.class "focus:via-green-800"
+
+
+focusViaGreen900 : Svg.Attribute msg
+focusViaGreen900 =
+    A.class "focus:via-green-900"
+
+
+focusViaTeal100 : Svg.Attribute msg
+focusViaTeal100 =
+    A.class "focus:via-teal-100"
+
+
+focusViaTeal200 : Svg.Attribute msg
+focusViaTeal200 =
+    A.class "focus:via-teal-200"
+
+
+focusViaTeal300 : Svg.Attribute msg
+focusViaTeal300 =
+    A.class "focus:via-teal-300"
+
+
+focusViaTeal400 : Svg.Attribute msg
+focusViaTeal400 =
+    A.class "focus:via-teal-400"
+
+
+focusViaTeal500 : Svg.Attribute msg
+focusViaTeal500 =
+    A.class "focus:via-teal-500"
+
+
+focusViaTeal600 : Svg.Attribute msg
+focusViaTeal600 =
+    A.class "focus:via-teal-600"
+
+
+focusViaTeal700 : Svg.Attribute msg
+focusViaTeal700 =
+    A.class "focus:via-teal-700"
+
+
+focusViaTeal800 : Svg.Attribute msg
+focusViaTeal800 =
+    A.class "focus:via-teal-800"
+
+
+focusViaTeal900 : Svg.Attribute msg
+focusViaTeal900 =
+    A.class "focus:via-teal-900"
+
+
+focusViaBlue100 : Svg.Attribute msg
+focusViaBlue100 =
+    A.class "focus:via-blue-100"
+
+
+focusViaBlue200 : Svg.Attribute msg
+focusViaBlue200 =
+    A.class "focus:via-blue-200"
+
+
+focusViaBlue300 : Svg.Attribute msg
+focusViaBlue300 =
+    A.class "focus:via-blue-300"
+
+
+focusViaBlue400 : Svg.Attribute msg
+focusViaBlue400 =
+    A.class "focus:via-blue-400"
+
+
+focusViaBlue500 : Svg.Attribute msg
+focusViaBlue500 =
+    A.class "focus:via-blue-500"
+
+
+focusViaBlue600 : Svg.Attribute msg
+focusViaBlue600 =
+    A.class "focus:via-blue-600"
+
+
+focusViaBlue700 : Svg.Attribute msg
+focusViaBlue700 =
+    A.class "focus:via-blue-700"
+
+
+focusViaBlue800 : Svg.Attribute msg
+focusViaBlue800 =
+    A.class "focus:via-blue-800"
+
+
+focusViaBlue900 : Svg.Attribute msg
+focusViaBlue900 =
+    A.class "focus:via-blue-900"
+
+
+focusViaIndigo100 : Svg.Attribute msg
+focusViaIndigo100 =
+    A.class "focus:via-indigo-100"
+
+
+focusViaIndigo200 : Svg.Attribute msg
+focusViaIndigo200 =
+    A.class "focus:via-indigo-200"
+
+
+focusViaIndigo300 : Svg.Attribute msg
+focusViaIndigo300 =
+    A.class "focus:via-indigo-300"
+
+
+focusViaIndigo400 : Svg.Attribute msg
+focusViaIndigo400 =
+    A.class "focus:via-indigo-400"
+
+
+focusViaIndigo500 : Svg.Attribute msg
+focusViaIndigo500 =
+    A.class "focus:via-indigo-500"
+
+
+focusViaIndigo600 : Svg.Attribute msg
+focusViaIndigo600 =
+    A.class "focus:via-indigo-600"
+
+
+focusViaIndigo700 : Svg.Attribute msg
+focusViaIndigo700 =
+    A.class "focus:via-indigo-700"
+
+
+focusViaIndigo800 : Svg.Attribute msg
+focusViaIndigo800 =
+    A.class "focus:via-indigo-800"
+
+
+focusViaIndigo900 : Svg.Attribute msg
+focusViaIndigo900 =
+    A.class "focus:via-indigo-900"
+
+
+focusViaPurple100 : Svg.Attribute msg
+focusViaPurple100 =
+    A.class "focus:via-purple-100"
+
+
+focusViaPurple200 : Svg.Attribute msg
+focusViaPurple200 =
+    A.class "focus:via-purple-200"
+
+
+focusViaPurple300 : Svg.Attribute msg
+focusViaPurple300 =
+    A.class "focus:via-purple-300"
+
+
+focusViaPurple400 : Svg.Attribute msg
+focusViaPurple400 =
+    A.class "focus:via-purple-400"
+
+
+focusViaPurple500 : Svg.Attribute msg
+focusViaPurple500 =
+    A.class "focus:via-purple-500"
+
+
+focusViaPurple600 : Svg.Attribute msg
+focusViaPurple600 =
+    A.class "focus:via-purple-600"
+
+
+focusViaPurple700 : Svg.Attribute msg
+focusViaPurple700 =
+    A.class "focus:via-purple-700"
+
+
+focusViaPurple800 : Svg.Attribute msg
+focusViaPurple800 =
+    A.class "focus:via-purple-800"
+
+
+focusViaPurple900 : Svg.Attribute msg
+focusViaPurple900 =
+    A.class "focus:via-purple-900"
+
+
+focusViaPink100 : Svg.Attribute msg
+focusViaPink100 =
+    A.class "focus:via-pink-100"
+
+
+focusViaPink200 : Svg.Attribute msg
+focusViaPink200 =
+    A.class "focus:via-pink-200"
+
+
+focusViaPink300 : Svg.Attribute msg
+focusViaPink300 =
+    A.class "focus:via-pink-300"
+
+
+focusViaPink400 : Svg.Attribute msg
+focusViaPink400 =
+    A.class "focus:via-pink-400"
+
+
+focusViaPink500 : Svg.Attribute msg
+focusViaPink500 =
+    A.class "focus:via-pink-500"
+
+
+focusViaPink600 : Svg.Attribute msg
+focusViaPink600 =
+    A.class "focus:via-pink-600"
+
+
+focusViaPink700 : Svg.Attribute msg
+focusViaPink700 =
+    A.class "focus:via-pink-700"
+
+
+focusViaPink800 : Svg.Attribute msg
+focusViaPink800 =
+    A.class "focus:via-pink-800"
+
+
+focusViaPink900 : Svg.Attribute msg
+focusViaPink900 =
+    A.class "focus:via-pink-900"
+
+
+focusToTransparent : Svg.Attribute msg
+focusToTransparent =
+    A.class "focus:to-transparent"
+
+
+focusToCurrent : Svg.Attribute msg
+focusToCurrent =
+    A.class "focus:to-current"
+
+
+focusToBlack : Svg.Attribute msg
+focusToBlack =
+    A.class "focus:to-black"
+
+
+focusToWhite : Svg.Attribute msg
+focusToWhite =
+    A.class "focus:to-white"
+
+
+focusToGray100 : Svg.Attribute msg
+focusToGray100 =
+    A.class "focus:to-gray-100"
+
+
+focusToGray200 : Svg.Attribute msg
+focusToGray200 =
+    A.class "focus:to-gray-200"
+
+
+focusToGray300 : Svg.Attribute msg
+focusToGray300 =
+    A.class "focus:to-gray-300"
+
+
+focusToGray400 : Svg.Attribute msg
+focusToGray400 =
+    A.class "focus:to-gray-400"
+
+
+focusToGray500 : Svg.Attribute msg
+focusToGray500 =
+    A.class "focus:to-gray-500"
+
+
+focusToGray600 : Svg.Attribute msg
+focusToGray600 =
+    A.class "focus:to-gray-600"
+
+
+focusToGray700 : Svg.Attribute msg
+focusToGray700 =
+    A.class "focus:to-gray-700"
+
+
+focusToGray800 : Svg.Attribute msg
+focusToGray800 =
+    A.class "focus:to-gray-800"
+
+
+focusToGray900 : Svg.Attribute msg
+focusToGray900 =
+    A.class "focus:to-gray-900"
+
+
+focusToRed100 : Svg.Attribute msg
+focusToRed100 =
+    A.class "focus:to-red-100"
+
+
+focusToRed200 : Svg.Attribute msg
+focusToRed200 =
+    A.class "focus:to-red-200"
+
+
+focusToRed300 : Svg.Attribute msg
+focusToRed300 =
+    A.class "focus:to-red-300"
+
+
+focusToRed400 : Svg.Attribute msg
+focusToRed400 =
+    A.class "focus:to-red-400"
+
+
+focusToRed500 : Svg.Attribute msg
+focusToRed500 =
+    A.class "focus:to-red-500"
+
+
+focusToRed600 : Svg.Attribute msg
+focusToRed600 =
+    A.class "focus:to-red-600"
+
+
+focusToRed700 : Svg.Attribute msg
+focusToRed700 =
+    A.class "focus:to-red-700"
+
+
+focusToRed800 : Svg.Attribute msg
+focusToRed800 =
+    A.class "focus:to-red-800"
+
+
+focusToRed900 : Svg.Attribute msg
+focusToRed900 =
+    A.class "focus:to-red-900"
+
+
+focusToOrange100 : Svg.Attribute msg
+focusToOrange100 =
+    A.class "focus:to-orange-100"
+
+
+focusToOrange200 : Svg.Attribute msg
+focusToOrange200 =
+    A.class "focus:to-orange-200"
+
+
+focusToOrange300 : Svg.Attribute msg
+focusToOrange300 =
+    A.class "focus:to-orange-300"
+
+
+focusToOrange400 : Svg.Attribute msg
+focusToOrange400 =
+    A.class "focus:to-orange-400"
+
+
+focusToOrange500 : Svg.Attribute msg
+focusToOrange500 =
+    A.class "focus:to-orange-500"
+
+
+focusToOrange600 : Svg.Attribute msg
+focusToOrange600 =
+    A.class "focus:to-orange-600"
+
+
+focusToOrange700 : Svg.Attribute msg
+focusToOrange700 =
+    A.class "focus:to-orange-700"
+
+
+focusToOrange800 : Svg.Attribute msg
+focusToOrange800 =
+    A.class "focus:to-orange-800"
+
+
+focusToOrange900 : Svg.Attribute msg
+focusToOrange900 =
+    A.class "focus:to-orange-900"
+
+
+focusToYellow100 : Svg.Attribute msg
+focusToYellow100 =
+    A.class "focus:to-yellow-100"
+
+
+focusToYellow200 : Svg.Attribute msg
+focusToYellow200 =
+    A.class "focus:to-yellow-200"
+
+
+focusToYellow300 : Svg.Attribute msg
+focusToYellow300 =
+    A.class "focus:to-yellow-300"
+
+
+focusToYellow400 : Svg.Attribute msg
+focusToYellow400 =
+    A.class "focus:to-yellow-400"
+
+
+focusToYellow500 : Svg.Attribute msg
+focusToYellow500 =
+    A.class "focus:to-yellow-500"
+
+
+focusToYellow600 : Svg.Attribute msg
+focusToYellow600 =
+    A.class "focus:to-yellow-600"
+
+
+focusToYellow700 : Svg.Attribute msg
+focusToYellow700 =
+    A.class "focus:to-yellow-700"
+
+
+focusToYellow800 : Svg.Attribute msg
+focusToYellow800 =
+    A.class "focus:to-yellow-800"
+
+
+focusToYellow900 : Svg.Attribute msg
+focusToYellow900 =
+    A.class "focus:to-yellow-900"
+
+
+focusToGreen100 : Svg.Attribute msg
+focusToGreen100 =
+    A.class "focus:to-green-100"
+
+
+focusToGreen200 : Svg.Attribute msg
+focusToGreen200 =
+    A.class "focus:to-green-200"
+
+
+focusToGreen300 : Svg.Attribute msg
+focusToGreen300 =
+    A.class "focus:to-green-300"
+
+
+focusToGreen400 : Svg.Attribute msg
+focusToGreen400 =
+    A.class "focus:to-green-400"
+
+
+focusToGreen500 : Svg.Attribute msg
+focusToGreen500 =
+    A.class "focus:to-green-500"
+
+
+focusToGreen600 : Svg.Attribute msg
+focusToGreen600 =
+    A.class "focus:to-green-600"
+
+
+focusToGreen700 : Svg.Attribute msg
+focusToGreen700 =
+    A.class "focus:to-green-700"
+
+
+focusToGreen800 : Svg.Attribute msg
+focusToGreen800 =
+    A.class "focus:to-green-800"
+
+
+focusToGreen900 : Svg.Attribute msg
+focusToGreen900 =
+    A.class "focus:to-green-900"
+
+
+focusToTeal100 : Svg.Attribute msg
+focusToTeal100 =
+    A.class "focus:to-teal-100"
+
+
+focusToTeal200 : Svg.Attribute msg
+focusToTeal200 =
+    A.class "focus:to-teal-200"
+
+
+focusToTeal300 : Svg.Attribute msg
+focusToTeal300 =
+    A.class "focus:to-teal-300"
+
+
+focusToTeal400 : Svg.Attribute msg
+focusToTeal400 =
+    A.class "focus:to-teal-400"
+
+
+focusToTeal500 : Svg.Attribute msg
+focusToTeal500 =
+    A.class "focus:to-teal-500"
+
+
+focusToTeal600 : Svg.Attribute msg
+focusToTeal600 =
+    A.class "focus:to-teal-600"
+
+
+focusToTeal700 : Svg.Attribute msg
+focusToTeal700 =
+    A.class "focus:to-teal-700"
+
+
+focusToTeal800 : Svg.Attribute msg
+focusToTeal800 =
+    A.class "focus:to-teal-800"
+
+
+focusToTeal900 : Svg.Attribute msg
+focusToTeal900 =
+    A.class "focus:to-teal-900"
+
+
+focusToBlue100 : Svg.Attribute msg
+focusToBlue100 =
+    A.class "focus:to-blue-100"
+
+
+focusToBlue200 : Svg.Attribute msg
+focusToBlue200 =
+    A.class "focus:to-blue-200"
+
+
+focusToBlue300 : Svg.Attribute msg
+focusToBlue300 =
+    A.class "focus:to-blue-300"
+
+
+focusToBlue400 : Svg.Attribute msg
+focusToBlue400 =
+    A.class "focus:to-blue-400"
+
+
+focusToBlue500 : Svg.Attribute msg
+focusToBlue500 =
+    A.class "focus:to-blue-500"
+
+
+focusToBlue600 : Svg.Attribute msg
+focusToBlue600 =
+    A.class "focus:to-blue-600"
+
+
+focusToBlue700 : Svg.Attribute msg
+focusToBlue700 =
+    A.class "focus:to-blue-700"
+
+
+focusToBlue800 : Svg.Attribute msg
+focusToBlue800 =
+    A.class "focus:to-blue-800"
+
+
+focusToBlue900 : Svg.Attribute msg
+focusToBlue900 =
+    A.class "focus:to-blue-900"
+
+
+focusToIndigo100 : Svg.Attribute msg
+focusToIndigo100 =
+    A.class "focus:to-indigo-100"
+
+
+focusToIndigo200 : Svg.Attribute msg
+focusToIndigo200 =
+    A.class "focus:to-indigo-200"
+
+
+focusToIndigo300 : Svg.Attribute msg
+focusToIndigo300 =
+    A.class "focus:to-indigo-300"
+
+
+focusToIndigo400 : Svg.Attribute msg
+focusToIndigo400 =
+    A.class "focus:to-indigo-400"
+
+
+focusToIndigo500 : Svg.Attribute msg
+focusToIndigo500 =
+    A.class "focus:to-indigo-500"
+
+
+focusToIndigo600 : Svg.Attribute msg
+focusToIndigo600 =
+    A.class "focus:to-indigo-600"
+
+
+focusToIndigo700 : Svg.Attribute msg
+focusToIndigo700 =
+    A.class "focus:to-indigo-700"
+
+
+focusToIndigo800 : Svg.Attribute msg
+focusToIndigo800 =
+    A.class "focus:to-indigo-800"
+
+
+focusToIndigo900 : Svg.Attribute msg
+focusToIndigo900 =
+    A.class "focus:to-indigo-900"
+
+
+focusToPurple100 : Svg.Attribute msg
+focusToPurple100 =
+    A.class "focus:to-purple-100"
+
+
+focusToPurple200 : Svg.Attribute msg
+focusToPurple200 =
+    A.class "focus:to-purple-200"
+
+
+focusToPurple300 : Svg.Attribute msg
+focusToPurple300 =
+    A.class "focus:to-purple-300"
+
+
+focusToPurple400 : Svg.Attribute msg
+focusToPurple400 =
+    A.class "focus:to-purple-400"
+
+
+focusToPurple500 : Svg.Attribute msg
+focusToPurple500 =
+    A.class "focus:to-purple-500"
+
+
+focusToPurple600 : Svg.Attribute msg
+focusToPurple600 =
+    A.class "focus:to-purple-600"
+
+
+focusToPurple700 : Svg.Attribute msg
+focusToPurple700 =
+    A.class "focus:to-purple-700"
+
+
+focusToPurple800 : Svg.Attribute msg
+focusToPurple800 =
+    A.class "focus:to-purple-800"
+
+
+focusToPurple900 : Svg.Attribute msg
+focusToPurple900 =
+    A.class "focus:to-purple-900"
+
+
+focusToPink100 : Svg.Attribute msg
+focusToPink100 =
+    A.class "focus:to-pink-100"
+
+
+focusToPink200 : Svg.Attribute msg
+focusToPink200 =
+    A.class "focus:to-pink-200"
+
+
+focusToPink300 : Svg.Attribute msg
+focusToPink300 =
+    A.class "focus:to-pink-300"
+
+
+focusToPink400 : Svg.Attribute msg
+focusToPink400 =
+    A.class "focus:to-pink-400"
+
+
+focusToPink500 : Svg.Attribute msg
+focusToPink500 =
+    A.class "focus:to-pink-500"
+
+
+focusToPink600 : Svg.Attribute msg
+focusToPink600 =
+    A.class "focus:to-pink-600"
+
+
+focusToPink700 : Svg.Attribute msg
+focusToPink700 =
+    A.class "focus:to-pink-700"
+
+
+focusToPink800 : Svg.Attribute msg
+focusToPink800 =
+    A.class "focus:to-pink-800"
+
+
+focusToPink900 : Svg.Attribute msg
+focusToPink900 =
+    A.class "focus:to-pink-900"
 
 
 bgOpacity0 : Svg.Attribute msg
@@ -17937,6 +27316,21 @@ roundedLg =
     A.class "rounded-lg"
 
 
+roundedXl : Svg.Attribute msg
+roundedXl =
+    A.class "rounded-xl"
+
+
+rounded2xl : Svg.Attribute msg
+rounded2xl =
+    A.class "rounded-2xl"
+
+
+rounded3xl : Svg.Attribute msg
+rounded3xl =
+    A.class "rounded-3xl"
+
+
 roundedFull : Svg.Attribute msg
 roundedFull =
     A.class "rounded-full"
@@ -18040,6 +27434,66 @@ roundedBLg =
 roundedLLg : Svg.Attribute msg
 roundedLLg =
     A.class "rounded-l-lg"
+
+
+roundedTXl : Svg.Attribute msg
+roundedTXl =
+    A.class "rounded-t-xl"
+
+
+roundedRXl : Svg.Attribute msg
+roundedRXl =
+    A.class "rounded-r-xl"
+
+
+roundedBXl : Svg.Attribute msg
+roundedBXl =
+    A.class "rounded-b-xl"
+
+
+roundedLXl : Svg.Attribute msg
+roundedLXl =
+    A.class "rounded-l-xl"
+
+
+roundedT2xl : Svg.Attribute msg
+roundedT2xl =
+    A.class "rounded-t-2xl"
+
+
+roundedR2xl : Svg.Attribute msg
+roundedR2xl =
+    A.class "rounded-r-2xl"
+
+
+roundedB2xl : Svg.Attribute msg
+roundedB2xl =
+    A.class "rounded-b-2xl"
+
+
+roundedL2xl : Svg.Attribute msg
+roundedL2xl =
+    A.class "rounded-l-2xl"
+
+
+roundedT3xl : Svg.Attribute msg
+roundedT3xl =
+    A.class "rounded-t-3xl"
+
+
+roundedR3xl : Svg.Attribute msg
+roundedR3xl =
+    A.class "rounded-r-3xl"
+
+
+roundedB3xl : Svg.Attribute msg
+roundedB3xl =
+    A.class "rounded-b-3xl"
+
+
+roundedL3xl : Svg.Attribute msg
+roundedL3xl =
+    A.class "rounded-l-3xl"
 
 
 roundedTFull : Svg.Attribute msg
@@ -18160,6 +27614,66 @@ roundedBrLg =
 roundedBlLg : Svg.Attribute msg
 roundedBlLg =
     A.class "rounded-bl-lg"
+
+
+roundedTlXl : Svg.Attribute msg
+roundedTlXl =
+    A.class "rounded-tl-xl"
+
+
+roundedTrXl : Svg.Attribute msg
+roundedTrXl =
+    A.class "rounded-tr-xl"
+
+
+roundedBrXl : Svg.Attribute msg
+roundedBrXl =
+    A.class "rounded-br-xl"
+
+
+roundedBlXl : Svg.Attribute msg
+roundedBlXl =
+    A.class "rounded-bl-xl"
+
+
+roundedTl2xl : Svg.Attribute msg
+roundedTl2xl =
+    A.class "rounded-tl-2xl"
+
+
+roundedTr2xl : Svg.Attribute msg
+roundedTr2xl =
+    A.class "rounded-tr-2xl"
+
+
+roundedBr2xl : Svg.Attribute msg
+roundedBr2xl =
+    A.class "rounded-br-2xl"
+
+
+roundedBl2xl : Svg.Attribute msg
+roundedBl2xl =
+    A.class "rounded-bl-2xl"
+
+
+roundedTl3xl : Svg.Attribute msg
+roundedTl3xl =
+    A.class "rounded-tl-3xl"
+
+
+roundedTr3xl : Svg.Attribute msg
+roundedTr3xl =
+    A.class "rounded-tr-3xl"
+
+
+roundedBr3xl : Svg.Attribute msg
+roundedBr3xl =
+    A.class "rounded-br-3xl"
+
+
+roundedBl3xl : Svg.Attribute msg
+roundedBl3xl =
+    A.class "rounded-bl-3xl"
 
 
 roundedTlFull : Svg.Attribute msg
@@ -18462,6 +27976,11 @@ inlineGrid =
     A.class "inline-grid"
 
 
+contents : Svg.Attribute msg
+contents =
+    A.class "contents"
+
+
 hidden : Svg.Attribute msg
 hidden =
     A.class "hidden"
@@ -18502,6 +28021,91 @@ flexNoWrap =
     A.class "flex-no-wrap"
 
 
+placeItemsAuto : Svg.Attribute msg
+placeItemsAuto =
+    A.class "place-items-auto"
+
+
+placeItemsStart : Svg.Attribute msg
+placeItemsStart =
+    A.class "place-items-start"
+
+
+placeItemsEnd : Svg.Attribute msg
+placeItemsEnd =
+    A.class "place-items-end"
+
+
+placeItemsCenter : Svg.Attribute msg
+placeItemsCenter =
+    A.class "place-items-center"
+
+
+placeItemsStretch : Svg.Attribute msg
+placeItemsStretch =
+    A.class "place-items-stretch"
+
+
+placeContentCenter : Svg.Attribute msg
+placeContentCenter =
+    A.class "place-content-center"
+
+
+placeContentStart : Svg.Attribute msg
+placeContentStart =
+    A.class "place-content-start"
+
+
+placeContentEnd : Svg.Attribute msg
+placeContentEnd =
+    A.class "place-content-end"
+
+
+placeContentBetween : Svg.Attribute msg
+placeContentBetween =
+    A.class "place-content-between"
+
+
+placeContentAround : Svg.Attribute msg
+placeContentAround =
+    A.class "place-content-around"
+
+
+placeContentEvenly : Svg.Attribute msg
+placeContentEvenly =
+    A.class "place-content-evenly"
+
+
+placeContentStretch : Svg.Attribute msg
+placeContentStretch =
+    A.class "place-content-stretch"
+
+
+placeSelfAuto : Svg.Attribute msg
+placeSelfAuto =
+    A.class "place-self-auto"
+
+
+placeSelfStart : Svg.Attribute msg
+placeSelfStart =
+    A.class "place-self-start"
+
+
+placeSelfEnd : Svg.Attribute msg
+placeSelfEnd =
+    A.class "place-self-end"
+
+
+placeSelfCenter : Svg.Attribute msg
+placeSelfCenter =
+    A.class "place-self-center"
+
+
+placeSelfStretch : Svg.Attribute msg
+placeSelfStretch =
+    A.class "place-self-stretch"
+
+
 itemsStart : Svg.Attribute msg
 itemsStart =
     A.class "items-start"
@@ -18527,6 +28131,36 @@ itemsStretch =
     A.class "items-stretch"
 
 
+contentCenter : Svg.Attribute msg
+contentCenter =
+    A.class "content-center"
+
+
+contentStart : Svg.Attribute msg
+contentStart =
+    A.class "content-start"
+
+
+contentEnd : Svg.Attribute msg
+contentEnd =
+    A.class "content-end"
+
+
+contentBetween : Svg.Attribute msg
+contentBetween =
+    A.class "content-between"
+
+
+contentAround : Svg.Attribute msg
+contentAround =
+    A.class "content-around"
+
+
+contentEvenly : Svg.Attribute msg
+contentEvenly =
+    A.class "content-evenly"
+
+
 selfAuto : Svg.Attribute msg
 selfAuto =
     A.class "self-auto"
@@ -18550,6 +28184,31 @@ selfCenter =
 selfStretch : Svg.Attribute msg
 selfStretch =
     A.class "self-stretch"
+
+
+justifyItemsAuto : Svg.Attribute msg
+justifyItemsAuto =
+    A.class "justify-items-auto"
+
+
+justifyItemsStart : Svg.Attribute msg
+justifyItemsStart =
+    A.class "justify-items-start"
+
+
+justifyItemsEnd : Svg.Attribute msg
+justifyItemsEnd =
+    A.class "justify-items-end"
+
+
+justifyItemsCenter : Svg.Attribute msg
+justifyItemsCenter =
+    A.class "justify-items-center"
+
+
+justifyItemsStretch : Svg.Attribute msg
+justifyItemsStretch =
+    A.class "justify-items-stretch"
 
 
 justifyStart : Svg.Attribute msg
@@ -18582,29 +28241,29 @@ justifyEvenly =
     A.class "justify-evenly"
 
 
-contentCenter : Svg.Attribute msg
-contentCenter =
-    A.class "content-center"
+justifySelfAuto : Svg.Attribute msg
+justifySelfAuto =
+    A.class "justify-self-auto"
 
 
-contentStart : Svg.Attribute msg
-contentStart =
-    A.class "content-start"
+justifySelfStart : Svg.Attribute msg
+justifySelfStart =
+    A.class "justify-self-start"
 
 
-contentEnd : Svg.Attribute msg
-contentEnd =
-    A.class "content-end"
+justifySelfEnd : Svg.Attribute msg
+justifySelfEnd =
+    A.class "justify-self-end"
 
 
-contentBetween : Svg.Attribute msg
-contentBetween =
-    A.class "content-between"
+justifySelfCenter : Svg.Attribute msg
+justifySelfCenter =
+    A.class "justify-self-center"
 
 
-contentAround : Svg.Attribute msg
-contentAround =
-    A.class "content-around"
+justifySelfStretch : Svg.Attribute msg
+justifySelfStretch =
+    A.class "justify-self-stretch"
 
 
 flex1 : Svg.Attribute msg
@@ -20767,9 +30426,29 @@ outlineNone =
     A.class "outline-none"
 
 
+outlineWhite : Svg.Attribute msg
+outlineWhite =
+    A.class "outline-white"
+
+
+outlineBlack : Svg.Attribute msg
+outlineBlack =
+    A.class "outline-black"
+
+
 focusOutlineNone : Svg.Attribute msg
 focusOutlineNone =
     A.class "focus:outline-none"
+
+
+focusOutlineWhite : Svg.Attribute msg
+focusOutlineWhite =
+    A.class "focus:outline-white"
+
+
+focusOutlineBlack : Svg.Attribute msg
+focusOutlineBlack =
+    A.class "focus:outline-black"
 
 
 overflowAuto : Svg.Attribute msg
@@ -20840,6 +30519,51 @@ scrollingTouch =
 scrollingAuto : Svg.Attribute msg
 scrollingAuto =
     A.class "scrolling-auto"
+
+
+overscrollAuto : Svg.Attribute msg
+overscrollAuto =
+    A.class "overscroll-auto"
+
+
+overscrollContain : Svg.Attribute msg
+overscrollContain =
+    A.class "overscroll-contain"
+
+
+overscrollNone : Svg.Attribute msg
+overscrollNone =
+    A.class "overscroll-none"
+
+
+overscrollYAuto : Svg.Attribute msg
+overscrollYAuto =
+    A.class "overscroll-y-auto"
+
+
+overscrollYContain : Svg.Attribute msg
+overscrollYContain =
+    A.class "overscroll-y-contain"
+
+
+overscrollYNone : Svg.Attribute msg
+overscrollYNone =
+    A.class "overscroll-y-none"
+
+
+overscrollXAuto : Svg.Attribute msg
+overscrollXAuto =
+    A.class "overscroll-x-auto"
+
+
+overscrollXContain : Svg.Attribute msg
+overscrollXContain =
+    A.class "overscroll-x-contain"
+
+
+overscrollXNone : Svg.Attribute msg
+overscrollXNone =
+    A.class "overscroll-x-none"
 
 
 p0 : Svg.Attribute msg
@@ -24397,6 +34121,51 @@ subpixelAntialiased =
     A.class "subpixel-antialiased"
 
 
+ordinal : Svg.Attribute msg
+ordinal =
+    A.class "ordinal"
+
+
+slashedZero : Svg.Attribute msg
+slashedZero =
+    A.class "slashed-zero"
+
+
+liningNums : Svg.Attribute msg
+liningNums =
+    A.class "lining-nums"
+
+
+oldstyleNums : Svg.Attribute msg
+oldstyleNums =
+    A.class "oldstyle-nums"
+
+
+proportionalNums : Svg.Attribute msg
+proportionalNums =
+    A.class "proportional-nums"
+
+
+tabularNums : Svg.Attribute msg
+tabularNums =
+    A.class "tabular-nums"
+
+
+diagonalFractions : Svg.Attribute msg
+diagonalFractions =
+    A.class "diagonal-fractions"
+
+
+stackedFractions : Svg.Attribute msg
+stackedFractions =
+    A.class "stacked-fractions"
+
+
+normalNums : Svg.Attribute msg
+normalNums =
+    A.class "normal-nums"
+
+
 trackingTighter : Svg.Attribute msg
 trackingTighter =
     A.class "tracking-tighter"
@@ -24902,194 +34671,194 @@ gapPx =
     A.class "gap-px"
 
 
-colGap0 : Svg.Attribute msg
-colGap0 =
-    A.class "col-gap-0"
+gapX0 : Svg.Attribute msg
+gapX0 =
+    A.class "gap-x-0"
 
 
-colGap1 : Svg.Attribute msg
-colGap1 =
-    A.class "col-gap-1"
+gapX1 : Svg.Attribute msg
+gapX1 =
+    A.class "gap-x-1"
 
 
-colGap2 : Svg.Attribute msg
-colGap2 =
-    A.class "col-gap-2"
+gapX2 : Svg.Attribute msg
+gapX2 =
+    A.class "gap-x-2"
 
 
-colGap3 : Svg.Attribute msg
-colGap3 =
-    A.class "col-gap-3"
+gapX3 : Svg.Attribute msg
+gapX3 =
+    A.class "gap-x-3"
 
 
-colGap4 : Svg.Attribute msg
-colGap4 =
-    A.class "col-gap-4"
+gapX4 : Svg.Attribute msg
+gapX4 =
+    A.class "gap-x-4"
 
 
-colGap5 : Svg.Attribute msg
-colGap5 =
-    A.class "col-gap-5"
+gapX5 : Svg.Attribute msg
+gapX5 =
+    A.class "gap-x-5"
 
 
-colGap6 : Svg.Attribute msg
-colGap6 =
-    A.class "col-gap-6"
+gapX6 : Svg.Attribute msg
+gapX6 =
+    A.class "gap-x-6"
 
 
-colGap8 : Svg.Attribute msg
-colGap8 =
-    A.class "col-gap-8"
+gapX8 : Svg.Attribute msg
+gapX8 =
+    A.class "gap-x-8"
 
 
-colGap10 : Svg.Attribute msg
-colGap10 =
-    A.class "col-gap-10"
+gapX10 : Svg.Attribute msg
+gapX10 =
+    A.class "gap-x-10"
 
 
-colGap12 : Svg.Attribute msg
-colGap12 =
-    A.class "col-gap-12"
+gapX12 : Svg.Attribute msg
+gapX12 =
+    A.class "gap-x-12"
 
 
-colGap16 : Svg.Attribute msg
-colGap16 =
-    A.class "col-gap-16"
+gapX16 : Svg.Attribute msg
+gapX16 =
+    A.class "gap-x-16"
 
 
-colGap20 : Svg.Attribute msg
-colGap20 =
-    A.class "col-gap-20"
+gapX20 : Svg.Attribute msg
+gapX20 =
+    A.class "gap-x-20"
 
 
-colGap24 : Svg.Attribute msg
-colGap24 =
-    A.class "col-gap-24"
+gapX24 : Svg.Attribute msg
+gapX24 =
+    A.class "gap-x-24"
 
 
-colGap32 : Svg.Attribute msg
-colGap32 =
-    A.class "col-gap-32"
+gapX32 : Svg.Attribute msg
+gapX32 =
+    A.class "gap-x-32"
 
 
-colGap40 : Svg.Attribute msg
-colGap40 =
-    A.class "col-gap-40"
+gapX40 : Svg.Attribute msg
+gapX40 =
+    A.class "gap-x-40"
 
 
-colGap48 : Svg.Attribute msg
-colGap48 =
-    A.class "col-gap-48"
+gapX48 : Svg.Attribute msg
+gapX48 =
+    A.class "gap-x-48"
 
 
-colGap56 : Svg.Attribute msg
-colGap56 =
-    A.class "col-gap-56"
+gapX56 : Svg.Attribute msg
+gapX56 =
+    A.class "gap-x-56"
 
 
-colGap64 : Svg.Attribute msg
-colGap64 =
-    A.class "col-gap-64"
+gapX64 : Svg.Attribute msg
+gapX64 =
+    A.class "gap-x-64"
 
 
-colGapPx : Svg.Attribute msg
-colGapPx =
-    A.class "col-gap-px"
+gapXPx : Svg.Attribute msg
+gapXPx =
+    A.class "gap-x-px"
 
 
-rowGap0 : Svg.Attribute msg
-rowGap0 =
-    A.class "row-gap-0"
+gapY0 : Svg.Attribute msg
+gapY0 =
+    A.class "gap-y-0"
 
 
-rowGap1 : Svg.Attribute msg
-rowGap1 =
-    A.class "row-gap-1"
+gapY1 : Svg.Attribute msg
+gapY1 =
+    A.class "gap-y-1"
 
 
-rowGap2 : Svg.Attribute msg
-rowGap2 =
-    A.class "row-gap-2"
+gapY2 : Svg.Attribute msg
+gapY2 =
+    A.class "gap-y-2"
 
 
-rowGap3 : Svg.Attribute msg
-rowGap3 =
-    A.class "row-gap-3"
+gapY3 : Svg.Attribute msg
+gapY3 =
+    A.class "gap-y-3"
 
 
-rowGap4 : Svg.Attribute msg
-rowGap4 =
-    A.class "row-gap-4"
+gapY4 : Svg.Attribute msg
+gapY4 =
+    A.class "gap-y-4"
 
 
-rowGap5 : Svg.Attribute msg
-rowGap5 =
-    A.class "row-gap-5"
+gapY5 : Svg.Attribute msg
+gapY5 =
+    A.class "gap-y-5"
 
 
-rowGap6 : Svg.Attribute msg
-rowGap6 =
-    A.class "row-gap-6"
+gapY6 : Svg.Attribute msg
+gapY6 =
+    A.class "gap-y-6"
 
 
-rowGap8 : Svg.Attribute msg
-rowGap8 =
-    A.class "row-gap-8"
+gapY8 : Svg.Attribute msg
+gapY8 =
+    A.class "gap-y-8"
 
 
-rowGap10 : Svg.Attribute msg
-rowGap10 =
-    A.class "row-gap-10"
+gapY10 : Svg.Attribute msg
+gapY10 =
+    A.class "gap-y-10"
 
 
-rowGap12 : Svg.Attribute msg
-rowGap12 =
-    A.class "row-gap-12"
+gapY12 : Svg.Attribute msg
+gapY12 =
+    A.class "gap-y-12"
 
 
-rowGap16 : Svg.Attribute msg
-rowGap16 =
-    A.class "row-gap-16"
+gapY16 : Svg.Attribute msg
+gapY16 =
+    A.class "gap-y-16"
 
 
-rowGap20 : Svg.Attribute msg
-rowGap20 =
-    A.class "row-gap-20"
+gapY20 : Svg.Attribute msg
+gapY20 =
+    A.class "gap-y-20"
 
 
-rowGap24 : Svg.Attribute msg
-rowGap24 =
-    A.class "row-gap-24"
+gapY24 : Svg.Attribute msg
+gapY24 =
+    A.class "gap-y-24"
 
 
-rowGap32 : Svg.Attribute msg
-rowGap32 =
-    A.class "row-gap-32"
+gapY32 : Svg.Attribute msg
+gapY32 =
+    A.class "gap-y-32"
 
 
-rowGap40 : Svg.Attribute msg
-rowGap40 =
-    A.class "row-gap-40"
+gapY40 : Svg.Attribute msg
+gapY40 =
+    A.class "gap-y-40"
 
 
-rowGap48 : Svg.Attribute msg
-rowGap48 =
-    A.class "row-gap-48"
+gapY48 : Svg.Attribute msg
+gapY48 =
+    A.class "gap-y-48"
 
 
-rowGap56 : Svg.Attribute msg
-rowGap56 =
-    A.class "row-gap-56"
+gapY56 : Svg.Attribute msg
+gapY56 =
+    A.class "gap-y-56"
 
 
-rowGap64 : Svg.Attribute msg
-rowGap64 =
-    A.class "row-gap-64"
+gapY64 : Svg.Attribute msg
+gapY64 =
+    A.class "gap-y-64"
 
 
-rowGapPx : Svg.Attribute msg
-rowGapPx =
-    A.class "row-gap-px"
+gapYPx : Svg.Attribute msg
+gapYPx =
+    A.class "gap-y-px"
 
 
 gridFlowRow : Svg.Attribute msg
@@ -25177,6 +34946,26 @@ gridColsNone =
     A.class "grid-cols-none"
 
 
+autoColsAuto : Svg.Attribute msg
+autoColsAuto =
+    A.class "auto-cols-auto"
+
+
+autoColsMin : Svg.Attribute msg
+autoColsMin =
+    A.class "auto-cols-min"
+
+
+autoColsMax : Svg.Attribute msg
+autoColsMax =
+    A.class "auto-cols-max"
+
+
+autoColsFr : Svg.Attribute msg
+autoColsFr =
+    A.class "auto-cols-fr"
+
+
 colAuto : Svg.Attribute msg
 colAuto =
     A.class "col-auto"
@@ -25240,6 +35029,11 @@ colSpan11 =
 colSpan12 : Svg.Attribute msg
 colSpan12 =
     A.class "col-span-12"
+
+
+colSpanFull : Svg.Attribute msg
+colSpanFull =
+    A.class "col-span-full"
 
 
 colStart1 : Svg.Attribute msg
@@ -25417,6 +35211,26 @@ gridRowsNone =
     A.class "grid-rows-none"
 
 
+autoRowsAuto : Svg.Attribute msg
+autoRowsAuto =
+    A.class "auto-rows-auto"
+
+
+autoRowsMin : Svg.Attribute msg
+autoRowsMin =
+    A.class "auto-rows-min"
+
+
+autoRowsMax : Svg.Attribute msg
+autoRowsMax =
+    A.class "auto-rows-max"
+
+
+autoRowsFr : Svg.Attribute msg
+autoRowsFr =
+    A.class "auto-rows-fr"
+
+
 rowAuto : Svg.Attribute msg
 rowAuto =
     A.class "row-auto"
@@ -25450,6 +35264,11 @@ rowSpan5 =
 rowSpan6 : Svg.Attribute msg
 rowSpan6 =
     A.class "row-span-6"
+
+
+rowSpanFull : Svg.Attribute msg
+rowSpanFull =
+    A.class "row-span-full"
 
 
 rowStart1 : Svg.Attribute msg
@@ -26042,6 +35861,31 @@ rotate0 =
     A.class "rotate-0"
 
 
+rotate1 : Svg.Attribute msg
+rotate1 =
+    A.class "rotate-1"
+
+
+rotate2 : Svg.Attribute msg
+rotate2 =
+    A.class "rotate-2"
+
+
+rotate3 : Svg.Attribute msg
+rotate3 =
+    A.class "rotate-3"
+
+
+rotate6 : Svg.Attribute msg
+rotate6 =
+    A.class "rotate-6"
+
+
+rotate12 : Svg.Attribute msg
+rotate12 =
+    A.class "rotate-12"
+
+
 rotate45 : Svg.Attribute msg
 rotate45 =
     A.class "rotate-45"
@@ -26072,9 +35916,59 @@ negRotate45 =
     A.class "-rotate-45"
 
 
+negRotate12 : Svg.Attribute msg
+negRotate12 =
+    A.class "-rotate-12"
+
+
+negRotate6 : Svg.Attribute msg
+negRotate6 =
+    A.class "-rotate-6"
+
+
+negRotate3 : Svg.Attribute msg
+negRotate3 =
+    A.class "-rotate-3"
+
+
+negRotate2 : Svg.Attribute msg
+negRotate2 =
+    A.class "-rotate-2"
+
+
+negRotate1 : Svg.Attribute msg
+negRotate1 =
+    A.class "-rotate-1"
+
+
 hoverRotate0 : Svg.Attribute msg
 hoverRotate0 =
     A.class "hover:rotate-0"
+
+
+hoverRotate1 : Svg.Attribute msg
+hoverRotate1 =
+    A.class "hover:rotate-1"
+
+
+hoverRotate2 : Svg.Attribute msg
+hoverRotate2 =
+    A.class "hover:rotate-2"
+
+
+hoverRotate3 : Svg.Attribute msg
+hoverRotate3 =
+    A.class "hover:rotate-3"
+
+
+hoverRotate6 : Svg.Attribute msg
+hoverRotate6 =
+    A.class "hover:rotate-6"
+
+
+hoverRotate12 : Svg.Attribute msg
+hoverRotate12 =
+    A.class "hover:rotate-12"
 
 
 hoverRotate45 : Svg.Attribute msg
@@ -26107,9 +36001,59 @@ hoverNegRotate45 =
     A.class "hover:-rotate-45"
 
 
+hoverNegRotate12 : Svg.Attribute msg
+hoverNegRotate12 =
+    A.class "hover:-rotate-12"
+
+
+hoverNegRotate6 : Svg.Attribute msg
+hoverNegRotate6 =
+    A.class "hover:-rotate-6"
+
+
+hoverNegRotate3 : Svg.Attribute msg
+hoverNegRotate3 =
+    A.class "hover:-rotate-3"
+
+
+hoverNegRotate2 : Svg.Attribute msg
+hoverNegRotate2 =
+    A.class "hover:-rotate-2"
+
+
+hoverNegRotate1 : Svg.Attribute msg
+hoverNegRotate1 =
+    A.class "hover:-rotate-1"
+
+
 focusRotate0 : Svg.Attribute msg
 focusRotate0 =
     A.class "focus:rotate-0"
+
+
+focusRotate1 : Svg.Attribute msg
+focusRotate1 =
+    A.class "focus:rotate-1"
+
+
+focusRotate2 : Svg.Attribute msg
+focusRotate2 =
+    A.class "focus:rotate-2"
+
+
+focusRotate3 : Svg.Attribute msg
+focusRotate3 =
+    A.class "focus:rotate-3"
+
+
+focusRotate6 : Svg.Attribute msg
+focusRotate6 =
+    A.class "focus:rotate-6"
+
+
+focusRotate12 : Svg.Attribute msg
+focusRotate12 =
+    A.class "focus:rotate-12"
 
 
 focusRotate45 : Svg.Attribute msg
@@ -26140,6 +36084,31 @@ focusNegRotate90 =
 focusNegRotate45 : Svg.Attribute msg
 focusNegRotate45 =
     A.class "focus:-rotate-45"
+
+
+focusNegRotate12 : Svg.Attribute msg
+focusNegRotate12 =
+    A.class "focus:-rotate-12"
+
+
+focusNegRotate6 : Svg.Attribute msg
+focusNegRotate6 =
+    A.class "focus:-rotate-6"
+
+
+focusNegRotate3 : Svg.Attribute msg
+focusNegRotate3 =
+    A.class "focus:-rotate-3"
+
+
+focusNegRotate2 : Svg.Attribute msg
+focusNegRotate2 =
+    A.class "focus:-rotate-2"
+
+
+focusNegRotate1 : Svg.Attribute msg
+focusNegRotate1 =
+    A.class "focus:-rotate-1"
 
 
 translateX0 : Svg.Attribute msg
@@ -27377,6 +37346,16 @@ skewX0 =
     A.class "skew-x-0"
 
 
+skewX1 : Svg.Attribute msg
+skewX1 =
+    A.class "skew-x-1"
+
+
+skewX2 : Svg.Attribute msg
+skewX2 =
+    A.class "skew-x-2"
+
+
 skewX3 : Svg.Attribute msg
 skewX3 =
     A.class "skew-x-3"
@@ -27407,9 +37386,29 @@ negSkewX3 =
     A.class "-skew-x-3"
 
 
+negSkewX2 : Svg.Attribute msg
+negSkewX2 =
+    A.class "-skew-x-2"
+
+
+negSkewX1 : Svg.Attribute msg
+negSkewX1 =
+    A.class "-skew-x-1"
+
+
 skewY0 : Svg.Attribute msg
 skewY0 =
     A.class "skew-y-0"
+
+
+skewY1 : Svg.Attribute msg
+skewY1 =
+    A.class "skew-y-1"
+
+
+skewY2 : Svg.Attribute msg
+skewY2 =
+    A.class "skew-y-2"
 
 
 skewY3 : Svg.Attribute msg
@@ -27442,9 +37441,29 @@ negSkewY3 =
     A.class "-skew-y-3"
 
 
+negSkewY2 : Svg.Attribute msg
+negSkewY2 =
+    A.class "-skew-y-2"
+
+
+negSkewY1 : Svg.Attribute msg
+negSkewY1 =
+    A.class "-skew-y-1"
+
+
 hoverSkewX0 : Svg.Attribute msg
 hoverSkewX0 =
     A.class "hover:skew-x-0"
+
+
+hoverSkewX1 : Svg.Attribute msg
+hoverSkewX1 =
+    A.class "hover:skew-x-1"
+
+
+hoverSkewX2 : Svg.Attribute msg
+hoverSkewX2 =
+    A.class "hover:skew-x-2"
 
 
 hoverSkewX3 : Svg.Attribute msg
@@ -27477,9 +37496,29 @@ hoverNegSkewX3 =
     A.class "hover:-skew-x-3"
 
 
+hoverNegSkewX2 : Svg.Attribute msg
+hoverNegSkewX2 =
+    A.class "hover:-skew-x-2"
+
+
+hoverNegSkewX1 : Svg.Attribute msg
+hoverNegSkewX1 =
+    A.class "hover:-skew-x-1"
+
+
 hoverSkewY0 : Svg.Attribute msg
 hoverSkewY0 =
     A.class "hover:skew-y-0"
+
+
+hoverSkewY1 : Svg.Attribute msg
+hoverSkewY1 =
+    A.class "hover:skew-y-1"
+
+
+hoverSkewY2 : Svg.Attribute msg
+hoverSkewY2 =
+    A.class "hover:skew-y-2"
 
 
 hoverSkewY3 : Svg.Attribute msg
@@ -27512,9 +37551,29 @@ hoverNegSkewY3 =
     A.class "hover:-skew-y-3"
 
 
+hoverNegSkewY2 : Svg.Attribute msg
+hoverNegSkewY2 =
+    A.class "hover:-skew-y-2"
+
+
+hoverNegSkewY1 : Svg.Attribute msg
+hoverNegSkewY1 =
+    A.class "hover:-skew-y-1"
+
+
 focusSkewX0 : Svg.Attribute msg
 focusSkewX0 =
     A.class "focus:skew-x-0"
+
+
+focusSkewX1 : Svg.Attribute msg
+focusSkewX1 =
+    A.class "focus:skew-x-1"
+
+
+focusSkewX2 : Svg.Attribute msg
+focusSkewX2 =
+    A.class "focus:skew-x-2"
 
 
 focusSkewX3 : Svg.Attribute msg
@@ -27547,9 +37606,29 @@ focusNegSkewX3 =
     A.class "focus:-skew-x-3"
 
 
+focusNegSkewX2 : Svg.Attribute msg
+focusNegSkewX2 =
+    A.class "focus:-skew-x-2"
+
+
+focusNegSkewX1 : Svg.Attribute msg
+focusNegSkewX1 =
+    A.class "focus:-skew-x-1"
+
+
 focusSkewY0 : Svg.Attribute msg
 focusSkewY0 =
     A.class "focus:skew-y-0"
+
+
+focusSkewY1 : Svg.Attribute msg
+focusSkewY1 =
+    A.class "focus:skew-y-1"
+
+
+focusSkewY2 : Svg.Attribute msg
+focusSkewY2 =
+    A.class "focus:skew-y-2"
 
 
 focusSkewY3 : Svg.Attribute msg
@@ -27580,6 +37659,16 @@ focusNegSkewY6 =
 focusNegSkewY3 : Svg.Attribute msg
 focusNegSkewY3 =
     A.class "focus:-skew-y-3"
+
+
+focusNegSkewY2 : Svg.Attribute msg
+focusNegSkewY2 =
+    A.class "focus:-skew-y-2"
+
+
+focusNegSkewY1 : Svg.Attribute msg
+focusNegSkewY1 =
+    A.class "focus:-skew-y-1"
 
 
 transitionNone : Svg.Attribute msg
@@ -27715,6 +37804,36 @@ delay700 =
 delay1000 : Svg.Attribute msg
 delay1000 =
     A.class "delay-1000"
+
+
+animateNone : Svg.Attribute msg
+animateNone =
+    A.class "animate-none"
+
+
+animateSpin : Svg.Attribute msg
+animateSpin =
+    A.class "animate-spin"
+
+
+animatePing : Svg.Attribute msg
+animatePing =
+    A.class "animate-ping"
+
+
+animatePulse : Svg.Attribute msg
+animatePulse =
+    A.class "animate-pulse"
+
+
+animateBounce : Svg.Attribute msg
+animateBounce =
+    A.class "animate-bounce"
+
+
+smContainer : Svg.Attribute msg
+smContainer =
+    A.class "sm:container"
 
 
 smSpaceY0 : Svg.Attribute msg
@@ -28627,6 +38746,31 @@ smDividePink900 =
     A.class "sm:divide-pink-900"
 
 
+smDivideSolid : Svg.Attribute msg
+smDivideSolid =
+    A.class "sm:divide-solid"
+
+
+smDivideDashed : Svg.Attribute msg
+smDivideDashed =
+    A.class "sm:divide-dashed"
+
+
+smDivideDotted : Svg.Attribute msg
+smDivideDotted =
+    A.class "sm:divide-dotted"
+
+
+smDivideDouble : Svg.Attribute msg
+smDivideDouble =
+    A.class "sm:divide-double"
+
+
+smDivideNone : Svg.Attribute msg
+smDivideNone =
+    A.class "sm:divide-none"
+
+
 smDivideOpacity0 : Svg.Attribute msg
 smDivideOpacity0 =
     A.class "sm:divide-opacity-0"
@@ -28690,6 +38834,26 @@ smBgLocal =
 smBgScroll : Svg.Attribute msg
 smBgScroll =
     A.class "sm:bg-scroll"
+
+
+smBgClipBorder : Svg.Attribute msg
+smBgClipBorder =
+    A.class "sm:bg-clip-border"
+
+
+smBgClipPadding : Svg.Attribute msg
+smBgClipPadding =
+    A.class "sm:bg-clip-padding"
+
+
+smBgClipContent : Svg.Attribute msg
+smBgClipContent =
+    A.class "sm:bg-clip-content"
+
+
+smBgClipText : Svg.Attribute msg
+smBgClipText =
+    A.class "sm:bg-clip-text"
 
 
 smBgTransparent : Svg.Attribute msg
@@ -30100,6 +40264,4281 @@ smFocusBgPink800 =
 smFocusBgPink900 : Svg.Attribute msg
 smFocusBgPink900 =
     A.class "sm:focus:bg-pink-900"
+
+
+smBgNone : Svg.Attribute msg
+smBgNone =
+    A.class "sm:bg-none"
+
+
+smBgGradientToT : Svg.Attribute msg
+smBgGradientToT =
+    A.class "sm:bg-gradient-to-t"
+
+
+smBgGradientToTr : Svg.Attribute msg
+smBgGradientToTr =
+    A.class "sm:bg-gradient-to-tr"
+
+
+smBgGradientToR : Svg.Attribute msg
+smBgGradientToR =
+    A.class "sm:bg-gradient-to-r"
+
+
+smBgGradientToBr : Svg.Attribute msg
+smBgGradientToBr =
+    A.class "sm:bg-gradient-to-br"
+
+
+smBgGradientToB : Svg.Attribute msg
+smBgGradientToB =
+    A.class "sm:bg-gradient-to-b"
+
+
+smBgGradientToBl : Svg.Attribute msg
+smBgGradientToBl =
+    A.class "sm:bg-gradient-to-bl"
+
+
+smBgGradientToL : Svg.Attribute msg
+smBgGradientToL =
+    A.class "sm:bg-gradient-to-l"
+
+
+smBgGradientToTl : Svg.Attribute msg
+smBgGradientToTl =
+    A.class "sm:bg-gradient-to-tl"
+
+
+smFromTransparent : Svg.Attribute msg
+smFromTransparent =
+    A.class "sm:from-transparent"
+
+
+smFromCurrent : Svg.Attribute msg
+smFromCurrent =
+    A.class "sm:from-current"
+
+
+smFromBlack : Svg.Attribute msg
+smFromBlack =
+    A.class "sm:from-black"
+
+
+smFromWhite : Svg.Attribute msg
+smFromWhite =
+    A.class "sm:from-white"
+
+
+smFromGray100 : Svg.Attribute msg
+smFromGray100 =
+    A.class "sm:from-gray-100"
+
+
+smFromGray200 : Svg.Attribute msg
+smFromGray200 =
+    A.class "sm:from-gray-200"
+
+
+smFromGray300 : Svg.Attribute msg
+smFromGray300 =
+    A.class "sm:from-gray-300"
+
+
+smFromGray400 : Svg.Attribute msg
+smFromGray400 =
+    A.class "sm:from-gray-400"
+
+
+smFromGray500 : Svg.Attribute msg
+smFromGray500 =
+    A.class "sm:from-gray-500"
+
+
+smFromGray600 : Svg.Attribute msg
+smFromGray600 =
+    A.class "sm:from-gray-600"
+
+
+smFromGray700 : Svg.Attribute msg
+smFromGray700 =
+    A.class "sm:from-gray-700"
+
+
+smFromGray800 : Svg.Attribute msg
+smFromGray800 =
+    A.class "sm:from-gray-800"
+
+
+smFromGray900 : Svg.Attribute msg
+smFromGray900 =
+    A.class "sm:from-gray-900"
+
+
+smFromRed100 : Svg.Attribute msg
+smFromRed100 =
+    A.class "sm:from-red-100"
+
+
+smFromRed200 : Svg.Attribute msg
+smFromRed200 =
+    A.class "sm:from-red-200"
+
+
+smFromRed300 : Svg.Attribute msg
+smFromRed300 =
+    A.class "sm:from-red-300"
+
+
+smFromRed400 : Svg.Attribute msg
+smFromRed400 =
+    A.class "sm:from-red-400"
+
+
+smFromRed500 : Svg.Attribute msg
+smFromRed500 =
+    A.class "sm:from-red-500"
+
+
+smFromRed600 : Svg.Attribute msg
+smFromRed600 =
+    A.class "sm:from-red-600"
+
+
+smFromRed700 : Svg.Attribute msg
+smFromRed700 =
+    A.class "sm:from-red-700"
+
+
+smFromRed800 : Svg.Attribute msg
+smFromRed800 =
+    A.class "sm:from-red-800"
+
+
+smFromRed900 : Svg.Attribute msg
+smFromRed900 =
+    A.class "sm:from-red-900"
+
+
+smFromOrange100 : Svg.Attribute msg
+smFromOrange100 =
+    A.class "sm:from-orange-100"
+
+
+smFromOrange200 : Svg.Attribute msg
+smFromOrange200 =
+    A.class "sm:from-orange-200"
+
+
+smFromOrange300 : Svg.Attribute msg
+smFromOrange300 =
+    A.class "sm:from-orange-300"
+
+
+smFromOrange400 : Svg.Attribute msg
+smFromOrange400 =
+    A.class "sm:from-orange-400"
+
+
+smFromOrange500 : Svg.Attribute msg
+smFromOrange500 =
+    A.class "sm:from-orange-500"
+
+
+smFromOrange600 : Svg.Attribute msg
+smFromOrange600 =
+    A.class "sm:from-orange-600"
+
+
+smFromOrange700 : Svg.Attribute msg
+smFromOrange700 =
+    A.class "sm:from-orange-700"
+
+
+smFromOrange800 : Svg.Attribute msg
+smFromOrange800 =
+    A.class "sm:from-orange-800"
+
+
+smFromOrange900 : Svg.Attribute msg
+smFromOrange900 =
+    A.class "sm:from-orange-900"
+
+
+smFromYellow100 : Svg.Attribute msg
+smFromYellow100 =
+    A.class "sm:from-yellow-100"
+
+
+smFromYellow200 : Svg.Attribute msg
+smFromYellow200 =
+    A.class "sm:from-yellow-200"
+
+
+smFromYellow300 : Svg.Attribute msg
+smFromYellow300 =
+    A.class "sm:from-yellow-300"
+
+
+smFromYellow400 : Svg.Attribute msg
+smFromYellow400 =
+    A.class "sm:from-yellow-400"
+
+
+smFromYellow500 : Svg.Attribute msg
+smFromYellow500 =
+    A.class "sm:from-yellow-500"
+
+
+smFromYellow600 : Svg.Attribute msg
+smFromYellow600 =
+    A.class "sm:from-yellow-600"
+
+
+smFromYellow700 : Svg.Attribute msg
+smFromYellow700 =
+    A.class "sm:from-yellow-700"
+
+
+smFromYellow800 : Svg.Attribute msg
+smFromYellow800 =
+    A.class "sm:from-yellow-800"
+
+
+smFromYellow900 : Svg.Attribute msg
+smFromYellow900 =
+    A.class "sm:from-yellow-900"
+
+
+smFromGreen100 : Svg.Attribute msg
+smFromGreen100 =
+    A.class "sm:from-green-100"
+
+
+smFromGreen200 : Svg.Attribute msg
+smFromGreen200 =
+    A.class "sm:from-green-200"
+
+
+smFromGreen300 : Svg.Attribute msg
+smFromGreen300 =
+    A.class "sm:from-green-300"
+
+
+smFromGreen400 : Svg.Attribute msg
+smFromGreen400 =
+    A.class "sm:from-green-400"
+
+
+smFromGreen500 : Svg.Attribute msg
+smFromGreen500 =
+    A.class "sm:from-green-500"
+
+
+smFromGreen600 : Svg.Attribute msg
+smFromGreen600 =
+    A.class "sm:from-green-600"
+
+
+smFromGreen700 : Svg.Attribute msg
+smFromGreen700 =
+    A.class "sm:from-green-700"
+
+
+smFromGreen800 : Svg.Attribute msg
+smFromGreen800 =
+    A.class "sm:from-green-800"
+
+
+smFromGreen900 : Svg.Attribute msg
+smFromGreen900 =
+    A.class "sm:from-green-900"
+
+
+smFromTeal100 : Svg.Attribute msg
+smFromTeal100 =
+    A.class "sm:from-teal-100"
+
+
+smFromTeal200 : Svg.Attribute msg
+smFromTeal200 =
+    A.class "sm:from-teal-200"
+
+
+smFromTeal300 : Svg.Attribute msg
+smFromTeal300 =
+    A.class "sm:from-teal-300"
+
+
+smFromTeal400 : Svg.Attribute msg
+smFromTeal400 =
+    A.class "sm:from-teal-400"
+
+
+smFromTeal500 : Svg.Attribute msg
+smFromTeal500 =
+    A.class "sm:from-teal-500"
+
+
+smFromTeal600 : Svg.Attribute msg
+smFromTeal600 =
+    A.class "sm:from-teal-600"
+
+
+smFromTeal700 : Svg.Attribute msg
+smFromTeal700 =
+    A.class "sm:from-teal-700"
+
+
+smFromTeal800 : Svg.Attribute msg
+smFromTeal800 =
+    A.class "sm:from-teal-800"
+
+
+smFromTeal900 : Svg.Attribute msg
+smFromTeal900 =
+    A.class "sm:from-teal-900"
+
+
+smFromBlue100 : Svg.Attribute msg
+smFromBlue100 =
+    A.class "sm:from-blue-100"
+
+
+smFromBlue200 : Svg.Attribute msg
+smFromBlue200 =
+    A.class "sm:from-blue-200"
+
+
+smFromBlue300 : Svg.Attribute msg
+smFromBlue300 =
+    A.class "sm:from-blue-300"
+
+
+smFromBlue400 : Svg.Attribute msg
+smFromBlue400 =
+    A.class "sm:from-blue-400"
+
+
+smFromBlue500 : Svg.Attribute msg
+smFromBlue500 =
+    A.class "sm:from-blue-500"
+
+
+smFromBlue600 : Svg.Attribute msg
+smFromBlue600 =
+    A.class "sm:from-blue-600"
+
+
+smFromBlue700 : Svg.Attribute msg
+smFromBlue700 =
+    A.class "sm:from-blue-700"
+
+
+smFromBlue800 : Svg.Attribute msg
+smFromBlue800 =
+    A.class "sm:from-blue-800"
+
+
+smFromBlue900 : Svg.Attribute msg
+smFromBlue900 =
+    A.class "sm:from-blue-900"
+
+
+smFromIndigo100 : Svg.Attribute msg
+smFromIndigo100 =
+    A.class "sm:from-indigo-100"
+
+
+smFromIndigo200 : Svg.Attribute msg
+smFromIndigo200 =
+    A.class "sm:from-indigo-200"
+
+
+smFromIndigo300 : Svg.Attribute msg
+smFromIndigo300 =
+    A.class "sm:from-indigo-300"
+
+
+smFromIndigo400 : Svg.Attribute msg
+smFromIndigo400 =
+    A.class "sm:from-indigo-400"
+
+
+smFromIndigo500 : Svg.Attribute msg
+smFromIndigo500 =
+    A.class "sm:from-indigo-500"
+
+
+smFromIndigo600 : Svg.Attribute msg
+smFromIndigo600 =
+    A.class "sm:from-indigo-600"
+
+
+smFromIndigo700 : Svg.Attribute msg
+smFromIndigo700 =
+    A.class "sm:from-indigo-700"
+
+
+smFromIndigo800 : Svg.Attribute msg
+smFromIndigo800 =
+    A.class "sm:from-indigo-800"
+
+
+smFromIndigo900 : Svg.Attribute msg
+smFromIndigo900 =
+    A.class "sm:from-indigo-900"
+
+
+smFromPurple100 : Svg.Attribute msg
+smFromPurple100 =
+    A.class "sm:from-purple-100"
+
+
+smFromPurple200 : Svg.Attribute msg
+smFromPurple200 =
+    A.class "sm:from-purple-200"
+
+
+smFromPurple300 : Svg.Attribute msg
+smFromPurple300 =
+    A.class "sm:from-purple-300"
+
+
+smFromPurple400 : Svg.Attribute msg
+smFromPurple400 =
+    A.class "sm:from-purple-400"
+
+
+smFromPurple500 : Svg.Attribute msg
+smFromPurple500 =
+    A.class "sm:from-purple-500"
+
+
+smFromPurple600 : Svg.Attribute msg
+smFromPurple600 =
+    A.class "sm:from-purple-600"
+
+
+smFromPurple700 : Svg.Attribute msg
+smFromPurple700 =
+    A.class "sm:from-purple-700"
+
+
+smFromPurple800 : Svg.Attribute msg
+smFromPurple800 =
+    A.class "sm:from-purple-800"
+
+
+smFromPurple900 : Svg.Attribute msg
+smFromPurple900 =
+    A.class "sm:from-purple-900"
+
+
+smFromPink100 : Svg.Attribute msg
+smFromPink100 =
+    A.class "sm:from-pink-100"
+
+
+smFromPink200 : Svg.Attribute msg
+smFromPink200 =
+    A.class "sm:from-pink-200"
+
+
+smFromPink300 : Svg.Attribute msg
+smFromPink300 =
+    A.class "sm:from-pink-300"
+
+
+smFromPink400 : Svg.Attribute msg
+smFromPink400 =
+    A.class "sm:from-pink-400"
+
+
+smFromPink500 : Svg.Attribute msg
+smFromPink500 =
+    A.class "sm:from-pink-500"
+
+
+smFromPink600 : Svg.Attribute msg
+smFromPink600 =
+    A.class "sm:from-pink-600"
+
+
+smFromPink700 : Svg.Attribute msg
+smFromPink700 =
+    A.class "sm:from-pink-700"
+
+
+smFromPink800 : Svg.Attribute msg
+smFromPink800 =
+    A.class "sm:from-pink-800"
+
+
+smFromPink900 : Svg.Attribute msg
+smFromPink900 =
+    A.class "sm:from-pink-900"
+
+
+smViaTransparent : Svg.Attribute msg
+smViaTransparent =
+    A.class "sm:via-transparent"
+
+
+smViaCurrent : Svg.Attribute msg
+smViaCurrent =
+    A.class "sm:via-current"
+
+
+smViaBlack : Svg.Attribute msg
+smViaBlack =
+    A.class "sm:via-black"
+
+
+smViaWhite : Svg.Attribute msg
+smViaWhite =
+    A.class "sm:via-white"
+
+
+smViaGray100 : Svg.Attribute msg
+smViaGray100 =
+    A.class "sm:via-gray-100"
+
+
+smViaGray200 : Svg.Attribute msg
+smViaGray200 =
+    A.class "sm:via-gray-200"
+
+
+smViaGray300 : Svg.Attribute msg
+smViaGray300 =
+    A.class "sm:via-gray-300"
+
+
+smViaGray400 : Svg.Attribute msg
+smViaGray400 =
+    A.class "sm:via-gray-400"
+
+
+smViaGray500 : Svg.Attribute msg
+smViaGray500 =
+    A.class "sm:via-gray-500"
+
+
+smViaGray600 : Svg.Attribute msg
+smViaGray600 =
+    A.class "sm:via-gray-600"
+
+
+smViaGray700 : Svg.Attribute msg
+smViaGray700 =
+    A.class "sm:via-gray-700"
+
+
+smViaGray800 : Svg.Attribute msg
+smViaGray800 =
+    A.class "sm:via-gray-800"
+
+
+smViaGray900 : Svg.Attribute msg
+smViaGray900 =
+    A.class "sm:via-gray-900"
+
+
+smViaRed100 : Svg.Attribute msg
+smViaRed100 =
+    A.class "sm:via-red-100"
+
+
+smViaRed200 : Svg.Attribute msg
+smViaRed200 =
+    A.class "sm:via-red-200"
+
+
+smViaRed300 : Svg.Attribute msg
+smViaRed300 =
+    A.class "sm:via-red-300"
+
+
+smViaRed400 : Svg.Attribute msg
+smViaRed400 =
+    A.class "sm:via-red-400"
+
+
+smViaRed500 : Svg.Attribute msg
+smViaRed500 =
+    A.class "sm:via-red-500"
+
+
+smViaRed600 : Svg.Attribute msg
+smViaRed600 =
+    A.class "sm:via-red-600"
+
+
+smViaRed700 : Svg.Attribute msg
+smViaRed700 =
+    A.class "sm:via-red-700"
+
+
+smViaRed800 : Svg.Attribute msg
+smViaRed800 =
+    A.class "sm:via-red-800"
+
+
+smViaRed900 : Svg.Attribute msg
+smViaRed900 =
+    A.class "sm:via-red-900"
+
+
+smViaOrange100 : Svg.Attribute msg
+smViaOrange100 =
+    A.class "sm:via-orange-100"
+
+
+smViaOrange200 : Svg.Attribute msg
+smViaOrange200 =
+    A.class "sm:via-orange-200"
+
+
+smViaOrange300 : Svg.Attribute msg
+smViaOrange300 =
+    A.class "sm:via-orange-300"
+
+
+smViaOrange400 : Svg.Attribute msg
+smViaOrange400 =
+    A.class "sm:via-orange-400"
+
+
+smViaOrange500 : Svg.Attribute msg
+smViaOrange500 =
+    A.class "sm:via-orange-500"
+
+
+smViaOrange600 : Svg.Attribute msg
+smViaOrange600 =
+    A.class "sm:via-orange-600"
+
+
+smViaOrange700 : Svg.Attribute msg
+smViaOrange700 =
+    A.class "sm:via-orange-700"
+
+
+smViaOrange800 : Svg.Attribute msg
+smViaOrange800 =
+    A.class "sm:via-orange-800"
+
+
+smViaOrange900 : Svg.Attribute msg
+smViaOrange900 =
+    A.class "sm:via-orange-900"
+
+
+smViaYellow100 : Svg.Attribute msg
+smViaYellow100 =
+    A.class "sm:via-yellow-100"
+
+
+smViaYellow200 : Svg.Attribute msg
+smViaYellow200 =
+    A.class "sm:via-yellow-200"
+
+
+smViaYellow300 : Svg.Attribute msg
+smViaYellow300 =
+    A.class "sm:via-yellow-300"
+
+
+smViaYellow400 : Svg.Attribute msg
+smViaYellow400 =
+    A.class "sm:via-yellow-400"
+
+
+smViaYellow500 : Svg.Attribute msg
+smViaYellow500 =
+    A.class "sm:via-yellow-500"
+
+
+smViaYellow600 : Svg.Attribute msg
+smViaYellow600 =
+    A.class "sm:via-yellow-600"
+
+
+smViaYellow700 : Svg.Attribute msg
+smViaYellow700 =
+    A.class "sm:via-yellow-700"
+
+
+smViaYellow800 : Svg.Attribute msg
+smViaYellow800 =
+    A.class "sm:via-yellow-800"
+
+
+smViaYellow900 : Svg.Attribute msg
+smViaYellow900 =
+    A.class "sm:via-yellow-900"
+
+
+smViaGreen100 : Svg.Attribute msg
+smViaGreen100 =
+    A.class "sm:via-green-100"
+
+
+smViaGreen200 : Svg.Attribute msg
+smViaGreen200 =
+    A.class "sm:via-green-200"
+
+
+smViaGreen300 : Svg.Attribute msg
+smViaGreen300 =
+    A.class "sm:via-green-300"
+
+
+smViaGreen400 : Svg.Attribute msg
+smViaGreen400 =
+    A.class "sm:via-green-400"
+
+
+smViaGreen500 : Svg.Attribute msg
+smViaGreen500 =
+    A.class "sm:via-green-500"
+
+
+smViaGreen600 : Svg.Attribute msg
+smViaGreen600 =
+    A.class "sm:via-green-600"
+
+
+smViaGreen700 : Svg.Attribute msg
+smViaGreen700 =
+    A.class "sm:via-green-700"
+
+
+smViaGreen800 : Svg.Attribute msg
+smViaGreen800 =
+    A.class "sm:via-green-800"
+
+
+smViaGreen900 : Svg.Attribute msg
+smViaGreen900 =
+    A.class "sm:via-green-900"
+
+
+smViaTeal100 : Svg.Attribute msg
+smViaTeal100 =
+    A.class "sm:via-teal-100"
+
+
+smViaTeal200 : Svg.Attribute msg
+smViaTeal200 =
+    A.class "sm:via-teal-200"
+
+
+smViaTeal300 : Svg.Attribute msg
+smViaTeal300 =
+    A.class "sm:via-teal-300"
+
+
+smViaTeal400 : Svg.Attribute msg
+smViaTeal400 =
+    A.class "sm:via-teal-400"
+
+
+smViaTeal500 : Svg.Attribute msg
+smViaTeal500 =
+    A.class "sm:via-teal-500"
+
+
+smViaTeal600 : Svg.Attribute msg
+smViaTeal600 =
+    A.class "sm:via-teal-600"
+
+
+smViaTeal700 : Svg.Attribute msg
+smViaTeal700 =
+    A.class "sm:via-teal-700"
+
+
+smViaTeal800 : Svg.Attribute msg
+smViaTeal800 =
+    A.class "sm:via-teal-800"
+
+
+smViaTeal900 : Svg.Attribute msg
+smViaTeal900 =
+    A.class "sm:via-teal-900"
+
+
+smViaBlue100 : Svg.Attribute msg
+smViaBlue100 =
+    A.class "sm:via-blue-100"
+
+
+smViaBlue200 : Svg.Attribute msg
+smViaBlue200 =
+    A.class "sm:via-blue-200"
+
+
+smViaBlue300 : Svg.Attribute msg
+smViaBlue300 =
+    A.class "sm:via-blue-300"
+
+
+smViaBlue400 : Svg.Attribute msg
+smViaBlue400 =
+    A.class "sm:via-blue-400"
+
+
+smViaBlue500 : Svg.Attribute msg
+smViaBlue500 =
+    A.class "sm:via-blue-500"
+
+
+smViaBlue600 : Svg.Attribute msg
+smViaBlue600 =
+    A.class "sm:via-blue-600"
+
+
+smViaBlue700 : Svg.Attribute msg
+smViaBlue700 =
+    A.class "sm:via-blue-700"
+
+
+smViaBlue800 : Svg.Attribute msg
+smViaBlue800 =
+    A.class "sm:via-blue-800"
+
+
+smViaBlue900 : Svg.Attribute msg
+smViaBlue900 =
+    A.class "sm:via-blue-900"
+
+
+smViaIndigo100 : Svg.Attribute msg
+smViaIndigo100 =
+    A.class "sm:via-indigo-100"
+
+
+smViaIndigo200 : Svg.Attribute msg
+smViaIndigo200 =
+    A.class "sm:via-indigo-200"
+
+
+smViaIndigo300 : Svg.Attribute msg
+smViaIndigo300 =
+    A.class "sm:via-indigo-300"
+
+
+smViaIndigo400 : Svg.Attribute msg
+smViaIndigo400 =
+    A.class "sm:via-indigo-400"
+
+
+smViaIndigo500 : Svg.Attribute msg
+smViaIndigo500 =
+    A.class "sm:via-indigo-500"
+
+
+smViaIndigo600 : Svg.Attribute msg
+smViaIndigo600 =
+    A.class "sm:via-indigo-600"
+
+
+smViaIndigo700 : Svg.Attribute msg
+smViaIndigo700 =
+    A.class "sm:via-indigo-700"
+
+
+smViaIndigo800 : Svg.Attribute msg
+smViaIndigo800 =
+    A.class "sm:via-indigo-800"
+
+
+smViaIndigo900 : Svg.Attribute msg
+smViaIndigo900 =
+    A.class "sm:via-indigo-900"
+
+
+smViaPurple100 : Svg.Attribute msg
+smViaPurple100 =
+    A.class "sm:via-purple-100"
+
+
+smViaPurple200 : Svg.Attribute msg
+smViaPurple200 =
+    A.class "sm:via-purple-200"
+
+
+smViaPurple300 : Svg.Attribute msg
+smViaPurple300 =
+    A.class "sm:via-purple-300"
+
+
+smViaPurple400 : Svg.Attribute msg
+smViaPurple400 =
+    A.class "sm:via-purple-400"
+
+
+smViaPurple500 : Svg.Attribute msg
+smViaPurple500 =
+    A.class "sm:via-purple-500"
+
+
+smViaPurple600 : Svg.Attribute msg
+smViaPurple600 =
+    A.class "sm:via-purple-600"
+
+
+smViaPurple700 : Svg.Attribute msg
+smViaPurple700 =
+    A.class "sm:via-purple-700"
+
+
+smViaPurple800 : Svg.Attribute msg
+smViaPurple800 =
+    A.class "sm:via-purple-800"
+
+
+smViaPurple900 : Svg.Attribute msg
+smViaPurple900 =
+    A.class "sm:via-purple-900"
+
+
+smViaPink100 : Svg.Attribute msg
+smViaPink100 =
+    A.class "sm:via-pink-100"
+
+
+smViaPink200 : Svg.Attribute msg
+smViaPink200 =
+    A.class "sm:via-pink-200"
+
+
+smViaPink300 : Svg.Attribute msg
+smViaPink300 =
+    A.class "sm:via-pink-300"
+
+
+smViaPink400 : Svg.Attribute msg
+smViaPink400 =
+    A.class "sm:via-pink-400"
+
+
+smViaPink500 : Svg.Attribute msg
+smViaPink500 =
+    A.class "sm:via-pink-500"
+
+
+smViaPink600 : Svg.Attribute msg
+smViaPink600 =
+    A.class "sm:via-pink-600"
+
+
+smViaPink700 : Svg.Attribute msg
+smViaPink700 =
+    A.class "sm:via-pink-700"
+
+
+smViaPink800 : Svg.Attribute msg
+smViaPink800 =
+    A.class "sm:via-pink-800"
+
+
+smViaPink900 : Svg.Attribute msg
+smViaPink900 =
+    A.class "sm:via-pink-900"
+
+
+smToTransparent : Svg.Attribute msg
+smToTransparent =
+    A.class "sm:to-transparent"
+
+
+smToCurrent : Svg.Attribute msg
+smToCurrent =
+    A.class "sm:to-current"
+
+
+smToBlack : Svg.Attribute msg
+smToBlack =
+    A.class "sm:to-black"
+
+
+smToWhite : Svg.Attribute msg
+smToWhite =
+    A.class "sm:to-white"
+
+
+smToGray100 : Svg.Attribute msg
+smToGray100 =
+    A.class "sm:to-gray-100"
+
+
+smToGray200 : Svg.Attribute msg
+smToGray200 =
+    A.class "sm:to-gray-200"
+
+
+smToGray300 : Svg.Attribute msg
+smToGray300 =
+    A.class "sm:to-gray-300"
+
+
+smToGray400 : Svg.Attribute msg
+smToGray400 =
+    A.class "sm:to-gray-400"
+
+
+smToGray500 : Svg.Attribute msg
+smToGray500 =
+    A.class "sm:to-gray-500"
+
+
+smToGray600 : Svg.Attribute msg
+smToGray600 =
+    A.class "sm:to-gray-600"
+
+
+smToGray700 : Svg.Attribute msg
+smToGray700 =
+    A.class "sm:to-gray-700"
+
+
+smToGray800 : Svg.Attribute msg
+smToGray800 =
+    A.class "sm:to-gray-800"
+
+
+smToGray900 : Svg.Attribute msg
+smToGray900 =
+    A.class "sm:to-gray-900"
+
+
+smToRed100 : Svg.Attribute msg
+smToRed100 =
+    A.class "sm:to-red-100"
+
+
+smToRed200 : Svg.Attribute msg
+smToRed200 =
+    A.class "sm:to-red-200"
+
+
+smToRed300 : Svg.Attribute msg
+smToRed300 =
+    A.class "sm:to-red-300"
+
+
+smToRed400 : Svg.Attribute msg
+smToRed400 =
+    A.class "sm:to-red-400"
+
+
+smToRed500 : Svg.Attribute msg
+smToRed500 =
+    A.class "sm:to-red-500"
+
+
+smToRed600 : Svg.Attribute msg
+smToRed600 =
+    A.class "sm:to-red-600"
+
+
+smToRed700 : Svg.Attribute msg
+smToRed700 =
+    A.class "sm:to-red-700"
+
+
+smToRed800 : Svg.Attribute msg
+smToRed800 =
+    A.class "sm:to-red-800"
+
+
+smToRed900 : Svg.Attribute msg
+smToRed900 =
+    A.class "sm:to-red-900"
+
+
+smToOrange100 : Svg.Attribute msg
+smToOrange100 =
+    A.class "sm:to-orange-100"
+
+
+smToOrange200 : Svg.Attribute msg
+smToOrange200 =
+    A.class "sm:to-orange-200"
+
+
+smToOrange300 : Svg.Attribute msg
+smToOrange300 =
+    A.class "sm:to-orange-300"
+
+
+smToOrange400 : Svg.Attribute msg
+smToOrange400 =
+    A.class "sm:to-orange-400"
+
+
+smToOrange500 : Svg.Attribute msg
+smToOrange500 =
+    A.class "sm:to-orange-500"
+
+
+smToOrange600 : Svg.Attribute msg
+smToOrange600 =
+    A.class "sm:to-orange-600"
+
+
+smToOrange700 : Svg.Attribute msg
+smToOrange700 =
+    A.class "sm:to-orange-700"
+
+
+smToOrange800 : Svg.Attribute msg
+smToOrange800 =
+    A.class "sm:to-orange-800"
+
+
+smToOrange900 : Svg.Attribute msg
+smToOrange900 =
+    A.class "sm:to-orange-900"
+
+
+smToYellow100 : Svg.Attribute msg
+smToYellow100 =
+    A.class "sm:to-yellow-100"
+
+
+smToYellow200 : Svg.Attribute msg
+smToYellow200 =
+    A.class "sm:to-yellow-200"
+
+
+smToYellow300 : Svg.Attribute msg
+smToYellow300 =
+    A.class "sm:to-yellow-300"
+
+
+smToYellow400 : Svg.Attribute msg
+smToYellow400 =
+    A.class "sm:to-yellow-400"
+
+
+smToYellow500 : Svg.Attribute msg
+smToYellow500 =
+    A.class "sm:to-yellow-500"
+
+
+smToYellow600 : Svg.Attribute msg
+smToYellow600 =
+    A.class "sm:to-yellow-600"
+
+
+smToYellow700 : Svg.Attribute msg
+smToYellow700 =
+    A.class "sm:to-yellow-700"
+
+
+smToYellow800 : Svg.Attribute msg
+smToYellow800 =
+    A.class "sm:to-yellow-800"
+
+
+smToYellow900 : Svg.Attribute msg
+smToYellow900 =
+    A.class "sm:to-yellow-900"
+
+
+smToGreen100 : Svg.Attribute msg
+smToGreen100 =
+    A.class "sm:to-green-100"
+
+
+smToGreen200 : Svg.Attribute msg
+smToGreen200 =
+    A.class "sm:to-green-200"
+
+
+smToGreen300 : Svg.Attribute msg
+smToGreen300 =
+    A.class "sm:to-green-300"
+
+
+smToGreen400 : Svg.Attribute msg
+smToGreen400 =
+    A.class "sm:to-green-400"
+
+
+smToGreen500 : Svg.Attribute msg
+smToGreen500 =
+    A.class "sm:to-green-500"
+
+
+smToGreen600 : Svg.Attribute msg
+smToGreen600 =
+    A.class "sm:to-green-600"
+
+
+smToGreen700 : Svg.Attribute msg
+smToGreen700 =
+    A.class "sm:to-green-700"
+
+
+smToGreen800 : Svg.Attribute msg
+smToGreen800 =
+    A.class "sm:to-green-800"
+
+
+smToGreen900 : Svg.Attribute msg
+smToGreen900 =
+    A.class "sm:to-green-900"
+
+
+smToTeal100 : Svg.Attribute msg
+smToTeal100 =
+    A.class "sm:to-teal-100"
+
+
+smToTeal200 : Svg.Attribute msg
+smToTeal200 =
+    A.class "sm:to-teal-200"
+
+
+smToTeal300 : Svg.Attribute msg
+smToTeal300 =
+    A.class "sm:to-teal-300"
+
+
+smToTeal400 : Svg.Attribute msg
+smToTeal400 =
+    A.class "sm:to-teal-400"
+
+
+smToTeal500 : Svg.Attribute msg
+smToTeal500 =
+    A.class "sm:to-teal-500"
+
+
+smToTeal600 : Svg.Attribute msg
+smToTeal600 =
+    A.class "sm:to-teal-600"
+
+
+smToTeal700 : Svg.Attribute msg
+smToTeal700 =
+    A.class "sm:to-teal-700"
+
+
+smToTeal800 : Svg.Attribute msg
+smToTeal800 =
+    A.class "sm:to-teal-800"
+
+
+smToTeal900 : Svg.Attribute msg
+smToTeal900 =
+    A.class "sm:to-teal-900"
+
+
+smToBlue100 : Svg.Attribute msg
+smToBlue100 =
+    A.class "sm:to-blue-100"
+
+
+smToBlue200 : Svg.Attribute msg
+smToBlue200 =
+    A.class "sm:to-blue-200"
+
+
+smToBlue300 : Svg.Attribute msg
+smToBlue300 =
+    A.class "sm:to-blue-300"
+
+
+smToBlue400 : Svg.Attribute msg
+smToBlue400 =
+    A.class "sm:to-blue-400"
+
+
+smToBlue500 : Svg.Attribute msg
+smToBlue500 =
+    A.class "sm:to-blue-500"
+
+
+smToBlue600 : Svg.Attribute msg
+smToBlue600 =
+    A.class "sm:to-blue-600"
+
+
+smToBlue700 : Svg.Attribute msg
+smToBlue700 =
+    A.class "sm:to-blue-700"
+
+
+smToBlue800 : Svg.Attribute msg
+smToBlue800 =
+    A.class "sm:to-blue-800"
+
+
+smToBlue900 : Svg.Attribute msg
+smToBlue900 =
+    A.class "sm:to-blue-900"
+
+
+smToIndigo100 : Svg.Attribute msg
+smToIndigo100 =
+    A.class "sm:to-indigo-100"
+
+
+smToIndigo200 : Svg.Attribute msg
+smToIndigo200 =
+    A.class "sm:to-indigo-200"
+
+
+smToIndigo300 : Svg.Attribute msg
+smToIndigo300 =
+    A.class "sm:to-indigo-300"
+
+
+smToIndigo400 : Svg.Attribute msg
+smToIndigo400 =
+    A.class "sm:to-indigo-400"
+
+
+smToIndigo500 : Svg.Attribute msg
+smToIndigo500 =
+    A.class "sm:to-indigo-500"
+
+
+smToIndigo600 : Svg.Attribute msg
+smToIndigo600 =
+    A.class "sm:to-indigo-600"
+
+
+smToIndigo700 : Svg.Attribute msg
+smToIndigo700 =
+    A.class "sm:to-indigo-700"
+
+
+smToIndigo800 : Svg.Attribute msg
+smToIndigo800 =
+    A.class "sm:to-indigo-800"
+
+
+smToIndigo900 : Svg.Attribute msg
+smToIndigo900 =
+    A.class "sm:to-indigo-900"
+
+
+smToPurple100 : Svg.Attribute msg
+smToPurple100 =
+    A.class "sm:to-purple-100"
+
+
+smToPurple200 : Svg.Attribute msg
+smToPurple200 =
+    A.class "sm:to-purple-200"
+
+
+smToPurple300 : Svg.Attribute msg
+smToPurple300 =
+    A.class "sm:to-purple-300"
+
+
+smToPurple400 : Svg.Attribute msg
+smToPurple400 =
+    A.class "sm:to-purple-400"
+
+
+smToPurple500 : Svg.Attribute msg
+smToPurple500 =
+    A.class "sm:to-purple-500"
+
+
+smToPurple600 : Svg.Attribute msg
+smToPurple600 =
+    A.class "sm:to-purple-600"
+
+
+smToPurple700 : Svg.Attribute msg
+smToPurple700 =
+    A.class "sm:to-purple-700"
+
+
+smToPurple800 : Svg.Attribute msg
+smToPurple800 =
+    A.class "sm:to-purple-800"
+
+
+smToPurple900 : Svg.Attribute msg
+smToPurple900 =
+    A.class "sm:to-purple-900"
+
+
+smToPink100 : Svg.Attribute msg
+smToPink100 =
+    A.class "sm:to-pink-100"
+
+
+smToPink200 : Svg.Attribute msg
+smToPink200 =
+    A.class "sm:to-pink-200"
+
+
+smToPink300 : Svg.Attribute msg
+smToPink300 =
+    A.class "sm:to-pink-300"
+
+
+smToPink400 : Svg.Attribute msg
+smToPink400 =
+    A.class "sm:to-pink-400"
+
+
+smToPink500 : Svg.Attribute msg
+smToPink500 =
+    A.class "sm:to-pink-500"
+
+
+smToPink600 : Svg.Attribute msg
+smToPink600 =
+    A.class "sm:to-pink-600"
+
+
+smToPink700 : Svg.Attribute msg
+smToPink700 =
+    A.class "sm:to-pink-700"
+
+
+smToPink800 : Svg.Attribute msg
+smToPink800 =
+    A.class "sm:to-pink-800"
+
+
+smToPink900 : Svg.Attribute msg
+smToPink900 =
+    A.class "sm:to-pink-900"
+
+
+smHoverFromTransparent : Svg.Attribute msg
+smHoverFromTransparent =
+    A.class "sm:hover:from-transparent"
+
+
+smHoverFromCurrent : Svg.Attribute msg
+smHoverFromCurrent =
+    A.class "sm:hover:from-current"
+
+
+smHoverFromBlack : Svg.Attribute msg
+smHoverFromBlack =
+    A.class "sm:hover:from-black"
+
+
+smHoverFromWhite : Svg.Attribute msg
+smHoverFromWhite =
+    A.class "sm:hover:from-white"
+
+
+smHoverFromGray100 : Svg.Attribute msg
+smHoverFromGray100 =
+    A.class "sm:hover:from-gray-100"
+
+
+smHoverFromGray200 : Svg.Attribute msg
+smHoverFromGray200 =
+    A.class "sm:hover:from-gray-200"
+
+
+smHoverFromGray300 : Svg.Attribute msg
+smHoverFromGray300 =
+    A.class "sm:hover:from-gray-300"
+
+
+smHoverFromGray400 : Svg.Attribute msg
+smHoverFromGray400 =
+    A.class "sm:hover:from-gray-400"
+
+
+smHoverFromGray500 : Svg.Attribute msg
+smHoverFromGray500 =
+    A.class "sm:hover:from-gray-500"
+
+
+smHoverFromGray600 : Svg.Attribute msg
+smHoverFromGray600 =
+    A.class "sm:hover:from-gray-600"
+
+
+smHoverFromGray700 : Svg.Attribute msg
+smHoverFromGray700 =
+    A.class "sm:hover:from-gray-700"
+
+
+smHoverFromGray800 : Svg.Attribute msg
+smHoverFromGray800 =
+    A.class "sm:hover:from-gray-800"
+
+
+smHoverFromGray900 : Svg.Attribute msg
+smHoverFromGray900 =
+    A.class "sm:hover:from-gray-900"
+
+
+smHoverFromRed100 : Svg.Attribute msg
+smHoverFromRed100 =
+    A.class "sm:hover:from-red-100"
+
+
+smHoverFromRed200 : Svg.Attribute msg
+smHoverFromRed200 =
+    A.class "sm:hover:from-red-200"
+
+
+smHoverFromRed300 : Svg.Attribute msg
+smHoverFromRed300 =
+    A.class "sm:hover:from-red-300"
+
+
+smHoverFromRed400 : Svg.Attribute msg
+smHoverFromRed400 =
+    A.class "sm:hover:from-red-400"
+
+
+smHoverFromRed500 : Svg.Attribute msg
+smHoverFromRed500 =
+    A.class "sm:hover:from-red-500"
+
+
+smHoverFromRed600 : Svg.Attribute msg
+smHoverFromRed600 =
+    A.class "sm:hover:from-red-600"
+
+
+smHoverFromRed700 : Svg.Attribute msg
+smHoverFromRed700 =
+    A.class "sm:hover:from-red-700"
+
+
+smHoverFromRed800 : Svg.Attribute msg
+smHoverFromRed800 =
+    A.class "sm:hover:from-red-800"
+
+
+smHoverFromRed900 : Svg.Attribute msg
+smHoverFromRed900 =
+    A.class "sm:hover:from-red-900"
+
+
+smHoverFromOrange100 : Svg.Attribute msg
+smHoverFromOrange100 =
+    A.class "sm:hover:from-orange-100"
+
+
+smHoverFromOrange200 : Svg.Attribute msg
+smHoverFromOrange200 =
+    A.class "sm:hover:from-orange-200"
+
+
+smHoverFromOrange300 : Svg.Attribute msg
+smHoverFromOrange300 =
+    A.class "sm:hover:from-orange-300"
+
+
+smHoverFromOrange400 : Svg.Attribute msg
+smHoverFromOrange400 =
+    A.class "sm:hover:from-orange-400"
+
+
+smHoverFromOrange500 : Svg.Attribute msg
+smHoverFromOrange500 =
+    A.class "sm:hover:from-orange-500"
+
+
+smHoverFromOrange600 : Svg.Attribute msg
+smHoverFromOrange600 =
+    A.class "sm:hover:from-orange-600"
+
+
+smHoverFromOrange700 : Svg.Attribute msg
+smHoverFromOrange700 =
+    A.class "sm:hover:from-orange-700"
+
+
+smHoverFromOrange800 : Svg.Attribute msg
+smHoverFromOrange800 =
+    A.class "sm:hover:from-orange-800"
+
+
+smHoverFromOrange900 : Svg.Attribute msg
+smHoverFromOrange900 =
+    A.class "sm:hover:from-orange-900"
+
+
+smHoverFromYellow100 : Svg.Attribute msg
+smHoverFromYellow100 =
+    A.class "sm:hover:from-yellow-100"
+
+
+smHoverFromYellow200 : Svg.Attribute msg
+smHoverFromYellow200 =
+    A.class "sm:hover:from-yellow-200"
+
+
+smHoverFromYellow300 : Svg.Attribute msg
+smHoverFromYellow300 =
+    A.class "sm:hover:from-yellow-300"
+
+
+smHoverFromYellow400 : Svg.Attribute msg
+smHoverFromYellow400 =
+    A.class "sm:hover:from-yellow-400"
+
+
+smHoverFromYellow500 : Svg.Attribute msg
+smHoverFromYellow500 =
+    A.class "sm:hover:from-yellow-500"
+
+
+smHoverFromYellow600 : Svg.Attribute msg
+smHoverFromYellow600 =
+    A.class "sm:hover:from-yellow-600"
+
+
+smHoverFromYellow700 : Svg.Attribute msg
+smHoverFromYellow700 =
+    A.class "sm:hover:from-yellow-700"
+
+
+smHoverFromYellow800 : Svg.Attribute msg
+smHoverFromYellow800 =
+    A.class "sm:hover:from-yellow-800"
+
+
+smHoverFromYellow900 : Svg.Attribute msg
+smHoverFromYellow900 =
+    A.class "sm:hover:from-yellow-900"
+
+
+smHoverFromGreen100 : Svg.Attribute msg
+smHoverFromGreen100 =
+    A.class "sm:hover:from-green-100"
+
+
+smHoverFromGreen200 : Svg.Attribute msg
+smHoverFromGreen200 =
+    A.class "sm:hover:from-green-200"
+
+
+smHoverFromGreen300 : Svg.Attribute msg
+smHoverFromGreen300 =
+    A.class "sm:hover:from-green-300"
+
+
+smHoverFromGreen400 : Svg.Attribute msg
+smHoverFromGreen400 =
+    A.class "sm:hover:from-green-400"
+
+
+smHoverFromGreen500 : Svg.Attribute msg
+smHoverFromGreen500 =
+    A.class "sm:hover:from-green-500"
+
+
+smHoverFromGreen600 : Svg.Attribute msg
+smHoverFromGreen600 =
+    A.class "sm:hover:from-green-600"
+
+
+smHoverFromGreen700 : Svg.Attribute msg
+smHoverFromGreen700 =
+    A.class "sm:hover:from-green-700"
+
+
+smHoverFromGreen800 : Svg.Attribute msg
+smHoverFromGreen800 =
+    A.class "sm:hover:from-green-800"
+
+
+smHoverFromGreen900 : Svg.Attribute msg
+smHoverFromGreen900 =
+    A.class "sm:hover:from-green-900"
+
+
+smHoverFromTeal100 : Svg.Attribute msg
+smHoverFromTeal100 =
+    A.class "sm:hover:from-teal-100"
+
+
+smHoverFromTeal200 : Svg.Attribute msg
+smHoverFromTeal200 =
+    A.class "sm:hover:from-teal-200"
+
+
+smHoverFromTeal300 : Svg.Attribute msg
+smHoverFromTeal300 =
+    A.class "sm:hover:from-teal-300"
+
+
+smHoverFromTeal400 : Svg.Attribute msg
+smHoverFromTeal400 =
+    A.class "sm:hover:from-teal-400"
+
+
+smHoverFromTeal500 : Svg.Attribute msg
+smHoverFromTeal500 =
+    A.class "sm:hover:from-teal-500"
+
+
+smHoverFromTeal600 : Svg.Attribute msg
+smHoverFromTeal600 =
+    A.class "sm:hover:from-teal-600"
+
+
+smHoverFromTeal700 : Svg.Attribute msg
+smHoverFromTeal700 =
+    A.class "sm:hover:from-teal-700"
+
+
+smHoverFromTeal800 : Svg.Attribute msg
+smHoverFromTeal800 =
+    A.class "sm:hover:from-teal-800"
+
+
+smHoverFromTeal900 : Svg.Attribute msg
+smHoverFromTeal900 =
+    A.class "sm:hover:from-teal-900"
+
+
+smHoverFromBlue100 : Svg.Attribute msg
+smHoverFromBlue100 =
+    A.class "sm:hover:from-blue-100"
+
+
+smHoverFromBlue200 : Svg.Attribute msg
+smHoverFromBlue200 =
+    A.class "sm:hover:from-blue-200"
+
+
+smHoverFromBlue300 : Svg.Attribute msg
+smHoverFromBlue300 =
+    A.class "sm:hover:from-blue-300"
+
+
+smHoverFromBlue400 : Svg.Attribute msg
+smHoverFromBlue400 =
+    A.class "sm:hover:from-blue-400"
+
+
+smHoverFromBlue500 : Svg.Attribute msg
+smHoverFromBlue500 =
+    A.class "sm:hover:from-blue-500"
+
+
+smHoverFromBlue600 : Svg.Attribute msg
+smHoverFromBlue600 =
+    A.class "sm:hover:from-blue-600"
+
+
+smHoverFromBlue700 : Svg.Attribute msg
+smHoverFromBlue700 =
+    A.class "sm:hover:from-blue-700"
+
+
+smHoverFromBlue800 : Svg.Attribute msg
+smHoverFromBlue800 =
+    A.class "sm:hover:from-blue-800"
+
+
+smHoverFromBlue900 : Svg.Attribute msg
+smHoverFromBlue900 =
+    A.class "sm:hover:from-blue-900"
+
+
+smHoverFromIndigo100 : Svg.Attribute msg
+smHoverFromIndigo100 =
+    A.class "sm:hover:from-indigo-100"
+
+
+smHoverFromIndigo200 : Svg.Attribute msg
+smHoverFromIndigo200 =
+    A.class "sm:hover:from-indigo-200"
+
+
+smHoverFromIndigo300 : Svg.Attribute msg
+smHoverFromIndigo300 =
+    A.class "sm:hover:from-indigo-300"
+
+
+smHoverFromIndigo400 : Svg.Attribute msg
+smHoverFromIndigo400 =
+    A.class "sm:hover:from-indigo-400"
+
+
+smHoverFromIndigo500 : Svg.Attribute msg
+smHoverFromIndigo500 =
+    A.class "sm:hover:from-indigo-500"
+
+
+smHoverFromIndigo600 : Svg.Attribute msg
+smHoverFromIndigo600 =
+    A.class "sm:hover:from-indigo-600"
+
+
+smHoverFromIndigo700 : Svg.Attribute msg
+smHoverFromIndigo700 =
+    A.class "sm:hover:from-indigo-700"
+
+
+smHoverFromIndigo800 : Svg.Attribute msg
+smHoverFromIndigo800 =
+    A.class "sm:hover:from-indigo-800"
+
+
+smHoverFromIndigo900 : Svg.Attribute msg
+smHoverFromIndigo900 =
+    A.class "sm:hover:from-indigo-900"
+
+
+smHoverFromPurple100 : Svg.Attribute msg
+smHoverFromPurple100 =
+    A.class "sm:hover:from-purple-100"
+
+
+smHoverFromPurple200 : Svg.Attribute msg
+smHoverFromPurple200 =
+    A.class "sm:hover:from-purple-200"
+
+
+smHoverFromPurple300 : Svg.Attribute msg
+smHoverFromPurple300 =
+    A.class "sm:hover:from-purple-300"
+
+
+smHoverFromPurple400 : Svg.Attribute msg
+smHoverFromPurple400 =
+    A.class "sm:hover:from-purple-400"
+
+
+smHoverFromPurple500 : Svg.Attribute msg
+smHoverFromPurple500 =
+    A.class "sm:hover:from-purple-500"
+
+
+smHoverFromPurple600 : Svg.Attribute msg
+smHoverFromPurple600 =
+    A.class "sm:hover:from-purple-600"
+
+
+smHoverFromPurple700 : Svg.Attribute msg
+smHoverFromPurple700 =
+    A.class "sm:hover:from-purple-700"
+
+
+smHoverFromPurple800 : Svg.Attribute msg
+smHoverFromPurple800 =
+    A.class "sm:hover:from-purple-800"
+
+
+smHoverFromPurple900 : Svg.Attribute msg
+smHoverFromPurple900 =
+    A.class "sm:hover:from-purple-900"
+
+
+smHoverFromPink100 : Svg.Attribute msg
+smHoverFromPink100 =
+    A.class "sm:hover:from-pink-100"
+
+
+smHoverFromPink200 : Svg.Attribute msg
+smHoverFromPink200 =
+    A.class "sm:hover:from-pink-200"
+
+
+smHoverFromPink300 : Svg.Attribute msg
+smHoverFromPink300 =
+    A.class "sm:hover:from-pink-300"
+
+
+smHoverFromPink400 : Svg.Attribute msg
+smHoverFromPink400 =
+    A.class "sm:hover:from-pink-400"
+
+
+smHoverFromPink500 : Svg.Attribute msg
+smHoverFromPink500 =
+    A.class "sm:hover:from-pink-500"
+
+
+smHoverFromPink600 : Svg.Attribute msg
+smHoverFromPink600 =
+    A.class "sm:hover:from-pink-600"
+
+
+smHoverFromPink700 : Svg.Attribute msg
+smHoverFromPink700 =
+    A.class "sm:hover:from-pink-700"
+
+
+smHoverFromPink800 : Svg.Attribute msg
+smHoverFromPink800 =
+    A.class "sm:hover:from-pink-800"
+
+
+smHoverFromPink900 : Svg.Attribute msg
+smHoverFromPink900 =
+    A.class "sm:hover:from-pink-900"
+
+
+smHoverViaTransparent : Svg.Attribute msg
+smHoverViaTransparent =
+    A.class "sm:hover:via-transparent"
+
+
+smHoverViaCurrent : Svg.Attribute msg
+smHoverViaCurrent =
+    A.class "sm:hover:via-current"
+
+
+smHoverViaBlack : Svg.Attribute msg
+smHoverViaBlack =
+    A.class "sm:hover:via-black"
+
+
+smHoverViaWhite : Svg.Attribute msg
+smHoverViaWhite =
+    A.class "sm:hover:via-white"
+
+
+smHoverViaGray100 : Svg.Attribute msg
+smHoverViaGray100 =
+    A.class "sm:hover:via-gray-100"
+
+
+smHoverViaGray200 : Svg.Attribute msg
+smHoverViaGray200 =
+    A.class "sm:hover:via-gray-200"
+
+
+smHoverViaGray300 : Svg.Attribute msg
+smHoverViaGray300 =
+    A.class "sm:hover:via-gray-300"
+
+
+smHoverViaGray400 : Svg.Attribute msg
+smHoverViaGray400 =
+    A.class "sm:hover:via-gray-400"
+
+
+smHoverViaGray500 : Svg.Attribute msg
+smHoverViaGray500 =
+    A.class "sm:hover:via-gray-500"
+
+
+smHoverViaGray600 : Svg.Attribute msg
+smHoverViaGray600 =
+    A.class "sm:hover:via-gray-600"
+
+
+smHoverViaGray700 : Svg.Attribute msg
+smHoverViaGray700 =
+    A.class "sm:hover:via-gray-700"
+
+
+smHoverViaGray800 : Svg.Attribute msg
+smHoverViaGray800 =
+    A.class "sm:hover:via-gray-800"
+
+
+smHoverViaGray900 : Svg.Attribute msg
+smHoverViaGray900 =
+    A.class "sm:hover:via-gray-900"
+
+
+smHoverViaRed100 : Svg.Attribute msg
+smHoverViaRed100 =
+    A.class "sm:hover:via-red-100"
+
+
+smHoverViaRed200 : Svg.Attribute msg
+smHoverViaRed200 =
+    A.class "sm:hover:via-red-200"
+
+
+smHoverViaRed300 : Svg.Attribute msg
+smHoverViaRed300 =
+    A.class "sm:hover:via-red-300"
+
+
+smHoverViaRed400 : Svg.Attribute msg
+smHoverViaRed400 =
+    A.class "sm:hover:via-red-400"
+
+
+smHoverViaRed500 : Svg.Attribute msg
+smHoverViaRed500 =
+    A.class "sm:hover:via-red-500"
+
+
+smHoverViaRed600 : Svg.Attribute msg
+smHoverViaRed600 =
+    A.class "sm:hover:via-red-600"
+
+
+smHoverViaRed700 : Svg.Attribute msg
+smHoverViaRed700 =
+    A.class "sm:hover:via-red-700"
+
+
+smHoverViaRed800 : Svg.Attribute msg
+smHoverViaRed800 =
+    A.class "sm:hover:via-red-800"
+
+
+smHoverViaRed900 : Svg.Attribute msg
+smHoverViaRed900 =
+    A.class "sm:hover:via-red-900"
+
+
+smHoverViaOrange100 : Svg.Attribute msg
+smHoverViaOrange100 =
+    A.class "sm:hover:via-orange-100"
+
+
+smHoverViaOrange200 : Svg.Attribute msg
+smHoverViaOrange200 =
+    A.class "sm:hover:via-orange-200"
+
+
+smHoverViaOrange300 : Svg.Attribute msg
+smHoverViaOrange300 =
+    A.class "sm:hover:via-orange-300"
+
+
+smHoverViaOrange400 : Svg.Attribute msg
+smHoverViaOrange400 =
+    A.class "sm:hover:via-orange-400"
+
+
+smHoverViaOrange500 : Svg.Attribute msg
+smHoverViaOrange500 =
+    A.class "sm:hover:via-orange-500"
+
+
+smHoverViaOrange600 : Svg.Attribute msg
+smHoverViaOrange600 =
+    A.class "sm:hover:via-orange-600"
+
+
+smHoverViaOrange700 : Svg.Attribute msg
+smHoverViaOrange700 =
+    A.class "sm:hover:via-orange-700"
+
+
+smHoverViaOrange800 : Svg.Attribute msg
+smHoverViaOrange800 =
+    A.class "sm:hover:via-orange-800"
+
+
+smHoverViaOrange900 : Svg.Attribute msg
+smHoverViaOrange900 =
+    A.class "sm:hover:via-orange-900"
+
+
+smHoverViaYellow100 : Svg.Attribute msg
+smHoverViaYellow100 =
+    A.class "sm:hover:via-yellow-100"
+
+
+smHoverViaYellow200 : Svg.Attribute msg
+smHoverViaYellow200 =
+    A.class "sm:hover:via-yellow-200"
+
+
+smHoverViaYellow300 : Svg.Attribute msg
+smHoverViaYellow300 =
+    A.class "sm:hover:via-yellow-300"
+
+
+smHoverViaYellow400 : Svg.Attribute msg
+smHoverViaYellow400 =
+    A.class "sm:hover:via-yellow-400"
+
+
+smHoverViaYellow500 : Svg.Attribute msg
+smHoverViaYellow500 =
+    A.class "sm:hover:via-yellow-500"
+
+
+smHoverViaYellow600 : Svg.Attribute msg
+smHoverViaYellow600 =
+    A.class "sm:hover:via-yellow-600"
+
+
+smHoverViaYellow700 : Svg.Attribute msg
+smHoverViaYellow700 =
+    A.class "sm:hover:via-yellow-700"
+
+
+smHoverViaYellow800 : Svg.Attribute msg
+smHoverViaYellow800 =
+    A.class "sm:hover:via-yellow-800"
+
+
+smHoverViaYellow900 : Svg.Attribute msg
+smHoverViaYellow900 =
+    A.class "sm:hover:via-yellow-900"
+
+
+smHoverViaGreen100 : Svg.Attribute msg
+smHoverViaGreen100 =
+    A.class "sm:hover:via-green-100"
+
+
+smHoverViaGreen200 : Svg.Attribute msg
+smHoverViaGreen200 =
+    A.class "sm:hover:via-green-200"
+
+
+smHoverViaGreen300 : Svg.Attribute msg
+smHoverViaGreen300 =
+    A.class "sm:hover:via-green-300"
+
+
+smHoverViaGreen400 : Svg.Attribute msg
+smHoverViaGreen400 =
+    A.class "sm:hover:via-green-400"
+
+
+smHoverViaGreen500 : Svg.Attribute msg
+smHoverViaGreen500 =
+    A.class "sm:hover:via-green-500"
+
+
+smHoverViaGreen600 : Svg.Attribute msg
+smHoverViaGreen600 =
+    A.class "sm:hover:via-green-600"
+
+
+smHoverViaGreen700 : Svg.Attribute msg
+smHoverViaGreen700 =
+    A.class "sm:hover:via-green-700"
+
+
+smHoverViaGreen800 : Svg.Attribute msg
+smHoverViaGreen800 =
+    A.class "sm:hover:via-green-800"
+
+
+smHoverViaGreen900 : Svg.Attribute msg
+smHoverViaGreen900 =
+    A.class "sm:hover:via-green-900"
+
+
+smHoverViaTeal100 : Svg.Attribute msg
+smHoverViaTeal100 =
+    A.class "sm:hover:via-teal-100"
+
+
+smHoverViaTeal200 : Svg.Attribute msg
+smHoverViaTeal200 =
+    A.class "sm:hover:via-teal-200"
+
+
+smHoverViaTeal300 : Svg.Attribute msg
+smHoverViaTeal300 =
+    A.class "sm:hover:via-teal-300"
+
+
+smHoverViaTeal400 : Svg.Attribute msg
+smHoverViaTeal400 =
+    A.class "sm:hover:via-teal-400"
+
+
+smHoverViaTeal500 : Svg.Attribute msg
+smHoverViaTeal500 =
+    A.class "sm:hover:via-teal-500"
+
+
+smHoverViaTeal600 : Svg.Attribute msg
+smHoverViaTeal600 =
+    A.class "sm:hover:via-teal-600"
+
+
+smHoverViaTeal700 : Svg.Attribute msg
+smHoverViaTeal700 =
+    A.class "sm:hover:via-teal-700"
+
+
+smHoverViaTeal800 : Svg.Attribute msg
+smHoverViaTeal800 =
+    A.class "sm:hover:via-teal-800"
+
+
+smHoverViaTeal900 : Svg.Attribute msg
+smHoverViaTeal900 =
+    A.class "sm:hover:via-teal-900"
+
+
+smHoverViaBlue100 : Svg.Attribute msg
+smHoverViaBlue100 =
+    A.class "sm:hover:via-blue-100"
+
+
+smHoverViaBlue200 : Svg.Attribute msg
+smHoverViaBlue200 =
+    A.class "sm:hover:via-blue-200"
+
+
+smHoverViaBlue300 : Svg.Attribute msg
+smHoverViaBlue300 =
+    A.class "sm:hover:via-blue-300"
+
+
+smHoverViaBlue400 : Svg.Attribute msg
+smHoverViaBlue400 =
+    A.class "sm:hover:via-blue-400"
+
+
+smHoverViaBlue500 : Svg.Attribute msg
+smHoverViaBlue500 =
+    A.class "sm:hover:via-blue-500"
+
+
+smHoverViaBlue600 : Svg.Attribute msg
+smHoverViaBlue600 =
+    A.class "sm:hover:via-blue-600"
+
+
+smHoverViaBlue700 : Svg.Attribute msg
+smHoverViaBlue700 =
+    A.class "sm:hover:via-blue-700"
+
+
+smHoverViaBlue800 : Svg.Attribute msg
+smHoverViaBlue800 =
+    A.class "sm:hover:via-blue-800"
+
+
+smHoverViaBlue900 : Svg.Attribute msg
+smHoverViaBlue900 =
+    A.class "sm:hover:via-blue-900"
+
+
+smHoverViaIndigo100 : Svg.Attribute msg
+smHoverViaIndigo100 =
+    A.class "sm:hover:via-indigo-100"
+
+
+smHoverViaIndigo200 : Svg.Attribute msg
+smHoverViaIndigo200 =
+    A.class "sm:hover:via-indigo-200"
+
+
+smHoverViaIndigo300 : Svg.Attribute msg
+smHoverViaIndigo300 =
+    A.class "sm:hover:via-indigo-300"
+
+
+smHoverViaIndigo400 : Svg.Attribute msg
+smHoverViaIndigo400 =
+    A.class "sm:hover:via-indigo-400"
+
+
+smHoverViaIndigo500 : Svg.Attribute msg
+smHoverViaIndigo500 =
+    A.class "sm:hover:via-indigo-500"
+
+
+smHoverViaIndigo600 : Svg.Attribute msg
+smHoverViaIndigo600 =
+    A.class "sm:hover:via-indigo-600"
+
+
+smHoverViaIndigo700 : Svg.Attribute msg
+smHoverViaIndigo700 =
+    A.class "sm:hover:via-indigo-700"
+
+
+smHoverViaIndigo800 : Svg.Attribute msg
+smHoverViaIndigo800 =
+    A.class "sm:hover:via-indigo-800"
+
+
+smHoverViaIndigo900 : Svg.Attribute msg
+smHoverViaIndigo900 =
+    A.class "sm:hover:via-indigo-900"
+
+
+smHoverViaPurple100 : Svg.Attribute msg
+smHoverViaPurple100 =
+    A.class "sm:hover:via-purple-100"
+
+
+smHoverViaPurple200 : Svg.Attribute msg
+smHoverViaPurple200 =
+    A.class "sm:hover:via-purple-200"
+
+
+smHoverViaPurple300 : Svg.Attribute msg
+smHoverViaPurple300 =
+    A.class "sm:hover:via-purple-300"
+
+
+smHoverViaPurple400 : Svg.Attribute msg
+smHoverViaPurple400 =
+    A.class "sm:hover:via-purple-400"
+
+
+smHoverViaPurple500 : Svg.Attribute msg
+smHoverViaPurple500 =
+    A.class "sm:hover:via-purple-500"
+
+
+smHoverViaPurple600 : Svg.Attribute msg
+smHoverViaPurple600 =
+    A.class "sm:hover:via-purple-600"
+
+
+smHoverViaPurple700 : Svg.Attribute msg
+smHoverViaPurple700 =
+    A.class "sm:hover:via-purple-700"
+
+
+smHoverViaPurple800 : Svg.Attribute msg
+smHoverViaPurple800 =
+    A.class "sm:hover:via-purple-800"
+
+
+smHoverViaPurple900 : Svg.Attribute msg
+smHoverViaPurple900 =
+    A.class "sm:hover:via-purple-900"
+
+
+smHoverViaPink100 : Svg.Attribute msg
+smHoverViaPink100 =
+    A.class "sm:hover:via-pink-100"
+
+
+smHoverViaPink200 : Svg.Attribute msg
+smHoverViaPink200 =
+    A.class "sm:hover:via-pink-200"
+
+
+smHoverViaPink300 : Svg.Attribute msg
+smHoverViaPink300 =
+    A.class "sm:hover:via-pink-300"
+
+
+smHoverViaPink400 : Svg.Attribute msg
+smHoverViaPink400 =
+    A.class "sm:hover:via-pink-400"
+
+
+smHoverViaPink500 : Svg.Attribute msg
+smHoverViaPink500 =
+    A.class "sm:hover:via-pink-500"
+
+
+smHoverViaPink600 : Svg.Attribute msg
+smHoverViaPink600 =
+    A.class "sm:hover:via-pink-600"
+
+
+smHoverViaPink700 : Svg.Attribute msg
+smHoverViaPink700 =
+    A.class "sm:hover:via-pink-700"
+
+
+smHoverViaPink800 : Svg.Attribute msg
+smHoverViaPink800 =
+    A.class "sm:hover:via-pink-800"
+
+
+smHoverViaPink900 : Svg.Attribute msg
+smHoverViaPink900 =
+    A.class "sm:hover:via-pink-900"
+
+
+smHoverToTransparent : Svg.Attribute msg
+smHoverToTransparent =
+    A.class "sm:hover:to-transparent"
+
+
+smHoverToCurrent : Svg.Attribute msg
+smHoverToCurrent =
+    A.class "sm:hover:to-current"
+
+
+smHoverToBlack : Svg.Attribute msg
+smHoverToBlack =
+    A.class "sm:hover:to-black"
+
+
+smHoverToWhite : Svg.Attribute msg
+smHoverToWhite =
+    A.class "sm:hover:to-white"
+
+
+smHoverToGray100 : Svg.Attribute msg
+smHoverToGray100 =
+    A.class "sm:hover:to-gray-100"
+
+
+smHoverToGray200 : Svg.Attribute msg
+smHoverToGray200 =
+    A.class "sm:hover:to-gray-200"
+
+
+smHoverToGray300 : Svg.Attribute msg
+smHoverToGray300 =
+    A.class "sm:hover:to-gray-300"
+
+
+smHoverToGray400 : Svg.Attribute msg
+smHoverToGray400 =
+    A.class "sm:hover:to-gray-400"
+
+
+smHoverToGray500 : Svg.Attribute msg
+smHoverToGray500 =
+    A.class "sm:hover:to-gray-500"
+
+
+smHoverToGray600 : Svg.Attribute msg
+smHoverToGray600 =
+    A.class "sm:hover:to-gray-600"
+
+
+smHoverToGray700 : Svg.Attribute msg
+smHoverToGray700 =
+    A.class "sm:hover:to-gray-700"
+
+
+smHoverToGray800 : Svg.Attribute msg
+smHoverToGray800 =
+    A.class "sm:hover:to-gray-800"
+
+
+smHoverToGray900 : Svg.Attribute msg
+smHoverToGray900 =
+    A.class "sm:hover:to-gray-900"
+
+
+smHoverToRed100 : Svg.Attribute msg
+smHoverToRed100 =
+    A.class "sm:hover:to-red-100"
+
+
+smHoverToRed200 : Svg.Attribute msg
+smHoverToRed200 =
+    A.class "sm:hover:to-red-200"
+
+
+smHoverToRed300 : Svg.Attribute msg
+smHoverToRed300 =
+    A.class "sm:hover:to-red-300"
+
+
+smHoverToRed400 : Svg.Attribute msg
+smHoverToRed400 =
+    A.class "sm:hover:to-red-400"
+
+
+smHoverToRed500 : Svg.Attribute msg
+smHoverToRed500 =
+    A.class "sm:hover:to-red-500"
+
+
+smHoverToRed600 : Svg.Attribute msg
+smHoverToRed600 =
+    A.class "sm:hover:to-red-600"
+
+
+smHoverToRed700 : Svg.Attribute msg
+smHoverToRed700 =
+    A.class "sm:hover:to-red-700"
+
+
+smHoverToRed800 : Svg.Attribute msg
+smHoverToRed800 =
+    A.class "sm:hover:to-red-800"
+
+
+smHoverToRed900 : Svg.Attribute msg
+smHoverToRed900 =
+    A.class "sm:hover:to-red-900"
+
+
+smHoverToOrange100 : Svg.Attribute msg
+smHoverToOrange100 =
+    A.class "sm:hover:to-orange-100"
+
+
+smHoverToOrange200 : Svg.Attribute msg
+smHoverToOrange200 =
+    A.class "sm:hover:to-orange-200"
+
+
+smHoverToOrange300 : Svg.Attribute msg
+smHoverToOrange300 =
+    A.class "sm:hover:to-orange-300"
+
+
+smHoverToOrange400 : Svg.Attribute msg
+smHoverToOrange400 =
+    A.class "sm:hover:to-orange-400"
+
+
+smHoverToOrange500 : Svg.Attribute msg
+smHoverToOrange500 =
+    A.class "sm:hover:to-orange-500"
+
+
+smHoverToOrange600 : Svg.Attribute msg
+smHoverToOrange600 =
+    A.class "sm:hover:to-orange-600"
+
+
+smHoverToOrange700 : Svg.Attribute msg
+smHoverToOrange700 =
+    A.class "sm:hover:to-orange-700"
+
+
+smHoverToOrange800 : Svg.Attribute msg
+smHoverToOrange800 =
+    A.class "sm:hover:to-orange-800"
+
+
+smHoverToOrange900 : Svg.Attribute msg
+smHoverToOrange900 =
+    A.class "sm:hover:to-orange-900"
+
+
+smHoverToYellow100 : Svg.Attribute msg
+smHoverToYellow100 =
+    A.class "sm:hover:to-yellow-100"
+
+
+smHoverToYellow200 : Svg.Attribute msg
+smHoverToYellow200 =
+    A.class "sm:hover:to-yellow-200"
+
+
+smHoverToYellow300 : Svg.Attribute msg
+smHoverToYellow300 =
+    A.class "sm:hover:to-yellow-300"
+
+
+smHoverToYellow400 : Svg.Attribute msg
+smHoverToYellow400 =
+    A.class "sm:hover:to-yellow-400"
+
+
+smHoverToYellow500 : Svg.Attribute msg
+smHoverToYellow500 =
+    A.class "sm:hover:to-yellow-500"
+
+
+smHoverToYellow600 : Svg.Attribute msg
+smHoverToYellow600 =
+    A.class "sm:hover:to-yellow-600"
+
+
+smHoverToYellow700 : Svg.Attribute msg
+smHoverToYellow700 =
+    A.class "sm:hover:to-yellow-700"
+
+
+smHoverToYellow800 : Svg.Attribute msg
+smHoverToYellow800 =
+    A.class "sm:hover:to-yellow-800"
+
+
+smHoverToYellow900 : Svg.Attribute msg
+smHoverToYellow900 =
+    A.class "sm:hover:to-yellow-900"
+
+
+smHoverToGreen100 : Svg.Attribute msg
+smHoverToGreen100 =
+    A.class "sm:hover:to-green-100"
+
+
+smHoverToGreen200 : Svg.Attribute msg
+smHoverToGreen200 =
+    A.class "sm:hover:to-green-200"
+
+
+smHoverToGreen300 : Svg.Attribute msg
+smHoverToGreen300 =
+    A.class "sm:hover:to-green-300"
+
+
+smHoverToGreen400 : Svg.Attribute msg
+smHoverToGreen400 =
+    A.class "sm:hover:to-green-400"
+
+
+smHoverToGreen500 : Svg.Attribute msg
+smHoverToGreen500 =
+    A.class "sm:hover:to-green-500"
+
+
+smHoverToGreen600 : Svg.Attribute msg
+smHoverToGreen600 =
+    A.class "sm:hover:to-green-600"
+
+
+smHoverToGreen700 : Svg.Attribute msg
+smHoverToGreen700 =
+    A.class "sm:hover:to-green-700"
+
+
+smHoverToGreen800 : Svg.Attribute msg
+smHoverToGreen800 =
+    A.class "sm:hover:to-green-800"
+
+
+smHoverToGreen900 : Svg.Attribute msg
+smHoverToGreen900 =
+    A.class "sm:hover:to-green-900"
+
+
+smHoverToTeal100 : Svg.Attribute msg
+smHoverToTeal100 =
+    A.class "sm:hover:to-teal-100"
+
+
+smHoverToTeal200 : Svg.Attribute msg
+smHoverToTeal200 =
+    A.class "sm:hover:to-teal-200"
+
+
+smHoverToTeal300 : Svg.Attribute msg
+smHoverToTeal300 =
+    A.class "sm:hover:to-teal-300"
+
+
+smHoverToTeal400 : Svg.Attribute msg
+smHoverToTeal400 =
+    A.class "sm:hover:to-teal-400"
+
+
+smHoverToTeal500 : Svg.Attribute msg
+smHoverToTeal500 =
+    A.class "sm:hover:to-teal-500"
+
+
+smHoverToTeal600 : Svg.Attribute msg
+smHoverToTeal600 =
+    A.class "sm:hover:to-teal-600"
+
+
+smHoverToTeal700 : Svg.Attribute msg
+smHoverToTeal700 =
+    A.class "sm:hover:to-teal-700"
+
+
+smHoverToTeal800 : Svg.Attribute msg
+smHoverToTeal800 =
+    A.class "sm:hover:to-teal-800"
+
+
+smHoverToTeal900 : Svg.Attribute msg
+smHoverToTeal900 =
+    A.class "sm:hover:to-teal-900"
+
+
+smHoverToBlue100 : Svg.Attribute msg
+smHoverToBlue100 =
+    A.class "sm:hover:to-blue-100"
+
+
+smHoverToBlue200 : Svg.Attribute msg
+smHoverToBlue200 =
+    A.class "sm:hover:to-blue-200"
+
+
+smHoverToBlue300 : Svg.Attribute msg
+smHoverToBlue300 =
+    A.class "sm:hover:to-blue-300"
+
+
+smHoverToBlue400 : Svg.Attribute msg
+smHoverToBlue400 =
+    A.class "sm:hover:to-blue-400"
+
+
+smHoverToBlue500 : Svg.Attribute msg
+smHoverToBlue500 =
+    A.class "sm:hover:to-blue-500"
+
+
+smHoverToBlue600 : Svg.Attribute msg
+smHoverToBlue600 =
+    A.class "sm:hover:to-blue-600"
+
+
+smHoverToBlue700 : Svg.Attribute msg
+smHoverToBlue700 =
+    A.class "sm:hover:to-blue-700"
+
+
+smHoverToBlue800 : Svg.Attribute msg
+smHoverToBlue800 =
+    A.class "sm:hover:to-blue-800"
+
+
+smHoverToBlue900 : Svg.Attribute msg
+smHoverToBlue900 =
+    A.class "sm:hover:to-blue-900"
+
+
+smHoverToIndigo100 : Svg.Attribute msg
+smHoverToIndigo100 =
+    A.class "sm:hover:to-indigo-100"
+
+
+smHoverToIndigo200 : Svg.Attribute msg
+smHoverToIndigo200 =
+    A.class "sm:hover:to-indigo-200"
+
+
+smHoverToIndigo300 : Svg.Attribute msg
+smHoverToIndigo300 =
+    A.class "sm:hover:to-indigo-300"
+
+
+smHoverToIndigo400 : Svg.Attribute msg
+smHoverToIndigo400 =
+    A.class "sm:hover:to-indigo-400"
+
+
+smHoverToIndigo500 : Svg.Attribute msg
+smHoverToIndigo500 =
+    A.class "sm:hover:to-indigo-500"
+
+
+smHoverToIndigo600 : Svg.Attribute msg
+smHoverToIndigo600 =
+    A.class "sm:hover:to-indigo-600"
+
+
+smHoverToIndigo700 : Svg.Attribute msg
+smHoverToIndigo700 =
+    A.class "sm:hover:to-indigo-700"
+
+
+smHoverToIndigo800 : Svg.Attribute msg
+smHoverToIndigo800 =
+    A.class "sm:hover:to-indigo-800"
+
+
+smHoverToIndigo900 : Svg.Attribute msg
+smHoverToIndigo900 =
+    A.class "sm:hover:to-indigo-900"
+
+
+smHoverToPurple100 : Svg.Attribute msg
+smHoverToPurple100 =
+    A.class "sm:hover:to-purple-100"
+
+
+smHoverToPurple200 : Svg.Attribute msg
+smHoverToPurple200 =
+    A.class "sm:hover:to-purple-200"
+
+
+smHoverToPurple300 : Svg.Attribute msg
+smHoverToPurple300 =
+    A.class "sm:hover:to-purple-300"
+
+
+smHoverToPurple400 : Svg.Attribute msg
+smHoverToPurple400 =
+    A.class "sm:hover:to-purple-400"
+
+
+smHoverToPurple500 : Svg.Attribute msg
+smHoverToPurple500 =
+    A.class "sm:hover:to-purple-500"
+
+
+smHoverToPurple600 : Svg.Attribute msg
+smHoverToPurple600 =
+    A.class "sm:hover:to-purple-600"
+
+
+smHoverToPurple700 : Svg.Attribute msg
+smHoverToPurple700 =
+    A.class "sm:hover:to-purple-700"
+
+
+smHoverToPurple800 : Svg.Attribute msg
+smHoverToPurple800 =
+    A.class "sm:hover:to-purple-800"
+
+
+smHoverToPurple900 : Svg.Attribute msg
+smHoverToPurple900 =
+    A.class "sm:hover:to-purple-900"
+
+
+smHoverToPink100 : Svg.Attribute msg
+smHoverToPink100 =
+    A.class "sm:hover:to-pink-100"
+
+
+smHoverToPink200 : Svg.Attribute msg
+smHoverToPink200 =
+    A.class "sm:hover:to-pink-200"
+
+
+smHoverToPink300 : Svg.Attribute msg
+smHoverToPink300 =
+    A.class "sm:hover:to-pink-300"
+
+
+smHoverToPink400 : Svg.Attribute msg
+smHoverToPink400 =
+    A.class "sm:hover:to-pink-400"
+
+
+smHoverToPink500 : Svg.Attribute msg
+smHoverToPink500 =
+    A.class "sm:hover:to-pink-500"
+
+
+smHoverToPink600 : Svg.Attribute msg
+smHoverToPink600 =
+    A.class "sm:hover:to-pink-600"
+
+
+smHoverToPink700 : Svg.Attribute msg
+smHoverToPink700 =
+    A.class "sm:hover:to-pink-700"
+
+
+smHoverToPink800 : Svg.Attribute msg
+smHoverToPink800 =
+    A.class "sm:hover:to-pink-800"
+
+
+smHoverToPink900 : Svg.Attribute msg
+smHoverToPink900 =
+    A.class "sm:hover:to-pink-900"
+
+
+smFocusFromTransparent : Svg.Attribute msg
+smFocusFromTransparent =
+    A.class "sm:focus:from-transparent"
+
+
+smFocusFromCurrent : Svg.Attribute msg
+smFocusFromCurrent =
+    A.class "sm:focus:from-current"
+
+
+smFocusFromBlack : Svg.Attribute msg
+smFocusFromBlack =
+    A.class "sm:focus:from-black"
+
+
+smFocusFromWhite : Svg.Attribute msg
+smFocusFromWhite =
+    A.class "sm:focus:from-white"
+
+
+smFocusFromGray100 : Svg.Attribute msg
+smFocusFromGray100 =
+    A.class "sm:focus:from-gray-100"
+
+
+smFocusFromGray200 : Svg.Attribute msg
+smFocusFromGray200 =
+    A.class "sm:focus:from-gray-200"
+
+
+smFocusFromGray300 : Svg.Attribute msg
+smFocusFromGray300 =
+    A.class "sm:focus:from-gray-300"
+
+
+smFocusFromGray400 : Svg.Attribute msg
+smFocusFromGray400 =
+    A.class "sm:focus:from-gray-400"
+
+
+smFocusFromGray500 : Svg.Attribute msg
+smFocusFromGray500 =
+    A.class "sm:focus:from-gray-500"
+
+
+smFocusFromGray600 : Svg.Attribute msg
+smFocusFromGray600 =
+    A.class "sm:focus:from-gray-600"
+
+
+smFocusFromGray700 : Svg.Attribute msg
+smFocusFromGray700 =
+    A.class "sm:focus:from-gray-700"
+
+
+smFocusFromGray800 : Svg.Attribute msg
+smFocusFromGray800 =
+    A.class "sm:focus:from-gray-800"
+
+
+smFocusFromGray900 : Svg.Attribute msg
+smFocusFromGray900 =
+    A.class "sm:focus:from-gray-900"
+
+
+smFocusFromRed100 : Svg.Attribute msg
+smFocusFromRed100 =
+    A.class "sm:focus:from-red-100"
+
+
+smFocusFromRed200 : Svg.Attribute msg
+smFocusFromRed200 =
+    A.class "sm:focus:from-red-200"
+
+
+smFocusFromRed300 : Svg.Attribute msg
+smFocusFromRed300 =
+    A.class "sm:focus:from-red-300"
+
+
+smFocusFromRed400 : Svg.Attribute msg
+smFocusFromRed400 =
+    A.class "sm:focus:from-red-400"
+
+
+smFocusFromRed500 : Svg.Attribute msg
+smFocusFromRed500 =
+    A.class "sm:focus:from-red-500"
+
+
+smFocusFromRed600 : Svg.Attribute msg
+smFocusFromRed600 =
+    A.class "sm:focus:from-red-600"
+
+
+smFocusFromRed700 : Svg.Attribute msg
+smFocusFromRed700 =
+    A.class "sm:focus:from-red-700"
+
+
+smFocusFromRed800 : Svg.Attribute msg
+smFocusFromRed800 =
+    A.class "sm:focus:from-red-800"
+
+
+smFocusFromRed900 : Svg.Attribute msg
+smFocusFromRed900 =
+    A.class "sm:focus:from-red-900"
+
+
+smFocusFromOrange100 : Svg.Attribute msg
+smFocusFromOrange100 =
+    A.class "sm:focus:from-orange-100"
+
+
+smFocusFromOrange200 : Svg.Attribute msg
+smFocusFromOrange200 =
+    A.class "sm:focus:from-orange-200"
+
+
+smFocusFromOrange300 : Svg.Attribute msg
+smFocusFromOrange300 =
+    A.class "sm:focus:from-orange-300"
+
+
+smFocusFromOrange400 : Svg.Attribute msg
+smFocusFromOrange400 =
+    A.class "sm:focus:from-orange-400"
+
+
+smFocusFromOrange500 : Svg.Attribute msg
+smFocusFromOrange500 =
+    A.class "sm:focus:from-orange-500"
+
+
+smFocusFromOrange600 : Svg.Attribute msg
+smFocusFromOrange600 =
+    A.class "sm:focus:from-orange-600"
+
+
+smFocusFromOrange700 : Svg.Attribute msg
+smFocusFromOrange700 =
+    A.class "sm:focus:from-orange-700"
+
+
+smFocusFromOrange800 : Svg.Attribute msg
+smFocusFromOrange800 =
+    A.class "sm:focus:from-orange-800"
+
+
+smFocusFromOrange900 : Svg.Attribute msg
+smFocusFromOrange900 =
+    A.class "sm:focus:from-orange-900"
+
+
+smFocusFromYellow100 : Svg.Attribute msg
+smFocusFromYellow100 =
+    A.class "sm:focus:from-yellow-100"
+
+
+smFocusFromYellow200 : Svg.Attribute msg
+smFocusFromYellow200 =
+    A.class "sm:focus:from-yellow-200"
+
+
+smFocusFromYellow300 : Svg.Attribute msg
+smFocusFromYellow300 =
+    A.class "sm:focus:from-yellow-300"
+
+
+smFocusFromYellow400 : Svg.Attribute msg
+smFocusFromYellow400 =
+    A.class "sm:focus:from-yellow-400"
+
+
+smFocusFromYellow500 : Svg.Attribute msg
+smFocusFromYellow500 =
+    A.class "sm:focus:from-yellow-500"
+
+
+smFocusFromYellow600 : Svg.Attribute msg
+smFocusFromYellow600 =
+    A.class "sm:focus:from-yellow-600"
+
+
+smFocusFromYellow700 : Svg.Attribute msg
+smFocusFromYellow700 =
+    A.class "sm:focus:from-yellow-700"
+
+
+smFocusFromYellow800 : Svg.Attribute msg
+smFocusFromYellow800 =
+    A.class "sm:focus:from-yellow-800"
+
+
+smFocusFromYellow900 : Svg.Attribute msg
+smFocusFromYellow900 =
+    A.class "sm:focus:from-yellow-900"
+
+
+smFocusFromGreen100 : Svg.Attribute msg
+smFocusFromGreen100 =
+    A.class "sm:focus:from-green-100"
+
+
+smFocusFromGreen200 : Svg.Attribute msg
+smFocusFromGreen200 =
+    A.class "sm:focus:from-green-200"
+
+
+smFocusFromGreen300 : Svg.Attribute msg
+smFocusFromGreen300 =
+    A.class "sm:focus:from-green-300"
+
+
+smFocusFromGreen400 : Svg.Attribute msg
+smFocusFromGreen400 =
+    A.class "sm:focus:from-green-400"
+
+
+smFocusFromGreen500 : Svg.Attribute msg
+smFocusFromGreen500 =
+    A.class "sm:focus:from-green-500"
+
+
+smFocusFromGreen600 : Svg.Attribute msg
+smFocusFromGreen600 =
+    A.class "sm:focus:from-green-600"
+
+
+smFocusFromGreen700 : Svg.Attribute msg
+smFocusFromGreen700 =
+    A.class "sm:focus:from-green-700"
+
+
+smFocusFromGreen800 : Svg.Attribute msg
+smFocusFromGreen800 =
+    A.class "sm:focus:from-green-800"
+
+
+smFocusFromGreen900 : Svg.Attribute msg
+smFocusFromGreen900 =
+    A.class "sm:focus:from-green-900"
+
+
+smFocusFromTeal100 : Svg.Attribute msg
+smFocusFromTeal100 =
+    A.class "sm:focus:from-teal-100"
+
+
+smFocusFromTeal200 : Svg.Attribute msg
+smFocusFromTeal200 =
+    A.class "sm:focus:from-teal-200"
+
+
+smFocusFromTeal300 : Svg.Attribute msg
+smFocusFromTeal300 =
+    A.class "sm:focus:from-teal-300"
+
+
+smFocusFromTeal400 : Svg.Attribute msg
+smFocusFromTeal400 =
+    A.class "sm:focus:from-teal-400"
+
+
+smFocusFromTeal500 : Svg.Attribute msg
+smFocusFromTeal500 =
+    A.class "sm:focus:from-teal-500"
+
+
+smFocusFromTeal600 : Svg.Attribute msg
+smFocusFromTeal600 =
+    A.class "sm:focus:from-teal-600"
+
+
+smFocusFromTeal700 : Svg.Attribute msg
+smFocusFromTeal700 =
+    A.class "sm:focus:from-teal-700"
+
+
+smFocusFromTeal800 : Svg.Attribute msg
+smFocusFromTeal800 =
+    A.class "sm:focus:from-teal-800"
+
+
+smFocusFromTeal900 : Svg.Attribute msg
+smFocusFromTeal900 =
+    A.class "sm:focus:from-teal-900"
+
+
+smFocusFromBlue100 : Svg.Attribute msg
+smFocusFromBlue100 =
+    A.class "sm:focus:from-blue-100"
+
+
+smFocusFromBlue200 : Svg.Attribute msg
+smFocusFromBlue200 =
+    A.class "sm:focus:from-blue-200"
+
+
+smFocusFromBlue300 : Svg.Attribute msg
+smFocusFromBlue300 =
+    A.class "sm:focus:from-blue-300"
+
+
+smFocusFromBlue400 : Svg.Attribute msg
+smFocusFromBlue400 =
+    A.class "sm:focus:from-blue-400"
+
+
+smFocusFromBlue500 : Svg.Attribute msg
+smFocusFromBlue500 =
+    A.class "sm:focus:from-blue-500"
+
+
+smFocusFromBlue600 : Svg.Attribute msg
+smFocusFromBlue600 =
+    A.class "sm:focus:from-blue-600"
+
+
+smFocusFromBlue700 : Svg.Attribute msg
+smFocusFromBlue700 =
+    A.class "sm:focus:from-blue-700"
+
+
+smFocusFromBlue800 : Svg.Attribute msg
+smFocusFromBlue800 =
+    A.class "sm:focus:from-blue-800"
+
+
+smFocusFromBlue900 : Svg.Attribute msg
+smFocusFromBlue900 =
+    A.class "sm:focus:from-blue-900"
+
+
+smFocusFromIndigo100 : Svg.Attribute msg
+smFocusFromIndigo100 =
+    A.class "sm:focus:from-indigo-100"
+
+
+smFocusFromIndigo200 : Svg.Attribute msg
+smFocusFromIndigo200 =
+    A.class "sm:focus:from-indigo-200"
+
+
+smFocusFromIndigo300 : Svg.Attribute msg
+smFocusFromIndigo300 =
+    A.class "sm:focus:from-indigo-300"
+
+
+smFocusFromIndigo400 : Svg.Attribute msg
+smFocusFromIndigo400 =
+    A.class "sm:focus:from-indigo-400"
+
+
+smFocusFromIndigo500 : Svg.Attribute msg
+smFocusFromIndigo500 =
+    A.class "sm:focus:from-indigo-500"
+
+
+smFocusFromIndigo600 : Svg.Attribute msg
+smFocusFromIndigo600 =
+    A.class "sm:focus:from-indigo-600"
+
+
+smFocusFromIndigo700 : Svg.Attribute msg
+smFocusFromIndigo700 =
+    A.class "sm:focus:from-indigo-700"
+
+
+smFocusFromIndigo800 : Svg.Attribute msg
+smFocusFromIndigo800 =
+    A.class "sm:focus:from-indigo-800"
+
+
+smFocusFromIndigo900 : Svg.Attribute msg
+smFocusFromIndigo900 =
+    A.class "sm:focus:from-indigo-900"
+
+
+smFocusFromPurple100 : Svg.Attribute msg
+smFocusFromPurple100 =
+    A.class "sm:focus:from-purple-100"
+
+
+smFocusFromPurple200 : Svg.Attribute msg
+smFocusFromPurple200 =
+    A.class "sm:focus:from-purple-200"
+
+
+smFocusFromPurple300 : Svg.Attribute msg
+smFocusFromPurple300 =
+    A.class "sm:focus:from-purple-300"
+
+
+smFocusFromPurple400 : Svg.Attribute msg
+smFocusFromPurple400 =
+    A.class "sm:focus:from-purple-400"
+
+
+smFocusFromPurple500 : Svg.Attribute msg
+smFocusFromPurple500 =
+    A.class "sm:focus:from-purple-500"
+
+
+smFocusFromPurple600 : Svg.Attribute msg
+smFocusFromPurple600 =
+    A.class "sm:focus:from-purple-600"
+
+
+smFocusFromPurple700 : Svg.Attribute msg
+smFocusFromPurple700 =
+    A.class "sm:focus:from-purple-700"
+
+
+smFocusFromPurple800 : Svg.Attribute msg
+smFocusFromPurple800 =
+    A.class "sm:focus:from-purple-800"
+
+
+smFocusFromPurple900 : Svg.Attribute msg
+smFocusFromPurple900 =
+    A.class "sm:focus:from-purple-900"
+
+
+smFocusFromPink100 : Svg.Attribute msg
+smFocusFromPink100 =
+    A.class "sm:focus:from-pink-100"
+
+
+smFocusFromPink200 : Svg.Attribute msg
+smFocusFromPink200 =
+    A.class "sm:focus:from-pink-200"
+
+
+smFocusFromPink300 : Svg.Attribute msg
+smFocusFromPink300 =
+    A.class "sm:focus:from-pink-300"
+
+
+smFocusFromPink400 : Svg.Attribute msg
+smFocusFromPink400 =
+    A.class "sm:focus:from-pink-400"
+
+
+smFocusFromPink500 : Svg.Attribute msg
+smFocusFromPink500 =
+    A.class "sm:focus:from-pink-500"
+
+
+smFocusFromPink600 : Svg.Attribute msg
+smFocusFromPink600 =
+    A.class "sm:focus:from-pink-600"
+
+
+smFocusFromPink700 : Svg.Attribute msg
+smFocusFromPink700 =
+    A.class "sm:focus:from-pink-700"
+
+
+smFocusFromPink800 : Svg.Attribute msg
+smFocusFromPink800 =
+    A.class "sm:focus:from-pink-800"
+
+
+smFocusFromPink900 : Svg.Attribute msg
+smFocusFromPink900 =
+    A.class "sm:focus:from-pink-900"
+
+
+smFocusViaTransparent : Svg.Attribute msg
+smFocusViaTransparent =
+    A.class "sm:focus:via-transparent"
+
+
+smFocusViaCurrent : Svg.Attribute msg
+smFocusViaCurrent =
+    A.class "sm:focus:via-current"
+
+
+smFocusViaBlack : Svg.Attribute msg
+smFocusViaBlack =
+    A.class "sm:focus:via-black"
+
+
+smFocusViaWhite : Svg.Attribute msg
+smFocusViaWhite =
+    A.class "sm:focus:via-white"
+
+
+smFocusViaGray100 : Svg.Attribute msg
+smFocusViaGray100 =
+    A.class "sm:focus:via-gray-100"
+
+
+smFocusViaGray200 : Svg.Attribute msg
+smFocusViaGray200 =
+    A.class "sm:focus:via-gray-200"
+
+
+smFocusViaGray300 : Svg.Attribute msg
+smFocusViaGray300 =
+    A.class "sm:focus:via-gray-300"
+
+
+smFocusViaGray400 : Svg.Attribute msg
+smFocusViaGray400 =
+    A.class "sm:focus:via-gray-400"
+
+
+smFocusViaGray500 : Svg.Attribute msg
+smFocusViaGray500 =
+    A.class "sm:focus:via-gray-500"
+
+
+smFocusViaGray600 : Svg.Attribute msg
+smFocusViaGray600 =
+    A.class "sm:focus:via-gray-600"
+
+
+smFocusViaGray700 : Svg.Attribute msg
+smFocusViaGray700 =
+    A.class "sm:focus:via-gray-700"
+
+
+smFocusViaGray800 : Svg.Attribute msg
+smFocusViaGray800 =
+    A.class "sm:focus:via-gray-800"
+
+
+smFocusViaGray900 : Svg.Attribute msg
+smFocusViaGray900 =
+    A.class "sm:focus:via-gray-900"
+
+
+smFocusViaRed100 : Svg.Attribute msg
+smFocusViaRed100 =
+    A.class "sm:focus:via-red-100"
+
+
+smFocusViaRed200 : Svg.Attribute msg
+smFocusViaRed200 =
+    A.class "sm:focus:via-red-200"
+
+
+smFocusViaRed300 : Svg.Attribute msg
+smFocusViaRed300 =
+    A.class "sm:focus:via-red-300"
+
+
+smFocusViaRed400 : Svg.Attribute msg
+smFocusViaRed400 =
+    A.class "sm:focus:via-red-400"
+
+
+smFocusViaRed500 : Svg.Attribute msg
+smFocusViaRed500 =
+    A.class "sm:focus:via-red-500"
+
+
+smFocusViaRed600 : Svg.Attribute msg
+smFocusViaRed600 =
+    A.class "sm:focus:via-red-600"
+
+
+smFocusViaRed700 : Svg.Attribute msg
+smFocusViaRed700 =
+    A.class "sm:focus:via-red-700"
+
+
+smFocusViaRed800 : Svg.Attribute msg
+smFocusViaRed800 =
+    A.class "sm:focus:via-red-800"
+
+
+smFocusViaRed900 : Svg.Attribute msg
+smFocusViaRed900 =
+    A.class "sm:focus:via-red-900"
+
+
+smFocusViaOrange100 : Svg.Attribute msg
+smFocusViaOrange100 =
+    A.class "sm:focus:via-orange-100"
+
+
+smFocusViaOrange200 : Svg.Attribute msg
+smFocusViaOrange200 =
+    A.class "sm:focus:via-orange-200"
+
+
+smFocusViaOrange300 : Svg.Attribute msg
+smFocusViaOrange300 =
+    A.class "sm:focus:via-orange-300"
+
+
+smFocusViaOrange400 : Svg.Attribute msg
+smFocusViaOrange400 =
+    A.class "sm:focus:via-orange-400"
+
+
+smFocusViaOrange500 : Svg.Attribute msg
+smFocusViaOrange500 =
+    A.class "sm:focus:via-orange-500"
+
+
+smFocusViaOrange600 : Svg.Attribute msg
+smFocusViaOrange600 =
+    A.class "sm:focus:via-orange-600"
+
+
+smFocusViaOrange700 : Svg.Attribute msg
+smFocusViaOrange700 =
+    A.class "sm:focus:via-orange-700"
+
+
+smFocusViaOrange800 : Svg.Attribute msg
+smFocusViaOrange800 =
+    A.class "sm:focus:via-orange-800"
+
+
+smFocusViaOrange900 : Svg.Attribute msg
+smFocusViaOrange900 =
+    A.class "sm:focus:via-orange-900"
+
+
+smFocusViaYellow100 : Svg.Attribute msg
+smFocusViaYellow100 =
+    A.class "sm:focus:via-yellow-100"
+
+
+smFocusViaYellow200 : Svg.Attribute msg
+smFocusViaYellow200 =
+    A.class "sm:focus:via-yellow-200"
+
+
+smFocusViaYellow300 : Svg.Attribute msg
+smFocusViaYellow300 =
+    A.class "sm:focus:via-yellow-300"
+
+
+smFocusViaYellow400 : Svg.Attribute msg
+smFocusViaYellow400 =
+    A.class "sm:focus:via-yellow-400"
+
+
+smFocusViaYellow500 : Svg.Attribute msg
+smFocusViaYellow500 =
+    A.class "sm:focus:via-yellow-500"
+
+
+smFocusViaYellow600 : Svg.Attribute msg
+smFocusViaYellow600 =
+    A.class "sm:focus:via-yellow-600"
+
+
+smFocusViaYellow700 : Svg.Attribute msg
+smFocusViaYellow700 =
+    A.class "sm:focus:via-yellow-700"
+
+
+smFocusViaYellow800 : Svg.Attribute msg
+smFocusViaYellow800 =
+    A.class "sm:focus:via-yellow-800"
+
+
+smFocusViaYellow900 : Svg.Attribute msg
+smFocusViaYellow900 =
+    A.class "sm:focus:via-yellow-900"
+
+
+smFocusViaGreen100 : Svg.Attribute msg
+smFocusViaGreen100 =
+    A.class "sm:focus:via-green-100"
+
+
+smFocusViaGreen200 : Svg.Attribute msg
+smFocusViaGreen200 =
+    A.class "sm:focus:via-green-200"
+
+
+smFocusViaGreen300 : Svg.Attribute msg
+smFocusViaGreen300 =
+    A.class "sm:focus:via-green-300"
+
+
+smFocusViaGreen400 : Svg.Attribute msg
+smFocusViaGreen400 =
+    A.class "sm:focus:via-green-400"
+
+
+smFocusViaGreen500 : Svg.Attribute msg
+smFocusViaGreen500 =
+    A.class "sm:focus:via-green-500"
+
+
+smFocusViaGreen600 : Svg.Attribute msg
+smFocusViaGreen600 =
+    A.class "sm:focus:via-green-600"
+
+
+smFocusViaGreen700 : Svg.Attribute msg
+smFocusViaGreen700 =
+    A.class "sm:focus:via-green-700"
+
+
+smFocusViaGreen800 : Svg.Attribute msg
+smFocusViaGreen800 =
+    A.class "sm:focus:via-green-800"
+
+
+smFocusViaGreen900 : Svg.Attribute msg
+smFocusViaGreen900 =
+    A.class "sm:focus:via-green-900"
+
+
+smFocusViaTeal100 : Svg.Attribute msg
+smFocusViaTeal100 =
+    A.class "sm:focus:via-teal-100"
+
+
+smFocusViaTeal200 : Svg.Attribute msg
+smFocusViaTeal200 =
+    A.class "sm:focus:via-teal-200"
+
+
+smFocusViaTeal300 : Svg.Attribute msg
+smFocusViaTeal300 =
+    A.class "sm:focus:via-teal-300"
+
+
+smFocusViaTeal400 : Svg.Attribute msg
+smFocusViaTeal400 =
+    A.class "sm:focus:via-teal-400"
+
+
+smFocusViaTeal500 : Svg.Attribute msg
+smFocusViaTeal500 =
+    A.class "sm:focus:via-teal-500"
+
+
+smFocusViaTeal600 : Svg.Attribute msg
+smFocusViaTeal600 =
+    A.class "sm:focus:via-teal-600"
+
+
+smFocusViaTeal700 : Svg.Attribute msg
+smFocusViaTeal700 =
+    A.class "sm:focus:via-teal-700"
+
+
+smFocusViaTeal800 : Svg.Attribute msg
+smFocusViaTeal800 =
+    A.class "sm:focus:via-teal-800"
+
+
+smFocusViaTeal900 : Svg.Attribute msg
+smFocusViaTeal900 =
+    A.class "sm:focus:via-teal-900"
+
+
+smFocusViaBlue100 : Svg.Attribute msg
+smFocusViaBlue100 =
+    A.class "sm:focus:via-blue-100"
+
+
+smFocusViaBlue200 : Svg.Attribute msg
+smFocusViaBlue200 =
+    A.class "sm:focus:via-blue-200"
+
+
+smFocusViaBlue300 : Svg.Attribute msg
+smFocusViaBlue300 =
+    A.class "sm:focus:via-blue-300"
+
+
+smFocusViaBlue400 : Svg.Attribute msg
+smFocusViaBlue400 =
+    A.class "sm:focus:via-blue-400"
+
+
+smFocusViaBlue500 : Svg.Attribute msg
+smFocusViaBlue500 =
+    A.class "sm:focus:via-blue-500"
+
+
+smFocusViaBlue600 : Svg.Attribute msg
+smFocusViaBlue600 =
+    A.class "sm:focus:via-blue-600"
+
+
+smFocusViaBlue700 : Svg.Attribute msg
+smFocusViaBlue700 =
+    A.class "sm:focus:via-blue-700"
+
+
+smFocusViaBlue800 : Svg.Attribute msg
+smFocusViaBlue800 =
+    A.class "sm:focus:via-blue-800"
+
+
+smFocusViaBlue900 : Svg.Attribute msg
+smFocusViaBlue900 =
+    A.class "sm:focus:via-blue-900"
+
+
+smFocusViaIndigo100 : Svg.Attribute msg
+smFocusViaIndigo100 =
+    A.class "sm:focus:via-indigo-100"
+
+
+smFocusViaIndigo200 : Svg.Attribute msg
+smFocusViaIndigo200 =
+    A.class "sm:focus:via-indigo-200"
+
+
+smFocusViaIndigo300 : Svg.Attribute msg
+smFocusViaIndigo300 =
+    A.class "sm:focus:via-indigo-300"
+
+
+smFocusViaIndigo400 : Svg.Attribute msg
+smFocusViaIndigo400 =
+    A.class "sm:focus:via-indigo-400"
+
+
+smFocusViaIndigo500 : Svg.Attribute msg
+smFocusViaIndigo500 =
+    A.class "sm:focus:via-indigo-500"
+
+
+smFocusViaIndigo600 : Svg.Attribute msg
+smFocusViaIndigo600 =
+    A.class "sm:focus:via-indigo-600"
+
+
+smFocusViaIndigo700 : Svg.Attribute msg
+smFocusViaIndigo700 =
+    A.class "sm:focus:via-indigo-700"
+
+
+smFocusViaIndigo800 : Svg.Attribute msg
+smFocusViaIndigo800 =
+    A.class "sm:focus:via-indigo-800"
+
+
+smFocusViaIndigo900 : Svg.Attribute msg
+smFocusViaIndigo900 =
+    A.class "sm:focus:via-indigo-900"
+
+
+smFocusViaPurple100 : Svg.Attribute msg
+smFocusViaPurple100 =
+    A.class "sm:focus:via-purple-100"
+
+
+smFocusViaPurple200 : Svg.Attribute msg
+smFocusViaPurple200 =
+    A.class "sm:focus:via-purple-200"
+
+
+smFocusViaPurple300 : Svg.Attribute msg
+smFocusViaPurple300 =
+    A.class "sm:focus:via-purple-300"
+
+
+smFocusViaPurple400 : Svg.Attribute msg
+smFocusViaPurple400 =
+    A.class "sm:focus:via-purple-400"
+
+
+smFocusViaPurple500 : Svg.Attribute msg
+smFocusViaPurple500 =
+    A.class "sm:focus:via-purple-500"
+
+
+smFocusViaPurple600 : Svg.Attribute msg
+smFocusViaPurple600 =
+    A.class "sm:focus:via-purple-600"
+
+
+smFocusViaPurple700 : Svg.Attribute msg
+smFocusViaPurple700 =
+    A.class "sm:focus:via-purple-700"
+
+
+smFocusViaPurple800 : Svg.Attribute msg
+smFocusViaPurple800 =
+    A.class "sm:focus:via-purple-800"
+
+
+smFocusViaPurple900 : Svg.Attribute msg
+smFocusViaPurple900 =
+    A.class "sm:focus:via-purple-900"
+
+
+smFocusViaPink100 : Svg.Attribute msg
+smFocusViaPink100 =
+    A.class "sm:focus:via-pink-100"
+
+
+smFocusViaPink200 : Svg.Attribute msg
+smFocusViaPink200 =
+    A.class "sm:focus:via-pink-200"
+
+
+smFocusViaPink300 : Svg.Attribute msg
+smFocusViaPink300 =
+    A.class "sm:focus:via-pink-300"
+
+
+smFocusViaPink400 : Svg.Attribute msg
+smFocusViaPink400 =
+    A.class "sm:focus:via-pink-400"
+
+
+smFocusViaPink500 : Svg.Attribute msg
+smFocusViaPink500 =
+    A.class "sm:focus:via-pink-500"
+
+
+smFocusViaPink600 : Svg.Attribute msg
+smFocusViaPink600 =
+    A.class "sm:focus:via-pink-600"
+
+
+smFocusViaPink700 : Svg.Attribute msg
+smFocusViaPink700 =
+    A.class "sm:focus:via-pink-700"
+
+
+smFocusViaPink800 : Svg.Attribute msg
+smFocusViaPink800 =
+    A.class "sm:focus:via-pink-800"
+
+
+smFocusViaPink900 : Svg.Attribute msg
+smFocusViaPink900 =
+    A.class "sm:focus:via-pink-900"
+
+
+smFocusToTransparent : Svg.Attribute msg
+smFocusToTransparent =
+    A.class "sm:focus:to-transparent"
+
+
+smFocusToCurrent : Svg.Attribute msg
+smFocusToCurrent =
+    A.class "sm:focus:to-current"
+
+
+smFocusToBlack : Svg.Attribute msg
+smFocusToBlack =
+    A.class "sm:focus:to-black"
+
+
+smFocusToWhite : Svg.Attribute msg
+smFocusToWhite =
+    A.class "sm:focus:to-white"
+
+
+smFocusToGray100 : Svg.Attribute msg
+smFocusToGray100 =
+    A.class "sm:focus:to-gray-100"
+
+
+smFocusToGray200 : Svg.Attribute msg
+smFocusToGray200 =
+    A.class "sm:focus:to-gray-200"
+
+
+smFocusToGray300 : Svg.Attribute msg
+smFocusToGray300 =
+    A.class "sm:focus:to-gray-300"
+
+
+smFocusToGray400 : Svg.Attribute msg
+smFocusToGray400 =
+    A.class "sm:focus:to-gray-400"
+
+
+smFocusToGray500 : Svg.Attribute msg
+smFocusToGray500 =
+    A.class "sm:focus:to-gray-500"
+
+
+smFocusToGray600 : Svg.Attribute msg
+smFocusToGray600 =
+    A.class "sm:focus:to-gray-600"
+
+
+smFocusToGray700 : Svg.Attribute msg
+smFocusToGray700 =
+    A.class "sm:focus:to-gray-700"
+
+
+smFocusToGray800 : Svg.Attribute msg
+smFocusToGray800 =
+    A.class "sm:focus:to-gray-800"
+
+
+smFocusToGray900 : Svg.Attribute msg
+smFocusToGray900 =
+    A.class "sm:focus:to-gray-900"
+
+
+smFocusToRed100 : Svg.Attribute msg
+smFocusToRed100 =
+    A.class "sm:focus:to-red-100"
+
+
+smFocusToRed200 : Svg.Attribute msg
+smFocusToRed200 =
+    A.class "sm:focus:to-red-200"
+
+
+smFocusToRed300 : Svg.Attribute msg
+smFocusToRed300 =
+    A.class "sm:focus:to-red-300"
+
+
+smFocusToRed400 : Svg.Attribute msg
+smFocusToRed400 =
+    A.class "sm:focus:to-red-400"
+
+
+smFocusToRed500 : Svg.Attribute msg
+smFocusToRed500 =
+    A.class "sm:focus:to-red-500"
+
+
+smFocusToRed600 : Svg.Attribute msg
+smFocusToRed600 =
+    A.class "sm:focus:to-red-600"
+
+
+smFocusToRed700 : Svg.Attribute msg
+smFocusToRed700 =
+    A.class "sm:focus:to-red-700"
+
+
+smFocusToRed800 : Svg.Attribute msg
+smFocusToRed800 =
+    A.class "sm:focus:to-red-800"
+
+
+smFocusToRed900 : Svg.Attribute msg
+smFocusToRed900 =
+    A.class "sm:focus:to-red-900"
+
+
+smFocusToOrange100 : Svg.Attribute msg
+smFocusToOrange100 =
+    A.class "sm:focus:to-orange-100"
+
+
+smFocusToOrange200 : Svg.Attribute msg
+smFocusToOrange200 =
+    A.class "sm:focus:to-orange-200"
+
+
+smFocusToOrange300 : Svg.Attribute msg
+smFocusToOrange300 =
+    A.class "sm:focus:to-orange-300"
+
+
+smFocusToOrange400 : Svg.Attribute msg
+smFocusToOrange400 =
+    A.class "sm:focus:to-orange-400"
+
+
+smFocusToOrange500 : Svg.Attribute msg
+smFocusToOrange500 =
+    A.class "sm:focus:to-orange-500"
+
+
+smFocusToOrange600 : Svg.Attribute msg
+smFocusToOrange600 =
+    A.class "sm:focus:to-orange-600"
+
+
+smFocusToOrange700 : Svg.Attribute msg
+smFocusToOrange700 =
+    A.class "sm:focus:to-orange-700"
+
+
+smFocusToOrange800 : Svg.Attribute msg
+smFocusToOrange800 =
+    A.class "sm:focus:to-orange-800"
+
+
+smFocusToOrange900 : Svg.Attribute msg
+smFocusToOrange900 =
+    A.class "sm:focus:to-orange-900"
+
+
+smFocusToYellow100 : Svg.Attribute msg
+smFocusToYellow100 =
+    A.class "sm:focus:to-yellow-100"
+
+
+smFocusToYellow200 : Svg.Attribute msg
+smFocusToYellow200 =
+    A.class "sm:focus:to-yellow-200"
+
+
+smFocusToYellow300 : Svg.Attribute msg
+smFocusToYellow300 =
+    A.class "sm:focus:to-yellow-300"
+
+
+smFocusToYellow400 : Svg.Attribute msg
+smFocusToYellow400 =
+    A.class "sm:focus:to-yellow-400"
+
+
+smFocusToYellow500 : Svg.Attribute msg
+smFocusToYellow500 =
+    A.class "sm:focus:to-yellow-500"
+
+
+smFocusToYellow600 : Svg.Attribute msg
+smFocusToYellow600 =
+    A.class "sm:focus:to-yellow-600"
+
+
+smFocusToYellow700 : Svg.Attribute msg
+smFocusToYellow700 =
+    A.class "sm:focus:to-yellow-700"
+
+
+smFocusToYellow800 : Svg.Attribute msg
+smFocusToYellow800 =
+    A.class "sm:focus:to-yellow-800"
+
+
+smFocusToYellow900 : Svg.Attribute msg
+smFocusToYellow900 =
+    A.class "sm:focus:to-yellow-900"
+
+
+smFocusToGreen100 : Svg.Attribute msg
+smFocusToGreen100 =
+    A.class "sm:focus:to-green-100"
+
+
+smFocusToGreen200 : Svg.Attribute msg
+smFocusToGreen200 =
+    A.class "sm:focus:to-green-200"
+
+
+smFocusToGreen300 : Svg.Attribute msg
+smFocusToGreen300 =
+    A.class "sm:focus:to-green-300"
+
+
+smFocusToGreen400 : Svg.Attribute msg
+smFocusToGreen400 =
+    A.class "sm:focus:to-green-400"
+
+
+smFocusToGreen500 : Svg.Attribute msg
+smFocusToGreen500 =
+    A.class "sm:focus:to-green-500"
+
+
+smFocusToGreen600 : Svg.Attribute msg
+smFocusToGreen600 =
+    A.class "sm:focus:to-green-600"
+
+
+smFocusToGreen700 : Svg.Attribute msg
+smFocusToGreen700 =
+    A.class "sm:focus:to-green-700"
+
+
+smFocusToGreen800 : Svg.Attribute msg
+smFocusToGreen800 =
+    A.class "sm:focus:to-green-800"
+
+
+smFocusToGreen900 : Svg.Attribute msg
+smFocusToGreen900 =
+    A.class "sm:focus:to-green-900"
+
+
+smFocusToTeal100 : Svg.Attribute msg
+smFocusToTeal100 =
+    A.class "sm:focus:to-teal-100"
+
+
+smFocusToTeal200 : Svg.Attribute msg
+smFocusToTeal200 =
+    A.class "sm:focus:to-teal-200"
+
+
+smFocusToTeal300 : Svg.Attribute msg
+smFocusToTeal300 =
+    A.class "sm:focus:to-teal-300"
+
+
+smFocusToTeal400 : Svg.Attribute msg
+smFocusToTeal400 =
+    A.class "sm:focus:to-teal-400"
+
+
+smFocusToTeal500 : Svg.Attribute msg
+smFocusToTeal500 =
+    A.class "sm:focus:to-teal-500"
+
+
+smFocusToTeal600 : Svg.Attribute msg
+smFocusToTeal600 =
+    A.class "sm:focus:to-teal-600"
+
+
+smFocusToTeal700 : Svg.Attribute msg
+smFocusToTeal700 =
+    A.class "sm:focus:to-teal-700"
+
+
+smFocusToTeal800 : Svg.Attribute msg
+smFocusToTeal800 =
+    A.class "sm:focus:to-teal-800"
+
+
+smFocusToTeal900 : Svg.Attribute msg
+smFocusToTeal900 =
+    A.class "sm:focus:to-teal-900"
+
+
+smFocusToBlue100 : Svg.Attribute msg
+smFocusToBlue100 =
+    A.class "sm:focus:to-blue-100"
+
+
+smFocusToBlue200 : Svg.Attribute msg
+smFocusToBlue200 =
+    A.class "sm:focus:to-blue-200"
+
+
+smFocusToBlue300 : Svg.Attribute msg
+smFocusToBlue300 =
+    A.class "sm:focus:to-blue-300"
+
+
+smFocusToBlue400 : Svg.Attribute msg
+smFocusToBlue400 =
+    A.class "sm:focus:to-blue-400"
+
+
+smFocusToBlue500 : Svg.Attribute msg
+smFocusToBlue500 =
+    A.class "sm:focus:to-blue-500"
+
+
+smFocusToBlue600 : Svg.Attribute msg
+smFocusToBlue600 =
+    A.class "sm:focus:to-blue-600"
+
+
+smFocusToBlue700 : Svg.Attribute msg
+smFocusToBlue700 =
+    A.class "sm:focus:to-blue-700"
+
+
+smFocusToBlue800 : Svg.Attribute msg
+smFocusToBlue800 =
+    A.class "sm:focus:to-blue-800"
+
+
+smFocusToBlue900 : Svg.Attribute msg
+smFocusToBlue900 =
+    A.class "sm:focus:to-blue-900"
+
+
+smFocusToIndigo100 : Svg.Attribute msg
+smFocusToIndigo100 =
+    A.class "sm:focus:to-indigo-100"
+
+
+smFocusToIndigo200 : Svg.Attribute msg
+smFocusToIndigo200 =
+    A.class "sm:focus:to-indigo-200"
+
+
+smFocusToIndigo300 : Svg.Attribute msg
+smFocusToIndigo300 =
+    A.class "sm:focus:to-indigo-300"
+
+
+smFocusToIndigo400 : Svg.Attribute msg
+smFocusToIndigo400 =
+    A.class "sm:focus:to-indigo-400"
+
+
+smFocusToIndigo500 : Svg.Attribute msg
+smFocusToIndigo500 =
+    A.class "sm:focus:to-indigo-500"
+
+
+smFocusToIndigo600 : Svg.Attribute msg
+smFocusToIndigo600 =
+    A.class "sm:focus:to-indigo-600"
+
+
+smFocusToIndigo700 : Svg.Attribute msg
+smFocusToIndigo700 =
+    A.class "sm:focus:to-indigo-700"
+
+
+smFocusToIndigo800 : Svg.Attribute msg
+smFocusToIndigo800 =
+    A.class "sm:focus:to-indigo-800"
+
+
+smFocusToIndigo900 : Svg.Attribute msg
+smFocusToIndigo900 =
+    A.class "sm:focus:to-indigo-900"
+
+
+smFocusToPurple100 : Svg.Attribute msg
+smFocusToPurple100 =
+    A.class "sm:focus:to-purple-100"
+
+
+smFocusToPurple200 : Svg.Attribute msg
+smFocusToPurple200 =
+    A.class "sm:focus:to-purple-200"
+
+
+smFocusToPurple300 : Svg.Attribute msg
+smFocusToPurple300 =
+    A.class "sm:focus:to-purple-300"
+
+
+smFocusToPurple400 : Svg.Attribute msg
+smFocusToPurple400 =
+    A.class "sm:focus:to-purple-400"
+
+
+smFocusToPurple500 : Svg.Attribute msg
+smFocusToPurple500 =
+    A.class "sm:focus:to-purple-500"
+
+
+smFocusToPurple600 : Svg.Attribute msg
+smFocusToPurple600 =
+    A.class "sm:focus:to-purple-600"
+
+
+smFocusToPurple700 : Svg.Attribute msg
+smFocusToPurple700 =
+    A.class "sm:focus:to-purple-700"
+
+
+smFocusToPurple800 : Svg.Attribute msg
+smFocusToPurple800 =
+    A.class "sm:focus:to-purple-800"
+
+
+smFocusToPurple900 : Svg.Attribute msg
+smFocusToPurple900 =
+    A.class "sm:focus:to-purple-900"
+
+
+smFocusToPink100 : Svg.Attribute msg
+smFocusToPink100 =
+    A.class "sm:focus:to-pink-100"
+
+
+smFocusToPink200 : Svg.Attribute msg
+smFocusToPink200 =
+    A.class "sm:focus:to-pink-200"
+
+
+smFocusToPink300 : Svg.Attribute msg
+smFocusToPink300 =
+    A.class "sm:focus:to-pink-300"
+
+
+smFocusToPink400 : Svg.Attribute msg
+smFocusToPink400 =
+    A.class "sm:focus:to-pink-400"
+
+
+smFocusToPink500 : Svg.Attribute msg
+smFocusToPink500 =
+    A.class "sm:focus:to-pink-500"
+
+
+smFocusToPink600 : Svg.Attribute msg
+smFocusToPink600 =
+    A.class "sm:focus:to-pink-600"
+
+
+smFocusToPink700 : Svg.Attribute msg
+smFocusToPink700 =
+    A.class "sm:focus:to-pink-700"
+
+
+smFocusToPink800 : Svg.Attribute msg
+smFocusToPink800 =
+    A.class "sm:focus:to-pink-800"
+
+
+smFocusToPink900 : Svg.Attribute msg
+smFocusToPink900 =
+    A.class "sm:focus:to-pink-900"
 
 
 smBgOpacity0 : Svg.Attribute msg
@@ -31787,6 +46226,21 @@ smRoundedLg =
     A.class "sm:rounded-lg"
 
 
+smRoundedXl : Svg.Attribute msg
+smRoundedXl =
+    A.class "sm:rounded-xl"
+
+
+smRounded2xl : Svg.Attribute msg
+smRounded2xl =
+    A.class "sm:rounded-2xl"
+
+
+smRounded3xl : Svg.Attribute msg
+smRounded3xl =
+    A.class "sm:rounded-3xl"
+
+
 smRoundedFull : Svg.Attribute msg
 smRoundedFull =
     A.class "sm:rounded-full"
@@ -31890,6 +46344,66 @@ smRoundedBLg =
 smRoundedLLg : Svg.Attribute msg
 smRoundedLLg =
     A.class "sm:rounded-l-lg"
+
+
+smRoundedTXl : Svg.Attribute msg
+smRoundedTXl =
+    A.class "sm:rounded-t-xl"
+
+
+smRoundedRXl : Svg.Attribute msg
+smRoundedRXl =
+    A.class "sm:rounded-r-xl"
+
+
+smRoundedBXl : Svg.Attribute msg
+smRoundedBXl =
+    A.class "sm:rounded-b-xl"
+
+
+smRoundedLXl : Svg.Attribute msg
+smRoundedLXl =
+    A.class "sm:rounded-l-xl"
+
+
+smRoundedT2xl : Svg.Attribute msg
+smRoundedT2xl =
+    A.class "sm:rounded-t-2xl"
+
+
+smRoundedR2xl : Svg.Attribute msg
+smRoundedR2xl =
+    A.class "sm:rounded-r-2xl"
+
+
+smRoundedB2xl : Svg.Attribute msg
+smRoundedB2xl =
+    A.class "sm:rounded-b-2xl"
+
+
+smRoundedL2xl : Svg.Attribute msg
+smRoundedL2xl =
+    A.class "sm:rounded-l-2xl"
+
+
+smRoundedT3xl : Svg.Attribute msg
+smRoundedT3xl =
+    A.class "sm:rounded-t-3xl"
+
+
+smRoundedR3xl : Svg.Attribute msg
+smRoundedR3xl =
+    A.class "sm:rounded-r-3xl"
+
+
+smRoundedB3xl : Svg.Attribute msg
+smRoundedB3xl =
+    A.class "sm:rounded-b-3xl"
+
+
+smRoundedL3xl : Svg.Attribute msg
+smRoundedL3xl =
+    A.class "sm:rounded-l-3xl"
 
 
 smRoundedTFull : Svg.Attribute msg
@@ -32010,6 +46524,66 @@ smRoundedBrLg =
 smRoundedBlLg : Svg.Attribute msg
 smRoundedBlLg =
     A.class "sm:rounded-bl-lg"
+
+
+smRoundedTlXl : Svg.Attribute msg
+smRoundedTlXl =
+    A.class "sm:rounded-tl-xl"
+
+
+smRoundedTrXl : Svg.Attribute msg
+smRoundedTrXl =
+    A.class "sm:rounded-tr-xl"
+
+
+smRoundedBrXl : Svg.Attribute msg
+smRoundedBrXl =
+    A.class "sm:rounded-br-xl"
+
+
+smRoundedBlXl : Svg.Attribute msg
+smRoundedBlXl =
+    A.class "sm:rounded-bl-xl"
+
+
+smRoundedTl2xl : Svg.Attribute msg
+smRoundedTl2xl =
+    A.class "sm:rounded-tl-2xl"
+
+
+smRoundedTr2xl : Svg.Attribute msg
+smRoundedTr2xl =
+    A.class "sm:rounded-tr-2xl"
+
+
+smRoundedBr2xl : Svg.Attribute msg
+smRoundedBr2xl =
+    A.class "sm:rounded-br-2xl"
+
+
+smRoundedBl2xl : Svg.Attribute msg
+smRoundedBl2xl =
+    A.class "sm:rounded-bl-2xl"
+
+
+smRoundedTl3xl : Svg.Attribute msg
+smRoundedTl3xl =
+    A.class "sm:rounded-tl-3xl"
+
+
+smRoundedTr3xl : Svg.Attribute msg
+smRoundedTr3xl =
+    A.class "sm:rounded-tr-3xl"
+
+
+smRoundedBr3xl : Svg.Attribute msg
+smRoundedBr3xl =
+    A.class "sm:rounded-br-3xl"
+
+
+smRoundedBl3xl : Svg.Attribute msg
+smRoundedBl3xl =
+    A.class "sm:rounded-bl-3xl"
 
 
 smRoundedTlFull : Svg.Attribute msg
@@ -32312,6 +46886,11 @@ smInlineGrid =
     A.class "sm:inline-grid"
 
 
+smContents : Svg.Attribute msg
+smContents =
+    A.class "sm:contents"
+
+
 smHidden : Svg.Attribute msg
 smHidden =
     A.class "sm:hidden"
@@ -32352,6 +46931,91 @@ smFlexNoWrap =
     A.class "sm:flex-no-wrap"
 
 
+smPlaceItemsAuto : Svg.Attribute msg
+smPlaceItemsAuto =
+    A.class "sm:place-items-auto"
+
+
+smPlaceItemsStart : Svg.Attribute msg
+smPlaceItemsStart =
+    A.class "sm:place-items-start"
+
+
+smPlaceItemsEnd : Svg.Attribute msg
+smPlaceItemsEnd =
+    A.class "sm:place-items-end"
+
+
+smPlaceItemsCenter : Svg.Attribute msg
+smPlaceItemsCenter =
+    A.class "sm:place-items-center"
+
+
+smPlaceItemsStretch : Svg.Attribute msg
+smPlaceItemsStretch =
+    A.class "sm:place-items-stretch"
+
+
+smPlaceContentCenter : Svg.Attribute msg
+smPlaceContentCenter =
+    A.class "sm:place-content-center"
+
+
+smPlaceContentStart : Svg.Attribute msg
+smPlaceContentStart =
+    A.class "sm:place-content-start"
+
+
+smPlaceContentEnd : Svg.Attribute msg
+smPlaceContentEnd =
+    A.class "sm:place-content-end"
+
+
+smPlaceContentBetween : Svg.Attribute msg
+smPlaceContentBetween =
+    A.class "sm:place-content-between"
+
+
+smPlaceContentAround : Svg.Attribute msg
+smPlaceContentAround =
+    A.class "sm:place-content-around"
+
+
+smPlaceContentEvenly : Svg.Attribute msg
+smPlaceContentEvenly =
+    A.class "sm:place-content-evenly"
+
+
+smPlaceContentStretch : Svg.Attribute msg
+smPlaceContentStretch =
+    A.class "sm:place-content-stretch"
+
+
+smPlaceSelfAuto : Svg.Attribute msg
+smPlaceSelfAuto =
+    A.class "sm:place-self-auto"
+
+
+smPlaceSelfStart : Svg.Attribute msg
+smPlaceSelfStart =
+    A.class "sm:place-self-start"
+
+
+smPlaceSelfEnd : Svg.Attribute msg
+smPlaceSelfEnd =
+    A.class "sm:place-self-end"
+
+
+smPlaceSelfCenter : Svg.Attribute msg
+smPlaceSelfCenter =
+    A.class "sm:place-self-center"
+
+
+smPlaceSelfStretch : Svg.Attribute msg
+smPlaceSelfStretch =
+    A.class "sm:place-self-stretch"
+
+
 smItemsStart : Svg.Attribute msg
 smItemsStart =
     A.class "sm:items-start"
@@ -32377,6 +47041,36 @@ smItemsStretch =
     A.class "sm:items-stretch"
 
 
+smContentCenter : Svg.Attribute msg
+smContentCenter =
+    A.class "sm:content-center"
+
+
+smContentStart : Svg.Attribute msg
+smContentStart =
+    A.class "sm:content-start"
+
+
+smContentEnd : Svg.Attribute msg
+smContentEnd =
+    A.class "sm:content-end"
+
+
+smContentBetween : Svg.Attribute msg
+smContentBetween =
+    A.class "sm:content-between"
+
+
+smContentAround : Svg.Attribute msg
+smContentAround =
+    A.class "sm:content-around"
+
+
+smContentEvenly : Svg.Attribute msg
+smContentEvenly =
+    A.class "sm:content-evenly"
+
+
 smSelfAuto : Svg.Attribute msg
 smSelfAuto =
     A.class "sm:self-auto"
@@ -32400,6 +47094,31 @@ smSelfCenter =
 smSelfStretch : Svg.Attribute msg
 smSelfStretch =
     A.class "sm:self-stretch"
+
+
+smJustifyItemsAuto : Svg.Attribute msg
+smJustifyItemsAuto =
+    A.class "sm:justify-items-auto"
+
+
+smJustifyItemsStart : Svg.Attribute msg
+smJustifyItemsStart =
+    A.class "sm:justify-items-start"
+
+
+smJustifyItemsEnd : Svg.Attribute msg
+smJustifyItemsEnd =
+    A.class "sm:justify-items-end"
+
+
+smJustifyItemsCenter : Svg.Attribute msg
+smJustifyItemsCenter =
+    A.class "sm:justify-items-center"
+
+
+smJustifyItemsStretch : Svg.Attribute msg
+smJustifyItemsStretch =
+    A.class "sm:justify-items-stretch"
 
 
 smJustifyStart : Svg.Attribute msg
@@ -32432,29 +47151,29 @@ smJustifyEvenly =
     A.class "sm:justify-evenly"
 
 
-smContentCenter : Svg.Attribute msg
-smContentCenter =
-    A.class "sm:content-center"
+smJustifySelfAuto : Svg.Attribute msg
+smJustifySelfAuto =
+    A.class "sm:justify-self-auto"
 
 
-smContentStart : Svg.Attribute msg
-smContentStart =
-    A.class "sm:content-start"
+smJustifySelfStart : Svg.Attribute msg
+smJustifySelfStart =
+    A.class "sm:justify-self-start"
 
 
-smContentEnd : Svg.Attribute msg
-smContentEnd =
-    A.class "sm:content-end"
+smJustifySelfEnd : Svg.Attribute msg
+smJustifySelfEnd =
+    A.class "sm:justify-self-end"
 
 
-smContentBetween : Svg.Attribute msg
-smContentBetween =
-    A.class "sm:content-between"
+smJustifySelfCenter : Svg.Attribute msg
+smJustifySelfCenter =
+    A.class "sm:justify-self-center"
 
 
-smContentAround : Svg.Attribute msg
-smContentAround =
-    A.class "sm:content-around"
+smJustifySelfStretch : Svg.Attribute msg
+smJustifySelfStretch =
+    A.class "sm:justify-self-stretch"
 
 
 smFlex1 : Svg.Attribute msg
@@ -34617,9 +49336,29 @@ smOutlineNone =
     A.class "sm:outline-none"
 
 
+smOutlineWhite : Svg.Attribute msg
+smOutlineWhite =
+    A.class "sm:outline-white"
+
+
+smOutlineBlack : Svg.Attribute msg
+smOutlineBlack =
+    A.class "sm:outline-black"
+
+
 smFocusOutlineNone : Svg.Attribute msg
 smFocusOutlineNone =
     A.class "sm:focus:outline-none"
+
+
+smFocusOutlineWhite : Svg.Attribute msg
+smFocusOutlineWhite =
+    A.class "sm:focus:outline-white"
+
+
+smFocusOutlineBlack : Svg.Attribute msg
+smFocusOutlineBlack =
+    A.class "sm:focus:outline-black"
 
 
 smOverflowAuto : Svg.Attribute msg
@@ -34690,6 +49429,51 @@ smScrollingTouch =
 smScrollingAuto : Svg.Attribute msg
 smScrollingAuto =
     A.class "sm:scrolling-auto"
+
+
+smOverscrollAuto : Svg.Attribute msg
+smOverscrollAuto =
+    A.class "sm:overscroll-auto"
+
+
+smOverscrollContain : Svg.Attribute msg
+smOverscrollContain =
+    A.class "sm:overscroll-contain"
+
+
+smOverscrollNone : Svg.Attribute msg
+smOverscrollNone =
+    A.class "sm:overscroll-none"
+
+
+smOverscrollYAuto : Svg.Attribute msg
+smOverscrollYAuto =
+    A.class "sm:overscroll-y-auto"
+
+
+smOverscrollYContain : Svg.Attribute msg
+smOverscrollYContain =
+    A.class "sm:overscroll-y-contain"
+
+
+smOverscrollYNone : Svg.Attribute msg
+smOverscrollYNone =
+    A.class "sm:overscroll-y-none"
+
+
+smOverscrollXAuto : Svg.Attribute msg
+smOverscrollXAuto =
+    A.class "sm:overscroll-x-auto"
+
+
+smOverscrollXContain : Svg.Attribute msg
+smOverscrollXContain =
+    A.class "sm:overscroll-x-contain"
+
+
+smOverscrollXNone : Svg.Attribute msg
+smOverscrollXNone =
+    A.class "sm:overscroll-x-none"
 
 
 smP0 : Svg.Attribute msg
@@ -38247,6 +53031,51 @@ smSubpixelAntialiased =
     A.class "sm:subpixel-antialiased"
 
 
+smOrdinal : Svg.Attribute msg
+smOrdinal =
+    A.class "sm:ordinal"
+
+
+smSlashedZero : Svg.Attribute msg
+smSlashedZero =
+    A.class "sm:slashed-zero"
+
+
+smLiningNums : Svg.Attribute msg
+smLiningNums =
+    A.class "sm:lining-nums"
+
+
+smOldstyleNums : Svg.Attribute msg
+smOldstyleNums =
+    A.class "sm:oldstyle-nums"
+
+
+smProportionalNums : Svg.Attribute msg
+smProportionalNums =
+    A.class "sm:proportional-nums"
+
+
+smTabularNums : Svg.Attribute msg
+smTabularNums =
+    A.class "sm:tabular-nums"
+
+
+smDiagonalFractions : Svg.Attribute msg
+smDiagonalFractions =
+    A.class "sm:diagonal-fractions"
+
+
+smStackedFractions : Svg.Attribute msg
+smStackedFractions =
+    A.class "sm:stacked-fractions"
+
+
+smNormalNums : Svg.Attribute msg
+smNormalNums =
+    A.class "sm:normal-nums"
+
+
 smTrackingTighter : Svg.Attribute msg
 smTrackingTighter =
     A.class "sm:tracking-tighter"
@@ -38752,194 +53581,194 @@ smGapPx =
     A.class "sm:gap-px"
 
 
-smColGap0 : Svg.Attribute msg
-smColGap0 =
-    A.class "sm:col-gap-0"
+smGapX0 : Svg.Attribute msg
+smGapX0 =
+    A.class "sm:gap-x-0"
 
 
-smColGap1 : Svg.Attribute msg
-smColGap1 =
-    A.class "sm:col-gap-1"
+smGapX1 : Svg.Attribute msg
+smGapX1 =
+    A.class "sm:gap-x-1"
 
 
-smColGap2 : Svg.Attribute msg
-smColGap2 =
-    A.class "sm:col-gap-2"
+smGapX2 : Svg.Attribute msg
+smGapX2 =
+    A.class "sm:gap-x-2"
 
 
-smColGap3 : Svg.Attribute msg
-smColGap3 =
-    A.class "sm:col-gap-3"
+smGapX3 : Svg.Attribute msg
+smGapX3 =
+    A.class "sm:gap-x-3"
 
 
-smColGap4 : Svg.Attribute msg
-smColGap4 =
-    A.class "sm:col-gap-4"
+smGapX4 : Svg.Attribute msg
+smGapX4 =
+    A.class "sm:gap-x-4"
 
 
-smColGap5 : Svg.Attribute msg
-smColGap5 =
-    A.class "sm:col-gap-5"
+smGapX5 : Svg.Attribute msg
+smGapX5 =
+    A.class "sm:gap-x-5"
 
 
-smColGap6 : Svg.Attribute msg
-smColGap6 =
-    A.class "sm:col-gap-6"
+smGapX6 : Svg.Attribute msg
+smGapX6 =
+    A.class "sm:gap-x-6"
 
 
-smColGap8 : Svg.Attribute msg
-smColGap8 =
-    A.class "sm:col-gap-8"
+smGapX8 : Svg.Attribute msg
+smGapX8 =
+    A.class "sm:gap-x-8"
 
 
-smColGap10 : Svg.Attribute msg
-smColGap10 =
-    A.class "sm:col-gap-10"
+smGapX10 : Svg.Attribute msg
+smGapX10 =
+    A.class "sm:gap-x-10"
 
 
-smColGap12 : Svg.Attribute msg
-smColGap12 =
-    A.class "sm:col-gap-12"
+smGapX12 : Svg.Attribute msg
+smGapX12 =
+    A.class "sm:gap-x-12"
 
 
-smColGap16 : Svg.Attribute msg
-smColGap16 =
-    A.class "sm:col-gap-16"
+smGapX16 : Svg.Attribute msg
+smGapX16 =
+    A.class "sm:gap-x-16"
 
 
-smColGap20 : Svg.Attribute msg
-smColGap20 =
-    A.class "sm:col-gap-20"
+smGapX20 : Svg.Attribute msg
+smGapX20 =
+    A.class "sm:gap-x-20"
 
 
-smColGap24 : Svg.Attribute msg
-smColGap24 =
-    A.class "sm:col-gap-24"
+smGapX24 : Svg.Attribute msg
+smGapX24 =
+    A.class "sm:gap-x-24"
 
 
-smColGap32 : Svg.Attribute msg
-smColGap32 =
-    A.class "sm:col-gap-32"
+smGapX32 : Svg.Attribute msg
+smGapX32 =
+    A.class "sm:gap-x-32"
 
 
-smColGap40 : Svg.Attribute msg
-smColGap40 =
-    A.class "sm:col-gap-40"
+smGapX40 : Svg.Attribute msg
+smGapX40 =
+    A.class "sm:gap-x-40"
 
 
-smColGap48 : Svg.Attribute msg
-smColGap48 =
-    A.class "sm:col-gap-48"
+smGapX48 : Svg.Attribute msg
+smGapX48 =
+    A.class "sm:gap-x-48"
 
 
-smColGap56 : Svg.Attribute msg
-smColGap56 =
-    A.class "sm:col-gap-56"
+smGapX56 : Svg.Attribute msg
+smGapX56 =
+    A.class "sm:gap-x-56"
 
 
-smColGap64 : Svg.Attribute msg
-smColGap64 =
-    A.class "sm:col-gap-64"
+smGapX64 : Svg.Attribute msg
+smGapX64 =
+    A.class "sm:gap-x-64"
 
 
-smColGapPx : Svg.Attribute msg
-smColGapPx =
-    A.class "sm:col-gap-px"
+smGapXPx : Svg.Attribute msg
+smGapXPx =
+    A.class "sm:gap-x-px"
 
 
-smRowGap0 : Svg.Attribute msg
-smRowGap0 =
-    A.class "sm:row-gap-0"
+smGapY0 : Svg.Attribute msg
+smGapY0 =
+    A.class "sm:gap-y-0"
 
 
-smRowGap1 : Svg.Attribute msg
-smRowGap1 =
-    A.class "sm:row-gap-1"
+smGapY1 : Svg.Attribute msg
+smGapY1 =
+    A.class "sm:gap-y-1"
 
 
-smRowGap2 : Svg.Attribute msg
-smRowGap2 =
-    A.class "sm:row-gap-2"
+smGapY2 : Svg.Attribute msg
+smGapY2 =
+    A.class "sm:gap-y-2"
 
 
-smRowGap3 : Svg.Attribute msg
-smRowGap3 =
-    A.class "sm:row-gap-3"
+smGapY3 : Svg.Attribute msg
+smGapY3 =
+    A.class "sm:gap-y-3"
 
 
-smRowGap4 : Svg.Attribute msg
-smRowGap4 =
-    A.class "sm:row-gap-4"
+smGapY4 : Svg.Attribute msg
+smGapY4 =
+    A.class "sm:gap-y-4"
 
 
-smRowGap5 : Svg.Attribute msg
-smRowGap5 =
-    A.class "sm:row-gap-5"
+smGapY5 : Svg.Attribute msg
+smGapY5 =
+    A.class "sm:gap-y-5"
 
 
-smRowGap6 : Svg.Attribute msg
-smRowGap6 =
-    A.class "sm:row-gap-6"
+smGapY6 : Svg.Attribute msg
+smGapY6 =
+    A.class "sm:gap-y-6"
 
 
-smRowGap8 : Svg.Attribute msg
-smRowGap8 =
-    A.class "sm:row-gap-8"
+smGapY8 : Svg.Attribute msg
+smGapY8 =
+    A.class "sm:gap-y-8"
 
 
-smRowGap10 : Svg.Attribute msg
-smRowGap10 =
-    A.class "sm:row-gap-10"
+smGapY10 : Svg.Attribute msg
+smGapY10 =
+    A.class "sm:gap-y-10"
 
 
-smRowGap12 : Svg.Attribute msg
-smRowGap12 =
-    A.class "sm:row-gap-12"
+smGapY12 : Svg.Attribute msg
+smGapY12 =
+    A.class "sm:gap-y-12"
 
 
-smRowGap16 : Svg.Attribute msg
-smRowGap16 =
-    A.class "sm:row-gap-16"
+smGapY16 : Svg.Attribute msg
+smGapY16 =
+    A.class "sm:gap-y-16"
 
 
-smRowGap20 : Svg.Attribute msg
-smRowGap20 =
-    A.class "sm:row-gap-20"
+smGapY20 : Svg.Attribute msg
+smGapY20 =
+    A.class "sm:gap-y-20"
 
 
-smRowGap24 : Svg.Attribute msg
-smRowGap24 =
-    A.class "sm:row-gap-24"
+smGapY24 : Svg.Attribute msg
+smGapY24 =
+    A.class "sm:gap-y-24"
 
 
-smRowGap32 : Svg.Attribute msg
-smRowGap32 =
-    A.class "sm:row-gap-32"
+smGapY32 : Svg.Attribute msg
+smGapY32 =
+    A.class "sm:gap-y-32"
 
 
-smRowGap40 : Svg.Attribute msg
-smRowGap40 =
-    A.class "sm:row-gap-40"
+smGapY40 : Svg.Attribute msg
+smGapY40 =
+    A.class "sm:gap-y-40"
 
 
-smRowGap48 : Svg.Attribute msg
-smRowGap48 =
-    A.class "sm:row-gap-48"
+smGapY48 : Svg.Attribute msg
+smGapY48 =
+    A.class "sm:gap-y-48"
 
 
-smRowGap56 : Svg.Attribute msg
-smRowGap56 =
-    A.class "sm:row-gap-56"
+smGapY56 : Svg.Attribute msg
+smGapY56 =
+    A.class "sm:gap-y-56"
 
 
-smRowGap64 : Svg.Attribute msg
-smRowGap64 =
-    A.class "sm:row-gap-64"
+smGapY64 : Svg.Attribute msg
+smGapY64 =
+    A.class "sm:gap-y-64"
 
 
-smRowGapPx : Svg.Attribute msg
-smRowGapPx =
-    A.class "sm:row-gap-px"
+smGapYPx : Svg.Attribute msg
+smGapYPx =
+    A.class "sm:gap-y-px"
 
 
 smGridFlowRow : Svg.Attribute msg
@@ -39027,6 +53856,26 @@ smGridColsNone =
     A.class "sm:grid-cols-none"
 
 
+smAutoColsAuto : Svg.Attribute msg
+smAutoColsAuto =
+    A.class "sm:auto-cols-auto"
+
+
+smAutoColsMin : Svg.Attribute msg
+smAutoColsMin =
+    A.class "sm:auto-cols-min"
+
+
+smAutoColsMax : Svg.Attribute msg
+smAutoColsMax =
+    A.class "sm:auto-cols-max"
+
+
+smAutoColsFr : Svg.Attribute msg
+smAutoColsFr =
+    A.class "sm:auto-cols-fr"
+
+
 smColAuto : Svg.Attribute msg
 smColAuto =
     A.class "sm:col-auto"
@@ -39090,6 +53939,11 @@ smColSpan11 =
 smColSpan12 : Svg.Attribute msg
 smColSpan12 =
     A.class "sm:col-span-12"
+
+
+smColSpanFull : Svg.Attribute msg
+smColSpanFull =
+    A.class "sm:col-span-full"
 
 
 smColStart1 : Svg.Attribute msg
@@ -39267,6 +54121,26 @@ smGridRowsNone =
     A.class "sm:grid-rows-none"
 
 
+smAutoRowsAuto : Svg.Attribute msg
+smAutoRowsAuto =
+    A.class "sm:auto-rows-auto"
+
+
+smAutoRowsMin : Svg.Attribute msg
+smAutoRowsMin =
+    A.class "sm:auto-rows-min"
+
+
+smAutoRowsMax : Svg.Attribute msg
+smAutoRowsMax =
+    A.class "sm:auto-rows-max"
+
+
+smAutoRowsFr : Svg.Attribute msg
+smAutoRowsFr =
+    A.class "sm:auto-rows-fr"
+
+
 smRowAuto : Svg.Attribute msg
 smRowAuto =
     A.class "sm:row-auto"
@@ -39300,6 +54174,11 @@ smRowSpan5 =
 smRowSpan6 : Svg.Attribute msg
 smRowSpan6 =
     A.class "sm:row-span-6"
+
+
+smRowSpanFull : Svg.Attribute msg
+smRowSpanFull =
+    A.class "sm:row-span-full"
 
 
 smRowStart1 : Svg.Attribute msg
@@ -39892,6 +54771,31 @@ smRotate0 =
     A.class "sm:rotate-0"
 
 
+smRotate1 : Svg.Attribute msg
+smRotate1 =
+    A.class "sm:rotate-1"
+
+
+smRotate2 : Svg.Attribute msg
+smRotate2 =
+    A.class "sm:rotate-2"
+
+
+smRotate3 : Svg.Attribute msg
+smRotate3 =
+    A.class "sm:rotate-3"
+
+
+smRotate6 : Svg.Attribute msg
+smRotate6 =
+    A.class "sm:rotate-6"
+
+
+smRotate12 : Svg.Attribute msg
+smRotate12 =
+    A.class "sm:rotate-12"
+
+
 smRotate45 : Svg.Attribute msg
 smRotate45 =
     A.class "sm:rotate-45"
@@ -39922,9 +54826,59 @@ smNegRotate45 =
     A.class "sm:-rotate-45"
 
 
+smNegRotate12 : Svg.Attribute msg
+smNegRotate12 =
+    A.class "sm:-rotate-12"
+
+
+smNegRotate6 : Svg.Attribute msg
+smNegRotate6 =
+    A.class "sm:-rotate-6"
+
+
+smNegRotate3 : Svg.Attribute msg
+smNegRotate3 =
+    A.class "sm:-rotate-3"
+
+
+smNegRotate2 : Svg.Attribute msg
+smNegRotate2 =
+    A.class "sm:-rotate-2"
+
+
+smNegRotate1 : Svg.Attribute msg
+smNegRotate1 =
+    A.class "sm:-rotate-1"
+
+
 smHoverRotate0 : Svg.Attribute msg
 smHoverRotate0 =
     A.class "sm:hover:rotate-0"
+
+
+smHoverRotate1 : Svg.Attribute msg
+smHoverRotate1 =
+    A.class "sm:hover:rotate-1"
+
+
+smHoverRotate2 : Svg.Attribute msg
+smHoverRotate2 =
+    A.class "sm:hover:rotate-2"
+
+
+smHoverRotate3 : Svg.Attribute msg
+smHoverRotate3 =
+    A.class "sm:hover:rotate-3"
+
+
+smHoverRotate6 : Svg.Attribute msg
+smHoverRotate6 =
+    A.class "sm:hover:rotate-6"
+
+
+smHoverRotate12 : Svg.Attribute msg
+smHoverRotate12 =
+    A.class "sm:hover:rotate-12"
 
 
 smHoverRotate45 : Svg.Attribute msg
@@ -39957,9 +54911,59 @@ smHoverNegRotate45 =
     A.class "sm:hover:-rotate-45"
 
 
+smHoverNegRotate12 : Svg.Attribute msg
+smHoverNegRotate12 =
+    A.class "sm:hover:-rotate-12"
+
+
+smHoverNegRotate6 : Svg.Attribute msg
+smHoverNegRotate6 =
+    A.class "sm:hover:-rotate-6"
+
+
+smHoverNegRotate3 : Svg.Attribute msg
+smHoverNegRotate3 =
+    A.class "sm:hover:-rotate-3"
+
+
+smHoverNegRotate2 : Svg.Attribute msg
+smHoverNegRotate2 =
+    A.class "sm:hover:-rotate-2"
+
+
+smHoverNegRotate1 : Svg.Attribute msg
+smHoverNegRotate1 =
+    A.class "sm:hover:-rotate-1"
+
+
 smFocusRotate0 : Svg.Attribute msg
 smFocusRotate0 =
     A.class "sm:focus:rotate-0"
+
+
+smFocusRotate1 : Svg.Attribute msg
+smFocusRotate1 =
+    A.class "sm:focus:rotate-1"
+
+
+smFocusRotate2 : Svg.Attribute msg
+smFocusRotate2 =
+    A.class "sm:focus:rotate-2"
+
+
+smFocusRotate3 : Svg.Attribute msg
+smFocusRotate3 =
+    A.class "sm:focus:rotate-3"
+
+
+smFocusRotate6 : Svg.Attribute msg
+smFocusRotate6 =
+    A.class "sm:focus:rotate-6"
+
+
+smFocusRotate12 : Svg.Attribute msg
+smFocusRotate12 =
+    A.class "sm:focus:rotate-12"
 
 
 smFocusRotate45 : Svg.Attribute msg
@@ -39990,6 +54994,31 @@ smFocusNegRotate90 =
 smFocusNegRotate45 : Svg.Attribute msg
 smFocusNegRotate45 =
     A.class "sm:focus:-rotate-45"
+
+
+smFocusNegRotate12 : Svg.Attribute msg
+smFocusNegRotate12 =
+    A.class "sm:focus:-rotate-12"
+
+
+smFocusNegRotate6 : Svg.Attribute msg
+smFocusNegRotate6 =
+    A.class "sm:focus:-rotate-6"
+
+
+smFocusNegRotate3 : Svg.Attribute msg
+smFocusNegRotate3 =
+    A.class "sm:focus:-rotate-3"
+
+
+smFocusNegRotate2 : Svg.Attribute msg
+smFocusNegRotate2 =
+    A.class "sm:focus:-rotate-2"
+
+
+smFocusNegRotate1 : Svg.Attribute msg
+smFocusNegRotate1 =
+    A.class "sm:focus:-rotate-1"
 
 
 smTranslateX0 : Svg.Attribute msg
@@ -41227,6 +56256,16 @@ smSkewX0 =
     A.class "sm:skew-x-0"
 
 
+smSkewX1 : Svg.Attribute msg
+smSkewX1 =
+    A.class "sm:skew-x-1"
+
+
+smSkewX2 : Svg.Attribute msg
+smSkewX2 =
+    A.class "sm:skew-x-2"
+
+
 smSkewX3 : Svg.Attribute msg
 smSkewX3 =
     A.class "sm:skew-x-3"
@@ -41257,9 +56296,29 @@ smNegSkewX3 =
     A.class "sm:-skew-x-3"
 
 
+smNegSkewX2 : Svg.Attribute msg
+smNegSkewX2 =
+    A.class "sm:-skew-x-2"
+
+
+smNegSkewX1 : Svg.Attribute msg
+smNegSkewX1 =
+    A.class "sm:-skew-x-1"
+
+
 smSkewY0 : Svg.Attribute msg
 smSkewY0 =
     A.class "sm:skew-y-0"
+
+
+smSkewY1 : Svg.Attribute msg
+smSkewY1 =
+    A.class "sm:skew-y-1"
+
+
+smSkewY2 : Svg.Attribute msg
+smSkewY2 =
+    A.class "sm:skew-y-2"
 
 
 smSkewY3 : Svg.Attribute msg
@@ -41292,9 +56351,29 @@ smNegSkewY3 =
     A.class "sm:-skew-y-3"
 
 
+smNegSkewY2 : Svg.Attribute msg
+smNegSkewY2 =
+    A.class "sm:-skew-y-2"
+
+
+smNegSkewY1 : Svg.Attribute msg
+smNegSkewY1 =
+    A.class "sm:-skew-y-1"
+
+
 smHoverSkewX0 : Svg.Attribute msg
 smHoverSkewX0 =
     A.class "sm:hover:skew-x-0"
+
+
+smHoverSkewX1 : Svg.Attribute msg
+smHoverSkewX1 =
+    A.class "sm:hover:skew-x-1"
+
+
+smHoverSkewX2 : Svg.Attribute msg
+smHoverSkewX2 =
+    A.class "sm:hover:skew-x-2"
 
 
 smHoverSkewX3 : Svg.Attribute msg
@@ -41327,9 +56406,29 @@ smHoverNegSkewX3 =
     A.class "sm:hover:-skew-x-3"
 
 
+smHoverNegSkewX2 : Svg.Attribute msg
+smHoverNegSkewX2 =
+    A.class "sm:hover:-skew-x-2"
+
+
+smHoverNegSkewX1 : Svg.Attribute msg
+smHoverNegSkewX1 =
+    A.class "sm:hover:-skew-x-1"
+
+
 smHoverSkewY0 : Svg.Attribute msg
 smHoverSkewY0 =
     A.class "sm:hover:skew-y-0"
+
+
+smHoverSkewY1 : Svg.Attribute msg
+smHoverSkewY1 =
+    A.class "sm:hover:skew-y-1"
+
+
+smHoverSkewY2 : Svg.Attribute msg
+smHoverSkewY2 =
+    A.class "sm:hover:skew-y-2"
 
 
 smHoverSkewY3 : Svg.Attribute msg
@@ -41362,9 +56461,29 @@ smHoverNegSkewY3 =
     A.class "sm:hover:-skew-y-3"
 
 
+smHoverNegSkewY2 : Svg.Attribute msg
+smHoverNegSkewY2 =
+    A.class "sm:hover:-skew-y-2"
+
+
+smHoverNegSkewY1 : Svg.Attribute msg
+smHoverNegSkewY1 =
+    A.class "sm:hover:-skew-y-1"
+
+
 smFocusSkewX0 : Svg.Attribute msg
 smFocusSkewX0 =
     A.class "sm:focus:skew-x-0"
+
+
+smFocusSkewX1 : Svg.Attribute msg
+smFocusSkewX1 =
+    A.class "sm:focus:skew-x-1"
+
+
+smFocusSkewX2 : Svg.Attribute msg
+smFocusSkewX2 =
+    A.class "sm:focus:skew-x-2"
 
 
 smFocusSkewX3 : Svg.Attribute msg
@@ -41397,9 +56516,29 @@ smFocusNegSkewX3 =
     A.class "sm:focus:-skew-x-3"
 
 
+smFocusNegSkewX2 : Svg.Attribute msg
+smFocusNegSkewX2 =
+    A.class "sm:focus:-skew-x-2"
+
+
+smFocusNegSkewX1 : Svg.Attribute msg
+smFocusNegSkewX1 =
+    A.class "sm:focus:-skew-x-1"
+
+
 smFocusSkewY0 : Svg.Attribute msg
 smFocusSkewY0 =
     A.class "sm:focus:skew-y-0"
+
+
+smFocusSkewY1 : Svg.Attribute msg
+smFocusSkewY1 =
+    A.class "sm:focus:skew-y-1"
+
+
+smFocusSkewY2 : Svg.Attribute msg
+smFocusSkewY2 =
+    A.class "sm:focus:skew-y-2"
 
 
 smFocusSkewY3 : Svg.Attribute msg
@@ -41430,6 +56569,16 @@ smFocusNegSkewY6 =
 smFocusNegSkewY3 : Svg.Attribute msg
 smFocusNegSkewY3 =
     A.class "sm:focus:-skew-y-3"
+
+
+smFocusNegSkewY2 : Svg.Attribute msg
+smFocusNegSkewY2 =
+    A.class "sm:focus:-skew-y-2"
+
+
+smFocusNegSkewY1 : Svg.Attribute msg
+smFocusNegSkewY1 =
+    A.class "sm:focus:-skew-y-1"
 
 
 smTransitionNone : Svg.Attribute msg
@@ -41565,6 +56714,36 @@ smDelay700 =
 smDelay1000 : Svg.Attribute msg
 smDelay1000 =
     A.class "sm:delay-1000"
+
+
+smAnimateNone : Svg.Attribute msg
+smAnimateNone =
+    A.class "sm:animate-none"
+
+
+smAnimateSpin : Svg.Attribute msg
+smAnimateSpin =
+    A.class "sm:animate-spin"
+
+
+smAnimatePing : Svg.Attribute msg
+smAnimatePing =
+    A.class "sm:animate-ping"
+
+
+smAnimatePulse : Svg.Attribute msg
+smAnimatePulse =
+    A.class "sm:animate-pulse"
+
+
+smAnimateBounce : Svg.Attribute msg
+smAnimateBounce =
+    A.class "sm:animate-bounce"
+
+
+mdContainer : Svg.Attribute msg
+mdContainer =
+    A.class "md:container"
 
 
 mdSpaceY0 : Svg.Attribute msg
@@ -42477,6 +57656,31 @@ mdDividePink900 =
     A.class "md:divide-pink-900"
 
 
+mdDivideSolid : Svg.Attribute msg
+mdDivideSolid =
+    A.class "md:divide-solid"
+
+
+mdDivideDashed : Svg.Attribute msg
+mdDivideDashed =
+    A.class "md:divide-dashed"
+
+
+mdDivideDotted : Svg.Attribute msg
+mdDivideDotted =
+    A.class "md:divide-dotted"
+
+
+mdDivideDouble : Svg.Attribute msg
+mdDivideDouble =
+    A.class "md:divide-double"
+
+
+mdDivideNone : Svg.Attribute msg
+mdDivideNone =
+    A.class "md:divide-none"
+
+
 mdDivideOpacity0 : Svg.Attribute msg
 mdDivideOpacity0 =
     A.class "md:divide-opacity-0"
@@ -42540,6 +57744,26 @@ mdBgLocal =
 mdBgScroll : Svg.Attribute msg
 mdBgScroll =
     A.class "md:bg-scroll"
+
+
+mdBgClipBorder : Svg.Attribute msg
+mdBgClipBorder =
+    A.class "md:bg-clip-border"
+
+
+mdBgClipPadding : Svg.Attribute msg
+mdBgClipPadding =
+    A.class "md:bg-clip-padding"
+
+
+mdBgClipContent : Svg.Attribute msg
+mdBgClipContent =
+    A.class "md:bg-clip-content"
+
+
+mdBgClipText : Svg.Attribute msg
+mdBgClipText =
+    A.class "md:bg-clip-text"
 
 
 mdBgTransparent : Svg.Attribute msg
@@ -43950,6 +59174,4281 @@ mdFocusBgPink800 =
 mdFocusBgPink900 : Svg.Attribute msg
 mdFocusBgPink900 =
     A.class "md:focus:bg-pink-900"
+
+
+mdBgNone : Svg.Attribute msg
+mdBgNone =
+    A.class "md:bg-none"
+
+
+mdBgGradientToT : Svg.Attribute msg
+mdBgGradientToT =
+    A.class "md:bg-gradient-to-t"
+
+
+mdBgGradientToTr : Svg.Attribute msg
+mdBgGradientToTr =
+    A.class "md:bg-gradient-to-tr"
+
+
+mdBgGradientToR : Svg.Attribute msg
+mdBgGradientToR =
+    A.class "md:bg-gradient-to-r"
+
+
+mdBgGradientToBr : Svg.Attribute msg
+mdBgGradientToBr =
+    A.class "md:bg-gradient-to-br"
+
+
+mdBgGradientToB : Svg.Attribute msg
+mdBgGradientToB =
+    A.class "md:bg-gradient-to-b"
+
+
+mdBgGradientToBl : Svg.Attribute msg
+mdBgGradientToBl =
+    A.class "md:bg-gradient-to-bl"
+
+
+mdBgGradientToL : Svg.Attribute msg
+mdBgGradientToL =
+    A.class "md:bg-gradient-to-l"
+
+
+mdBgGradientToTl : Svg.Attribute msg
+mdBgGradientToTl =
+    A.class "md:bg-gradient-to-tl"
+
+
+mdFromTransparent : Svg.Attribute msg
+mdFromTransparent =
+    A.class "md:from-transparent"
+
+
+mdFromCurrent : Svg.Attribute msg
+mdFromCurrent =
+    A.class "md:from-current"
+
+
+mdFromBlack : Svg.Attribute msg
+mdFromBlack =
+    A.class "md:from-black"
+
+
+mdFromWhite : Svg.Attribute msg
+mdFromWhite =
+    A.class "md:from-white"
+
+
+mdFromGray100 : Svg.Attribute msg
+mdFromGray100 =
+    A.class "md:from-gray-100"
+
+
+mdFromGray200 : Svg.Attribute msg
+mdFromGray200 =
+    A.class "md:from-gray-200"
+
+
+mdFromGray300 : Svg.Attribute msg
+mdFromGray300 =
+    A.class "md:from-gray-300"
+
+
+mdFromGray400 : Svg.Attribute msg
+mdFromGray400 =
+    A.class "md:from-gray-400"
+
+
+mdFromGray500 : Svg.Attribute msg
+mdFromGray500 =
+    A.class "md:from-gray-500"
+
+
+mdFromGray600 : Svg.Attribute msg
+mdFromGray600 =
+    A.class "md:from-gray-600"
+
+
+mdFromGray700 : Svg.Attribute msg
+mdFromGray700 =
+    A.class "md:from-gray-700"
+
+
+mdFromGray800 : Svg.Attribute msg
+mdFromGray800 =
+    A.class "md:from-gray-800"
+
+
+mdFromGray900 : Svg.Attribute msg
+mdFromGray900 =
+    A.class "md:from-gray-900"
+
+
+mdFromRed100 : Svg.Attribute msg
+mdFromRed100 =
+    A.class "md:from-red-100"
+
+
+mdFromRed200 : Svg.Attribute msg
+mdFromRed200 =
+    A.class "md:from-red-200"
+
+
+mdFromRed300 : Svg.Attribute msg
+mdFromRed300 =
+    A.class "md:from-red-300"
+
+
+mdFromRed400 : Svg.Attribute msg
+mdFromRed400 =
+    A.class "md:from-red-400"
+
+
+mdFromRed500 : Svg.Attribute msg
+mdFromRed500 =
+    A.class "md:from-red-500"
+
+
+mdFromRed600 : Svg.Attribute msg
+mdFromRed600 =
+    A.class "md:from-red-600"
+
+
+mdFromRed700 : Svg.Attribute msg
+mdFromRed700 =
+    A.class "md:from-red-700"
+
+
+mdFromRed800 : Svg.Attribute msg
+mdFromRed800 =
+    A.class "md:from-red-800"
+
+
+mdFromRed900 : Svg.Attribute msg
+mdFromRed900 =
+    A.class "md:from-red-900"
+
+
+mdFromOrange100 : Svg.Attribute msg
+mdFromOrange100 =
+    A.class "md:from-orange-100"
+
+
+mdFromOrange200 : Svg.Attribute msg
+mdFromOrange200 =
+    A.class "md:from-orange-200"
+
+
+mdFromOrange300 : Svg.Attribute msg
+mdFromOrange300 =
+    A.class "md:from-orange-300"
+
+
+mdFromOrange400 : Svg.Attribute msg
+mdFromOrange400 =
+    A.class "md:from-orange-400"
+
+
+mdFromOrange500 : Svg.Attribute msg
+mdFromOrange500 =
+    A.class "md:from-orange-500"
+
+
+mdFromOrange600 : Svg.Attribute msg
+mdFromOrange600 =
+    A.class "md:from-orange-600"
+
+
+mdFromOrange700 : Svg.Attribute msg
+mdFromOrange700 =
+    A.class "md:from-orange-700"
+
+
+mdFromOrange800 : Svg.Attribute msg
+mdFromOrange800 =
+    A.class "md:from-orange-800"
+
+
+mdFromOrange900 : Svg.Attribute msg
+mdFromOrange900 =
+    A.class "md:from-orange-900"
+
+
+mdFromYellow100 : Svg.Attribute msg
+mdFromYellow100 =
+    A.class "md:from-yellow-100"
+
+
+mdFromYellow200 : Svg.Attribute msg
+mdFromYellow200 =
+    A.class "md:from-yellow-200"
+
+
+mdFromYellow300 : Svg.Attribute msg
+mdFromYellow300 =
+    A.class "md:from-yellow-300"
+
+
+mdFromYellow400 : Svg.Attribute msg
+mdFromYellow400 =
+    A.class "md:from-yellow-400"
+
+
+mdFromYellow500 : Svg.Attribute msg
+mdFromYellow500 =
+    A.class "md:from-yellow-500"
+
+
+mdFromYellow600 : Svg.Attribute msg
+mdFromYellow600 =
+    A.class "md:from-yellow-600"
+
+
+mdFromYellow700 : Svg.Attribute msg
+mdFromYellow700 =
+    A.class "md:from-yellow-700"
+
+
+mdFromYellow800 : Svg.Attribute msg
+mdFromYellow800 =
+    A.class "md:from-yellow-800"
+
+
+mdFromYellow900 : Svg.Attribute msg
+mdFromYellow900 =
+    A.class "md:from-yellow-900"
+
+
+mdFromGreen100 : Svg.Attribute msg
+mdFromGreen100 =
+    A.class "md:from-green-100"
+
+
+mdFromGreen200 : Svg.Attribute msg
+mdFromGreen200 =
+    A.class "md:from-green-200"
+
+
+mdFromGreen300 : Svg.Attribute msg
+mdFromGreen300 =
+    A.class "md:from-green-300"
+
+
+mdFromGreen400 : Svg.Attribute msg
+mdFromGreen400 =
+    A.class "md:from-green-400"
+
+
+mdFromGreen500 : Svg.Attribute msg
+mdFromGreen500 =
+    A.class "md:from-green-500"
+
+
+mdFromGreen600 : Svg.Attribute msg
+mdFromGreen600 =
+    A.class "md:from-green-600"
+
+
+mdFromGreen700 : Svg.Attribute msg
+mdFromGreen700 =
+    A.class "md:from-green-700"
+
+
+mdFromGreen800 : Svg.Attribute msg
+mdFromGreen800 =
+    A.class "md:from-green-800"
+
+
+mdFromGreen900 : Svg.Attribute msg
+mdFromGreen900 =
+    A.class "md:from-green-900"
+
+
+mdFromTeal100 : Svg.Attribute msg
+mdFromTeal100 =
+    A.class "md:from-teal-100"
+
+
+mdFromTeal200 : Svg.Attribute msg
+mdFromTeal200 =
+    A.class "md:from-teal-200"
+
+
+mdFromTeal300 : Svg.Attribute msg
+mdFromTeal300 =
+    A.class "md:from-teal-300"
+
+
+mdFromTeal400 : Svg.Attribute msg
+mdFromTeal400 =
+    A.class "md:from-teal-400"
+
+
+mdFromTeal500 : Svg.Attribute msg
+mdFromTeal500 =
+    A.class "md:from-teal-500"
+
+
+mdFromTeal600 : Svg.Attribute msg
+mdFromTeal600 =
+    A.class "md:from-teal-600"
+
+
+mdFromTeal700 : Svg.Attribute msg
+mdFromTeal700 =
+    A.class "md:from-teal-700"
+
+
+mdFromTeal800 : Svg.Attribute msg
+mdFromTeal800 =
+    A.class "md:from-teal-800"
+
+
+mdFromTeal900 : Svg.Attribute msg
+mdFromTeal900 =
+    A.class "md:from-teal-900"
+
+
+mdFromBlue100 : Svg.Attribute msg
+mdFromBlue100 =
+    A.class "md:from-blue-100"
+
+
+mdFromBlue200 : Svg.Attribute msg
+mdFromBlue200 =
+    A.class "md:from-blue-200"
+
+
+mdFromBlue300 : Svg.Attribute msg
+mdFromBlue300 =
+    A.class "md:from-blue-300"
+
+
+mdFromBlue400 : Svg.Attribute msg
+mdFromBlue400 =
+    A.class "md:from-blue-400"
+
+
+mdFromBlue500 : Svg.Attribute msg
+mdFromBlue500 =
+    A.class "md:from-blue-500"
+
+
+mdFromBlue600 : Svg.Attribute msg
+mdFromBlue600 =
+    A.class "md:from-blue-600"
+
+
+mdFromBlue700 : Svg.Attribute msg
+mdFromBlue700 =
+    A.class "md:from-blue-700"
+
+
+mdFromBlue800 : Svg.Attribute msg
+mdFromBlue800 =
+    A.class "md:from-blue-800"
+
+
+mdFromBlue900 : Svg.Attribute msg
+mdFromBlue900 =
+    A.class "md:from-blue-900"
+
+
+mdFromIndigo100 : Svg.Attribute msg
+mdFromIndigo100 =
+    A.class "md:from-indigo-100"
+
+
+mdFromIndigo200 : Svg.Attribute msg
+mdFromIndigo200 =
+    A.class "md:from-indigo-200"
+
+
+mdFromIndigo300 : Svg.Attribute msg
+mdFromIndigo300 =
+    A.class "md:from-indigo-300"
+
+
+mdFromIndigo400 : Svg.Attribute msg
+mdFromIndigo400 =
+    A.class "md:from-indigo-400"
+
+
+mdFromIndigo500 : Svg.Attribute msg
+mdFromIndigo500 =
+    A.class "md:from-indigo-500"
+
+
+mdFromIndigo600 : Svg.Attribute msg
+mdFromIndigo600 =
+    A.class "md:from-indigo-600"
+
+
+mdFromIndigo700 : Svg.Attribute msg
+mdFromIndigo700 =
+    A.class "md:from-indigo-700"
+
+
+mdFromIndigo800 : Svg.Attribute msg
+mdFromIndigo800 =
+    A.class "md:from-indigo-800"
+
+
+mdFromIndigo900 : Svg.Attribute msg
+mdFromIndigo900 =
+    A.class "md:from-indigo-900"
+
+
+mdFromPurple100 : Svg.Attribute msg
+mdFromPurple100 =
+    A.class "md:from-purple-100"
+
+
+mdFromPurple200 : Svg.Attribute msg
+mdFromPurple200 =
+    A.class "md:from-purple-200"
+
+
+mdFromPurple300 : Svg.Attribute msg
+mdFromPurple300 =
+    A.class "md:from-purple-300"
+
+
+mdFromPurple400 : Svg.Attribute msg
+mdFromPurple400 =
+    A.class "md:from-purple-400"
+
+
+mdFromPurple500 : Svg.Attribute msg
+mdFromPurple500 =
+    A.class "md:from-purple-500"
+
+
+mdFromPurple600 : Svg.Attribute msg
+mdFromPurple600 =
+    A.class "md:from-purple-600"
+
+
+mdFromPurple700 : Svg.Attribute msg
+mdFromPurple700 =
+    A.class "md:from-purple-700"
+
+
+mdFromPurple800 : Svg.Attribute msg
+mdFromPurple800 =
+    A.class "md:from-purple-800"
+
+
+mdFromPurple900 : Svg.Attribute msg
+mdFromPurple900 =
+    A.class "md:from-purple-900"
+
+
+mdFromPink100 : Svg.Attribute msg
+mdFromPink100 =
+    A.class "md:from-pink-100"
+
+
+mdFromPink200 : Svg.Attribute msg
+mdFromPink200 =
+    A.class "md:from-pink-200"
+
+
+mdFromPink300 : Svg.Attribute msg
+mdFromPink300 =
+    A.class "md:from-pink-300"
+
+
+mdFromPink400 : Svg.Attribute msg
+mdFromPink400 =
+    A.class "md:from-pink-400"
+
+
+mdFromPink500 : Svg.Attribute msg
+mdFromPink500 =
+    A.class "md:from-pink-500"
+
+
+mdFromPink600 : Svg.Attribute msg
+mdFromPink600 =
+    A.class "md:from-pink-600"
+
+
+mdFromPink700 : Svg.Attribute msg
+mdFromPink700 =
+    A.class "md:from-pink-700"
+
+
+mdFromPink800 : Svg.Attribute msg
+mdFromPink800 =
+    A.class "md:from-pink-800"
+
+
+mdFromPink900 : Svg.Attribute msg
+mdFromPink900 =
+    A.class "md:from-pink-900"
+
+
+mdViaTransparent : Svg.Attribute msg
+mdViaTransparent =
+    A.class "md:via-transparent"
+
+
+mdViaCurrent : Svg.Attribute msg
+mdViaCurrent =
+    A.class "md:via-current"
+
+
+mdViaBlack : Svg.Attribute msg
+mdViaBlack =
+    A.class "md:via-black"
+
+
+mdViaWhite : Svg.Attribute msg
+mdViaWhite =
+    A.class "md:via-white"
+
+
+mdViaGray100 : Svg.Attribute msg
+mdViaGray100 =
+    A.class "md:via-gray-100"
+
+
+mdViaGray200 : Svg.Attribute msg
+mdViaGray200 =
+    A.class "md:via-gray-200"
+
+
+mdViaGray300 : Svg.Attribute msg
+mdViaGray300 =
+    A.class "md:via-gray-300"
+
+
+mdViaGray400 : Svg.Attribute msg
+mdViaGray400 =
+    A.class "md:via-gray-400"
+
+
+mdViaGray500 : Svg.Attribute msg
+mdViaGray500 =
+    A.class "md:via-gray-500"
+
+
+mdViaGray600 : Svg.Attribute msg
+mdViaGray600 =
+    A.class "md:via-gray-600"
+
+
+mdViaGray700 : Svg.Attribute msg
+mdViaGray700 =
+    A.class "md:via-gray-700"
+
+
+mdViaGray800 : Svg.Attribute msg
+mdViaGray800 =
+    A.class "md:via-gray-800"
+
+
+mdViaGray900 : Svg.Attribute msg
+mdViaGray900 =
+    A.class "md:via-gray-900"
+
+
+mdViaRed100 : Svg.Attribute msg
+mdViaRed100 =
+    A.class "md:via-red-100"
+
+
+mdViaRed200 : Svg.Attribute msg
+mdViaRed200 =
+    A.class "md:via-red-200"
+
+
+mdViaRed300 : Svg.Attribute msg
+mdViaRed300 =
+    A.class "md:via-red-300"
+
+
+mdViaRed400 : Svg.Attribute msg
+mdViaRed400 =
+    A.class "md:via-red-400"
+
+
+mdViaRed500 : Svg.Attribute msg
+mdViaRed500 =
+    A.class "md:via-red-500"
+
+
+mdViaRed600 : Svg.Attribute msg
+mdViaRed600 =
+    A.class "md:via-red-600"
+
+
+mdViaRed700 : Svg.Attribute msg
+mdViaRed700 =
+    A.class "md:via-red-700"
+
+
+mdViaRed800 : Svg.Attribute msg
+mdViaRed800 =
+    A.class "md:via-red-800"
+
+
+mdViaRed900 : Svg.Attribute msg
+mdViaRed900 =
+    A.class "md:via-red-900"
+
+
+mdViaOrange100 : Svg.Attribute msg
+mdViaOrange100 =
+    A.class "md:via-orange-100"
+
+
+mdViaOrange200 : Svg.Attribute msg
+mdViaOrange200 =
+    A.class "md:via-orange-200"
+
+
+mdViaOrange300 : Svg.Attribute msg
+mdViaOrange300 =
+    A.class "md:via-orange-300"
+
+
+mdViaOrange400 : Svg.Attribute msg
+mdViaOrange400 =
+    A.class "md:via-orange-400"
+
+
+mdViaOrange500 : Svg.Attribute msg
+mdViaOrange500 =
+    A.class "md:via-orange-500"
+
+
+mdViaOrange600 : Svg.Attribute msg
+mdViaOrange600 =
+    A.class "md:via-orange-600"
+
+
+mdViaOrange700 : Svg.Attribute msg
+mdViaOrange700 =
+    A.class "md:via-orange-700"
+
+
+mdViaOrange800 : Svg.Attribute msg
+mdViaOrange800 =
+    A.class "md:via-orange-800"
+
+
+mdViaOrange900 : Svg.Attribute msg
+mdViaOrange900 =
+    A.class "md:via-orange-900"
+
+
+mdViaYellow100 : Svg.Attribute msg
+mdViaYellow100 =
+    A.class "md:via-yellow-100"
+
+
+mdViaYellow200 : Svg.Attribute msg
+mdViaYellow200 =
+    A.class "md:via-yellow-200"
+
+
+mdViaYellow300 : Svg.Attribute msg
+mdViaYellow300 =
+    A.class "md:via-yellow-300"
+
+
+mdViaYellow400 : Svg.Attribute msg
+mdViaYellow400 =
+    A.class "md:via-yellow-400"
+
+
+mdViaYellow500 : Svg.Attribute msg
+mdViaYellow500 =
+    A.class "md:via-yellow-500"
+
+
+mdViaYellow600 : Svg.Attribute msg
+mdViaYellow600 =
+    A.class "md:via-yellow-600"
+
+
+mdViaYellow700 : Svg.Attribute msg
+mdViaYellow700 =
+    A.class "md:via-yellow-700"
+
+
+mdViaYellow800 : Svg.Attribute msg
+mdViaYellow800 =
+    A.class "md:via-yellow-800"
+
+
+mdViaYellow900 : Svg.Attribute msg
+mdViaYellow900 =
+    A.class "md:via-yellow-900"
+
+
+mdViaGreen100 : Svg.Attribute msg
+mdViaGreen100 =
+    A.class "md:via-green-100"
+
+
+mdViaGreen200 : Svg.Attribute msg
+mdViaGreen200 =
+    A.class "md:via-green-200"
+
+
+mdViaGreen300 : Svg.Attribute msg
+mdViaGreen300 =
+    A.class "md:via-green-300"
+
+
+mdViaGreen400 : Svg.Attribute msg
+mdViaGreen400 =
+    A.class "md:via-green-400"
+
+
+mdViaGreen500 : Svg.Attribute msg
+mdViaGreen500 =
+    A.class "md:via-green-500"
+
+
+mdViaGreen600 : Svg.Attribute msg
+mdViaGreen600 =
+    A.class "md:via-green-600"
+
+
+mdViaGreen700 : Svg.Attribute msg
+mdViaGreen700 =
+    A.class "md:via-green-700"
+
+
+mdViaGreen800 : Svg.Attribute msg
+mdViaGreen800 =
+    A.class "md:via-green-800"
+
+
+mdViaGreen900 : Svg.Attribute msg
+mdViaGreen900 =
+    A.class "md:via-green-900"
+
+
+mdViaTeal100 : Svg.Attribute msg
+mdViaTeal100 =
+    A.class "md:via-teal-100"
+
+
+mdViaTeal200 : Svg.Attribute msg
+mdViaTeal200 =
+    A.class "md:via-teal-200"
+
+
+mdViaTeal300 : Svg.Attribute msg
+mdViaTeal300 =
+    A.class "md:via-teal-300"
+
+
+mdViaTeal400 : Svg.Attribute msg
+mdViaTeal400 =
+    A.class "md:via-teal-400"
+
+
+mdViaTeal500 : Svg.Attribute msg
+mdViaTeal500 =
+    A.class "md:via-teal-500"
+
+
+mdViaTeal600 : Svg.Attribute msg
+mdViaTeal600 =
+    A.class "md:via-teal-600"
+
+
+mdViaTeal700 : Svg.Attribute msg
+mdViaTeal700 =
+    A.class "md:via-teal-700"
+
+
+mdViaTeal800 : Svg.Attribute msg
+mdViaTeal800 =
+    A.class "md:via-teal-800"
+
+
+mdViaTeal900 : Svg.Attribute msg
+mdViaTeal900 =
+    A.class "md:via-teal-900"
+
+
+mdViaBlue100 : Svg.Attribute msg
+mdViaBlue100 =
+    A.class "md:via-blue-100"
+
+
+mdViaBlue200 : Svg.Attribute msg
+mdViaBlue200 =
+    A.class "md:via-blue-200"
+
+
+mdViaBlue300 : Svg.Attribute msg
+mdViaBlue300 =
+    A.class "md:via-blue-300"
+
+
+mdViaBlue400 : Svg.Attribute msg
+mdViaBlue400 =
+    A.class "md:via-blue-400"
+
+
+mdViaBlue500 : Svg.Attribute msg
+mdViaBlue500 =
+    A.class "md:via-blue-500"
+
+
+mdViaBlue600 : Svg.Attribute msg
+mdViaBlue600 =
+    A.class "md:via-blue-600"
+
+
+mdViaBlue700 : Svg.Attribute msg
+mdViaBlue700 =
+    A.class "md:via-blue-700"
+
+
+mdViaBlue800 : Svg.Attribute msg
+mdViaBlue800 =
+    A.class "md:via-blue-800"
+
+
+mdViaBlue900 : Svg.Attribute msg
+mdViaBlue900 =
+    A.class "md:via-blue-900"
+
+
+mdViaIndigo100 : Svg.Attribute msg
+mdViaIndigo100 =
+    A.class "md:via-indigo-100"
+
+
+mdViaIndigo200 : Svg.Attribute msg
+mdViaIndigo200 =
+    A.class "md:via-indigo-200"
+
+
+mdViaIndigo300 : Svg.Attribute msg
+mdViaIndigo300 =
+    A.class "md:via-indigo-300"
+
+
+mdViaIndigo400 : Svg.Attribute msg
+mdViaIndigo400 =
+    A.class "md:via-indigo-400"
+
+
+mdViaIndigo500 : Svg.Attribute msg
+mdViaIndigo500 =
+    A.class "md:via-indigo-500"
+
+
+mdViaIndigo600 : Svg.Attribute msg
+mdViaIndigo600 =
+    A.class "md:via-indigo-600"
+
+
+mdViaIndigo700 : Svg.Attribute msg
+mdViaIndigo700 =
+    A.class "md:via-indigo-700"
+
+
+mdViaIndigo800 : Svg.Attribute msg
+mdViaIndigo800 =
+    A.class "md:via-indigo-800"
+
+
+mdViaIndigo900 : Svg.Attribute msg
+mdViaIndigo900 =
+    A.class "md:via-indigo-900"
+
+
+mdViaPurple100 : Svg.Attribute msg
+mdViaPurple100 =
+    A.class "md:via-purple-100"
+
+
+mdViaPurple200 : Svg.Attribute msg
+mdViaPurple200 =
+    A.class "md:via-purple-200"
+
+
+mdViaPurple300 : Svg.Attribute msg
+mdViaPurple300 =
+    A.class "md:via-purple-300"
+
+
+mdViaPurple400 : Svg.Attribute msg
+mdViaPurple400 =
+    A.class "md:via-purple-400"
+
+
+mdViaPurple500 : Svg.Attribute msg
+mdViaPurple500 =
+    A.class "md:via-purple-500"
+
+
+mdViaPurple600 : Svg.Attribute msg
+mdViaPurple600 =
+    A.class "md:via-purple-600"
+
+
+mdViaPurple700 : Svg.Attribute msg
+mdViaPurple700 =
+    A.class "md:via-purple-700"
+
+
+mdViaPurple800 : Svg.Attribute msg
+mdViaPurple800 =
+    A.class "md:via-purple-800"
+
+
+mdViaPurple900 : Svg.Attribute msg
+mdViaPurple900 =
+    A.class "md:via-purple-900"
+
+
+mdViaPink100 : Svg.Attribute msg
+mdViaPink100 =
+    A.class "md:via-pink-100"
+
+
+mdViaPink200 : Svg.Attribute msg
+mdViaPink200 =
+    A.class "md:via-pink-200"
+
+
+mdViaPink300 : Svg.Attribute msg
+mdViaPink300 =
+    A.class "md:via-pink-300"
+
+
+mdViaPink400 : Svg.Attribute msg
+mdViaPink400 =
+    A.class "md:via-pink-400"
+
+
+mdViaPink500 : Svg.Attribute msg
+mdViaPink500 =
+    A.class "md:via-pink-500"
+
+
+mdViaPink600 : Svg.Attribute msg
+mdViaPink600 =
+    A.class "md:via-pink-600"
+
+
+mdViaPink700 : Svg.Attribute msg
+mdViaPink700 =
+    A.class "md:via-pink-700"
+
+
+mdViaPink800 : Svg.Attribute msg
+mdViaPink800 =
+    A.class "md:via-pink-800"
+
+
+mdViaPink900 : Svg.Attribute msg
+mdViaPink900 =
+    A.class "md:via-pink-900"
+
+
+mdToTransparent : Svg.Attribute msg
+mdToTransparent =
+    A.class "md:to-transparent"
+
+
+mdToCurrent : Svg.Attribute msg
+mdToCurrent =
+    A.class "md:to-current"
+
+
+mdToBlack : Svg.Attribute msg
+mdToBlack =
+    A.class "md:to-black"
+
+
+mdToWhite : Svg.Attribute msg
+mdToWhite =
+    A.class "md:to-white"
+
+
+mdToGray100 : Svg.Attribute msg
+mdToGray100 =
+    A.class "md:to-gray-100"
+
+
+mdToGray200 : Svg.Attribute msg
+mdToGray200 =
+    A.class "md:to-gray-200"
+
+
+mdToGray300 : Svg.Attribute msg
+mdToGray300 =
+    A.class "md:to-gray-300"
+
+
+mdToGray400 : Svg.Attribute msg
+mdToGray400 =
+    A.class "md:to-gray-400"
+
+
+mdToGray500 : Svg.Attribute msg
+mdToGray500 =
+    A.class "md:to-gray-500"
+
+
+mdToGray600 : Svg.Attribute msg
+mdToGray600 =
+    A.class "md:to-gray-600"
+
+
+mdToGray700 : Svg.Attribute msg
+mdToGray700 =
+    A.class "md:to-gray-700"
+
+
+mdToGray800 : Svg.Attribute msg
+mdToGray800 =
+    A.class "md:to-gray-800"
+
+
+mdToGray900 : Svg.Attribute msg
+mdToGray900 =
+    A.class "md:to-gray-900"
+
+
+mdToRed100 : Svg.Attribute msg
+mdToRed100 =
+    A.class "md:to-red-100"
+
+
+mdToRed200 : Svg.Attribute msg
+mdToRed200 =
+    A.class "md:to-red-200"
+
+
+mdToRed300 : Svg.Attribute msg
+mdToRed300 =
+    A.class "md:to-red-300"
+
+
+mdToRed400 : Svg.Attribute msg
+mdToRed400 =
+    A.class "md:to-red-400"
+
+
+mdToRed500 : Svg.Attribute msg
+mdToRed500 =
+    A.class "md:to-red-500"
+
+
+mdToRed600 : Svg.Attribute msg
+mdToRed600 =
+    A.class "md:to-red-600"
+
+
+mdToRed700 : Svg.Attribute msg
+mdToRed700 =
+    A.class "md:to-red-700"
+
+
+mdToRed800 : Svg.Attribute msg
+mdToRed800 =
+    A.class "md:to-red-800"
+
+
+mdToRed900 : Svg.Attribute msg
+mdToRed900 =
+    A.class "md:to-red-900"
+
+
+mdToOrange100 : Svg.Attribute msg
+mdToOrange100 =
+    A.class "md:to-orange-100"
+
+
+mdToOrange200 : Svg.Attribute msg
+mdToOrange200 =
+    A.class "md:to-orange-200"
+
+
+mdToOrange300 : Svg.Attribute msg
+mdToOrange300 =
+    A.class "md:to-orange-300"
+
+
+mdToOrange400 : Svg.Attribute msg
+mdToOrange400 =
+    A.class "md:to-orange-400"
+
+
+mdToOrange500 : Svg.Attribute msg
+mdToOrange500 =
+    A.class "md:to-orange-500"
+
+
+mdToOrange600 : Svg.Attribute msg
+mdToOrange600 =
+    A.class "md:to-orange-600"
+
+
+mdToOrange700 : Svg.Attribute msg
+mdToOrange700 =
+    A.class "md:to-orange-700"
+
+
+mdToOrange800 : Svg.Attribute msg
+mdToOrange800 =
+    A.class "md:to-orange-800"
+
+
+mdToOrange900 : Svg.Attribute msg
+mdToOrange900 =
+    A.class "md:to-orange-900"
+
+
+mdToYellow100 : Svg.Attribute msg
+mdToYellow100 =
+    A.class "md:to-yellow-100"
+
+
+mdToYellow200 : Svg.Attribute msg
+mdToYellow200 =
+    A.class "md:to-yellow-200"
+
+
+mdToYellow300 : Svg.Attribute msg
+mdToYellow300 =
+    A.class "md:to-yellow-300"
+
+
+mdToYellow400 : Svg.Attribute msg
+mdToYellow400 =
+    A.class "md:to-yellow-400"
+
+
+mdToYellow500 : Svg.Attribute msg
+mdToYellow500 =
+    A.class "md:to-yellow-500"
+
+
+mdToYellow600 : Svg.Attribute msg
+mdToYellow600 =
+    A.class "md:to-yellow-600"
+
+
+mdToYellow700 : Svg.Attribute msg
+mdToYellow700 =
+    A.class "md:to-yellow-700"
+
+
+mdToYellow800 : Svg.Attribute msg
+mdToYellow800 =
+    A.class "md:to-yellow-800"
+
+
+mdToYellow900 : Svg.Attribute msg
+mdToYellow900 =
+    A.class "md:to-yellow-900"
+
+
+mdToGreen100 : Svg.Attribute msg
+mdToGreen100 =
+    A.class "md:to-green-100"
+
+
+mdToGreen200 : Svg.Attribute msg
+mdToGreen200 =
+    A.class "md:to-green-200"
+
+
+mdToGreen300 : Svg.Attribute msg
+mdToGreen300 =
+    A.class "md:to-green-300"
+
+
+mdToGreen400 : Svg.Attribute msg
+mdToGreen400 =
+    A.class "md:to-green-400"
+
+
+mdToGreen500 : Svg.Attribute msg
+mdToGreen500 =
+    A.class "md:to-green-500"
+
+
+mdToGreen600 : Svg.Attribute msg
+mdToGreen600 =
+    A.class "md:to-green-600"
+
+
+mdToGreen700 : Svg.Attribute msg
+mdToGreen700 =
+    A.class "md:to-green-700"
+
+
+mdToGreen800 : Svg.Attribute msg
+mdToGreen800 =
+    A.class "md:to-green-800"
+
+
+mdToGreen900 : Svg.Attribute msg
+mdToGreen900 =
+    A.class "md:to-green-900"
+
+
+mdToTeal100 : Svg.Attribute msg
+mdToTeal100 =
+    A.class "md:to-teal-100"
+
+
+mdToTeal200 : Svg.Attribute msg
+mdToTeal200 =
+    A.class "md:to-teal-200"
+
+
+mdToTeal300 : Svg.Attribute msg
+mdToTeal300 =
+    A.class "md:to-teal-300"
+
+
+mdToTeal400 : Svg.Attribute msg
+mdToTeal400 =
+    A.class "md:to-teal-400"
+
+
+mdToTeal500 : Svg.Attribute msg
+mdToTeal500 =
+    A.class "md:to-teal-500"
+
+
+mdToTeal600 : Svg.Attribute msg
+mdToTeal600 =
+    A.class "md:to-teal-600"
+
+
+mdToTeal700 : Svg.Attribute msg
+mdToTeal700 =
+    A.class "md:to-teal-700"
+
+
+mdToTeal800 : Svg.Attribute msg
+mdToTeal800 =
+    A.class "md:to-teal-800"
+
+
+mdToTeal900 : Svg.Attribute msg
+mdToTeal900 =
+    A.class "md:to-teal-900"
+
+
+mdToBlue100 : Svg.Attribute msg
+mdToBlue100 =
+    A.class "md:to-blue-100"
+
+
+mdToBlue200 : Svg.Attribute msg
+mdToBlue200 =
+    A.class "md:to-blue-200"
+
+
+mdToBlue300 : Svg.Attribute msg
+mdToBlue300 =
+    A.class "md:to-blue-300"
+
+
+mdToBlue400 : Svg.Attribute msg
+mdToBlue400 =
+    A.class "md:to-blue-400"
+
+
+mdToBlue500 : Svg.Attribute msg
+mdToBlue500 =
+    A.class "md:to-blue-500"
+
+
+mdToBlue600 : Svg.Attribute msg
+mdToBlue600 =
+    A.class "md:to-blue-600"
+
+
+mdToBlue700 : Svg.Attribute msg
+mdToBlue700 =
+    A.class "md:to-blue-700"
+
+
+mdToBlue800 : Svg.Attribute msg
+mdToBlue800 =
+    A.class "md:to-blue-800"
+
+
+mdToBlue900 : Svg.Attribute msg
+mdToBlue900 =
+    A.class "md:to-blue-900"
+
+
+mdToIndigo100 : Svg.Attribute msg
+mdToIndigo100 =
+    A.class "md:to-indigo-100"
+
+
+mdToIndigo200 : Svg.Attribute msg
+mdToIndigo200 =
+    A.class "md:to-indigo-200"
+
+
+mdToIndigo300 : Svg.Attribute msg
+mdToIndigo300 =
+    A.class "md:to-indigo-300"
+
+
+mdToIndigo400 : Svg.Attribute msg
+mdToIndigo400 =
+    A.class "md:to-indigo-400"
+
+
+mdToIndigo500 : Svg.Attribute msg
+mdToIndigo500 =
+    A.class "md:to-indigo-500"
+
+
+mdToIndigo600 : Svg.Attribute msg
+mdToIndigo600 =
+    A.class "md:to-indigo-600"
+
+
+mdToIndigo700 : Svg.Attribute msg
+mdToIndigo700 =
+    A.class "md:to-indigo-700"
+
+
+mdToIndigo800 : Svg.Attribute msg
+mdToIndigo800 =
+    A.class "md:to-indigo-800"
+
+
+mdToIndigo900 : Svg.Attribute msg
+mdToIndigo900 =
+    A.class "md:to-indigo-900"
+
+
+mdToPurple100 : Svg.Attribute msg
+mdToPurple100 =
+    A.class "md:to-purple-100"
+
+
+mdToPurple200 : Svg.Attribute msg
+mdToPurple200 =
+    A.class "md:to-purple-200"
+
+
+mdToPurple300 : Svg.Attribute msg
+mdToPurple300 =
+    A.class "md:to-purple-300"
+
+
+mdToPurple400 : Svg.Attribute msg
+mdToPurple400 =
+    A.class "md:to-purple-400"
+
+
+mdToPurple500 : Svg.Attribute msg
+mdToPurple500 =
+    A.class "md:to-purple-500"
+
+
+mdToPurple600 : Svg.Attribute msg
+mdToPurple600 =
+    A.class "md:to-purple-600"
+
+
+mdToPurple700 : Svg.Attribute msg
+mdToPurple700 =
+    A.class "md:to-purple-700"
+
+
+mdToPurple800 : Svg.Attribute msg
+mdToPurple800 =
+    A.class "md:to-purple-800"
+
+
+mdToPurple900 : Svg.Attribute msg
+mdToPurple900 =
+    A.class "md:to-purple-900"
+
+
+mdToPink100 : Svg.Attribute msg
+mdToPink100 =
+    A.class "md:to-pink-100"
+
+
+mdToPink200 : Svg.Attribute msg
+mdToPink200 =
+    A.class "md:to-pink-200"
+
+
+mdToPink300 : Svg.Attribute msg
+mdToPink300 =
+    A.class "md:to-pink-300"
+
+
+mdToPink400 : Svg.Attribute msg
+mdToPink400 =
+    A.class "md:to-pink-400"
+
+
+mdToPink500 : Svg.Attribute msg
+mdToPink500 =
+    A.class "md:to-pink-500"
+
+
+mdToPink600 : Svg.Attribute msg
+mdToPink600 =
+    A.class "md:to-pink-600"
+
+
+mdToPink700 : Svg.Attribute msg
+mdToPink700 =
+    A.class "md:to-pink-700"
+
+
+mdToPink800 : Svg.Attribute msg
+mdToPink800 =
+    A.class "md:to-pink-800"
+
+
+mdToPink900 : Svg.Attribute msg
+mdToPink900 =
+    A.class "md:to-pink-900"
+
+
+mdHoverFromTransparent : Svg.Attribute msg
+mdHoverFromTransparent =
+    A.class "md:hover:from-transparent"
+
+
+mdHoverFromCurrent : Svg.Attribute msg
+mdHoverFromCurrent =
+    A.class "md:hover:from-current"
+
+
+mdHoverFromBlack : Svg.Attribute msg
+mdHoverFromBlack =
+    A.class "md:hover:from-black"
+
+
+mdHoverFromWhite : Svg.Attribute msg
+mdHoverFromWhite =
+    A.class "md:hover:from-white"
+
+
+mdHoverFromGray100 : Svg.Attribute msg
+mdHoverFromGray100 =
+    A.class "md:hover:from-gray-100"
+
+
+mdHoverFromGray200 : Svg.Attribute msg
+mdHoverFromGray200 =
+    A.class "md:hover:from-gray-200"
+
+
+mdHoverFromGray300 : Svg.Attribute msg
+mdHoverFromGray300 =
+    A.class "md:hover:from-gray-300"
+
+
+mdHoverFromGray400 : Svg.Attribute msg
+mdHoverFromGray400 =
+    A.class "md:hover:from-gray-400"
+
+
+mdHoverFromGray500 : Svg.Attribute msg
+mdHoverFromGray500 =
+    A.class "md:hover:from-gray-500"
+
+
+mdHoverFromGray600 : Svg.Attribute msg
+mdHoverFromGray600 =
+    A.class "md:hover:from-gray-600"
+
+
+mdHoverFromGray700 : Svg.Attribute msg
+mdHoverFromGray700 =
+    A.class "md:hover:from-gray-700"
+
+
+mdHoverFromGray800 : Svg.Attribute msg
+mdHoverFromGray800 =
+    A.class "md:hover:from-gray-800"
+
+
+mdHoverFromGray900 : Svg.Attribute msg
+mdHoverFromGray900 =
+    A.class "md:hover:from-gray-900"
+
+
+mdHoverFromRed100 : Svg.Attribute msg
+mdHoverFromRed100 =
+    A.class "md:hover:from-red-100"
+
+
+mdHoverFromRed200 : Svg.Attribute msg
+mdHoverFromRed200 =
+    A.class "md:hover:from-red-200"
+
+
+mdHoverFromRed300 : Svg.Attribute msg
+mdHoverFromRed300 =
+    A.class "md:hover:from-red-300"
+
+
+mdHoverFromRed400 : Svg.Attribute msg
+mdHoverFromRed400 =
+    A.class "md:hover:from-red-400"
+
+
+mdHoverFromRed500 : Svg.Attribute msg
+mdHoverFromRed500 =
+    A.class "md:hover:from-red-500"
+
+
+mdHoverFromRed600 : Svg.Attribute msg
+mdHoverFromRed600 =
+    A.class "md:hover:from-red-600"
+
+
+mdHoverFromRed700 : Svg.Attribute msg
+mdHoverFromRed700 =
+    A.class "md:hover:from-red-700"
+
+
+mdHoverFromRed800 : Svg.Attribute msg
+mdHoverFromRed800 =
+    A.class "md:hover:from-red-800"
+
+
+mdHoverFromRed900 : Svg.Attribute msg
+mdHoverFromRed900 =
+    A.class "md:hover:from-red-900"
+
+
+mdHoverFromOrange100 : Svg.Attribute msg
+mdHoverFromOrange100 =
+    A.class "md:hover:from-orange-100"
+
+
+mdHoverFromOrange200 : Svg.Attribute msg
+mdHoverFromOrange200 =
+    A.class "md:hover:from-orange-200"
+
+
+mdHoverFromOrange300 : Svg.Attribute msg
+mdHoverFromOrange300 =
+    A.class "md:hover:from-orange-300"
+
+
+mdHoverFromOrange400 : Svg.Attribute msg
+mdHoverFromOrange400 =
+    A.class "md:hover:from-orange-400"
+
+
+mdHoverFromOrange500 : Svg.Attribute msg
+mdHoverFromOrange500 =
+    A.class "md:hover:from-orange-500"
+
+
+mdHoverFromOrange600 : Svg.Attribute msg
+mdHoverFromOrange600 =
+    A.class "md:hover:from-orange-600"
+
+
+mdHoverFromOrange700 : Svg.Attribute msg
+mdHoverFromOrange700 =
+    A.class "md:hover:from-orange-700"
+
+
+mdHoverFromOrange800 : Svg.Attribute msg
+mdHoverFromOrange800 =
+    A.class "md:hover:from-orange-800"
+
+
+mdHoverFromOrange900 : Svg.Attribute msg
+mdHoverFromOrange900 =
+    A.class "md:hover:from-orange-900"
+
+
+mdHoverFromYellow100 : Svg.Attribute msg
+mdHoverFromYellow100 =
+    A.class "md:hover:from-yellow-100"
+
+
+mdHoverFromYellow200 : Svg.Attribute msg
+mdHoverFromYellow200 =
+    A.class "md:hover:from-yellow-200"
+
+
+mdHoverFromYellow300 : Svg.Attribute msg
+mdHoverFromYellow300 =
+    A.class "md:hover:from-yellow-300"
+
+
+mdHoverFromYellow400 : Svg.Attribute msg
+mdHoverFromYellow400 =
+    A.class "md:hover:from-yellow-400"
+
+
+mdHoverFromYellow500 : Svg.Attribute msg
+mdHoverFromYellow500 =
+    A.class "md:hover:from-yellow-500"
+
+
+mdHoverFromYellow600 : Svg.Attribute msg
+mdHoverFromYellow600 =
+    A.class "md:hover:from-yellow-600"
+
+
+mdHoverFromYellow700 : Svg.Attribute msg
+mdHoverFromYellow700 =
+    A.class "md:hover:from-yellow-700"
+
+
+mdHoverFromYellow800 : Svg.Attribute msg
+mdHoverFromYellow800 =
+    A.class "md:hover:from-yellow-800"
+
+
+mdHoverFromYellow900 : Svg.Attribute msg
+mdHoverFromYellow900 =
+    A.class "md:hover:from-yellow-900"
+
+
+mdHoverFromGreen100 : Svg.Attribute msg
+mdHoverFromGreen100 =
+    A.class "md:hover:from-green-100"
+
+
+mdHoverFromGreen200 : Svg.Attribute msg
+mdHoverFromGreen200 =
+    A.class "md:hover:from-green-200"
+
+
+mdHoverFromGreen300 : Svg.Attribute msg
+mdHoverFromGreen300 =
+    A.class "md:hover:from-green-300"
+
+
+mdHoverFromGreen400 : Svg.Attribute msg
+mdHoverFromGreen400 =
+    A.class "md:hover:from-green-400"
+
+
+mdHoverFromGreen500 : Svg.Attribute msg
+mdHoverFromGreen500 =
+    A.class "md:hover:from-green-500"
+
+
+mdHoverFromGreen600 : Svg.Attribute msg
+mdHoverFromGreen600 =
+    A.class "md:hover:from-green-600"
+
+
+mdHoverFromGreen700 : Svg.Attribute msg
+mdHoverFromGreen700 =
+    A.class "md:hover:from-green-700"
+
+
+mdHoverFromGreen800 : Svg.Attribute msg
+mdHoverFromGreen800 =
+    A.class "md:hover:from-green-800"
+
+
+mdHoverFromGreen900 : Svg.Attribute msg
+mdHoverFromGreen900 =
+    A.class "md:hover:from-green-900"
+
+
+mdHoverFromTeal100 : Svg.Attribute msg
+mdHoverFromTeal100 =
+    A.class "md:hover:from-teal-100"
+
+
+mdHoverFromTeal200 : Svg.Attribute msg
+mdHoverFromTeal200 =
+    A.class "md:hover:from-teal-200"
+
+
+mdHoverFromTeal300 : Svg.Attribute msg
+mdHoverFromTeal300 =
+    A.class "md:hover:from-teal-300"
+
+
+mdHoverFromTeal400 : Svg.Attribute msg
+mdHoverFromTeal400 =
+    A.class "md:hover:from-teal-400"
+
+
+mdHoverFromTeal500 : Svg.Attribute msg
+mdHoverFromTeal500 =
+    A.class "md:hover:from-teal-500"
+
+
+mdHoverFromTeal600 : Svg.Attribute msg
+mdHoverFromTeal600 =
+    A.class "md:hover:from-teal-600"
+
+
+mdHoverFromTeal700 : Svg.Attribute msg
+mdHoverFromTeal700 =
+    A.class "md:hover:from-teal-700"
+
+
+mdHoverFromTeal800 : Svg.Attribute msg
+mdHoverFromTeal800 =
+    A.class "md:hover:from-teal-800"
+
+
+mdHoverFromTeal900 : Svg.Attribute msg
+mdHoverFromTeal900 =
+    A.class "md:hover:from-teal-900"
+
+
+mdHoverFromBlue100 : Svg.Attribute msg
+mdHoverFromBlue100 =
+    A.class "md:hover:from-blue-100"
+
+
+mdHoverFromBlue200 : Svg.Attribute msg
+mdHoverFromBlue200 =
+    A.class "md:hover:from-blue-200"
+
+
+mdHoverFromBlue300 : Svg.Attribute msg
+mdHoverFromBlue300 =
+    A.class "md:hover:from-blue-300"
+
+
+mdHoverFromBlue400 : Svg.Attribute msg
+mdHoverFromBlue400 =
+    A.class "md:hover:from-blue-400"
+
+
+mdHoverFromBlue500 : Svg.Attribute msg
+mdHoverFromBlue500 =
+    A.class "md:hover:from-blue-500"
+
+
+mdHoverFromBlue600 : Svg.Attribute msg
+mdHoverFromBlue600 =
+    A.class "md:hover:from-blue-600"
+
+
+mdHoverFromBlue700 : Svg.Attribute msg
+mdHoverFromBlue700 =
+    A.class "md:hover:from-blue-700"
+
+
+mdHoverFromBlue800 : Svg.Attribute msg
+mdHoverFromBlue800 =
+    A.class "md:hover:from-blue-800"
+
+
+mdHoverFromBlue900 : Svg.Attribute msg
+mdHoverFromBlue900 =
+    A.class "md:hover:from-blue-900"
+
+
+mdHoverFromIndigo100 : Svg.Attribute msg
+mdHoverFromIndigo100 =
+    A.class "md:hover:from-indigo-100"
+
+
+mdHoverFromIndigo200 : Svg.Attribute msg
+mdHoverFromIndigo200 =
+    A.class "md:hover:from-indigo-200"
+
+
+mdHoverFromIndigo300 : Svg.Attribute msg
+mdHoverFromIndigo300 =
+    A.class "md:hover:from-indigo-300"
+
+
+mdHoverFromIndigo400 : Svg.Attribute msg
+mdHoverFromIndigo400 =
+    A.class "md:hover:from-indigo-400"
+
+
+mdHoverFromIndigo500 : Svg.Attribute msg
+mdHoverFromIndigo500 =
+    A.class "md:hover:from-indigo-500"
+
+
+mdHoverFromIndigo600 : Svg.Attribute msg
+mdHoverFromIndigo600 =
+    A.class "md:hover:from-indigo-600"
+
+
+mdHoverFromIndigo700 : Svg.Attribute msg
+mdHoverFromIndigo700 =
+    A.class "md:hover:from-indigo-700"
+
+
+mdHoverFromIndigo800 : Svg.Attribute msg
+mdHoverFromIndigo800 =
+    A.class "md:hover:from-indigo-800"
+
+
+mdHoverFromIndigo900 : Svg.Attribute msg
+mdHoverFromIndigo900 =
+    A.class "md:hover:from-indigo-900"
+
+
+mdHoverFromPurple100 : Svg.Attribute msg
+mdHoverFromPurple100 =
+    A.class "md:hover:from-purple-100"
+
+
+mdHoverFromPurple200 : Svg.Attribute msg
+mdHoverFromPurple200 =
+    A.class "md:hover:from-purple-200"
+
+
+mdHoverFromPurple300 : Svg.Attribute msg
+mdHoverFromPurple300 =
+    A.class "md:hover:from-purple-300"
+
+
+mdHoverFromPurple400 : Svg.Attribute msg
+mdHoverFromPurple400 =
+    A.class "md:hover:from-purple-400"
+
+
+mdHoverFromPurple500 : Svg.Attribute msg
+mdHoverFromPurple500 =
+    A.class "md:hover:from-purple-500"
+
+
+mdHoverFromPurple600 : Svg.Attribute msg
+mdHoverFromPurple600 =
+    A.class "md:hover:from-purple-600"
+
+
+mdHoverFromPurple700 : Svg.Attribute msg
+mdHoverFromPurple700 =
+    A.class "md:hover:from-purple-700"
+
+
+mdHoverFromPurple800 : Svg.Attribute msg
+mdHoverFromPurple800 =
+    A.class "md:hover:from-purple-800"
+
+
+mdHoverFromPurple900 : Svg.Attribute msg
+mdHoverFromPurple900 =
+    A.class "md:hover:from-purple-900"
+
+
+mdHoverFromPink100 : Svg.Attribute msg
+mdHoverFromPink100 =
+    A.class "md:hover:from-pink-100"
+
+
+mdHoverFromPink200 : Svg.Attribute msg
+mdHoverFromPink200 =
+    A.class "md:hover:from-pink-200"
+
+
+mdHoverFromPink300 : Svg.Attribute msg
+mdHoverFromPink300 =
+    A.class "md:hover:from-pink-300"
+
+
+mdHoverFromPink400 : Svg.Attribute msg
+mdHoverFromPink400 =
+    A.class "md:hover:from-pink-400"
+
+
+mdHoverFromPink500 : Svg.Attribute msg
+mdHoverFromPink500 =
+    A.class "md:hover:from-pink-500"
+
+
+mdHoverFromPink600 : Svg.Attribute msg
+mdHoverFromPink600 =
+    A.class "md:hover:from-pink-600"
+
+
+mdHoverFromPink700 : Svg.Attribute msg
+mdHoverFromPink700 =
+    A.class "md:hover:from-pink-700"
+
+
+mdHoverFromPink800 : Svg.Attribute msg
+mdHoverFromPink800 =
+    A.class "md:hover:from-pink-800"
+
+
+mdHoverFromPink900 : Svg.Attribute msg
+mdHoverFromPink900 =
+    A.class "md:hover:from-pink-900"
+
+
+mdHoverViaTransparent : Svg.Attribute msg
+mdHoverViaTransparent =
+    A.class "md:hover:via-transparent"
+
+
+mdHoverViaCurrent : Svg.Attribute msg
+mdHoverViaCurrent =
+    A.class "md:hover:via-current"
+
+
+mdHoverViaBlack : Svg.Attribute msg
+mdHoverViaBlack =
+    A.class "md:hover:via-black"
+
+
+mdHoverViaWhite : Svg.Attribute msg
+mdHoverViaWhite =
+    A.class "md:hover:via-white"
+
+
+mdHoverViaGray100 : Svg.Attribute msg
+mdHoverViaGray100 =
+    A.class "md:hover:via-gray-100"
+
+
+mdHoverViaGray200 : Svg.Attribute msg
+mdHoverViaGray200 =
+    A.class "md:hover:via-gray-200"
+
+
+mdHoverViaGray300 : Svg.Attribute msg
+mdHoverViaGray300 =
+    A.class "md:hover:via-gray-300"
+
+
+mdHoverViaGray400 : Svg.Attribute msg
+mdHoverViaGray400 =
+    A.class "md:hover:via-gray-400"
+
+
+mdHoverViaGray500 : Svg.Attribute msg
+mdHoverViaGray500 =
+    A.class "md:hover:via-gray-500"
+
+
+mdHoverViaGray600 : Svg.Attribute msg
+mdHoverViaGray600 =
+    A.class "md:hover:via-gray-600"
+
+
+mdHoverViaGray700 : Svg.Attribute msg
+mdHoverViaGray700 =
+    A.class "md:hover:via-gray-700"
+
+
+mdHoverViaGray800 : Svg.Attribute msg
+mdHoverViaGray800 =
+    A.class "md:hover:via-gray-800"
+
+
+mdHoverViaGray900 : Svg.Attribute msg
+mdHoverViaGray900 =
+    A.class "md:hover:via-gray-900"
+
+
+mdHoverViaRed100 : Svg.Attribute msg
+mdHoverViaRed100 =
+    A.class "md:hover:via-red-100"
+
+
+mdHoverViaRed200 : Svg.Attribute msg
+mdHoverViaRed200 =
+    A.class "md:hover:via-red-200"
+
+
+mdHoverViaRed300 : Svg.Attribute msg
+mdHoverViaRed300 =
+    A.class "md:hover:via-red-300"
+
+
+mdHoverViaRed400 : Svg.Attribute msg
+mdHoverViaRed400 =
+    A.class "md:hover:via-red-400"
+
+
+mdHoverViaRed500 : Svg.Attribute msg
+mdHoverViaRed500 =
+    A.class "md:hover:via-red-500"
+
+
+mdHoverViaRed600 : Svg.Attribute msg
+mdHoverViaRed600 =
+    A.class "md:hover:via-red-600"
+
+
+mdHoverViaRed700 : Svg.Attribute msg
+mdHoverViaRed700 =
+    A.class "md:hover:via-red-700"
+
+
+mdHoverViaRed800 : Svg.Attribute msg
+mdHoverViaRed800 =
+    A.class "md:hover:via-red-800"
+
+
+mdHoverViaRed900 : Svg.Attribute msg
+mdHoverViaRed900 =
+    A.class "md:hover:via-red-900"
+
+
+mdHoverViaOrange100 : Svg.Attribute msg
+mdHoverViaOrange100 =
+    A.class "md:hover:via-orange-100"
+
+
+mdHoverViaOrange200 : Svg.Attribute msg
+mdHoverViaOrange200 =
+    A.class "md:hover:via-orange-200"
+
+
+mdHoverViaOrange300 : Svg.Attribute msg
+mdHoverViaOrange300 =
+    A.class "md:hover:via-orange-300"
+
+
+mdHoverViaOrange400 : Svg.Attribute msg
+mdHoverViaOrange400 =
+    A.class "md:hover:via-orange-400"
+
+
+mdHoverViaOrange500 : Svg.Attribute msg
+mdHoverViaOrange500 =
+    A.class "md:hover:via-orange-500"
+
+
+mdHoverViaOrange600 : Svg.Attribute msg
+mdHoverViaOrange600 =
+    A.class "md:hover:via-orange-600"
+
+
+mdHoverViaOrange700 : Svg.Attribute msg
+mdHoverViaOrange700 =
+    A.class "md:hover:via-orange-700"
+
+
+mdHoverViaOrange800 : Svg.Attribute msg
+mdHoverViaOrange800 =
+    A.class "md:hover:via-orange-800"
+
+
+mdHoverViaOrange900 : Svg.Attribute msg
+mdHoverViaOrange900 =
+    A.class "md:hover:via-orange-900"
+
+
+mdHoverViaYellow100 : Svg.Attribute msg
+mdHoverViaYellow100 =
+    A.class "md:hover:via-yellow-100"
+
+
+mdHoverViaYellow200 : Svg.Attribute msg
+mdHoverViaYellow200 =
+    A.class "md:hover:via-yellow-200"
+
+
+mdHoverViaYellow300 : Svg.Attribute msg
+mdHoverViaYellow300 =
+    A.class "md:hover:via-yellow-300"
+
+
+mdHoverViaYellow400 : Svg.Attribute msg
+mdHoverViaYellow400 =
+    A.class "md:hover:via-yellow-400"
+
+
+mdHoverViaYellow500 : Svg.Attribute msg
+mdHoverViaYellow500 =
+    A.class "md:hover:via-yellow-500"
+
+
+mdHoverViaYellow600 : Svg.Attribute msg
+mdHoverViaYellow600 =
+    A.class "md:hover:via-yellow-600"
+
+
+mdHoverViaYellow700 : Svg.Attribute msg
+mdHoverViaYellow700 =
+    A.class "md:hover:via-yellow-700"
+
+
+mdHoverViaYellow800 : Svg.Attribute msg
+mdHoverViaYellow800 =
+    A.class "md:hover:via-yellow-800"
+
+
+mdHoverViaYellow900 : Svg.Attribute msg
+mdHoverViaYellow900 =
+    A.class "md:hover:via-yellow-900"
+
+
+mdHoverViaGreen100 : Svg.Attribute msg
+mdHoverViaGreen100 =
+    A.class "md:hover:via-green-100"
+
+
+mdHoverViaGreen200 : Svg.Attribute msg
+mdHoverViaGreen200 =
+    A.class "md:hover:via-green-200"
+
+
+mdHoverViaGreen300 : Svg.Attribute msg
+mdHoverViaGreen300 =
+    A.class "md:hover:via-green-300"
+
+
+mdHoverViaGreen400 : Svg.Attribute msg
+mdHoverViaGreen400 =
+    A.class "md:hover:via-green-400"
+
+
+mdHoverViaGreen500 : Svg.Attribute msg
+mdHoverViaGreen500 =
+    A.class "md:hover:via-green-500"
+
+
+mdHoverViaGreen600 : Svg.Attribute msg
+mdHoverViaGreen600 =
+    A.class "md:hover:via-green-600"
+
+
+mdHoverViaGreen700 : Svg.Attribute msg
+mdHoverViaGreen700 =
+    A.class "md:hover:via-green-700"
+
+
+mdHoverViaGreen800 : Svg.Attribute msg
+mdHoverViaGreen800 =
+    A.class "md:hover:via-green-800"
+
+
+mdHoverViaGreen900 : Svg.Attribute msg
+mdHoverViaGreen900 =
+    A.class "md:hover:via-green-900"
+
+
+mdHoverViaTeal100 : Svg.Attribute msg
+mdHoverViaTeal100 =
+    A.class "md:hover:via-teal-100"
+
+
+mdHoverViaTeal200 : Svg.Attribute msg
+mdHoverViaTeal200 =
+    A.class "md:hover:via-teal-200"
+
+
+mdHoverViaTeal300 : Svg.Attribute msg
+mdHoverViaTeal300 =
+    A.class "md:hover:via-teal-300"
+
+
+mdHoverViaTeal400 : Svg.Attribute msg
+mdHoverViaTeal400 =
+    A.class "md:hover:via-teal-400"
+
+
+mdHoverViaTeal500 : Svg.Attribute msg
+mdHoverViaTeal500 =
+    A.class "md:hover:via-teal-500"
+
+
+mdHoverViaTeal600 : Svg.Attribute msg
+mdHoverViaTeal600 =
+    A.class "md:hover:via-teal-600"
+
+
+mdHoverViaTeal700 : Svg.Attribute msg
+mdHoverViaTeal700 =
+    A.class "md:hover:via-teal-700"
+
+
+mdHoverViaTeal800 : Svg.Attribute msg
+mdHoverViaTeal800 =
+    A.class "md:hover:via-teal-800"
+
+
+mdHoverViaTeal900 : Svg.Attribute msg
+mdHoverViaTeal900 =
+    A.class "md:hover:via-teal-900"
+
+
+mdHoverViaBlue100 : Svg.Attribute msg
+mdHoverViaBlue100 =
+    A.class "md:hover:via-blue-100"
+
+
+mdHoverViaBlue200 : Svg.Attribute msg
+mdHoverViaBlue200 =
+    A.class "md:hover:via-blue-200"
+
+
+mdHoverViaBlue300 : Svg.Attribute msg
+mdHoverViaBlue300 =
+    A.class "md:hover:via-blue-300"
+
+
+mdHoverViaBlue400 : Svg.Attribute msg
+mdHoverViaBlue400 =
+    A.class "md:hover:via-blue-400"
+
+
+mdHoverViaBlue500 : Svg.Attribute msg
+mdHoverViaBlue500 =
+    A.class "md:hover:via-blue-500"
+
+
+mdHoverViaBlue600 : Svg.Attribute msg
+mdHoverViaBlue600 =
+    A.class "md:hover:via-blue-600"
+
+
+mdHoverViaBlue700 : Svg.Attribute msg
+mdHoverViaBlue700 =
+    A.class "md:hover:via-blue-700"
+
+
+mdHoverViaBlue800 : Svg.Attribute msg
+mdHoverViaBlue800 =
+    A.class "md:hover:via-blue-800"
+
+
+mdHoverViaBlue900 : Svg.Attribute msg
+mdHoverViaBlue900 =
+    A.class "md:hover:via-blue-900"
+
+
+mdHoverViaIndigo100 : Svg.Attribute msg
+mdHoverViaIndigo100 =
+    A.class "md:hover:via-indigo-100"
+
+
+mdHoverViaIndigo200 : Svg.Attribute msg
+mdHoverViaIndigo200 =
+    A.class "md:hover:via-indigo-200"
+
+
+mdHoverViaIndigo300 : Svg.Attribute msg
+mdHoverViaIndigo300 =
+    A.class "md:hover:via-indigo-300"
+
+
+mdHoverViaIndigo400 : Svg.Attribute msg
+mdHoverViaIndigo400 =
+    A.class "md:hover:via-indigo-400"
+
+
+mdHoverViaIndigo500 : Svg.Attribute msg
+mdHoverViaIndigo500 =
+    A.class "md:hover:via-indigo-500"
+
+
+mdHoverViaIndigo600 : Svg.Attribute msg
+mdHoverViaIndigo600 =
+    A.class "md:hover:via-indigo-600"
+
+
+mdHoverViaIndigo700 : Svg.Attribute msg
+mdHoverViaIndigo700 =
+    A.class "md:hover:via-indigo-700"
+
+
+mdHoverViaIndigo800 : Svg.Attribute msg
+mdHoverViaIndigo800 =
+    A.class "md:hover:via-indigo-800"
+
+
+mdHoverViaIndigo900 : Svg.Attribute msg
+mdHoverViaIndigo900 =
+    A.class "md:hover:via-indigo-900"
+
+
+mdHoverViaPurple100 : Svg.Attribute msg
+mdHoverViaPurple100 =
+    A.class "md:hover:via-purple-100"
+
+
+mdHoverViaPurple200 : Svg.Attribute msg
+mdHoverViaPurple200 =
+    A.class "md:hover:via-purple-200"
+
+
+mdHoverViaPurple300 : Svg.Attribute msg
+mdHoverViaPurple300 =
+    A.class "md:hover:via-purple-300"
+
+
+mdHoverViaPurple400 : Svg.Attribute msg
+mdHoverViaPurple400 =
+    A.class "md:hover:via-purple-400"
+
+
+mdHoverViaPurple500 : Svg.Attribute msg
+mdHoverViaPurple500 =
+    A.class "md:hover:via-purple-500"
+
+
+mdHoverViaPurple600 : Svg.Attribute msg
+mdHoverViaPurple600 =
+    A.class "md:hover:via-purple-600"
+
+
+mdHoverViaPurple700 : Svg.Attribute msg
+mdHoverViaPurple700 =
+    A.class "md:hover:via-purple-700"
+
+
+mdHoverViaPurple800 : Svg.Attribute msg
+mdHoverViaPurple800 =
+    A.class "md:hover:via-purple-800"
+
+
+mdHoverViaPurple900 : Svg.Attribute msg
+mdHoverViaPurple900 =
+    A.class "md:hover:via-purple-900"
+
+
+mdHoverViaPink100 : Svg.Attribute msg
+mdHoverViaPink100 =
+    A.class "md:hover:via-pink-100"
+
+
+mdHoverViaPink200 : Svg.Attribute msg
+mdHoverViaPink200 =
+    A.class "md:hover:via-pink-200"
+
+
+mdHoverViaPink300 : Svg.Attribute msg
+mdHoverViaPink300 =
+    A.class "md:hover:via-pink-300"
+
+
+mdHoverViaPink400 : Svg.Attribute msg
+mdHoverViaPink400 =
+    A.class "md:hover:via-pink-400"
+
+
+mdHoverViaPink500 : Svg.Attribute msg
+mdHoverViaPink500 =
+    A.class "md:hover:via-pink-500"
+
+
+mdHoverViaPink600 : Svg.Attribute msg
+mdHoverViaPink600 =
+    A.class "md:hover:via-pink-600"
+
+
+mdHoverViaPink700 : Svg.Attribute msg
+mdHoverViaPink700 =
+    A.class "md:hover:via-pink-700"
+
+
+mdHoverViaPink800 : Svg.Attribute msg
+mdHoverViaPink800 =
+    A.class "md:hover:via-pink-800"
+
+
+mdHoverViaPink900 : Svg.Attribute msg
+mdHoverViaPink900 =
+    A.class "md:hover:via-pink-900"
+
+
+mdHoverToTransparent : Svg.Attribute msg
+mdHoverToTransparent =
+    A.class "md:hover:to-transparent"
+
+
+mdHoverToCurrent : Svg.Attribute msg
+mdHoverToCurrent =
+    A.class "md:hover:to-current"
+
+
+mdHoverToBlack : Svg.Attribute msg
+mdHoverToBlack =
+    A.class "md:hover:to-black"
+
+
+mdHoverToWhite : Svg.Attribute msg
+mdHoverToWhite =
+    A.class "md:hover:to-white"
+
+
+mdHoverToGray100 : Svg.Attribute msg
+mdHoverToGray100 =
+    A.class "md:hover:to-gray-100"
+
+
+mdHoverToGray200 : Svg.Attribute msg
+mdHoverToGray200 =
+    A.class "md:hover:to-gray-200"
+
+
+mdHoverToGray300 : Svg.Attribute msg
+mdHoverToGray300 =
+    A.class "md:hover:to-gray-300"
+
+
+mdHoverToGray400 : Svg.Attribute msg
+mdHoverToGray400 =
+    A.class "md:hover:to-gray-400"
+
+
+mdHoverToGray500 : Svg.Attribute msg
+mdHoverToGray500 =
+    A.class "md:hover:to-gray-500"
+
+
+mdHoverToGray600 : Svg.Attribute msg
+mdHoverToGray600 =
+    A.class "md:hover:to-gray-600"
+
+
+mdHoverToGray700 : Svg.Attribute msg
+mdHoverToGray700 =
+    A.class "md:hover:to-gray-700"
+
+
+mdHoverToGray800 : Svg.Attribute msg
+mdHoverToGray800 =
+    A.class "md:hover:to-gray-800"
+
+
+mdHoverToGray900 : Svg.Attribute msg
+mdHoverToGray900 =
+    A.class "md:hover:to-gray-900"
+
+
+mdHoverToRed100 : Svg.Attribute msg
+mdHoverToRed100 =
+    A.class "md:hover:to-red-100"
+
+
+mdHoverToRed200 : Svg.Attribute msg
+mdHoverToRed200 =
+    A.class "md:hover:to-red-200"
+
+
+mdHoverToRed300 : Svg.Attribute msg
+mdHoverToRed300 =
+    A.class "md:hover:to-red-300"
+
+
+mdHoverToRed400 : Svg.Attribute msg
+mdHoverToRed400 =
+    A.class "md:hover:to-red-400"
+
+
+mdHoverToRed500 : Svg.Attribute msg
+mdHoverToRed500 =
+    A.class "md:hover:to-red-500"
+
+
+mdHoverToRed600 : Svg.Attribute msg
+mdHoverToRed600 =
+    A.class "md:hover:to-red-600"
+
+
+mdHoverToRed700 : Svg.Attribute msg
+mdHoverToRed700 =
+    A.class "md:hover:to-red-700"
+
+
+mdHoverToRed800 : Svg.Attribute msg
+mdHoverToRed800 =
+    A.class "md:hover:to-red-800"
+
+
+mdHoverToRed900 : Svg.Attribute msg
+mdHoverToRed900 =
+    A.class "md:hover:to-red-900"
+
+
+mdHoverToOrange100 : Svg.Attribute msg
+mdHoverToOrange100 =
+    A.class "md:hover:to-orange-100"
+
+
+mdHoverToOrange200 : Svg.Attribute msg
+mdHoverToOrange200 =
+    A.class "md:hover:to-orange-200"
+
+
+mdHoverToOrange300 : Svg.Attribute msg
+mdHoverToOrange300 =
+    A.class "md:hover:to-orange-300"
+
+
+mdHoverToOrange400 : Svg.Attribute msg
+mdHoverToOrange400 =
+    A.class "md:hover:to-orange-400"
+
+
+mdHoverToOrange500 : Svg.Attribute msg
+mdHoverToOrange500 =
+    A.class "md:hover:to-orange-500"
+
+
+mdHoverToOrange600 : Svg.Attribute msg
+mdHoverToOrange600 =
+    A.class "md:hover:to-orange-600"
+
+
+mdHoverToOrange700 : Svg.Attribute msg
+mdHoverToOrange700 =
+    A.class "md:hover:to-orange-700"
+
+
+mdHoverToOrange800 : Svg.Attribute msg
+mdHoverToOrange800 =
+    A.class "md:hover:to-orange-800"
+
+
+mdHoverToOrange900 : Svg.Attribute msg
+mdHoverToOrange900 =
+    A.class "md:hover:to-orange-900"
+
+
+mdHoverToYellow100 : Svg.Attribute msg
+mdHoverToYellow100 =
+    A.class "md:hover:to-yellow-100"
+
+
+mdHoverToYellow200 : Svg.Attribute msg
+mdHoverToYellow200 =
+    A.class "md:hover:to-yellow-200"
+
+
+mdHoverToYellow300 : Svg.Attribute msg
+mdHoverToYellow300 =
+    A.class "md:hover:to-yellow-300"
+
+
+mdHoverToYellow400 : Svg.Attribute msg
+mdHoverToYellow400 =
+    A.class "md:hover:to-yellow-400"
+
+
+mdHoverToYellow500 : Svg.Attribute msg
+mdHoverToYellow500 =
+    A.class "md:hover:to-yellow-500"
+
+
+mdHoverToYellow600 : Svg.Attribute msg
+mdHoverToYellow600 =
+    A.class "md:hover:to-yellow-600"
+
+
+mdHoverToYellow700 : Svg.Attribute msg
+mdHoverToYellow700 =
+    A.class "md:hover:to-yellow-700"
+
+
+mdHoverToYellow800 : Svg.Attribute msg
+mdHoverToYellow800 =
+    A.class "md:hover:to-yellow-800"
+
+
+mdHoverToYellow900 : Svg.Attribute msg
+mdHoverToYellow900 =
+    A.class "md:hover:to-yellow-900"
+
+
+mdHoverToGreen100 : Svg.Attribute msg
+mdHoverToGreen100 =
+    A.class "md:hover:to-green-100"
+
+
+mdHoverToGreen200 : Svg.Attribute msg
+mdHoverToGreen200 =
+    A.class "md:hover:to-green-200"
+
+
+mdHoverToGreen300 : Svg.Attribute msg
+mdHoverToGreen300 =
+    A.class "md:hover:to-green-300"
+
+
+mdHoverToGreen400 : Svg.Attribute msg
+mdHoverToGreen400 =
+    A.class "md:hover:to-green-400"
+
+
+mdHoverToGreen500 : Svg.Attribute msg
+mdHoverToGreen500 =
+    A.class "md:hover:to-green-500"
+
+
+mdHoverToGreen600 : Svg.Attribute msg
+mdHoverToGreen600 =
+    A.class "md:hover:to-green-600"
+
+
+mdHoverToGreen700 : Svg.Attribute msg
+mdHoverToGreen700 =
+    A.class "md:hover:to-green-700"
+
+
+mdHoverToGreen800 : Svg.Attribute msg
+mdHoverToGreen800 =
+    A.class "md:hover:to-green-800"
+
+
+mdHoverToGreen900 : Svg.Attribute msg
+mdHoverToGreen900 =
+    A.class "md:hover:to-green-900"
+
+
+mdHoverToTeal100 : Svg.Attribute msg
+mdHoverToTeal100 =
+    A.class "md:hover:to-teal-100"
+
+
+mdHoverToTeal200 : Svg.Attribute msg
+mdHoverToTeal200 =
+    A.class "md:hover:to-teal-200"
+
+
+mdHoverToTeal300 : Svg.Attribute msg
+mdHoverToTeal300 =
+    A.class "md:hover:to-teal-300"
+
+
+mdHoverToTeal400 : Svg.Attribute msg
+mdHoverToTeal400 =
+    A.class "md:hover:to-teal-400"
+
+
+mdHoverToTeal500 : Svg.Attribute msg
+mdHoverToTeal500 =
+    A.class "md:hover:to-teal-500"
+
+
+mdHoverToTeal600 : Svg.Attribute msg
+mdHoverToTeal600 =
+    A.class "md:hover:to-teal-600"
+
+
+mdHoverToTeal700 : Svg.Attribute msg
+mdHoverToTeal700 =
+    A.class "md:hover:to-teal-700"
+
+
+mdHoverToTeal800 : Svg.Attribute msg
+mdHoverToTeal800 =
+    A.class "md:hover:to-teal-800"
+
+
+mdHoverToTeal900 : Svg.Attribute msg
+mdHoverToTeal900 =
+    A.class "md:hover:to-teal-900"
+
+
+mdHoverToBlue100 : Svg.Attribute msg
+mdHoverToBlue100 =
+    A.class "md:hover:to-blue-100"
+
+
+mdHoverToBlue200 : Svg.Attribute msg
+mdHoverToBlue200 =
+    A.class "md:hover:to-blue-200"
+
+
+mdHoverToBlue300 : Svg.Attribute msg
+mdHoverToBlue300 =
+    A.class "md:hover:to-blue-300"
+
+
+mdHoverToBlue400 : Svg.Attribute msg
+mdHoverToBlue400 =
+    A.class "md:hover:to-blue-400"
+
+
+mdHoverToBlue500 : Svg.Attribute msg
+mdHoverToBlue500 =
+    A.class "md:hover:to-blue-500"
+
+
+mdHoverToBlue600 : Svg.Attribute msg
+mdHoverToBlue600 =
+    A.class "md:hover:to-blue-600"
+
+
+mdHoverToBlue700 : Svg.Attribute msg
+mdHoverToBlue700 =
+    A.class "md:hover:to-blue-700"
+
+
+mdHoverToBlue800 : Svg.Attribute msg
+mdHoverToBlue800 =
+    A.class "md:hover:to-blue-800"
+
+
+mdHoverToBlue900 : Svg.Attribute msg
+mdHoverToBlue900 =
+    A.class "md:hover:to-blue-900"
+
+
+mdHoverToIndigo100 : Svg.Attribute msg
+mdHoverToIndigo100 =
+    A.class "md:hover:to-indigo-100"
+
+
+mdHoverToIndigo200 : Svg.Attribute msg
+mdHoverToIndigo200 =
+    A.class "md:hover:to-indigo-200"
+
+
+mdHoverToIndigo300 : Svg.Attribute msg
+mdHoverToIndigo300 =
+    A.class "md:hover:to-indigo-300"
+
+
+mdHoverToIndigo400 : Svg.Attribute msg
+mdHoverToIndigo400 =
+    A.class "md:hover:to-indigo-400"
+
+
+mdHoverToIndigo500 : Svg.Attribute msg
+mdHoverToIndigo500 =
+    A.class "md:hover:to-indigo-500"
+
+
+mdHoverToIndigo600 : Svg.Attribute msg
+mdHoverToIndigo600 =
+    A.class "md:hover:to-indigo-600"
+
+
+mdHoverToIndigo700 : Svg.Attribute msg
+mdHoverToIndigo700 =
+    A.class "md:hover:to-indigo-700"
+
+
+mdHoverToIndigo800 : Svg.Attribute msg
+mdHoverToIndigo800 =
+    A.class "md:hover:to-indigo-800"
+
+
+mdHoverToIndigo900 : Svg.Attribute msg
+mdHoverToIndigo900 =
+    A.class "md:hover:to-indigo-900"
+
+
+mdHoverToPurple100 : Svg.Attribute msg
+mdHoverToPurple100 =
+    A.class "md:hover:to-purple-100"
+
+
+mdHoverToPurple200 : Svg.Attribute msg
+mdHoverToPurple200 =
+    A.class "md:hover:to-purple-200"
+
+
+mdHoverToPurple300 : Svg.Attribute msg
+mdHoverToPurple300 =
+    A.class "md:hover:to-purple-300"
+
+
+mdHoverToPurple400 : Svg.Attribute msg
+mdHoverToPurple400 =
+    A.class "md:hover:to-purple-400"
+
+
+mdHoverToPurple500 : Svg.Attribute msg
+mdHoverToPurple500 =
+    A.class "md:hover:to-purple-500"
+
+
+mdHoverToPurple600 : Svg.Attribute msg
+mdHoverToPurple600 =
+    A.class "md:hover:to-purple-600"
+
+
+mdHoverToPurple700 : Svg.Attribute msg
+mdHoverToPurple700 =
+    A.class "md:hover:to-purple-700"
+
+
+mdHoverToPurple800 : Svg.Attribute msg
+mdHoverToPurple800 =
+    A.class "md:hover:to-purple-800"
+
+
+mdHoverToPurple900 : Svg.Attribute msg
+mdHoverToPurple900 =
+    A.class "md:hover:to-purple-900"
+
+
+mdHoverToPink100 : Svg.Attribute msg
+mdHoverToPink100 =
+    A.class "md:hover:to-pink-100"
+
+
+mdHoverToPink200 : Svg.Attribute msg
+mdHoverToPink200 =
+    A.class "md:hover:to-pink-200"
+
+
+mdHoverToPink300 : Svg.Attribute msg
+mdHoverToPink300 =
+    A.class "md:hover:to-pink-300"
+
+
+mdHoverToPink400 : Svg.Attribute msg
+mdHoverToPink400 =
+    A.class "md:hover:to-pink-400"
+
+
+mdHoverToPink500 : Svg.Attribute msg
+mdHoverToPink500 =
+    A.class "md:hover:to-pink-500"
+
+
+mdHoverToPink600 : Svg.Attribute msg
+mdHoverToPink600 =
+    A.class "md:hover:to-pink-600"
+
+
+mdHoverToPink700 : Svg.Attribute msg
+mdHoverToPink700 =
+    A.class "md:hover:to-pink-700"
+
+
+mdHoverToPink800 : Svg.Attribute msg
+mdHoverToPink800 =
+    A.class "md:hover:to-pink-800"
+
+
+mdHoverToPink900 : Svg.Attribute msg
+mdHoverToPink900 =
+    A.class "md:hover:to-pink-900"
+
+
+mdFocusFromTransparent : Svg.Attribute msg
+mdFocusFromTransparent =
+    A.class "md:focus:from-transparent"
+
+
+mdFocusFromCurrent : Svg.Attribute msg
+mdFocusFromCurrent =
+    A.class "md:focus:from-current"
+
+
+mdFocusFromBlack : Svg.Attribute msg
+mdFocusFromBlack =
+    A.class "md:focus:from-black"
+
+
+mdFocusFromWhite : Svg.Attribute msg
+mdFocusFromWhite =
+    A.class "md:focus:from-white"
+
+
+mdFocusFromGray100 : Svg.Attribute msg
+mdFocusFromGray100 =
+    A.class "md:focus:from-gray-100"
+
+
+mdFocusFromGray200 : Svg.Attribute msg
+mdFocusFromGray200 =
+    A.class "md:focus:from-gray-200"
+
+
+mdFocusFromGray300 : Svg.Attribute msg
+mdFocusFromGray300 =
+    A.class "md:focus:from-gray-300"
+
+
+mdFocusFromGray400 : Svg.Attribute msg
+mdFocusFromGray400 =
+    A.class "md:focus:from-gray-400"
+
+
+mdFocusFromGray500 : Svg.Attribute msg
+mdFocusFromGray500 =
+    A.class "md:focus:from-gray-500"
+
+
+mdFocusFromGray600 : Svg.Attribute msg
+mdFocusFromGray600 =
+    A.class "md:focus:from-gray-600"
+
+
+mdFocusFromGray700 : Svg.Attribute msg
+mdFocusFromGray700 =
+    A.class "md:focus:from-gray-700"
+
+
+mdFocusFromGray800 : Svg.Attribute msg
+mdFocusFromGray800 =
+    A.class "md:focus:from-gray-800"
+
+
+mdFocusFromGray900 : Svg.Attribute msg
+mdFocusFromGray900 =
+    A.class "md:focus:from-gray-900"
+
+
+mdFocusFromRed100 : Svg.Attribute msg
+mdFocusFromRed100 =
+    A.class "md:focus:from-red-100"
+
+
+mdFocusFromRed200 : Svg.Attribute msg
+mdFocusFromRed200 =
+    A.class "md:focus:from-red-200"
+
+
+mdFocusFromRed300 : Svg.Attribute msg
+mdFocusFromRed300 =
+    A.class "md:focus:from-red-300"
+
+
+mdFocusFromRed400 : Svg.Attribute msg
+mdFocusFromRed400 =
+    A.class "md:focus:from-red-400"
+
+
+mdFocusFromRed500 : Svg.Attribute msg
+mdFocusFromRed500 =
+    A.class "md:focus:from-red-500"
+
+
+mdFocusFromRed600 : Svg.Attribute msg
+mdFocusFromRed600 =
+    A.class "md:focus:from-red-600"
+
+
+mdFocusFromRed700 : Svg.Attribute msg
+mdFocusFromRed700 =
+    A.class "md:focus:from-red-700"
+
+
+mdFocusFromRed800 : Svg.Attribute msg
+mdFocusFromRed800 =
+    A.class "md:focus:from-red-800"
+
+
+mdFocusFromRed900 : Svg.Attribute msg
+mdFocusFromRed900 =
+    A.class "md:focus:from-red-900"
+
+
+mdFocusFromOrange100 : Svg.Attribute msg
+mdFocusFromOrange100 =
+    A.class "md:focus:from-orange-100"
+
+
+mdFocusFromOrange200 : Svg.Attribute msg
+mdFocusFromOrange200 =
+    A.class "md:focus:from-orange-200"
+
+
+mdFocusFromOrange300 : Svg.Attribute msg
+mdFocusFromOrange300 =
+    A.class "md:focus:from-orange-300"
+
+
+mdFocusFromOrange400 : Svg.Attribute msg
+mdFocusFromOrange400 =
+    A.class "md:focus:from-orange-400"
+
+
+mdFocusFromOrange500 : Svg.Attribute msg
+mdFocusFromOrange500 =
+    A.class "md:focus:from-orange-500"
+
+
+mdFocusFromOrange600 : Svg.Attribute msg
+mdFocusFromOrange600 =
+    A.class "md:focus:from-orange-600"
+
+
+mdFocusFromOrange700 : Svg.Attribute msg
+mdFocusFromOrange700 =
+    A.class "md:focus:from-orange-700"
+
+
+mdFocusFromOrange800 : Svg.Attribute msg
+mdFocusFromOrange800 =
+    A.class "md:focus:from-orange-800"
+
+
+mdFocusFromOrange900 : Svg.Attribute msg
+mdFocusFromOrange900 =
+    A.class "md:focus:from-orange-900"
+
+
+mdFocusFromYellow100 : Svg.Attribute msg
+mdFocusFromYellow100 =
+    A.class "md:focus:from-yellow-100"
+
+
+mdFocusFromYellow200 : Svg.Attribute msg
+mdFocusFromYellow200 =
+    A.class "md:focus:from-yellow-200"
+
+
+mdFocusFromYellow300 : Svg.Attribute msg
+mdFocusFromYellow300 =
+    A.class "md:focus:from-yellow-300"
+
+
+mdFocusFromYellow400 : Svg.Attribute msg
+mdFocusFromYellow400 =
+    A.class "md:focus:from-yellow-400"
+
+
+mdFocusFromYellow500 : Svg.Attribute msg
+mdFocusFromYellow500 =
+    A.class "md:focus:from-yellow-500"
+
+
+mdFocusFromYellow600 : Svg.Attribute msg
+mdFocusFromYellow600 =
+    A.class "md:focus:from-yellow-600"
+
+
+mdFocusFromYellow700 : Svg.Attribute msg
+mdFocusFromYellow700 =
+    A.class "md:focus:from-yellow-700"
+
+
+mdFocusFromYellow800 : Svg.Attribute msg
+mdFocusFromYellow800 =
+    A.class "md:focus:from-yellow-800"
+
+
+mdFocusFromYellow900 : Svg.Attribute msg
+mdFocusFromYellow900 =
+    A.class "md:focus:from-yellow-900"
+
+
+mdFocusFromGreen100 : Svg.Attribute msg
+mdFocusFromGreen100 =
+    A.class "md:focus:from-green-100"
+
+
+mdFocusFromGreen200 : Svg.Attribute msg
+mdFocusFromGreen200 =
+    A.class "md:focus:from-green-200"
+
+
+mdFocusFromGreen300 : Svg.Attribute msg
+mdFocusFromGreen300 =
+    A.class "md:focus:from-green-300"
+
+
+mdFocusFromGreen400 : Svg.Attribute msg
+mdFocusFromGreen400 =
+    A.class "md:focus:from-green-400"
+
+
+mdFocusFromGreen500 : Svg.Attribute msg
+mdFocusFromGreen500 =
+    A.class "md:focus:from-green-500"
+
+
+mdFocusFromGreen600 : Svg.Attribute msg
+mdFocusFromGreen600 =
+    A.class "md:focus:from-green-600"
+
+
+mdFocusFromGreen700 : Svg.Attribute msg
+mdFocusFromGreen700 =
+    A.class "md:focus:from-green-700"
+
+
+mdFocusFromGreen800 : Svg.Attribute msg
+mdFocusFromGreen800 =
+    A.class "md:focus:from-green-800"
+
+
+mdFocusFromGreen900 : Svg.Attribute msg
+mdFocusFromGreen900 =
+    A.class "md:focus:from-green-900"
+
+
+mdFocusFromTeal100 : Svg.Attribute msg
+mdFocusFromTeal100 =
+    A.class "md:focus:from-teal-100"
+
+
+mdFocusFromTeal200 : Svg.Attribute msg
+mdFocusFromTeal200 =
+    A.class "md:focus:from-teal-200"
+
+
+mdFocusFromTeal300 : Svg.Attribute msg
+mdFocusFromTeal300 =
+    A.class "md:focus:from-teal-300"
+
+
+mdFocusFromTeal400 : Svg.Attribute msg
+mdFocusFromTeal400 =
+    A.class "md:focus:from-teal-400"
+
+
+mdFocusFromTeal500 : Svg.Attribute msg
+mdFocusFromTeal500 =
+    A.class "md:focus:from-teal-500"
+
+
+mdFocusFromTeal600 : Svg.Attribute msg
+mdFocusFromTeal600 =
+    A.class "md:focus:from-teal-600"
+
+
+mdFocusFromTeal700 : Svg.Attribute msg
+mdFocusFromTeal700 =
+    A.class "md:focus:from-teal-700"
+
+
+mdFocusFromTeal800 : Svg.Attribute msg
+mdFocusFromTeal800 =
+    A.class "md:focus:from-teal-800"
+
+
+mdFocusFromTeal900 : Svg.Attribute msg
+mdFocusFromTeal900 =
+    A.class "md:focus:from-teal-900"
+
+
+mdFocusFromBlue100 : Svg.Attribute msg
+mdFocusFromBlue100 =
+    A.class "md:focus:from-blue-100"
+
+
+mdFocusFromBlue200 : Svg.Attribute msg
+mdFocusFromBlue200 =
+    A.class "md:focus:from-blue-200"
+
+
+mdFocusFromBlue300 : Svg.Attribute msg
+mdFocusFromBlue300 =
+    A.class "md:focus:from-blue-300"
+
+
+mdFocusFromBlue400 : Svg.Attribute msg
+mdFocusFromBlue400 =
+    A.class "md:focus:from-blue-400"
+
+
+mdFocusFromBlue500 : Svg.Attribute msg
+mdFocusFromBlue500 =
+    A.class "md:focus:from-blue-500"
+
+
+mdFocusFromBlue600 : Svg.Attribute msg
+mdFocusFromBlue600 =
+    A.class "md:focus:from-blue-600"
+
+
+mdFocusFromBlue700 : Svg.Attribute msg
+mdFocusFromBlue700 =
+    A.class "md:focus:from-blue-700"
+
+
+mdFocusFromBlue800 : Svg.Attribute msg
+mdFocusFromBlue800 =
+    A.class "md:focus:from-blue-800"
+
+
+mdFocusFromBlue900 : Svg.Attribute msg
+mdFocusFromBlue900 =
+    A.class "md:focus:from-blue-900"
+
+
+mdFocusFromIndigo100 : Svg.Attribute msg
+mdFocusFromIndigo100 =
+    A.class "md:focus:from-indigo-100"
+
+
+mdFocusFromIndigo200 : Svg.Attribute msg
+mdFocusFromIndigo200 =
+    A.class "md:focus:from-indigo-200"
+
+
+mdFocusFromIndigo300 : Svg.Attribute msg
+mdFocusFromIndigo300 =
+    A.class "md:focus:from-indigo-300"
+
+
+mdFocusFromIndigo400 : Svg.Attribute msg
+mdFocusFromIndigo400 =
+    A.class "md:focus:from-indigo-400"
+
+
+mdFocusFromIndigo500 : Svg.Attribute msg
+mdFocusFromIndigo500 =
+    A.class "md:focus:from-indigo-500"
+
+
+mdFocusFromIndigo600 : Svg.Attribute msg
+mdFocusFromIndigo600 =
+    A.class "md:focus:from-indigo-600"
+
+
+mdFocusFromIndigo700 : Svg.Attribute msg
+mdFocusFromIndigo700 =
+    A.class "md:focus:from-indigo-700"
+
+
+mdFocusFromIndigo800 : Svg.Attribute msg
+mdFocusFromIndigo800 =
+    A.class "md:focus:from-indigo-800"
+
+
+mdFocusFromIndigo900 : Svg.Attribute msg
+mdFocusFromIndigo900 =
+    A.class "md:focus:from-indigo-900"
+
+
+mdFocusFromPurple100 : Svg.Attribute msg
+mdFocusFromPurple100 =
+    A.class "md:focus:from-purple-100"
+
+
+mdFocusFromPurple200 : Svg.Attribute msg
+mdFocusFromPurple200 =
+    A.class "md:focus:from-purple-200"
+
+
+mdFocusFromPurple300 : Svg.Attribute msg
+mdFocusFromPurple300 =
+    A.class "md:focus:from-purple-300"
+
+
+mdFocusFromPurple400 : Svg.Attribute msg
+mdFocusFromPurple400 =
+    A.class "md:focus:from-purple-400"
+
+
+mdFocusFromPurple500 : Svg.Attribute msg
+mdFocusFromPurple500 =
+    A.class "md:focus:from-purple-500"
+
+
+mdFocusFromPurple600 : Svg.Attribute msg
+mdFocusFromPurple600 =
+    A.class "md:focus:from-purple-600"
+
+
+mdFocusFromPurple700 : Svg.Attribute msg
+mdFocusFromPurple700 =
+    A.class "md:focus:from-purple-700"
+
+
+mdFocusFromPurple800 : Svg.Attribute msg
+mdFocusFromPurple800 =
+    A.class "md:focus:from-purple-800"
+
+
+mdFocusFromPurple900 : Svg.Attribute msg
+mdFocusFromPurple900 =
+    A.class "md:focus:from-purple-900"
+
+
+mdFocusFromPink100 : Svg.Attribute msg
+mdFocusFromPink100 =
+    A.class "md:focus:from-pink-100"
+
+
+mdFocusFromPink200 : Svg.Attribute msg
+mdFocusFromPink200 =
+    A.class "md:focus:from-pink-200"
+
+
+mdFocusFromPink300 : Svg.Attribute msg
+mdFocusFromPink300 =
+    A.class "md:focus:from-pink-300"
+
+
+mdFocusFromPink400 : Svg.Attribute msg
+mdFocusFromPink400 =
+    A.class "md:focus:from-pink-400"
+
+
+mdFocusFromPink500 : Svg.Attribute msg
+mdFocusFromPink500 =
+    A.class "md:focus:from-pink-500"
+
+
+mdFocusFromPink600 : Svg.Attribute msg
+mdFocusFromPink600 =
+    A.class "md:focus:from-pink-600"
+
+
+mdFocusFromPink700 : Svg.Attribute msg
+mdFocusFromPink700 =
+    A.class "md:focus:from-pink-700"
+
+
+mdFocusFromPink800 : Svg.Attribute msg
+mdFocusFromPink800 =
+    A.class "md:focus:from-pink-800"
+
+
+mdFocusFromPink900 : Svg.Attribute msg
+mdFocusFromPink900 =
+    A.class "md:focus:from-pink-900"
+
+
+mdFocusViaTransparent : Svg.Attribute msg
+mdFocusViaTransparent =
+    A.class "md:focus:via-transparent"
+
+
+mdFocusViaCurrent : Svg.Attribute msg
+mdFocusViaCurrent =
+    A.class "md:focus:via-current"
+
+
+mdFocusViaBlack : Svg.Attribute msg
+mdFocusViaBlack =
+    A.class "md:focus:via-black"
+
+
+mdFocusViaWhite : Svg.Attribute msg
+mdFocusViaWhite =
+    A.class "md:focus:via-white"
+
+
+mdFocusViaGray100 : Svg.Attribute msg
+mdFocusViaGray100 =
+    A.class "md:focus:via-gray-100"
+
+
+mdFocusViaGray200 : Svg.Attribute msg
+mdFocusViaGray200 =
+    A.class "md:focus:via-gray-200"
+
+
+mdFocusViaGray300 : Svg.Attribute msg
+mdFocusViaGray300 =
+    A.class "md:focus:via-gray-300"
+
+
+mdFocusViaGray400 : Svg.Attribute msg
+mdFocusViaGray400 =
+    A.class "md:focus:via-gray-400"
+
+
+mdFocusViaGray500 : Svg.Attribute msg
+mdFocusViaGray500 =
+    A.class "md:focus:via-gray-500"
+
+
+mdFocusViaGray600 : Svg.Attribute msg
+mdFocusViaGray600 =
+    A.class "md:focus:via-gray-600"
+
+
+mdFocusViaGray700 : Svg.Attribute msg
+mdFocusViaGray700 =
+    A.class "md:focus:via-gray-700"
+
+
+mdFocusViaGray800 : Svg.Attribute msg
+mdFocusViaGray800 =
+    A.class "md:focus:via-gray-800"
+
+
+mdFocusViaGray900 : Svg.Attribute msg
+mdFocusViaGray900 =
+    A.class "md:focus:via-gray-900"
+
+
+mdFocusViaRed100 : Svg.Attribute msg
+mdFocusViaRed100 =
+    A.class "md:focus:via-red-100"
+
+
+mdFocusViaRed200 : Svg.Attribute msg
+mdFocusViaRed200 =
+    A.class "md:focus:via-red-200"
+
+
+mdFocusViaRed300 : Svg.Attribute msg
+mdFocusViaRed300 =
+    A.class "md:focus:via-red-300"
+
+
+mdFocusViaRed400 : Svg.Attribute msg
+mdFocusViaRed400 =
+    A.class "md:focus:via-red-400"
+
+
+mdFocusViaRed500 : Svg.Attribute msg
+mdFocusViaRed500 =
+    A.class "md:focus:via-red-500"
+
+
+mdFocusViaRed600 : Svg.Attribute msg
+mdFocusViaRed600 =
+    A.class "md:focus:via-red-600"
+
+
+mdFocusViaRed700 : Svg.Attribute msg
+mdFocusViaRed700 =
+    A.class "md:focus:via-red-700"
+
+
+mdFocusViaRed800 : Svg.Attribute msg
+mdFocusViaRed800 =
+    A.class "md:focus:via-red-800"
+
+
+mdFocusViaRed900 : Svg.Attribute msg
+mdFocusViaRed900 =
+    A.class "md:focus:via-red-900"
+
+
+mdFocusViaOrange100 : Svg.Attribute msg
+mdFocusViaOrange100 =
+    A.class "md:focus:via-orange-100"
+
+
+mdFocusViaOrange200 : Svg.Attribute msg
+mdFocusViaOrange200 =
+    A.class "md:focus:via-orange-200"
+
+
+mdFocusViaOrange300 : Svg.Attribute msg
+mdFocusViaOrange300 =
+    A.class "md:focus:via-orange-300"
+
+
+mdFocusViaOrange400 : Svg.Attribute msg
+mdFocusViaOrange400 =
+    A.class "md:focus:via-orange-400"
+
+
+mdFocusViaOrange500 : Svg.Attribute msg
+mdFocusViaOrange500 =
+    A.class "md:focus:via-orange-500"
+
+
+mdFocusViaOrange600 : Svg.Attribute msg
+mdFocusViaOrange600 =
+    A.class "md:focus:via-orange-600"
+
+
+mdFocusViaOrange700 : Svg.Attribute msg
+mdFocusViaOrange700 =
+    A.class "md:focus:via-orange-700"
+
+
+mdFocusViaOrange800 : Svg.Attribute msg
+mdFocusViaOrange800 =
+    A.class "md:focus:via-orange-800"
+
+
+mdFocusViaOrange900 : Svg.Attribute msg
+mdFocusViaOrange900 =
+    A.class "md:focus:via-orange-900"
+
+
+mdFocusViaYellow100 : Svg.Attribute msg
+mdFocusViaYellow100 =
+    A.class "md:focus:via-yellow-100"
+
+
+mdFocusViaYellow200 : Svg.Attribute msg
+mdFocusViaYellow200 =
+    A.class "md:focus:via-yellow-200"
+
+
+mdFocusViaYellow300 : Svg.Attribute msg
+mdFocusViaYellow300 =
+    A.class "md:focus:via-yellow-300"
+
+
+mdFocusViaYellow400 : Svg.Attribute msg
+mdFocusViaYellow400 =
+    A.class "md:focus:via-yellow-400"
+
+
+mdFocusViaYellow500 : Svg.Attribute msg
+mdFocusViaYellow500 =
+    A.class "md:focus:via-yellow-500"
+
+
+mdFocusViaYellow600 : Svg.Attribute msg
+mdFocusViaYellow600 =
+    A.class "md:focus:via-yellow-600"
+
+
+mdFocusViaYellow700 : Svg.Attribute msg
+mdFocusViaYellow700 =
+    A.class "md:focus:via-yellow-700"
+
+
+mdFocusViaYellow800 : Svg.Attribute msg
+mdFocusViaYellow800 =
+    A.class "md:focus:via-yellow-800"
+
+
+mdFocusViaYellow900 : Svg.Attribute msg
+mdFocusViaYellow900 =
+    A.class "md:focus:via-yellow-900"
+
+
+mdFocusViaGreen100 : Svg.Attribute msg
+mdFocusViaGreen100 =
+    A.class "md:focus:via-green-100"
+
+
+mdFocusViaGreen200 : Svg.Attribute msg
+mdFocusViaGreen200 =
+    A.class "md:focus:via-green-200"
+
+
+mdFocusViaGreen300 : Svg.Attribute msg
+mdFocusViaGreen300 =
+    A.class "md:focus:via-green-300"
+
+
+mdFocusViaGreen400 : Svg.Attribute msg
+mdFocusViaGreen400 =
+    A.class "md:focus:via-green-400"
+
+
+mdFocusViaGreen500 : Svg.Attribute msg
+mdFocusViaGreen500 =
+    A.class "md:focus:via-green-500"
+
+
+mdFocusViaGreen600 : Svg.Attribute msg
+mdFocusViaGreen600 =
+    A.class "md:focus:via-green-600"
+
+
+mdFocusViaGreen700 : Svg.Attribute msg
+mdFocusViaGreen700 =
+    A.class "md:focus:via-green-700"
+
+
+mdFocusViaGreen800 : Svg.Attribute msg
+mdFocusViaGreen800 =
+    A.class "md:focus:via-green-800"
+
+
+mdFocusViaGreen900 : Svg.Attribute msg
+mdFocusViaGreen900 =
+    A.class "md:focus:via-green-900"
+
+
+mdFocusViaTeal100 : Svg.Attribute msg
+mdFocusViaTeal100 =
+    A.class "md:focus:via-teal-100"
+
+
+mdFocusViaTeal200 : Svg.Attribute msg
+mdFocusViaTeal200 =
+    A.class "md:focus:via-teal-200"
+
+
+mdFocusViaTeal300 : Svg.Attribute msg
+mdFocusViaTeal300 =
+    A.class "md:focus:via-teal-300"
+
+
+mdFocusViaTeal400 : Svg.Attribute msg
+mdFocusViaTeal400 =
+    A.class "md:focus:via-teal-400"
+
+
+mdFocusViaTeal500 : Svg.Attribute msg
+mdFocusViaTeal500 =
+    A.class "md:focus:via-teal-500"
+
+
+mdFocusViaTeal600 : Svg.Attribute msg
+mdFocusViaTeal600 =
+    A.class "md:focus:via-teal-600"
+
+
+mdFocusViaTeal700 : Svg.Attribute msg
+mdFocusViaTeal700 =
+    A.class "md:focus:via-teal-700"
+
+
+mdFocusViaTeal800 : Svg.Attribute msg
+mdFocusViaTeal800 =
+    A.class "md:focus:via-teal-800"
+
+
+mdFocusViaTeal900 : Svg.Attribute msg
+mdFocusViaTeal900 =
+    A.class "md:focus:via-teal-900"
+
+
+mdFocusViaBlue100 : Svg.Attribute msg
+mdFocusViaBlue100 =
+    A.class "md:focus:via-blue-100"
+
+
+mdFocusViaBlue200 : Svg.Attribute msg
+mdFocusViaBlue200 =
+    A.class "md:focus:via-blue-200"
+
+
+mdFocusViaBlue300 : Svg.Attribute msg
+mdFocusViaBlue300 =
+    A.class "md:focus:via-blue-300"
+
+
+mdFocusViaBlue400 : Svg.Attribute msg
+mdFocusViaBlue400 =
+    A.class "md:focus:via-blue-400"
+
+
+mdFocusViaBlue500 : Svg.Attribute msg
+mdFocusViaBlue500 =
+    A.class "md:focus:via-blue-500"
+
+
+mdFocusViaBlue600 : Svg.Attribute msg
+mdFocusViaBlue600 =
+    A.class "md:focus:via-blue-600"
+
+
+mdFocusViaBlue700 : Svg.Attribute msg
+mdFocusViaBlue700 =
+    A.class "md:focus:via-blue-700"
+
+
+mdFocusViaBlue800 : Svg.Attribute msg
+mdFocusViaBlue800 =
+    A.class "md:focus:via-blue-800"
+
+
+mdFocusViaBlue900 : Svg.Attribute msg
+mdFocusViaBlue900 =
+    A.class "md:focus:via-blue-900"
+
+
+mdFocusViaIndigo100 : Svg.Attribute msg
+mdFocusViaIndigo100 =
+    A.class "md:focus:via-indigo-100"
+
+
+mdFocusViaIndigo200 : Svg.Attribute msg
+mdFocusViaIndigo200 =
+    A.class "md:focus:via-indigo-200"
+
+
+mdFocusViaIndigo300 : Svg.Attribute msg
+mdFocusViaIndigo300 =
+    A.class "md:focus:via-indigo-300"
+
+
+mdFocusViaIndigo400 : Svg.Attribute msg
+mdFocusViaIndigo400 =
+    A.class "md:focus:via-indigo-400"
+
+
+mdFocusViaIndigo500 : Svg.Attribute msg
+mdFocusViaIndigo500 =
+    A.class "md:focus:via-indigo-500"
+
+
+mdFocusViaIndigo600 : Svg.Attribute msg
+mdFocusViaIndigo600 =
+    A.class "md:focus:via-indigo-600"
+
+
+mdFocusViaIndigo700 : Svg.Attribute msg
+mdFocusViaIndigo700 =
+    A.class "md:focus:via-indigo-700"
+
+
+mdFocusViaIndigo800 : Svg.Attribute msg
+mdFocusViaIndigo800 =
+    A.class "md:focus:via-indigo-800"
+
+
+mdFocusViaIndigo900 : Svg.Attribute msg
+mdFocusViaIndigo900 =
+    A.class "md:focus:via-indigo-900"
+
+
+mdFocusViaPurple100 : Svg.Attribute msg
+mdFocusViaPurple100 =
+    A.class "md:focus:via-purple-100"
+
+
+mdFocusViaPurple200 : Svg.Attribute msg
+mdFocusViaPurple200 =
+    A.class "md:focus:via-purple-200"
+
+
+mdFocusViaPurple300 : Svg.Attribute msg
+mdFocusViaPurple300 =
+    A.class "md:focus:via-purple-300"
+
+
+mdFocusViaPurple400 : Svg.Attribute msg
+mdFocusViaPurple400 =
+    A.class "md:focus:via-purple-400"
+
+
+mdFocusViaPurple500 : Svg.Attribute msg
+mdFocusViaPurple500 =
+    A.class "md:focus:via-purple-500"
+
+
+mdFocusViaPurple600 : Svg.Attribute msg
+mdFocusViaPurple600 =
+    A.class "md:focus:via-purple-600"
+
+
+mdFocusViaPurple700 : Svg.Attribute msg
+mdFocusViaPurple700 =
+    A.class "md:focus:via-purple-700"
+
+
+mdFocusViaPurple800 : Svg.Attribute msg
+mdFocusViaPurple800 =
+    A.class "md:focus:via-purple-800"
+
+
+mdFocusViaPurple900 : Svg.Attribute msg
+mdFocusViaPurple900 =
+    A.class "md:focus:via-purple-900"
+
+
+mdFocusViaPink100 : Svg.Attribute msg
+mdFocusViaPink100 =
+    A.class "md:focus:via-pink-100"
+
+
+mdFocusViaPink200 : Svg.Attribute msg
+mdFocusViaPink200 =
+    A.class "md:focus:via-pink-200"
+
+
+mdFocusViaPink300 : Svg.Attribute msg
+mdFocusViaPink300 =
+    A.class "md:focus:via-pink-300"
+
+
+mdFocusViaPink400 : Svg.Attribute msg
+mdFocusViaPink400 =
+    A.class "md:focus:via-pink-400"
+
+
+mdFocusViaPink500 : Svg.Attribute msg
+mdFocusViaPink500 =
+    A.class "md:focus:via-pink-500"
+
+
+mdFocusViaPink600 : Svg.Attribute msg
+mdFocusViaPink600 =
+    A.class "md:focus:via-pink-600"
+
+
+mdFocusViaPink700 : Svg.Attribute msg
+mdFocusViaPink700 =
+    A.class "md:focus:via-pink-700"
+
+
+mdFocusViaPink800 : Svg.Attribute msg
+mdFocusViaPink800 =
+    A.class "md:focus:via-pink-800"
+
+
+mdFocusViaPink900 : Svg.Attribute msg
+mdFocusViaPink900 =
+    A.class "md:focus:via-pink-900"
+
+
+mdFocusToTransparent : Svg.Attribute msg
+mdFocusToTransparent =
+    A.class "md:focus:to-transparent"
+
+
+mdFocusToCurrent : Svg.Attribute msg
+mdFocusToCurrent =
+    A.class "md:focus:to-current"
+
+
+mdFocusToBlack : Svg.Attribute msg
+mdFocusToBlack =
+    A.class "md:focus:to-black"
+
+
+mdFocusToWhite : Svg.Attribute msg
+mdFocusToWhite =
+    A.class "md:focus:to-white"
+
+
+mdFocusToGray100 : Svg.Attribute msg
+mdFocusToGray100 =
+    A.class "md:focus:to-gray-100"
+
+
+mdFocusToGray200 : Svg.Attribute msg
+mdFocusToGray200 =
+    A.class "md:focus:to-gray-200"
+
+
+mdFocusToGray300 : Svg.Attribute msg
+mdFocusToGray300 =
+    A.class "md:focus:to-gray-300"
+
+
+mdFocusToGray400 : Svg.Attribute msg
+mdFocusToGray400 =
+    A.class "md:focus:to-gray-400"
+
+
+mdFocusToGray500 : Svg.Attribute msg
+mdFocusToGray500 =
+    A.class "md:focus:to-gray-500"
+
+
+mdFocusToGray600 : Svg.Attribute msg
+mdFocusToGray600 =
+    A.class "md:focus:to-gray-600"
+
+
+mdFocusToGray700 : Svg.Attribute msg
+mdFocusToGray700 =
+    A.class "md:focus:to-gray-700"
+
+
+mdFocusToGray800 : Svg.Attribute msg
+mdFocusToGray800 =
+    A.class "md:focus:to-gray-800"
+
+
+mdFocusToGray900 : Svg.Attribute msg
+mdFocusToGray900 =
+    A.class "md:focus:to-gray-900"
+
+
+mdFocusToRed100 : Svg.Attribute msg
+mdFocusToRed100 =
+    A.class "md:focus:to-red-100"
+
+
+mdFocusToRed200 : Svg.Attribute msg
+mdFocusToRed200 =
+    A.class "md:focus:to-red-200"
+
+
+mdFocusToRed300 : Svg.Attribute msg
+mdFocusToRed300 =
+    A.class "md:focus:to-red-300"
+
+
+mdFocusToRed400 : Svg.Attribute msg
+mdFocusToRed400 =
+    A.class "md:focus:to-red-400"
+
+
+mdFocusToRed500 : Svg.Attribute msg
+mdFocusToRed500 =
+    A.class "md:focus:to-red-500"
+
+
+mdFocusToRed600 : Svg.Attribute msg
+mdFocusToRed600 =
+    A.class "md:focus:to-red-600"
+
+
+mdFocusToRed700 : Svg.Attribute msg
+mdFocusToRed700 =
+    A.class "md:focus:to-red-700"
+
+
+mdFocusToRed800 : Svg.Attribute msg
+mdFocusToRed800 =
+    A.class "md:focus:to-red-800"
+
+
+mdFocusToRed900 : Svg.Attribute msg
+mdFocusToRed900 =
+    A.class "md:focus:to-red-900"
+
+
+mdFocusToOrange100 : Svg.Attribute msg
+mdFocusToOrange100 =
+    A.class "md:focus:to-orange-100"
+
+
+mdFocusToOrange200 : Svg.Attribute msg
+mdFocusToOrange200 =
+    A.class "md:focus:to-orange-200"
+
+
+mdFocusToOrange300 : Svg.Attribute msg
+mdFocusToOrange300 =
+    A.class "md:focus:to-orange-300"
+
+
+mdFocusToOrange400 : Svg.Attribute msg
+mdFocusToOrange400 =
+    A.class "md:focus:to-orange-400"
+
+
+mdFocusToOrange500 : Svg.Attribute msg
+mdFocusToOrange500 =
+    A.class "md:focus:to-orange-500"
+
+
+mdFocusToOrange600 : Svg.Attribute msg
+mdFocusToOrange600 =
+    A.class "md:focus:to-orange-600"
+
+
+mdFocusToOrange700 : Svg.Attribute msg
+mdFocusToOrange700 =
+    A.class "md:focus:to-orange-700"
+
+
+mdFocusToOrange800 : Svg.Attribute msg
+mdFocusToOrange800 =
+    A.class "md:focus:to-orange-800"
+
+
+mdFocusToOrange900 : Svg.Attribute msg
+mdFocusToOrange900 =
+    A.class "md:focus:to-orange-900"
+
+
+mdFocusToYellow100 : Svg.Attribute msg
+mdFocusToYellow100 =
+    A.class "md:focus:to-yellow-100"
+
+
+mdFocusToYellow200 : Svg.Attribute msg
+mdFocusToYellow200 =
+    A.class "md:focus:to-yellow-200"
+
+
+mdFocusToYellow300 : Svg.Attribute msg
+mdFocusToYellow300 =
+    A.class "md:focus:to-yellow-300"
+
+
+mdFocusToYellow400 : Svg.Attribute msg
+mdFocusToYellow400 =
+    A.class "md:focus:to-yellow-400"
+
+
+mdFocusToYellow500 : Svg.Attribute msg
+mdFocusToYellow500 =
+    A.class "md:focus:to-yellow-500"
+
+
+mdFocusToYellow600 : Svg.Attribute msg
+mdFocusToYellow600 =
+    A.class "md:focus:to-yellow-600"
+
+
+mdFocusToYellow700 : Svg.Attribute msg
+mdFocusToYellow700 =
+    A.class "md:focus:to-yellow-700"
+
+
+mdFocusToYellow800 : Svg.Attribute msg
+mdFocusToYellow800 =
+    A.class "md:focus:to-yellow-800"
+
+
+mdFocusToYellow900 : Svg.Attribute msg
+mdFocusToYellow900 =
+    A.class "md:focus:to-yellow-900"
+
+
+mdFocusToGreen100 : Svg.Attribute msg
+mdFocusToGreen100 =
+    A.class "md:focus:to-green-100"
+
+
+mdFocusToGreen200 : Svg.Attribute msg
+mdFocusToGreen200 =
+    A.class "md:focus:to-green-200"
+
+
+mdFocusToGreen300 : Svg.Attribute msg
+mdFocusToGreen300 =
+    A.class "md:focus:to-green-300"
+
+
+mdFocusToGreen400 : Svg.Attribute msg
+mdFocusToGreen400 =
+    A.class "md:focus:to-green-400"
+
+
+mdFocusToGreen500 : Svg.Attribute msg
+mdFocusToGreen500 =
+    A.class "md:focus:to-green-500"
+
+
+mdFocusToGreen600 : Svg.Attribute msg
+mdFocusToGreen600 =
+    A.class "md:focus:to-green-600"
+
+
+mdFocusToGreen700 : Svg.Attribute msg
+mdFocusToGreen700 =
+    A.class "md:focus:to-green-700"
+
+
+mdFocusToGreen800 : Svg.Attribute msg
+mdFocusToGreen800 =
+    A.class "md:focus:to-green-800"
+
+
+mdFocusToGreen900 : Svg.Attribute msg
+mdFocusToGreen900 =
+    A.class "md:focus:to-green-900"
+
+
+mdFocusToTeal100 : Svg.Attribute msg
+mdFocusToTeal100 =
+    A.class "md:focus:to-teal-100"
+
+
+mdFocusToTeal200 : Svg.Attribute msg
+mdFocusToTeal200 =
+    A.class "md:focus:to-teal-200"
+
+
+mdFocusToTeal300 : Svg.Attribute msg
+mdFocusToTeal300 =
+    A.class "md:focus:to-teal-300"
+
+
+mdFocusToTeal400 : Svg.Attribute msg
+mdFocusToTeal400 =
+    A.class "md:focus:to-teal-400"
+
+
+mdFocusToTeal500 : Svg.Attribute msg
+mdFocusToTeal500 =
+    A.class "md:focus:to-teal-500"
+
+
+mdFocusToTeal600 : Svg.Attribute msg
+mdFocusToTeal600 =
+    A.class "md:focus:to-teal-600"
+
+
+mdFocusToTeal700 : Svg.Attribute msg
+mdFocusToTeal700 =
+    A.class "md:focus:to-teal-700"
+
+
+mdFocusToTeal800 : Svg.Attribute msg
+mdFocusToTeal800 =
+    A.class "md:focus:to-teal-800"
+
+
+mdFocusToTeal900 : Svg.Attribute msg
+mdFocusToTeal900 =
+    A.class "md:focus:to-teal-900"
+
+
+mdFocusToBlue100 : Svg.Attribute msg
+mdFocusToBlue100 =
+    A.class "md:focus:to-blue-100"
+
+
+mdFocusToBlue200 : Svg.Attribute msg
+mdFocusToBlue200 =
+    A.class "md:focus:to-blue-200"
+
+
+mdFocusToBlue300 : Svg.Attribute msg
+mdFocusToBlue300 =
+    A.class "md:focus:to-blue-300"
+
+
+mdFocusToBlue400 : Svg.Attribute msg
+mdFocusToBlue400 =
+    A.class "md:focus:to-blue-400"
+
+
+mdFocusToBlue500 : Svg.Attribute msg
+mdFocusToBlue500 =
+    A.class "md:focus:to-blue-500"
+
+
+mdFocusToBlue600 : Svg.Attribute msg
+mdFocusToBlue600 =
+    A.class "md:focus:to-blue-600"
+
+
+mdFocusToBlue700 : Svg.Attribute msg
+mdFocusToBlue700 =
+    A.class "md:focus:to-blue-700"
+
+
+mdFocusToBlue800 : Svg.Attribute msg
+mdFocusToBlue800 =
+    A.class "md:focus:to-blue-800"
+
+
+mdFocusToBlue900 : Svg.Attribute msg
+mdFocusToBlue900 =
+    A.class "md:focus:to-blue-900"
+
+
+mdFocusToIndigo100 : Svg.Attribute msg
+mdFocusToIndigo100 =
+    A.class "md:focus:to-indigo-100"
+
+
+mdFocusToIndigo200 : Svg.Attribute msg
+mdFocusToIndigo200 =
+    A.class "md:focus:to-indigo-200"
+
+
+mdFocusToIndigo300 : Svg.Attribute msg
+mdFocusToIndigo300 =
+    A.class "md:focus:to-indigo-300"
+
+
+mdFocusToIndigo400 : Svg.Attribute msg
+mdFocusToIndigo400 =
+    A.class "md:focus:to-indigo-400"
+
+
+mdFocusToIndigo500 : Svg.Attribute msg
+mdFocusToIndigo500 =
+    A.class "md:focus:to-indigo-500"
+
+
+mdFocusToIndigo600 : Svg.Attribute msg
+mdFocusToIndigo600 =
+    A.class "md:focus:to-indigo-600"
+
+
+mdFocusToIndigo700 : Svg.Attribute msg
+mdFocusToIndigo700 =
+    A.class "md:focus:to-indigo-700"
+
+
+mdFocusToIndigo800 : Svg.Attribute msg
+mdFocusToIndigo800 =
+    A.class "md:focus:to-indigo-800"
+
+
+mdFocusToIndigo900 : Svg.Attribute msg
+mdFocusToIndigo900 =
+    A.class "md:focus:to-indigo-900"
+
+
+mdFocusToPurple100 : Svg.Attribute msg
+mdFocusToPurple100 =
+    A.class "md:focus:to-purple-100"
+
+
+mdFocusToPurple200 : Svg.Attribute msg
+mdFocusToPurple200 =
+    A.class "md:focus:to-purple-200"
+
+
+mdFocusToPurple300 : Svg.Attribute msg
+mdFocusToPurple300 =
+    A.class "md:focus:to-purple-300"
+
+
+mdFocusToPurple400 : Svg.Attribute msg
+mdFocusToPurple400 =
+    A.class "md:focus:to-purple-400"
+
+
+mdFocusToPurple500 : Svg.Attribute msg
+mdFocusToPurple500 =
+    A.class "md:focus:to-purple-500"
+
+
+mdFocusToPurple600 : Svg.Attribute msg
+mdFocusToPurple600 =
+    A.class "md:focus:to-purple-600"
+
+
+mdFocusToPurple700 : Svg.Attribute msg
+mdFocusToPurple700 =
+    A.class "md:focus:to-purple-700"
+
+
+mdFocusToPurple800 : Svg.Attribute msg
+mdFocusToPurple800 =
+    A.class "md:focus:to-purple-800"
+
+
+mdFocusToPurple900 : Svg.Attribute msg
+mdFocusToPurple900 =
+    A.class "md:focus:to-purple-900"
+
+
+mdFocusToPink100 : Svg.Attribute msg
+mdFocusToPink100 =
+    A.class "md:focus:to-pink-100"
+
+
+mdFocusToPink200 : Svg.Attribute msg
+mdFocusToPink200 =
+    A.class "md:focus:to-pink-200"
+
+
+mdFocusToPink300 : Svg.Attribute msg
+mdFocusToPink300 =
+    A.class "md:focus:to-pink-300"
+
+
+mdFocusToPink400 : Svg.Attribute msg
+mdFocusToPink400 =
+    A.class "md:focus:to-pink-400"
+
+
+mdFocusToPink500 : Svg.Attribute msg
+mdFocusToPink500 =
+    A.class "md:focus:to-pink-500"
+
+
+mdFocusToPink600 : Svg.Attribute msg
+mdFocusToPink600 =
+    A.class "md:focus:to-pink-600"
+
+
+mdFocusToPink700 : Svg.Attribute msg
+mdFocusToPink700 =
+    A.class "md:focus:to-pink-700"
+
+
+mdFocusToPink800 : Svg.Attribute msg
+mdFocusToPink800 =
+    A.class "md:focus:to-pink-800"
+
+
+mdFocusToPink900 : Svg.Attribute msg
+mdFocusToPink900 =
+    A.class "md:focus:to-pink-900"
 
 
 mdBgOpacity0 : Svg.Attribute msg
@@ -45637,6 +65136,21 @@ mdRoundedLg =
     A.class "md:rounded-lg"
 
 
+mdRoundedXl : Svg.Attribute msg
+mdRoundedXl =
+    A.class "md:rounded-xl"
+
+
+mdRounded2xl : Svg.Attribute msg
+mdRounded2xl =
+    A.class "md:rounded-2xl"
+
+
+mdRounded3xl : Svg.Attribute msg
+mdRounded3xl =
+    A.class "md:rounded-3xl"
+
+
 mdRoundedFull : Svg.Attribute msg
 mdRoundedFull =
     A.class "md:rounded-full"
@@ -45740,6 +65254,66 @@ mdRoundedBLg =
 mdRoundedLLg : Svg.Attribute msg
 mdRoundedLLg =
     A.class "md:rounded-l-lg"
+
+
+mdRoundedTXl : Svg.Attribute msg
+mdRoundedTXl =
+    A.class "md:rounded-t-xl"
+
+
+mdRoundedRXl : Svg.Attribute msg
+mdRoundedRXl =
+    A.class "md:rounded-r-xl"
+
+
+mdRoundedBXl : Svg.Attribute msg
+mdRoundedBXl =
+    A.class "md:rounded-b-xl"
+
+
+mdRoundedLXl : Svg.Attribute msg
+mdRoundedLXl =
+    A.class "md:rounded-l-xl"
+
+
+mdRoundedT2xl : Svg.Attribute msg
+mdRoundedT2xl =
+    A.class "md:rounded-t-2xl"
+
+
+mdRoundedR2xl : Svg.Attribute msg
+mdRoundedR2xl =
+    A.class "md:rounded-r-2xl"
+
+
+mdRoundedB2xl : Svg.Attribute msg
+mdRoundedB2xl =
+    A.class "md:rounded-b-2xl"
+
+
+mdRoundedL2xl : Svg.Attribute msg
+mdRoundedL2xl =
+    A.class "md:rounded-l-2xl"
+
+
+mdRoundedT3xl : Svg.Attribute msg
+mdRoundedT3xl =
+    A.class "md:rounded-t-3xl"
+
+
+mdRoundedR3xl : Svg.Attribute msg
+mdRoundedR3xl =
+    A.class "md:rounded-r-3xl"
+
+
+mdRoundedB3xl : Svg.Attribute msg
+mdRoundedB3xl =
+    A.class "md:rounded-b-3xl"
+
+
+mdRoundedL3xl : Svg.Attribute msg
+mdRoundedL3xl =
+    A.class "md:rounded-l-3xl"
 
 
 mdRoundedTFull : Svg.Attribute msg
@@ -45860,6 +65434,66 @@ mdRoundedBrLg =
 mdRoundedBlLg : Svg.Attribute msg
 mdRoundedBlLg =
     A.class "md:rounded-bl-lg"
+
+
+mdRoundedTlXl : Svg.Attribute msg
+mdRoundedTlXl =
+    A.class "md:rounded-tl-xl"
+
+
+mdRoundedTrXl : Svg.Attribute msg
+mdRoundedTrXl =
+    A.class "md:rounded-tr-xl"
+
+
+mdRoundedBrXl : Svg.Attribute msg
+mdRoundedBrXl =
+    A.class "md:rounded-br-xl"
+
+
+mdRoundedBlXl : Svg.Attribute msg
+mdRoundedBlXl =
+    A.class "md:rounded-bl-xl"
+
+
+mdRoundedTl2xl : Svg.Attribute msg
+mdRoundedTl2xl =
+    A.class "md:rounded-tl-2xl"
+
+
+mdRoundedTr2xl : Svg.Attribute msg
+mdRoundedTr2xl =
+    A.class "md:rounded-tr-2xl"
+
+
+mdRoundedBr2xl : Svg.Attribute msg
+mdRoundedBr2xl =
+    A.class "md:rounded-br-2xl"
+
+
+mdRoundedBl2xl : Svg.Attribute msg
+mdRoundedBl2xl =
+    A.class "md:rounded-bl-2xl"
+
+
+mdRoundedTl3xl : Svg.Attribute msg
+mdRoundedTl3xl =
+    A.class "md:rounded-tl-3xl"
+
+
+mdRoundedTr3xl : Svg.Attribute msg
+mdRoundedTr3xl =
+    A.class "md:rounded-tr-3xl"
+
+
+mdRoundedBr3xl : Svg.Attribute msg
+mdRoundedBr3xl =
+    A.class "md:rounded-br-3xl"
+
+
+mdRoundedBl3xl : Svg.Attribute msg
+mdRoundedBl3xl =
+    A.class "md:rounded-bl-3xl"
 
 
 mdRoundedTlFull : Svg.Attribute msg
@@ -46162,6 +65796,11 @@ mdInlineGrid =
     A.class "md:inline-grid"
 
 
+mdContents : Svg.Attribute msg
+mdContents =
+    A.class "md:contents"
+
+
 mdHidden : Svg.Attribute msg
 mdHidden =
     A.class "md:hidden"
@@ -46202,6 +65841,91 @@ mdFlexNoWrap =
     A.class "md:flex-no-wrap"
 
 
+mdPlaceItemsAuto : Svg.Attribute msg
+mdPlaceItemsAuto =
+    A.class "md:place-items-auto"
+
+
+mdPlaceItemsStart : Svg.Attribute msg
+mdPlaceItemsStart =
+    A.class "md:place-items-start"
+
+
+mdPlaceItemsEnd : Svg.Attribute msg
+mdPlaceItemsEnd =
+    A.class "md:place-items-end"
+
+
+mdPlaceItemsCenter : Svg.Attribute msg
+mdPlaceItemsCenter =
+    A.class "md:place-items-center"
+
+
+mdPlaceItemsStretch : Svg.Attribute msg
+mdPlaceItemsStretch =
+    A.class "md:place-items-stretch"
+
+
+mdPlaceContentCenter : Svg.Attribute msg
+mdPlaceContentCenter =
+    A.class "md:place-content-center"
+
+
+mdPlaceContentStart : Svg.Attribute msg
+mdPlaceContentStart =
+    A.class "md:place-content-start"
+
+
+mdPlaceContentEnd : Svg.Attribute msg
+mdPlaceContentEnd =
+    A.class "md:place-content-end"
+
+
+mdPlaceContentBetween : Svg.Attribute msg
+mdPlaceContentBetween =
+    A.class "md:place-content-between"
+
+
+mdPlaceContentAround : Svg.Attribute msg
+mdPlaceContentAround =
+    A.class "md:place-content-around"
+
+
+mdPlaceContentEvenly : Svg.Attribute msg
+mdPlaceContentEvenly =
+    A.class "md:place-content-evenly"
+
+
+mdPlaceContentStretch : Svg.Attribute msg
+mdPlaceContentStretch =
+    A.class "md:place-content-stretch"
+
+
+mdPlaceSelfAuto : Svg.Attribute msg
+mdPlaceSelfAuto =
+    A.class "md:place-self-auto"
+
+
+mdPlaceSelfStart : Svg.Attribute msg
+mdPlaceSelfStart =
+    A.class "md:place-self-start"
+
+
+mdPlaceSelfEnd : Svg.Attribute msg
+mdPlaceSelfEnd =
+    A.class "md:place-self-end"
+
+
+mdPlaceSelfCenter : Svg.Attribute msg
+mdPlaceSelfCenter =
+    A.class "md:place-self-center"
+
+
+mdPlaceSelfStretch : Svg.Attribute msg
+mdPlaceSelfStretch =
+    A.class "md:place-self-stretch"
+
+
 mdItemsStart : Svg.Attribute msg
 mdItemsStart =
     A.class "md:items-start"
@@ -46227,6 +65951,36 @@ mdItemsStretch =
     A.class "md:items-stretch"
 
 
+mdContentCenter : Svg.Attribute msg
+mdContentCenter =
+    A.class "md:content-center"
+
+
+mdContentStart : Svg.Attribute msg
+mdContentStart =
+    A.class "md:content-start"
+
+
+mdContentEnd : Svg.Attribute msg
+mdContentEnd =
+    A.class "md:content-end"
+
+
+mdContentBetween : Svg.Attribute msg
+mdContentBetween =
+    A.class "md:content-between"
+
+
+mdContentAround : Svg.Attribute msg
+mdContentAround =
+    A.class "md:content-around"
+
+
+mdContentEvenly : Svg.Attribute msg
+mdContentEvenly =
+    A.class "md:content-evenly"
+
+
 mdSelfAuto : Svg.Attribute msg
 mdSelfAuto =
     A.class "md:self-auto"
@@ -46250,6 +66004,31 @@ mdSelfCenter =
 mdSelfStretch : Svg.Attribute msg
 mdSelfStretch =
     A.class "md:self-stretch"
+
+
+mdJustifyItemsAuto : Svg.Attribute msg
+mdJustifyItemsAuto =
+    A.class "md:justify-items-auto"
+
+
+mdJustifyItemsStart : Svg.Attribute msg
+mdJustifyItemsStart =
+    A.class "md:justify-items-start"
+
+
+mdJustifyItemsEnd : Svg.Attribute msg
+mdJustifyItemsEnd =
+    A.class "md:justify-items-end"
+
+
+mdJustifyItemsCenter : Svg.Attribute msg
+mdJustifyItemsCenter =
+    A.class "md:justify-items-center"
+
+
+mdJustifyItemsStretch : Svg.Attribute msg
+mdJustifyItemsStretch =
+    A.class "md:justify-items-stretch"
 
 
 mdJustifyStart : Svg.Attribute msg
@@ -46282,29 +66061,29 @@ mdJustifyEvenly =
     A.class "md:justify-evenly"
 
 
-mdContentCenter : Svg.Attribute msg
-mdContentCenter =
-    A.class "md:content-center"
+mdJustifySelfAuto : Svg.Attribute msg
+mdJustifySelfAuto =
+    A.class "md:justify-self-auto"
 
 
-mdContentStart : Svg.Attribute msg
-mdContentStart =
-    A.class "md:content-start"
+mdJustifySelfStart : Svg.Attribute msg
+mdJustifySelfStart =
+    A.class "md:justify-self-start"
 
 
-mdContentEnd : Svg.Attribute msg
-mdContentEnd =
-    A.class "md:content-end"
+mdJustifySelfEnd : Svg.Attribute msg
+mdJustifySelfEnd =
+    A.class "md:justify-self-end"
 
 
-mdContentBetween : Svg.Attribute msg
-mdContentBetween =
-    A.class "md:content-between"
+mdJustifySelfCenter : Svg.Attribute msg
+mdJustifySelfCenter =
+    A.class "md:justify-self-center"
 
 
-mdContentAround : Svg.Attribute msg
-mdContentAround =
-    A.class "md:content-around"
+mdJustifySelfStretch : Svg.Attribute msg
+mdJustifySelfStretch =
+    A.class "md:justify-self-stretch"
 
 
 mdFlex1 : Svg.Attribute msg
@@ -48467,9 +68246,29 @@ mdOutlineNone =
     A.class "md:outline-none"
 
 
+mdOutlineWhite : Svg.Attribute msg
+mdOutlineWhite =
+    A.class "md:outline-white"
+
+
+mdOutlineBlack : Svg.Attribute msg
+mdOutlineBlack =
+    A.class "md:outline-black"
+
+
 mdFocusOutlineNone : Svg.Attribute msg
 mdFocusOutlineNone =
     A.class "md:focus:outline-none"
+
+
+mdFocusOutlineWhite : Svg.Attribute msg
+mdFocusOutlineWhite =
+    A.class "md:focus:outline-white"
+
+
+mdFocusOutlineBlack : Svg.Attribute msg
+mdFocusOutlineBlack =
+    A.class "md:focus:outline-black"
 
 
 mdOverflowAuto : Svg.Attribute msg
@@ -48540,6 +68339,51 @@ mdScrollingTouch =
 mdScrollingAuto : Svg.Attribute msg
 mdScrollingAuto =
     A.class "md:scrolling-auto"
+
+
+mdOverscrollAuto : Svg.Attribute msg
+mdOverscrollAuto =
+    A.class "md:overscroll-auto"
+
+
+mdOverscrollContain : Svg.Attribute msg
+mdOverscrollContain =
+    A.class "md:overscroll-contain"
+
+
+mdOverscrollNone : Svg.Attribute msg
+mdOverscrollNone =
+    A.class "md:overscroll-none"
+
+
+mdOverscrollYAuto : Svg.Attribute msg
+mdOverscrollYAuto =
+    A.class "md:overscroll-y-auto"
+
+
+mdOverscrollYContain : Svg.Attribute msg
+mdOverscrollYContain =
+    A.class "md:overscroll-y-contain"
+
+
+mdOverscrollYNone : Svg.Attribute msg
+mdOverscrollYNone =
+    A.class "md:overscroll-y-none"
+
+
+mdOverscrollXAuto : Svg.Attribute msg
+mdOverscrollXAuto =
+    A.class "md:overscroll-x-auto"
+
+
+mdOverscrollXContain : Svg.Attribute msg
+mdOverscrollXContain =
+    A.class "md:overscroll-x-contain"
+
+
+mdOverscrollXNone : Svg.Attribute msg
+mdOverscrollXNone =
+    A.class "md:overscroll-x-none"
 
 
 mdP0 : Svg.Attribute msg
@@ -52097,6 +71941,51 @@ mdSubpixelAntialiased =
     A.class "md:subpixel-antialiased"
 
 
+mdOrdinal : Svg.Attribute msg
+mdOrdinal =
+    A.class "md:ordinal"
+
+
+mdSlashedZero : Svg.Attribute msg
+mdSlashedZero =
+    A.class "md:slashed-zero"
+
+
+mdLiningNums : Svg.Attribute msg
+mdLiningNums =
+    A.class "md:lining-nums"
+
+
+mdOldstyleNums : Svg.Attribute msg
+mdOldstyleNums =
+    A.class "md:oldstyle-nums"
+
+
+mdProportionalNums : Svg.Attribute msg
+mdProportionalNums =
+    A.class "md:proportional-nums"
+
+
+mdTabularNums : Svg.Attribute msg
+mdTabularNums =
+    A.class "md:tabular-nums"
+
+
+mdDiagonalFractions : Svg.Attribute msg
+mdDiagonalFractions =
+    A.class "md:diagonal-fractions"
+
+
+mdStackedFractions : Svg.Attribute msg
+mdStackedFractions =
+    A.class "md:stacked-fractions"
+
+
+mdNormalNums : Svg.Attribute msg
+mdNormalNums =
+    A.class "md:normal-nums"
+
+
 mdTrackingTighter : Svg.Attribute msg
 mdTrackingTighter =
     A.class "md:tracking-tighter"
@@ -52602,194 +72491,194 @@ mdGapPx =
     A.class "md:gap-px"
 
 
-mdColGap0 : Svg.Attribute msg
-mdColGap0 =
-    A.class "md:col-gap-0"
+mdGapX0 : Svg.Attribute msg
+mdGapX0 =
+    A.class "md:gap-x-0"
 
 
-mdColGap1 : Svg.Attribute msg
-mdColGap1 =
-    A.class "md:col-gap-1"
+mdGapX1 : Svg.Attribute msg
+mdGapX1 =
+    A.class "md:gap-x-1"
 
 
-mdColGap2 : Svg.Attribute msg
-mdColGap2 =
-    A.class "md:col-gap-2"
+mdGapX2 : Svg.Attribute msg
+mdGapX2 =
+    A.class "md:gap-x-2"
 
 
-mdColGap3 : Svg.Attribute msg
-mdColGap3 =
-    A.class "md:col-gap-3"
+mdGapX3 : Svg.Attribute msg
+mdGapX3 =
+    A.class "md:gap-x-3"
 
 
-mdColGap4 : Svg.Attribute msg
-mdColGap4 =
-    A.class "md:col-gap-4"
+mdGapX4 : Svg.Attribute msg
+mdGapX4 =
+    A.class "md:gap-x-4"
 
 
-mdColGap5 : Svg.Attribute msg
-mdColGap5 =
-    A.class "md:col-gap-5"
+mdGapX5 : Svg.Attribute msg
+mdGapX5 =
+    A.class "md:gap-x-5"
 
 
-mdColGap6 : Svg.Attribute msg
-mdColGap6 =
-    A.class "md:col-gap-6"
+mdGapX6 : Svg.Attribute msg
+mdGapX6 =
+    A.class "md:gap-x-6"
 
 
-mdColGap8 : Svg.Attribute msg
-mdColGap8 =
-    A.class "md:col-gap-8"
+mdGapX8 : Svg.Attribute msg
+mdGapX8 =
+    A.class "md:gap-x-8"
 
 
-mdColGap10 : Svg.Attribute msg
-mdColGap10 =
-    A.class "md:col-gap-10"
+mdGapX10 : Svg.Attribute msg
+mdGapX10 =
+    A.class "md:gap-x-10"
 
 
-mdColGap12 : Svg.Attribute msg
-mdColGap12 =
-    A.class "md:col-gap-12"
+mdGapX12 : Svg.Attribute msg
+mdGapX12 =
+    A.class "md:gap-x-12"
 
 
-mdColGap16 : Svg.Attribute msg
-mdColGap16 =
-    A.class "md:col-gap-16"
+mdGapX16 : Svg.Attribute msg
+mdGapX16 =
+    A.class "md:gap-x-16"
 
 
-mdColGap20 : Svg.Attribute msg
-mdColGap20 =
-    A.class "md:col-gap-20"
+mdGapX20 : Svg.Attribute msg
+mdGapX20 =
+    A.class "md:gap-x-20"
 
 
-mdColGap24 : Svg.Attribute msg
-mdColGap24 =
-    A.class "md:col-gap-24"
+mdGapX24 : Svg.Attribute msg
+mdGapX24 =
+    A.class "md:gap-x-24"
 
 
-mdColGap32 : Svg.Attribute msg
-mdColGap32 =
-    A.class "md:col-gap-32"
+mdGapX32 : Svg.Attribute msg
+mdGapX32 =
+    A.class "md:gap-x-32"
 
 
-mdColGap40 : Svg.Attribute msg
-mdColGap40 =
-    A.class "md:col-gap-40"
+mdGapX40 : Svg.Attribute msg
+mdGapX40 =
+    A.class "md:gap-x-40"
 
 
-mdColGap48 : Svg.Attribute msg
-mdColGap48 =
-    A.class "md:col-gap-48"
+mdGapX48 : Svg.Attribute msg
+mdGapX48 =
+    A.class "md:gap-x-48"
 
 
-mdColGap56 : Svg.Attribute msg
-mdColGap56 =
-    A.class "md:col-gap-56"
+mdGapX56 : Svg.Attribute msg
+mdGapX56 =
+    A.class "md:gap-x-56"
 
 
-mdColGap64 : Svg.Attribute msg
-mdColGap64 =
-    A.class "md:col-gap-64"
+mdGapX64 : Svg.Attribute msg
+mdGapX64 =
+    A.class "md:gap-x-64"
 
 
-mdColGapPx : Svg.Attribute msg
-mdColGapPx =
-    A.class "md:col-gap-px"
+mdGapXPx : Svg.Attribute msg
+mdGapXPx =
+    A.class "md:gap-x-px"
 
 
-mdRowGap0 : Svg.Attribute msg
-mdRowGap0 =
-    A.class "md:row-gap-0"
+mdGapY0 : Svg.Attribute msg
+mdGapY0 =
+    A.class "md:gap-y-0"
 
 
-mdRowGap1 : Svg.Attribute msg
-mdRowGap1 =
-    A.class "md:row-gap-1"
+mdGapY1 : Svg.Attribute msg
+mdGapY1 =
+    A.class "md:gap-y-1"
 
 
-mdRowGap2 : Svg.Attribute msg
-mdRowGap2 =
-    A.class "md:row-gap-2"
+mdGapY2 : Svg.Attribute msg
+mdGapY2 =
+    A.class "md:gap-y-2"
 
 
-mdRowGap3 : Svg.Attribute msg
-mdRowGap3 =
-    A.class "md:row-gap-3"
+mdGapY3 : Svg.Attribute msg
+mdGapY3 =
+    A.class "md:gap-y-3"
 
 
-mdRowGap4 : Svg.Attribute msg
-mdRowGap4 =
-    A.class "md:row-gap-4"
+mdGapY4 : Svg.Attribute msg
+mdGapY4 =
+    A.class "md:gap-y-4"
 
 
-mdRowGap5 : Svg.Attribute msg
-mdRowGap5 =
-    A.class "md:row-gap-5"
+mdGapY5 : Svg.Attribute msg
+mdGapY5 =
+    A.class "md:gap-y-5"
 
 
-mdRowGap6 : Svg.Attribute msg
-mdRowGap6 =
-    A.class "md:row-gap-6"
+mdGapY6 : Svg.Attribute msg
+mdGapY6 =
+    A.class "md:gap-y-6"
 
 
-mdRowGap8 : Svg.Attribute msg
-mdRowGap8 =
-    A.class "md:row-gap-8"
+mdGapY8 : Svg.Attribute msg
+mdGapY8 =
+    A.class "md:gap-y-8"
 
 
-mdRowGap10 : Svg.Attribute msg
-mdRowGap10 =
-    A.class "md:row-gap-10"
+mdGapY10 : Svg.Attribute msg
+mdGapY10 =
+    A.class "md:gap-y-10"
 
 
-mdRowGap12 : Svg.Attribute msg
-mdRowGap12 =
-    A.class "md:row-gap-12"
+mdGapY12 : Svg.Attribute msg
+mdGapY12 =
+    A.class "md:gap-y-12"
 
 
-mdRowGap16 : Svg.Attribute msg
-mdRowGap16 =
-    A.class "md:row-gap-16"
+mdGapY16 : Svg.Attribute msg
+mdGapY16 =
+    A.class "md:gap-y-16"
 
 
-mdRowGap20 : Svg.Attribute msg
-mdRowGap20 =
-    A.class "md:row-gap-20"
+mdGapY20 : Svg.Attribute msg
+mdGapY20 =
+    A.class "md:gap-y-20"
 
 
-mdRowGap24 : Svg.Attribute msg
-mdRowGap24 =
-    A.class "md:row-gap-24"
+mdGapY24 : Svg.Attribute msg
+mdGapY24 =
+    A.class "md:gap-y-24"
 
 
-mdRowGap32 : Svg.Attribute msg
-mdRowGap32 =
-    A.class "md:row-gap-32"
+mdGapY32 : Svg.Attribute msg
+mdGapY32 =
+    A.class "md:gap-y-32"
 
 
-mdRowGap40 : Svg.Attribute msg
-mdRowGap40 =
-    A.class "md:row-gap-40"
+mdGapY40 : Svg.Attribute msg
+mdGapY40 =
+    A.class "md:gap-y-40"
 
 
-mdRowGap48 : Svg.Attribute msg
-mdRowGap48 =
-    A.class "md:row-gap-48"
+mdGapY48 : Svg.Attribute msg
+mdGapY48 =
+    A.class "md:gap-y-48"
 
 
-mdRowGap56 : Svg.Attribute msg
-mdRowGap56 =
-    A.class "md:row-gap-56"
+mdGapY56 : Svg.Attribute msg
+mdGapY56 =
+    A.class "md:gap-y-56"
 
 
-mdRowGap64 : Svg.Attribute msg
-mdRowGap64 =
-    A.class "md:row-gap-64"
+mdGapY64 : Svg.Attribute msg
+mdGapY64 =
+    A.class "md:gap-y-64"
 
 
-mdRowGapPx : Svg.Attribute msg
-mdRowGapPx =
-    A.class "md:row-gap-px"
+mdGapYPx : Svg.Attribute msg
+mdGapYPx =
+    A.class "md:gap-y-px"
 
 
 mdGridFlowRow : Svg.Attribute msg
@@ -52877,6 +72766,26 @@ mdGridColsNone =
     A.class "md:grid-cols-none"
 
 
+mdAutoColsAuto : Svg.Attribute msg
+mdAutoColsAuto =
+    A.class "md:auto-cols-auto"
+
+
+mdAutoColsMin : Svg.Attribute msg
+mdAutoColsMin =
+    A.class "md:auto-cols-min"
+
+
+mdAutoColsMax : Svg.Attribute msg
+mdAutoColsMax =
+    A.class "md:auto-cols-max"
+
+
+mdAutoColsFr : Svg.Attribute msg
+mdAutoColsFr =
+    A.class "md:auto-cols-fr"
+
+
 mdColAuto : Svg.Attribute msg
 mdColAuto =
     A.class "md:col-auto"
@@ -52940,6 +72849,11 @@ mdColSpan11 =
 mdColSpan12 : Svg.Attribute msg
 mdColSpan12 =
     A.class "md:col-span-12"
+
+
+mdColSpanFull : Svg.Attribute msg
+mdColSpanFull =
+    A.class "md:col-span-full"
 
 
 mdColStart1 : Svg.Attribute msg
@@ -53117,6 +73031,26 @@ mdGridRowsNone =
     A.class "md:grid-rows-none"
 
 
+mdAutoRowsAuto : Svg.Attribute msg
+mdAutoRowsAuto =
+    A.class "md:auto-rows-auto"
+
+
+mdAutoRowsMin : Svg.Attribute msg
+mdAutoRowsMin =
+    A.class "md:auto-rows-min"
+
+
+mdAutoRowsMax : Svg.Attribute msg
+mdAutoRowsMax =
+    A.class "md:auto-rows-max"
+
+
+mdAutoRowsFr : Svg.Attribute msg
+mdAutoRowsFr =
+    A.class "md:auto-rows-fr"
+
+
 mdRowAuto : Svg.Attribute msg
 mdRowAuto =
     A.class "md:row-auto"
@@ -53150,6 +73084,11 @@ mdRowSpan5 =
 mdRowSpan6 : Svg.Attribute msg
 mdRowSpan6 =
     A.class "md:row-span-6"
+
+
+mdRowSpanFull : Svg.Attribute msg
+mdRowSpanFull =
+    A.class "md:row-span-full"
 
 
 mdRowStart1 : Svg.Attribute msg
@@ -53742,6 +73681,31 @@ mdRotate0 =
     A.class "md:rotate-0"
 
 
+mdRotate1 : Svg.Attribute msg
+mdRotate1 =
+    A.class "md:rotate-1"
+
+
+mdRotate2 : Svg.Attribute msg
+mdRotate2 =
+    A.class "md:rotate-2"
+
+
+mdRotate3 : Svg.Attribute msg
+mdRotate3 =
+    A.class "md:rotate-3"
+
+
+mdRotate6 : Svg.Attribute msg
+mdRotate6 =
+    A.class "md:rotate-6"
+
+
+mdRotate12 : Svg.Attribute msg
+mdRotate12 =
+    A.class "md:rotate-12"
+
+
 mdRotate45 : Svg.Attribute msg
 mdRotate45 =
     A.class "md:rotate-45"
@@ -53772,9 +73736,59 @@ mdNegRotate45 =
     A.class "md:-rotate-45"
 
 
+mdNegRotate12 : Svg.Attribute msg
+mdNegRotate12 =
+    A.class "md:-rotate-12"
+
+
+mdNegRotate6 : Svg.Attribute msg
+mdNegRotate6 =
+    A.class "md:-rotate-6"
+
+
+mdNegRotate3 : Svg.Attribute msg
+mdNegRotate3 =
+    A.class "md:-rotate-3"
+
+
+mdNegRotate2 : Svg.Attribute msg
+mdNegRotate2 =
+    A.class "md:-rotate-2"
+
+
+mdNegRotate1 : Svg.Attribute msg
+mdNegRotate1 =
+    A.class "md:-rotate-1"
+
+
 mdHoverRotate0 : Svg.Attribute msg
 mdHoverRotate0 =
     A.class "md:hover:rotate-0"
+
+
+mdHoverRotate1 : Svg.Attribute msg
+mdHoverRotate1 =
+    A.class "md:hover:rotate-1"
+
+
+mdHoverRotate2 : Svg.Attribute msg
+mdHoverRotate2 =
+    A.class "md:hover:rotate-2"
+
+
+mdHoverRotate3 : Svg.Attribute msg
+mdHoverRotate3 =
+    A.class "md:hover:rotate-3"
+
+
+mdHoverRotate6 : Svg.Attribute msg
+mdHoverRotate6 =
+    A.class "md:hover:rotate-6"
+
+
+mdHoverRotate12 : Svg.Attribute msg
+mdHoverRotate12 =
+    A.class "md:hover:rotate-12"
 
 
 mdHoverRotate45 : Svg.Attribute msg
@@ -53807,9 +73821,59 @@ mdHoverNegRotate45 =
     A.class "md:hover:-rotate-45"
 
 
+mdHoverNegRotate12 : Svg.Attribute msg
+mdHoverNegRotate12 =
+    A.class "md:hover:-rotate-12"
+
+
+mdHoverNegRotate6 : Svg.Attribute msg
+mdHoverNegRotate6 =
+    A.class "md:hover:-rotate-6"
+
+
+mdHoverNegRotate3 : Svg.Attribute msg
+mdHoverNegRotate3 =
+    A.class "md:hover:-rotate-3"
+
+
+mdHoverNegRotate2 : Svg.Attribute msg
+mdHoverNegRotate2 =
+    A.class "md:hover:-rotate-2"
+
+
+mdHoverNegRotate1 : Svg.Attribute msg
+mdHoverNegRotate1 =
+    A.class "md:hover:-rotate-1"
+
+
 mdFocusRotate0 : Svg.Attribute msg
 mdFocusRotate0 =
     A.class "md:focus:rotate-0"
+
+
+mdFocusRotate1 : Svg.Attribute msg
+mdFocusRotate1 =
+    A.class "md:focus:rotate-1"
+
+
+mdFocusRotate2 : Svg.Attribute msg
+mdFocusRotate2 =
+    A.class "md:focus:rotate-2"
+
+
+mdFocusRotate3 : Svg.Attribute msg
+mdFocusRotate3 =
+    A.class "md:focus:rotate-3"
+
+
+mdFocusRotate6 : Svg.Attribute msg
+mdFocusRotate6 =
+    A.class "md:focus:rotate-6"
+
+
+mdFocusRotate12 : Svg.Attribute msg
+mdFocusRotate12 =
+    A.class "md:focus:rotate-12"
 
 
 mdFocusRotate45 : Svg.Attribute msg
@@ -53840,6 +73904,31 @@ mdFocusNegRotate90 =
 mdFocusNegRotate45 : Svg.Attribute msg
 mdFocusNegRotate45 =
     A.class "md:focus:-rotate-45"
+
+
+mdFocusNegRotate12 : Svg.Attribute msg
+mdFocusNegRotate12 =
+    A.class "md:focus:-rotate-12"
+
+
+mdFocusNegRotate6 : Svg.Attribute msg
+mdFocusNegRotate6 =
+    A.class "md:focus:-rotate-6"
+
+
+mdFocusNegRotate3 : Svg.Attribute msg
+mdFocusNegRotate3 =
+    A.class "md:focus:-rotate-3"
+
+
+mdFocusNegRotate2 : Svg.Attribute msg
+mdFocusNegRotate2 =
+    A.class "md:focus:-rotate-2"
+
+
+mdFocusNegRotate1 : Svg.Attribute msg
+mdFocusNegRotate1 =
+    A.class "md:focus:-rotate-1"
 
 
 mdTranslateX0 : Svg.Attribute msg
@@ -55077,6 +75166,16 @@ mdSkewX0 =
     A.class "md:skew-x-0"
 
 
+mdSkewX1 : Svg.Attribute msg
+mdSkewX1 =
+    A.class "md:skew-x-1"
+
+
+mdSkewX2 : Svg.Attribute msg
+mdSkewX2 =
+    A.class "md:skew-x-2"
+
+
 mdSkewX3 : Svg.Attribute msg
 mdSkewX3 =
     A.class "md:skew-x-3"
@@ -55107,9 +75206,29 @@ mdNegSkewX3 =
     A.class "md:-skew-x-3"
 
 
+mdNegSkewX2 : Svg.Attribute msg
+mdNegSkewX2 =
+    A.class "md:-skew-x-2"
+
+
+mdNegSkewX1 : Svg.Attribute msg
+mdNegSkewX1 =
+    A.class "md:-skew-x-1"
+
+
 mdSkewY0 : Svg.Attribute msg
 mdSkewY0 =
     A.class "md:skew-y-0"
+
+
+mdSkewY1 : Svg.Attribute msg
+mdSkewY1 =
+    A.class "md:skew-y-1"
+
+
+mdSkewY2 : Svg.Attribute msg
+mdSkewY2 =
+    A.class "md:skew-y-2"
 
 
 mdSkewY3 : Svg.Attribute msg
@@ -55142,9 +75261,29 @@ mdNegSkewY3 =
     A.class "md:-skew-y-3"
 
 
+mdNegSkewY2 : Svg.Attribute msg
+mdNegSkewY2 =
+    A.class "md:-skew-y-2"
+
+
+mdNegSkewY1 : Svg.Attribute msg
+mdNegSkewY1 =
+    A.class "md:-skew-y-1"
+
+
 mdHoverSkewX0 : Svg.Attribute msg
 mdHoverSkewX0 =
     A.class "md:hover:skew-x-0"
+
+
+mdHoverSkewX1 : Svg.Attribute msg
+mdHoverSkewX1 =
+    A.class "md:hover:skew-x-1"
+
+
+mdHoverSkewX2 : Svg.Attribute msg
+mdHoverSkewX2 =
+    A.class "md:hover:skew-x-2"
 
 
 mdHoverSkewX3 : Svg.Attribute msg
@@ -55177,9 +75316,29 @@ mdHoverNegSkewX3 =
     A.class "md:hover:-skew-x-3"
 
 
+mdHoverNegSkewX2 : Svg.Attribute msg
+mdHoverNegSkewX2 =
+    A.class "md:hover:-skew-x-2"
+
+
+mdHoverNegSkewX1 : Svg.Attribute msg
+mdHoverNegSkewX1 =
+    A.class "md:hover:-skew-x-1"
+
+
 mdHoverSkewY0 : Svg.Attribute msg
 mdHoverSkewY0 =
     A.class "md:hover:skew-y-0"
+
+
+mdHoverSkewY1 : Svg.Attribute msg
+mdHoverSkewY1 =
+    A.class "md:hover:skew-y-1"
+
+
+mdHoverSkewY2 : Svg.Attribute msg
+mdHoverSkewY2 =
+    A.class "md:hover:skew-y-2"
 
 
 mdHoverSkewY3 : Svg.Attribute msg
@@ -55212,9 +75371,29 @@ mdHoverNegSkewY3 =
     A.class "md:hover:-skew-y-3"
 
 
+mdHoverNegSkewY2 : Svg.Attribute msg
+mdHoverNegSkewY2 =
+    A.class "md:hover:-skew-y-2"
+
+
+mdHoverNegSkewY1 : Svg.Attribute msg
+mdHoverNegSkewY1 =
+    A.class "md:hover:-skew-y-1"
+
+
 mdFocusSkewX0 : Svg.Attribute msg
 mdFocusSkewX0 =
     A.class "md:focus:skew-x-0"
+
+
+mdFocusSkewX1 : Svg.Attribute msg
+mdFocusSkewX1 =
+    A.class "md:focus:skew-x-1"
+
+
+mdFocusSkewX2 : Svg.Attribute msg
+mdFocusSkewX2 =
+    A.class "md:focus:skew-x-2"
 
 
 mdFocusSkewX3 : Svg.Attribute msg
@@ -55247,9 +75426,29 @@ mdFocusNegSkewX3 =
     A.class "md:focus:-skew-x-3"
 
 
+mdFocusNegSkewX2 : Svg.Attribute msg
+mdFocusNegSkewX2 =
+    A.class "md:focus:-skew-x-2"
+
+
+mdFocusNegSkewX1 : Svg.Attribute msg
+mdFocusNegSkewX1 =
+    A.class "md:focus:-skew-x-1"
+
+
 mdFocusSkewY0 : Svg.Attribute msg
 mdFocusSkewY0 =
     A.class "md:focus:skew-y-0"
+
+
+mdFocusSkewY1 : Svg.Attribute msg
+mdFocusSkewY1 =
+    A.class "md:focus:skew-y-1"
+
+
+mdFocusSkewY2 : Svg.Attribute msg
+mdFocusSkewY2 =
+    A.class "md:focus:skew-y-2"
 
 
 mdFocusSkewY3 : Svg.Attribute msg
@@ -55280,6 +75479,16 @@ mdFocusNegSkewY6 =
 mdFocusNegSkewY3 : Svg.Attribute msg
 mdFocusNegSkewY3 =
     A.class "md:focus:-skew-y-3"
+
+
+mdFocusNegSkewY2 : Svg.Attribute msg
+mdFocusNegSkewY2 =
+    A.class "md:focus:-skew-y-2"
+
+
+mdFocusNegSkewY1 : Svg.Attribute msg
+mdFocusNegSkewY1 =
+    A.class "md:focus:-skew-y-1"
 
 
 mdTransitionNone : Svg.Attribute msg
@@ -55415,6 +75624,36 @@ mdDelay700 =
 mdDelay1000 : Svg.Attribute msg
 mdDelay1000 =
     A.class "md:delay-1000"
+
+
+mdAnimateNone : Svg.Attribute msg
+mdAnimateNone =
+    A.class "md:animate-none"
+
+
+mdAnimateSpin : Svg.Attribute msg
+mdAnimateSpin =
+    A.class "md:animate-spin"
+
+
+mdAnimatePing : Svg.Attribute msg
+mdAnimatePing =
+    A.class "md:animate-ping"
+
+
+mdAnimatePulse : Svg.Attribute msg
+mdAnimatePulse =
+    A.class "md:animate-pulse"
+
+
+mdAnimateBounce : Svg.Attribute msg
+mdAnimateBounce =
+    A.class "md:animate-bounce"
+
+
+lgContainer : Svg.Attribute msg
+lgContainer =
+    A.class "lg:container"
 
 
 lgSpaceY0 : Svg.Attribute msg
@@ -56327,6 +76566,31 @@ lgDividePink900 =
     A.class "lg:divide-pink-900"
 
 
+lgDivideSolid : Svg.Attribute msg
+lgDivideSolid =
+    A.class "lg:divide-solid"
+
+
+lgDivideDashed : Svg.Attribute msg
+lgDivideDashed =
+    A.class "lg:divide-dashed"
+
+
+lgDivideDotted : Svg.Attribute msg
+lgDivideDotted =
+    A.class "lg:divide-dotted"
+
+
+lgDivideDouble : Svg.Attribute msg
+lgDivideDouble =
+    A.class "lg:divide-double"
+
+
+lgDivideNone : Svg.Attribute msg
+lgDivideNone =
+    A.class "lg:divide-none"
+
+
 lgDivideOpacity0 : Svg.Attribute msg
 lgDivideOpacity0 =
     A.class "lg:divide-opacity-0"
@@ -56390,6 +76654,26 @@ lgBgLocal =
 lgBgScroll : Svg.Attribute msg
 lgBgScroll =
     A.class "lg:bg-scroll"
+
+
+lgBgClipBorder : Svg.Attribute msg
+lgBgClipBorder =
+    A.class "lg:bg-clip-border"
+
+
+lgBgClipPadding : Svg.Attribute msg
+lgBgClipPadding =
+    A.class "lg:bg-clip-padding"
+
+
+lgBgClipContent : Svg.Attribute msg
+lgBgClipContent =
+    A.class "lg:bg-clip-content"
+
+
+lgBgClipText : Svg.Attribute msg
+lgBgClipText =
+    A.class "lg:bg-clip-text"
 
 
 lgBgTransparent : Svg.Attribute msg
@@ -57800,6 +78084,4281 @@ lgFocusBgPink800 =
 lgFocusBgPink900 : Svg.Attribute msg
 lgFocusBgPink900 =
     A.class "lg:focus:bg-pink-900"
+
+
+lgBgNone : Svg.Attribute msg
+lgBgNone =
+    A.class "lg:bg-none"
+
+
+lgBgGradientToT : Svg.Attribute msg
+lgBgGradientToT =
+    A.class "lg:bg-gradient-to-t"
+
+
+lgBgGradientToTr : Svg.Attribute msg
+lgBgGradientToTr =
+    A.class "lg:bg-gradient-to-tr"
+
+
+lgBgGradientToR : Svg.Attribute msg
+lgBgGradientToR =
+    A.class "lg:bg-gradient-to-r"
+
+
+lgBgGradientToBr : Svg.Attribute msg
+lgBgGradientToBr =
+    A.class "lg:bg-gradient-to-br"
+
+
+lgBgGradientToB : Svg.Attribute msg
+lgBgGradientToB =
+    A.class "lg:bg-gradient-to-b"
+
+
+lgBgGradientToBl : Svg.Attribute msg
+lgBgGradientToBl =
+    A.class "lg:bg-gradient-to-bl"
+
+
+lgBgGradientToL : Svg.Attribute msg
+lgBgGradientToL =
+    A.class "lg:bg-gradient-to-l"
+
+
+lgBgGradientToTl : Svg.Attribute msg
+lgBgGradientToTl =
+    A.class "lg:bg-gradient-to-tl"
+
+
+lgFromTransparent : Svg.Attribute msg
+lgFromTransparent =
+    A.class "lg:from-transparent"
+
+
+lgFromCurrent : Svg.Attribute msg
+lgFromCurrent =
+    A.class "lg:from-current"
+
+
+lgFromBlack : Svg.Attribute msg
+lgFromBlack =
+    A.class "lg:from-black"
+
+
+lgFromWhite : Svg.Attribute msg
+lgFromWhite =
+    A.class "lg:from-white"
+
+
+lgFromGray100 : Svg.Attribute msg
+lgFromGray100 =
+    A.class "lg:from-gray-100"
+
+
+lgFromGray200 : Svg.Attribute msg
+lgFromGray200 =
+    A.class "lg:from-gray-200"
+
+
+lgFromGray300 : Svg.Attribute msg
+lgFromGray300 =
+    A.class "lg:from-gray-300"
+
+
+lgFromGray400 : Svg.Attribute msg
+lgFromGray400 =
+    A.class "lg:from-gray-400"
+
+
+lgFromGray500 : Svg.Attribute msg
+lgFromGray500 =
+    A.class "lg:from-gray-500"
+
+
+lgFromGray600 : Svg.Attribute msg
+lgFromGray600 =
+    A.class "lg:from-gray-600"
+
+
+lgFromGray700 : Svg.Attribute msg
+lgFromGray700 =
+    A.class "lg:from-gray-700"
+
+
+lgFromGray800 : Svg.Attribute msg
+lgFromGray800 =
+    A.class "lg:from-gray-800"
+
+
+lgFromGray900 : Svg.Attribute msg
+lgFromGray900 =
+    A.class "lg:from-gray-900"
+
+
+lgFromRed100 : Svg.Attribute msg
+lgFromRed100 =
+    A.class "lg:from-red-100"
+
+
+lgFromRed200 : Svg.Attribute msg
+lgFromRed200 =
+    A.class "lg:from-red-200"
+
+
+lgFromRed300 : Svg.Attribute msg
+lgFromRed300 =
+    A.class "lg:from-red-300"
+
+
+lgFromRed400 : Svg.Attribute msg
+lgFromRed400 =
+    A.class "lg:from-red-400"
+
+
+lgFromRed500 : Svg.Attribute msg
+lgFromRed500 =
+    A.class "lg:from-red-500"
+
+
+lgFromRed600 : Svg.Attribute msg
+lgFromRed600 =
+    A.class "lg:from-red-600"
+
+
+lgFromRed700 : Svg.Attribute msg
+lgFromRed700 =
+    A.class "lg:from-red-700"
+
+
+lgFromRed800 : Svg.Attribute msg
+lgFromRed800 =
+    A.class "lg:from-red-800"
+
+
+lgFromRed900 : Svg.Attribute msg
+lgFromRed900 =
+    A.class "lg:from-red-900"
+
+
+lgFromOrange100 : Svg.Attribute msg
+lgFromOrange100 =
+    A.class "lg:from-orange-100"
+
+
+lgFromOrange200 : Svg.Attribute msg
+lgFromOrange200 =
+    A.class "lg:from-orange-200"
+
+
+lgFromOrange300 : Svg.Attribute msg
+lgFromOrange300 =
+    A.class "lg:from-orange-300"
+
+
+lgFromOrange400 : Svg.Attribute msg
+lgFromOrange400 =
+    A.class "lg:from-orange-400"
+
+
+lgFromOrange500 : Svg.Attribute msg
+lgFromOrange500 =
+    A.class "lg:from-orange-500"
+
+
+lgFromOrange600 : Svg.Attribute msg
+lgFromOrange600 =
+    A.class "lg:from-orange-600"
+
+
+lgFromOrange700 : Svg.Attribute msg
+lgFromOrange700 =
+    A.class "lg:from-orange-700"
+
+
+lgFromOrange800 : Svg.Attribute msg
+lgFromOrange800 =
+    A.class "lg:from-orange-800"
+
+
+lgFromOrange900 : Svg.Attribute msg
+lgFromOrange900 =
+    A.class "lg:from-orange-900"
+
+
+lgFromYellow100 : Svg.Attribute msg
+lgFromYellow100 =
+    A.class "lg:from-yellow-100"
+
+
+lgFromYellow200 : Svg.Attribute msg
+lgFromYellow200 =
+    A.class "lg:from-yellow-200"
+
+
+lgFromYellow300 : Svg.Attribute msg
+lgFromYellow300 =
+    A.class "lg:from-yellow-300"
+
+
+lgFromYellow400 : Svg.Attribute msg
+lgFromYellow400 =
+    A.class "lg:from-yellow-400"
+
+
+lgFromYellow500 : Svg.Attribute msg
+lgFromYellow500 =
+    A.class "lg:from-yellow-500"
+
+
+lgFromYellow600 : Svg.Attribute msg
+lgFromYellow600 =
+    A.class "lg:from-yellow-600"
+
+
+lgFromYellow700 : Svg.Attribute msg
+lgFromYellow700 =
+    A.class "lg:from-yellow-700"
+
+
+lgFromYellow800 : Svg.Attribute msg
+lgFromYellow800 =
+    A.class "lg:from-yellow-800"
+
+
+lgFromYellow900 : Svg.Attribute msg
+lgFromYellow900 =
+    A.class "lg:from-yellow-900"
+
+
+lgFromGreen100 : Svg.Attribute msg
+lgFromGreen100 =
+    A.class "lg:from-green-100"
+
+
+lgFromGreen200 : Svg.Attribute msg
+lgFromGreen200 =
+    A.class "lg:from-green-200"
+
+
+lgFromGreen300 : Svg.Attribute msg
+lgFromGreen300 =
+    A.class "lg:from-green-300"
+
+
+lgFromGreen400 : Svg.Attribute msg
+lgFromGreen400 =
+    A.class "lg:from-green-400"
+
+
+lgFromGreen500 : Svg.Attribute msg
+lgFromGreen500 =
+    A.class "lg:from-green-500"
+
+
+lgFromGreen600 : Svg.Attribute msg
+lgFromGreen600 =
+    A.class "lg:from-green-600"
+
+
+lgFromGreen700 : Svg.Attribute msg
+lgFromGreen700 =
+    A.class "lg:from-green-700"
+
+
+lgFromGreen800 : Svg.Attribute msg
+lgFromGreen800 =
+    A.class "lg:from-green-800"
+
+
+lgFromGreen900 : Svg.Attribute msg
+lgFromGreen900 =
+    A.class "lg:from-green-900"
+
+
+lgFromTeal100 : Svg.Attribute msg
+lgFromTeal100 =
+    A.class "lg:from-teal-100"
+
+
+lgFromTeal200 : Svg.Attribute msg
+lgFromTeal200 =
+    A.class "lg:from-teal-200"
+
+
+lgFromTeal300 : Svg.Attribute msg
+lgFromTeal300 =
+    A.class "lg:from-teal-300"
+
+
+lgFromTeal400 : Svg.Attribute msg
+lgFromTeal400 =
+    A.class "lg:from-teal-400"
+
+
+lgFromTeal500 : Svg.Attribute msg
+lgFromTeal500 =
+    A.class "lg:from-teal-500"
+
+
+lgFromTeal600 : Svg.Attribute msg
+lgFromTeal600 =
+    A.class "lg:from-teal-600"
+
+
+lgFromTeal700 : Svg.Attribute msg
+lgFromTeal700 =
+    A.class "lg:from-teal-700"
+
+
+lgFromTeal800 : Svg.Attribute msg
+lgFromTeal800 =
+    A.class "lg:from-teal-800"
+
+
+lgFromTeal900 : Svg.Attribute msg
+lgFromTeal900 =
+    A.class "lg:from-teal-900"
+
+
+lgFromBlue100 : Svg.Attribute msg
+lgFromBlue100 =
+    A.class "lg:from-blue-100"
+
+
+lgFromBlue200 : Svg.Attribute msg
+lgFromBlue200 =
+    A.class "lg:from-blue-200"
+
+
+lgFromBlue300 : Svg.Attribute msg
+lgFromBlue300 =
+    A.class "lg:from-blue-300"
+
+
+lgFromBlue400 : Svg.Attribute msg
+lgFromBlue400 =
+    A.class "lg:from-blue-400"
+
+
+lgFromBlue500 : Svg.Attribute msg
+lgFromBlue500 =
+    A.class "lg:from-blue-500"
+
+
+lgFromBlue600 : Svg.Attribute msg
+lgFromBlue600 =
+    A.class "lg:from-blue-600"
+
+
+lgFromBlue700 : Svg.Attribute msg
+lgFromBlue700 =
+    A.class "lg:from-blue-700"
+
+
+lgFromBlue800 : Svg.Attribute msg
+lgFromBlue800 =
+    A.class "lg:from-blue-800"
+
+
+lgFromBlue900 : Svg.Attribute msg
+lgFromBlue900 =
+    A.class "lg:from-blue-900"
+
+
+lgFromIndigo100 : Svg.Attribute msg
+lgFromIndigo100 =
+    A.class "lg:from-indigo-100"
+
+
+lgFromIndigo200 : Svg.Attribute msg
+lgFromIndigo200 =
+    A.class "lg:from-indigo-200"
+
+
+lgFromIndigo300 : Svg.Attribute msg
+lgFromIndigo300 =
+    A.class "lg:from-indigo-300"
+
+
+lgFromIndigo400 : Svg.Attribute msg
+lgFromIndigo400 =
+    A.class "lg:from-indigo-400"
+
+
+lgFromIndigo500 : Svg.Attribute msg
+lgFromIndigo500 =
+    A.class "lg:from-indigo-500"
+
+
+lgFromIndigo600 : Svg.Attribute msg
+lgFromIndigo600 =
+    A.class "lg:from-indigo-600"
+
+
+lgFromIndigo700 : Svg.Attribute msg
+lgFromIndigo700 =
+    A.class "lg:from-indigo-700"
+
+
+lgFromIndigo800 : Svg.Attribute msg
+lgFromIndigo800 =
+    A.class "lg:from-indigo-800"
+
+
+lgFromIndigo900 : Svg.Attribute msg
+lgFromIndigo900 =
+    A.class "lg:from-indigo-900"
+
+
+lgFromPurple100 : Svg.Attribute msg
+lgFromPurple100 =
+    A.class "lg:from-purple-100"
+
+
+lgFromPurple200 : Svg.Attribute msg
+lgFromPurple200 =
+    A.class "lg:from-purple-200"
+
+
+lgFromPurple300 : Svg.Attribute msg
+lgFromPurple300 =
+    A.class "lg:from-purple-300"
+
+
+lgFromPurple400 : Svg.Attribute msg
+lgFromPurple400 =
+    A.class "lg:from-purple-400"
+
+
+lgFromPurple500 : Svg.Attribute msg
+lgFromPurple500 =
+    A.class "lg:from-purple-500"
+
+
+lgFromPurple600 : Svg.Attribute msg
+lgFromPurple600 =
+    A.class "lg:from-purple-600"
+
+
+lgFromPurple700 : Svg.Attribute msg
+lgFromPurple700 =
+    A.class "lg:from-purple-700"
+
+
+lgFromPurple800 : Svg.Attribute msg
+lgFromPurple800 =
+    A.class "lg:from-purple-800"
+
+
+lgFromPurple900 : Svg.Attribute msg
+lgFromPurple900 =
+    A.class "lg:from-purple-900"
+
+
+lgFromPink100 : Svg.Attribute msg
+lgFromPink100 =
+    A.class "lg:from-pink-100"
+
+
+lgFromPink200 : Svg.Attribute msg
+lgFromPink200 =
+    A.class "lg:from-pink-200"
+
+
+lgFromPink300 : Svg.Attribute msg
+lgFromPink300 =
+    A.class "lg:from-pink-300"
+
+
+lgFromPink400 : Svg.Attribute msg
+lgFromPink400 =
+    A.class "lg:from-pink-400"
+
+
+lgFromPink500 : Svg.Attribute msg
+lgFromPink500 =
+    A.class "lg:from-pink-500"
+
+
+lgFromPink600 : Svg.Attribute msg
+lgFromPink600 =
+    A.class "lg:from-pink-600"
+
+
+lgFromPink700 : Svg.Attribute msg
+lgFromPink700 =
+    A.class "lg:from-pink-700"
+
+
+lgFromPink800 : Svg.Attribute msg
+lgFromPink800 =
+    A.class "lg:from-pink-800"
+
+
+lgFromPink900 : Svg.Attribute msg
+lgFromPink900 =
+    A.class "lg:from-pink-900"
+
+
+lgViaTransparent : Svg.Attribute msg
+lgViaTransparent =
+    A.class "lg:via-transparent"
+
+
+lgViaCurrent : Svg.Attribute msg
+lgViaCurrent =
+    A.class "lg:via-current"
+
+
+lgViaBlack : Svg.Attribute msg
+lgViaBlack =
+    A.class "lg:via-black"
+
+
+lgViaWhite : Svg.Attribute msg
+lgViaWhite =
+    A.class "lg:via-white"
+
+
+lgViaGray100 : Svg.Attribute msg
+lgViaGray100 =
+    A.class "lg:via-gray-100"
+
+
+lgViaGray200 : Svg.Attribute msg
+lgViaGray200 =
+    A.class "lg:via-gray-200"
+
+
+lgViaGray300 : Svg.Attribute msg
+lgViaGray300 =
+    A.class "lg:via-gray-300"
+
+
+lgViaGray400 : Svg.Attribute msg
+lgViaGray400 =
+    A.class "lg:via-gray-400"
+
+
+lgViaGray500 : Svg.Attribute msg
+lgViaGray500 =
+    A.class "lg:via-gray-500"
+
+
+lgViaGray600 : Svg.Attribute msg
+lgViaGray600 =
+    A.class "lg:via-gray-600"
+
+
+lgViaGray700 : Svg.Attribute msg
+lgViaGray700 =
+    A.class "lg:via-gray-700"
+
+
+lgViaGray800 : Svg.Attribute msg
+lgViaGray800 =
+    A.class "lg:via-gray-800"
+
+
+lgViaGray900 : Svg.Attribute msg
+lgViaGray900 =
+    A.class "lg:via-gray-900"
+
+
+lgViaRed100 : Svg.Attribute msg
+lgViaRed100 =
+    A.class "lg:via-red-100"
+
+
+lgViaRed200 : Svg.Attribute msg
+lgViaRed200 =
+    A.class "lg:via-red-200"
+
+
+lgViaRed300 : Svg.Attribute msg
+lgViaRed300 =
+    A.class "lg:via-red-300"
+
+
+lgViaRed400 : Svg.Attribute msg
+lgViaRed400 =
+    A.class "lg:via-red-400"
+
+
+lgViaRed500 : Svg.Attribute msg
+lgViaRed500 =
+    A.class "lg:via-red-500"
+
+
+lgViaRed600 : Svg.Attribute msg
+lgViaRed600 =
+    A.class "lg:via-red-600"
+
+
+lgViaRed700 : Svg.Attribute msg
+lgViaRed700 =
+    A.class "lg:via-red-700"
+
+
+lgViaRed800 : Svg.Attribute msg
+lgViaRed800 =
+    A.class "lg:via-red-800"
+
+
+lgViaRed900 : Svg.Attribute msg
+lgViaRed900 =
+    A.class "lg:via-red-900"
+
+
+lgViaOrange100 : Svg.Attribute msg
+lgViaOrange100 =
+    A.class "lg:via-orange-100"
+
+
+lgViaOrange200 : Svg.Attribute msg
+lgViaOrange200 =
+    A.class "lg:via-orange-200"
+
+
+lgViaOrange300 : Svg.Attribute msg
+lgViaOrange300 =
+    A.class "lg:via-orange-300"
+
+
+lgViaOrange400 : Svg.Attribute msg
+lgViaOrange400 =
+    A.class "lg:via-orange-400"
+
+
+lgViaOrange500 : Svg.Attribute msg
+lgViaOrange500 =
+    A.class "lg:via-orange-500"
+
+
+lgViaOrange600 : Svg.Attribute msg
+lgViaOrange600 =
+    A.class "lg:via-orange-600"
+
+
+lgViaOrange700 : Svg.Attribute msg
+lgViaOrange700 =
+    A.class "lg:via-orange-700"
+
+
+lgViaOrange800 : Svg.Attribute msg
+lgViaOrange800 =
+    A.class "lg:via-orange-800"
+
+
+lgViaOrange900 : Svg.Attribute msg
+lgViaOrange900 =
+    A.class "lg:via-orange-900"
+
+
+lgViaYellow100 : Svg.Attribute msg
+lgViaYellow100 =
+    A.class "lg:via-yellow-100"
+
+
+lgViaYellow200 : Svg.Attribute msg
+lgViaYellow200 =
+    A.class "lg:via-yellow-200"
+
+
+lgViaYellow300 : Svg.Attribute msg
+lgViaYellow300 =
+    A.class "lg:via-yellow-300"
+
+
+lgViaYellow400 : Svg.Attribute msg
+lgViaYellow400 =
+    A.class "lg:via-yellow-400"
+
+
+lgViaYellow500 : Svg.Attribute msg
+lgViaYellow500 =
+    A.class "lg:via-yellow-500"
+
+
+lgViaYellow600 : Svg.Attribute msg
+lgViaYellow600 =
+    A.class "lg:via-yellow-600"
+
+
+lgViaYellow700 : Svg.Attribute msg
+lgViaYellow700 =
+    A.class "lg:via-yellow-700"
+
+
+lgViaYellow800 : Svg.Attribute msg
+lgViaYellow800 =
+    A.class "lg:via-yellow-800"
+
+
+lgViaYellow900 : Svg.Attribute msg
+lgViaYellow900 =
+    A.class "lg:via-yellow-900"
+
+
+lgViaGreen100 : Svg.Attribute msg
+lgViaGreen100 =
+    A.class "lg:via-green-100"
+
+
+lgViaGreen200 : Svg.Attribute msg
+lgViaGreen200 =
+    A.class "lg:via-green-200"
+
+
+lgViaGreen300 : Svg.Attribute msg
+lgViaGreen300 =
+    A.class "lg:via-green-300"
+
+
+lgViaGreen400 : Svg.Attribute msg
+lgViaGreen400 =
+    A.class "lg:via-green-400"
+
+
+lgViaGreen500 : Svg.Attribute msg
+lgViaGreen500 =
+    A.class "lg:via-green-500"
+
+
+lgViaGreen600 : Svg.Attribute msg
+lgViaGreen600 =
+    A.class "lg:via-green-600"
+
+
+lgViaGreen700 : Svg.Attribute msg
+lgViaGreen700 =
+    A.class "lg:via-green-700"
+
+
+lgViaGreen800 : Svg.Attribute msg
+lgViaGreen800 =
+    A.class "lg:via-green-800"
+
+
+lgViaGreen900 : Svg.Attribute msg
+lgViaGreen900 =
+    A.class "lg:via-green-900"
+
+
+lgViaTeal100 : Svg.Attribute msg
+lgViaTeal100 =
+    A.class "lg:via-teal-100"
+
+
+lgViaTeal200 : Svg.Attribute msg
+lgViaTeal200 =
+    A.class "lg:via-teal-200"
+
+
+lgViaTeal300 : Svg.Attribute msg
+lgViaTeal300 =
+    A.class "lg:via-teal-300"
+
+
+lgViaTeal400 : Svg.Attribute msg
+lgViaTeal400 =
+    A.class "lg:via-teal-400"
+
+
+lgViaTeal500 : Svg.Attribute msg
+lgViaTeal500 =
+    A.class "lg:via-teal-500"
+
+
+lgViaTeal600 : Svg.Attribute msg
+lgViaTeal600 =
+    A.class "lg:via-teal-600"
+
+
+lgViaTeal700 : Svg.Attribute msg
+lgViaTeal700 =
+    A.class "lg:via-teal-700"
+
+
+lgViaTeal800 : Svg.Attribute msg
+lgViaTeal800 =
+    A.class "lg:via-teal-800"
+
+
+lgViaTeal900 : Svg.Attribute msg
+lgViaTeal900 =
+    A.class "lg:via-teal-900"
+
+
+lgViaBlue100 : Svg.Attribute msg
+lgViaBlue100 =
+    A.class "lg:via-blue-100"
+
+
+lgViaBlue200 : Svg.Attribute msg
+lgViaBlue200 =
+    A.class "lg:via-blue-200"
+
+
+lgViaBlue300 : Svg.Attribute msg
+lgViaBlue300 =
+    A.class "lg:via-blue-300"
+
+
+lgViaBlue400 : Svg.Attribute msg
+lgViaBlue400 =
+    A.class "lg:via-blue-400"
+
+
+lgViaBlue500 : Svg.Attribute msg
+lgViaBlue500 =
+    A.class "lg:via-blue-500"
+
+
+lgViaBlue600 : Svg.Attribute msg
+lgViaBlue600 =
+    A.class "lg:via-blue-600"
+
+
+lgViaBlue700 : Svg.Attribute msg
+lgViaBlue700 =
+    A.class "lg:via-blue-700"
+
+
+lgViaBlue800 : Svg.Attribute msg
+lgViaBlue800 =
+    A.class "lg:via-blue-800"
+
+
+lgViaBlue900 : Svg.Attribute msg
+lgViaBlue900 =
+    A.class "lg:via-blue-900"
+
+
+lgViaIndigo100 : Svg.Attribute msg
+lgViaIndigo100 =
+    A.class "lg:via-indigo-100"
+
+
+lgViaIndigo200 : Svg.Attribute msg
+lgViaIndigo200 =
+    A.class "lg:via-indigo-200"
+
+
+lgViaIndigo300 : Svg.Attribute msg
+lgViaIndigo300 =
+    A.class "lg:via-indigo-300"
+
+
+lgViaIndigo400 : Svg.Attribute msg
+lgViaIndigo400 =
+    A.class "lg:via-indigo-400"
+
+
+lgViaIndigo500 : Svg.Attribute msg
+lgViaIndigo500 =
+    A.class "lg:via-indigo-500"
+
+
+lgViaIndigo600 : Svg.Attribute msg
+lgViaIndigo600 =
+    A.class "lg:via-indigo-600"
+
+
+lgViaIndigo700 : Svg.Attribute msg
+lgViaIndigo700 =
+    A.class "lg:via-indigo-700"
+
+
+lgViaIndigo800 : Svg.Attribute msg
+lgViaIndigo800 =
+    A.class "lg:via-indigo-800"
+
+
+lgViaIndigo900 : Svg.Attribute msg
+lgViaIndigo900 =
+    A.class "lg:via-indigo-900"
+
+
+lgViaPurple100 : Svg.Attribute msg
+lgViaPurple100 =
+    A.class "lg:via-purple-100"
+
+
+lgViaPurple200 : Svg.Attribute msg
+lgViaPurple200 =
+    A.class "lg:via-purple-200"
+
+
+lgViaPurple300 : Svg.Attribute msg
+lgViaPurple300 =
+    A.class "lg:via-purple-300"
+
+
+lgViaPurple400 : Svg.Attribute msg
+lgViaPurple400 =
+    A.class "lg:via-purple-400"
+
+
+lgViaPurple500 : Svg.Attribute msg
+lgViaPurple500 =
+    A.class "lg:via-purple-500"
+
+
+lgViaPurple600 : Svg.Attribute msg
+lgViaPurple600 =
+    A.class "lg:via-purple-600"
+
+
+lgViaPurple700 : Svg.Attribute msg
+lgViaPurple700 =
+    A.class "lg:via-purple-700"
+
+
+lgViaPurple800 : Svg.Attribute msg
+lgViaPurple800 =
+    A.class "lg:via-purple-800"
+
+
+lgViaPurple900 : Svg.Attribute msg
+lgViaPurple900 =
+    A.class "lg:via-purple-900"
+
+
+lgViaPink100 : Svg.Attribute msg
+lgViaPink100 =
+    A.class "lg:via-pink-100"
+
+
+lgViaPink200 : Svg.Attribute msg
+lgViaPink200 =
+    A.class "lg:via-pink-200"
+
+
+lgViaPink300 : Svg.Attribute msg
+lgViaPink300 =
+    A.class "lg:via-pink-300"
+
+
+lgViaPink400 : Svg.Attribute msg
+lgViaPink400 =
+    A.class "lg:via-pink-400"
+
+
+lgViaPink500 : Svg.Attribute msg
+lgViaPink500 =
+    A.class "lg:via-pink-500"
+
+
+lgViaPink600 : Svg.Attribute msg
+lgViaPink600 =
+    A.class "lg:via-pink-600"
+
+
+lgViaPink700 : Svg.Attribute msg
+lgViaPink700 =
+    A.class "lg:via-pink-700"
+
+
+lgViaPink800 : Svg.Attribute msg
+lgViaPink800 =
+    A.class "lg:via-pink-800"
+
+
+lgViaPink900 : Svg.Attribute msg
+lgViaPink900 =
+    A.class "lg:via-pink-900"
+
+
+lgToTransparent : Svg.Attribute msg
+lgToTransparent =
+    A.class "lg:to-transparent"
+
+
+lgToCurrent : Svg.Attribute msg
+lgToCurrent =
+    A.class "lg:to-current"
+
+
+lgToBlack : Svg.Attribute msg
+lgToBlack =
+    A.class "lg:to-black"
+
+
+lgToWhite : Svg.Attribute msg
+lgToWhite =
+    A.class "lg:to-white"
+
+
+lgToGray100 : Svg.Attribute msg
+lgToGray100 =
+    A.class "lg:to-gray-100"
+
+
+lgToGray200 : Svg.Attribute msg
+lgToGray200 =
+    A.class "lg:to-gray-200"
+
+
+lgToGray300 : Svg.Attribute msg
+lgToGray300 =
+    A.class "lg:to-gray-300"
+
+
+lgToGray400 : Svg.Attribute msg
+lgToGray400 =
+    A.class "lg:to-gray-400"
+
+
+lgToGray500 : Svg.Attribute msg
+lgToGray500 =
+    A.class "lg:to-gray-500"
+
+
+lgToGray600 : Svg.Attribute msg
+lgToGray600 =
+    A.class "lg:to-gray-600"
+
+
+lgToGray700 : Svg.Attribute msg
+lgToGray700 =
+    A.class "lg:to-gray-700"
+
+
+lgToGray800 : Svg.Attribute msg
+lgToGray800 =
+    A.class "lg:to-gray-800"
+
+
+lgToGray900 : Svg.Attribute msg
+lgToGray900 =
+    A.class "lg:to-gray-900"
+
+
+lgToRed100 : Svg.Attribute msg
+lgToRed100 =
+    A.class "lg:to-red-100"
+
+
+lgToRed200 : Svg.Attribute msg
+lgToRed200 =
+    A.class "lg:to-red-200"
+
+
+lgToRed300 : Svg.Attribute msg
+lgToRed300 =
+    A.class "lg:to-red-300"
+
+
+lgToRed400 : Svg.Attribute msg
+lgToRed400 =
+    A.class "lg:to-red-400"
+
+
+lgToRed500 : Svg.Attribute msg
+lgToRed500 =
+    A.class "lg:to-red-500"
+
+
+lgToRed600 : Svg.Attribute msg
+lgToRed600 =
+    A.class "lg:to-red-600"
+
+
+lgToRed700 : Svg.Attribute msg
+lgToRed700 =
+    A.class "lg:to-red-700"
+
+
+lgToRed800 : Svg.Attribute msg
+lgToRed800 =
+    A.class "lg:to-red-800"
+
+
+lgToRed900 : Svg.Attribute msg
+lgToRed900 =
+    A.class "lg:to-red-900"
+
+
+lgToOrange100 : Svg.Attribute msg
+lgToOrange100 =
+    A.class "lg:to-orange-100"
+
+
+lgToOrange200 : Svg.Attribute msg
+lgToOrange200 =
+    A.class "lg:to-orange-200"
+
+
+lgToOrange300 : Svg.Attribute msg
+lgToOrange300 =
+    A.class "lg:to-orange-300"
+
+
+lgToOrange400 : Svg.Attribute msg
+lgToOrange400 =
+    A.class "lg:to-orange-400"
+
+
+lgToOrange500 : Svg.Attribute msg
+lgToOrange500 =
+    A.class "lg:to-orange-500"
+
+
+lgToOrange600 : Svg.Attribute msg
+lgToOrange600 =
+    A.class "lg:to-orange-600"
+
+
+lgToOrange700 : Svg.Attribute msg
+lgToOrange700 =
+    A.class "lg:to-orange-700"
+
+
+lgToOrange800 : Svg.Attribute msg
+lgToOrange800 =
+    A.class "lg:to-orange-800"
+
+
+lgToOrange900 : Svg.Attribute msg
+lgToOrange900 =
+    A.class "lg:to-orange-900"
+
+
+lgToYellow100 : Svg.Attribute msg
+lgToYellow100 =
+    A.class "lg:to-yellow-100"
+
+
+lgToYellow200 : Svg.Attribute msg
+lgToYellow200 =
+    A.class "lg:to-yellow-200"
+
+
+lgToYellow300 : Svg.Attribute msg
+lgToYellow300 =
+    A.class "lg:to-yellow-300"
+
+
+lgToYellow400 : Svg.Attribute msg
+lgToYellow400 =
+    A.class "lg:to-yellow-400"
+
+
+lgToYellow500 : Svg.Attribute msg
+lgToYellow500 =
+    A.class "lg:to-yellow-500"
+
+
+lgToYellow600 : Svg.Attribute msg
+lgToYellow600 =
+    A.class "lg:to-yellow-600"
+
+
+lgToYellow700 : Svg.Attribute msg
+lgToYellow700 =
+    A.class "lg:to-yellow-700"
+
+
+lgToYellow800 : Svg.Attribute msg
+lgToYellow800 =
+    A.class "lg:to-yellow-800"
+
+
+lgToYellow900 : Svg.Attribute msg
+lgToYellow900 =
+    A.class "lg:to-yellow-900"
+
+
+lgToGreen100 : Svg.Attribute msg
+lgToGreen100 =
+    A.class "lg:to-green-100"
+
+
+lgToGreen200 : Svg.Attribute msg
+lgToGreen200 =
+    A.class "lg:to-green-200"
+
+
+lgToGreen300 : Svg.Attribute msg
+lgToGreen300 =
+    A.class "lg:to-green-300"
+
+
+lgToGreen400 : Svg.Attribute msg
+lgToGreen400 =
+    A.class "lg:to-green-400"
+
+
+lgToGreen500 : Svg.Attribute msg
+lgToGreen500 =
+    A.class "lg:to-green-500"
+
+
+lgToGreen600 : Svg.Attribute msg
+lgToGreen600 =
+    A.class "lg:to-green-600"
+
+
+lgToGreen700 : Svg.Attribute msg
+lgToGreen700 =
+    A.class "lg:to-green-700"
+
+
+lgToGreen800 : Svg.Attribute msg
+lgToGreen800 =
+    A.class "lg:to-green-800"
+
+
+lgToGreen900 : Svg.Attribute msg
+lgToGreen900 =
+    A.class "lg:to-green-900"
+
+
+lgToTeal100 : Svg.Attribute msg
+lgToTeal100 =
+    A.class "lg:to-teal-100"
+
+
+lgToTeal200 : Svg.Attribute msg
+lgToTeal200 =
+    A.class "lg:to-teal-200"
+
+
+lgToTeal300 : Svg.Attribute msg
+lgToTeal300 =
+    A.class "lg:to-teal-300"
+
+
+lgToTeal400 : Svg.Attribute msg
+lgToTeal400 =
+    A.class "lg:to-teal-400"
+
+
+lgToTeal500 : Svg.Attribute msg
+lgToTeal500 =
+    A.class "lg:to-teal-500"
+
+
+lgToTeal600 : Svg.Attribute msg
+lgToTeal600 =
+    A.class "lg:to-teal-600"
+
+
+lgToTeal700 : Svg.Attribute msg
+lgToTeal700 =
+    A.class "lg:to-teal-700"
+
+
+lgToTeal800 : Svg.Attribute msg
+lgToTeal800 =
+    A.class "lg:to-teal-800"
+
+
+lgToTeal900 : Svg.Attribute msg
+lgToTeal900 =
+    A.class "lg:to-teal-900"
+
+
+lgToBlue100 : Svg.Attribute msg
+lgToBlue100 =
+    A.class "lg:to-blue-100"
+
+
+lgToBlue200 : Svg.Attribute msg
+lgToBlue200 =
+    A.class "lg:to-blue-200"
+
+
+lgToBlue300 : Svg.Attribute msg
+lgToBlue300 =
+    A.class "lg:to-blue-300"
+
+
+lgToBlue400 : Svg.Attribute msg
+lgToBlue400 =
+    A.class "lg:to-blue-400"
+
+
+lgToBlue500 : Svg.Attribute msg
+lgToBlue500 =
+    A.class "lg:to-blue-500"
+
+
+lgToBlue600 : Svg.Attribute msg
+lgToBlue600 =
+    A.class "lg:to-blue-600"
+
+
+lgToBlue700 : Svg.Attribute msg
+lgToBlue700 =
+    A.class "lg:to-blue-700"
+
+
+lgToBlue800 : Svg.Attribute msg
+lgToBlue800 =
+    A.class "lg:to-blue-800"
+
+
+lgToBlue900 : Svg.Attribute msg
+lgToBlue900 =
+    A.class "lg:to-blue-900"
+
+
+lgToIndigo100 : Svg.Attribute msg
+lgToIndigo100 =
+    A.class "lg:to-indigo-100"
+
+
+lgToIndigo200 : Svg.Attribute msg
+lgToIndigo200 =
+    A.class "lg:to-indigo-200"
+
+
+lgToIndigo300 : Svg.Attribute msg
+lgToIndigo300 =
+    A.class "lg:to-indigo-300"
+
+
+lgToIndigo400 : Svg.Attribute msg
+lgToIndigo400 =
+    A.class "lg:to-indigo-400"
+
+
+lgToIndigo500 : Svg.Attribute msg
+lgToIndigo500 =
+    A.class "lg:to-indigo-500"
+
+
+lgToIndigo600 : Svg.Attribute msg
+lgToIndigo600 =
+    A.class "lg:to-indigo-600"
+
+
+lgToIndigo700 : Svg.Attribute msg
+lgToIndigo700 =
+    A.class "lg:to-indigo-700"
+
+
+lgToIndigo800 : Svg.Attribute msg
+lgToIndigo800 =
+    A.class "lg:to-indigo-800"
+
+
+lgToIndigo900 : Svg.Attribute msg
+lgToIndigo900 =
+    A.class "lg:to-indigo-900"
+
+
+lgToPurple100 : Svg.Attribute msg
+lgToPurple100 =
+    A.class "lg:to-purple-100"
+
+
+lgToPurple200 : Svg.Attribute msg
+lgToPurple200 =
+    A.class "lg:to-purple-200"
+
+
+lgToPurple300 : Svg.Attribute msg
+lgToPurple300 =
+    A.class "lg:to-purple-300"
+
+
+lgToPurple400 : Svg.Attribute msg
+lgToPurple400 =
+    A.class "lg:to-purple-400"
+
+
+lgToPurple500 : Svg.Attribute msg
+lgToPurple500 =
+    A.class "lg:to-purple-500"
+
+
+lgToPurple600 : Svg.Attribute msg
+lgToPurple600 =
+    A.class "lg:to-purple-600"
+
+
+lgToPurple700 : Svg.Attribute msg
+lgToPurple700 =
+    A.class "lg:to-purple-700"
+
+
+lgToPurple800 : Svg.Attribute msg
+lgToPurple800 =
+    A.class "lg:to-purple-800"
+
+
+lgToPurple900 : Svg.Attribute msg
+lgToPurple900 =
+    A.class "lg:to-purple-900"
+
+
+lgToPink100 : Svg.Attribute msg
+lgToPink100 =
+    A.class "lg:to-pink-100"
+
+
+lgToPink200 : Svg.Attribute msg
+lgToPink200 =
+    A.class "lg:to-pink-200"
+
+
+lgToPink300 : Svg.Attribute msg
+lgToPink300 =
+    A.class "lg:to-pink-300"
+
+
+lgToPink400 : Svg.Attribute msg
+lgToPink400 =
+    A.class "lg:to-pink-400"
+
+
+lgToPink500 : Svg.Attribute msg
+lgToPink500 =
+    A.class "lg:to-pink-500"
+
+
+lgToPink600 : Svg.Attribute msg
+lgToPink600 =
+    A.class "lg:to-pink-600"
+
+
+lgToPink700 : Svg.Attribute msg
+lgToPink700 =
+    A.class "lg:to-pink-700"
+
+
+lgToPink800 : Svg.Attribute msg
+lgToPink800 =
+    A.class "lg:to-pink-800"
+
+
+lgToPink900 : Svg.Attribute msg
+lgToPink900 =
+    A.class "lg:to-pink-900"
+
+
+lgHoverFromTransparent : Svg.Attribute msg
+lgHoverFromTransparent =
+    A.class "lg:hover:from-transparent"
+
+
+lgHoverFromCurrent : Svg.Attribute msg
+lgHoverFromCurrent =
+    A.class "lg:hover:from-current"
+
+
+lgHoverFromBlack : Svg.Attribute msg
+lgHoverFromBlack =
+    A.class "lg:hover:from-black"
+
+
+lgHoverFromWhite : Svg.Attribute msg
+lgHoverFromWhite =
+    A.class "lg:hover:from-white"
+
+
+lgHoverFromGray100 : Svg.Attribute msg
+lgHoverFromGray100 =
+    A.class "lg:hover:from-gray-100"
+
+
+lgHoverFromGray200 : Svg.Attribute msg
+lgHoverFromGray200 =
+    A.class "lg:hover:from-gray-200"
+
+
+lgHoverFromGray300 : Svg.Attribute msg
+lgHoverFromGray300 =
+    A.class "lg:hover:from-gray-300"
+
+
+lgHoverFromGray400 : Svg.Attribute msg
+lgHoverFromGray400 =
+    A.class "lg:hover:from-gray-400"
+
+
+lgHoverFromGray500 : Svg.Attribute msg
+lgHoverFromGray500 =
+    A.class "lg:hover:from-gray-500"
+
+
+lgHoverFromGray600 : Svg.Attribute msg
+lgHoverFromGray600 =
+    A.class "lg:hover:from-gray-600"
+
+
+lgHoverFromGray700 : Svg.Attribute msg
+lgHoverFromGray700 =
+    A.class "lg:hover:from-gray-700"
+
+
+lgHoverFromGray800 : Svg.Attribute msg
+lgHoverFromGray800 =
+    A.class "lg:hover:from-gray-800"
+
+
+lgHoverFromGray900 : Svg.Attribute msg
+lgHoverFromGray900 =
+    A.class "lg:hover:from-gray-900"
+
+
+lgHoverFromRed100 : Svg.Attribute msg
+lgHoverFromRed100 =
+    A.class "lg:hover:from-red-100"
+
+
+lgHoverFromRed200 : Svg.Attribute msg
+lgHoverFromRed200 =
+    A.class "lg:hover:from-red-200"
+
+
+lgHoverFromRed300 : Svg.Attribute msg
+lgHoverFromRed300 =
+    A.class "lg:hover:from-red-300"
+
+
+lgHoverFromRed400 : Svg.Attribute msg
+lgHoverFromRed400 =
+    A.class "lg:hover:from-red-400"
+
+
+lgHoverFromRed500 : Svg.Attribute msg
+lgHoverFromRed500 =
+    A.class "lg:hover:from-red-500"
+
+
+lgHoverFromRed600 : Svg.Attribute msg
+lgHoverFromRed600 =
+    A.class "lg:hover:from-red-600"
+
+
+lgHoverFromRed700 : Svg.Attribute msg
+lgHoverFromRed700 =
+    A.class "lg:hover:from-red-700"
+
+
+lgHoverFromRed800 : Svg.Attribute msg
+lgHoverFromRed800 =
+    A.class "lg:hover:from-red-800"
+
+
+lgHoverFromRed900 : Svg.Attribute msg
+lgHoverFromRed900 =
+    A.class "lg:hover:from-red-900"
+
+
+lgHoverFromOrange100 : Svg.Attribute msg
+lgHoverFromOrange100 =
+    A.class "lg:hover:from-orange-100"
+
+
+lgHoverFromOrange200 : Svg.Attribute msg
+lgHoverFromOrange200 =
+    A.class "lg:hover:from-orange-200"
+
+
+lgHoverFromOrange300 : Svg.Attribute msg
+lgHoverFromOrange300 =
+    A.class "lg:hover:from-orange-300"
+
+
+lgHoverFromOrange400 : Svg.Attribute msg
+lgHoverFromOrange400 =
+    A.class "lg:hover:from-orange-400"
+
+
+lgHoverFromOrange500 : Svg.Attribute msg
+lgHoverFromOrange500 =
+    A.class "lg:hover:from-orange-500"
+
+
+lgHoverFromOrange600 : Svg.Attribute msg
+lgHoverFromOrange600 =
+    A.class "lg:hover:from-orange-600"
+
+
+lgHoverFromOrange700 : Svg.Attribute msg
+lgHoverFromOrange700 =
+    A.class "lg:hover:from-orange-700"
+
+
+lgHoverFromOrange800 : Svg.Attribute msg
+lgHoverFromOrange800 =
+    A.class "lg:hover:from-orange-800"
+
+
+lgHoverFromOrange900 : Svg.Attribute msg
+lgHoverFromOrange900 =
+    A.class "lg:hover:from-orange-900"
+
+
+lgHoverFromYellow100 : Svg.Attribute msg
+lgHoverFromYellow100 =
+    A.class "lg:hover:from-yellow-100"
+
+
+lgHoverFromYellow200 : Svg.Attribute msg
+lgHoverFromYellow200 =
+    A.class "lg:hover:from-yellow-200"
+
+
+lgHoverFromYellow300 : Svg.Attribute msg
+lgHoverFromYellow300 =
+    A.class "lg:hover:from-yellow-300"
+
+
+lgHoverFromYellow400 : Svg.Attribute msg
+lgHoverFromYellow400 =
+    A.class "lg:hover:from-yellow-400"
+
+
+lgHoverFromYellow500 : Svg.Attribute msg
+lgHoverFromYellow500 =
+    A.class "lg:hover:from-yellow-500"
+
+
+lgHoverFromYellow600 : Svg.Attribute msg
+lgHoverFromYellow600 =
+    A.class "lg:hover:from-yellow-600"
+
+
+lgHoverFromYellow700 : Svg.Attribute msg
+lgHoverFromYellow700 =
+    A.class "lg:hover:from-yellow-700"
+
+
+lgHoverFromYellow800 : Svg.Attribute msg
+lgHoverFromYellow800 =
+    A.class "lg:hover:from-yellow-800"
+
+
+lgHoverFromYellow900 : Svg.Attribute msg
+lgHoverFromYellow900 =
+    A.class "lg:hover:from-yellow-900"
+
+
+lgHoverFromGreen100 : Svg.Attribute msg
+lgHoverFromGreen100 =
+    A.class "lg:hover:from-green-100"
+
+
+lgHoverFromGreen200 : Svg.Attribute msg
+lgHoverFromGreen200 =
+    A.class "lg:hover:from-green-200"
+
+
+lgHoverFromGreen300 : Svg.Attribute msg
+lgHoverFromGreen300 =
+    A.class "lg:hover:from-green-300"
+
+
+lgHoverFromGreen400 : Svg.Attribute msg
+lgHoverFromGreen400 =
+    A.class "lg:hover:from-green-400"
+
+
+lgHoverFromGreen500 : Svg.Attribute msg
+lgHoverFromGreen500 =
+    A.class "lg:hover:from-green-500"
+
+
+lgHoverFromGreen600 : Svg.Attribute msg
+lgHoverFromGreen600 =
+    A.class "lg:hover:from-green-600"
+
+
+lgHoverFromGreen700 : Svg.Attribute msg
+lgHoverFromGreen700 =
+    A.class "lg:hover:from-green-700"
+
+
+lgHoverFromGreen800 : Svg.Attribute msg
+lgHoverFromGreen800 =
+    A.class "lg:hover:from-green-800"
+
+
+lgHoverFromGreen900 : Svg.Attribute msg
+lgHoverFromGreen900 =
+    A.class "lg:hover:from-green-900"
+
+
+lgHoverFromTeal100 : Svg.Attribute msg
+lgHoverFromTeal100 =
+    A.class "lg:hover:from-teal-100"
+
+
+lgHoverFromTeal200 : Svg.Attribute msg
+lgHoverFromTeal200 =
+    A.class "lg:hover:from-teal-200"
+
+
+lgHoverFromTeal300 : Svg.Attribute msg
+lgHoverFromTeal300 =
+    A.class "lg:hover:from-teal-300"
+
+
+lgHoverFromTeal400 : Svg.Attribute msg
+lgHoverFromTeal400 =
+    A.class "lg:hover:from-teal-400"
+
+
+lgHoverFromTeal500 : Svg.Attribute msg
+lgHoverFromTeal500 =
+    A.class "lg:hover:from-teal-500"
+
+
+lgHoverFromTeal600 : Svg.Attribute msg
+lgHoverFromTeal600 =
+    A.class "lg:hover:from-teal-600"
+
+
+lgHoverFromTeal700 : Svg.Attribute msg
+lgHoverFromTeal700 =
+    A.class "lg:hover:from-teal-700"
+
+
+lgHoverFromTeal800 : Svg.Attribute msg
+lgHoverFromTeal800 =
+    A.class "lg:hover:from-teal-800"
+
+
+lgHoverFromTeal900 : Svg.Attribute msg
+lgHoverFromTeal900 =
+    A.class "lg:hover:from-teal-900"
+
+
+lgHoverFromBlue100 : Svg.Attribute msg
+lgHoverFromBlue100 =
+    A.class "lg:hover:from-blue-100"
+
+
+lgHoverFromBlue200 : Svg.Attribute msg
+lgHoverFromBlue200 =
+    A.class "lg:hover:from-blue-200"
+
+
+lgHoverFromBlue300 : Svg.Attribute msg
+lgHoverFromBlue300 =
+    A.class "lg:hover:from-blue-300"
+
+
+lgHoverFromBlue400 : Svg.Attribute msg
+lgHoverFromBlue400 =
+    A.class "lg:hover:from-blue-400"
+
+
+lgHoverFromBlue500 : Svg.Attribute msg
+lgHoverFromBlue500 =
+    A.class "lg:hover:from-blue-500"
+
+
+lgHoverFromBlue600 : Svg.Attribute msg
+lgHoverFromBlue600 =
+    A.class "lg:hover:from-blue-600"
+
+
+lgHoverFromBlue700 : Svg.Attribute msg
+lgHoverFromBlue700 =
+    A.class "lg:hover:from-blue-700"
+
+
+lgHoverFromBlue800 : Svg.Attribute msg
+lgHoverFromBlue800 =
+    A.class "lg:hover:from-blue-800"
+
+
+lgHoverFromBlue900 : Svg.Attribute msg
+lgHoverFromBlue900 =
+    A.class "lg:hover:from-blue-900"
+
+
+lgHoverFromIndigo100 : Svg.Attribute msg
+lgHoverFromIndigo100 =
+    A.class "lg:hover:from-indigo-100"
+
+
+lgHoverFromIndigo200 : Svg.Attribute msg
+lgHoverFromIndigo200 =
+    A.class "lg:hover:from-indigo-200"
+
+
+lgHoverFromIndigo300 : Svg.Attribute msg
+lgHoverFromIndigo300 =
+    A.class "lg:hover:from-indigo-300"
+
+
+lgHoverFromIndigo400 : Svg.Attribute msg
+lgHoverFromIndigo400 =
+    A.class "lg:hover:from-indigo-400"
+
+
+lgHoverFromIndigo500 : Svg.Attribute msg
+lgHoverFromIndigo500 =
+    A.class "lg:hover:from-indigo-500"
+
+
+lgHoverFromIndigo600 : Svg.Attribute msg
+lgHoverFromIndigo600 =
+    A.class "lg:hover:from-indigo-600"
+
+
+lgHoverFromIndigo700 : Svg.Attribute msg
+lgHoverFromIndigo700 =
+    A.class "lg:hover:from-indigo-700"
+
+
+lgHoverFromIndigo800 : Svg.Attribute msg
+lgHoverFromIndigo800 =
+    A.class "lg:hover:from-indigo-800"
+
+
+lgHoverFromIndigo900 : Svg.Attribute msg
+lgHoverFromIndigo900 =
+    A.class "lg:hover:from-indigo-900"
+
+
+lgHoverFromPurple100 : Svg.Attribute msg
+lgHoverFromPurple100 =
+    A.class "lg:hover:from-purple-100"
+
+
+lgHoverFromPurple200 : Svg.Attribute msg
+lgHoverFromPurple200 =
+    A.class "lg:hover:from-purple-200"
+
+
+lgHoverFromPurple300 : Svg.Attribute msg
+lgHoverFromPurple300 =
+    A.class "lg:hover:from-purple-300"
+
+
+lgHoverFromPurple400 : Svg.Attribute msg
+lgHoverFromPurple400 =
+    A.class "lg:hover:from-purple-400"
+
+
+lgHoverFromPurple500 : Svg.Attribute msg
+lgHoverFromPurple500 =
+    A.class "lg:hover:from-purple-500"
+
+
+lgHoverFromPurple600 : Svg.Attribute msg
+lgHoverFromPurple600 =
+    A.class "lg:hover:from-purple-600"
+
+
+lgHoverFromPurple700 : Svg.Attribute msg
+lgHoverFromPurple700 =
+    A.class "lg:hover:from-purple-700"
+
+
+lgHoverFromPurple800 : Svg.Attribute msg
+lgHoverFromPurple800 =
+    A.class "lg:hover:from-purple-800"
+
+
+lgHoverFromPurple900 : Svg.Attribute msg
+lgHoverFromPurple900 =
+    A.class "lg:hover:from-purple-900"
+
+
+lgHoverFromPink100 : Svg.Attribute msg
+lgHoverFromPink100 =
+    A.class "lg:hover:from-pink-100"
+
+
+lgHoverFromPink200 : Svg.Attribute msg
+lgHoverFromPink200 =
+    A.class "lg:hover:from-pink-200"
+
+
+lgHoverFromPink300 : Svg.Attribute msg
+lgHoverFromPink300 =
+    A.class "lg:hover:from-pink-300"
+
+
+lgHoverFromPink400 : Svg.Attribute msg
+lgHoverFromPink400 =
+    A.class "lg:hover:from-pink-400"
+
+
+lgHoverFromPink500 : Svg.Attribute msg
+lgHoverFromPink500 =
+    A.class "lg:hover:from-pink-500"
+
+
+lgHoverFromPink600 : Svg.Attribute msg
+lgHoverFromPink600 =
+    A.class "lg:hover:from-pink-600"
+
+
+lgHoverFromPink700 : Svg.Attribute msg
+lgHoverFromPink700 =
+    A.class "lg:hover:from-pink-700"
+
+
+lgHoverFromPink800 : Svg.Attribute msg
+lgHoverFromPink800 =
+    A.class "lg:hover:from-pink-800"
+
+
+lgHoverFromPink900 : Svg.Attribute msg
+lgHoverFromPink900 =
+    A.class "lg:hover:from-pink-900"
+
+
+lgHoverViaTransparent : Svg.Attribute msg
+lgHoverViaTransparent =
+    A.class "lg:hover:via-transparent"
+
+
+lgHoverViaCurrent : Svg.Attribute msg
+lgHoverViaCurrent =
+    A.class "lg:hover:via-current"
+
+
+lgHoverViaBlack : Svg.Attribute msg
+lgHoverViaBlack =
+    A.class "lg:hover:via-black"
+
+
+lgHoverViaWhite : Svg.Attribute msg
+lgHoverViaWhite =
+    A.class "lg:hover:via-white"
+
+
+lgHoverViaGray100 : Svg.Attribute msg
+lgHoverViaGray100 =
+    A.class "lg:hover:via-gray-100"
+
+
+lgHoverViaGray200 : Svg.Attribute msg
+lgHoverViaGray200 =
+    A.class "lg:hover:via-gray-200"
+
+
+lgHoverViaGray300 : Svg.Attribute msg
+lgHoverViaGray300 =
+    A.class "lg:hover:via-gray-300"
+
+
+lgHoverViaGray400 : Svg.Attribute msg
+lgHoverViaGray400 =
+    A.class "lg:hover:via-gray-400"
+
+
+lgHoverViaGray500 : Svg.Attribute msg
+lgHoverViaGray500 =
+    A.class "lg:hover:via-gray-500"
+
+
+lgHoverViaGray600 : Svg.Attribute msg
+lgHoverViaGray600 =
+    A.class "lg:hover:via-gray-600"
+
+
+lgHoverViaGray700 : Svg.Attribute msg
+lgHoverViaGray700 =
+    A.class "lg:hover:via-gray-700"
+
+
+lgHoverViaGray800 : Svg.Attribute msg
+lgHoverViaGray800 =
+    A.class "lg:hover:via-gray-800"
+
+
+lgHoverViaGray900 : Svg.Attribute msg
+lgHoverViaGray900 =
+    A.class "lg:hover:via-gray-900"
+
+
+lgHoverViaRed100 : Svg.Attribute msg
+lgHoverViaRed100 =
+    A.class "lg:hover:via-red-100"
+
+
+lgHoverViaRed200 : Svg.Attribute msg
+lgHoverViaRed200 =
+    A.class "lg:hover:via-red-200"
+
+
+lgHoverViaRed300 : Svg.Attribute msg
+lgHoverViaRed300 =
+    A.class "lg:hover:via-red-300"
+
+
+lgHoverViaRed400 : Svg.Attribute msg
+lgHoverViaRed400 =
+    A.class "lg:hover:via-red-400"
+
+
+lgHoverViaRed500 : Svg.Attribute msg
+lgHoverViaRed500 =
+    A.class "lg:hover:via-red-500"
+
+
+lgHoverViaRed600 : Svg.Attribute msg
+lgHoverViaRed600 =
+    A.class "lg:hover:via-red-600"
+
+
+lgHoverViaRed700 : Svg.Attribute msg
+lgHoverViaRed700 =
+    A.class "lg:hover:via-red-700"
+
+
+lgHoverViaRed800 : Svg.Attribute msg
+lgHoverViaRed800 =
+    A.class "lg:hover:via-red-800"
+
+
+lgHoverViaRed900 : Svg.Attribute msg
+lgHoverViaRed900 =
+    A.class "lg:hover:via-red-900"
+
+
+lgHoverViaOrange100 : Svg.Attribute msg
+lgHoverViaOrange100 =
+    A.class "lg:hover:via-orange-100"
+
+
+lgHoverViaOrange200 : Svg.Attribute msg
+lgHoverViaOrange200 =
+    A.class "lg:hover:via-orange-200"
+
+
+lgHoverViaOrange300 : Svg.Attribute msg
+lgHoverViaOrange300 =
+    A.class "lg:hover:via-orange-300"
+
+
+lgHoverViaOrange400 : Svg.Attribute msg
+lgHoverViaOrange400 =
+    A.class "lg:hover:via-orange-400"
+
+
+lgHoverViaOrange500 : Svg.Attribute msg
+lgHoverViaOrange500 =
+    A.class "lg:hover:via-orange-500"
+
+
+lgHoverViaOrange600 : Svg.Attribute msg
+lgHoverViaOrange600 =
+    A.class "lg:hover:via-orange-600"
+
+
+lgHoverViaOrange700 : Svg.Attribute msg
+lgHoverViaOrange700 =
+    A.class "lg:hover:via-orange-700"
+
+
+lgHoverViaOrange800 : Svg.Attribute msg
+lgHoverViaOrange800 =
+    A.class "lg:hover:via-orange-800"
+
+
+lgHoverViaOrange900 : Svg.Attribute msg
+lgHoverViaOrange900 =
+    A.class "lg:hover:via-orange-900"
+
+
+lgHoverViaYellow100 : Svg.Attribute msg
+lgHoverViaYellow100 =
+    A.class "lg:hover:via-yellow-100"
+
+
+lgHoverViaYellow200 : Svg.Attribute msg
+lgHoverViaYellow200 =
+    A.class "lg:hover:via-yellow-200"
+
+
+lgHoverViaYellow300 : Svg.Attribute msg
+lgHoverViaYellow300 =
+    A.class "lg:hover:via-yellow-300"
+
+
+lgHoverViaYellow400 : Svg.Attribute msg
+lgHoverViaYellow400 =
+    A.class "lg:hover:via-yellow-400"
+
+
+lgHoverViaYellow500 : Svg.Attribute msg
+lgHoverViaYellow500 =
+    A.class "lg:hover:via-yellow-500"
+
+
+lgHoverViaYellow600 : Svg.Attribute msg
+lgHoverViaYellow600 =
+    A.class "lg:hover:via-yellow-600"
+
+
+lgHoverViaYellow700 : Svg.Attribute msg
+lgHoverViaYellow700 =
+    A.class "lg:hover:via-yellow-700"
+
+
+lgHoverViaYellow800 : Svg.Attribute msg
+lgHoverViaYellow800 =
+    A.class "lg:hover:via-yellow-800"
+
+
+lgHoverViaYellow900 : Svg.Attribute msg
+lgHoverViaYellow900 =
+    A.class "lg:hover:via-yellow-900"
+
+
+lgHoverViaGreen100 : Svg.Attribute msg
+lgHoverViaGreen100 =
+    A.class "lg:hover:via-green-100"
+
+
+lgHoverViaGreen200 : Svg.Attribute msg
+lgHoverViaGreen200 =
+    A.class "lg:hover:via-green-200"
+
+
+lgHoverViaGreen300 : Svg.Attribute msg
+lgHoverViaGreen300 =
+    A.class "lg:hover:via-green-300"
+
+
+lgHoverViaGreen400 : Svg.Attribute msg
+lgHoverViaGreen400 =
+    A.class "lg:hover:via-green-400"
+
+
+lgHoverViaGreen500 : Svg.Attribute msg
+lgHoverViaGreen500 =
+    A.class "lg:hover:via-green-500"
+
+
+lgHoverViaGreen600 : Svg.Attribute msg
+lgHoverViaGreen600 =
+    A.class "lg:hover:via-green-600"
+
+
+lgHoverViaGreen700 : Svg.Attribute msg
+lgHoverViaGreen700 =
+    A.class "lg:hover:via-green-700"
+
+
+lgHoverViaGreen800 : Svg.Attribute msg
+lgHoverViaGreen800 =
+    A.class "lg:hover:via-green-800"
+
+
+lgHoverViaGreen900 : Svg.Attribute msg
+lgHoverViaGreen900 =
+    A.class "lg:hover:via-green-900"
+
+
+lgHoverViaTeal100 : Svg.Attribute msg
+lgHoverViaTeal100 =
+    A.class "lg:hover:via-teal-100"
+
+
+lgHoverViaTeal200 : Svg.Attribute msg
+lgHoverViaTeal200 =
+    A.class "lg:hover:via-teal-200"
+
+
+lgHoverViaTeal300 : Svg.Attribute msg
+lgHoverViaTeal300 =
+    A.class "lg:hover:via-teal-300"
+
+
+lgHoverViaTeal400 : Svg.Attribute msg
+lgHoverViaTeal400 =
+    A.class "lg:hover:via-teal-400"
+
+
+lgHoverViaTeal500 : Svg.Attribute msg
+lgHoverViaTeal500 =
+    A.class "lg:hover:via-teal-500"
+
+
+lgHoverViaTeal600 : Svg.Attribute msg
+lgHoverViaTeal600 =
+    A.class "lg:hover:via-teal-600"
+
+
+lgHoverViaTeal700 : Svg.Attribute msg
+lgHoverViaTeal700 =
+    A.class "lg:hover:via-teal-700"
+
+
+lgHoverViaTeal800 : Svg.Attribute msg
+lgHoverViaTeal800 =
+    A.class "lg:hover:via-teal-800"
+
+
+lgHoverViaTeal900 : Svg.Attribute msg
+lgHoverViaTeal900 =
+    A.class "lg:hover:via-teal-900"
+
+
+lgHoverViaBlue100 : Svg.Attribute msg
+lgHoverViaBlue100 =
+    A.class "lg:hover:via-blue-100"
+
+
+lgHoverViaBlue200 : Svg.Attribute msg
+lgHoverViaBlue200 =
+    A.class "lg:hover:via-blue-200"
+
+
+lgHoverViaBlue300 : Svg.Attribute msg
+lgHoverViaBlue300 =
+    A.class "lg:hover:via-blue-300"
+
+
+lgHoverViaBlue400 : Svg.Attribute msg
+lgHoverViaBlue400 =
+    A.class "lg:hover:via-blue-400"
+
+
+lgHoverViaBlue500 : Svg.Attribute msg
+lgHoverViaBlue500 =
+    A.class "lg:hover:via-blue-500"
+
+
+lgHoverViaBlue600 : Svg.Attribute msg
+lgHoverViaBlue600 =
+    A.class "lg:hover:via-blue-600"
+
+
+lgHoverViaBlue700 : Svg.Attribute msg
+lgHoverViaBlue700 =
+    A.class "lg:hover:via-blue-700"
+
+
+lgHoverViaBlue800 : Svg.Attribute msg
+lgHoverViaBlue800 =
+    A.class "lg:hover:via-blue-800"
+
+
+lgHoverViaBlue900 : Svg.Attribute msg
+lgHoverViaBlue900 =
+    A.class "lg:hover:via-blue-900"
+
+
+lgHoverViaIndigo100 : Svg.Attribute msg
+lgHoverViaIndigo100 =
+    A.class "lg:hover:via-indigo-100"
+
+
+lgHoverViaIndigo200 : Svg.Attribute msg
+lgHoverViaIndigo200 =
+    A.class "lg:hover:via-indigo-200"
+
+
+lgHoverViaIndigo300 : Svg.Attribute msg
+lgHoverViaIndigo300 =
+    A.class "lg:hover:via-indigo-300"
+
+
+lgHoverViaIndigo400 : Svg.Attribute msg
+lgHoverViaIndigo400 =
+    A.class "lg:hover:via-indigo-400"
+
+
+lgHoverViaIndigo500 : Svg.Attribute msg
+lgHoverViaIndigo500 =
+    A.class "lg:hover:via-indigo-500"
+
+
+lgHoverViaIndigo600 : Svg.Attribute msg
+lgHoverViaIndigo600 =
+    A.class "lg:hover:via-indigo-600"
+
+
+lgHoverViaIndigo700 : Svg.Attribute msg
+lgHoverViaIndigo700 =
+    A.class "lg:hover:via-indigo-700"
+
+
+lgHoverViaIndigo800 : Svg.Attribute msg
+lgHoverViaIndigo800 =
+    A.class "lg:hover:via-indigo-800"
+
+
+lgHoverViaIndigo900 : Svg.Attribute msg
+lgHoverViaIndigo900 =
+    A.class "lg:hover:via-indigo-900"
+
+
+lgHoverViaPurple100 : Svg.Attribute msg
+lgHoverViaPurple100 =
+    A.class "lg:hover:via-purple-100"
+
+
+lgHoverViaPurple200 : Svg.Attribute msg
+lgHoverViaPurple200 =
+    A.class "lg:hover:via-purple-200"
+
+
+lgHoverViaPurple300 : Svg.Attribute msg
+lgHoverViaPurple300 =
+    A.class "lg:hover:via-purple-300"
+
+
+lgHoverViaPurple400 : Svg.Attribute msg
+lgHoverViaPurple400 =
+    A.class "lg:hover:via-purple-400"
+
+
+lgHoverViaPurple500 : Svg.Attribute msg
+lgHoverViaPurple500 =
+    A.class "lg:hover:via-purple-500"
+
+
+lgHoverViaPurple600 : Svg.Attribute msg
+lgHoverViaPurple600 =
+    A.class "lg:hover:via-purple-600"
+
+
+lgHoverViaPurple700 : Svg.Attribute msg
+lgHoverViaPurple700 =
+    A.class "lg:hover:via-purple-700"
+
+
+lgHoverViaPurple800 : Svg.Attribute msg
+lgHoverViaPurple800 =
+    A.class "lg:hover:via-purple-800"
+
+
+lgHoverViaPurple900 : Svg.Attribute msg
+lgHoverViaPurple900 =
+    A.class "lg:hover:via-purple-900"
+
+
+lgHoverViaPink100 : Svg.Attribute msg
+lgHoverViaPink100 =
+    A.class "lg:hover:via-pink-100"
+
+
+lgHoverViaPink200 : Svg.Attribute msg
+lgHoverViaPink200 =
+    A.class "lg:hover:via-pink-200"
+
+
+lgHoverViaPink300 : Svg.Attribute msg
+lgHoverViaPink300 =
+    A.class "lg:hover:via-pink-300"
+
+
+lgHoverViaPink400 : Svg.Attribute msg
+lgHoverViaPink400 =
+    A.class "lg:hover:via-pink-400"
+
+
+lgHoverViaPink500 : Svg.Attribute msg
+lgHoverViaPink500 =
+    A.class "lg:hover:via-pink-500"
+
+
+lgHoverViaPink600 : Svg.Attribute msg
+lgHoverViaPink600 =
+    A.class "lg:hover:via-pink-600"
+
+
+lgHoverViaPink700 : Svg.Attribute msg
+lgHoverViaPink700 =
+    A.class "lg:hover:via-pink-700"
+
+
+lgHoverViaPink800 : Svg.Attribute msg
+lgHoverViaPink800 =
+    A.class "lg:hover:via-pink-800"
+
+
+lgHoverViaPink900 : Svg.Attribute msg
+lgHoverViaPink900 =
+    A.class "lg:hover:via-pink-900"
+
+
+lgHoverToTransparent : Svg.Attribute msg
+lgHoverToTransparent =
+    A.class "lg:hover:to-transparent"
+
+
+lgHoverToCurrent : Svg.Attribute msg
+lgHoverToCurrent =
+    A.class "lg:hover:to-current"
+
+
+lgHoverToBlack : Svg.Attribute msg
+lgHoverToBlack =
+    A.class "lg:hover:to-black"
+
+
+lgHoverToWhite : Svg.Attribute msg
+lgHoverToWhite =
+    A.class "lg:hover:to-white"
+
+
+lgHoverToGray100 : Svg.Attribute msg
+lgHoverToGray100 =
+    A.class "lg:hover:to-gray-100"
+
+
+lgHoverToGray200 : Svg.Attribute msg
+lgHoverToGray200 =
+    A.class "lg:hover:to-gray-200"
+
+
+lgHoverToGray300 : Svg.Attribute msg
+lgHoverToGray300 =
+    A.class "lg:hover:to-gray-300"
+
+
+lgHoverToGray400 : Svg.Attribute msg
+lgHoverToGray400 =
+    A.class "lg:hover:to-gray-400"
+
+
+lgHoverToGray500 : Svg.Attribute msg
+lgHoverToGray500 =
+    A.class "lg:hover:to-gray-500"
+
+
+lgHoverToGray600 : Svg.Attribute msg
+lgHoverToGray600 =
+    A.class "lg:hover:to-gray-600"
+
+
+lgHoverToGray700 : Svg.Attribute msg
+lgHoverToGray700 =
+    A.class "lg:hover:to-gray-700"
+
+
+lgHoverToGray800 : Svg.Attribute msg
+lgHoverToGray800 =
+    A.class "lg:hover:to-gray-800"
+
+
+lgHoverToGray900 : Svg.Attribute msg
+lgHoverToGray900 =
+    A.class "lg:hover:to-gray-900"
+
+
+lgHoverToRed100 : Svg.Attribute msg
+lgHoverToRed100 =
+    A.class "lg:hover:to-red-100"
+
+
+lgHoverToRed200 : Svg.Attribute msg
+lgHoverToRed200 =
+    A.class "lg:hover:to-red-200"
+
+
+lgHoverToRed300 : Svg.Attribute msg
+lgHoverToRed300 =
+    A.class "lg:hover:to-red-300"
+
+
+lgHoverToRed400 : Svg.Attribute msg
+lgHoverToRed400 =
+    A.class "lg:hover:to-red-400"
+
+
+lgHoverToRed500 : Svg.Attribute msg
+lgHoverToRed500 =
+    A.class "lg:hover:to-red-500"
+
+
+lgHoverToRed600 : Svg.Attribute msg
+lgHoverToRed600 =
+    A.class "lg:hover:to-red-600"
+
+
+lgHoverToRed700 : Svg.Attribute msg
+lgHoverToRed700 =
+    A.class "lg:hover:to-red-700"
+
+
+lgHoverToRed800 : Svg.Attribute msg
+lgHoverToRed800 =
+    A.class "lg:hover:to-red-800"
+
+
+lgHoverToRed900 : Svg.Attribute msg
+lgHoverToRed900 =
+    A.class "lg:hover:to-red-900"
+
+
+lgHoverToOrange100 : Svg.Attribute msg
+lgHoverToOrange100 =
+    A.class "lg:hover:to-orange-100"
+
+
+lgHoverToOrange200 : Svg.Attribute msg
+lgHoverToOrange200 =
+    A.class "lg:hover:to-orange-200"
+
+
+lgHoverToOrange300 : Svg.Attribute msg
+lgHoverToOrange300 =
+    A.class "lg:hover:to-orange-300"
+
+
+lgHoverToOrange400 : Svg.Attribute msg
+lgHoverToOrange400 =
+    A.class "lg:hover:to-orange-400"
+
+
+lgHoverToOrange500 : Svg.Attribute msg
+lgHoverToOrange500 =
+    A.class "lg:hover:to-orange-500"
+
+
+lgHoverToOrange600 : Svg.Attribute msg
+lgHoverToOrange600 =
+    A.class "lg:hover:to-orange-600"
+
+
+lgHoverToOrange700 : Svg.Attribute msg
+lgHoverToOrange700 =
+    A.class "lg:hover:to-orange-700"
+
+
+lgHoverToOrange800 : Svg.Attribute msg
+lgHoverToOrange800 =
+    A.class "lg:hover:to-orange-800"
+
+
+lgHoverToOrange900 : Svg.Attribute msg
+lgHoverToOrange900 =
+    A.class "lg:hover:to-orange-900"
+
+
+lgHoverToYellow100 : Svg.Attribute msg
+lgHoverToYellow100 =
+    A.class "lg:hover:to-yellow-100"
+
+
+lgHoverToYellow200 : Svg.Attribute msg
+lgHoverToYellow200 =
+    A.class "lg:hover:to-yellow-200"
+
+
+lgHoverToYellow300 : Svg.Attribute msg
+lgHoverToYellow300 =
+    A.class "lg:hover:to-yellow-300"
+
+
+lgHoverToYellow400 : Svg.Attribute msg
+lgHoverToYellow400 =
+    A.class "lg:hover:to-yellow-400"
+
+
+lgHoverToYellow500 : Svg.Attribute msg
+lgHoverToYellow500 =
+    A.class "lg:hover:to-yellow-500"
+
+
+lgHoverToYellow600 : Svg.Attribute msg
+lgHoverToYellow600 =
+    A.class "lg:hover:to-yellow-600"
+
+
+lgHoverToYellow700 : Svg.Attribute msg
+lgHoverToYellow700 =
+    A.class "lg:hover:to-yellow-700"
+
+
+lgHoverToYellow800 : Svg.Attribute msg
+lgHoverToYellow800 =
+    A.class "lg:hover:to-yellow-800"
+
+
+lgHoverToYellow900 : Svg.Attribute msg
+lgHoverToYellow900 =
+    A.class "lg:hover:to-yellow-900"
+
+
+lgHoverToGreen100 : Svg.Attribute msg
+lgHoverToGreen100 =
+    A.class "lg:hover:to-green-100"
+
+
+lgHoverToGreen200 : Svg.Attribute msg
+lgHoverToGreen200 =
+    A.class "lg:hover:to-green-200"
+
+
+lgHoverToGreen300 : Svg.Attribute msg
+lgHoverToGreen300 =
+    A.class "lg:hover:to-green-300"
+
+
+lgHoverToGreen400 : Svg.Attribute msg
+lgHoverToGreen400 =
+    A.class "lg:hover:to-green-400"
+
+
+lgHoverToGreen500 : Svg.Attribute msg
+lgHoverToGreen500 =
+    A.class "lg:hover:to-green-500"
+
+
+lgHoverToGreen600 : Svg.Attribute msg
+lgHoverToGreen600 =
+    A.class "lg:hover:to-green-600"
+
+
+lgHoverToGreen700 : Svg.Attribute msg
+lgHoverToGreen700 =
+    A.class "lg:hover:to-green-700"
+
+
+lgHoverToGreen800 : Svg.Attribute msg
+lgHoverToGreen800 =
+    A.class "lg:hover:to-green-800"
+
+
+lgHoverToGreen900 : Svg.Attribute msg
+lgHoverToGreen900 =
+    A.class "lg:hover:to-green-900"
+
+
+lgHoverToTeal100 : Svg.Attribute msg
+lgHoverToTeal100 =
+    A.class "lg:hover:to-teal-100"
+
+
+lgHoverToTeal200 : Svg.Attribute msg
+lgHoverToTeal200 =
+    A.class "lg:hover:to-teal-200"
+
+
+lgHoverToTeal300 : Svg.Attribute msg
+lgHoverToTeal300 =
+    A.class "lg:hover:to-teal-300"
+
+
+lgHoverToTeal400 : Svg.Attribute msg
+lgHoverToTeal400 =
+    A.class "lg:hover:to-teal-400"
+
+
+lgHoverToTeal500 : Svg.Attribute msg
+lgHoverToTeal500 =
+    A.class "lg:hover:to-teal-500"
+
+
+lgHoverToTeal600 : Svg.Attribute msg
+lgHoverToTeal600 =
+    A.class "lg:hover:to-teal-600"
+
+
+lgHoverToTeal700 : Svg.Attribute msg
+lgHoverToTeal700 =
+    A.class "lg:hover:to-teal-700"
+
+
+lgHoverToTeal800 : Svg.Attribute msg
+lgHoverToTeal800 =
+    A.class "lg:hover:to-teal-800"
+
+
+lgHoverToTeal900 : Svg.Attribute msg
+lgHoverToTeal900 =
+    A.class "lg:hover:to-teal-900"
+
+
+lgHoverToBlue100 : Svg.Attribute msg
+lgHoverToBlue100 =
+    A.class "lg:hover:to-blue-100"
+
+
+lgHoverToBlue200 : Svg.Attribute msg
+lgHoverToBlue200 =
+    A.class "lg:hover:to-blue-200"
+
+
+lgHoverToBlue300 : Svg.Attribute msg
+lgHoverToBlue300 =
+    A.class "lg:hover:to-blue-300"
+
+
+lgHoverToBlue400 : Svg.Attribute msg
+lgHoverToBlue400 =
+    A.class "lg:hover:to-blue-400"
+
+
+lgHoverToBlue500 : Svg.Attribute msg
+lgHoverToBlue500 =
+    A.class "lg:hover:to-blue-500"
+
+
+lgHoverToBlue600 : Svg.Attribute msg
+lgHoverToBlue600 =
+    A.class "lg:hover:to-blue-600"
+
+
+lgHoverToBlue700 : Svg.Attribute msg
+lgHoverToBlue700 =
+    A.class "lg:hover:to-blue-700"
+
+
+lgHoverToBlue800 : Svg.Attribute msg
+lgHoverToBlue800 =
+    A.class "lg:hover:to-blue-800"
+
+
+lgHoverToBlue900 : Svg.Attribute msg
+lgHoverToBlue900 =
+    A.class "lg:hover:to-blue-900"
+
+
+lgHoverToIndigo100 : Svg.Attribute msg
+lgHoverToIndigo100 =
+    A.class "lg:hover:to-indigo-100"
+
+
+lgHoverToIndigo200 : Svg.Attribute msg
+lgHoverToIndigo200 =
+    A.class "lg:hover:to-indigo-200"
+
+
+lgHoverToIndigo300 : Svg.Attribute msg
+lgHoverToIndigo300 =
+    A.class "lg:hover:to-indigo-300"
+
+
+lgHoverToIndigo400 : Svg.Attribute msg
+lgHoverToIndigo400 =
+    A.class "lg:hover:to-indigo-400"
+
+
+lgHoverToIndigo500 : Svg.Attribute msg
+lgHoverToIndigo500 =
+    A.class "lg:hover:to-indigo-500"
+
+
+lgHoverToIndigo600 : Svg.Attribute msg
+lgHoverToIndigo600 =
+    A.class "lg:hover:to-indigo-600"
+
+
+lgHoverToIndigo700 : Svg.Attribute msg
+lgHoverToIndigo700 =
+    A.class "lg:hover:to-indigo-700"
+
+
+lgHoverToIndigo800 : Svg.Attribute msg
+lgHoverToIndigo800 =
+    A.class "lg:hover:to-indigo-800"
+
+
+lgHoverToIndigo900 : Svg.Attribute msg
+lgHoverToIndigo900 =
+    A.class "lg:hover:to-indigo-900"
+
+
+lgHoverToPurple100 : Svg.Attribute msg
+lgHoverToPurple100 =
+    A.class "lg:hover:to-purple-100"
+
+
+lgHoverToPurple200 : Svg.Attribute msg
+lgHoverToPurple200 =
+    A.class "lg:hover:to-purple-200"
+
+
+lgHoverToPurple300 : Svg.Attribute msg
+lgHoverToPurple300 =
+    A.class "lg:hover:to-purple-300"
+
+
+lgHoverToPurple400 : Svg.Attribute msg
+lgHoverToPurple400 =
+    A.class "lg:hover:to-purple-400"
+
+
+lgHoverToPurple500 : Svg.Attribute msg
+lgHoverToPurple500 =
+    A.class "lg:hover:to-purple-500"
+
+
+lgHoverToPurple600 : Svg.Attribute msg
+lgHoverToPurple600 =
+    A.class "lg:hover:to-purple-600"
+
+
+lgHoverToPurple700 : Svg.Attribute msg
+lgHoverToPurple700 =
+    A.class "lg:hover:to-purple-700"
+
+
+lgHoverToPurple800 : Svg.Attribute msg
+lgHoverToPurple800 =
+    A.class "lg:hover:to-purple-800"
+
+
+lgHoverToPurple900 : Svg.Attribute msg
+lgHoverToPurple900 =
+    A.class "lg:hover:to-purple-900"
+
+
+lgHoverToPink100 : Svg.Attribute msg
+lgHoverToPink100 =
+    A.class "lg:hover:to-pink-100"
+
+
+lgHoverToPink200 : Svg.Attribute msg
+lgHoverToPink200 =
+    A.class "lg:hover:to-pink-200"
+
+
+lgHoverToPink300 : Svg.Attribute msg
+lgHoverToPink300 =
+    A.class "lg:hover:to-pink-300"
+
+
+lgHoverToPink400 : Svg.Attribute msg
+lgHoverToPink400 =
+    A.class "lg:hover:to-pink-400"
+
+
+lgHoverToPink500 : Svg.Attribute msg
+lgHoverToPink500 =
+    A.class "lg:hover:to-pink-500"
+
+
+lgHoverToPink600 : Svg.Attribute msg
+lgHoverToPink600 =
+    A.class "lg:hover:to-pink-600"
+
+
+lgHoverToPink700 : Svg.Attribute msg
+lgHoverToPink700 =
+    A.class "lg:hover:to-pink-700"
+
+
+lgHoverToPink800 : Svg.Attribute msg
+lgHoverToPink800 =
+    A.class "lg:hover:to-pink-800"
+
+
+lgHoverToPink900 : Svg.Attribute msg
+lgHoverToPink900 =
+    A.class "lg:hover:to-pink-900"
+
+
+lgFocusFromTransparent : Svg.Attribute msg
+lgFocusFromTransparent =
+    A.class "lg:focus:from-transparent"
+
+
+lgFocusFromCurrent : Svg.Attribute msg
+lgFocusFromCurrent =
+    A.class "lg:focus:from-current"
+
+
+lgFocusFromBlack : Svg.Attribute msg
+lgFocusFromBlack =
+    A.class "lg:focus:from-black"
+
+
+lgFocusFromWhite : Svg.Attribute msg
+lgFocusFromWhite =
+    A.class "lg:focus:from-white"
+
+
+lgFocusFromGray100 : Svg.Attribute msg
+lgFocusFromGray100 =
+    A.class "lg:focus:from-gray-100"
+
+
+lgFocusFromGray200 : Svg.Attribute msg
+lgFocusFromGray200 =
+    A.class "lg:focus:from-gray-200"
+
+
+lgFocusFromGray300 : Svg.Attribute msg
+lgFocusFromGray300 =
+    A.class "lg:focus:from-gray-300"
+
+
+lgFocusFromGray400 : Svg.Attribute msg
+lgFocusFromGray400 =
+    A.class "lg:focus:from-gray-400"
+
+
+lgFocusFromGray500 : Svg.Attribute msg
+lgFocusFromGray500 =
+    A.class "lg:focus:from-gray-500"
+
+
+lgFocusFromGray600 : Svg.Attribute msg
+lgFocusFromGray600 =
+    A.class "lg:focus:from-gray-600"
+
+
+lgFocusFromGray700 : Svg.Attribute msg
+lgFocusFromGray700 =
+    A.class "lg:focus:from-gray-700"
+
+
+lgFocusFromGray800 : Svg.Attribute msg
+lgFocusFromGray800 =
+    A.class "lg:focus:from-gray-800"
+
+
+lgFocusFromGray900 : Svg.Attribute msg
+lgFocusFromGray900 =
+    A.class "lg:focus:from-gray-900"
+
+
+lgFocusFromRed100 : Svg.Attribute msg
+lgFocusFromRed100 =
+    A.class "lg:focus:from-red-100"
+
+
+lgFocusFromRed200 : Svg.Attribute msg
+lgFocusFromRed200 =
+    A.class "lg:focus:from-red-200"
+
+
+lgFocusFromRed300 : Svg.Attribute msg
+lgFocusFromRed300 =
+    A.class "lg:focus:from-red-300"
+
+
+lgFocusFromRed400 : Svg.Attribute msg
+lgFocusFromRed400 =
+    A.class "lg:focus:from-red-400"
+
+
+lgFocusFromRed500 : Svg.Attribute msg
+lgFocusFromRed500 =
+    A.class "lg:focus:from-red-500"
+
+
+lgFocusFromRed600 : Svg.Attribute msg
+lgFocusFromRed600 =
+    A.class "lg:focus:from-red-600"
+
+
+lgFocusFromRed700 : Svg.Attribute msg
+lgFocusFromRed700 =
+    A.class "lg:focus:from-red-700"
+
+
+lgFocusFromRed800 : Svg.Attribute msg
+lgFocusFromRed800 =
+    A.class "lg:focus:from-red-800"
+
+
+lgFocusFromRed900 : Svg.Attribute msg
+lgFocusFromRed900 =
+    A.class "lg:focus:from-red-900"
+
+
+lgFocusFromOrange100 : Svg.Attribute msg
+lgFocusFromOrange100 =
+    A.class "lg:focus:from-orange-100"
+
+
+lgFocusFromOrange200 : Svg.Attribute msg
+lgFocusFromOrange200 =
+    A.class "lg:focus:from-orange-200"
+
+
+lgFocusFromOrange300 : Svg.Attribute msg
+lgFocusFromOrange300 =
+    A.class "lg:focus:from-orange-300"
+
+
+lgFocusFromOrange400 : Svg.Attribute msg
+lgFocusFromOrange400 =
+    A.class "lg:focus:from-orange-400"
+
+
+lgFocusFromOrange500 : Svg.Attribute msg
+lgFocusFromOrange500 =
+    A.class "lg:focus:from-orange-500"
+
+
+lgFocusFromOrange600 : Svg.Attribute msg
+lgFocusFromOrange600 =
+    A.class "lg:focus:from-orange-600"
+
+
+lgFocusFromOrange700 : Svg.Attribute msg
+lgFocusFromOrange700 =
+    A.class "lg:focus:from-orange-700"
+
+
+lgFocusFromOrange800 : Svg.Attribute msg
+lgFocusFromOrange800 =
+    A.class "lg:focus:from-orange-800"
+
+
+lgFocusFromOrange900 : Svg.Attribute msg
+lgFocusFromOrange900 =
+    A.class "lg:focus:from-orange-900"
+
+
+lgFocusFromYellow100 : Svg.Attribute msg
+lgFocusFromYellow100 =
+    A.class "lg:focus:from-yellow-100"
+
+
+lgFocusFromYellow200 : Svg.Attribute msg
+lgFocusFromYellow200 =
+    A.class "lg:focus:from-yellow-200"
+
+
+lgFocusFromYellow300 : Svg.Attribute msg
+lgFocusFromYellow300 =
+    A.class "lg:focus:from-yellow-300"
+
+
+lgFocusFromYellow400 : Svg.Attribute msg
+lgFocusFromYellow400 =
+    A.class "lg:focus:from-yellow-400"
+
+
+lgFocusFromYellow500 : Svg.Attribute msg
+lgFocusFromYellow500 =
+    A.class "lg:focus:from-yellow-500"
+
+
+lgFocusFromYellow600 : Svg.Attribute msg
+lgFocusFromYellow600 =
+    A.class "lg:focus:from-yellow-600"
+
+
+lgFocusFromYellow700 : Svg.Attribute msg
+lgFocusFromYellow700 =
+    A.class "lg:focus:from-yellow-700"
+
+
+lgFocusFromYellow800 : Svg.Attribute msg
+lgFocusFromYellow800 =
+    A.class "lg:focus:from-yellow-800"
+
+
+lgFocusFromYellow900 : Svg.Attribute msg
+lgFocusFromYellow900 =
+    A.class "lg:focus:from-yellow-900"
+
+
+lgFocusFromGreen100 : Svg.Attribute msg
+lgFocusFromGreen100 =
+    A.class "lg:focus:from-green-100"
+
+
+lgFocusFromGreen200 : Svg.Attribute msg
+lgFocusFromGreen200 =
+    A.class "lg:focus:from-green-200"
+
+
+lgFocusFromGreen300 : Svg.Attribute msg
+lgFocusFromGreen300 =
+    A.class "lg:focus:from-green-300"
+
+
+lgFocusFromGreen400 : Svg.Attribute msg
+lgFocusFromGreen400 =
+    A.class "lg:focus:from-green-400"
+
+
+lgFocusFromGreen500 : Svg.Attribute msg
+lgFocusFromGreen500 =
+    A.class "lg:focus:from-green-500"
+
+
+lgFocusFromGreen600 : Svg.Attribute msg
+lgFocusFromGreen600 =
+    A.class "lg:focus:from-green-600"
+
+
+lgFocusFromGreen700 : Svg.Attribute msg
+lgFocusFromGreen700 =
+    A.class "lg:focus:from-green-700"
+
+
+lgFocusFromGreen800 : Svg.Attribute msg
+lgFocusFromGreen800 =
+    A.class "lg:focus:from-green-800"
+
+
+lgFocusFromGreen900 : Svg.Attribute msg
+lgFocusFromGreen900 =
+    A.class "lg:focus:from-green-900"
+
+
+lgFocusFromTeal100 : Svg.Attribute msg
+lgFocusFromTeal100 =
+    A.class "lg:focus:from-teal-100"
+
+
+lgFocusFromTeal200 : Svg.Attribute msg
+lgFocusFromTeal200 =
+    A.class "lg:focus:from-teal-200"
+
+
+lgFocusFromTeal300 : Svg.Attribute msg
+lgFocusFromTeal300 =
+    A.class "lg:focus:from-teal-300"
+
+
+lgFocusFromTeal400 : Svg.Attribute msg
+lgFocusFromTeal400 =
+    A.class "lg:focus:from-teal-400"
+
+
+lgFocusFromTeal500 : Svg.Attribute msg
+lgFocusFromTeal500 =
+    A.class "lg:focus:from-teal-500"
+
+
+lgFocusFromTeal600 : Svg.Attribute msg
+lgFocusFromTeal600 =
+    A.class "lg:focus:from-teal-600"
+
+
+lgFocusFromTeal700 : Svg.Attribute msg
+lgFocusFromTeal700 =
+    A.class "lg:focus:from-teal-700"
+
+
+lgFocusFromTeal800 : Svg.Attribute msg
+lgFocusFromTeal800 =
+    A.class "lg:focus:from-teal-800"
+
+
+lgFocusFromTeal900 : Svg.Attribute msg
+lgFocusFromTeal900 =
+    A.class "lg:focus:from-teal-900"
+
+
+lgFocusFromBlue100 : Svg.Attribute msg
+lgFocusFromBlue100 =
+    A.class "lg:focus:from-blue-100"
+
+
+lgFocusFromBlue200 : Svg.Attribute msg
+lgFocusFromBlue200 =
+    A.class "lg:focus:from-blue-200"
+
+
+lgFocusFromBlue300 : Svg.Attribute msg
+lgFocusFromBlue300 =
+    A.class "lg:focus:from-blue-300"
+
+
+lgFocusFromBlue400 : Svg.Attribute msg
+lgFocusFromBlue400 =
+    A.class "lg:focus:from-blue-400"
+
+
+lgFocusFromBlue500 : Svg.Attribute msg
+lgFocusFromBlue500 =
+    A.class "lg:focus:from-blue-500"
+
+
+lgFocusFromBlue600 : Svg.Attribute msg
+lgFocusFromBlue600 =
+    A.class "lg:focus:from-blue-600"
+
+
+lgFocusFromBlue700 : Svg.Attribute msg
+lgFocusFromBlue700 =
+    A.class "lg:focus:from-blue-700"
+
+
+lgFocusFromBlue800 : Svg.Attribute msg
+lgFocusFromBlue800 =
+    A.class "lg:focus:from-blue-800"
+
+
+lgFocusFromBlue900 : Svg.Attribute msg
+lgFocusFromBlue900 =
+    A.class "lg:focus:from-blue-900"
+
+
+lgFocusFromIndigo100 : Svg.Attribute msg
+lgFocusFromIndigo100 =
+    A.class "lg:focus:from-indigo-100"
+
+
+lgFocusFromIndigo200 : Svg.Attribute msg
+lgFocusFromIndigo200 =
+    A.class "lg:focus:from-indigo-200"
+
+
+lgFocusFromIndigo300 : Svg.Attribute msg
+lgFocusFromIndigo300 =
+    A.class "lg:focus:from-indigo-300"
+
+
+lgFocusFromIndigo400 : Svg.Attribute msg
+lgFocusFromIndigo400 =
+    A.class "lg:focus:from-indigo-400"
+
+
+lgFocusFromIndigo500 : Svg.Attribute msg
+lgFocusFromIndigo500 =
+    A.class "lg:focus:from-indigo-500"
+
+
+lgFocusFromIndigo600 : Svg.Attribute msg
+lgFocusFromIndigo600 =
+    A.class "lg:focus:from-indigo-600"
+
+
+lgFocusFromIndigo700 : Svg.Attribute msg
+lgFocusFromIndigo700 =
+    A.class "lg:focus:from-indigo-700"
+
+
+lgFocusFromIndigo800 : Svg.Attribute msg
+lgFocusFromIndigo800 =
+    A.class "lg:focus:from-indigo-800"
+
+
+lgFocusFromIndigo900 : Svg.Attribute msg
+lgFocusFromIndigo900 =
+    A.class "lg:focus:from-indigo-900"
+
+
+lgFocusFromPurple100 : Svg.Attribute msg
+lgFocusFromPurple100 =
+    A.class "lg:focus:from-purple-100"
+
+
+lgFocusFromPurple200 : Svg.Attribute msg
+lgFocusFromPurple200 =
+    A.class "lg:focus:from-purple-200"
+
+
+lgFocusFromPurple300 : Svg.Attribute msg
+lgFocusFromPurple300 =
+    A.class "lg:focus:from-purple-300"
+
+
+lgFocusFromPurple400 : Svg.Attribute msg
+lgFocusFromPurple400 =
+    A.class "lg:focus:from-purple-400"
+
+
+lgFocusFromPurple500 : Svg.Attribute msg
+lgFocusFromPurple500 =
+    A.class "lg:focus:from-purple-500"
+
+
+lgFocusFromPurple600 : Svg.Attribute msg
+lgFocusFromPurple600 =
+    A.class "lg:focus:from-purple-600"
+
+
+lgFocusFromPurple700 : Svg.Attribute msg
+lgFocusFromPurple700 =
+    A.class "lg:focus:from-purple-700"
+
+
+lgFocusFromPurple800 : Svg.Attribute msg
+lgFocusFromPurple800 =
+    A.class "lg:focus:from-purple-800"
+
+
+lgFocusFromPurple900 : Svg.Attribute msg
+lgFocusFromPurple900 =
+    A.class "lg:focus:from-purple-900"
+
+
+lgFocusFromPink100 : Svg.Attribute msg
+lgFocusFromPink100 =
+    A.class "lg:focus:from-pink-100"
+
+
+lgFocusFromPink200 : Svg.Attribute msg
+lgFocusFromPink200 =
+    A.class "lg:focus:from-pink-200"
+
+
+lgFocusFromPink300 : Svg.Attribute msg
+lgFocusFromPink300 =
+    A.class "lg:focus:from-pink-300"
+
+
+lgFocusFromPink400 : Svg.Attribute msg
+lgFocusFromPink400 =
+    A.class "lg:focus:from-pink-400"
+
+
+lgFocusFromPink500 : Svg.Attribute msg
+lgFocusFromPink500 =
+    A.class "lg:focus:from-pink-500"
+
+
+lgFocusFromPink600 : Svg.Attribute msg
+lgFocusFromPink600 =
+    A.class "lg:focus:from-pink-600"
+
+
+lgFocusFromPink700 : Svg.Attribute msg
+lgFocusFromPink700 =
+    A.class "lg:focus:from-pink-700"
+
+
+lgFocusFromPink800 : Svg.Attribute msg
+lgFocusFromPink800 =
+    A.class "lg:focus:from-pink-800"
+
+
+lgFocusFromPink900 : Svg.Attribute msg
+lgFocusFromPink900 =
+    A.class "lg:focus:from-pink-900"
+
+
+lgFocusViaTransparent : Svg.Attribute msg
+lgFocusViaTransparent =
+    A.class "lg:focus:via-transparent"
+
+
+lgFocusViaCurrent : Svg.Attribute msg
+lgFocusViaCurrent =
+    A.class "lg:focus:via-current"
+
+
+lgFocusViaBlack : Svg.Attribute msg
+lgFocusViaBlack =
+    A.class "lg:focus:via-black"
+
+
+lgFocusViaWhite : Svg.Attribute msg
+lgFocusViaWhite =
+    A.class "lg:focus:via-white"
+
+
+lgFocusViaGray100 : Svg.Attribute msg
+lgFocusViaGray100 =
+    A.class "lg:focus:via-gray-100"
+
+
+lgFocusViaGray200 : Svg.Attribute msg
+lgFocusViaGray200 =
+    A.class "lg:focus:via-gray-200"
+
+
+lgFocusViaGray300 : Svg.Attribute msg
+lgFocusViaGray300 =
+    A.class "lg:focus:via-gray-300"
+
+
+lgFocusViaGray400 : Svg.Attribute msg
+lgFocusViaGray400 =
+    A.class "lg:focus:via-gray-400"
+
+
+lgFocusViaGray500 : Svg.Attribute msg
+lgFocusViaGray500 =
+    A.class "lg:focus:via-gray-500"
+
+
+lgFocusViaGray600 : Svg.Attribute msg
+lgFocusViaGray600 =
+    A.class "lg:focus:via-gray-600"
+
+
+lgFocusViaGray700 : Svg.Attribute msg
+lgFocusViaGray700 =
+    A.class "lg:focus:via-gray-700"
+
+
+lgFocusViaGray800 : Svg.Attribute msg
+lgFocusViaGray800 =
+    A.class "lg:focus:via-gray-800"
+
+
+lgFocusViaGray900 : Svg.Attribute msg
+lgFocusViaGray900 =
+    A.class "lg:focus:via-gray-900"
+
+
+lgFocusViaRed100 : Svg.Attribute msg
+lgFocusViaRed100 =
+    A.class "lg:focus:via-red-100"
+
+
+lgFocusViaRed200 : Svg.Attribute msg
+lgFocusViaRed200 =
+    A.class "lg:focus:via-red-200"
+
+
+lgFocusViaRed300 : Svg.Attribute msg
+lgFocusViaRed300 =
+    A.class "lg:focus:via-red-300"
+
+
+lgFocusViaRed400 : Svg.Attribute msg
+lgFocusViaRed400 =
+    A.class "lg:focus:via-red-400"
+
+
+lgFocusViaRed500 : Svg.Attribute msg
+lgFocusViaRed500 =
+    A.class "lg:focus:via-red-500"
+
+
+lgFocusViaRed600 : Svg.Attribute msg
+lgFocusViaRed600 =
+    A.class "lg:focus:via-red-600"
+
+
+lgFocusViaRed700 : Svg.Attribute msg
+lgFocusViaRed700 =
+    A.class "lg:focus:via-red-700"
+
+
+lgFocusViaRed800 : Svg.Attribute msg
+lgFocusViaRed800 =
+    A.class "lg:focus:via-red-800"
+
+
+lgFocusViaRed900 : Svg.Attribute msg
+lgFocusViaRed900 =
+    A.class "lg:focus:via-red-900"
+
+
+lgFocusViaOrange100 : Svg.Attribute msg
+lgFocusViaOrange100 =
+    A.class "lg:focus:via-orange-100"
+
+
+lgFocusViaOrange200 : Svg.Attribute msg
+lgFocusViaOrange200 =
+    A.class "lg:focus:via-orange-200"
+
+
+lgFocusViaOrange300 : Svg.Attribute msg
+lgFocusViaOrange300 =
+    A.class "lg:focus:via-orange-300"
+
+
+lgFocusViaOrange400 : Svg.Attribute msg
+lgFocusViaOrange400 =
+    A.class "lg:focus:via-orange-400"
+
+
+lgFocusViaOrange500 : Svg.Attribute msg
+lgFocusViaOrange500 =
+    A.class "lg:focus:via-orange-500"
+
+
+lgFocusViaOrange600 : Svg.Attribute msg
+lgFocusViaOrange600 =
+    A.class "lg:focus:via-orange-600"
+
+
+lgFocusViaOrange700 : Svg.Attribute msg
+lgFocusViaOrange700 =
+    A.class "lg:focus:via-orange-700"
+
+
+lgFocusViaOrange800 : Svg.Attribute msg
+lgFocusViaOrange800 =
+    A.class "lg:focus:via-orange-800"
+
+
+lgFocusViaOrange900 : Svg.Attribute msg
+lgFocusViaOrange900 =
+    A.class "lg:focus:via-orange-900"
+
+
+lgFocusViaYellow100 : Svg.Attribute msg
+lgFocusViaYellow100 =
+    A.class "lg:focus:via-yellow-100"
+
+
+lgFocusViaYellow200 : Svg.Attribute msg
+lgFocusViaYellow200 =
+    A.class "lg:focus:via-yellow-200"
+
+
+lgFocusViaYellow300 : Svg.Attribute msg
+lgFocusViaYellow300 =
+    A.class "lg:focus:via-yellow-300"
+
+
+lgFocusViaYellow400 : Svg.Attribute msg
+lgFocusViaYellow400 =
+    A.class "lg:focus:via-yellow-400"
+
+
+lgFocusViaYellow500 : Svg.Attribute msg
+lgFocusViaYellow500 =
+    A.class "lg:focus:via-yellow-500"
+
+
+lgFocusViaYellow600 : Svg.Attribute msg
+lgFocusViaYellow600 =
+    A.class "lg:focus:via-yellow-600"
+
+
+lgFocusViaYellow700 : Svg.Attribute msg
+lgFocusViaYellow700 =
+    A.class "lg:focus:via-yellow-700"
+
+
+lgFocusViaYellow800 : Svg.Attribute msg
+lgFocusViaYellow800 =
+    A.class "lg:focus:via-yellow-800"
+
+
+lgFocusViaYellow900 : Svg.Attribute msg
+lgFocusViaYellow900 =
+    A.class "lg:focus:via-yellow-900"
+
+
+lgFocusViaGreen100 : Svg.Attribute msg
+lgFocusViaGreen100 =
+    A.class "lg:focus:via-green-100"
+
+
+lgFocusViaGreen200 : Svg.Attribute msg
+lgFocusViaGreen200 =
+    A.class "lg:focus:via-green-200"
+
+
+lgFocusViaGreen300 : Svg.Attribute msg
+lgFocusViaGreen300 =
+    A.class "lg:focus:via-green-300"
+
+
+lgFocusViaGreen400 : Svg.Attribute msg
+lgFocusViaGreen400 =
+    A.class "lg:focus:via-green-400"
+
+
+lgFocusViaGreen500 : Svg.Attribute msg
+lgFocusViaGreen500 =
+    A.class "lg:focus:via-green-500"
+
+
+lgFocusViaGreen600 : Svg.Attribute msg
+lgFocusViaGreen600 =
+    A.class "lg:focus:via-green-600"
+
+
+lgFocusViaGreen700 : Svg.Attribute msg
+lgFocusViaGreen700 =
+    A.class "lg:focus:via-green-700"
+
+
+lgFocusViaGreen800 : Svg.Attribute msg
+lgFocusViaGreen800 =
+    A.class "lg:focus:via-green-800"
+
+
+lgFocusViaGreen900 : Svg.Attribute msg
+lgFocusViaGreen900 =
+    A.class "lg:focus:via-green-900"
+
+
+lgFocusViaTeal100 : Svg.Attribute msg
+lgFocusViaTeal100 =
+    A.class "lg:focus:via-teal-100"
+
+
+lgFocusViaTeal200 : Svg.Attribute msg
+lgFocusViaTeal200 =
+    A.class "lg:focus:via-teal-200"
+
+
+lgFocusViaTeal300 : Svg.Attribute msg
+lgFocusViaTeal300 =
+    A.class "lg:focus:via-teal-300"
+
+
+lgFocusViaTeal400 : Svg.Attribute msg
+lgFocusViaTeal400 =
+    A.class "lg:focus:via-teal-400"
+
+
+lgFocusViaTeal500 : Svg.Attribute msg
+lgFocusViaTeal500 =
+    A.class "lg:focus:via-teal-500"
+
+
+lgFocusViaTeal600 : Svg.Attribute msg
+lgFocusViaTeal600 =
+    A.class "lg:focus:via-teal-600"
+
+
+lgFocusViaTeal700 : Svg.Attribute msg
+lgFocusViaTeal700 =
+    A.class "lg:focus:via-teal-700"
+
+
+lgFocusViaTeal800 : Svg.Attribute msg
+lgFocusViaTeal800 =
+    A.class "lg:focus:via-teal-800"
+
+
+lgFocusViaTeal900 : Svg.Attribute msg
+lgFocusViaTeal900 =
+    A.class "lg:focus:via-teal-900"
+
+
+lgFocusViaBlue100 : Svg.Attribute msg
+lgFocusViaBlue100 =
+    A.class "lg:focus:via-blue-100"
+
+
+lgFocusViaBlue200 : Svg.Attribute msg
+lgFocusViaBlue200 =
+    A.class "lg:focus:via-blue-200"
+
+
+lgFocusViaBlue300 : Svg.Attribute msg
+lgFocusViaBlue300 =
+    A.class "lg:focus:via-blue-300"
+
+
+lgFocusViaBlue400 : Svg.Attribute msg
+lgFocusViaBlue400 =
+    A.class "lg:focus:via-blue-400"
+
+
+lgFocusViaBlue500 : Svg.Attribute msg
+lgFocusViaBlue500 =
+    A.class "lg:focus:via-blue-500"
+
+
+lgFocusViaBlue600 : Svg.Attribute msg
+lgFocusViaBlue600 =
+    A.class "lg:focus:via-blue-600"
+
+
+lgFocusViaBlue700 : Svg.Attribute msg
+lgFocusViaBlue700 =
+    A.class "lg:focus:via-blue-700"
+
+
+lgFocusViaBlue800 : Svg.Attribute msg
+lgFocusViaBlue800 =
+    A.class "lg:focus:via-blue-800"
+
+
+lgFocusViaBlue900 : Svg.Attribute msg
+lgFocusViaBlue900 =
+    A.class "lg:focus:via-blue-900"
+
+
+lgFocusViaIndigo100 : Svg.Attribute msg
+lgFocusViaIndigo100 =
+    A.class "lg:focus:via-indigo-100"
+
+
+lgFocusViaIndigo200 : Svg.Attribute msg
+lgFocusViaIndigo200 =
+    A.class "lg:focus:via-indigo-200"
+
+
+lgFocusViaIndigo300 : Svg.Attribute msg
+lgFocusViaIndigo300 =
+    A.class "lg:focus:via-indigo-300"
+
+
+lgFocusViaIndigo400 : Svg.Attribute msg
+lgFocusViaIndigo400 =
+    A.class "lg:focus:via-indigo-400"
+
+
+lgFocusViaIndigo500 : Svg.Attribute msg
+lgFocusViaIndigo500 =
+    A.class "lg:focus:via-indigo-500"
+
+
+lgFocusViaIndigo600 : Svg.Attribute msg
+lgFocusViaIndigo600 =
+    A.class "lg:focus:via-indigo-600"
+
+
+lgFocusViaIndigo700 : Svg.Attribute msg
+lgFocusViaIndigo700 =
+    A.class "lg:focus:via-indigo-700"
+
+
+lgFocusViaIndigo800 : Svg.Attribute msg
+lgFocusViaIndigo800 =
+    A.class "lg:focus:via-indigo-800"
+
+
+lgFocusViaIndigo900 : Svg.Attribute msg
+lgFocusViaIndigo900 =
+    A.class "lg:focus:via-indigo-900"
+
+
+lgFocusViaPurple100 : Svg.Attribute msg
+lgFocusViaPurple100 =
+    A.class "lg:focus:via-purple-100"
+
+
+lgFocusViaPurple200 : Svg.Attribute msg
+lgFocusViaPurple200 =
+    A.class "lg:focus:via-purple-200"
+
+
+lgFocusViaPurple300 : Svg.Attribute msg
+lgFocusViaPurple300 =
+    A.class "lg:focus:via-purple-300"
+
+
+lgFocusViaPurple400 : Svg.Attribute msg
+lgFocusViaPurple400 =
+    A.class "lg:focus:via-purple-400"
+
+
+lgFocusViaPurple500 : Svg.Attribute msg
+lgFocusViaPurple500 =
+    A.class "lg:focus:via-purple-500"
+
+
+lgFocusViaPurple600 : Svg.Attribute msg
+lgFocusViaPurple600 =
+    A.class "lg:focus:via-purple-600"
+
+
+lgFocusViaPurple700 : Svg.Attribute msg
+lgFocusViaPurple700 =
+    A.class "lg:focus:via-purple-700"
+
+
+lgFocusViaPurple800 : Svg.Attribute msg
+lgFocusViaPurple800 =
+    A.class "lg:focus:via-purple-800"
+
+
+lgFocusViaPurple900 : Svg.Attribute msg
+lgFocusViaPurple900 =
+    A.class "lg:focus:via-purple-900"
+
+
+lgFocusViaPink100 : Svg.Attribute msg
+lgFocusViaPink100 =
+    A.class "lg:focus:via-pink-100"
+
+
+lgFocusViaPink200 : Svg.Attribute msg
+lgFocusViaPink200 =
+    A.class "lg:focus:via-pink-200"
+
+
+lgFocusViaPink300 : Svg.Attribute msg
+lgFocusViaPink300 =
+    A.class "lg:focus:via-pink-300"
+
+
+lgFocusViaPink400 : Svg.Attribute msg
+lgFocusViaPink400 =
+    A.class "lg:focus:via-pink-400"
+
+
+lgFocusViaPink500 : Svg.Attribute msg
+lgFocusViaPink500 =
+    A.class "lg:focus:via-pink-500"
+
+
+lgFocusViaPink600 : Svg.Attribute msg
+lgFocusViaPink600 =
+    A.class "lg:focus:via-pink-600"
+
+
+lgFocusViaPink700 : Svg.Attribute msg
+lgFocusViaPink700 =
+    A.class "lg:focus:via-pink-700"
+
+
+lgFocusViaPink800 : Svg.Attribute msg
+lgFocusViaPink800 =
+    A.class "lg:focus:via-pink-800"
+
+
+lgFocusViaPink900 : Svg.Attribute msg
+lgFocusViaPink900 =
+    A.class "lg:focus:via-pink-900"
+
+
+lgFocusToTransparent : Svg.Attribute msg
+lgFocusToTransparent =
+    A.class "lg:focus:to-transparent"
+
+
+lgFocusToCurrent : Svg.Attribute msg
+lgFocusToCurrent =
+    A.class "lg:focus:to-current"
+
+
+lgFocusToBlack : Svg.Attribute msg
+lgFocusToBlack =
+    A.class "lg:focus:to-black"
+
+
+lgFocusToWhite : Svg.Attribute msg
+lgFocusToWhite =
+    A.class "lg:focus:to-white"
+
+
+lgFocusToGray100 : Svg.Attribute msg
+lgFocusToGray100 =
+    A.class "lg:focus:to-gray-100"
+
+
+lgFocusToGray200 : Svg.Attribute msg
+lgFocusToGray200 =
+    A.class "lg:focus:to-gray-200"
+
+
+lgFocusToGray300 : Svg.Attribute msg
+lgFocusToGray300 =
+    A.class "lg:focus:to-gray-300"
+
+
+lgFocusToGray400 : Svg.Attribute msg
+lgFocusToGray400 =
+    A.class "lg:focus:to-gray-400"
+
+
+lgFocusToGray500 : Svg.Attribute msg
+lgFocusToGray500 =
+    A.class "lg:focus:to-gray-500"
+
+
+lgFocusToGray600 : Svg.Attribute msg
+lgFocusToGray600 =
+    A.class "lg:focus:to-gray-600"
+
+
+lgFocusToGray700 : Svg.Attribute msg
+lgFocusToGray700 =
+    A.class "lg:focus:to-gray-700"
+
+
+lgFocusToGray800 : Svg.Attribute msg
+lgFocusToGray800 =
+    A.class "lg:focus:to-gray-800"
+
+
+lgFocusToGray900 : Svg.Attribute msg
+lgFocusToGray900 =
+    A.class "lg:focus:to-gray-900"
+
+
+lgFocusToRed100 : Svg.Attribute msg
+lgFocusToRed100 =
+    A.class "lg:focus:to-red-100"
+
+
+lgFocusToRed200 : Svg.Attribute msg
+lgFocusToRed200 =
+    A.class "lg:focus:to-red-200"
+
+
+lgFocusToRed300 : Svg.Attribute msg
+lgFocusToRed300 =
+    A.class "lg:focus:to-red-300"
+
+
+lgFocusToRed400 : Svg.Attribute msg
+lgFocusToRed400 =
+    A.class "lg:focus:to-red-400"
+
+
+lgFocusToRed500 : Svg.Attribute msg
+lgFocusToRed500 =
+    A.class "lg:focus:to-red-500"
+
+
+lgFocusToRed600 : Svg.Attribute msg
+lgFocusToRed600 =
+    A.class "lg:focus:to-red-600"
+
+
+lgFocusToRed700 : Svg.Attribute msg
+lgFocusToRed700 =
+    A.class "lg:focus:to-red-700"
+
+
+lgFocusToRed800 : Svg.Attribute msg
+lgFocusToRed800 =
+    A.class "lg:focus:to-red-800"
+
+
+lgFocusToRed900 : Svg.Attribute msg
+lgFocusToRed900 =
+    A.class "lg:focus:to-red-900"
+
+
+lgFocusToOrange100 : Svg.Attribute msg
+lgFocusToOrange100 =
+    A.class "lg:focus:to-orange-100"
+
+
+lgFocusToOrange200 : Svg.Attribute msg
+lgFocusToOrange200 =
+    A.class "lg:focus:to-orange-200"
+
+
+lgFocusToOrange300 : Svg.Attribute msg
+lgFocusToOrange300 =
+    A.class "lg:focus:to-orange-300"
+
+
+lgFocusToOrange400 : Svg.Attribute msg
+lgFocusToOrange400 =
+    A.class "lg:focus:to-orange-400"
+
+
+lgFocusToOrange500 : Svg.Attribute msg
+lgFocusToOrange500 =
+    A.class "lg:focus:to-orange-500"
+
+
+lgFocusToOrange600 : Svg.Attribute msg
+lgFocusToOrange600 =
+    A.class "lg:focus:to-orange-600"
+
+
+lgFocusToOrange700 : Svg.Attribute msg
+lgFocusToOrange700 =
+    A.class "lg:focus:to-orange-700"
+
+
+lgFocusToOrange800 : Svg.Attribute msg
+lgFocusToOrange800 =
+    A.class "lg:focus:to-orange-800"
+
+
+lgFocusToOrange900 : Svg.Attribute msg
+lgFocusToOrange900 =
+    A.class "lg:focus:to-orange-900"
+
+
+lgFocusToYellow100 : Svg.Attribute msg
+lgFocusToYellow100 =
+    A.class "lg:focus:to-yellow-100"
+
+
+lgFocusToYellow200 : Svg.Attribute msg
+lgFocusToYellow200 =
+    A.class "lg:focus:to-yellow-200"
+
+
+lgFocusToYellow300 : Svg.Attribute msg
+lgFocusToYellow300 =
+    A.class "lg:focus:to-yellow-300"
+
+
+lgFocusToYellow400 : Svg.Attribute msg
+lgFocusToYellow400 =
+    A.class "lg:focus:to-yellow-400"
+
+
+lgFocusToYellow500 : Svg.Attribute msg
+lgFocusToYellow500 =
+    A.class "lg:focus:to-yellow-500"
+
+
+lgFocusToYellow600 : Svg.Attribute msg
+lgFocusToYellow600 =
+    A.class "lg:focus:to-yellow-600"
+
+
+lgFocusToYellow700 : Svg.Attribute msg
+lgFocusToYellow700 =
+    A.class "lg:focus:to-yellow-700"
+
+
+lgFocusToYellow800 : Svg.Attribute msg
+lgFocusToYellow800 =
+    A.class "lg:focus:to-yellow-800"
+
+
+lgFocusToYellow900 : Svg.Attribute msg
+lgFocusToYellow900 =
+    A.class "lg:focus:to-yellow-900"
+
+
+lgFocusToGreen100 : Svg.Attribute msg
+lgFocusToGreen100 =
+    A.class "lg:focus:to-green-100"
+
+
+lgFocusToGreen200 : Svg.Attribute msg
+lgFocusToGreen200 =
+    A.class "lg:focus:to-green-200"
+
+
+lgFocusToGreen300 : Svg.Attribute msg
+lgFocusToGreen300 =
+    A.class "lg:focus:to-green-300"
+
+
+lgFocusToGreen400 : Svg.Attribute msg
+lgFocusToGreen400 =
+    A.class "lg:focus:to-green-400"
+
+
+lgFocusToGreen500 : Svg.Attribute msg
+lgFocusToGreen500 =
+    A.class "lg:focus:to-green-500"
+
+
+lgFocusToGreen600 : Svg.Attribute msg
+lgFocusToGreen600 =
+    A.class "lg:focus:to-green-600"
+
+
+lgFocusToGreen700 : Svg.Attribute msg
+lgFocusToGreen700 =
+    A.class "lg:focus:to-green-700"
+
+
+lgFocusToGreen800 : Svg.Attribute msg
+lgFocusToGreen800 =
+    A.class "lg:focus:to-green-800"
+
+
+lgFocusToGreen900 : Svg.Attribute msg
+lgFocusToGreen900 =
+    A.class "lg:focus:to-green-900"
+
+
+lgFocusToTeal100 : Svg.Attribute msg
+lgFocusToTeal100 =
+    A.class "lg:focus:to-teal-100"
+
+
+lgFocusToTeal200 : Svg.Attribute msg
+lgFocusToTeal200 =
+    A.class "lg:focus:to-teal-200"
+
+
+lgFocusToTeal300 : Svg.Attribute msg
+lgFocusToTeal300 =
+    A.class "lg:focus:to-teal-300"
+
+
+lgFocusToTeal400 : Svg.Attribute msg
+lgFocusToTeal400 =
+    A.class "lg:focus:to-teal-400"
+
+
+lgFocusToTeal500 : Svg.Attribute msg
+lgFocusToTeal500 =
+    A.class "lg:focus:to-teal-500"
+
+
+lgFocusToTeal600 : Svg.Attribute msg
+lgFocusToTeal600 =
+    A.class "lg:focus:to-teal-600"
+
+
+lgFocusToTeal700 : Svg.Attribute msg
+lgFocusToTeal700 =
+    A.class "lg:focus:to-teal-700"
+
+
+lgFocusToTeal800 : Svg.Attribute msg
+lgFocusToTeal800 =
+    A.class "lg:focus:to-teal-800"
+
+
+lgFocusToTeal900 : Svg.Attribute msg
+lgFocusToTeal900 =
+    A.class "lg:focus:to-teal-900"
+
+
+lgFocusToBlue100 : Svg.Attribute msg
+lgFocusToBlue100 =
+    A.class "lg:focus:to-blue-100"
+
+
+lgFocusToBlue200 : Svg.Attribute msg
+lgFocusToBlue200 =
+    A.class "lg:focus:to-blue-200"
+
+
+lgFocusToBlue300 : Svg.Attribute msg
+lgFocusToBlue300 =
+    A.class "lg:focus:to-blue-300"
+
+
+lgFocusToBlue400 : Svg.Attribute msg
+lgFocusToBlue400 =
+    A.class "lg:focus:to-blue-400"
+
+
+lgFocusToBlue500 : Svg.Attribute msg
+lgFocusToBlue500 =
+    A.class "lg:focus:to-blue-500"
+
+
+lgFocusToBlue600 : Svg.Attribute msg
+lgFocusToBlue600 =
+    A.class "lg:focus:to-blue-600"
+
+
+lgFocusToBlue700 : Svg.Attribute msg
+lgFocusToBlue700 =
+    A.class "lg:focus:to-blue-700"
+
+
+lgFocusToBlue800 : Svg.Attribute msg
+lgFocusToBlue800 =
+    A.class "lg:focus:to-blue-800"
+
+
+lgFocusToBlue900 : Svg.Attribute msg
+lgFocusToBlue900 =
+    A.class "lg:focus:to-blue-900"
+
+
+lgFocusToIndigo100 : Svg.Attribute msg
+lgFocusToIndigo100 =
+    A.class "lg:focus:to-indigo-100"
+
+
+lgFocusToIndigo200 : Svg.Attribute msg
+lgFocusToIndigo200 =
+    A.class "lg:focus:to-indigo-200"
+
+
+lgFocusToIndigo300 : Svg.Attribute msg
+lgFocusToIndigo300 =
+    A.class "lg:focus:to-indigo-300"
+
+
+lgFocusToIndigo400 : Svg.Attribute msg
+lgFocusToIndigo400 =
+    A.class "lg:focus:to-indigo-400"
+
+
+lgFocusToIndigo500 : Svg.Attribute msg
+lgFocusToIndigo500 =
+    A.class "lg:focus:to-indigo-500"
+
+
+lgFocusToIndigo600 : Svg.Attribute msg
+lgFocusToIndigo600 =
+    A.class "lg:focus:to-indigo-600"
+
+
+lgFocusToIndigo700 : Svg.Attribute msg
+lgFocusToIndigo700 =
+    A.class "lg:focus:to-indigo-700"
+
+
+lgFocusToIndigo800 : Svg.Attribute msg
+lgFocusToIndigo800 =
+    A.class "lg:focus:to-indigo-800"
+
+
+lgFocusToIndigo900 : Svg.Attribute msg
+lgFocusToIndigo900 =
+    A.class "lg:focus:to-indigo-900"
+
+
+lgFocusToPurple100 : Svg.Attribute msg
+lgFocusToPurple100 =
+    A.class "lg:focus:to-purple-100"
+
+
+lgFocusToPurple200 : Svg.Attribute msg
+lgFocusToPurple200 =
+    A.class "lg:focus:to-purple-200"
+
+
+lgFocusToPurple300 : Svg.Attribute msg
+lgFocusToPurple300 =
+    A.class "lg:focus:to-purple-300"
+
+
+lgFocusToPurple400 : Svg.Attribute msg
+lgFocusToPurple400 =
+    A.class "lg:focus:to-purple-400"
+
+
+lgFocusToPurple500 : Svg.Attribute msg
+lgFocusToPurple500 =
+    A.class "lg:focus:to-purple-500"
+
+
+lgFocusToPurple600 : Svg.Attribute msg
+lgFocusToPurple600 =
+    A.class "lg:focus:to-purple-600"
+
+
+lgFocusToPurple700 : Svg.Attribute msg
+lgFocusToPurple700 =
+    A.class "lg:focus:to-purple-700"
+
+
+lgFocusToPurple800 : Svg.Attribute msg
+lgFocusToPurple800 =
+    A.class "lg:focus:to-purple-800"
+
+
+lgFocusToPurple900 : Svg.Attribute msg
+lgFocusToPurple900 =
+    A.class "lg:focus:to-purple-900"
+
+
+lgFocusToPink100 : Svg.Attribute msg
+lgFocusToPink100 =
+    A.class "lg:focus:to-pink-100"
+
+
+lgFocusToPink200 : Svg.Attribute msg
+lgFocusToPink200 =
+    A.class "lg:focus:to-pink-200"
+
+
+lgFocusToPink300 : Svg.Attribute msg
+lgFocusToPink300 =
+    A.class "lg:focus:to-pink-300"
+
+
+lgFocusToPink400 : Svg.Attribute msg
+lgFocusToPink400 =
+    A.class "lg:focus:to-pink-400"
+
+
+lgFocusToPink500 : Svg.Attribute msg
+lgFocusToPink500 =
+    A.class "lg:focus:to-pink-500"
+
+
+lgFocusToPink600 : Svg.Attribute msg
+lgFocusToPink600 =
+    A.class "lg:focus:to-pink-600"
+
+
+lgFocusToPink700 : Svg.Attribute msg
+lgFocusToPink700 =
+    A.class "lg:focus:to-pink-700"
+
+
+lgFocusToPink800 : Svg.Attribute msg
+lgFocusToPink800 =
+    A.class "lg:focus:to-pink-800"
+
+
+lgFocusToPink900 : Svg.Attribute msg
+lgFocusToPink900 =
+    A.class "lg:focus:to-pink-900"
 
 
 lgBgOpacity0 : Svg.Attribute msg
@@ -59487,6 +84046,21 @@ lgRoundedLg =
     A.class "lg:rounded-lg"
 
 
+lgRoundedXl : Svg.Attribute msg
+lgRoundedXl =
+    A.class "lg:rounded-xl"
+
+
+lgRounded2xl : Svg.Attribute msg
+lgRounded2xl =
+    A.class "lg:rounded-2xl"
+
+
+lgRounded3xl : Svg.Attribute msg
+lgRounded3xl =
+    A.class "lg:rounded-3xl"
+
+
 lgRoundedFull : Svg.Attribute msg
 lgRoundedFull =
     A.class "lg:rounded-full"
@@ -59590,6 +84164,66 @@ lgRoundedBLg =
 lgRoundedLLg : Svg.Attribute msg
 lgRoundedLLg =
     A.class "lg:rounded-l-lg"
+
+
+lgRoundedTXl : Svg.Attribute msg
+lgRoundedTXl =
+    A.class "lg:rounded-t-xl"
+
+
+lgRoundedRXl : Svg.Attribute msg
+lgRoundedRXl =
+    A.class "lg:rounded-r-xl"
+
+
+lgRoundedBXl : Svg.Attribute msg
+lgRoundedBXl =
+    A.class "lg:rounded-b-xl"
+
+
+lgRoundedLXl : Svg.Attribute msg
+lgRoundedLXl =
+    A.class "lg:rounded-l-xl"
+
+
+lgRoundedT2xl : Svg.Attribute msg
+lgRoundedT2xl =
+    A.class "lg:rounded-t-2xl"
+
+
+lgRoundedR2xl : Svg.Attribute msg
+lgRoundedR2xl =
+    A.class "lg:rounded-r-2xl"
+
+
+lgRoundedB2xl : Svg.Attribute msg
+lgRoundedB2xl =
+    A.class "lg:rounded-b-2xl"
+
+
+lgRoundedL2xl : Svg.Attribute msg
+lgRoundedL2xl =
+    A.class "lg:rounded-l-2xl"
+
+
+lgRoundedT3xl : Svg.Attribute msg
+lgRoundedT3xl =
+    A.class "lg:rounded-t-3xl"
+
+
+lgRoundedR3xl : Svg.Attribute msg
+lgRoundedR3xl =
+    A.class "lg:rounded-r-3xl"
+
+
+lgRoundedB3xl : Svg.Attribute msg
+lgRoundedB3xl =
+    A.class "lg:rounded-b-3xl"
+
+
+lgRoundedL3xl : Svg.Attribute msg
+lgRoundedL3xl =
+    A.class "lg:rounded-l-3xl"
 
 
 lgRoundedTFull : Svg.Attribute msg
@@ -59710,6 +84344,66 @@ lgRoundedBrLg =
 lgRoundedBlLg : Svg.Attribute msg
 lgRoundedBlLg =
     A.class "lg:rounded-bl-lg"
+
+
+lgRoundedTlXl : Svg.Attribute msg
+lgRoundedTlXl =
+    A.class "lg:rounded-tl-xl"
+
+
+lgRoundedTrXl : Svg.Attribute msg
+lgRoundedTrXl =
+    A.class "lg:rounded-tr-xl"
+
+
+lgRoundedBrXl : Svg.Attribute msg
+lgRoundedBrXl =
+    A.class "lg:rounded-br-xl"
+
+
+lgRoundedBlXl : Svg.Attribute msg
+lgRoundedBlXl =
+    A.class "lg:rounded-bl-xl"
+
+
+lgRoundedTl2xl : Svg.Attribute msg
+lgRoundedTl2xl =
+    A.class "lg:rounded-tl-2xl"
+
+
+lgRoundedTr2xl : Svg.Attribute msg
+lgRoundedTr2xl =
+    A.class "lg:rounded-tr-2xl"
+
+
+lgRoundedBr2xl : Svg.Attribute msg
+lgRoundedBr2xl =
+    A.class "lg:rounded-br-2xl"
+
+
+lgRoundedBl2xl : Svg.Attribute msg
+lgRoundedBl2xl =
+    A.class "lg:rounded-bl-2xl"
+
+
+lgRoundedTl3xl : Svg.Attribute msg
+lgRoundedTl3xl =
+    A.class "lg:rounded-tl-3xl"
+
+
+lgRoundedTr3xl : Svg.Attribute msg
+lgRoundedTr3xl =
+    A.class "lg:rounded-tr-3xl"
+
+
+lgRoundedBr3xl : Svg.Attribute msg
+lgRoundedBr3xl =
+    A.class "lg:rounded-br-3xl"
+
+
+lgRoundedBl3xl : Svg.Attribute msg
+lgRoundedBl3xl =
+    A.class "lg:rounded-bl-3xl"
 
 
 lgRoundedTlFull : Svg.Attribute msg
@@ -60012,6 +84706,11 @@ lgInlineGrid =
     A.class "lg:inline-grid"
 
 
+lgContents : Svg.Attribute msg
+lgContents =
+    A.class "lg:contents"
+
+
 lgHidden : Svg.Attribute msg
 lgHidden =
     A.class "lg:hidden"
@@ -60052,6 +84751,91 @@ lgFlexNoWrap =
     A.class "lg:flex-no-wrap"
 
 
+lgPlaceItemsAuto : Svg.Attribute msg
+lgPlaceItemsAuto =
+    A.class "lg:place-items-auto"
+
+
+lgPlaceItemsStart : Svg.Attribute msg
+lgPlaceItemsStart =
+    A.class "lg:place-items-start"
+
+
+lgPlaceItemsEnd : Svg.Attribute msg
+lgPlaceItemsEnd =
+    A.class "lg:place-items-end"
+
+
+lgPlaceItemsCenter : Svg.Attribute msg
+lgPlaceItemsCenter =
+    A.class "lg:place-items-center"
+
+
+lgPlaceItemsStretch : Svg.Attribute msg
+lgPlaceItemsStretch =
+    A.class "lg:place-items-stretch"
+
+
+lgPlaceContentCenter : Svg.Attribute msg
+lgPlaceContentCenter =
+    A.class "lg:place-content-center"
+
+
+lgPlaceContentStart : Svg.Attribute msg
+lgPlaceContentStart =
+    A.class "lg:place-content-start"
+
+
+lgPlaceContentEnd : Svg.Attribute msg
+lgPlaceContentEnd =
+    A.class "lg:place-content-end"
+
+
+lgPlaceContentBetween : Svg.Attribute msg
+lgPlaceContentBetween =
+    A.class "lg:place-content-between"
+
+
+lgPlaceContentAround : Svg.Attribute msg
+lgPlaceContentAround =
+    A.class "lg:place-content-around"
+
+
+lgPlaceContentEvenly : Svg.Attribute msg
+lgPlaceContentEvenly =
+    A.class "lg:place-content-evenly"
+
+
+lgPlaceContentStretch : Svg.Attribute msg
+lgPlaceContentStretch =
+    A.class "lg:place-content-stretch"
+
+
+lgPlaceSelfAuto : Svg.Attribute msg
+lgPlaceSelfAuto =
+    A.class "lg:place-self-auto"
+
+
+lgPlaceSelfStart : Svg.Attribute msg
+lgPlaceSelfStart =
+    A.class "lg:place-self-start"
+
+
+lgPlaceSelfEnd : Svg.Attribute msg
+lgPlaceSelfEnd =
+    A.class "lg:place-self-end"
+
+
+lgPlaceSelfCenter : Svg.Attribute msg
+lgPlaceSelfCenter =
+    A.class "lg:place-self-center"
+
+
+lgPlaceSelfStretch : Svg.Attribute msg
+lgPlaceSelfStretch =
+    A.class "lg:place-self-stretch"
+
+
 lgItemsStart : Svg.Attribute msg
 lgItemsStart =
     A.class "lg:items-start"
@@ -60077,6 +84861,36 @@ lgItemsStretch =
     A.class "lg:items-stretch"
 
 
+lgContentCenter : Svg.Attribute msg
+lgContentCenter =
+    A.class "lg:content-center"
+
+
+lgContentStart : Svg.Attribute msg
+lgContentStart =
+    A.class "lg:content-start"
+
+
+lgContentEnd : Svg.Attribute msg
+lgContentEnd =
+    A.class "lg:content-end"
+
+
+lgContentBetween : Svg.Attribute msg
+lgContentBetween =
+    A.class "lg:content-between"
+
+
+lgContentAround : Svg.Attribute msg
+lgContentAround =
+    A.class "lg:content-around"
+
+
+lgContentEvenly : Svg.Attribute msg
+lgContentEvenly =
+    A.class "lg:content-evenly"
+
+
 lgSelfAuto : Svg.Attribute msg
 lgSelfAuto =
     A.class "lg:self-auto"
@@ -60100,6 +84914,31 @@ lgSelfCenter =
 lgSelfStretch : Svg.Attribute msg
 lgSelfStretch =
     A.class "lg:self-stretch"
+
+
+lgJustifyItemsAuto : Svg.Attribute msg
+lgJustifyItemsAuto =
+    A.class "lg:justify-items-auto"
+
+
+lgJustifyItemsStart : Svg.Attribute msg
+lgJustifyItemsStart =
+    A.class "lg:justify-items-start"
+
+
+lgJustifyItemsEnd : Svg.Attribute msg
+lgJustifyItemsEnd =
+    A.class "lg:justify-items-end"
+
+
+lgJustifyItemsCenter : Svg.Attribute msg
+lgJustifyItemsCenter =
+    A.class "lg:justify-items-center"
+
+
+lgJustifyItemsStretch : Svg.Attribute msg
+lgJustifyItemsStretch =
+    A.class "lg:justify-items-stretch"
 
 
 lgJustifyStart : Svg.Attribute msg
@@ -60132,29 +84971,29 @@ lgJustifyEvenly =
     A.class "lg:justify-evenly"
 
 
-lgContentCenter : Svg.Attribute msg
-lgContentCenter =
-    A.class "lg:content-center"
+lgJustifySelfAuto : Svg.Attribute msg
+lgJustifySelfAuto =
+    A.class "lg:justify-self-auto"
 
 
-lgContentStart : Svg.Attribute msg
-lgContentStart =
-    A.class "lg:content-start"
+lgJustifySelfStart : Svg.Attribute msg
+lgJustifySelfStart =
+    A.class "lg:justify-self-start"
 
 
-lgContentEnd : Svg.Attribute msg
-lgContentEnd =
-    A.class "lg:content-end"
+lgJustifySelfEnd : Svg.Attribute msg
+lgJustifySelfEnd =
+    A.class "lg:justify-self-end"
 
 
-lgContentBetween : Svg.Attribute msg
-lgContentBetween =
-    A.class "lg:content-between"
+lgJustifySelfCenter : Svg.Attribute msg
+lgJustifySelfCenter =
+    A.class "lg:justify-self-center"
 
 
-lgContentAround : Svg.Attribute msg
-lgContentAround =
-    A.class "lg:content-around"
+lgJustifySelfStretch : Svg.Attribute msg
+lgJustifySelfStretch =
+    A.class "lg:justify-self-stretch"
 
 
 lgFlex1 : Svg.Attribute msg
@@ -62317,9 +87156,29 @@ lgOutlineNone =
     A.class "lg:outline-none"
 
 
+lgOutlineWhite : Svg.Attribute msg
+lgOutlineWhite =
+    A.class "lg:outline-white"
+
+
+lgOutlineBlack : Svg.Attribute msg
+lgOutlineBlack =
+    A.class "lg:outline-black"
+
+
 lgFocusOutlineNone : Svg.Attribute msg
 lgFocusOutlineNone =
     A.class "lg:focus:outline-none"
+
+
+lgFocusOutlineWhite : Svg.Attribute msg
+lgFocusOutlineWhite =
+    A.class "lg:focus:outline-white"
+
+
+lgFocusOutlineBlack : Svg.Attribute msg
+lgFocusOutlineBlack =
+    A.class "lg:focus:outline-black"
 
 
 lgOverflowAuto : Svg.Attribute msg
@@ -62390,6 +87249,51 @@ lgScrollingTouch =
 lgScrollingAuto : Svg.Attribute msg
 lgScrollingAuto =
     A.class "lg:scrolling-auto"
+
+
+lgOverscrollAuto : Svg.Attribute msg
+lgOverscrollAuto =
+    A.class "lg:overscroll-auto"
+
+
+lgOverscrollContain : Svg.Attribute msg
+lgOverscrollContain =
+    A.class "lg:overscroll-contain"
+
+
+lgOverscrollNone : Svg.Attribute msg
+lgOverscrollNone =
+    A.class "lg:overscroll-none"
+
+
+lgOverscrollYAuto : Svg.Attribute msg
+lgOverscrollYAuto =
+    A.class "lg:overscroll-y-auto"
+
+
+lgOverscrollYContain : Svg.Attribute msg
+lgOverscrollYContain =
+    A.class "lg:overscroll-y-contain"
+
+
+lgOverscrollYNone : Svg.Attribute msg
+lgOverscrollYNone =
+    A.class "lg:overscroll-y-none"
+
+
+lgOverscrollXAuto : Svg.Attribute msg
+lgOverscrollXAuto =
+    A.class "lg:overscroll-x-auto"
+
+
+lgOverscrollXContain : Svg.Attribute msg
+lgOverscrollXContain =
+    A.class "lg:overscroll-x-contain"
+
+
+lgOverscrollXNone : Svg.Attribute msg
+lgOverscrollXNone =
+    A.class "lg:overscroll-x-none"
 
 
 lgP0 : Svg.Attribute msg
@@ -65947,6 +90851,51 @@ lgSubpixelAntialiased =
     A.class "lg:subpixel-antialiased"
 
 
+lgOrdinal : Svg.Attribute msg
+lgOrdinal =
+    A.class "lg:ordinal"
+
+
+lgSlashedZero : Svg.Attribute msg
+lgSlashedZero =
+    A.class "lg:slashed-zero"
+
+
+lgLiningNums : Svg.Attribute msg
+lgLiningNums =
+    A.class "lg:lining-nums"
+
+
+lgOldstyleNums : Svg.Attribute msg
+lgOldstyleNums =
+    A.class "lg:oldstyle-nums"
+
+
+lgProportionalNums : Svg.Attribute msg
+lgProportionalNums =
+    A.class "lg:proportional-nums"
+
+
+lgTabularNums : Svg.Attribute msg
+lgTabularNums =
+    A.class "lg:tabular-nums"
+
+
+lgDiagonalFractions : Svg.Attribute msg
+lgDiagonalFractions =
+    A.class "lg:diagonal-fractions"
+
+
+lgStackedFractions : Svg.Attribute msg
+lgStackedFractions =
+    A.class "lg:stacked-fractions"
+
+
+lgNormalNums : Svg.Attribute msg
+lgNormalNums =
+    A.class "lg:normal-nums"
+
+
 lgTrackingTighter : Svg.Attribute msg
 lgTrackingTighter =
     A.class "lg:tracking-tighter"
@@ -66452,194 +91401,194 @@ lgGapPx =
     A.class "lg:gap-px"
 
 
-lgColGap0 : Svg.Attribute msg
-lgColGap0 =
-    A.class "lg:col-gap-0"
+lgGapX0 : Svg.Attribute msg
+lgGapX0 =
+    A.class "lg:gap-x-0"
 
 
-lgColGap1 : Svg.Attribute msg
-lgColGap1 =
-    A.class "lg:col-gap-1"
+lgGapX1 : Svg.Attribute msg
+lgGapX1 =
+    A.class "lg:gap-x-1"
 
 
-lgColGap2 : Svg.Attribute msg
-lgColGap2 =
-    A.class "lg:col-gap-2"
+lgGapX2 : Svg.Attribute msg
+lgGapX2 =
+    A.class "lg:gap-x-2"
 
 
-lgColGap3 : Svg.Attribute msg
-lgColGap3 =
-    A.class "lg:col-gap-3"
+lgGapX3 : Svg.Attribute msg
+lgGapX3 =
+    A.class "lg:gap-x-3"
 
 
-lgColGap4 : Svg.Attribute msg
-lgColGap4 =
-    A.class "lg:col-gap-4"
+lgGapX4 : Svg.Attribute msg
+lgGapX4 =
+    A.class "lg:gap-x-4"
 
 
-lgColGap5 : Svg.Attribute msg
-lgColGap5 =
-    A.class "lg:col-gap-5"
+lgGapX5 : Svg.Attribute msg
+lgGapX5 =
+    A.class "lg:gap-x-5"
 
 
-lgColGap6 : Svg.Attribute msg
-lgColGap6 =
-    A.class "lg:col-gap-6"
+lgGapX6 : Svg.Attribute msg
+lgGapX6 =
+    A.class "lg:gap-x-6"
 
 
-lgColGap8 : Svg.Attribute msg
-lgColGap8 =
-    A.class "lg:col-gap-8"
+lgGapX8 : Svg.Attribute msg
+lgGapX8 =
+    A.class "lg:gap-x-8"
 
 
-lgColGap10 : Svg.Attribute msg
-lgColGap10 =
-    A.class "lg:col-gap-10"
+lgGapX10 : Svg.Attribute msg
+lgGapX10 =
+    A.class "lg:gap-x-10"
 
 
-lgColGap12 : Svg.Attribute msg
-lgColGap12 =
-    A.class "lg:col-gap-12"
+lgGapX12 : Svg.Attribute msg
+lgGapX12 =
+    A.class "lg:gap-x-12"
 
 
-lgColGap16 : Svg.Attribute msg
-lgColGap16 =
-    A.class "lg:col-gap-16"
+lgGapX16 : Svg.Attribute msg
+lgGapX16 =
+    A.class "lg:gap-x-16"
 
 
-lgColGap20 : Svg.Attribute msg
-lgColGap20 =
-    A.class "lg:col-gap-20"
+lgGapX20 : Svg.Attribute msg
+lgGapX20 =
+    A.class "lg:gap-x-20"
 
 
-lgColGap24 : Svg.Attribute msg
-lgColGap24 =
-    A.class "lg:col-gap-24"
+lgGapX24 : Svg.Attribute msg
+lgGapX24 =
+    A.class "lg:gap-x-24"
 
 
-lgColGap32 : Svg.Attribute msg
-lgColGap32 =
-    A.class "lg:col-gap-32"
+lgGapX32 : Svg.Attribute msg
+lgGapX32 =
+    A.class "lg:gap-x-32"
 
 
-lgColGap40 : Svg.Attribute msg
-lgColGap40 =
-    A.class "lg:col-gap-40"
+lgGapX40 : Svg.Attribute msg
+lgGapX40 =
+    A.class "lg:gap-x-40"
 
 
-lgColGap48 : Svg.Attribute msg
-lgColGap48 =
-    A.class "lg:col-gap-48"
+lgGapX48 : Svg.Attribute msg
+lgGapX48 =
+    A.class "lg:gap-x-48"
 
 
-lgColGap56 : Svg.Attribute msg
-lgColGap56 =
-    A.class "lg:col-gap-56"
+lgGapX56 : Svg.Attribute msg
+lgGapX56 =
+    A.class "lg:gap-x-56"
 
 
-lgColGap64 : Svg.Attribute msg
-lgColGap64 =
-    A.class "lg:col-gap-64"
+lgGapX64 : Svg.Attribute msg
+lgGapX64 =
+    A.class "lg:gap-x-64"
 
 
-lgColGapPx : Svg.Attribute msg
-lgColGapPx =
-    A.class "lg:col-gap-px"
+lgGapXPx : Svg.Attribute msg
+lgGapXPx =
+    A.class "lg:gap-x-px"
 
 
-lgRowGap0 : Svg.Attribute msg
-lgRowGap0 =
-    A.class "lg:row-gap-0"
+lgGapY0 : Svg.Attribute msg
+lgGapY0 =
+    A.class "lg:gap-y-0"
 
 
-lgRowGap1 : Svg.Attribute msg
-lgRowGap1 =
-    A.class "lg:row-gap-1"
+lgGapY1 : Svg.Attribute msg
+lgGapY1 =
+    A.class "lg:gap-y-1"
 
 
-lgRowGap2 : Svg.Attribute msg
-lgRowGap2 =
-    A.class "lg:row-gap-2"
+lgGapY2 : Svg.Attribute msg
+lgGapY2 =
+    A.class "lg:gap-y-2"
 
 
-lgRowGap3 : Svg.Attribute msg
-lgRowGap3 =
-    A.class "lg:row-gap-3"
+lgGapY3 : Svg.Attribute msg
+lgGapY3 =
+    A.class "lg:gap-y-3"
 
 
-lgRowGap4 : Svg.Attribute msg
-lgRowGap4 =
-    A.class "lg:row-gap-4"
+lgGapY4 : Svg.Attribute msg
+lgGapY4 =
+    A.class "lg:gap-y-4"
 
 
-lgRowGap5 : Svg.Attribute msg
-lgRowGap5 =
-    A.class "lg:row-gap-5"
+lgGapY5 : Svg.Attribute msg
+lgGapY5 =
+    A.class "lg:gap-y-5"
 
 
-lgRowGap6 : Svg.Attribute msg
-lgRowGap6 =
-    A.class "lg:row-gap-6"
+lgGapY6 : Svg.Attribute msg
+lgGapY6 =
+    A.class "lg:gap-y-6"
 
 
-lgRowGap8 : Svg.Attribute msg
-lgRowGap8 =
-    A.class "lg:row-gap-8"
+lgGapY8 : Svg.Attribute msg
+lgGapY8 =
+    A.class "lg:gap-y-8"
 
 
-lgRowGap10 : Svg.Attribute msg
-lgRowGap10 =
-    A.class "lg:row-gap-10"
+lgGapY10 : Svg.Attribute msg
+lgGapY10 =
+    A.class "lg:gap-y-10"
 
 
-lgRowGap12 : Svg.Attribute msg
-lgRowGap12 =
-    A.class "lg:row-gap-12"
+lgGapY12 : Svg.Attribute msg
+lgGapY12 =
+    A.class "lg:gap-y-12"
 
 
-lgRowGap16 : Svg.Attribute msg
-lgRowGap16 =
-    A.class "lg:row-gap-16"
+lgGapY16 : Svg.Attribute msg
+lgGapY16 =
+    A.class "lg:gap-y-16"
 
 
-lgRowGap20 : Svg.Attribute msg
-lgRowGap20 =
-    A.class "lg:row-gap-20"
+lgGapY20 : Svg.Attribute msg
+lgGapY20 =
+    A.class "lg:gap-y-20"
 
 
-lgRowGap24 : Svg.Attribute msg
-lgRowGap24 =
-    A.class "lg:row-gap-24"
+lgGapY24 : Svg.Attribute msg
+lgGapY24 =
+    A.class "lg:gap-y-24"
 
 
-lgRowGap32 : Svg.Attribute msg
-lgRowGap32 =
-    A.class "lg:row-gap-32"
+lgGapY32 : Svg.Attribute msg
+lgGapY32 =
+    A.class "lg:gap-y-32"
 
 
-lgRowGap40 : Svg.Attribute msg
-lgRowGap40 =
-    A.class "lg:row-gap-40"
+lgGapY40 : Svg.Attribute msg
+lgGapY40 =
+    A.class "lg:gap-y-40"
 
 
-lgRowGap48 : Svg.Attribute msg
-lgRowGap48 =
-    A.class "lg:row-gap-48"
+lgGapY48 : Svg.Attribute msg
+lgGapY48 =
+    A.class "lg:gap-y-48"
 
 
-lgRowGap56 : Svg.Attribute msg
-lgRowGap56 =
-    A.class "lg:row-gap-56"
+lgGapY56 : Svg.Attribute msg
+lgGapY56 =
+    A.class "lg:gap-y-56"
 
 
-lgRowGap64 : Svg.Attribute msg
-lgRowGap64 =
-    A.class "lg:row-gap-64"
+lgGapY64 : Svg.Attribute msg
+lgGapY64 =
+    A.class "lg:gap-y-64"
 
 
-lgRowGapPx : Svg.Attribute msg
-lgRowGapPx =
-    A.class "lg:row-gap-px"
+lgGapYPx : Svg.Attribute msg
+lgGapYPx =
+    A.class "lg:gap-y-px"
 
 
 lgGridFlowRow : Svg.Attribute msg
@@ -66727,6 +91676,26 @@ lgGridColsNone =
     A.class "lg:grid-cols-none"
 
 
+lgAutoColsAuto : Svg.Attribute msg
+lgAutoColsAuto =
+    A.class "lg:auto-cols-auto"
+
+
+lgAutoColsMin : Svg.Attribute msg
+lgAutoColsMin =
+    A.class "lg:auto-cols-min"
+
+
+lgAutoColsMax : Svg.Attribute msg
+lgAutoColsMax =
+    A.class "lg:auto-cols-max"
+
+
+lgAutoColsFr : Svg.Attribute msg
+lgAutoColsFr =
+    A.class "lg:auto-cols-fr"
+
+
 lgColAuto : Svg.Attribute msg
 lgColAuto =
     A.class "lg:col-auto"
@@ -66790,6 +91759,11 @@ lgColSpan11 =
 lgColSpan12 : Svg.Attribute msg
 lgColSpan12 =
     A.class "lg:col-span-12"
+
+
+lgColSpanFull : Svg.Attribute msg
+lgColSpanFull =
+    A.class "lg:col-span-full"
 
 
 lgColStart1 : Svg.Attribute msg
@@ -66967,6 +91941,26 @@ lgGridRowsNone =
     A.class "lg:grid-rows-none"
 
 
+lgAutoRowsAuto : Svg.Attribute msg
+lgAutoRowsAuto =
+    A.class "lg:auto-rows-auto"
+
+
+lgAutoRowsMin : Svg.Attribute msg
+lgAutoRowsMin =
+    A.class "lg:auto-rows-min"
+
+
+lgAutoRowsMax : Svg.Attribute msg
+lgAutoRowsMax =
+    A.class "lg:auto-rows-max"
+
+
+lgAutoRowsFr : Svg.Attribute msg
+lgAutoRowsFr =
+    A.class "lg:auto-rows-fr"
+
+
 lgRowAuto : Svg.Attribute msg
 lgRowAuto =
     A.class "lg:row-auto"
@@ -67000,6 +91994,11 @@ lgRowSpan5 =
 lgRowSpan6 : Svg.Attribute msg
 lgRowSpan6 =
     A.class "lg:row-span-6"
+
+
+lgRowSpanFull : Svg.Attribute msg
+lgRowSpanFull =
+    A.class "lg:row-span-full"
 
 
 lgRowStart1 : Svg.Attribute msg
@@ -67592,6 +92591,31 @@ lgRotate0 =
     A.class "lg:rotate-0"
 
 
+lgRotate1 : Svg.Attribute msg
+lgRotate1 =
+    A.class "lg:rotate-1"
+
+
+lgRotate2 : Svg.Attribute msg
+lgRotate2 =
+    A.class "lg:rotate-2"
+
+
+lgRotate3 : Svg.Attribute msg
+lgRotate3 =
+    A.class "lg:rotate-3"
+
+
+lgRotate6 : Svg.Attribute msg
+lgRotate6 =
+    A.class "lg:rotate-6"
+
+
+lgRotate12 : Svg.Attribute msg
+lgRotate12 =
+    A.class "lg:rotate-12"
+
+
 lgRotate45 : Svg.Attribute msg
 lgRotate45 =
     A.class "lg:rotate-45"
@@ -67622,9 +92646,59 @@ lgNegRotate45 =
     A.class "lg:-rotate-45"
 
 
+lgNegRotate12 : Svg.Attribute msg
+lgNegRotate12 =
+    A.class "lg:-rotate-12"
+
+
+lgNegRotate6 : Svg.Attribute msg
+lgNegRotate6 =
+    A.class "lg:-rotate-6"
+
+
+lgNegRotate3 : Svg.Attribute msg
+lgNegRotate3 =
+    A.class "lg:-rotate-3"
+
+
+lgNegRotate2 : Svg.Attribute msg
+lgNegRotate2 =
+    A.class "lg:-rotate-2"
+
+
+lgNegRotate1 : Svg.Attribute msg
+lgNegRotate1 =
+    A.class "lg:-rotate-1"
+
+
 lgHoverRotate0 : Svg.Attribute msg
 lgHoverRotate0 =
     A.class "lg:hover:rotate-0"
+
+
+lgHoverRotate1 : Svg.Attribute msg
+lgHoverRotate1 =
+    A.class "lg:hover:rotate-1"
+
+
+lgHoverRotate2 : Svg.Attribute msg
+lgHoverRotate2 =
+    A.class "lg:hover:rotate-2"
+
+
+lgHoverRotate3 : Svg.Attribute msg
+lgHoverRotate3 =
+    A.class "lg:hover:rotate-3"
+
+
+lgHoverRotate6 : Svg.Attribute msg
+lgHoverRotate6 =
+    A.class "lg:hover:rotate-6"
+
+
+lgHoverRotate12 : Svg.Attribute msg
+lgHoverRotate12 =
+    A.class "lg:hover:rotate-12"
 
 
 lgHoverRotate45 : Svg.Attribute msg
@@ -67657,9 +92731,59 @@ lgHoverNegRotate45 =
     A.class "lg:hover:-rotate-45"
 
 
+lgHoverNegRotate12 : Svg.Attribute msg
+lgHoverNegRotate12 =
+    A.class "lg:hover:-rotate-12"
+
+
+lgHoverNegRotate6 : Svg.Attribute msg
+lgHoverNegRotate6 =
+    A.class "lg:hover:-rotate-6"
+
+
+lgHoverNegRotate3 : Svg.Attribute msg
+lgHoverNegRotate3 =
+    A.class "lg:hover:-rotate-3"
+
+
+lgHoverNegRotate2 : Svg.Attribute msg
+lgHoverNegRotate2 =
+    A.class "lg:hover:-rotate-2"
+
+
+lgHoverNegRotate1 : Svg.Attribute msg
+lgHoverNegRotate1 =
+    A.class "lg:hover:-rotate-1"
+
+
 lgFocusRotate0 : Svg.Attribute msg
 lgFocusRotate0 =
     A.class "lg:focus:rotate-0"
+
+
+lgFocusRotate1 : Svg.Attribute msg
+lgFocusRotate1 =
+    A.class "lg:focus:rotate-1"
+
+
+lgFocusRotate2 : Svg.Attribute msg
+lgFocusRotate2 =
+    A.class "lg:focus:rotate-2"
+
+
+lgFocusRotate3 : Svg.Attribute msg
+lgFocusRotate3 =
+    A.class "lg:focus:rotate-3"
+
+
+lgFocusRotate6 : Svg.Attribute msg
+lgFocusRotate6 =
+    A.class "lg:focus:rotate-6"
+
+
+lgFocusRotate12 : Svg.Attribute msg
+lgFocusRotate12 =
+    A.class "lg:focus:rotate-12"
 
 
 lgFocusRotate45 : Svg.Attribute msg
@@ -67690,6 +92814,31 @@ lgFocusNegRotate90 =
 lgFocusNegRotate45 : Svg.Attribute msg
 lgFocusNegRotate45 =
     A.class "lg:focus:-rotate-45"
+
+
+lgFocusNegRotate12 : Svg.Attribute msg
+lgFocusNegRotate12 =
+    A.class "lg:focus:-rotate-12"
+
+
+lgFocusNegRotate6 : Svg.Attribute msg
+lgFocusNegRotate6 =
+    A.class "lg:focus:-rotate-6"
+
+
+lgFocusNegRotate3 : Svg.Attribute msg
+lgFocusNegRotate3 =
+    A.class "lg:focus:-rotate-3"
+
+
+lgFocusNegRotate2 : Svg.Attribute msg
+lgFocusNegRotate2 =
+    A.class "lg:focus:-rotate-2"
+
+
+lgFocusNegRotate1 : Svg.Attribute msg
+lgFocusNegRotate1 =
+    A.class "lg:focus:-rotate-1"
 
 
 lgTranslateX0 : Svg.Attribute msg
@@ -68927,6 +94076,16 @@ lgSkewX0 =
     A.class "lg:skew-x-0"
 
 
+lgSkewX1 : Svg.Attribute msg
+lgSkewX1 =
+    A.class "lg:skew-x-1"
+
+
+lgSkewX2 : Svg.Attribute msg
+lgSkewX2 =
+    A.class "lg:skew-x-2"
+
+
 lgSkewX3 : Svg.Attribute msg
 lgSkewX3 =
     A.class "lg:skew-x-3"
@@ -68957,9 +94116,29 @@ lgNegSkewX3 =
     A.class "lg:-skew-x-3"
 
 
+lgNegSkewX2 : Svg.Attribute msg
+lgNegSkewX2 =
+    A.class "lg:-skew-x-2"
+
+
+lgNegSkewX1 : Svg.Attribute msg
+lgNegSkewX1 =
+    A.class "lg:-skew-x-1"
+
+
 lgSkewY0 : Svg.Attribute msg
 lgSkewY0 =
     A.class "lg:skew-y-0"
+
+
+lgSkewY1 : Svg.Attribute msg
+lgSkewY1 =
+    A.class "lg:skew-y-1"
+
+
+lgSkewY2 : Svg.Attribute msg
+lgSkewY2 =
+    A.class "lg:skew-y-2"
 
 
 lgSkewY3 : Svg.Attribute msg
@@ -68992,9 +94171,29 @@ lgNegSkewY3 =
     A.class "lg:-skew-y-3"
 
 
+lgNegSkewY2 : Svg.Attribute msg
+lgNegSkewY2 =
+    A.class "lg:-skew-y-2"
+
+
+lgNegSkewY1 : Svg.Attribute msg
+lgNegSkewY1 =
+    A.class "lg:-skew-y-1"
+
+
 lgHoverSkewX0 : Svg.Attribute msg
 lgHoverSkewX0 =
     A.class "lg:hover:skew-x-0"
+
+
+lgHoverSkewX1 : Svg.Attribute msg
+lgHoverSkewX1 =
+    A.class "lg:hover:skew-x-1"
+
+
+lgHoverSkewX2 : Svg.Attribute msg
+lgHoverSkewX2 =
+    A.class "lg:hover:skew-x-2"
 
 
 lgHoverSkewX3 : Svg.Attribute msg
@@ -69027,9 +94226,29 @@ lgHoverNegSkewX3 =
     A.class "lg:hover:-skew-x-3"
 
 
+lgHoverNegSkewX2 : Svg.Attribute msg
+lgHoverNegSkewX2 =
+    A.class "lg:hover:-skew-x-2"
+
+
+lgHoverNegSkewX1 : Svg.Attribute msg
+lgHoverNegSkewX1 =
+    A.class "lg:hover:-skew-x-1"
+
+
 lgHoverSkewY0 : Svg.Attribute msg
 lgHoverSkewY0 =
     A.class "lg:hover:skew-y-0"
+
+
+lgHoverSkewY1 : Svg.Attribute msg
+lgHoverSkewY1 =
+    A.class "lg:hover:skew-y-1"
+
+
+lgHoverSkewY2 : Svg.Attribute msg
+lgHoverSkewY2 =
+    A.class "lg:hover:skew-y-2"
 
 
 lgHoverSkewY3 : Svg.Attribute msg
@@ -69062,9 +94281,29 @@ lgHoverNegSkewY3 =
     A.class "lg:hover:-skew-y-3"
 
 
+lgHoverNegSkewY2 : Svg.Attribute msg
+lgHoverNegSkewY2 =
+    A.class "lg:hover:-skew-y-2"
+
+
+lgHoverNegSkewY1 : Svg.Attribute msg
+lgHoverNegSkewY1 =
+    A.class "lg:hover:-skew-y-1"
+
+
 lgFocusSkewX0 : Svg.Attribute msg
 lgFocusSkewX0 =
     A.class "lg:focus:skew-x-0"
+
+
+lgFocusSkewX1 : Svg.Attribute msg
+lgFocusSkewX1 =
+    A.class "lg:focus:skew-x-1"
+
+
+lgFocusSkewX2 : Svg.Attribute msg
+lgFocusSkewX2 =
+    A.class "lg:focus:skew-x-2"
 
 
 lgFocusSkewX3 : Svg.Attribute msg
@@ -69097,9 +94336,29 @@ lgFocusNegSkewX3 =
     A.class "lg:focus:-skew-x-3"
 
 
+lgFocusNegSkewX2 : Svg.Attribute msg
+lgFocusNegSkewX2 =
+    A.class "lg:focus:-skew-x-2"
+
+
+lgFocusNegSkewX1 : Svg.Attribute msg
+lgFocusNegSkewX1 =
+    A.class "lg:focus:-skew-x-1"
+
+
 lgFocusSkewY0 : Svg.Attribute msg
 lgFocusSkewY0 =
     A.class "lg:focus:skew-y-0"
+
+
+lgFocusSkewY1 : Svg.Attribute msg
+lgFocusSkewY1 =
+    A.class "lg:focus:skew-y-1"
+
+
+lgFocusSkewY2 : Svg.Attribute msg
+lgFocusSkewY2 =
+    A.class "lg:focus:skew-y-2"
 
 
 lgFocusSkewY3 : Svg.Attribute msg
@@ -69130,6 +94389,16 @@ lgFocusNegSkewY6 =
 lgFocusNegSkewY3 : Svg.Attribute msg
 lgFocusNegSkewY3 =
     A.class "lg:focus:-skew-y-3"
+
+
+lgFocusNegSkewY2 : Svg.Attribute msg
+lgFocusNegSkewY2 =
+    A.class "lg:focus:-skew-y-2"
+
+
+lgFocusNegSkewY1 : Svg.Attribute msg
+lgFocusNegSkewY1 =
+    A.class "lg:focus:-skew-y-1"
 
 
 lgTransitionNone : Svg.Attribute msg
@@ -69265,6 +94534,36 @@ lgDelay700 =
 lgDelay1000 : Svg.Attribute msg
 lgDelay1000 =
     A.class "lg:delay-1000"
+
+
+lgAnimateNone : Svg.Attribute msg
+lgAnimateNone =
+    A.class "lg:animate-none"
+
+
+lgAnimateSpin : Svg.Attribute msg
+lgAnimateSpin =
+    A.class "lg:animate-spin"
+
+
+lgAnimatePing : Svg.Attribute msg
+lgAnimatePing =
+    A.class "lg:animate-ping"
+
+
+lgAnimatePulse : Svg.Attribute msg
+lgAnimatePulse =
+    A.class "lg:animate-pulse"
+
+
+lgAnimateBounce : Svg.Attribute msg
+lgAnimateBounce =
+    A.class "lg:animate-bounce"
+
+
+xlContainer : Svg.Attribute msg
+xlContainer =
+    A.class "xl:container"
 
 
 xlSpaceY0 : Svg.Attribute msg
@@ -70177,6 +95476,31 @@ xlDividePink900 =
     A.class "xl:divide-pink-900"
 
 
+xlDivideSolid : Svg.Attribute msg
+xlDivideSolid =
+    A.class "xl:divide-solid"
+
+
+xlDivideDashed : Svg.Attribute msg
+xlDivideDashed =
+    A.class "xl:divide-dashed"
+
+
+xlDivideDotted : Svg.Attribute msg
+xlDivideDotted =
+    A.class "xl:divide-dotted"
+
+
+xlDivideDouble : Svg.Attribute msg
+xlDivideDouble =
+    A.class "xl:divide-double"
+
+
+xlDivideNone : Svg.Attribute msg
+xlDivideNone =
+    A.class "xl:divide-none"
+
+
 xlDivideOpacity0 : Svg.Attribute msg
 xlDivideOpacity0 =
     A.class "xl:divide-opacity-0"
@@ -70240,6 +95564,26 @@ xlBgLocal =
 xlBgScroll : Svg.Attribute msg
 xlBgScroll =
     A.class "xl:bg-scroll"
+
+
+xlBgClipBorder : Svg.Attribute msg
+xlBgClipBorder =
+    A.class "xl:bg-clip-border"
+
+
+xlBgClipPadding : Svg.Attribute msg
+xlBgClipPadding =
+    A.class "xl:bg-clip-padding"
+
+
+xlBgClipContent : Svg.Attribute msg
+xlBgClipContent =
+    A.class "xl:bg-clip-content"
+
+
+xlBgClipText : Svg.Attribute msg
+xlBgClipText =
+    A.class "xl:bg-clip-text"
 
 
 xlBgTransparent : Svg.Attribute msg
@@ -71650,6 +96994,4281 @@ xlFocusBgPink800 =
 xlFocusBgPink900 : Svg.Attribute msg
 xlFocusBgPink900 =
     A.class "xl:focus:bg-pink-900"
+
+
+xlBgNone : Svg.Attribute msg
+xlBgNone =
+    A.class "xl:bg-none"
+
+
+xlBgGradientToT : Svg.Attribute msg
+xlBgGradientToT =
+    A.class "xl:bg-gradient-to-t"
+
+
+xlBgGradientToTr : Svg.Attribute msg
+xlBgGradientToTr =
+    A.class "xl:bg-gradient-to-tr"
+
+
+xlBgGradientToR : Svg.Attribute msg
+xlBgGradientToR =
+    A.class "xl:bg-gradient-to-r"
+
+
+xlBgGradientToBr : Svg.Attribute msg
+xlBgGradientToBr =
+    A.class "xl:bg-gradient-to-br"
+
+
+xlBgGradientToB : Svg.Attribute msg
+xlBgGradientToB =
+    A.class "xl:bg-gradient-to-b"
+
+
+xlBgGradientToBl : Svg.Attribute msg
+xlBgGradientToBl =
+    A.class "xl:bg-gradient-to-bl"
+
+
+xlBgGradientToL : Svg.Attribute msg
+xlBgGradientToL =
+    A.class "xl:bg-gradient-to-l"
+
+
+xlBgGradientToTl : Svg.Attribute msg
+xlBgGradientToTl =
+    A.class "xl:bg-gradient-to-tl"
+
+
+xlFromTransparent : Svg.Attribute msg
+xlFromTransparent =
+    A.class "xl:from-transparent"
+
+
+xlFromCurrent : Svg.Attribute msg
+xlFromCurrent =
+    A.class "xl:from-current"
+
+
+xlFromBlack : Svg.Attribute msg
+xlFromBlack =
+    A.class "xl:from-black"
+
+
+xlFromWhite : Svg.Attribute msg
+xlFromWhite =
+    A.class "xl:from-white"
+
+
+xlFromGray100 : Svg.Attribute msg
+xlFromGray100 =
+    A.class "xl:from-gray-100"
+
+
+xlFromGray200 : Svg.Attribute msg
+xlFromGray200 =
+    A.class "xl:from-gray-200"
+
+
+xlFromGray300 : Svg.Attribute msg
+xlFromGray300 =
+    A.class "xl:from-gray-300"
+
+
+xlFromGray400 : Svg.Attribute msg
+xlFromGray400 =
+    A.class "xl:from-gray-400"
+
+
+xlFromGray500 : Svg.Attribute msg
+xlFromGray500 =
+    A.class "xl:from-gray-500"
+
+
+xlFromGray600 : Svg.Attribute msg
+xlFromGray600 =
+    A.class "xl:from-gray-600"
+
+
+xlFromGray700 : Svg.Attribute msg
+xlFromGray700 =
+    A.class "xl:from-gray-700"
+
+
+xlFromGray800 : Svg.Attribute msg
+xlFromGray800 =
+    A.class "xl:from-gray-800"
+
+
+xlFromGray900 : Svg.Attribute msg
+xlFromGray900 =
+    A.class "xl:from-gray-900"
+
+
+xlFromRed100 : Svg.Attribute msg
+xlFromRed100 =
+    A.class "xl:from-red-100"
+
+
+xlFromRed200 : Svg.Attribute msg
+xlFromRed200 =
+    A.class "xl:from-red-200"
+
+
+xlFromRed300 : Svg.Attribute msg
+xlFromRed300 =
+    A.class "xl:from-red-300"
+
+
+xlFromRed400 : Svg.Attribute msg
+xlFromRed400 =
+    A.class "xl:from-red-400"
+
+
+xlFromRed500 : Svg.Attribute msg
+xlFromRed500 =
+    A.class "xl:from-red-500"
+
+
+xlFromRed600 : Svg.Attribute msg
+xlFromRed600 =
+    A.class "xl:from-red-600"
+
+
+xlFromRed700 : Svg.Attribute msg
+xlFromRed700 =
+    A.class "xl:from-red-700"
+
+
+xlFromRed800 : Svg.Attribute msg
+xlFromRed800 =
+    A.class "xl:from-red-800"
+
+
+xlFromRed900 : Svg.Attribute msg
+xlFromRed900 =
+    A.class "xl:from-red-900"
+
+
+xlFromOrange100 : Svg.Attribute msg
+xlFromOrange100 =
+    A.class "xl:from-orange-100"
+
+
+xlFromOrange200 : Svg.Attribute msg
+xlFromOrange200 =
+    A.class "xl:from-orange-200"
+
+
+xlFromOrange300 : Svg.Attribute msg
+xlFromOrange300 =
+    A.class "xl:from-orange-300"
+
+
+xlFromOrange400 : Svg.Attribute msg
+xlFromOrange400 =
+    A.class "xl:from-orange-400"
+
+
+xlFromOrange500 : Svg.Attribute msg
+xlFromOrange500 =
+    A.class "xl:from-orange-500"
+
+
+xlFromOrange600 : Svg.Attribute msg
+xlFromOrange600 =
+    A.class "xl:from-orange-600"
+
+
+xlFromOrange700 : Svg.Attribute msg
+xlFromOrange700 =
+    A.class "xl:from-orange-700"
+
+
+xlFromOrange800 : Svg.Attribute msg
+xlFromOrange800 =
+    A.class "xl:from-orange-800"
+
+
+xlFromOrange900 : Svg.Attribute msg
+xlFromOrange900 =
+    A.class "xl:from-orange-900"
+
+
+xlFromYellow100 : Svg.Attribute msg
+xlFromYellow100 =
+    A.class "xl:from-yellow-100"
+
+
+xlFromYellow200 : Svg.Attribute msg
+xlFromYellow200 =
+    A.class "xl:from-yellow-200"
+
+
+xlFromYellow300 : Svg.Attribute msg
+xlFromYellow300 =
+    A.class "xl:from-yellow-300"
+
+
+xlFromYellow400 : Svg.Attribute msg
+xlFromYellow400 =
+    A.class "xl:from-yellow-400"
+
+
+xlFromYellow500 : Svg.Attribute msg
+xlFromYellow500 =
+    A.class "xl:from-yellow-500"
+
+
+xlFromYellow600 : Svg.Attribute msg
+xlFromYellow600 =
+    A.class "xl:from-yellow-600"
+
+
+xlFromYellow700 : Svg.Attribute msg
+xlFromYellow700 =
+    A.class "xl:from-yellow-700"
+
+
+xlFromYellow800 : Svg.Attribute msg
+xlFromYellow800 =
+    A.class "xl:from-yellow-800"
+
+
+xlFromYellow900 : Svg.Attribute msg
+xlFromYellow900 =
+    A.class "xl:from-yellow-900"
+
+
+xlFromGreen100 : Svg.Attribute msg
+xlFromGreen100 =
+    A.class "xl:from-green-100"
+
+
+xlFromGreen200 : Svg.Attribute msg
+xlFromGreen200 =
+    A.class "xl:from-green-200"
+
+
+xlFromGreen300 : Svg.Attribute msg
+xlFromGreen300 =
+    A.class "xl:from-green-300"
+
+
+xlFromGreen400 : Svg.Attribute msg
+xlFromGreen400 =
+    A.class "xl:from-green-400"
+
+
+xlFromGreen500 : Svg.Attribute msg
+xlFromGreen500 =
+    A.class "xl:from-green-500"
+
+
+xlFromGreen600 : Svg.Attribute msg
+xlFromGreen600 =
+    A.class "xl:from-green-600"
+
+
+xlFromGreen700 : Svg.Attribute msg
+xlFromGreen700 =
+    A.class "xl:from-green-700"
+
+
+xlFromGreen800 : Svg.Attribute msg
+xlFromGreen800 =
+    A.class "xl:from-green-800"
+
+
+xlFromGreen900 : Svg.Attribute msg
+xlFromGreen900 =
+    A.class "xl:from-green-900"
+
+
+xlFromTeal100 : Svg.Attribute msg
+xlFromTeal100 =
+    A.class "xl:from-teal-100"
+
+
+xlFromTeal200 : Svg.Attribute msg
+xlFromTeal200 =
+    A.class "xl:from-teal-200"
+
+
+xlFromTeal300 : Svg.Attribute msg
+xlFromTeal300 =
+    A.class "xl:from-teal-300"
+
+
+xlFromTeal400 : Svg.Attribute msg
+xlFromTeal400 =
+    A.class "xl:from-teal-400"
+
+
+xlFromTeal500 : Svg.Attribute msg
+xlFromTeal500 =
+    A.class "xl:from-teal-500"
+
+
+xlFromTeal600 : Svg.Attribute msg
+xlFromTeal600 =
+    A.class "xl:from-teal-600"
+
+
+xlFromTeal700 : Svg.Attribute msg
+xlFromTeal700 =
+    A.class "xl:from-teal-700"
+
+
+xlFromTeal800 : Svg.Attribute msg
+xlFromTeal800 =
+    A.class "xl:from-teal-800"
+
+
+xlFromTeal900 : Svg.Attribute msg
+xlFromTeal900 =
+    A.class "xl:from-teal-900"
+
+
+xlFromBlue100 : Svg.Attribute msg
+xlFromBlue100 =
+    A.class "xl:from-blue-100"
+
+
+xlFromBlue200 : Svg.Attribute msg
+xlFromBlue200 =
+    A.class "xl:from-blue-200"
+
+
+xlFromBlue300 : Svg.Attribute msg
+xlFromBlue300 =
+    A.class "xl:from-blue-300"
+
+
+xlFromBlue400 : Svg.Attribute msg
+xlFromBlue400 =
+    A.class "xl:from-blue-400"
+
+
+xlFromBlue500 : Svg.Attribute msg
+xlFromBlue500 =
+    A.class "xl:from-blue-500"
+
+
+xlFromBlue600 : Svg.Attribute msg
+xlFromBlue600 =
+    A.class "xl:from-blue-600"
+
+
+xlFromBlue700 : Svg.Attribute msg
+xlFromBlue700 =
+    A.class "xl:from-blue-700"
+
+
+xlFromBlue800 : Svg.Attribute msg
+xlFromBlue800 =
+    A.class "xl:from-blue-800"
+
+
+xlFromBlue900 : Svg.Attribute msg
+xlFromBlue900 =
+    A.class "xl:from-blue-900"
+
+
+xlFromIndigo100 : Svg.Attribute msg
+xlFromIndigo100 =
+    A.class "xl:from-indigo-100"
+
+
+xlFromIndigo200 : Svg.Attribute msg
+xlFromIndigo200 =
+    A.class "xl:from-indigo-200"
+
+
+xlFromIndigo300 : Svg.Attribute msg
+xlFromIndigo300 =
+    A.class "xl:from-indigo-300"
+
+
+xlFromIndigo400 : Svg.Attribute msg
+xlFromIndigo400 =
+    A.class "xl:from-indigo-400"
+
+
+xlFromIndigo500 : Svg.Attribute msg
+xlFromIndigo500 =
+    A.class "xl:from-indigo-500"
+
+
+xlFromIndigo600 : Svg.Attribute msg
+xlFromIndigo600 =
+    A.class "xl:from-indigo-600"
+
+
+xlFromIndigo700 : Svg.Attribute msg
+xlFromIndigo700 =
+    A.class "xl:from-indigo-700"
+
+
+xlFromIndigo800 : Svg.Attribute msg
+xlFromIndigo800 =
+    A.class "xl:from-indigo-800"
+
+
+xlFromIndigo900 : Svg.Attribute msg
+xlFromIndigo900 =
+    A.class "xl:from-indigo-900"
+
+
+xlFromPurple100 : Svg.Attribute msg
+xlFromPurple100 =
+    A.class "xl:from-purple-100"
+
+
+xlFromPurple200 : Svg.Attribute msg
+xlFromPurple200 =
+    A.class "xl:from-purple-200"
+
+
+xlFromPurple300 : Svg.Attribute msg
+xlFromPurple300 =
+    A.class "xl:from-purple-300"
+
+
+xlFromPurple400 : Svg.Attribute msg
+xlFromPurple400 =
+    A.class "xl:from-purple-400"
+
+
+xlFromPurple500 : Svg.Attribute msg
+xlFromPurple500 =
+    A.class "xl:from-purple-500"
+
+
+xlFromPurple600 : Svg.Attribute msg
+xlFromPurple600 =
+    A.class "xl:from-purple-600"
+
+
+xlFromPurple700 : Svg.Attribute msg
+xlFromPurple700 =
+    A.class "xl:from-purple-700"
+
+
+xlFromPurple800 : Svg.Attribute msg
+xlFromPurple800 =
+    A.class "xl:from-purple-800"
+
+
+xlFromPurple900 : Svg.Attribute msg
+xlFromPurple900 =
+    A.class "xl:from-purple-900"
+
+
+xlFromPink100 : Svg.Attribute msg
+xlFromPink100 =
+    A.class "xl:from-pink-100"
+
+
+xlFromPink200 : Svg.Attribute msg
+xlFromPink200 =
+    A.class "xl:from-pink-200"
+
+
+xlFromPink300 : Svg.Attribute msg
+xlFromPink300 =
+    A.class "xl:from-pink-300"
+
+
+xlFromPink400 : Svg.Attribute msg
+xlFromPink400 =
+    A.class "xl:from-pink-400"
+
+
+xlFromPink500 : Svg.Attribute msg
+xlFromPink500 =
+    A.class "xl:from-pink-500"
+
+
+xlFromPink600 : Svg.Attribute msg
+xlFromPink600 =
+    A.class "xl:from-pink-600"
+
+
+xlFromPink700 : Svg.Attribute msg
+xlFromPink700 =
+    A.class "xl:from-pink-700"
+
+
+xlFromPink800 : Svg.Attribute msg
+xlFromPink800 =
+    A.class "xl:from-pink-800"
+
+
+xlFromPink900 : Svg.Attribute msg
+xlFromPink900 =
+    A.class "xl:from-pink-900"
+
+
+xlViaTransparent : Svg.Attribute msg
+xlViaTransparent =
+    A.class "xl:via-transparent"
+
+
+xlViaCurrent : Svg.Attribute msg
+xlViaCurrent =
+    A.class "xl:via-current"
+
+
+xlViaBlack : Svg.Attribute msg
+xlViaBlack =
+    A.class "xl:via-black"
+
+
+xlViaWhite : Svg.Attribute msg
+xlViaWhite =
+    A.class "xl:via-white"
+
+
+xlViaGray100 : Svg.Attribute msg
+xlViaGray100 =
+    A.class "xl:via-gray-100"
+
+
+xlViaGray200 : Svg.Attribute msg
+xlViaGray200 =
+    A.class "xl:via-gray-200"
+
+
+xlViaGray300 : Svg.Attribute msg
+xlViaGray300 =
+    A.class "xl:via-gray-300"
+
+
+xlViaGray400 : Svg.Attribute msg
+xlViaGray400 =
+    A.class "xl:via-gray-400"
+
+
+xlViaGray500 : Svg.Attribute msg
+xlViaGray500 =
+    A.class "xl:via-gray-500"
+
+
+xlViaGray600 : Svg.Attribute msg
+xlViaGray600 =
+    A.class "xl:via-gray-600"
+
+
+xlViaGray700 : Svg.Attribute msg
+xlViaGray700 =
+    A.class "xl:via-gray-700"
+
+
+xlViaGray800 : Svg.Attribute msg
+xlViaGray800 =
+    A.class "xl:via-gray-800"
+
+
+xlViaGray900 : Svg.Attribute msg
+xlViaGray900 =
+    A.class "xl:via-gray-900"
+
+
+xlViaRed100 : Svg.Attribute msg
+xlViaRed100 =
+    A.class "xl:via-red-100"
+
+
+xlViaRed200 : Svg.Attribute msg
+xlViaRed200 =
+    A.class "xl:via-red-200"
+
+
+xlViaRed300 : Svg.Attribute msg
+xlViaRed300 =
+    A.class "xl:via-red-300"
+
+
+xlViaRed400 : Svg.Attribute msg
+xlViaRed400 =
+    A.class "xl:via-red-400"
+
+
+xlViaRed500 : Svg.Attribute msg
+xlViaRed500 =
+    A.class "xl:via-red-500"
+
+
+xlViaRed600 : Svg.Attribute msg
+xlViaRed600 =
+    A.class "xl:via-red-600"
+
+
+xlViaRed700 : Svg.Attribute msg
+xlViaRed700 =
+    A.class "xl:via-red-700"
+
+
+xlViaRed800 : Svg.Attribute msg
+xlViaRed800 =
+    A.class "xl:via-red-800"
+
+
+xlViaRed900 : Svg.Attribute msg
+xlViaRed900 =
+    A.class "xl:via-red-900"
+
+
+xlViaOrange100 : Svg.Attribute msg
+xlViaOrange100 =
+    A.class "xl:via-orange-100"
+
+
+xlViaOrange200 : Svg.Attribute msg
+xlViaOrange200 =
+    A.class "xl:via-orange-200"
+
+
+xlViaOrange300 : Svg.Attribute msg
+xlViaOrange300 =
+    A.class "xl:via-orange-300"
+
+
+xlViaOrange400 : Svg.Attribute msg
+xlViaOrange400 =
+    A.class "xl:via-orange-400"
+
+
+xlViaOrange500 : Svg.Attribute msg
+xlViaOrange500 =
+    A.class "xl:via-orange-500"
+
+
+xlViaOrange600 : Svg.Attribute msg
+xlViaOrange600 =
+    A.class "xl:via-orange-600"
+
+
+xlViaOrange700 : Svg.Attribute msg
+xlViaOrange700 =
+    A.class "xl:via-orange-700"
+
+
+xlViaOrange800 : Svg.Attribute msg
+xlViaOrange800 =
+    A.class "xl:via-orange-800"
+
+
+xlViaOrange900 : Svg.Attribute msg
+xlViaOrange900 =
+    A.class "xl:via-orange-900"
+
+
+xlViaYellow100 : Svg.Attribute msg
+xlViaYellow100 =
+    A.class "xl:via-yellow-100"
+
+
+xlViaYellow200 : Svg.Attribute msg
+xlViaYellow200 =
+    A.class "xl:via-yellow-200"
+
+
+xlViaYellow300 : Svg.Attribute msg
+xlViaYellow300 =
+    A.class "xl:via-yellow-300"
+
+
+xlViaYellow400 : Svg.Attribute msg
+xlViaYellow400 =
+    A.class "xl:via-yellow-400"
+
+
+xlViaYellow500 : Svg.Attribute msg
+xlViaYellow500 =
+    A.class "xl:via-yellow-500"
+
+
+xlViaYellow600 : Svg.Attribute msg
+xlViaYellow600 =
+    A.class "xl:via-yellow-600"
+
+
+xlViaYellow700 : Svg.Attribute msg
+xlViaYellow700 =
+    A.class "xl:via-yellow-700"
+
+
+xlViaYellow800 : Svg.Attribute msg
+xlViaYellow800 =
+    A.class "xl:via-yellow-800"
+
+
+xlViaYellow900 : Svg.Attribute msg
+xlViaYellow900 =
+    A.class "xl:via-yellow-900"
+
+
+xlViaGreen100 : Svg.Attribute msg
+xlViaGreen100 =
+    A.class "xl:via-green-100"
+
+
+xlViaGreen200 : Svg.Attribute msg
+xlViaGreen200 =
+    A.class "xl:via-green-200"
+
+
+xlViaGreen300 : Svg.Attribute msg
+xlViaGreen300 =
+    A.class "xl:via-green-300"
+
+
+xlViaGreen400 : Svg.Attribute msg
+xlViaGreen400 =
+    A.class "xl:via-green-400"
+
+
+xlViaGreen500 : Svg.Attribute msg
+xlViaGreen500 =
+    A.class "xl:via-green-500"
+
+
+xlViaGreen600 : Svg.Attribute msg
+xlViaGreen600 =
+    A.class "xl:via-green-600"
+
+
+xlViaGreen700 : Svg.Attribute msg
+xlViaGreen700 =
+    A.class "xl:via-green-700"
+
+
+xlViaGreen800 : Svg.Attribute msg
+xlViaGreen800 =
+    A.class "xl:via-green-800"
+
+
+xlViaGreen900 : Svg.Attribute msg
+xlViaGreen900 =
+    A.class "xl:via-green-900"
+
+
+xlViaTeal100 : Svg.Attribute msg
+xlViaTeal100 =
+    A.class "xl:via-teal-100"
+
+
+xlViaTeal200 : Svg.Attribute msg
+xlViaTeal200 =
+    A.class "xl:via-teal-200"
+
+
+xlViaTeal300 : Svg.Attribute msg
+xlViaTeal300 =
+    A.class "xl:via-teal-300"
+
+
+xlViaTeal400 : Svg.Attribute msg
+xlViaTeal400 =
+    A.class "xl:via-teal-400"
+
+
+xlViaTeal500 : Svg.Attribute msg
+xlViaTeal500 =
+    A.class "xl:via-teal-500"
+
+
+xlViaTeal600 : Svg.Attribute msg
+xlViaTeal600 =
+    A.class "xl:via-teal-600"
+
+
+xlViaTeal700 : Svg.Attribute msg
+xlViaTeal700 =
+    A.class "xl:via-teal-700"
+
+
+xlViaTeal800 : Svg.Attribute msg
+xlViaTeal800 =
+    A.class "xl:via-teal-800"
+
+
+xlViaTeal900 : Svg.Attribute msg
+xlViaTeal900 =
+    A.class "xl:via-teal-900"
+
+
+xlViaBlue100 : Svg.Attribute msg
+xlViaBlue100 =
+    A.class "xl:via-blue-100"
+
+
+xlViaBlue200 : Svg.Attribute msg
+xlViaBlue200 =
+    A.class "xl:via-blue-200"
+
+
+xlViaBlue300 : Svg.Attribute msg
+xlViaBlue300 =
+    A.class "xl:via-blue-300"
+
+
+xlViaBlue400 : Svg.Attribute msg
+xlViaBlue400 =
+    A.class "xl:via-blue-400"
+
+
+xlViaBlue500 : Svg.Attribute msg
+xlViaBlue500 =
+    A.class "xl:via-blue-500"
+
+
+xlViaBlue600 : Svg.Attribute msg
+xlViaBlue600 =
+    A.class "xl:via-blue-600"
+
+
+xlViaBlue700 : Svg.Attribute msg
+xlViaBlue700 =
+    A.class "xl:via-blue-700"
+
+
+xlViaBlue800 : Svg.Attribute msg
+xlViaBlue800 =
+    A.class "xl:via-blue-800"
+
+
+xlViaBlue900 : Svg.Attribute msg
+xlViaBlue900 =
+    A.class "xl:via-blue-900"
+
+
+xlViaIndigo100 : Svg.Attribute msg
+xlViaIndigo100 =
+    A.class "xl:via-indigo-100"
+
+
+xlViaIndigo200 : Svg.Attribute msg
+xlViaIndigo200 =
+    A.class "xl:via-indigo-200"
+
+
+xlViaIndigo300 : Svg.Attribute msg
+xlViaIndigo300 =
+    A.class "xl:via-indigo-300"
+
+
+xlViaIndigo400 : Svg.Attribute msg
+xlViaIndigo400 =
+    A.class "xl:via-indigo-400"
+
+
+xlViaIndigo500 : Svg.Attribute msg
+xlViaIndigo500 =
+    A.class "xl:via-indigo-500"
+
+
+xlViaIndigo600 : Svg.Attribute msg
+xlViaIndigo600 =
+    A.class "xl:via-indigo-600"
+
+
+xlViaIndigo700 : Svg.Attribute msg
+xlViaIndigo700 =
+    A.class "xl:via-indigo-700"
+
+
+xlViaIndigo800 : Svg.Attribute msg
+xlViaIndigo800 =
+    A.class "xl:via-indigo-800"
+
+
+xlViaIndigo900 : Svg.Attribute msg
+xlViaIndigo900 =
+    A.class "xl:via-indigo-900"
+
+
+xlViaPurple100 : Svg.Attribute msg
+xlViaPurple100 =
+    A.class "xl:via-purple-100"
+
+
+xlViaPurple200 : Svg.Attribute msg
+xlViaPurple200 =
+    A.class "xl:via-purple-200"
+
+
+xlViaPurple300 : Svg.Attribute msg
+xlViaPurple300 =
+    A.class "xl:via-purple-300"
+
+
+xlViaPurple400 : Svg.Attribute msg
+xlViaPurple400 =
+    A.class "xl:via-purple-400"
+
+
+xlViaPurple500 : Svg.Attribute msg
+xlViaPurple500 =
+    A.class "xl:via-purple-500"
+
+
+xlViaPurple600 : Svg.Attribute msg
+xlViaPurple600 =
+    A.class "xl:via-purple-600"
+
+
+xlViaPurple700 : Svg.Attribute msg
+xlViaPurple700 =
+    A.class "xl:via-purple-700"
+
+
+xlViaPurple800 : Svg.Attribute msg
+xlViaPurple800 =
+    A.class "xl:via-purple-800"
+
+
+xlViaPurple900 : Svg.Attribute msg
+xlViaPurple900 =
+    A.class "xl:via-purple-900"
+
+
+xlViaPink100 : Svg.Attribute msg
+xlViaPink100 =
+    A.class "xl:via-pink-100"
+
+
+xlViaPink200 : Svg.Attribute msg
+xlViaPink200 =
+    A.class "xl:via-pink-200"
+
+
+xlViaPink300 : Svg.Attribute msg
+xlViaPink300 =
+    A.class "xl:via-pink-300"
+
+
+xlViaPink400 : Svg.Attribute msg
+xlViaPink400 =
+    A.class "xl:via-pink-400"
+
+
+xlViaPink500 : Svg.Attribute msg
+xlViaPink500 =
+    A.class "xl:via-pink-500"
+
+
+xlViaPink600 : Svg.Attribute msg
+xlViaPink600 =
+    A.class "xl:via-pink-600"
+
+
+xlViaPink700 : Svg.Attribute msg
+xlViaPink700 =
+    A.class "xl:via-pink-700"
+
+
+xlViaPink800 : Svg.Attribute msg
+xlViaPink800 =
+    A.class "xl:via-pink-800"
+
+
+xlViaPink900 : Svg.Attribute msg
+xlViaPink900 =
+    A.class "xl:via-pink-900"
+
+
+xlToTransparent : Svg.Attribute msg
+xlToTransparent =
+    A.class "xl:to-transparent"
+
+
+xlToCurrent : Svg.Attribute msg
+xlToCurrent =
+    A.class "xl:to-current"
+
+
+xlToBlack : Svg.Attribute msg
+xlToBlack =
+    A.class "xl:to-black"
+
+
+xlToWhite : Svg.Attribute msg
+xlToWhite =
+    A.class "xl:to-white"
+
+
+xlToGray100 : Svg.Attribute msg
+xlToGray100 =
+    A.class "xl:to-gray-100"
+
+
+xlToGray200 : Svg.Attribute msg
+xlToGray200 =
+    A.class "xl:to-gray-200"
+
+
+xlToGray300 : Svg.Attribute msg
+xlToGray300 =
+    A.class "xl:to-gray-300"
+
+
+xlToGray400 : Svg.Attribute msg
+xlToGray400 =
+    A.class "xl:to-gray-400"
+
+
+xlToGray500 : Svg.Attribute msg
+xlToGray500 =
+    A.class "xl:to-gray-500"
+
+
+xlToGray600 : Svg.Attribute msg
+xlToGray600 =
+    A.class "xl:to-gray-600"
+
+
+xlToGray700 : Svg.Attribute msg
+xlToGray700 =
+    A.class "xl:to-gray-700"
+
+
+xlToGray800 : Svg.Attribute msg
+xlToGray800 =
+    A.class "xl:to-gray-800"
+
+
+xlToGray900 : Svg.Attribute msg
+xlToGray900 =
+    A.class "xl:to-gray-900"
+
+
+xlToRed100 : Svg.Attribute msg
+xlToRed100 =
+    A.class "xl:to-red-100"
+
+
+xlToRed200 : Svg.Attribute msg
+xlToRed200 =
+    A.class "xl:to-red-200"
+
+
+xlToRed300 : Svg.Attribute msg
+xlToRed300 =
+    A.class "xl:to-red-300"
+
+
+xlToRed400 : Svg.Attribute msg
+xlToRed400 =
+    A.class "xl:to-red-400"
+
+
+xlToRed500 : Svg.Attribute msg
+xlToRed500 =
+    A.class "xl:to-red-500"
+
+
+xlToRed600 : Svg.Attribute msg
+xlToRed600 =
+    A.class "xl:to-red-600"
+
+
+xlToRed700 : Svg.Attribute msg
+xlToRed700 =
+    A.class "xl:to-red-700"
+
+
+xlToRed800 : Svg.Attribute msg
+xlToRed800 =
+    A.class "xl:to-red-800"
+
+
+xlToRed900 : Svg.Attribute msg
+xlToRed900 =
+    A.class "xl:to-red-900"
+
+
+xlToOrange100 : Svg.Attribute msg
+xlToOrange100 =
+    A.class "xl:to-orange-100"
+
+
+xlToOrange200 : Svg.Attribute msg
+xlToOrange200 =
+    A.class "xl:to-orange-200"
+
+
+xlToOrange300 : Svg.Attribute msg
+xlToOrange300 =
+    A.class "xl:to-orange-300"
+
+
+xlToOrange400 : Svg.Attribute msg
+xlToOrange400 =
+    A.class "xl:to-orange-400"
+
+
+xlToOrange500 : Svg.Attribute msg
+xlToOrange500 =
+    A.class "xl:to-orange-500"
+
+
+xlToOrange600 : Svg.Attribute msg
+xlToOrange600 =
+    A.class "xl:to-orange-600"
+
+
+xlToOrange700 : Svg.Attribute msg
+xlToOrange700 =
+    A.class "xl:to-orange-700"
+
+
+xlToOrange800 : Svg.Attribute msg
+xlToOrange800 =
+    A.class "xl:to-orange-800"
+
+
+xlToOrange900 : Svg.Attribute msg
+xlToOrange900 =
+    A.class "xl:to-orange-900"
+
+
+xlToYellow100 : Svg.Attribute msg
+xlToYellow100 =
+    A.class "xl:to-yellow-100"
+
+
+xlToYellow200 : Svg.Attribute msg
+xlToYellow200 =
+    A.class "xl:to-yellow-200"
+
+
+xlToYellow300 : Svg.Attribute msg
+xlToYellow300 =
+    A.class "xl:to-yellow-300"
+
+
+xlToYellow400 : Svg.Attribute msg
+xlToYellow400 =
+    A.class "xl:to-yellow-400"
+
+
+xlToYellow500 : Svg.Attribute msg
+xlToYellow500 =
+    A.class "xl:to-yellow-500"
+
+
+xlToYellow600 : Svg.Attribute msg
+xlToYellow600 =
+    A.class "xl:to-yellow-600"
+
+
+xlToYellow700 : Svg.Attribute msg
+xlToYellow700 =
+    A.class "xl:to-yellow-700"
+
+
+xlToYellow800 : Svg.Attribute msg
+xlToYellow800 =
+    A.class "xl:to-yellow-800"
+
+
+xlToYellow900 : Svg.Attribute msg
+xlToYellow900 =
+    A.class "xl:to-yellow-900"
+
+
+xlToGreen100 : Svg.Attribute msg
+xlToGreen100 =
+    A.class "xl:to-green-100"
+
+
+xlToGreen200 : Svg.Attribute msg
+xlToGreen200 =
+    A.class "xl:to-green-200"
+
+
+xlToGreen300 : Svg.Attribute msg
+xlToGreen300 =
+    A.class "xl:to-green-300"
+
+
+xlToGreen400 : Svg.Attribute msg
+xlToGreen400 =
+    A.class "xl:to-green-400"
+
+
+xlToGreen500 : Svg.Attribute msg
+xlToGreen500 =
+    A.class "xl:to-green-500"
+
+
+xlToGreen600 : Svg.Attribute msg
+xlToGreen600 =
+    A.class "xl:to-green-600"
+
+
+xlToGreen700 : Svg.Attribute msg
+xlToGreen700 =
+    A.class "xl:to-green-700"
+
+
+xlToGreen800 : Svg.Attribute msg
+xlToGreen800 =
+    A.class "xl:to-green-800"
+
+
+xlToGreen900 : Svg.Attribute msg
+xlToGreen900 =
+    A.class "xl:to-green-900"
+
+
+xlToTeal100 : Svg.Attribute msg
+xlToTeal100 =
+    A.class "xl:to-teal-100"
+
+
+xlToTeal200 : Svg.Attribute msg
+xlToTeal200 =
+    A.class "xl:to-teal-200"
+
+
+xlToTeal300 : Svg.Attribute msg
+xlToTeal300 =
+    A.class "xl:to-teal-300"
+
+
+xlToTeal400 : Svg.Attribute msg
+xlToTeal400 =
+    A.class "xl:to-teal-400"
+
+
+xlToTeal500 : Svg.Attribute msg
+xlToTeal500 =
+    A.class "xl:to-teal-500"
+
+
+xlToTeal600 : Svg.Attribute msg
+xlToTeal600 =
+    A.class "xl:to-teal-600"
+
+
+xlToTeal700 : Svg.Attribute msg
+xlToTeal700 =
+    A.class "xl:to-teal-700"
+
+
+xlToTeal800 : Svg.Attribute msg
+xlToTeal800 =
+    A.class "xl:to-teal-800"
+
+
+xlToTeal900 : Svg.Attribute msg
+xlToTeal900 =
+    A.class "xl:to-teal-900"
+
+
+xlToBlue100 : Svg.Attribute msg
+xlToBlue100 =
+    A.class "xl:to-blue-100"
+
+
+xlToBlue200 : Svg.Attribute msg
+xlToBlue200 =
+    A.class "xl:to-blue-200"
+
+
+xlToBlue300 : Svg.Attribute msg
+xlToBlue300 =
+    A.class "xl:to-blue-300"
+
+
+xlToBlue400 : Svg.Attribute msg
+xlToBlue400 =
+    A.class "xl:to-blue-400"
+
+
+xlToBlue500 : Svg.Attribute msg
+xlToBlue500 =
+    A.class "xl:to-blue-500"
+
+
+xlToBlue600 : Svg.Attribute msg
+xlToBlue600 =
+    A.class "xl:to-blue-600"
+
+
+xlToBlue700 : Svg.Attribute msg
+xlToBlue700 =
+    A.class "xl:to-blue-700"
+
+
+xlToBlue800 : Svg.Attribute msg
+xlToBlue800 =
+    A.class "xl:to-blue-800"
+
+
+xlToBlue900 : Svg.Attribute msg
+xlToBlue900 =
+    A.class "xl:to-blue-900"
+
+
+xlToIndigo100 : Svg.Attribute msg
+xlToIndigo100 =
+    A.class "xl:to-indigo-100"
+
+
+xlToIndigo200 : Svg.Attribute msg
+xlToIndigo200 =
+    A.class "xl:to-indigo-200"
+
+
+xlToIndigo300 : Svg.Attribute msg
+xlToIndigo300 =
+    A.class "xl:to-indigo-300"
+
+
+xlToIndigo400 : Svg.Attribute msg
+xlToIndigo400 =
+    A.class "xl:to-indigo-400"
+
+
+xlToIndigo500 : Svg.Attribute msg
+xlToIndigo500 =
+    A.class "xl:to-indigo-500"
+
+
+xlToIndigo600 : Svg.Attribute msg
+xlToIndigo600 =
+    A.class "xl:to-indigo-600"
+
+
+xlToIndigo700 : Svg.Attribute msg
+xlToIndigo700 =
+    A.class "xl:to-indigo-700"
+
+
+xlToIndigo800 : Svg.Attribute msg
+xlToIndigo800 =
+    A.class "xl:to-indigo-800"
+
+
+xlToIndigo900 : Svg.Attribute msg
+xlToIndigo900 =
+    A.class "xl:to-indigo-900"
+
+
+xlToPurple100 : Svg.Attribute msg
+xlToPurple100 =
+    A.class "xl:to-purple-100"
+
+
+xlToPurple200 : Svg.Attribute msg
+xlToPurple200 =
+    A.class "xl:to-purple-200"
+
+
+xlToPurple300 : Svg.Attribute msg
+xlToPurple300 =
+    A.class "xl:to-purple-300"
+
+
+xlToPurple400 : Svg.Attribute msg
+xlToPurple400 =
+    A.class "xl:to-purple-400"
+
+
+xlToPurple500 : Svg.Attribute msg
+xlToPurple500 =
+    A.class "xl:to-purple-500"
+
+
+xlToPurple600 : Svg.Attribute msg
+xlToPurple600 =
+    A.class "xl:to-purple-600"
+
+
+xlToPurple700 : Svg.Attribute msg
+xlToPurple700 =
+    A.class "xl:to-purple-700"
+
+
+xlToPurple800 : Svg.Attribute msg
+xlToPurple800 =
+    A.class "xl:to-purple-800"
+
+
+xlToPurple900 : Svg.Attribute msg
+xlToPurple900 =
+    A.class "xl:to-purple-900"
+
+
+xlToPink100 : Svg.Attribute msg
+xlToPink100 =
+    A.class "xl:to-pink-100"
+
+
+xlToPink200 : Svg.Attribute msg
+xlToPink200 =
+    A.class "xl:to-pink-200"
+
+
+xlToPink300 : Svg.Attribute msg
+xlToPink300 =
+    A.class "xl:to-pink-300"
+
+
+xlToPink400 : Svg.Attribute msg
+xlToPink400 =
+    A.class "xl:to-pink-400"
+
+
+xlToPink500 : Svg.Attribute msg
+xlToPink500 =
+    A.class "xl:to-pink-500"
+
+
+xlToPink600 : Svg.Attribute msg
+xlToPink600 =
+    A.class "xl:to-pink-600"
+
+
+xlToPink700 : Svg.Attribute msg
+xlToPink700 =
+    A.class "xl:to-pink-700"
+
+
+xlToPink800 : Svg.Attribute msg
+xlToPink800 =
+    A.class "xl:to-pink-800"
+
+
+xlToPink900 : Svg.Attribute msg
+xlToPink900 =
+    A.class "xl:to-pink-900"
+
+
+xlHoverFromTransparent : Svg.Attribute msg
+xlHoverFromTransparent =
+    A.class "xl:hover:from-transparent"
+
+
+xlHoverFromCurrent : Svg.Attribute msg
+xlHoverFromCurrent =
+    A.class "xl:hover:from-current"
+
+
+xlHoverFromBlack : Svg.Attribute msg
+xlHoverFromBlack =
+    A.class "xl:hover:from-black"
+
+
+xlHoverFromWhite : Svg.Attribute msg
+xlHoverFromWhite =
+    A.class "xl:hover:from-white"
+
+
+xlHoverFromGray100 : Svg.Attribute msg
+xlHoverFromGray100 =
+    A.class "xl:hover:from-gray-100"
+
+
+xlHoverFromGray200 : Svg.Attribute msg
+xlHoverFromGray200 =
+    A.class "xl:hover:from-gray-200"
+
+
+xlHoverFromGray300 : Svg.Attribute msg
+xlHoverFromGray300 =
+    A.class "xl:hover:from-gray-300"
+
+
+xlHoverFromGray400 : Svg.Attribute msg
+xlHoverFromGray400 =
+    A.class "xl:hover:from-gray-400"
+
+
+xlHoverFromGray500 : Svg.Attribute msg
+xlHoverFromGray500 =
+    A.class "xl:hover:from-gray-500"
+
+
+xlHoverFromGray600 : Svg.Attribute msg
+xlHoverFromGray600 =
+    A.class "xl:hover:from-gray-600"
+
+
+xlHoverFromGray700 : Svg.Attribute msg
+xlHoverFromGray700 =
+    A.class "xl:hover:from-gray-700"
+
+
+xlHoverFromGray800 : Svg.Attribute msg
+xlHoverFromGray800 =
+    A.class "xl:hover:from-gray-800"
+
+
+xlHoverFromGray900 : Svg.Attribute msg
+xlHoverFromGray900 =
+    A.class "xl:hover:from-gray-900"
+
+
+xlHoverFromRed100 : Svg.Attribute msg
+xlHoverFromRed100 =
+    A.class "xl:hover:from-red-100"
+
+
+xlHoverFromRed200 : Svg.Attribute msg
+xlHoverFromRed200 =
+    A.class "xl:hover:from-red-200"
+
+
+xlHoverFromRed300 : Svg.Attribute msg
+xlHoverFromRed300 =
+    A.class "xl:hover:from-red-300"
+
+
+xlHoverFromRed400 : Svg.Attribute msg
+xlHoverFromRed400 =
+    A.class "xl:hover:from-red-400"
+
+
+xlHoverFromRed500 : Svg.Attribute msg
+xlHoverFromRed500 =
+    A.class "xl:hover:from-red-500"
+
+
+xlHoverFromRed600 : Svg.Attribute msg
+xlHoverFromRed600 =
+    A.class "xl:hover:from-red-600"
+
+
+xlHoverFromRed700 : Svg.Attribute msg
+xlHoverFromRed700 =
+    A.class "xl:hover:from-red-700"
+
+
+xlHoverFromRed800 : Svg.Attribute msg
+xlHoverFromRed800 =
+    A.class "xl:hover:from-red-800"
+
+
+xlHoverFromRed900 : Svg.Attribute msg
+xlHoverFromRed900 =
+    A.class "xl:hover:from-red-900"
+
+
+xlHoverFromOrange100 : Svg.Attribute msg
+xlHoverFromOrange100 =
+    A.class "xl:hover:from-orange-100"
+
+
+xlHoverFromOrange200 : Svg.Attribute msg
+xlHoverFromOrange200 =
+    A.class "xl:hover:from-orange-200"
+
+
+xlHoverFromOrange300 : Svg.Attribute msg
+xlHoverFromOrange300 =
+    A.class "xl:hover:from-orange-300"
+
+
+xlHoverFromOrange400 : Svg.Attribute msg
+xlHoverFromOrange400 =
+    A.class "xl:hover:from-orange-400"
+
+
+xlHoverFromOrange500 : Svg.Attribute msg
+xlHoverFromOrange500 =
+    A.class "xl:hover:from-orange-500"
+
+
+xlHoverFromOrange600 : Svg.Attribute msg
+xlHoverFromOrange600 =
+    A.class "xl:hover:from-orange-600"
+
+
+xlHoverFromOrange700 : Svg.Attribute msg
+xlHoverFromOrange700 =
+    A.class "xl:hover:from-orange-700"
+
+
+xlHoverFromOrange800 : Svg.Attribute msg
+xlHoverFromOrange800 =
+    A.class "xl:hover:from-orange-800"
+
+
+xlHoverFromOrange900 : Svg.Attribute msg
+xlHoverFromOrange900 =
+    A.class "xl:hover:from-orange-900"
+
+
+xlHoverFromYellow100 : Svg.Attribute msg
+xlHoverFromYellow100 =
+    A.class "xl:hover:from-yellow-100"
+
+
+xlHoverFromYellow200 : Svg.Attribute msg
+xlHoverFromYellow200 =
+    A.class "xl:hover:from-yellow-200"
+
+
+xlHoverFromYellow300 : Svg.Attribute msg
+xlHoverFromYellow300 =
+    A.class "xl:hover:from-yellow-300"
+
+
+xlHoverFromYellow400 : Svg.Attribute msg
+xlHoverFromYellow400 =
+    A.class "xl:hover:from-yellow-400"
+
+
+xlHoverFromYellow500 : Svg.Attribute msg
+xlHoverFromYellow500 =
+    A.class "xl:hover:from-yellow-500"
+
+
+xlHoverFromYellow600 : Svg.Attribute msg
+xlHoverFromYellow600 =
+    A.class "xl:hover:from-yellow-600"
+
+
+xlHoverFromYellow700 : Svg.Attribute msg
+xlHoverFromYellow700 =
+    A.class "xl:hover:from-yellow-700"
+
+
+xlHoverFromYellow800 : Svg.Attribute msg
+xlHoverFromYellow800 =
+    A.class "xl:hover:from-yellow-800"
+
+
+xlHoverFromYellow900 : Svg.Attribute msg
+xlHoverFromYellow900 =
+    A.class "xl:hover:from-yellow-900"
+
+
+xlHoverFromGreen100 : Svg.Attribute msg
+xlHoverFromGreen100 =
+    A.class "xl:hover:from-green-100"
+
+
+xlHoverFromGreen200 : Svg.Attribute msg
+xlHoverFromGreen200 =
+    A.class "xl:hover:from-green-200"
+
+
+xlHoverFromGreen300 : Svg.Attribute msg
+xlHoverFromGreen300 =
+    A.class "xl:hover:from-green-300"
+
+
+xlHoverFromGreen400 : Svg.Attribute msg
+xlHoverFromGreen400 =
+    A.class "xl:hover:from-green-400"
+
+
+xlHoverFromGreen500 : Svg.Attribute msg
+xlHoverFromGreen500 =
+    A.class "xl:hover:from-green-500"
+
+
+xlHoverFromGreen600 : Svg.Attribute msg
+xlHoverFromGreen600 =
+    A.class "xl:hover:from-green-600"
+
+
+xlHoverFromGreen700 : Svg.Attribute msg
+xlHoverFromGreen700 =
+    A.class "xl:hover:from-green-700"
+
+
+xlHoverFromGreen800 : Svg.Attribute msg
+xlHoverFromGreen800 =
+    A.class "xl:hover:from-green-800"
+
+
+xlHoverFromGreen900 : Svg.Attribute msg
+xlHoverFromGreen900 =
+    A.class "xl:hover:from-green-900"
+
+
+xlHoverFromTeal100 : Svg.Attribute msg
+xlHoverFromTeal100 =
+    A.class "xl:hover:from-teal-100"
+
+
+xlHoverFromTeal200 : Svg.Attribute msg
+xlHoverFromTeal200 =
+    A.class "xl:hover:from-teal-200"
+
+
+xlHoverFromTeal300 : Svg.Attribute msg
+xlHoverFromTeal300 =
+    A.class "xl:hover:from-teal-300"
+
+
+xlHoverFromTeal400 : Svg.Attribute msg
+xlHoverFromTeal400 =
+    A.class "xl:hover:from-teal-400"
+
+
+xlHoverFromTeal500 : Svg.Attribute msg
+xlHoverFromTeal500 =
+    A.class "xl:hover:from-teal-500"
+
+
+xlHoverFromTeal600 : Svg.Attribute msg
+xlHoverFromTeal600 =
+    A.class "xl:hover:from-teal-600"
+
+
+xlHoverFromTeal700 : Svg.Attribute msg
+xlHoverFromTeal700 =
+    A.class "xl:hover:from-teal-700"
+
+
+xlHoverFromTeal800 : Svg.Attribute msg
+xlHoverFromTeal800 =
+    A.class "xl:hover:from-teal-800"
+
+
+xlHoverFromTeal900 : Svg.Attribute msg
+xlHoverFromTeal900 =
+    A.class "xl:hover:from-teal-900"
+
+
+xlHoverFromBlue100 : Svg.Attribute msg
+xlHoverFromBlue100 =
+    A.class "xl:hover:from-blue-100"
+
+
+xlHoverFromBlue200 : Svg.Attribute msg
+xlHoverFromBlue200 =
+    A.class "xl:hover:from-blue-200"
+
+
+xlHoverFromBlue300 : Svg.Attribute msg
+xlHoverFromBlue300 =
+    A.class "xl:hover:from-blue-300"
+
+
+xlHoverFromBlue400 : Svg.Attribute msg
+xlHoverFromBlue400 =
+    A.class "xl:hover:from-blue-400"
+
+
+xlHoverFromBlue500 : Svg.Attribute msg
+xlHoverFromBlue500 =
+    A.class "xl:hover:from-blue-500"
+
+
+xlHoverFromBlue600 : Svg.Attribute msg
+xlHoverFromBlue600 =
+    A.class "xl:hover:from-blue-600"
+
+
+xlHoverFromBlue700 : Svg.Attribute msg
+xlHoverFromBlue700 =
+    A.class "xl:hover:from-blue-700"
+
+
+xlHoverFromBlue800 : Svg.Attribute msg
+xlHoverFromBlue800 =
+    A.class "xl:hover:from-blue-800"
+
+
+xlHoverFromBlue900 : Svg.Attribute msg
+xlHoverFromBlue900 =
+    A.class "xl:hover:from-blue-900"
+
+
+xlHoverFromIndigo100 : Svg.Attribute msg
+xlHoverFromIndigo100 =
+    A.class "xl:hover:from-indigo-100"
+
+
+xlHoverFromIndigo200 : Svg.Attribute msg
+xlHoverFromIndigo200 =
+    A.class "xl:hover:from-indigo-200"
+
+
+xlHoverFromIndigo300 : Svg.Attribute msg
+xlHoverFromIndigo300 =
+    A.class "xl:hover:from-indigo-300"
+
+
+xlHoverFromIndigo400 : Svg.Attribute msg
+xlHoverFromIndigo400 =
+    A.class "xl:hover:from-indigo-400"
+
+
+xlHoverFromIndigo500 : Svg.Attribute msg
+xlHoverFromIndigo500 =
+    A.class "xl:hover:from-indigo-500"
+
+
+xlHoverFromIndigo600 : Svg.Attribute msg
+xlHoverFromIndigo600 =
+    A.class "xl:hover:from-indigo-600"
+
+
+xlHoverFromIndigo700 : Svg.Attribute msg
+xlHoverFromIndigo700 =
+    A.class "xl:hover:from-indigo-700"
+
+
+xlHoverFromIndigo800 : Svg.Attribute msg
+xlHoverFromIndigo800 =
+    A.class "xl:hover:from-indigo-800"
+
+
+xlHoverFromIndigo900 : Svg.Attribute msg
+xlHoverFromIndigo900 =
+    A.class "xl:hover:from-indigo-900"
+
+
+xlHoverFromPurple100 : Svg.Attribute msg
+xlHoverFromPurple100 =
+    A.class "xl:hover:from-purple-100"
+
+
+xlHoverFromPurple200 : Svg.Attribute msg
+xlHoverFromPurple200 =
+    A.class "xl:hover:from-purple-200"
+
+
+xlHoverFromPurple300 : Svg.Attribute msg
+xlHoverFromPurple300 =
+    A.class "xl:hover:from-purple-300"
+
+
+xlHoverFromPurple400 : Svg.Attribute msg
+xlHoverFromPurple400 =
+    A.class "xl:hover:from-purple-400"
+
+
+xlHoverFromPurple500 : Svg.Attribute msg
+xlHoverFromPurple500 =
+    A.class "xl:hover:from-purple-500"
+
+
+xlHoverFromPurple600 : Svg.Attribute msg
+xlHoverFromPurple600 =
+    A.class "xl:hover:from-purple-600"
+
+
+xlHoverFromPurple700 : Svg.Attribute msg
+xlHoverFromPurple700 =
+    A.class "xl:hover:from-purple-700"
+
+
+xlHoverFromPurple800 : Svg.Attribute msg
+xlHoverFromPurple800 =
+    A.class "xl:hover:from-purple-800"
+
+
+xlHoverFromPurple900 : Svg.Attribute msg
+xlHoverFromPurple900 =
+    A.class "xl:hover:from-purple-900"
+
+
+xlHoverFromPink100 : Svg.Attribute msg
+xlHoverFromPink100 =
+    A.class "xl:hover:from-pink-100"
+
+
+xlHoverFromPink200 : Svg.Attribute msg
+xlHoverFromPink200 =
+    A.class "xl:hover:from-pink-200"
+
+
+xlHoverFromPink300 : Svg.Attribute msg
+xlHoverFromPink300 =
+    A.class "xl:hover:from-pink-300"
+
+
+xlHoverFromPink400 : Svg.Attribute msg
+xlHoverFromPink400 =
+    A.class "xl:hover:from-pink-400"
+
+
+xlHoverFromPink500 : Svg.Attribute msg
+xlHoverFromPink500 =
+    A.class "xl:hover:from-pink-500"
+
+
+xlHoverFromPink600 : Svg.Attribute msg
+xlHoverFromPink600 =
+    A.class "xl:hover:from-pink-600"
+
+
+xlHoverFromPink700 : Svg.Attribute msg
+xlHoverFromPink700 =
+    A.class "xl:hover:from-pink-700"
+
+
+xlHoverFromPink800 : Svg.Attribute msg
+xlHoverFromPink800 =
+    A.class "xl:hover:from-pink-800"
+
+
+xlHoverFromPink900 : Svg.Attribute msg
+xlHoverFromPink900 =
+    A.class "xl:hover:from-pink-900"
+
+
+xlHoverViaTransparent : Svg.Attribute msg
+xlHoverViaTransparent =
+    A.class "xl:hover:via-transparent"
+
+
+xlHoverViaCurrent : Svg.Attribute msg
+xlHoverViaCurrent =
+    A.class "xl:hover:via-current"
+
+
+xlHoverViaBlack : Svg.Attribute msg
+xlHoverViaBlack =
+    A.class "xl:hover:via-black"
+
+
+xlHoverViaWhite : Svg.Attribute msg
+xlHoverViaWhite =
+    A.class "xl:hover:via-white"
+
+
+xlHoverViaGray100 : Svg.Attribute msg
+xlHoverViaGray100 =
+    A.class "xl:hover:via-gray-100"
+
+
+xlHoverViaGray200 : Svg.Attribute msg
+xlHoverViaGray200 =
+    A.class "xl:hover:via-gray-200"
+
+
+xlHoverViaGray300 : Svg.Attribute msg
+xlHoverViaGray300 =
+    A.class "xl:hover:via-gray-300"
+
+
+xlHoverViaGray400 : Svg.Attribute msg
+xlHoverViaGray400 =
+    A.class "xl:hover:via-gray-400"
+
+
+xlHoverViaGray500 : Svg.Attribute msg
+xlHoverViaGray500 =
+    A.class "xl:hover:via-gray-500"
+
+
+xlHoverViaGray600 : Svg.Attribute msg
+xlHoverViaGray600 =
+    A.class "xl:hover:via-gray-600"
+
+
+xlHoverViaGray700 : Svg.Attribute msg
+xlHoverViaGray700 =
+    A.class "xl:hover:via-gray-700"
+
+
+xlHoverViaGray800 : Svg.Attribute msg
+xlHoverViaGray800 =
+    A.class "xl:hover:via-gray-800"
+
+
+xlHoverViaGray900 : Svg.Attribute msg
+xlHoverViaGray900 =
+    A.class "xl:hover:via-gray-900"
+
+
+xlHoverViaRed100 : Svg.Attribute msg
+xlHoverViaRed100 =
+    A.class "xl:hover:via-red-100"
+
+
+xlHoverViaRed200 : Svg.Attribute msg
+xlHoverViaRed200 =
+    A.class "xl:hover:via-red-200"
+
+
+xlHoverViaRed300 : Svg.Attribute msg
+xlHoverViaRed300 =
+    A.class "xl:hover:via-red-300"
+
+
+xlHoverViaRed400 : Svg.Attribute msg
+xlHoverViaRed400 =
+    A.class "xl:hover:via-red-400"
+
+
+xlHoverViaRed500 : Svg.Attribute msg
+xlHoverViaRed500 =
+    A.class "xl:hover:via-red-500"
+
+
+xlHoverViaRed600 : Svg.Attribute msg
+xlHoverViaRed600 =
+    A.class "xl:hover:via-red-600"
+
+
+xlHoverViaRed700 : Svg.Attribute msg
+xlHoverViaRed700 =
+    A.class "xl:hover:via-red-700"
+
+
+xlHoverViaRed800 : Svg.Attribute msg
+xlHoverViaRed800 =
+    A.class "xl:hover:via-red-800"
+
+
+xlHoverViaRed900 : Svg.Attribute msg
+xlHoverViaRed900 =
+    A.class "xl:hover:via-red-900"
+
+
+xlHoverViaOrange100 : Svg.Attribute msg
+xlHoverViaOrange100 =
+    A.class "xl:hover:via-orange-100"
+
+
+xlHoverViaOrange200 : Svg.Attribute msg
+xlHoverViaOrange200 =
+    A.class "xl:hover:via-orange-200"
+
+
+xlHoverViaOrange300 : Svg.Attribute msg
+xlHoverViaOrange300 =
+    A.class "xl:hover:via-orange-300"
+
+
+xlHoverViaOrange400 : Svg.Attribute msg
+xlHoverViaOrange400 =
+    A.class "xl:hover:via-orange-400"
+
+
+xlHoverViaOrange500 : Svg.Attribute msg
+xlHoverViaOrange500 =
+    A.class "xl:hover:via-orange-500"
+
+
+xlHoverViaOrange600 : Svg.Attribute msg
+xlHoverViaOrange600 =
+    A.class "xl:hover:via-orange-600"
+
+
+xlHoverViaOrange700 : Svg.Attribute msg
+xlHoverViaOrange700 =
+    A.class "xl:hover:via-orange-700"
+
+
+xlHoverViaOrange800 : Svg.Attribute msg
+xlHoverViaOrange800 =
+    A.class "xl:hover:via-orange-800"
+
+
+xlHoverViaOrange900 : Svg.Attribute msg
+xlHoverViaOrange900 =
+    A.class "xl:hover:via-orange-900"
+
+
+xlHoverViaYellow100 : Svg.Attribute msg
+xlHoverViaYellow100 =
+    A.class "xl:hover:via-yellow-100"
+
+
+xlHoverViaYellow200 : Svg.Attribute msg
+xlHoverViaYellow200 =
+    A.class "xl:hover:via-yellow-200"
+
+
+xlHoverViaYellow300 : Svg.Attribute msg
+xlHoverViaYellow300 =
+    A.class "xl:hover:via-yellow-300"
+
+
+xlHoverViaYellow400 : Svg.Attribute msg
+xlHoverViaYellow400 =
+    A.class "xl:hover:via-yellow-400"
+
+
+xlHoverViaYellow500 : Svg.Attribute msg
+xlHoverViaYellow500 =
+    A.class "xl:hover:via-yellow-500"
+
+
+xlHoverViaYellow600 : Svg.Attribute msg
+xlHoverViaYellow600 =
+    A.class "xl:hover:via-yellow-600"
+
+
+xlHoverViaYellow700 : Svg.Attribute msg
+xlHoverViaYellow700 =
+    A.class "xl:hover:via-yellow-700"
+
+
+xlHoverViaYellow800 : Svg.Attribute msg
+xlHoverViaYellow800 =
+    A.class "xl:hover:via-yellow-800"
+
+
+xlHoverViaYellow900 : Svg.Attribute msg
+xlHoverViaYellow900 =
+    A.class "xl:hover:via-yellow-900"
+
+
+xlHoverViaGreen100 : Svg.Attribute msg
+xlHoverViaGreen100 =
+    A.class "xl:hover:via-green-100"
+
+
+xlHoverViaGreen200 : Svg.Attribute msg
+xlHoverViaGreen200 =
+    A.class "xl:hover:via-green-200"
+
+
+xlHoverViaGreen300 : Svg.Attribute msg
+xlHoverViaGreen300 =
+    A.class "xl:hover:via-green-300"
+
+
+xlHoverViaGreen400 : Svg.Attribute msg
+xlHoverViaGreen400 =
+    A.class "xl:hover:via-green-400"
+
+
+xlHoverViaGreen500 : Svg.Attribute msg
+xlHoverViaGreen500 =
+    A.class "xl:hover:via-green-500"
+
+
+xlHoverViaGreen600 : Svg.Attribute msg
+xlHoverViaGreen600 =
+    A.class "xl:hover:via-green-600"
+
+
+xlHoverViaGreen700 : Svg.Attribute msg
+xlHoverViaGreen700 =
+    A.class "xl:hover:via-green-700"
+
+
+xlHoverViaGreen800 : Svg.Attribute msg
+xlHoverViaGreen800 =
+    A.class "xl:hover:via-green-800"
+
+
+xlHoverViaGreen900 : Svg.Attribute msg
+xlHoverViaGreen900 =
+    A.class "xl:hover:via-green-900"
+
+
+xlHoverViaTeal100 : Svg.Attribute msg
+xlHoverViaTeal100 =
+    A.class "xl:hover:via-teal-100"
+
+
+xlHoverViaTeal200 : Svg.Attribute msg
+xlHoverViaTeal200 =
+    A.class "xl:hover:via-teal-200"
+
+
+xlHoverViaTeal300 : Svg.Attribute msg
+xlHoverViaTeal300 =
+    A.class "xl:hover:via-teal-300"
+
+
+xlHoverViaTeal400 : Svg.Attribute msg
+xlHoverViaTeal400 =
+    A.class "xl:hover:via-teal-400"
+
+
+xlHoverViaTeal500 : Svg.Attribute msg
+xlHoverViaTeal500 =
+    A.class "xl:hover:via-teal-500"
+
+
+xlHoverViaTeal600 : Svg.Attribute msg
+xlHoverViaTeal600 =
+    A.class "xl:hover:via-teal-600"
+
+
+xlHoverViaTeal700 : Svg.Attribute msg
+xlHoverViaTeal700 =
+    A.class "xl:hover:via-teal-700"
+
+
+xlHoverViaTeal800 : Svg.Attribute msg
+xlHoverViaTeal800 =
+    A.class "xl:hover:via-teal-800"
+
+
+xlHoverViaTeal900 : Svg.Attribute msg
+xlHoverViaTeal900 =
+    A.class "xl:hover:via-teal-900"
+
+
+xlHoverViaBlue100 : Svg.Attribute msg
+xlHoverViaBlue100 =
+    A.class "xl:hover:via-blue-100"
+
+
+xlHoverViaBlue200 : Svg.Attribute msg
+xlHoverViaBlue200 =
+    A.class "xl:hover:via-blue-200"
+
+
+xlHoverViaBlue300 : Svg.Attribute msg
+xlHoverViaBlue300 =
+    A.class "xl:hover:via-blue-300"
+
+
+xlHoverViaBlue400 : Svg.Attribute msg
+xlHoverViaBlue400 =
+    A.class "xl:hover:via-blue-400"
+
+
+xlHoverViaBlue500 : Svg.Attribute msg
+xlHoverViaBlue500 =
+    A.class "xl:hover:via-blue-500"
+
+
+xlHoverViaBlue600 : Svg.Attribute msg
+xlHoverViaBlue600 =
+    A.class "xl:hover:via-blue-600"
+
+
+xlHoverViaBlue700 : Svg.Attribute msg
+xlHoverViaBlue700 =
+    A.class "xl:hover:via-blue-700"
+
+
+xlHoverViaBlue800 : Svg.Attribute msg
+xlHoverViaBlue800 =
+    A.class "xl:hover:via-blue-800"
+
+
+xlHoverViaBlue900 : Svg.Attribute msg
+xlHoverViaBlue900 =
+    A.class "xl:hover:via-blue-900"
+
+
+xlHoverViaIndigo100 : Svg.Attribute msg
+xlHoverViaIndigo100 =
+    A.class "xl:hover:via-indigo-100"
+
+
+xlHoverViaIndigo200 : Svg.Attribute msg
+xlHoverViaIndigo200 =
+    A.class "xl:hover:via-indigo-200"
+
+
+xlHoverViaIndigo300 : Svg.Attribute msg
+xlHoverViaIndigo300 =
+    A.class "xl:hover:via-indigo-300"
+
+
+xlHoverViaIndigo400 : Svg.Attribute msg
+xlHoverViaIndigo400 =
+    A.class "xl:hover:via-indigo-400"
+
+
+xlHoverViaIndigo500 : Svg.Attribute msg
+xlHoverViaIndigo500 =
+    A.class "xl:hover:via-indigo-500"
+
+
+xlHoverViaIndigo600 : Svg.Attribute msg
+xlHoverViaIndigo600 =
+    A.class "xl:hover:via-indigo-600"
+
+
+xlHoverViaIndigo700 : Svg.Attribute msg
+xlHoverViaIndigo700 =
+    A.class "xl:hover:via-indigo-700"
+
+
+xlHoverViaIndigo800 : Svg.Attribute msg
+xlHoverViaIndigo800 =
+    A.class "xl:hover:via-indigo-800"
+
+
+xlHoverViaIndigo900 : Svg.Attribute msg
+xlHoverViaIndigo900 =
+    A.class "xl:hover:via-indigo-900"
+
+
+xlHoverViaPurple100 : Svg.Attribute msg
+xlHoverViaPurple100 =
+    A.class "xl:hover:via-purple-100"
+
+
+xlHoverViaPurple200 : Svg.Attribute msg
+xlHoverViaPurple200 =
+    A.class "xl:hover:via-purple-200"
+
+
+xlHoverViaPurple300 : Svg.Attribute msg
+xlHoverViaPurple300 =
+    A.class "xl:hover:via-purple-300"
+
+
+xlHoverViaPurple400 : Svg.Attribute msg
+xlHoverViaPurple400 =
+    A.class "xl:hover:via-purple-400"
+
+
+xlHoverViaPurple500 : Svg.Attribute msg
+xlHoverViaPurple500 =
+    A.class "xl:hover:via-purple-500"
+
+
+xlHoverViaPurple600 : Svg.Attribute msg
+xlHoverViaPurple600 =
+    A.class "xl:hover:via-purple-600"
+
+
+xlHoverViaPurple700 : Svg.Attribute msg
+xlHoverViaPurple700 =
+    A.class "xl:hover:via-purple-700"
+
+
+xlHoverViaPurple800 : Svg.Attribute msg
+xlHoverViaPurple800 =
+    A.class "xl:hover:via-purple-800"
+
+
+xlHoverViaPurple900 : Svg.Attribute msg
+xlHoverViaPurple900 =
+    A.class "xl:hover:via-purple-900"
+
+
+xlHoverViaPink100 : Svg.Attribute msg
+xlHoverViaPink100 =
+    A.class "xl:hover:via-pink-100"
+
+
+xlHoverViaPink200 : Svg.Attribute msg
+xlHoverViaPink200 =
+    A.class "xl:hover:via-pink-200"
+
+
+xlHoverViaPink300 : Svg.Attribute msg
+xlHoverViaPink300 =
+    A.class "xl:hover:via-pink-300"
+
+
+xlHoverViaPink400 : Svg.Attribute msg
+xlHoverViaPink400 =
+    A.class "xl:hover:via-pink-400"
+
+
+xlHoverViaPink500 : Svg.Attribute msg
+xlHoverViaPink500 =
+    A.class "xl:hover:via-pink-500"
+
+
+xlHoverViaPink600 : Svg.Attribute msg
+xlHoverViaPink600 =
+    A.class "xl:hover:via-pink-600"
+
+
+xlHoverViaPink700 : Svg.Attribute msg
+xlHoverViaPink700 =
+    A.class "xl:hover:via-pink-700"
+
+
+xlHoverViaPink800 : Svg.Attribute msg
+xlHoverViaPink800 =
+    A.class "xl:hover:via-pink-800"
+
+
+xlHoverViaPink900 : Svg.Attribute msg
+xlHoverViaPink900 =
+    A.class "xl:hover:via-pink-900"
+
+
+xlHoverToTransparent : Svg.Attribute msg
+xlHoverToTransparent =
+    A.class "xl:hover:to-transparent"
+
+
+xlHoverToCurrent : Svg.Attribute msg
+xlHoverToCurrent =
+    A.class "xl:hover:to-current"
+
+
+xlHoverToBlack : Svg.Attribute msg
+xlHoverToBlack =
+    A.class "xl:hover:to-black"
+
+
+xlHoverToWhite : Svg.Attribute msg
+xlHoverToWhite =
+    A.class "xl:hover:to-white"
+
+
+xlHoverToGray100 : Svg.Attribute msg
+xlHoverToGray100 =
+    A.class "xl:hover:to-gray-100"
+
+
+xlHoverToGray200 : Svg.Attribute msg
+xlHoverToGray200 =
+    A.class "xl:hover:to-gray-200"
+
+
+xlHoverToGray300 : Svg.Attribute msg
+xlHoverToGray300 =
+    A.class "xl:hover:to-gray-300"
+
+
+xlHoverToGray400 : Svg.Attribute msg
+xlHoverToGray400 =
+    A.class "xl:hover:to-gray-400"
+
+
+xlHoverToGray500 : Svg.Attribute msg
+xlHoverToGray500 =
+    A.class "xl:hover:to-gray-500"
+
+
+xlHoverToGray600 : Svg.Attribute msg
+xlHoverToGray600 =
+    A.class "xl:hover:to-gray-600"
+
+
+xlHoverToGray700 : Svg.Attribute msg
+xlHoverToGray700 =
+    A.class "xl:hover:to-gray-700"
+
+
+xlHoverToGray800 : Svg.Attribute msg
+xlHoverToGray800 =
+    A.class "xl:hover:to-gray-800"
+
+
+xlHoverToGray900 : Svg.Attribute msg
+xlHoverToGray900 =
+    A.class "xl:hover:to-gray-900"
+
+
+xlHoverToRed100 : Svg.Attribute msg
+xlHoverToRed100 =
+    A.class "xl:hover:to-red-100"
+
+
+xlHoverToRed200 : Svg.Attribute msg
+xlHoverToRed200 =
+    A.class "xl:hover:to-red-200"
+
+
+xlHoverToRed300 : Svg.Attribute msg
+xlHoverToRed300 =
+    A.class "xl:hover:to-red-300"
+
+
+xlHoverToRed400 : Svg.Attribute msg
+xlHoverToRed400 =
+    A.class "xl:hover:to-red-400"
+
+
+xlHoverToRed500 : Svg.Attribute msg
+xlHoverToRed500 =
+    A.class "xl:hover:to-red-500"
+
+
+xlHoverToRed600 : Svg.Attribute msg
+xlHoverToRed600 =
+    A.class "xl:hover:to-red-600"
+
+
+xlHoverToRed700 : Svg.Attribute msg
+xlHoverToRed700 =
+    A.class "xl:hover:to-red-700"
+
+
+xlHoverToRed800 : Svg.Attribute msg
+xlHoverToRed800 =
+    A.class "xl:hover:to-red-800"
+
+
+xlHoverToRed900 : Svg.Attribute msg
+xlHoverToRed900 =
+    A.class "xl:hover:to-red-900"
+
+
+xlHoverToOrange100 : Svg.Attribute msg
+xlHoverToOrange100 =
+    A.class "xl:hover:to-orange-100"
+
+
+xlHoverToOrange200 : Svg.Attribute msg
+xlHoverToOrange200 =
+    A.class "xl:hover:to-orange-200"
+
+
+xlHoverToOrange300 : Svg.Attribute msg
+xlHoverToOrange300 =
+    A.class "xl:hover:to-orange-300"
+
+
+xlHoverToOrange400 : Svg.Attribute msg
+xlHoverToOrange400 =
+    A.class "xl:hover:to-orange-400"
+
+
+xlHoverToOrange500 : Svg.Attribute msg
+xlHoverToOrange500 =
+    A.class "xl:hover:to-orange-500"
+
+
+xlHoverToOrange600 : Svg.Attribute msg
+xlHoverToOrange600 =
+    A.class "xl:hover:to-orange-600"
+
+
+xlHoverToOrange700 : Svg.Attribute msg
+xlHoverToOrange700 =
+    A.class "xl:hover:to-orange-700"
+
+
+xlHoverToOrange800 : Svg.Attribute msg
+xlHoverToOrange800 =
+    A.class "xl:hover:to-orange-800"
+
+
+xlHoverToOrange900 : Svg.Attribute msg
+xlHoverToOrange900 =
+    A.class "xl:hover:to-orange-900"
+
+
+xlHoverToYellow100 : Svg.Attribute msg
+xlHoverToYellow100 =
+    A.class "xl:hover:to-yellow-100"
+
+
+xlHoverToYellow200 : Svg.Attribute msg
+xlHoverToYellow200 =
+    A.class "xl:hover:to-yellow-200"
+
+
+xlHoverToYellow300 : Svg.Attribute msg
+xlHoverToYellow300 =
+    A.class "xl:hover:to-yellow-300"
+
+
+xlHoverToYellow400 : Svg.Attribute msg
+xlHoverToYellow400 =
+    A.class "xl:hover:to-yellow-400"
+
+
+xlHoverToYellow500 : Svg.Attribute msg
+xlHoverToYellow500 =
+    A.class "xl:hover:to-yellow-500"
+
+
+xlHoverToYellow600 : Svg.Attribute msg
+xlHoverToYellow600 =
+    A.class "xl:hover:to-yellow-600"
+
+
+xlHoverToYellow700 : Svg.Attribute msg
+xlHoverToYellow700 =
+    A.class "xl:hover:to-yellow-700"
+
+
+xlHoverToYellow800 : Svg.Attribute msg
+xlHoverToYellow800 =
+    A.class "xl:hover:to-yellow-800"
+
+
+xlHoverToYellow900 : Svg.Attribute msg
+xlHoverToYellow900 =
+    A.class "xl:hover:to-yellow-900"
+
+
+xlHoverToGreen100 : Svg.Attribute msg
+xlHoverToGreen100 =
+    A.class "xl:hover:to-green-100"
+
+
+xlHoverToGreen200 : Svg.Attribute msg
+xlHoverToGreen200 =
+    A.class "xl:hover:to-green-200"
+
+
+xlHoverToGreen300 : Svg.Attribute msg
+xlHoverToGreen300 =
+    A.class "xl:hover:to-green-300"
+
+
+xlHoverToGreen400 : Svg.Attribute msg
+xlHoverToGreen400 =
+    A.class "xl:hover:to-green-400"
+
+
+xlHoverToGreen500 : Svg.Attribute msg
+xlHoverToGreen500 =
+    A.class "xl:hover:to-green-500"
+
+
+xlHoverToGreen600 : Svg.Attribute msg
+xlHoverToGreen600 =
+    A.class "xl:hover:to-green-600"
+
+
+xlHoverToGreen700 : Svg.Attribute msg
+xlHoverToGreen700 =
+    A.class "xl:hover:to-green-700"
+
+
+xlHoverToGreen800 : Svg.Attribute msg
+xlHoverToGreen800 =
+    A.class "xl:hover:to-green-800"
+
+
+xlHoverToGreen900 : Svg.Attribute msg
+xlHoverToGreen900 =
+    A.class "xl:hover:to-green-900"
+
+
+xlHoverToTeal100 : Svg.Attribute msg
+xlHoverToTeal100 =
+    A.class "xl:hover:to-teal-100"
+
+
+xlHoverToTeal200 : Svg.Attribute msg
+xlHoverToTeal200 =
+    A.class "xl:hover:to-teal-200"
+
+
+xlHoverToTeal300 : Svg.Attribute msg
+xlHoverToTeal300 =
+    A.class "xl:hover:to-teal-300"
+
+
+xlHoverToTeal400 : Svg.Attribute msg
+xlHoverToTeal400 =
+    A.class "xl:hover:to-teal-400"
+
+
+xlHoverToTeal500 : Svg.Attribute msg
+xlHoverToTeal500 =
+    A.class "xl:hover:to-teal-500"
+
+
+xlHoverToTeal600 : Svg.Attribute msg
+xlHoverToTeal600 =
+    A.class "xl:hover:to-teal-600"
+
+
+xlHoverToTeal700 : Svg.Attribute msg
+xlHoverToTeal700 =
+    A.class "xl:hover:to-teal-700"
+
+
+xlHoverToTeal800 : Svg.Attribute msg
+xlHoverToTeal800 =
+    A.class "xl:hover:to-teal-800"
+
+
+xlHoverToTeal900 : Svg.Attribute msg
+xlHoverToTeal900 =
+    A.class "xl:hover:to-teal-900"
+
+
+xlHoverToBlue100 : Svg.Attribute msg
+xlHoverToBlue100 =
+    A.class "xl:hover:to-blue-100"
+
+
+xlHoverToBlue200 : Svg.Attribute msg
+xlHoverToBlue200 =
+    A.class "xl:hover:to-blue-200"
+
+
+xlHoverToBlue300 : Svg.Attribute msg
+xlHoverToBlue300 =
+    A.class "xl:hover:to-blue-300"
+
+
+xlHoverToBlue400 : Svg.Attribute msg
+xlHoverToBlue400 =
+    A.class "xl:hover:to-blue-400"
+
+
+xlHoverToBlue500 : Svg.Attribute msg
+xlHoverToBlue500 =
+    A.class "xl:hover:to-blue-500"
+
+
+xlHoverToBlue600 : Svg.Attribute msg
+xlHoverToBlue600 =
+    A.class "xl:hover:to-blue-600"
+
+
+xlHoverToBlue700 : Svg.Attribute msg
+xlHoverToBlue700 =
+    A.class "xl:hover:to-blue-700"
+
+
+xlHoverToBlue800 : Svg.Attribute msg
+xlHoverToBlue800 =
+    A.class "xl:hover:to-blue-800"
+
+
+xlHoverToBlue900 : Svg.Attribute msg
+xlHoverToBlue900 =
+    A.class "xl:hover:to-blue-900"
+
+
+xlHoverToIndigo100 : Svg.Attribute msg
+xlHoverToIndigo100 =
+    A.class "xl:hover:to-indigo-100"
+
+
+xlHoverToIndigo200 : Svg.Attribute msg
+xlHoverToIndigo200 =
+    A.class "xl:hover:to-indigo-200"
+
+
+xlHoverToIndigo300 : Svg.Attribute msg
+xlHoverToIndigo300 =
+    A.class "xl:hover:to-indigo-300"
+
+
+xlHoverToIndigo400 : Svg.Attribute msg
+xlHoverToIndigo400 =
+    A.class "xl:hover:to-indigo-400"
+
+
+xlHoverToIndigo500 : Svg.Attribute msg
+xlHoverToIndigo500 =
+    A.class "xl:hover:to-indigo-500"
+
+
+xlHoverToIndigo600 : Svg.Attribute msg
+xlHoverToIndigo600 =
+    A.class "xl:hover:to-indigo-600"
+
+
+xlHoverToIndigo700 : Svg.Attribute msg
+xlHoverToIndigo700 =
+    A.class "xl:hover:to-indigo-700"
+
+
+xlHoverToIndigo800 : Svg.Attribute msg
+xlHoverToIndigo800 =
+    A.class "xl:hover:to-indigo-800"
+
+
+xlHoverToIndigo900 : Svg.Attribute msg
+xlHoverToIndigo900 =
+    A.class "xl:hover:to-indigo-900"
+
+
+xlHoverToPurple100 : Svg.Attribute msg
+xlHoverToPurple100 =
+    A.class "xl:hover:to-purple-100"
+
+
+xlHoverToPurple200 : Svg.Attribute msg
+xlHoverToPurple200 =
+    A.class "xl:hover:to-purple-200"
+
+
+xlHoverToPurple300 : Svg.Attribute msg
+xlHoverToPurple300 =
+    A.class "xl:hover:to-purple-300"
+
+
+xlHoverToPurple400 : Svg.Attribute msg
+xlHoverToPurple400 =
+    A.class "xl:hover:to-purple-400"
+
+
+xlHoverToPurple500 : Svg.Attribute msg
+xlHoverToPurple500 =
+    A.class "xl:hover:to-purple-500"
+
+
+xlHoverToPurple600 : Svg.Attribute msg
+xlHoverToPurple600 =
+    A.class "xl:hover:to-purple-600"
+
+
+xlHoverToPurple700 : Svg.Attribute msg
+xlHoverToPurple700 =
+    A.class "xl:hover:to-purple-700"
+
+
+xlHoverToPurple800 : Svg.Attribute msg
+xlHoverToPurple800 =
+    A.class "xl:hover:to-purple-800"
+
+
+xlHoverToPurple900 : Svg.Attribute msg
+xlHoverToPurple900 =
+    A.class "xl:hover:to-purple-900"
+
+
+xlHoverToPink100 : Svg.Attribute msg
+xlHoverToPink100 =
+    A.class "xl:hover:to-pink-100"
+
+
+xlHoverToPink200 : Svg.Attribute msg
+xlHoverToPink200 =
+    A.class "xl:hover:to-pink-200"
+
+
+xlHoverToPink300 : Svg.Attribute msg
+xlHoverToPink300 =
+    A.class "xl:hover:to-pink-300"
+
+
+xlHoverToPink400 : Svg.Attribute msg
+xlHoverToPink400 =
+    A.class "xl:hover:to-pink-400"
+
+
+xlHoverToPink500 : Svg.Attribute msg
+xlHoverToPink500 =
+    A.class "xl:hover:to-pink-500"
+
+
+xlHoverToPink600 : Svg.Attribute msg
+xlHoverToPink600 =
+    A.class "xl:hover:to-pink-600"
+
+
+xlHoverToPink700 : Svg.Attribute msg
+xlHoverToPink700 =
+    A.class "xl:hover:to-pink-700"
+
+
+xlHoverToPink800 : Svg.Attribute msg
+xlHoverToPink800 =
+    A.class "xl:hover:to-pink-800"
+
+
+xlHoverToPink900 : Svg.Attribute msg
+xlHoverToPink900 =
+    A.class "xl:hover:to-pink-900"
+
+
+xlFocusFromTransparent : Svg.Attribute msg
+xlFocusFromTransparent =
+    A.class "xl:focus:from-transparent"
+
+
+xlFocusFromCurrent : Svg.Attribute msg
+xlFocusFromCurrent =
+    A.class "xl:focus:from-current"
+
+
+xlFocusFromBlack : Svg.Attribute msg
+xlFocusFromBlack =
+    A.class "xl:focus:from-black"
+
+
+xlFocusFromWhite : Svg.Attribute msg
+xlFocusFromWhite =
+    A.class "xl:focus:from-white"
+
+
+xlFocusFromGray100 : Svg.Attribute msg
+xlFocusFromGray100 =
+    A.class "xl:focus:from-gray-100"
+
+
+xlFocusFromGray200 : Svg.Attribute msg
+xlFocusFromGray200 =
+    A.class "xl:focus:from-gray-200"
+
+
+xlFocusFromGray300 : Svg.Attribute msg
+xlFocusFromGray300 =
+    A.class "xl:focus:from-gray-300"
+
+
+xlFocusFromGray400 : Svg.Attribute msg
+xlFocusFromGray400 =
+    A.class "xl:focus:from-gray-400"
+
+
+xlFocusFromGray500 : Svg.Attribute msg
+xlFocusFromGray500 =
+    A.class "xl:focus:from-gray-500"
+
+
+xlFocusFromGray600 : Svg.Attribute msg
+xlFocusFromGray600 =
+    A.class "xl:focus:from-gray-600"
+
+
+xlFocusFromGray700 : Svg.Attribute msg
+xlFocusFromGray700 =
+    A.class "xl:focus:from-gray-700"
+
+
+xlFocusFromGray800 : Svg.Attribute msg
+xlFocusFromGray800 =
+    A.class "xl:focus:from-gray-800"
+
+
+xlFocusFromGray900 : Svg.Attribute msg
+xlFocusFromGray900 =
+    A.class "xl:focus:from-gray-900"
+
+
+xlFocusFromRed100 : Svg.Attribute msg
+xlFocusFromRed100 =
+    A.class "xl:focus:from-red-100"
+
+
+xlFocusFromRed200 : Svg.Attribute msg
+xlFocusFromRed200 =
+    A.class "xl:focus:from-red-200"
+
+
+xlFocusFromRed300 : Svg.Attribute msg
+xlFocusFromRed300 =
+    A.class "xl:focus:from-red-300"
+
+
+xlFocusFromRed400 : Svg.Attribute msg
+xlFocusFromRed400 =
+    A.class "xl:focus:from-red-400"
+
+
+xlFocusFromRed500 : Svg.Attribute msg
+xlFocusFromRed500 =
+    A.class "xl:focus:from-red-500"
+
+
+xlFocusFromRed600 : Svg.Attribute msg
+xlFocusFromRed600 =
+    A.class "xl:focus:from-red-600"
+
+
+xlFocusFromRed700 : Svg.Attribute msg
+xlFocusFromRed700 =
+    A.class "xl:focus:from-red-700"
+
+
+xlFocusFromRed800 : Svg.Attribute msg
+xlFocusFromRed800 =
+    A.class "xl:focus:from-red-800"
+
+
+xlFocusFromRed900 : Svg.Attribute msg
+xlFocusFromRed900 =
+    A.class "xl:focus:from-red-900"
+
+
+xlFocusFromOrange100 : Svg.Attribute msg
+xlFocusFromOrange100 =
+    A.class "xl:focus:from-orange-100"
+
+
+xlFocusFromOrange200 : Svg.Attribute msg
+xlFocusFromOrange200 =
+    A.class "xl:focus:from-orange-200"
+
+
+xlFocusFromOrange300 : Svg.Attribute msg
+xlFocusFromOrange300 =
+    A.class "xl:focus:from-orange-300"
+
+
+xlFocusFromOrange400 : Svg.Attribute msg
+xlFocusFromOrange400 =
+    A.class "xl:focus:from-orange-400"
+
+
+xlFocusFromOrange500 : Svg.Attribute msg
+xlFocusFromOrange500 =
+    A.class "xl:focus:from-orange-500"
+
+
+xlFocusFromOrange600 : Svg.Attribute msg
+xlFocusFromOrange600 =
+    A.class "xl:focus:from-orange-600"
+
+
+xlFocusFromOrange700 : Svg.Attribute msg
+xlFocusFromOrange700 =
+    A.class "xl:focus:from-orange-700"
+
+
+xlFocusFromOrange800 : Svg.Attribute msg
+xlFocusFromOrange800 =
+    A.class "xl:focus:from-orange-800"
+
+
+xlFocusFromOrange900 : Svg.Attribute msg
+xlFocusFromOrange900 =
+    A.class "xl:focus:from-orange-900"
+
+
+xlFocusFromYellow100 : Svg.Attribute msg
+xlFocusFromYellow100 =
+    A.class "xl:focus:from-yellow-100"
+
+
+xlFocusFromYellow200 : Svg.Attribute msg
+xlFocusFromYellow200 =
+    A.class "xl:focus:from-yellow-200"
+
+
+xlFocusFromYellow300 : Svg.Attribute msg
+xlFocusFromYellow300 =
+    A.class "xl:focus:from-yellow-300"
+
+
+xlFocusFromYellow400 : Svg.Attribute msg
+xlFocusFromYellow400 =
+    A.class "xl:focus:from-yellow-400"
+
+
+xlFocusFromYellow500 : Svg.Attribute msg
+xlFocusFromYellow500 =
+    A.class "xl:focus:from-yellow-500"
+
+
+xlFocusFromYellow600 : Svg.Attribute msg
+xlFocusFromYellow600 =
+    A.class "xl:focus:from-yellow-600"
+
+
+xlFocusFromYellow700 : Svg.Attribute msg
+xlFocusFromYellow700 =
+    A.class "xl:focus:from-yellow-700"
+
+
+xlFocusFromYellow800 : Svg.Attribute msg
+xlFocusFromYellow800 =
+    A.class "xl:focus:from-yellow-800"
+
+
+xlFocusFromYellow900 : Svg.Attribute msg
+xlFocusFromYellow900 =
+    A.class "xl:focus:from-yellow-900"
+
+
+xlFocusFromGreen100 : Svg.Attribute msg
+xlFocusFromGreen100 =
+    A.class "xl:focus:from-green-100"
+
+
+xlFocusFromGreen200 : Svg.Attribute msg
+xlFocusFromGreen200 =
+    A.class "xl:focus:from-green-200"
+
+
+xlFocusFromGreen300 : Svg.Attribute msg
+xlFocusFromGreen300 =
+    A.class "xl:focus:from-green-300"
+
+
+xlFocusFromGreen400 : Svg.Attribute msg
+xlFocusFromGreen400 =
+    A.class "xl:focus:from-green-400"
+
+
+xlFocusFromGreen500 : Svg.Attribute msg
+xlFocusFromGreen500 =
+    A.class "xl:focus:from-green-500"
+
+
+xlFocusFromGreen600 : Svg.Attribute msg
+xlFocusFromGreen600 =
+    A.class "xl:focus:from-green-600"
+
+
+xlFocusFromGreen700 : Svg.Attribute msg
+xlFocusFromGreen700 =
+    A.class "xl:focus:from-green-700"
+
+
+xlFocusFromGreen800 : Svg.Attribute msg
+xlFocusFromGreen800 =
+    A.class "xl:focus:from-green-800"
+
+
+xlFocusFromGreen900 : Svg.Attribute msg
+xlFocusFromGreen900 =
+    A.class "xl:focus:from-green-900"
+
+
+xlFocusFromTeal100 : Svg.Attribute msg
+xlFocusFromTeal100 =
+    A.class "xl:focus:from-teal-100"
+
+
+xlFocusFromTeal200 : Svg.Attribute msg
+xlFocusFromTeal200 =
+    A.class "xl:focus:from-teal-200"
+
+
+xlFocusFromTeal300 : Svg.Attribute msg
+xlFocusFromTeal300 =
+    A.class "xl:focus:from-teal-300"
+
+
+xlFocusFromTeal400 : Svg.Attribute msg
+xlFocusFromTeal400 =
+    A.class "xl:focus:from-teal-400"
+
+
+xlFocusFromTeal500 : Svg.Attribute msg
+xlFocusFromTeal500 =
+    A.class "xl:focus:from-teal-500"
+
+
+xlFocusFromTeal600 : Svg.Attribute msg
+xlFocusFromTeal600 =
+    A.class "xl:focus:from-teal-600"
+
+
+xlFocusFromTeal700 : Svg.Attribute msg
+xlFocusFromTeal700 =
+    A.class "xl:focus:from-teal-700"
+
+
+xlFocusFromTeal800 : Svg.Attribute msg
+xlFocusFromTeal800 =
+    A.class "xl:focus:from-teal-800"
+
+
+xlFocusFromTeal900 : Svg.Attribute msg
+xlFocusFromTeal900 =
+    A.class "xl:focus:from-teal-900"
+
+
+xlFocusFromBlue100 : Svg.Attribute msg
+xlFocusFromBlue100 =
+    A.class "xl:focus:from-blue-100"
+
+
+xlFocusFromBlue200 : Svg.Attribute msg
+xlFocusFromBlue200 =
+    A.class "xl:focus:from-blue-200"
+
+
+xlFocusFromBlue300 : Svg.Attribute msg
+xlFocusFromBlue300 =
+    A.class "xl:focus:from-blue-300"
+
+
+xlFocusFromBlue400 : Svg.Attribute msg
+xlFocusFromBlue400 =
+    A.class "xl:focus:from-blue-400"
+
+
+xlFocusFromBlue500 : Svg.Attribute msg
+xlFocusFromBlue500 =
+    A.class "xl:focus:from-blue-500"
+
+
+xlFocusFromBlue600 : Svg.Attribute msg
+xlFocusFromBlue600 =
+    A.class "xl:focus:from-blue-600"
+
+
+xlFocusFromBlue700 : Svg.Attribute msg
+xlFocusFromBlue700 =
+    A.class "xl:focus:from-blue-700"
+
+
+xlFocusFromBlue800 : Svg.Attribute msg
+xlFocusFromBlue800 =
+    A.class "xl:focus:from-blue-800"
+
+
+xlFocusFromBlue900 : Svg.Attribute msg
+xlFocusFromBlue900 =
+    A.class "xl:focus:from-blue-900"
+
+
+xlFocusFromIndigo100 : Svg.Attribute msg
+xlFocusFromIndigo100 =
+    A.class "xl:focus:from-indigo-100"
+
+
+xlFocusFromIndigo200 : Svg.Attribute msg
+xlFocusFromIndigo200 =
+    A.class "xl:focus:from-indigo-200"
+
+
+xlFocusFromIndigo300 : Svg.Attribute msg
+xlFocusFromIndigo300 =
+    A.class "xl:focus:from-indigo-300"
+
+
+xlFocusFromIndigo400 : Svg.Attribute msg
+xlFocusFromIndigo400 =
+    A.class "xl:focus:from-indigo-400"
+
+
+xlFocusFromIndigo500 : Svg.Attribute msg
+xlFocusFromIndigo500 =
+    A.class "xl:focus:from-indigo-500"
+
+
+xlFocusFromIndigo600 : Svg.Attribute msg
+xlFocusFromIndigo600 =
+    A.class "xl:focus:from-indigo-600"
+
+
+xlFocusFromIndigo700 : Svg.Attribute msg
+xlFocusFromIndigo700 =
+    A.class "xl:focus:from-indigo-700"
+
+
+xlFocusFromIndigo800 : Svg.Attribute msg
+xlFocusFromIndigo800 =
+    A.class "xl:focus:from-indigo-800"
+
+
+xlFocusFromIndigo900 : Svg.Attribute msg
+xlFocusFromIndigo900 =
+    A.class "xl:focus:from-indigo-900"
+
+
+xlFocusFromPurple100 : Svg.Attribute msg
+xlFocusFromPurple100 =
+    A.class "xl:focus:from-purple-100"
+
+
+xlFocusFromPurple200 : Svg.Attribute msg
+xlFocusFromPurple200 =
+    A.class "xl:focus:from-purple-200"
+
+
+xlFocusFromPurple300 : Svg.Attribute msg
+xlFocusFromPurple300 =
+    A.class "xl:focus:from-purple-300"
+
+
+xlFocusFromPurple400 : Svg.Attribute msg
+xlFocusFromPurple400 =
+    A.class "xl:focus:from-purple-400"
+
+
+xlFocusFromPurple500 : Svg.Attribute msg
+xlFocusFromPurple500 =
+    A.class "xl:focus:from-purple-500"
+
+
+xlFocusFromPurple600 : Svg.Attribute msg
+xlFocusFromPurple600 =
+    A.class "xl:focus:from-purple-600"
+
+
+xlFocusFromPurple700 : Svg.Attribute msg
+xlFocusFromPurple700 =
+    A.class "xl:focus:from-purple-700"
+
+
+xlFocusFromPurple800 : Svg.Attribute msg
+xlFocusFromPurple800 =
+    A.class "xl:focus:from-purple-800"
+
+
+xlFocusFromPurple900 : Svg.Attribute msg
+xlFocusFromPurple900 =
+    A.class "xl:focus:from-purple-900"
+
+
+xlFocusFromPink100 : Svg.Attribute msg
+xlFocusFromPink100 =
+    A.class "xl:focus:from-pink-100"
+
+
+xlFocusFromPink200 : Svg.Attribute msg
+xlFocusFromPink200 =
+    A.class "xl:focus:from-pink-200"
+
+
+xlFocusFromPink300 : Svg.Attribute msg
+xlFocusFromPink300 =
+    A.class "xl:focus:from-pink-300"
+
+
+xlFocusFromPink400 : Svg.Attribute msg
+xlFocusFromPink400 =
+    A.class "xl:focus:from-pink-400"
+
+
+xlFocusFromPink500 : Svg.Attribute msg
+xlFocusFromPink500 =
+    A.class "xl:focus:from-pink-500"
+
+
+xlFocusFromPink600 : Svg.Attribute msg
+xlFocusFromPink600 =
+    A.class "xl:focus:from-pink-600"
+
+
+xlFocusFromPink700 : Svg.Attribute msg
+xlFocusFromPink700 =
+    A.class "xl:focus:from-pink-700"
+
+
+xlFocusFromPink800 : Svg.Attribute msg
+xlFocusFromPink800 =
+    A.class "xl:focus:from-pink-800"
+
+
+xlFocusFromPink900 : Svg.Attribute msg
+xlFocusFromPink900 =
+    A.class "xl:focus:from-pink-900"
+
+
+xlFocusViaTransparent : Svg.Attribute msg
+xlFocusViaTransparent =
+    A.class "xl:focus:via-transparent"
+
+
+xlFocusViaCurrent : Svg.Attribute msg
+xlFocusViaCurrent =
+    A.class "xl:focus:via-current"
+
+
+xlFocusViaBlack : Svg.Attribute msg
+xlFocusViaBlack =
+    A.class "xl:focus:via-black"
+
+
+xlFocusViaWhite : Svg.Attribute msg
+xlFocusViaWhite =
+    A.class "xl:focus:via-white"
+
+
+xlFocusViaGray100 : Svg.Attribute msg
+xlFocusViaGray100 =
+    A.class "xl:focus:via-gray-100"
+
+
+xlFocusViaGray200 : Svg.Attribute msg
+xlFocusViaGray200 =
+    A.class "xl:focus:via-gray-200"
+
+
+xlFocusViaGray300 : Svg.Attribute msg
+xlFocusViaGray300 =
+    A.class "xl:focus:via-gray-300"
+
+
+xlFocusViaGray400 : Svg.Attribute msg
+xlFocusViaGray400 =
+    A.class "xl:focus:via-gray-400"
+
+
+xlFocusViaGray500 : Svg.Attribute msg
+xlFocusViaGray500 =
+    A.class "xl:focus:via-gray-500"
+
+
+xlFocusViaGray600 : Svg.Attribute msg
+xlFocusViaGray600 =
+    A.class "xl:focus:via-gray-600"
+
+
+xlFocusViaGray700 : Svg.Attribute msg
+xlFocusViaGray700 =
+    A.class "xl:focus:via-gray-700"
+
+
+xlFocusViaGray800 : Svg.Attribute msg
+xlFocusViaGray800 =
+    A.class "xl:focus:via-gray-800"
+
+
+xlFocusViaGray900 : Svg.Attribute msg
+xlFocusViaGray900 =
+    A.class "xl:focus:via-gray-900"
+
+
+xlFocusViaRed100 : Svg.Attribute msg
+xlFocusViaRed100 =
+    A.class "xl:focus:via-red-100"
+
+
+xlFocusViaRed200 : Svg.Attribute msg
+xlFocusViaRed200 =
+    A.class "xl:focus:via-red-200"
+
+
+xlFocusViaRed300 : Svg.Attribute msg
+xlFocusViaRed300 =
+    A.class "xl:focus:via-red-300"
+
+
+xlFocusViaRed400 : Svg.Attribute msg
+xlFocusViaRed400 =
+    A.class "xl:focus:via-red-400"
+
+
+xlFocusViaRed500 : Svg.Attribute msg
+xlFocusViaRed500 =
+    A.class "xl:focus:via-red-500"
+
+
+xlFocusViaRed600 : Svg.Attribute msg
+xlFocusViaRed600 =
+    A.class "xl:focus:via-red-600"
+
+
+xlFocusViaRed700 : Svg.Attribute msg
+xlFocusViaRed700 =
+    A.class "xl:focus:via-red-700"
+
+
+xlFocusViaRed800 : Svg.Attribute msg
+xlFocusViaRed800 =
+    A.class "xl:focus:via-red-800"
+
+
+xlFocusViaRed900 : Svg.Attribute msg
+xlFocusViaRed900 =
+    A.class "xl:focus:via-red-900"
+
+
+xlFocusViaOrange100 : Svg.Attribute msg
+xlFocusViaOrange100 =
+    A.class "xl:focus:via-orange-100"
+
+
+xlFocusViaOrange200 : Svg.Attribute msg
+xlFocusViaOrange200 =
+    A.class "xl:focus:via-orange-200"
+
+
+xlFocusViaOrange300 : Svg.Attribute msg
+xlFocusViaOrange300 =
+    A.class "xl:focus:via-orange-300"
+
+
+xlFocusViaOrange400 : Svg.Attribute msg
+xlFocusViaOrange400 =
+    A.class "xl:focus:via-orange-400"
+
+
+xlFocusViaOrange500 : Svg.Attribute msg
+xlFocusViaOrange500 =
+    A.class "xl:focus:via-orange-500"
+
+
+xlFocusViaOrange600 : Svg.Attribute msg
+xlFocusViaOrange600 =
+    A.class "xl:focus:via-orange-600"
+
+
+xlFocusViaOrange700 : Svg.Attribute msg
+xlFocusViaOrange700 =
+    A.class "xl:focus:via-orange-700"
+
+
+xlFocusViaOrange800 : Svg.Attribute msg
+xlFocusViaOrange800 =
+    A.class "xl:focus:via-orange-800"
+
+
+xlFocusViaOrange900 : Svg.Attribute msg
+xlFocusViaOrange900 =
+    A.class "xl:focus:via-orange-900"
+
+
+xlFocusViaYellow100 : Svg.Attribute msg
+xlFocusViaYellow100 =
+    A.class "xl:focus:via-yellow-100"
+
+
+xlFocusViaYellow200 : Svg.Attribute msg
+xlFocusViaYellow200 =
+    A.class "xl:focus:via-yellow-200"
+
+
+xlFocusViaYellow300 : Svg.Attribute msg
+xlFocusViaYellow300 =
+    A.class "xl:focus:via-yellow-300"
+
+
+xlFocusViaYellow400 : Svg.Attribute msg
+xlFocusViaYellow400 =
+    A.class "xl:focus:via-yellow-400"
+
+
+xlFocusViaYellow500 : Svg.Attribute msg
+xlFocusViaYellow500 =
+    A.class "xl:focus:via-yellow-500"
+
+
+xlFocusViaYellow600 : Svg.Attribute msg
+xlFocusViaYellow600 =
+    A.class "xl:focus:via-yellow-600"
+
+
+xlFocusViaYellow700 : Svg.Attribute msg
+xlFocusViaYellow700 =
+    A.class "xl:focus:via-yellow-700"
+
+
+xlFocusViaYellow800 : Svg.Attribute msg
+xlFocusViaYellow800 =
+    A.class "xl:focus:via-yellow-800"
+
+
+xlFocusViaYellow900 : Svg.Attribute msg
+xlFocusViaYellow900 =
+    A.class "xl:focus:via-yellow-900"
+
+
+xlFocusViaGreen100 : Svg.Attribute msg
+xlFocusViaGreen100 =
+    A.class "xl:focus:via-green-100"
+
+
+xlFocusViaGreen200 : Svg.Attribute msg
+xlFocusViaGreen200 =
+    A.class "xl:focus:via-green-200"
+
+
+xlFocusViaGreen300 : Svg.Attribute msg
+xlFocusViaGreen300 =
+    A.class "xl:focus:via-green-300"
+
+
+xlFocusViaGreen400 : Svg.Attribute msg
+xlFocusViaGreen400 =
+    A.class "xl:focus:via-green-400"
+
+
+xlFocusViaGreen500 : Svg.Attribute msg
+xlFocusViaGreen500 =
+    A.class "xl:focus:via-green-500"
+
+
+xlFocusViaGreen600 : Svg.Attribute msg
+xlFocusViaGreen600 =
+    A.class "xl:focus:via-green-600"
+
+
+xlFocusViaGreen700 : Svg.Attribute msg
+xlFocusViaGreen700 =
+    A.class "xl:focus:via-green-700"
+
+
+xlFocusViaGreen800 : Svg.Attribute msg
+xlFocusViaGreen800 =
+    A.class "xl:focus:via-green-800"
+
+
+xlFocusViaGreen900 : Svg.Attribute msg
+xlFocusViaGreen900 =
+    A.class "xl:focus:via-green-900"
+
+
+xlFocusViaTeal100 : Svg.Attribute msg
+xlFocusViaTeal100 =
+    A.class "xl:focus:via-teal-100"
+
+
+xlFocusViaTeal200 : Svg.Attribute msg
+xlFocusViaTeal200 =
+    A.class "xl:focus:via-teal-200"
+
+
+xlFocusViaTeal300 : Svg.Attribute msg
+xlFocusViaTeal300 =
+    A.class "xl:focus:via-teal-300"
+
+
+xlFocusViaTeal400 : Svg.Attribute msg
+xlFocusViaTeal400 =
+    A.class "xl:focus:via-teal-400"
+
+
+xlFocusViaTeal500 : Svg.Attribute msg
+xlFocusViaTeal500 =
+    A.class "xl:focus:via-teal-500"
+
+
+xlFocusViaTeal600 : Svg.Attribute msg
+xlFocusViaTeal600 =
+    A.class "xl:focus:via-teal-600"
+
+
+xlFocusViaTeal700 : Svg.Attribute msg
+xlFocusViaTeal700 =
+    A.class "xl:focus:via-teal-700"
+
+
+xlFocusViaTeal800 : Svg.Attribute msg
+xlFocusViaTeal800 =
+    A.class "xl:focus:via-teal-800"
+
+
+xlFocusViaTeal900 : Svg.Attribute msg
+xlFocusViaTeal900 =
+    A.class "xl:focus:via-teal-900"
+
+
+xlFocusViaBlue100 : Svg.Attribute msg
+xlFocusViaBlue100 =
+    A.class "xl:focus:via-blue-100"
+
+
+xlFocusViaBlue200 : Svg.Attribute msg
+xlFocusViaBlue200 =
+    A.class "xl:focus:via-blue-200"
+
+
+xlFocusViaBlue300 : Svg.Attribute msg
+xlFocusViaBlue300 =
+    A.class "xl:focus:via-blue-300"
+
+
+xlFocusViaBlue400 : Svg.Attribute msg
+xlFocusViaBlue400 =
+    A.class "xl:focus:via-blue-400"
+
+
+xlFocusViaBlue500 : Svg.Attribute msg
+xlFocusViaBlue500 =
+    A.class "xl:focus:via-blue-500"
+
+
+xlFocusViaBlue600 : Svg.Attribute msg
+xlFocusViaBlue600 =
+    A.class "xl:focus:via-blue-600"
+
+
+xlFocusViaBlue700 : Svg.Attribute msg
+xlFocusViaBlue700 =
+    A.class "xl:focus:via-blue-700"
+
+
+xlFocusViaBlue800 : Svg.Attribute msg
+xlFocusViaBlue800 =
+    A.class "xl:focus:via-blue-800"
+
+
+xlFocusViaBlue900 : Svg.Attribute msg
+xlFocusViaBlue900 =
+    A.class "xl:focus:via-blue-900"
+
+
+xlFocusViaIndigo100 : Svg.Attribute msg
+xlFocusViaIndigo100 =
+    A.class "xl:focus:via-indigo-100"
+
+
+xlFocusViaIndigo200 : Svg.Attribute msg
+xlFocusViaIndigo200 =
+    A.class "xl:focus:via-indigo-200"
+
+
+xlFocusViaIndigo300 : Svg.Attribute msg
+xlFocusViaIndigo300 =
+    A.class "xl:focus:via-indigo-300"
+
+
+xlFocusViaIndigo400 : Svg.Attribute msg
+xlFocusViaIndigo400 =
+    A.class "xl:focus:via-indigo-400"
+
+
+xlFocusViaIndigo500 : Svg.Attribute msg
+xlFocusViaIndigo500 =
+    A.class "xl:focus:via-indigo-500"
+
+
+xlFocusViaIndigo600 : Svg.Attribute msg
+xlFocusViaIndigo600 =
+    A.class "xl:focus:via-indigo-600"
+
+
+xlFocusViaIndigo700 : Svg.Attribute msg
+xlFocusViaIndigo700 =
+    A.class "xl:focus:via-indigo-700"
+
+
+xlFocusViaIndigo800 : Svg.Attribute msg
+xlFocusViaIndigo800 =
+    A.class "xl:focus:via-indigo-800"
+
+
+xlFocusViaIndigo900 : Svg.Attribute msg
+xlFocusViaIndigo900 =
+    A.class "xl:focus:via-indigo-900"
+
+
+xlFocusViaPurple100 : Svg.Attribute msg
+xlFocusViaPurple100 =
+    A.class "xl:focus:via-purple-100"
+
+
+xlFocusViaPurple200 : Svg.Attribute msg
+xlFocusViaPurple200 =
+    A.class "xl:focus:via-purple-200"
+
+
+xlFocusViaPurple300 : Svg.Attribute msg
+xlFocusViaPurple300 =
+    A.class "xl:focus:via-purple-300"
+
+
+xlFocusViaPurple400 : Svg.Attribute msg
+xlFocusViaPurple400 =
+    A.class "xl:focus:via-purple-400"
+
+
+xlFocusViaPurple500 : Svg.Attribute msg
+xlFocusViaPurple500 =
+    A.class "xl:focus:via-purple-500"
+
+
+xlFocusViaPurple600 : Svg.Attribute msg
+xlFocusViaPurple600 =
+    A.class "xl:focus:via-purple-600"
+
+
+xlFocusViaPurple700 : Svg.Attribute msg
+xlFocusViaPurple700 =
+    A.class "xl:focus:via-purple-700"
+
+
+xlFocusViaPurple800 : Svg.Attribute msg
+xlFocusViaPurple800 =
+    A.class "xl:focus:via-purple-800"
+
+
+xlFocusViaPurple900 : Svg.Attribute msg
+xlFocusViaPurple900 =
+    A.class "xl:focus:via-purple-900"
+
+
+xlFocusViaPink100 : Svg.Attribute msg
+xlFocusViaPink100 =
+    A.class "xl:focus:via-pink-100"
+
+
+xlFocusViaPink200 : Svg.Attribute msg
+xlFocusViaPink200 =
+    A.class "xl:focus:via-pink-200"
+
+
+xlFocusViaPink300 : Svg.Attribute msg
+xlFocusViaPink300 =
+    A.class "xl:focus:via-pink-300"
+
+
+xlFocusViaPink400 : Svg.Attribute msg
+xlFocusViaPink400 =
+    A.class "xl:focus:via-pink-400"
+
+
+xlFocusViaPink500 : Svg.Attribute msg
+xlFocusViaPink500 =
+    A.class "xl:focus:via-pink-500"
+
+
+xlFocusViaPink600 : Svg.Attribute msg
+xlFocusViaPink600 =
+    A.class "xl:focus:via-pink-600"
+
+
+xlFocusViaPink700 : Svg.Attribute msg
+xlFocusViaPink700 =
+    A.class "xl:focus:via-pink-700"
+
+
+xlFocusViaPink800 : Svg.Attribute msg
+xlFocusViaPink800 =
+    A.class "xl:focus:via-pink-800"
+
+
+xlFocusViaPink900 : Svg.Attribute msg
+xlFocusViaPink900 =
+    A.class "xl:focus:via-pink-900"
+
+
+xlFocusToTransparent : Svg.Attribute msg
+xlFocusToTransparent =
+    A.class "xl:focus:to-transparent"
+
+
+xlFocusToCurrent : Svg.Attribute msg
+xlFocusToCurrent =
+    A.class "xl:focus:to-current"
+
+
+xlFocusToBlack : Svg.Attribute msg
+xlFocusToBlack =
+    A.class "xl:focus:to-black"
+
+
+xlFocusToWhite : Svg.Attribute msg
+xlFocusToWhite =
+    A.class "xl:focus:to-white"
+
+
+xlFocusToGray100 : Svg.Attribute msg
+xlFocusToGray100 =
+    A.class "xl:focus:to-gray-100"
+
+
+xlFocusToGray200 : Svg.Attribute msg
+xlFocusToGray200 =
+    A.class "xl:focus:to-gray-200"
+
+
+xlFocusToGray300 : Svg.Attribute msg
+xlFocusToGray300 =
+    A.class "xl:focus:to-gray-300"
+
+
+xlFocusToGray400 : Svg.Attribute msg
+xlFocusToGray400 =
+    A.class "xl:focus:to-gray-400"
+
+
+xlFocusToGray500 : Svg.Attribute msg
+xlFocusToGray500 =
+    A.class "xl:focus:to-gray-500"
+
+
+xlFocusToGray600 : Svg.Attribute msg
+xlFocusToGray600 =
+    A.class "xl:focus:to-gray-600"
+
+
+xlFocusToGray700 : Svg.Attribute msg
+xlFocusToGray700 =
+    A.class "xl:focus:to-gray-700"
+
+
+xlFocusToGray800 : Svg.Attribute msg
+xlFocusToGray800 =
+    A.class "xl:focus:to-gray-800"
+
+
+xlFocusToGray900 : Svg.Attribute msg
+xlFocusToGray900 =
+    A.class "xl:focus:to-gray-900"
+
+
+xlFocusToRed100 : Svg.Attribute msg
+xlFocusToRed100 =
+    A.class "xl:focus:to-red-100"
+
+
+xlFocusToRed200 : Svg.Attribute msg
+xlFocusToRed200 =
+    A.class "xl:focus:to-red-200"
+
+
+xlFocusToRed300 : Svg.Attribute msg
+xlFocusToRed300 =
+    A.class "xl:focus:to-red-300"
+
+
+xlFocusToRed400 : Svg.Attribute msg
+xlFocusToRed400 =
+    A.class "xl:focus:to-red-400"
+
+
+xlFocusToRed500 : Svg.Attribute msg
+xlFocusToRed500 =
+    A.class "xl:focus:to-red-500"
+
+
+xlFocusToRed600 : Svg.Attribute msg
+xlFocusToRed600 =
+    A.class "xl:focus:to-red-600"
+
+
+xlFocusToRed700 : Svg.Attribute msg
+xlFocusToRed700 =
+    A.class "xl:focus:to-red-700"
+
+
+xlFocusToRed800 : Svg.Attribute msg
+xlFocusToRed800 =
+    A.class "xl:focus:to-red-800"
+
+
+xlFocusToRed900 : Svg.Attribute msg
+xlFocusToRed900 =
+    A.class "xl:focus:to-red-900"
+
+
+xlFocusToOrange100 : Svg.Attribute msg
+xlFocusToOrange100 =
+    A.class "xl:focus:to-orange-100"
+
+
+xlFocusToOrange200 : Svg.Attribute msg
+xlFocusToOrange200 =
+    A.class "xl:focus:to-orange-200"
+
+
+xlFocusToOrange300 : Svg.Attribute msg
+xlFocusToOrange300 =
+    A.class "xl:focus:to-orange-300"
+
+
+xlFocusToOrange400 : Svg.Attribute msg
+xlFocusToOrange400 =
+    A.class "xl:focus:to-orange-400"
+
+
+xlFocusToOrange500 : Svg.Attribute msg
+xlFocusToOrange500 =
+    A.class "xl:focus:to-orange-500"
+
+
+xlFocusToOrange600 : Svg.Attribute msg
+xlFocusToOrange600 =
+    A.class "xl:focus:to-orange-600"
+
+
+xlFocusToOrange700 : Svg.Attribute msg
+xlFocusToOrange700 =
+    A.class "xl:focus:to-orange-700"
+
+
+xlFocusToOrange800 : Svg.Attribute msg
+xlFocusToOrange800 =
+    A.class "xl:focus:to-orange-800"
+
+
+xlFocusToOrange900 : Svg.Attribute msg
+xlFocusToOrange900 =
+    A.class "xl:focus:to-orange-900"
+
+
+xlFocusToYellow100 : Svg.Attribute msg
+xlFocusToYellow100 =
+    A.class "xl:focus:to-yellow-100"
+
+
+xlFocusToYellow200 : Svg.Attribute msg
+xlFocusToYellow200 =
+    A.class "xl:focus:to-yellow-200"
+
+
+xlFocusToYellow300 : Svg.Attribute msg
+xlFocusToYellow300 =
+    A.class "xl:focus:to-yellow-300"
+
+
+xlFocusToYellow400 : Svg.Attribute msg
+xlFocusToYellow400 =
+    A.class "xl:focus:to-yellow-400"
+
+
+xlFocusToYellow500 : Svg.Attribute msg
+xlFocusToYellow500 =
+    A.class "xl:focus:to-yellow-500"
+
+
+xlFocusToYellow600 : Svg.Attribute msg
+xlFocusToYellow600 =
+    A.class "xl:focus:to-yellow-600"
+
+
+xlFocusToYellow700 : Svg.Attribute msg
+xlFocusToYellow700 =
+    A.class "xl:focus:to-yellow-700"
+
+
+xlFocusToYellow800 : Svg.Attribute msg
+xlFocusToYellow800 =
+    A.class "xl:focus:to-yellow-800"
+
+
+xlFocusToYellow900 : Svg.Attribute msg
+xlFocusToYellow900 =
+    A.class "xl:focus:to-yellow-900"
+
+
+xlFocusToGreen100 : Svg.Attribute msg
+xlFocusToGreen100 =
+    A.class "xl:focus:to-green-100"
+
+
+xlFocusToGreen200 : Svg.Attribute msg
+xlFocusToGreen200 =
+    A.class "xl:focus:to-green-200"
+
+
+xlFocusToGreen300 : Svg.Attribute msg
+xlFocusToGreen300 =
+    A.class "xl:focus:to-green-300"
+
+
+xlFocusToGreen400 : Svg.Attribute msg
+xlFocusToGreen400 =
+    A.class "xl:focus:to-green-400"
+
+
+xlFocusToGreen500 : Svg.Attribute msg
+xlFocusToGreen500 =
+    A.class "xl:focus:to-green-500"
+
+
+xlFocusToGreen600 : Svg.Attribute msg
+xlFocusToGreen600 =
+    A.class "xl:focus:to-green-600"
+
+
+xlFocusToGreen700 : Svg.Attribute msg
+xlFocusToGreen700 =
+    A.class "xl:focus:to-green-700"
+
+
+xlFocusToGreen800 : Svg.Attribute msg
+xlFocusToGreen800 =
+    A.class "xl:focus:to-green-800"
+
+
+xlFocusToGreen900 : Svg.Attribute msg
+xlFocusToGreen900 =
+    A.class "xl:focus:to-green-900"
+
+
+xlFocusToTeal100 : Svg.Attribute msg
+xlFocusToTeal100 =
+    A.class "xl:focus:to-teal-100"
+
+
+xlFocusToTeal200 : Svg.Attribute msg
+xlFocusToTeal200 =
+    A.class "xl:focus:to-teal-200"
+
+
+xlFocusToTeal300 : Svg.Attribute msg
+xlFocusToTeal300 =
+    A.class "xl:focus:to-teal-300"
+
+
+xlFocusToTeal400 : Svg.Attribute msg
+xlFocusToTeal400 =
+    A.class "xl:focus:to-teal-400"
+
+
+xlFocusToTeal500 : Svg.Attribute msg
+xlFocusToTeal500 =
+    A.class "xl:focus:to-teal-500"
+
+
+xlFocusToTeal600 : Svg.Attribute msg
+xlFocusToTeal600 =
+    A.class "xl:focus:to-teal-600"
+
+
+xlFocusToTeal700 : Svg.Attribute msg
+xlFocusToTeal700 =
+    A.class "xl:focus:to-teal-700"
+
+
+xlFocusToTeal800 : Svg.Attribute msg
+xlFocusToTeal800 =
+    A.class "xl:focus:to-teal-800"
+
+
+xlFocusToTeal900 : Svg.Attribute msg
+xlFocusToTeal900 =
+    A.class "xl:focus:to-teal-900"
+
+
+xlFocusToBlue100 : Svg.Attribute msg
+xlFocusToBlue100 =
+    A.class "xl:focus:to-blue-100"
+
+
+xlFocusToBlue200 : Svg.Attribute msg
+xlFocusToBlue200 =
+    A.class "xl:focus:to-blue-200"
+
+
+xlFocusToBlue300 : Svg.Attribute msg
+xlFocusToBlue300 =
+    A.class "xl:focus:to-blue-300"
+
+
+xlFocusToBlue400 : Svg.Attribute msg
+xlFocusToBlue400 =
+    A.class "xl:focus:to-blue-400"
+
+
+xlFocusToBlue500 : Svg.Attribute msg
+xlFocusToBlue500 =
+    A.class "xl:focus:to-blue-500"
+
+
+xlFocusToBlue600 : Svg.Attribute msg
+xlFocusToBlue600 =
+    A.class "xl:focus:to-blue-600"
+
+
+xlFocusToBlue700 : Svg.Attribute msg
+xlFocusToBlue700 =
+    A.class "xl:focus:to-blue-700"
+
+
+xlFocusToBlue800 : Svg.Attribute msg
+xlFocusToBlue800 =
+    A.class "xl:focus:to-blue-800"
+
+
+xlFocusToBlue900 : Svg.Attribute msg
+xlFocusToBlue900 =
+    A.class "xl:focus:to-blue-900"
+
+
+xlFocusToIndigo100 : Svg.Attribute msg
+xlFocusToIndigo100 =
+    A.class "xl:focus:to-indigo-100"
+
+
+xlFocusToIndigo200 : Svg.Attribute msg
+xlFocusToIndigo200 =
+    A.class "xl:focus:to-indigo-200"
+
+
+xlFocusToIndigo300 : Svg.Attribute msg
+xlFocusToIndigo300 =
+    A.class "xl:focus:to-indigo-300"
+
+
+xlFocusToIndigo400 : Svg.Attribute msg
+xlFocusToIndigo400 =
+    A.class "xl:focus:to-indigo-400"
+
+
+xlFocusToIndigo500 : Svg.Attribute msg
+xlFocusToIndigo500 =
+    A.class "xl:focus:to-indigo-500"
+
+
+xlFocusToIndigo600 : Svg.Attribute msg
+xlFocusToIndigo600 =
+    A.class "xl:focus:to-indigo-600"
+
+
+xlFocusToIndigo700 : Svg.Attribute msg
+xlFocusToIndigo700 =
+    A.class "xl:focus:to-indigo-700"
+
+
+xlFocusToIndigo800 : Svg.Attribute msg
+xlFocusToIndigo800 =
+    A.class "xl:focus:to-indigo-800"
+
+
+xlFocusToIndigo900 : Svg.Attribute msg
+xlFocusToIndigo900 =
+    A.class "xl:focus:to-indigo-900"
+
+
+xlFocusToPurple100 : Svg.Attribute msg
+xlFocusToPurple100 =
+    A.class "xl:focus:to-purple-100"
+
+
+xlFocusToPurple200 : Svg.Attribute msg
+xlFocusToPurple200 =
+    A.class "xl:focus:to-purple-200"
+
+
+xlFocusToPurple300 : Svg.Attribute msg
+xlFocusToPurple300 =
+    A.class "xl:focus:to-purple-300"
+
+
+xlFocusToPurple400 : Svg.Attribute msg
+xlFocusToPurple400 =
+    A.class "xl:focus:to-purple-400"
+
+
+xlFocusToPurple500 : Svg.Attribute msg
+xlFocusToPurple500 =
+    A.class "xl:focus:to-purple-500"
+
+
+xlFocusToPurple600 : Svg.Attribute msg
+xlFocusToPurple600 =
+    A.class "xl:focus:to-purple-600"
+
+
+xlFocusToPurple700 : Svg.Attribute msg
+xlFocusToPurple700 =
+    A.class "xl:focus:to-purple-700"
+
+
+xlFocusToPurple800 : Svg.Attribute msg
+xlFocusToPurple800 =
+    A.class "xl:focus:to-purple-800"
+
+
+xlFocusToPurple900 : Svg.Attribute msg
+xlFocusToPurple900 =
+    A.class "xl:focus:to-purple-900"
+
+
+xlFocusToPink100 : Svg.Attribute msg
+xlFocusToPink100 =
+    A.class "xl:focus:to-pink-100"
+
+
+xlFocusToPink200 : Svg.Attribute msg
+xlFocusToPink200 =
+    A.class "xl:focus:to-pink-200"
+
+
+xlFocusToPink300 : Svg.Attribute msg
+xlFocusToPink300 =
+    A.class "xl:focus:to-pink-300"
+
+
+xlFocusToPink400 : Svg.Attribute msg
+xlFocusToPink400 =
+    A.class "xl:focus:to-pink-400"
+
+
+xlFocusToPink500 : Svg.Attribute msg
+xlFocusToPink500 =
+    A.class "xl:focus:to-pink-500"
+
+
+xlFocusToPink600 : Svg.Attribute msg
+xlFocusToPink600 =
+    A.class "xl:focus:to-pink-600"
+
+
+xlFocusToPink700 : Svg.Attribute msg
+xlFocusToPink700 =
+    A.class "xl:focus:to-pink-700"
+
+
+xlFocusToPink800 : Svg.Attribute msg
+xlFocusToPink800 =
+    A.class "xl:focus:to-pink-800"
+
+
+xlFocusToPink900 : Svg.Attribute msg
+xlFocusToPink900 =
+    A.class "xl:focus:to-pink-900"
 
 
 xlBgOpacity0 : Svg.Attribute msg
@@ -73337,6 +102956,21 @@ xlRoundedLg =
     A.class "xl:rounded-lg"
 
 
+xlRoundedXl : Svg.Attribute msg
+xlRoundedXl =
+    A.class "xl:rounded-xl"
+
+
+xlRounded2xl : Svg.Attribute msg
+xlRounded2xl =
+    A.class "xl:rounded-2xl"
+
+
+xlRounded3xl : Svg.Attribute msg
+xlRounded3xl =
+    A.class "xl:rounded-3xl"
+
+
 xlRoundedFull : Svg.Attribute msg
 xlRoundedFull =
     A.class "xl:rounded-full"
@@ -73440,6 +103074,66 @@ xlRoundedBLg =
 xlRoundedLLg : Svg.Attribute msg
 xlRoundedLLg =
     A.class "xl:rounded-l-lg"
+
+
+xlRoundedTXl : Svg.Attribute msg
+xlRoundedTXl =
+    A.class "xl:rounded-t-xl"
+
+
+xlRoundedRXl : Svg.Attribute msg
+xlRoundedRXl =
+    A.class "xl:rounded-r-xl"
+
+
+xlRoundedBXl : Svg.Attribute msg
+xlRoundedBXl =
+    A.class "xl:rounded-b-xl"
+
+
+xlRoundedLXl : Svg.Attribute msg
+xlRoundedLXl =
+    A.class "xl:rounded-l-xl"
+
+
+xlRoundedT2xl : Svg.Attribute msg
+xlRoundedT2xl =
+    A.class "xl:rounded-t-2xl"
+
+
+xlRoundedR2xl : Svg.Attribute msg
+xlRoundedR2xl =
+    A.class "xl:rounded-r-2xl"
+
+
+xlRoundedB2xl : Svg.Attribute msg
+xlRoundedB2xl =
+    A.class "xl:rounded-b-2xl"
+
+
+xlRoundedL2xl : Svg.Attribute msg
+xlRoundedL2xl =
+    A.class "xl:rounded-l-2xl"
+
+
+xlRoundedT3xl : Svg.Attribute msg
+xlRoundedT3xl =
+    A.class "xl:rounded-t-3xl"
+
+
+xlRoundedR3xl : Svg.Attribute msg
+xlRoundedR3xl =
+    A.class "xl:rounded-r-3xl"
+
+
+xlRoundedB3xl : Svg.Attribute msg
+xlRoundedB3xl =
+    A.class "xl:rounded-b-3xl"
+
+
+xlRoundedL3xl : Svg.Attribute msg
+xlRoundedL3xl =
+    A.class "xl:rounded-l-3xl"
 
 
 xlRoundedTFull : Svg.Attribute msg
@@ -73560,6 +103254,66 @@ xlRoundedBrLg =
 xlRoundedBlLg : Svg.Attribute msg
 xlRoundedBlLg =
     A.class "xl:rounded-bl-lg"
+
+
+xlRoundedTlXl : Svg.Attribute msg
+xlRoundedTlXl =
+    A.class "xl:rounded-tl-xl"
+
+
+xlRoundedTrXl : Svg.Attribute msg
+xlRoundedTrXl =
+    A.class "xl:rounded-tr-xl"
+
+
+xlRoundedBrXl : Svg.Attribute msg
+xlRoundedBrXl =
+    A.class "xl:rounded-br-xl"
+
+
+xlRoundedBlXl : Svg.Attribute msg
+xlRoundedBlXl =
+    A.class "xl:rounded-bl-xl"
+
+
+xlRoundedTl2xl : Svg.Attribute msg
+xlRoundedTl2xl =
+    A.class "xl:rounded-tl-2xl"
+
+
+xlRoundedTr2xl : Svg.Attribute msg
+xlRoundedTr2xl =
+    A.class "xl:rounded-tr-2xl"
+
+
+xlRoundedBr2xl : Svg.Attribute msg
+xlRoundedBr2xl =
+    A.class "xl:rounded-br-2xl"
+
+
+xlRoundedBl2xl : Svg.Attribute msg
+xlRoundedBl2xl =
+    A.class "xl:rounded-bl-2xl"
+
+
+xlRoundedTl3xl : Svg.Attribute msg
+xlRoundedTl3xl =
+    A.class "xl:rounded-tl-3xl"
+
+
+xlRoundedTr3xl : Svg.Attribute msg
+xlRoundedTr3xl =
+    A.class "xl:rounded-tr-3xl"
+
+
+xlRoundedBr3xl : Svg.Attribute msg
+xlRoundedBr3xl =
+    A.class "xl:rounded-br-3xl"
+
+
+xlRoundedBl3xl : Svg.Attribute msg
+xlRoundedBl3xl =
+    A.class "xl:rounded-bl-3xl"
 
 
 xlRoundedTlFull : Svg.Attribute msg
@@ -73862,6 +103616,11 @@ xlInlineGrid =
     A.class "xl:inline-grid"
 
 
+xlContents : Svg.Attribute msg
+xlContents =
+    A.class "xl:contents"
+
+
 xlHidden : Svg.Attribute msg
 xlHidden =
     A.class "xl:hidden"
@@ -73902,6 +103661,91 @@ xlFlexNoWrap =
     A.class "xl:flex-no-wrap"
 
 
+xlPlaceItemsAuto : Svg.Attribute msg
+xlPlaceItemsAuto =
+    A.class "xl:place-items-auto"
+
+
+xlPlaceItemsStart : Svg.Attribute msg
+xlPlaceItemsStart =
+    A.class "xl:place-items-start"
+
+
+xlPlaceItemsEnd : Svg.Attribute msg
+xlPlaceItemsEnd =
+    A.class "xl:place-items-end"
+
+
+xlPlaceItemsCenter : Svg.Attribute msg
+xlPlaceItemsCenter =
+    A.class "xl:place-items-center"
+
+
+xlPlaceItemsStretch : Svg.Attribute msg
+xlPlaceItemsStretch =
+    A.class "xl:place-items-stretch"
+
+
+xlPlaceContentCenter : Svg.Attribute msg
+xlPlaceContentCenter =
+    A.class "xl:place-content-center"
+
+
+xlPlaceContentStart : Svg.Attribute msg
+xlPlaceContentStart =
+    A.class "xl:place-content-start"
+
+
+xlPlaceContentEnd : Svg.Attribute msg
+xlPlaceContentEnd =
+    A.class "xl:place-content-end"
+
+
+xlPlaceContentBetween : Svg.Attribute msg
+xlPlaceContentBetween =
+    A.class "xl:place-content-between"
+
+
+xlPlaceContentAround : Svg.Attribute msg
+xlPlaceContentAround =
+    A.class "xl:place-content-around"
+
+
+xlPlaceContentEvenly : Svg.Attribute msg
+xlPlaceContentEvenly =
+    A.class "xl:place-content-evenly"
+
+
+xlPlaceContentStretch : Svg.Attribute msg
+xlPlaceContentStretch =
+    A.class "xl:place-content-stretch"
+
+
+xlPlaceSelfAuto : Svg.Attribute msg
+xlPlaceSelfAuto =
+    A.class "xl:place-self-auto"
+
+
+xlPlaceSelfStart : Svg.Attribute msg
+xlPlaceSelfStart =
+    A.class "xl:place-self-start"
+
+
+xlPlaceSelfEnd : Svg.Attribute msg
+xlPlaceSelfEnd =
+    A.class "xl:place-self-end"
+
+
+xlPlaceSelfCenter : Svg.Attribute msg
+xlPlaceSelfCenter =
+    A.class "xl:place-self-center"
+
+
+xlPlaceSelfStretch : Svg.Attribute msg
+xlPlaceSelfStretch =
+    A.class "xl:place-self-stretch"
+
+
 xlItemsStart : Svg.Attribute msg
 xlItemsStart =
     A.class "xl:items-start"
@@ -73927,6 +103771,36 @@ xlItemsStretch =
     A.class "xl:items-stretch"
 
 
+xlContentCenter : Svg.Attribute msg
+xlContentCenter =
+    A.class "xl:content-center"
+
+
+xlContentStart : Svg.Attribute msg
+xlContentStart =
+    A.class "xl:content-start"
+
+
+xlContentEnd : Svg.Attribute msg
+xlContentEnd =
+    A.class "xl:content-end"
+
+
+xlContentBetween : Svg.Attribute msg
+xlContentBetween =
+    A.class "xl:content-between"
+
+
+xlContentAround : Svg.Attribute msg
+xlContentAround =
+    A.class "xl:content-around"
+
+
+xlContentEvenly : Svg.Attribute msg
+xlContentEvenly =
+    A.class "xl:content-evenly"
+
+
 xlSelfAuto : Svg.Attribute msg
 xlSelfAuto =
     A.class "xl:self-auto"
@@ -73950,6 +103824,31 @@ xlSelfCenter =
 xlSelfStretch : Svg.Attribute msg
 xlSelfStretch =
     A.class "xl:self-stretch"
+
+
+xlJustifyItemsAuto : Svg.Attribute msg
+xlJustifyItemsAuto =
+    A.class "xl:justify-items-auto"
+
+
+xlJustifyItemsStart : Svg.Attribute msg
+xlJustifyItemsStart =
+    A.class "xl:justify-items-start"
+
+
+xlJustifyItemsEnd : Svg.Attribute msg
+xlJustifyItemsEnd =
+    A.class "xl:justify-items-end"
+
+
+xlJustifyItemsCenter : Svg.Attribute msg
+xlJustifyItemsCenter =
+    A.class "xl:justify-items-center"
+
+
+xlJustifyItemsStretch : Svg.Attribute msg
+xlJustifyItemsStretch =
+    A.class "xl:justify-items-stretch"
 
 
 xlJustifyStart : Svg.Attribute msg
@@ -73982,29 +103881,29 @@ xlJustifyEvenly =
     A.class "xl:justify-evenly"
 
 
-xlContentCenter : Svg.Attribute msg
-xlContentCenter =
-    A.class "xl:content-center"
+xlJustifySelfAuto : Svg.Attribute msg
+xlJustifySelfAuto =
+    A.class "xl:justify-self-auto"
 
 
-xlContentStart : Svg.Attribute msg
-xlContentStart =
-    A.class "xl:content-start"
+xlJustifySelfStart : Svg.Attribute msg
+xlJustifySelfStart =
+    A.class "xl:justify-self-start"
 
 
-xlContentEnd : Svg.Attribute msg
-xlContentEnd =
-    A.class "xl:content-end"
+xlJustifySelfEnd : Svg.Attribute msg
+xlJustifySelfEnd =
+    A.class "xl:justify-self-end"
 
 
-xlContentBetween : Svg.Attribute msg
-xlContentBetween =
-    A.class "xl:content-between"
+xlJustifySelfCenter : Svg.Attribute msg
+xlJustifySelfCenter =
+    A.class "xl:justify-self-center"
 
 
-xlContentAround : Svg.Attribute msg
-xlContentAround =
-    A.class "xl:content-around"
+xlJustifySelfStretch : Svg.Attribute msg
+xlJustifySelfStretch =
+    A.class "xl:justify-self-stretch"
 
 
 xlFlex1 : Svg.Attribute msg
@@ -76167,9 +106066,29 @@ xlOutlineNone =
     A.class "xl:outline-none"
 
 
+xlOutlineWhite : Svg.Attribute msg
+xlOutlineWhite =
+    A.class "xl:outline-white"
+
+
+xlOutlineBlack : Svg.Attribute msg
+xlOutlineBlack =
+    A.class "xl:outline-black"
+
+
 xlFocusOutlineNone : Svg.Attribute msg
 xlFocusOutlineNone =
     A.class "xl:focus:outline-none"
+
+
+xlFocusOutlineWhite : Svg.Attribute msg
+xlFocusOutlineWhite =
+    A.class "xl:focus:outline-white"
+
+
+xlFocusOutlineBlack : Svg.Attribute msg
+xlFocusOutlineBlack =
+    A.class "xl:focus:outline-black"
 
 
 xlOverflowAuto : Svg.Attribute msg
@@ -76240,6 +106159,51 @@ xlScrollingTouch =
 xlScrollingAuto : Svg.Attribute msg
 xlScrollingAuto =
     A.class "xl:scrolling-auto"
+
+
+xlOverscrollAuto : Svg.Attribute msg
+xlOverscrollAuto =
+    A.class "xl:overscroll-auto"
+
+
+xlOverscrollContain : Svg.Attribute msg
+xlOverscrollContain =
+    A.class "xl:overscroll-contain"
+
+
+xlOverscrollNone : Svg.Attribute msg
+xlOverscrollNone =
+    A.class "xl:overscroll-none"
+
+
+xlOverscrollYAuto : Svg.Attribute msg
+xlOverscrollYAuto =
+    A.class "xl:overscroll-y-auto"
+
+
+xlOverscrollYContain : Svg.Attribute msg
+xlOverscrollYContain =
+    A.class "xl:overscroll-y-contain"
+
+
+xlOverscrollYNone : Svg.Attribute msg
+xlOverscrollYNone =
+    A.class "xl:overscroll-y-none"
+
+
+xlOverscrollXAuto : Svg.Attribute msg
+xlOverscrollXAuto =
+    A.class "xl:overscroll-x-auto"
+
+
+xlOverscrollXContain : Svg.Attribute msg
+xlOverscrollXContain =
+    A.class "xl:overscroll-x-contain"
+
+
+xlOverscrollXNone : Svg.Attribute msg
+xlOverscrollXNone =
+    A.class "xl:overscroll-x-none"
 
 
 xlP0 : Svg.Attribute msg
@@ -79797,6 +109761,51 @@ xlSubpixelAntialiased =
     A.class "xl:subpixel-antialiased"
 
 
+xlOrdinal : Svg.Attribute msg
+xlOrdinal =
+    A.class "xl:ordinal"
+
+
+xlSlashedZero : Svg.Attribute msg
+xlSlashedZero =
+    A.class "xl:slashed-zero"
+
+
+xlLiningNums : Svg.Attribute msg
+xlLiningNums =
+    A.class "xl:lining-nums"
+
+
+xlOldstyleNums : Svg.Attribute msg
+xlOldstyleNums =
+    A.class "xl:oldstyle-nums"
+
+
+xlProportionalNums : Svg.Attribute msg
+xlProportionalNums =
+    A.class "xl:proportional-nums"
+
+
+xlTabularNums : Svg.Attribute msg
+xlTabularNums =
+    A.class "xl:tabular-nums"
+
+
+xlDiagonalFractions : Svg.Attribute msg
+xlDiagonalFractions =
+    A.class "xl:diagonal-fractions"
+
+
+xlStackedFractions : Svg.Attribute msg
+xlStackedFractions =
+    A.class "xl:stacked-fractions"
+
+
+xlNormalNums : Svg.Attribute msg
+xlNormalNums =
+    A.class "xl:normal-nums"
+
+
 xlTrackingTighter : Svg.Attribute msg
 xlTrackingTighter =
     A.class "xl:tracking-tighter"
@@ -80302,194 +110311,194 @@ xlGapPx =
     A.class "xl:gap-px"
 
 
-xlColGap0 : Svg.Attribute msg
-xlColGap0 =
-    A.class "xl:col-gap-0"
+xlGapX0 : Svg.Attribute msg
+xlGapX0 =
+    A.class "xl:gap-x-0"
 
 
-xlColGap1 : Svg.Attribute msg
-xlColGap1 =
-    A.class "xl:col-gap-1"
+xlGapX1 : Svg.Attribute msg
+xlGapX1 =
+    A.class "xl:gap-x-1"
 
 
-xlColGap2 : Svg.Attribute msg
-xlColGap2 =
-    A.class "xl:col-gap-2"
+xlGapX2 : Svg.Attribute msg
+xlGapX2 =
+    A.class "xl:gap-x-2"
 
 
-xlColGap3 : Svg.Attribute msg
-xlColGap3 =
-    A.class "xl:col-gap-3"
+xlGapX3 : Svg.Attribute msg
+xlGapX3 =
+    A.class "xl:gap-x-3"
 
 
-xlColGap4 : Svg.Attribute msg
-xlColGap4 =
-    A.class "xl:col-gap-4"
+xlGapX4 : Svg.Attribute msg
+xlGapX4 =
+    A.class "xl:gap-x-4"
 
 
-xlColGap5 : Svg.Attribute msg
-xlColGap5 =
-    A.class "xl:col-gap-5"
+xlGapX5 : Svg.Attribute msg
+xlGapX5 =
+    A.class "xl:gap-x-5"
 
 
-xlColGap6 : Svg.Attribute msg
-xlColGap6 =
-    A.class "xl:col-gap-6"
+xlGapX6 : Svg.Attribute msg
+xlGapX6 =
+    A.class "xl:gap-x-6"
 
 
-xlColGap8 : Svg.Attribute msg
-xlColGap8 =
-    A.class "xl:col-gap-8"
+xlGapX8 : Svg.Attribute msg
+xlGapX8 =
+    A.class "xl:gap-x-8"
 
 
-xlColGap10 : Svg.Attribute msg
-xlColGap10 =
-    A.class "xl:col-gap-10"
+xlGapX10 : Svg.Attribute msg
+xlGapX10 =
+    A.class "xl:gap-x-10"
 
 
-xlColGap12 : Svg.Attribute msg
-xlColGap12 =
-    A.class "xl:col-gap-12"
+xlGapX12 : Svg.Attribute msg
+xlGapX12 =
+    A.class "xl:gap-x-12"
 
 
-xlColGap16 : Svg.Attribute msg
-xlColGap16 =
-    A.class "xl:col-gap-16"
+xlGapX16 : Svg.Attribute msg
+xlGapX16 =
+    A.class "xl:gap-x-16"
 
 
-xlColGap20 : Svg.Attribute msg
-xlColGap20 =
-    A.class "xl:col-gap-20"
+xlGapX20 : Svg.Attribute msg
+xlGapX20 =
+    A.class "xl:gap-x-20"
 
 
-xlColGap24 : Svg.Attribute msg
-xlColGap24 =
-    A.class "xl:col-gap-24"
+xlGapX24 : Svg.Attribute msg
+xlGapX24 =
+    A.class "xl:gap-x-24"
 
 
-xlColGap32 : Svg.Attribute msg
-xlColGap32 =
-    A.class "xl:col-gap-32"
+xlGapX32 : Svg.Attribute msg
+xlGapX32 =
+    A.class "xl:gap-x-32"
 
 
-xlColGap40 : Svg.Attribute msg
-xlColGap40 =
-    A.class "xl:col-gap-40"
+xlGapX40 : Svg.Attribute msg
+xlGapX40 =
+    A.class "xl:gap-x-40"
 
 
-xlColGap48 : Svg.Attribute msg
-xlColGap48 =
-    A.class "xl:col-gap-48"
+xlGapX48 : Svg.Attribute msg
+xlGapX48 =
+    A.class "xl:gap-x-48"
 
 
-xlColGap56 : Svg.Attribute msg
-xlColGap56 =
-    A.class "xl:col-gap-56"
+xlGapX56 : Svg.Attribute msg
+xlGapX56 =
+    A.class "xl:gap-x-56"
 
 
-xlColGap64 : Svg.Attribute msg
-xlColGap64 =
-    A.class "xl:col-gap-64"
+xlGapX64 : Svg.Attribute msg
+xlGapX64 =
+    A.class "xl:gap-x-64"
 
 
-xlColGapPx : Svg.Attribute msg
-xlColGapPx =
-    A.class "xl:col-gap-px"
+xlGapXPx : Svg.Attribute msg
+xlGapXPx =
+    A.class "xl:gap-x-px"
 
 
-xlRowGap0 : Svg.Attribute msg
-xlRowGap0 =
-    A.class "xl:row-gap-0"
+xlGapY0 : Svg.Attribute msg
+xlGapY0 =
+    A.class "xl:gap-y-0"
 
 
-xlRowGap1 : Svg.Attribute msg
-xlRowGap1 =
-    A.class "xl:row-gap-1"
+xlGapY1 : Svg.Attribute msg
+xlGapY1 =
+    A.class "xl:gap-y-1"
 
 
-xlRowGap2 : Svg.Attribute msg
-xlRowGap2 =
-    A.class "xl:row-gap-2"
+xlGapY2 : Svg.Attribute msg
+xlGapY2 =
+    A.class "xl:gap-y-2"
 
 
-xlRowGap3 : Svg.Attribute msg
-xlRowGap3 =
-    A.class "xl:row-gap-3"
+xlGapY3 : Svg.Attribute msg
+xlGapY3 =
+    A.class "xl:gap-y-3"
 
 
-xlRowGap4 : Svg.Attribute msg
-xlRowGap4 =
-    A.class "xl:row-gap-4"
+xlGapY4 : Svg.Attribute msg
+xlGapY4 =
+    A.class "xl:gap-y-4"
 
 
-xlRowGap5 : Svg.Attribute msg
-xlRowGap5 =
-    A.class "xl:row-gap-5"
+xlGapY5 : Svg.Attribute msg
+xlGapY5 =
+    A.class "xl:gap-y-5"
 
 
-xlRowGap6 : Svg.Attribute msg
-xlRowGap6 =
-    A.class "xl:row-gap-6"
+xlGapY6 : Svg.Attribute msg
+xlGapY6 =
+    A.class "xl:gap-y-6"
 
 
-xlRowGap8 : Svg.Attribute msg
-xlRowGap8 =
-    A.class "xl:row-gap-8"
+xlGapY8 : Svg.Attribute msg
+xlGapY8 =
+    A.class "xl:gap-y-8"
 
 
-xlRowGap10 : Svg.Attribute msg
-xlRowGap10 =
-    A.class "xl:row-gap-10"
+xlGapY10 : Svg.Attribute msg
+xlGapY10 =
+    A.class "xl:gap-y-10"
 
 
-xlRowGap12 : Svg.Attribute msg
-xlRowGap12 =
-    A.class "xl:row-gap-12"
+xlGapY12 : Svg.Attribute msg
+xlGapY12 =
+    A.class "xl:gap-y-12"
 
 
-xlRowGap16 : Svg.Attribute msg
-xlRowGap16 =
-    A.class "xl:row-gap-16"
+xlGapY16 : Svg.Attribute msg
+xlGapY16 =
+    A.class "xl:gap-y-16"
 
 
-xlRowGap20 : Svg.Attribute msg
-xlRowGap20 =
-    A.class "xl:row-gap-20"
+xlGapY20 : Svg.Attribute msg
+xlGapY20 =
+    A.class "xl:gap-y-20"
 
 
-xlRowGap24 : Svg.Attribute msg
-xlRowGap24 =
-    A.class "xl:row-gap-24"
+xlGapY24 : Svg.Attribute msg
+xlGapY24 =
+    A.class "xl:gap-y-24"
 
 
-xlRowGap32 : Svg.Attribute msg
-xlRowGap32 =
-    A.class "xl:row-gap-32"
+xlGapY32 : Svg.Attribute msg
+xlGapY32 =
+    A.class "xl:gap-y-32"
 
 
-xlRowGap40 : Svg.Attribute msg
-xlRowGap40 =
-    A.class "xl:row-gap-40"
+xlGapY40 : Svg.Attribute msg
+xlGapY40 =
+    A.class "xl:gap-y-40"
 
 
-xlRowGap48 : Svg.Attribute msg
-xlRowGap48 =
-    A.class "xl:row-gap-48"
+xlGapY48 : Svg.Attribute msg
+xlGapY48 =
+    A.class "xl:gap-y-48"
 
 
-xlRowGap56 : Svg.Attribute msg
-xlRowGap56 =
-    A.class "xl:row-gap-56"
+xlGapY56 : Svg.Attribute msg
+xlGapY56 =
+    A.class "xl:gap-y-56"
 
 
-xlRowGap64 : Svg.Attribute msg
-xlRowGap64 =
-    A.class "xl:row-gap-64"
+xlGapY64 : Svg.Attribute msg
+xlGapY64 =
+    A.class "xl:gap-y-64"
 
 
-xlRowGapPx : Svg.Attribute msg
-xlRowGapPx =
-    A.class "xl:row-gap-px"
+xlGapYPx : Svg.Attribute msg
+xlGapYPx =
+    A.class "xl:gap-y-px"
 
 
 xlGridFlowRow : Svg.Attribute msg
@@ -80577,6 +110586,26 @@ xlGridColsNone =
     A.class "xl:grid-cols-none"
 
 
+xlAutoColsAuto : Svg.Attribute msg
+xlAutoColsAuto =
+    A.class "xl:auto-cols-auto"
+
+
+xlAutoColsMin : Svg.Attribute msg
+xlAutoColsMin =
+    A.class "xl:auto-cols-min"
+
+
+xlAutoColsMax : Svg.Attribute msg
+xlAutoColsMax =
+    A.class "xl:auto-cols-max"
+
+
+xlAutoColsFr : Svg.Attribute msg
+xlAutoColsFr =
+    A.class "xl:auto-cols-fr"
+
+
 xlColAuto : Svg.Attribute msg
 xlColAuto =
     A.class "xl:col-auto"
@@ -80640,6 +110669,11 @@ xlColSpan11 =
 xlColSpan12 : Svg.Attribute msg
 xlColSpan12 =
     A.class "xl:col-span-12"
+
+
+xlColSpanFull : Svg.Attribute msg
+xlColSpanFull =
+    A.class "xl:col-span-full"
 
 
 xlColStart1 : Svg.Attribute msg
@@ -80817,6 +110851,26 @@ xlGridRowsNone =
     A.class "xl:grid-rows-none"
 
 
+xlAutoRowsAuto : Svg.Attribute msg
+xlAutoRowsAuto =
+    A.class "xl:auto-rows-auto"
+
+
+xlAutoRowsMin : Svg.Attribute msg
+xlAutoRowsMin =
+    A.class "xl:auto-rows-min"
+
+
+xlAutoRowsMax : Svg.Attribute msg
+xlAutoRowsMax =
+    A.class "xl:auto-rows-max"
+
+
+xlAutoRowsFr : Svg.Attribute msg
+xlAutoRowsFr =
+    A.class "xl:auto-rows-fr"
+
+
 xlRowAuto : Svg.Attribute msg
 xlRowAuto =
     A.class "xl:row-auto"
@@ -80850,6 +110904,11 @@ xlRowSpan5 =
 xlRowSpan6 : Svg.Attribute msg
 xlRowSpan6 =
     A.class "xl:row-span-6"
+
+
+xlRowSpanFull : Svg.Attribute msg
+xlRowSpanFull =
+    A.class "xl:row-span-full"
 
 
 xlRowStart1 : Svg.Attribute msg
@@ -81442,6 +111501,31 @@ xlRotate0 =
     A.class "xl:rotate-0"
 
 
+xlRotate1 : Svg.Attribute msg
+xlRotate1 =
+    A.class "xl:rotate-1"
+
+
+xlRotate2 : Svg.Attribute msg
+xlRotate2 =
+    A.class "xl:rotate-2"
+
+
+xlRotate3 : Svg.Attribute msg
+xlRotate3 =
+    A.class "xl:rotate-3"
+
+
+xlRotate6 : Svg.Attribute msg
+xlRotate6 =
+    A.class "xl:rotate-6"
+
+
+xlRotate12 : Svg.Attribute msg
+xlRotate12 =
+    A.class "xl:rotate-12"
+
+
 xlRotate45 : Svg.Attribute msg
 xlRotate45 =
     A.class "xl:rotate-45"
@@ -81472,9 +111556,59 @@ xlNegRotate45 =
     A.class "xl:-rotate-45"
 
 
+xlNegRotate12 : Svg.Attribute msg
+xlNegRotate12 =
+    A.class "xl:-rotate-12"
+
+
+xlNegRotate6 : Svg.Attribute msg
+xlNegRotate6 =
+    A.class "xl:-rotate-6"
+
+
+xlNegRotate3 : Svg.Attribute msg
+xlNegRotate3 =
+    A.class "xl:-rotate-3"
+
+
+xlNegRotate2 : Svg.Attribute msg
+xlNegRotate2 =
+    A.class "xl:-rotate-2"
+
+
+xlNegRotate1 : Svg.Attribute msg
+xlNegRotate1 =
+    A.class "xl:-rotate-1"
+
+
 xlHoverRotate0 : Svg.Attribute msg
 xlHoverRotate0 =
     A.class "xl:hover:rotate-0"
+
+
+xlHoverRotate1 : Svg.Attribute msg
+xlHoverRotate1 =
+    A.class "xl:hover:rotate-1"
+
+
+xlHoverRotate2 : Svg.Attribute msg
+xlHoverRotate2 =
+    A.class "xl:hover:rotate-2"
+
+
+xlHoverRotate3 : Svg.Attribute msg
+xlHoverRotate3 =
+    A.class "xl:hover:rotate-3"
+
+
+xlHoverRotate6 : Svg.Attribute msg
+xlHoverRotate6 =
+    A.class "xl:hover:rotate-6"
+
+
+xlHoverRotate12 : Svg.Attribute msg
+xlHoverRotate12 =
+    A.class "xl:hover:rotate-12"
 
 
 xlHoverRotate45 : Svg.Attribute msg
@@ -81507,9 +111641,59 @@ xlHoverNegRotate45 =
     A.class "xl:hover:-rotate-45"
 
 
+xlHoverNegRotate12 : Svg.Attribute msg
+xlHoverNegRotate12 =
+    A.class "xl:hover:-rotate-12"
+
+
+xlHoverNegRotate6 : Svg.Attribute msg
+xlHoverNegRotate6 =
+    A.class "xl:hover:-rotate-6"
+
+
+xlHoverNegRotate3 : Svg.Attribute msg
+xlHoverNegRotate3 =
+    A.class "xl:hover:-rotate-3"
+
+
+xlHoverNegRotate2 : Svg.Attribute msg
+xlHoverNegRotate2 =
+    A.class "xl:hover:-rotate-2"
+
+
+xlHoverNegRotate1 : Svg.Attribute msg
+xlHoverNegRotate1 =
+    A.class "xl:hover:-rotate-1"
+
+
 xlFocusRotate0 : Svg.Attribute msg
 xlFocusRotate0 =
     A.class "xl:focus:rotate-0"
+
+
+xlFocusRotate1 : Svg.Attribute msg
+xlFocusRotate1 =
+    A.class "xl:focus:rotate-1"
+
+
+xlFocusRotate2 : Svg.Attribute msg
+xlFocusRotate2 =
+    A.class "xl:focus:rotate-2"
+
+
+xlFocusRotate3 : Svg.Attribute msg
+xlFocusRotate3 =
+    A.class "xl:focus:rotate-3"
+
+
+xlFocusRotate6 : Svg.Attribute msg
+xlFocusRotate6 =
+    A.class "xl:focus:rotate-6"
+
+
+xlFocusRotate12 : Svg.Attribute msg
+xlFocusRotate12 =
+    A.class "xl:focus:rotate-12"
 
 
 xlFocusRotate45 : Svg.Attribute msg
@@ -81540,6 +111724,31 @@ xlFocusNegRotate90 =
 xlFocusNegRotate45 : Svg.Attribute msg
 xlFocusNegRotate45 =
     A.class "xl:focus:-rotate-45"
+
+
+xlFocusNegRotate12 : Svg.Attribute msg
+xlFocusNegRotate12 =
+    A.class "xl:focus:-rotate-12"
+
+
+xlFocusNegRotate6 : Svg.Attribute msg
+xlFocusNegRotate6 =
+    A.class "xl:focus:-rotate-6"
+
+
+xlFocusNegRotate3 : Svg.Attribute msg
+xlFocusNegRotate3 =
+    A.class "xl:focus:-rotate-3"
+
+
+xlFocusNegRotate2 : Svg.Attribute msg
+xlFocusNegRotate2 =
+    A.class "xl:focus:-rotate-2"
+
+
+xlFocusNegRotate1 : Svg.Attribute msg
+xlFocusNegRotate1 =
+    A.class "xl:focus:-rotate-1"
 
 
 xlTranslateX0 : Svg.Attribute msg
@@ -82777,6 +112986,16 @@ xlSkewX0 =
     A.class "xl:skew-x-0"
 
 
+xlSkewX1 : Svg.Attribute msg
+xlSkewX1 =
+    A.class "xl:skew-x-1"
+
+
+xlSkewX2 : Svg.Attribute msg
+xlSkewX2 =
+    A.class "xl:skew-x-2"
+
+
 xlSkewX3 : Svg.Attribute msg
 xlSkewX3 =
     A.class "xl:skew-x-3"
@@ -82807,9 +113026,29 @@ xlNegSkewX3 =
     A.class "xl:-skew-x-3"
 
 
+xlNegSkewX2 : Svg.Attribute msg
+xlNegSkewX2 =
+    A.class "xl:-skew-x-2"
+
+
+xlNegSkewX1 : Svg.Attribute msg
+xlNegSkewX1 =
+    A.class "xl:-skew-x-1"
+
+
 xlSkewY0 : Svg.Attribute msg
 xlSkewY0 =
     A.class "xl:skew-y-0"
+
+
+xlSkewY1 : Svg.Attribute msg
+xlSkewY1 =
+    A.class "xl:skew-y-1"
+
+
+xlSkewY2 : Svg.Attribute msg
+xlSkewY2 =
+    A.class "xl:skew-y-2"
 
 
 xlSkewY3 : Svg.Attribute msg
@@ -82842,9 +113081,29 @@ xlNegSkewY3 =
     A.class "xl:-skew-y-3"
 
 
+xlNegSkewY2 : Svg.Attribute msg
+xlNegSkewY2 =
+    A.class "xl:-skew-y-2"
+
+
+xlNegSkewY1 : Svg.Attribute msg
+xlNegSkewY1 =
+    A.class "xl:-skew-y-1"
+
+
 xlHoverSkewX0 : Svg.Attribute msg
 xlHoverSkewX0 =
     A.class "xl:hover:skew-x-0"
+
+
+xlHoverSkewX1 : Svg.Attribute msg
+xlHoverSkewX1 =
+    A.class "xl:hover:skew-x-1"
+
+
+xlHoverSkewX2 : Svg.Attribute msg
+xlHoverSkewX2 =
+    A.class "xl:hover:skew-x-2"
 
 
 xlHoverSkewX3 : Svg.Attribute msg
@@ -82877,9 +113136,29 @@ xlHoverNegSkewX3 =
     A.class "xl:hover:-skew-x-3"
 
 
+xlHoverNegSkewX2 : Svg.Attribute msg
+xlHoverNegSkewX2 =
+    A.class "xl:hover:-skew-x-2"
+
+
+xlHoverNegSkewX1 : Svg.Attribute msg
+xlHoverNegSkewX1 =
+    A.class "xl:hover:-skew-x-1"
+
+
 xlHoverSkewY0 : Svg.Attribute msg
 xlHoverSkewY0 =
     A.class "xl:hover:skew-y-0"
+
+
+xlHoverSkewY1 : Svg.Attribute msg
+xlHoverSkewY1 =
+    A.class "xl:hover:skew-y-1"
+
+
+xlHoverSkewY2 : Svg.Attribute msg
+xlHoverSkewY2 =
+    A.class "xl:hover:skew-y-2"
 
 
 xlHoverSkewY3 : Svg.Attribute msg
@@ -82912,9 +113191,29 @@ xlHoverNegSkewY3 =
     A.class "xl:hover:-skew-y-3"
 
 
+xlHoverNegSkewY2 : Svg.Attribute msg
+xlHoverNegSkewY2 =
+    A.class "xl:hover:-skew-y-2"
+
+
+xlHoverNegSkewY1 : Svg.Attribute msg
+xlHoverNegSkewY1 =
+    A.class "xl:hover:-skew-y-1"
+
+
 xlFocusSkewX0 : Svg.Attribute msg
 xlFocusSkewX0 =
     A.class "xl:focus:skew-x-0"
+
+
+xlFocusSkewX1 : Svg.Attribute msg
+xlFocusSkewX1 =
+    A.class "xl:focus:skew-x-1"
+
+
+xlFocusSkewX2 : Svg.Attribute msg
+xlFocusSkewX2 =
+    A.class "xl:focus:skew-x-2"
 
 
 xlFocusSkewX3 : Svg.Attribute msg
@@ -82947,9 +113246,29 @@ xlFocusNegSkewX3 =
     A.class "xl:focus:-skew-x-3"
 
 
+xlFocusNegSkewX2 : Svg.Attribute msg
+xlFocusNegSkewX2 =
+    A.class "xl:focus:-skew-x-2"
+
+
+xlFocusNegSkewX1 : Svg.Attribute msg
+xlFocusNegSkewX1 =
+    A.class "xl:focus:-skew-x-1"
+
+
 xlFocusSkewY0 : Svg.Attribute msg
 xlFocusSkewY0 =
     A.class "xl:focus:skew-y-0"
+
+
+xlFocusSkewY1 : Svg.Attribute msg
+xlFocusSkewY1 =
+    A.class "xl:focus:skew-y-1"
+
+
+xlFocusSkewY2 : Svg.Attribute msg
+xlFocusSkewY2 =
+    A.class "xl:focus:skew-y-2"
 
 
 xlFocusSkewY3 : Svg.Attribute msg
@@ -82980,6 +113299,16 @@ xlFocusNegSkewY6 =
 xlFocusNegSkewY3 : Svg.Attribute msg
 xlFocusNegSkewY3 =
     A.class "xl:focus:-skew-y-3"
+
+
+xlFocusNegSkewY2 : Svg.Attribute msg
+xlFocusNegSkewY2 =
+    A.class "xl:focus:-skew-y-2"
+
+
+xlFocusNegSkewY1 : Svg.Attribute msg
+xlFocusNegSkewY1 =
+    A.class "xl:focus:-skew-y-1"
 
 
 xlTransitionNone : Svg.Attribute msg
@@ -83115,3 +113444,28 @@ xlDelay700 =
 xlDelay1000 : Svg.Attribute msg
 xlDelay1000 =
     A.class "xl:delay-1000"
+
+
+xlAnimateNone : Svg.Attribute msg
+xlAnimateNone =
+    A.class "xl:animate-none"
+
+
+xlAnimateSpin : Svg.Attribute msg
+xlAnimateSpin =
+    A.class "xl:animate-spin"
+
+
+xlAnimatePing : Svg.Attribute msg
+xlAnimatePing =
+    A.class "xl:animate-ping"
+
+
+xlAnimatePulse : Svg.Attribute msg
+xlAnimatePulse =
+    A.class "xl:animate-pulse"
+
+
+xlAnimateBounce : Svg.Attribute msg
+xlAnimateBounce =
+    A.class "xl:animate-bounce"
