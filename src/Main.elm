@@ -98,6 +98,11 @@ getScenarios =
     , Scenario.build "Personal Abseil"
         [ Html.p [] [ Html.text "You and your partner have just finished a single pitch trad route, but your partner was not able to get all of the year out. Set up a fixed rope using three anchors so that you can abseil down and get the gear back." ] ]
         |> Scenario.withLink (Scenario.Youtube "LEaB0TBOwhg")
+    , Scenario.build "Quad Belay Setup"
+        [ Html.p [] [ Html.text "Setup a Quad Belay using a 240cm sling between two pieces of gear." ]
+        , Html.p [] [ Html.strong [] [ Html.text "Bonus:" ], Html.text " add a third piece of gear and equalise it without having to adjust the knots or add any new slings." ]
+        ]
+        |> Scenario.withLink (Scenario.Youtube "qz0j7j2ofnE")
     , Scenario.build "Retrievable Abseil"
         [ Html.p [] [ Html.text "You've finished a long multi-pitch route and decide to abseil back down. Set up a retrievable abseil for you and your partner. You'll need at least two full rope lengths to get to the bottom." ] ]
         |> Scenario.withLink (Scenario.Youtube "WPrcUv3mc8M")
