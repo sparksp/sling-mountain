@@ -2417,7 +2417,7 @@ elm-format@^0.8.4:
   dependencies:
     binwrap "^0.2.2"
 
-elm-hot@^1.1.4:
+elm-hot@^1.1.5:
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/elm-hot/-/elm-hot-1.1.5.tgz#bba309b592d39b5c3195c3c6f608f36b96c23b89"
   integrity sha512-HSMlAr6INTV82wkpPNG0zsHoJXo/04GwG7bnhFX8s4zyIbbzuJAovsdo27FAT6/NKx5IVTXGI+IFcK9Z7oN1Tw==
