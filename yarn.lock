@@ -4413,7 +4413,7 @@ parcel-plugin-purgecss@^3.0.0:
   dependencies:
     purgecss "^2.2.1"
 
-parcel-plugin-static-files-copy@^2.3.1:
+parcel-plugin-static-files-copy@^2.5.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/parcel-plugin-static-files-copy/-/parcel-plugin-static-files-copy-2.5.0.tgz#8ab26f331d163cd023d283fc0ef5fcd779fe5948"
   integrity sha512-5rxOPw3iV+WXhePfByoIxsUlL4I0o95CgcF31gwgnhPuj2q6tVPuzEAJsag9bWJr5Vd/SXFPTNsUAGAg4jP07Q==
