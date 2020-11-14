@@ -13,6 +13,14 @@ module Svg.Tailwind exposing
     , animateSpin
     , antialiased
     , appearanceNone
+    , autoColsAuto
+    , autoColsFr
+    , autoColsMax
+    , autoColsMin
+    , autoRowsAuto
+    , autoRowsFr
+    , autoRowsMax
+    , autoRowsMin
     , bgAuto
     , bgBlack
     , bgBlue100
@@ -307,25 +315,6 @@ module Svg.Tailwind exposing
     , colEnd8
     , colEnd9
     , colEndAuto
-    , colGap0
-    , colGap1
-    , colGap10
-    , colGap12
-    , colGap16
-    , colGap2
-    , colGap20
-    , colGap24
-    , colGap3
-    , colGap32
-    , colGap4
-    , colGap40
-    , colGap48
-    , colGap5
-    , colGap56
-    , colGap6
-    , colGap64
-    , colGap8
-    , colGapPx
     , colSpan1
     , colSpan10
     , colSpan11
@@ -338,6 +327,7 @@ module Svg.Tailwind exposing
     , colSpan7
     , colSpan8
     , colSpan9
+    , colSpanFull
     , colStart1
     , colStart10
     , colStart11
@@ -357,6 +347,7 @@ module Svg.Tailwind exposing
     , contentBetween
     , contentCenter
     , contentEnd
+    , contentEvenly
     , contentStart
     , contents
     , cursorAuto
@@ -374,6 +365,7 @@ module Svg.Tailwind exposing
     , delay500
     , delay700
     , delay75
+    , diagonalFractions
     , divideBlack
     , divideBlue100
     , divideBlue200
@@ -826,13 +818,22 @@ module Svg.Tailwind exposing
     , focusFromYellow800
     , focusFromYellow900
     , focusLineThrough
+    , focusNegRotate1
+    , focusNegRotate12
     , focusNegRotate180
+    , focusNegRotate2
+    , focusNegRotate3
     , focusNegRotate45
+    , focusNegRotate6
     , focusNegRotate90
+    , focusNegSkewX1
     , focusNegSkewX12
+    , focusNegSkewX2
     , focusNegSkewX3
     , focusNegSkewX6
+    , focusNegSkewY1
     , focusNegSkewY12
+    , focusNegSkewY2
     , focusNegSkewY3
     , focusNegSkewY6
     , focusNegTranslateX1
@@ -882,7 +883,9 @@ module Svg.Tailwind exposing
     , focusOpacity25
     , focusOpacity50
     , focusOpacity75
+    , focusOutlineBlack
     , focusOutlineNone
+    , focusOutlineWhite
     , focusPlaceholderBlackFocus
     , focusPlaceholderBlue100Focus
     , focusPlaceholderBlue200Focus
@@ -983,8 +986,13 @@ module Svg.Tailwind exposing
     , focusPlaceholderYellow800Focus
     , focusPlaceholderYellow900Focus
     , focusRotate0
+    , focusRotate1
+    , focusRotate12
     , focusRotate180
+    , focusRotate2
+    , focusRotate3
     , focusRotate45
+    , focusRotate6
     , focusRotate90
     , focusScale0
     , focusScale100
@@ -1027,11 +1035,15 @@ module Svg.Tailwind exposing
     , focusShadowXl
     , focusShadowXs
     , focusSkewX0
+    , focusSkewX1
     , focusSkewX12
+    , focusSkewX2
     , focusSkewX3
     , focusSkewX6
     , focusSkewY0
+    , focusSkewY1
     , focusSkewY12
+    , focusSkewY2
     , focusSkewY3
     , focusSkewY6
     , focusSrOnly
@@ -1879,13 +1891,22 @@ module Svg.Tailwind exposing
     , hoverFromYellow800
     , hoverFromYellow900
     , hoverLineThrough
+    , hoverNegRotate1
+    , hoverNegRotate12
     , hoverNegRotate180
+    , hoverNegRotate2
+    , hoverNegRotate3
     , hoverNegRotate45
+    , hoverNegRotate6
     , hoverNegRotate90
+    , hoverNegSkewX1
     , hoverNegSkewX12
+    , hoverNegSkewX2
     , hoverNegSkewX3
     , hoverNegSkewX6
+    , hoverNegSkewY1
     , hoverNegSkewY12
+    , hoverNegSkewY2
     , hoverNegSkewY3
     , hoverNegSkewY6
     , hoverNegTranslateX1
@@ -1935,8 +1956,13 @@ module Svg.Tailwind exposing
     , hoverOpacity50
     , hoverOpacity75
     , hoverRotate0
+    , hoverRotate1
+    , hoverRotate12
     , hoverRotate180
+    , hoverRotate2
+    , hoverRotate3
     , hoverRotate45
+    , hoverRotate6
     , hoverRotate90
     , hoverScale0
     , hoverScale100
@@ -1979,11 +2005,15 @@ module Svg.Tailwind exposing
     , hoverShadowXl
     , hoverShadowXs
     , hoverSkewX0
+    , hoverSkewX1
     , hoverSkewX12
+    , hoverSkewX2
     , hoverSkewX3
     , hoverSkewX6
     , hoverSkewY0
+    , hoverSkewY1
     , hoverSkewY12
+    , hoverSkewY2
     , hoverSkewY3
     , hoverSkewY6
     , hoverTextBlack
@@ -2338,6 +2368,16 @@ module Svg.Tailwind exposing
     , justifyCenter
     , justifyEnd
     , justifyEvenly
+    , justifyItemsAuto
+    , justifyItemsCenter
+    , justifyItemsEnd
+    , justifyItemsStart
+    , justifyItemsStretch
+    , justifySelfAuto
+    , justifySelfCenter
+    , justifySelfEnd
+    , justifySelfStart
+    , justifySelfStretch
     , justifyStart
     , leading10
     , leading3
@@ -2369,6 +2409,14 @@ module Svg.Tailwind exposing
     , lgAnimateSpin
     , lgAntialiased
     , lgAppearanceNone
+    , lgAutoColsAuto
+    , lgAutoColsFr
+    , lgAutoColsMax
+    , lgAutoColsMin
+    , lgAutoRowsAuto
+    , lgAutoRowsFr
+    , lgAutoRowsMax
+    , lgAutoRowsMin
     , lgBgAuto
     , lgBgBlack
     , lgBgBlue100
@@ -2662,25 +2710,6 @@ module Svg.Tailwind exposing
     , lgColEnd8
     , lgColEnd9
     , lgColEndAuto
-    , lgColGap0
-    , lgColGap1
-    , lgColGap10
-    , lgColGap12
-    , lgColGap16
-    , lgColGap2
-    , lgColGap20
-    , lgColGap24
-    , lgColGap3
-    , lgColGap32
-    , lgColGap4
-    , lgColGap40
-    , lgColGap48
-    , lgColGap5
-    , lgColGap56
-    , lgColGap6
-    , lgColGap64
-    , lgColGap8
-    , lgColGapPx
     , lgColSpan1
     , lgColSpan10
     , lgColSpan11
@@ -2693,6 +2722,7 @@ module Svg.Tailwind exposing
     , lgColSpan7
     , lgColSpan8
     , lgColSpan9
+    , lgColSpanFull
     , lgColStart1
     , lgColStart10
     , lgColStart11
@@ -2712,6 +2742,7 @@ module Svg.Tailwind exposing
     , lgContentBetween
     , lgContentCenter
     , lgContentEnd
+    , lgContentEvenly
     , lgContentStart
     , lgContents
     , lgCursorAuto
@@ -2729,6 +2760,7 @@ module Svg.Tailwind exposing
     , lgDelay500
     , lgDelay700
     , lgDelay75
+    , lgDiagonalFractions
     , lgDivideBlack
     , lgDivideBlue100
     , lgDivideBlue200
@@ -3181,13 +3213,22 @@ module Svg.Tailwind exposing
     , lgFocusFromYellow800
     , lgFocusFromYellow900
     , lgFocusLineThrough
+    , lgFocusNegRotate1
+    , lgFocusNegRotate12
     , lgFocusNegRotate180
+    , lgFocusNegRotate2
+    , lgFocusNegRotate3
     , lgFocusNegRotate45
+    , lgFocusNegRotate6
     , lgFocusNegRotate90
+    , lgFocusNegSkewX1
     , lgFocusNegSkewX12
+    , lgFocusNegSkewX2
     , lgFocusNegSkewX3
     , lgFocusNegSkewX6
+    , lgFocusNegSkewY1
     , lgFocusNegSkewY12
+    , lgFocusNegSkewY2
     , lgFocusNegSkewY3
     , lgFocusNegSkewY6
     , lgFocusNegTranslateX1
@@ -3237,7 +3278,9 @@ module Svg.Tailwind exposing
     , lgFocusOpacity25
     , lgFocusOpacity50
     , lgFocusOpacity75
+    , lgFocusOutlineBlack
     , lgFocusOutlineNone
+    , lgFocusOutlineWhite
     , lgFocusPlaceholderBlackFocus
     , lgFocusPlaceholderBlue100Focus
     , lgFocusPlaceholderBlue200Focus
@@ -3338,8 +3381,13 @@ module Svg.Tailwind exposing
     , lgFocusPlaceholderYellow800Focus
     , lgFocusPlaceholderYellow900Focus
     , lgFocusRotate0
+    , lgFocusRotate1
+    , lgFocusRotate12
     , lgFocusRotate180
+    , lgFocusRotate2
+    , lgFocusRotate3
     , lgFocusRotate45
+    , lgFocusRotate6
     , lgFocusRotate90
     , lgFocusScale0
     , lgFocusScale100
@@ -3382,11 +3430,15 @@ module Svg.Tailwind exposing
     , lgFocusShadowXl
     , lgFocusShadowXs
     , lgFocusSkewX0
+    , lgFocusSkewX1
     , lgFocusSkewX12
+    , lgFocusSkewX2
     , lgFocusSkewX3
     , lgFocusSkewX6
     , lgFocusSkewY0
+    , lgFocusSkewY1
     , lgFocusSkewY12
+    , lgFocusSkewY2
     , lgFocusSkewY3
     , lgFocusSkewY6
     , lgFocusSrOnly
@@ -4234,13 +4286,22 @@ module Svg.Tailwind exposing
     , lgHoverFromYellow800
     , lgHoverFromYellow900
     , lgHoverLineThrough
+    , lgHoverNegRotate1
+    , lgHoverNegRotate12
     , lgHoverNegRotate180
+    , lgHoverNegRotate2
+    , lgHoverNegRotate3
     , lgHoverNegRotate45
+    , lgHoverNegRotate6
     , lgHoverNegRotate90
+    , lgHoverNegSkewX1
     , lgHoverNegSkewX12
+    , lgHoverNegSkewX2
     , lgHoverNegSkewX3
     , lgHoverNegSkewX6
+    , lgHoverNegSkewY1
     , lgHoverNegSkewY12
+    , lgHoverNegSkewY2
     , lgHoverNegSkewY3
     , lgHoverNegSkewY6
     , lgHoverNegTranslateX1
@@ -4290,8 +4351,13 @@ module Svg.Tailwind exposing
     , lgHoverOpacity50
     , lgHoverOpacity75
     , lgHoverRotate0
+    , lgHoverRotate1
+    , lgHoverRotate12
     , lgHoverRotate180
+    , lgHoverRotate2
+    , lgHoverRotate3
     , lgHoverRotate45
+    , lgHoverRotate6
     , lgHoverRotate90
     , lgHoverScale0
     , lgHoverScale100
@@ -4334,11 +4400,15 @@ module Svg.Tailwind exposing
     , lgHoverShadowXl
     , lgHoverShadowXs
     , lgHoverSkewX0
+    , lgHoverSkewX1
     , lgHoverSkewX12
+    , lgHoverSkewX2
     , lgHoverSkewX3
     , lgHoverSkewX6
     , lgHoverSkewY0
+    , lgHoverSkewY1
     , lgHoverSkewY12
+    , lgHoverSkewY2
     , lgHoverSkewY3
     , lgHoverSkewY6
     , lgHoverTextBlack
@@ -4693,6 +4763,16 @@ module Svg.Tailwind exposing
     , lgJustifyCenter
     , lgJustifyEnd
     , lgJustifyEvenly
+    , lgJustifyItemsAuto
+    , lgJustifyItemsCenter
+    , lgJustifyItemsEnd
+    , lgJustifyItemsStart
+    , lgJustifyItemsStretch
+    , lgJustifySelfAuto
+    , lgJustifySelfCenter
+    , lgJustifySelfEnd
+    , lgJustifySelfStart
+    , lgJustifySelfStretch
     , lgJustifyStart
     , lgLeading10
     , lgLeading3
@@ -4711,6 +4791,7 @@ module Svg.Tailwind exposing
     , lgLeft0
     , lgLeftAuto
     , lgLineThrough
+    , lgLiningNums
     , lgListDecimal
     , lgListDisc
     , lgListInside
@@ -5006,13 +5087,22 @@ module Svg.Tailwind exposing
     , lgNegMy64
     , lgNegMy8
     , lgNegMyPx
+    , lgNegRotate1
+    , lgNegRotate12
     , lgNegRotate180
+    , lgNegRotate2
+    , lgNegRotate3
     , lgNegRotate45
+    , lgNegRotate6
     , lgNegRotate90
+    , lgNegSkewX1
     , lgNegSkewX12
+    , lgNegSkewX2
     , lgNegSkewX3
     , lgNegSkewX6
+    , lgNegSkewY1
     , lgNegSkewY12
+    , lgNegSkewY2
     , lgNegSkewY3
     , lgNegSkewY6
     , lgNegSpaceX1
@@ -5093,6 +5183,7 @@ module Svg.Tailwind exposing
     , lgNegTranslateYPx
     , lgNoUnderline
     , lgNormalCase
+    , lgNormalNums
     , lgNotItalic
     , lgNotSrOnly
     , lgObjectBottom
@@ -5109,6 +5200,7 @@ module Svg.Tailwind exposing
     , lgObjectRightTop
     , lgObjectScaleDown
     , lgObjectTop
+    , lgOldstyleNums
     , lgOpacity0
     , lgOpacity100
     , lgOpacity25
@@ -5129,6 +5221,7 @@ module Svg.Tailwind exposing
     , lgOrderFirst
     , lgOrderLast
     , lgOrderNone
+    , lgOrdinal
     , lgOriginBottom
     , lgOriginBottomLeft
     , lgOriginBottomRight
@@ -5138,7 +5231,9 @@ module Svg.Tailwind exposing
     , lgOriginTop
     , lgOriginTopLeft
     , lgOriginTopRight
+    , lgOutlineBlack
     , lgOutlineNone
+    , lgOutlineWhite
     , lgOverflowAuto
     , lgOverflowHidden
     , lgOverflowScroll
@@ -5217,6 +5312,23 @@ module Svg.Tailwind exposing
     , lgPl64
     , lgPl8
     , lgPlPx
+    , lgPlaceContentAround
+    , lgPlaceContentBetween
+    , lgPlaceContentCenter
+    , lgPlaceContentEnd
+    , lgPlaceContentEvenly
+    , lgPlaceContentStart
+    , lgPlaceContentStretch
+    , lgPlaceItemsAuto
+    , lgPlaceItemsCenter
+    , lgPlaceItemsEnd
+    , lgPlaceItemsStart
+    , lgPlaceItemsStretch
+    , lgPlaceSelfAuto
+    , lgPlaceSelfCenter
+    , lgPlaceSelfEnd
+    , lgPlaceSelfStart
+    , lgPlaceSelfStretch
     , lgPlaceholderBlack
     , lgPlaceholderBlue100
     , lgPlaceholderBlue200
@@ -5337,6 +5449,7 @@ module Svg.Tailwind exposing
     , lgPr64
     , lgPr8
     , lgPrPx
+    , lgProportionalNums
     , lgPt0
     , lgPt1
     , lgPt10
@@ -5402,63 +5515,95 @@ module Svg.Tailwind exposing
     , lgRight0
     , lgRightAuto
     , lgRotate0
+    , lgRotate1
+    , lgRotate12
     , lgRotate180
+    , lgRotate2
+    , lgRotate3
     , lgRotate45
+    , lgRotate6
     , lgRotate90
     , lgRounded
+    , lgRounded2xl
+    , lgRounded3xl
     , lgRoundedB
+    , lgRoundedB2xl
+    , lgRoundedB3xl
     , lgRoundedBFull
     , lgRoundedBLg
     , lgRoundedBMd
     , lgRoundedBNone
     , lgRoundedBSm
+    , lgRoundedBXl
     , lgRoundedBl
+    , lgRoundedBl2xl
+    , lgRoundedBl3xl
     , lgRoundedBlFull
     , lgRoundedBlLg
     , lgRoundedBlMd
     , lgRoundedBlNone
     , lgRoundedBlSm
+    , lgRoundedBlXl
     , lgRoundedBr
+    , lgRoundedBr2xl
+    , lgRoundedBr3xl
     , lgRoundedBrFull
     , lgRoundedBrLg
     , lgRoundedBrMd
     , lgRoundedBrNone
     , lgRoundedBrSm
+    , lgRoundedBrXl
     , lgRoundedFull
     , lgRoundedL
+    , lgRoundedL2xl
+    , lgRoundedL3xl
     , lgRoundedLFull
     , lgRoundedLLg
     , lgRoundedLMd
     , lgRoundedLNone
     , lgRoundedLSm
+    , lgRoundedLXl
     , lgRoundedLg
     , lgRoundedMd
     , lgRoundedNone
     , lgRoundedR
+    , lgRoundedR2xl
+    , lgRoundedR3xl
     , lgRoundedRFull
     , lgRoundedRLg
     , lgRoundedRMd
     , lgRoundedRNone
     , lgRoundedRSm
+    , lgRoundedRXl
     , lgRoundedSm
     , lgRoundedT
+    , lgRoundedT2xl
+    , lgRoundedT3xl
     , lgRoundedTFull
     , lgRoundedTLg
     , lgRoundedTMd
     , lgRoundedTNone
     , lgRoundedTSm
+    , lgRoundedTXl
     , lgRoundedTl
+    , lgRoundedTl2xl
+    , lgRoundedTl3xl
     , lgRoundedTlFull
     , lgRoundedTlLg
     , lgRoundedTlMd
     , lgRoundedTlNone
     , lgRoundedTlSm
+    , lgRoundedTlXl
     , lgRoundedTr
+    , lgRoundedTr2xl
+    , lgRoundedTr3xl
     , lgRoundedTrFull
     , lgRoundedTrLg
     , lgRoundedTrMd
     , lgRoundedTrNone
     , lgRoundedTrSm
+    , lgRoundedTrXl
+    , lgRoundedXl
     , lgRowAuto
     , lgRowEnd1
     , lgRowEnd2
@@ -5468,31 +5613,13 @@ module Svg.Tailwind exposing
     , lgRowEnd6
     , lgRowEnd7
     , lgRowEndAuto
-    , lgRowGap0
-    , lgRowGap1
-    , lgRowGap10
-    , lgRowGap12
-    , lgRowGap16
-    , lgRowGap2
-    , lgRowGap20
-    , lgRowGap24
-    , lgRowGap3
-    , lgRowGap32
-    , lgRowGap4
-    , lgRowGap40
-    , lgRowGap48
-    , lgRowGap5
-    , lgRowGap56
-    , lgRowGap6
-    , lgRowGap64
-    , lgRowGap8
-    , lgRowGapPx
     , lgRowSpan1
     , lgRowSpan2
     , lgRowSpan3
     , lgRowSpan4
     , lgRowSpan5
     , lgRowSpan6
+    , lgRowSpanFull
     , lgRowStart1
     , lgRowStart2
     , lgRowStart3
@@ -5553,13 +5680,18 @@ module Svg.Tailwind exposing
     , lgShadowXl
     , lgShadowXs
     , lgSkewX0
+    , lgSkewX1
     , lgSkewX12
+    , lgSkewX2
     , lgSkewX3
     , lgSkewX6
     , lgSkewY0
+    , lgSkewY1
     , lgSkewY12
+    , lgSkewY2
     , lgSkewY3
     , lgSkewY6
+    , lgSlashedZero
     , lgSpaceX0
     , lgSpaceX1
     , lgSpaceX10
@@ -5601,6 +5733,7 @@ module Svg.Tailwind exposing
     , lgSpaceYPx
     , lgSpaceYReverse
     , lgSrOnly
+    , lgStackedFractions
     , lgStatic
     , lgSticky
     , lgStroke0
@@ -5619,6 +5752,7 @@ module Svg.Tailwind exposing
     , lgTableHeaderGroup
     , lgTableRow
     , lgTableRowGroup
+    , lgTabularNums
     , lgText2xl
     , lgText3xl
     , lgText4xl
@@ -6044,6 +6178,7 @@ module Svg.Tailwind exposing
     , lgZ50
     , lgZAuto
     , lineThrough
+    , liningNums
     , listDecimal
     , listDisc
     , listInside
@@ -6122,6 +6257,14 @@ module Svg.Tailwind exposing
     , mdAnimateSpin
     , mdAntialiased
     , mdAppearanceNone
+    , mdAutoColsAuto
+    , mdAutoColsFr
+    , mdAutoColsMax
+    , mdAutoColsMin
+    , mdAutoRowsAuto
+    , mdAutoRowsFr
+    , mdAutoRowsMax
+    , mdAutoRowsMin
     , mdBgAuto
     , mdBgBlack
     , mdBgBlue100
@@ -6415,25 +6558,6 @@ module Svg.Tailwind exposing
     , mdColEnd8
     , mdColEnd9
     , mdColEndAuto
-    , mdColGap0
-    , mdColGap1
-    , mdColGap10
-    , mdColGap12
-    , mdColGap16
-    , mdColGap2
-    , mdColGap20
-    , mdColGap24
-    , mdColGap3
-    , mdColGap32
-    , mdColGap4
-    , mdColGap40
-    , mdColGap48
-    , mdColGap5
-    , mdColGap56
-    , mdColGap6
-    , mdColGap64
-    , mdColGap8
-    , mdColGapPx
     , mdColSpan1
     , mdColSpan10
     , mdColSpan11
@@ -6446,6 +6570,7 @@ module Svg.Tailwind exposing
     , mdColSpan7
     , mdColSpan8
     , mdColSpan9
+    , mdColSpanFull
     , mdColStart1
     , mdColStart10
     , mdColStart11
@@ -6465,6 +6590,7 @@ module Svg.Tailwind exposing
     , mdContentBetween
     , mdContentCenter
     , mdContentEnd
+    , mdContentEvenly
     , mdContentStart
     , mdContents
     , mdCursorAuto
@@ -6482,6 +6608,7 @@ module Svg.Tailwind exposing
     , mdDelay500
     , mdDelay700
     , mdDelay75
+    , mdDiagonalFractions
     , mdDivideBlack
     , mdDivideBlue100
     , mdDivideBlue200
@@ -6934,13 +7061,22 @@ module Svg.Tailwind exposing
     , mdFocusFromYellow800
     , mdFocusFromYellow900
     , mdFocusLineThrough
+    , mdFocusNegRotate1
+    , mdFocusNegRotate12
     , mdFocusNegRotate180
+    , mdFocusNegRotate2
+    , mdFocusNegRotate3
     , mdFocusNegRotate45
+    , mdFocusNegRotate6
     , mdFocusNegRotate90
+    , mdFocusNegSkewX1
     , mdFocusNegSkewX12
+    , mdFocusNegSkewX2
     , mdFocusNegSkewX3
     , mdFocusNegSkewX6
+    , mdFocusNegSkewY1
     , mdFocusNegSkewY12
+    , mdFocusNegSkewY2
     , mdFocusNegSkewY3
     , mdFocusNegSkewY6
     , mdFocusNegTranslateX1
@@ -6990,7 +7126,9 @@ module Svg.Tailwind exposing
     , mdFocusOpacity25
     , mdFocusOpacity50
     , mdFocusOpacity75
+    , mdFocusOutlineBlack
     , mdFocusOutlineNone
+    , mdFocusOutlineWhite
     , mdFocusPlaceholderBlackFocus
     , mdFocusPlaceholderBlue100Focus
     , mdFocusPlaceholderBlue200Focus
@@ -7091,8 +7229,13 @@ module Svg.Tailwind exposing
     , mdFocusPlaceholderYellow800Focus
     , mdFocusPlaceholderYellow900Focus
     , mdFocusRotate0
+    , mdFocusRotate1
+    , mdFocusRotate12
     , mdFocusRotate180
+    , mdFocusRotate2
+    , mdFocusRotate3
     , mdFocusRotate45
+    , mdFocusRotate6
     , mdFocusRotate90
     , mdFocusScale0
     , mdFocusScale100
@@ -7135,11 +7278,15 @@ module Svg.Tailwind exposing
     , mdFocusShadowXl
     , mdFocusShadowXs
     , mdFocusSkewX0
+    , mdFocusSkewX1
     , mdFocusSkewX12
+    , mdFocusSkewX2
     , mdFocusSkewX3
     , mdFocusSkewX6
     , mdFocusSkewY0
+    , mdFocusSkewY1
     , mdFocusSkewY12
+    , mdFocusSkewY2
     , mdFocusSkewY3
     , mdFocusSkewY6
     , mdFocusSrOnly
@@ -7987,13 +8134,22 @@ module Svg.Tailwind exposing
     , mdHoverFromYellow800
     , mdHoverFromYellow900
     , mdHoverLineThrough
+    , mdHoverNegRotate1
+    , mdHoverNegRotate12
     , mdHoverNegRotate180
+    , mdHoverNegRotate2
+    , mdHoverNegRotate3
     , mdHoverNegRotate45
+    , mdHoverNegRotate6
     , mdHoverNegRotate90
+    , mdHoverNegSkewX1
     , mdHoverNegSkewX12
+    , mdHoverNegSkewX2
     , mdHoverNegSkewX3
     , mdHoverNegSkewX6
+    , mdHoverNegSkewY1
     , mdHoverNegSkewY12
+    , mdHoverNegSkewY2
     , mdHoverNegSkewY3
     , mdHoverNegSkewY6
     , mdHoverNegTranslateX1
@@ -8043,8 +8199,13 @@ module Svg.Tailwind exposing
     , mdHoverOpacity50
     , mdHoverOpacity75
     , mdHoverRotate0
+    , mdHoverRotate1
+    , mdHoverRotate12
     , mdHoverRotate180
+    , mdHoverRotate2
+    , mdHoverRotate3
     , mdHoverRotate45
+    , mdHoverRotate6
     , mdHoverRotate90
     , mdHoverScale0
     , mdHoverScale100
@@ -8087,11 +8248,15 @@ module Svg.Tailwind exposing
     , mdHoverShadowXl
     , mdHoverShadowXs
     , mdHoverSkewX0
+    , mdHoverSkewX1
     , mdHoverSkewX12
+    , mdHoverSkewX2
     , mdHoverSkewX3
     , mdHoverSkewX6
     , mdHoverSkewY0
+    , mdHoverSkewY1
     , mdHoverSkewY12
+    , mdHoverSkewY2
     , mdHoverSkewY3
     , mdHoverSkewY6
     , mdHoverTextBlack
@@ -8446,6 +8611,16 @@ module Svg.Tailwind exposing
     , mdJustifyCenter
     , mdJustifyEnd
     , mdJustifyEvenly
+    , mdJustifyItemsAuto
+    , mdJustifyItemsCenter
+    , mdJustifyItemsEnd
+    , mdJustifyItemsStart
+    , mdJustifyItemsStretch
+    , mdJustifySelfAuto
+    , mdJustifySelfCenter
+    , mdJustifySelfEnd
+    , mdJustifySelfStart
+    , mdJustifySelfStretch
     , mdJustifyStart
     , mdLeading10
     , mdLeading3
@@ -8464,6 +8639,7 @@ module Svg.Tailwind exposing
     , mdLeft0
     , mdLeftAuto
     , mdLineThrough
+    , mdLiningNums
     , mdListDecimal
     , mdListDisc
     , mdListInside
@@ -8759,13 +8935,22 @@ module Svg.Tailwind exposing
     , mdNegMy64
     , mdNegMy8
     , mdNegMyPx
+    , mdNegRotate1
+    , mdNegRotate12
     , mdNegRotate180
+    , mdNegRotate2
+    , mdNegRotate3
     , mdNegRotate45
+    , mdNegRotate6
     , mdNegRotate90
+    , mdNegSkewX1
     , mdNegSkewX12
+    , mdNegSkewX2
     , mdNegSkewX3
     , mdNegSkewX6
+    , mdNegSkewY1
     , mdNegSkewY12
+    , mdNegSkewY2
     , mdNegSkewY3
     , mdNegSkewY6
     , mdNegSpaceX1
@@ -8846,6 +9031,7 @@ module Svg.Tailwind exposing
     , mdNegTranslateYPx
     , mdNoUnderline
     , mdNormalCase
+    , mdNormalNums
     , mdNotItalic
     , mdNotSrOnly
     , mdObjectBottom
@@ -8862,6 +9048,7 @@ module Svg.Tailwind exposing
     , mdObjectRightTop
     , mdObjectScaleDown
     , mdObjectTop
+    , mdOldstyleNums
     , mdOpacity0
     , mdOpacity100
     , mdOpacity25
@@ -8882,6 +9069,7 @@ module Svg.Tailwind exposing
     , mdOrderFirst
     , mdOrderLast
     , mdOrderNone
+    , mdOrdinal
     , mdOriginBottom
     , mdOriginBottomLeft
     , mdOriginBottomRight
@@ -8891,7 +9079,9 @@ module Svg.Tailwind exposing
     , mdOriginTop
     , mdOriginTopLeft
     , mdOriginTopRight
+    , mdOutlineBlack
     , mdOutlineNone
+    , mdOutlineWhite
     , mdOverflowAuto
     , mdOverflowHidden
     , mdOverflowScroll
@@ -8970,6 +9160,23 @@ module Svg.Tailwind exposing
     , mdPl64
     , mdPl8
     , mdPlPx
+    , mdPlaceContentAround
+    , mdPlaceContentBetween
+    , mdPlaceContentCenter
+    , mdPlaceContentEnd
+    , mdPlaceContentEvenly
+    , mdPlaceContentStart
+    , mdPlaceContentStretch
+    , mdPlaceItemsAuto
+    , mdPlaceItemsCenter
+    , mdPlaceItemsEnd
+    , mdPlaceItemsStart
+    , mdPlaceItemsStretch
+    , mdPlaceSelfAuto
+    , mdPlaceSelfCenter
+    , mdPlaceSelfEnd
+    , mdPlaceSelfStart
+    , mdPlaceSelfStretch
     , mdPlaceholderBlack
     , mdPlaceholderBlue100
     , mdPlaceholderBlue200
@@ -9090,6 +9297,7 @@ module Svg.Tailwind exposing
     , mdPr64
     , mdPr8
     , mdPrPx
+    , mdProportionalNums
     , mdPt0
     , mdPt1
     , mdPt10
@@ -9155,63 +9363,95 @@ module Svg.Tailwind exposing
     , mdRight0
     , mdRightAuto
     , mdRotate0
+    , mdRotate1
+    , mdRotate12
     , mdRotate180
+    , mdRotate2
+    , mdRotate3
     , mdRotate45
+    , mdRotate6
     , mdRotate90
     , mdRounded
+    , mdRounded2xl
+    , mdRounded3xl
     , mdRoundedB
+    , mdRoundedB2xl
+    , mdRoundedB3xl
     , mdRoundedBFull
     , mdRoundedBLg
     , mdRoundedBMd
     , mdRoundedBNone
     , mdRoundedBSm
+    , mdRoundedBXl
     , mdRoundedBl
+    , mdRoundedBl2xl
+    , mdRoundedBl3xl
     , mdRoundedBlFull
     , mdRoundedBlLg
     , mdRoundedBlMd
     , mdRoundedBlNone
     , mdRoundedBlSm
+    , mdRoundedBlXl
     , mdRoundedBr
+    , mdRoundedBr2xl
+    , mdRoundedBr3xl
     , mdRoundedBrFull
     , mdRoundedBrLg
     , mdRoundedBrMd
     , mdRoundedBrNone
     , mdRoundedBrSm
+    , mdRoundedBrXl
     , mdRoundedFull
     , mdRoundedL
+    , mdRoundedL2xl
+    , mdRoundedL3xl
     , mdRoundedLFull
     , mdRoundedLLg
     , mdRoundedLMd
     , mdRoundedLNone
     , mdRoundedLSm
+    , mdRoundedLXl
     , mdRoundedLg
     , mdRoundedMd
     , mdRoundedNone
     , mdRoundedR
+    , mdRoundedR2xl
+    , mdRoundedR3xl
     , mdRoundedRFull
     , mdRoundedRLg
     , mdRoundedRMd
     , mdRoundedRNone
     , mdRoundedRSm
+    , mdRoundedRXl
     , mdRoundedSm
     , mdRoundedT
+    , mdRoundedT2xl
+    , mdRoundedT3xl
     , mdRoundedTFull
     , mdRoundedTLg
     , mdRoundedTMd
     , mdRoundedTNone
     , mdRoundedTSm
+    , mdRoundedTXl
     , mdRoundedTl
+    , mdRoundedTl2xl
+    , mdRoundedTl3xl
     , mdRoundedTlFull
     , mdRoundedTlLg
     , mdRoundedTlMd
     , mdRoundedTlNone
     , mdRoundedTlSm
+    , mdRoundedTlXl
     , mdRoundedTr
+    , mdRoundedTr2xl
+    , mdRoundedTr3xl
     , mdRoundedTrFull
     , mdRoundedTrLg
     , mdRoundedTrMd
     , mdRoundedTrNone
     , mdRoundedTrSm
+    , mdRoundedTrXl
+    , mdRoundedXl
     , mdRowAuto
     , mdRowEnd1
     , mdRowEnd2
@@ -9221,31 +9461,13 @@ module Svg.Tailwind exposing
     , mdRowEnd6
     , mdRowEnd7
     , mdRowEndAuto
-    , mdRowGap0
-    , mdRowGap1
-    , mdRowGap10
-    , mdRowGap12
-    , mdRowGap16
-    , mdRowGap2
-    , mdRowGap20
-    , mdRowGap24
-    , mdRowGap3
-    , mdRowGap32
-    , mdRowGap4
-    , mdRowGap40
-    , mdRowGap48
-    , mdRowGap5
-    , mdRowGap56
-    , mdRowGap6
-    , mdRowGap64
-    , mdRowGap8
-    , mdRowGapPx
     , mdRowSpan1
     , mdRowSpan2
     , mdRowSpan3
     , mdRowSpan4
     , mdRowSpan5
     , mdRowSpan6
+    , mdRowSpanFull
     , mdRowStart1
     , mdRowStart2
     , mdRowStart3
@@ -9306,13 +9528,18 @@ module Svg.Tailwind exposing
     , mdShadowXl
     , mdShadowXs
     , mdSkewX0
+    , mdSkewX1
     , mdSkewX12
+    , mdSkewX2
     , mdSkewX3
     , mdSkewX6
     , mdSkewY0
+    , mdSkewY1
     , mdSkewY12
+    , mdSkewY2
     , mdSkewY3
     , mdSkewY6
+    , mdSlashedZero
     , mdSpaceX0
     , mdSpaceX1
     , mdSpaceX10
@@ -9354,6 +9581,7 @@ module Svg.Tailwind exposing
     , mdSpaceYPx
     , mdSpaceYReverse
     , mdSrOnly
+    , mdStackedFractions
     , mdStatic
     , mdSticky
     , mdStroke0
@@ -9372,6 +9600,7 @@ module Svg.Tailwind exposing
     , mdTableHeaderGroup
     , mdTableRow
     , mdTableRowGroup
+    , mdTabularNums
     , mdText2xl
     , mdText3xl
     , mdText4xl
@@ -10027,13 +10256,22 @@ module Svg.Tailwind exposing
     , negMy64
     , negMy8
     , negMyPx
+    , negRotate1
+    , negRotate12
     , negRotate180
+    , negRotate2
+    , negRotate3
     , negRotate45
+    , negRotate6
     , negRotate90
+    , negSkewX1
     , negSkewX12
+    , negSkewX2
     , negSkewX3
     , negSkewX6
+    , negSkewY1
     , negSkewY12
+    , negSkewY2
     , negSkewY3
     , negSkewY6
     , negSpaceX1
@@ -10114,6 +10352,7 @@ module Svg.Tailwind exposing
     , negTranslateYPx
     , noUnderline
     , normalCase
+    , normalNums
     , notItalic
     , notSrOnly
     , objectBottom
@@ -10130,6 +10369,7 @@ module Svg.Tailwind exposing
     , objectRightTop
     , objectScaleDown
     , objectTop
+    , oldstyleNums
     , opacity0
     , opacity100
     , opacity25
@@ -10150,6 +10390,7 @@ module Svg.Tailwind exposing
     , orderFirst
     , orderLast
     , orderNone
+    , ordinal
     , originBottom
     , originBottomLeft
     , originBottomRight
@@ -10159,7 +10400,9 @@ module Svg.Tailwind exposing
     , originTop
     , originTopLeft
     , originTopRight
+    , outlineBlack
     , outlineNone
+    , outlineWhite
     , overflowAuto
     , overflowHidden
     , overflowScroll
@@ -10238,6 +10481,23 @@ module Svg.Tailwind exposing
     , pl64
     , pl8
     , plPx
+    , placeContentAround
+    , placeContentBetween
+    , placeContentCenter
+    , placeContentEnd
+    , placeContentEvenly
+    , placeContentStart
+    , placeContentStretch
+    , placeItemsAuto
+    , placeItemsCenter
+    , placeItemsEnd
+    , placeItemsStart
+    , placeItemsStretch
+    , placeSelfAuto
+    , placeSelfCenter
+    , placeSelfEnd
+    , placeSelfStart
+    , placeSelfStretch
     , placeholderBlack
     , placeholderBlue100
     , placeholderBlue200
@@ -10358,6 +10618,7 @@ module Svg.Tailwind exposing
     , pr64
     , pr8
     , prPx
+    , proportionalNums
     , pt0
     , pt1
     , pt10
@@ -10423,63 +10684,95 @@ module Svg.Tailwind exposing
     , right0
     , rightAuto
     , rotate0
+    , rotate1
+    , rotate12
     , rotate180
+    , rotate2
+    , rotate3
     , rotate45
+    , rotate6
     , rotate90
     , rounded
+    , rounded2xl
+    , rounded3xl
     , roundedB
+    , roundedB2xl
+    , roundedB3xl
     , roundedBFull
     , roundedBLg
     , roundedBMd
     , roundedBNone
     , roundedBSm
+    , roundedBXl
     , roundedBl
+    , roundedBl2xl
+    , roundedBl3xl
     , roundedBlFull
     , roundedBlLg
     , roundedBlMd
     , roundedBlNone
     , roundedBlSm
+    , roundedBlXl
     , roundedBr
+    , roundedBr2xl
+    , roundedBr3xl
     , roundedBrFull
     , roundedBrLg
     , roundedBrMd
     , roundedBrNone
     , roundedBrSm
+    , roundedBrXl
     , roundedFull
     , roundedL
+    , roundedL2xl
+    , roundedL3xl
     , roundedLFull
     , roundedLLg
     , roundedLMd
     , roundedLNone
     , roundedLSm
+    , roundedLXl
     , roundedLg
     , roundedMd
     , roundedNone
     , roundedR
+    , roundedR2xl
+    , roundedR3xl
     , roundedRFull
     , roundedRLg
     , roundedRMd
     , roundedRNone
     , roundedRSm
+    , roundedRXl
     , roundedSm
     , roundedT
+    , roundedT2xl
+    , roundedT3xl
     , roundedTFull
     , roundedTLg
     , roundedTMd
     , roundedTNone
     , roundedTSm
+    , roundedTXl
     , roundedTl
+    , roundedTl2xl
+    , roundedTl3xl
     , roundedTlFull
     , roundedTlLg
     , roundedTlMd
     , roundedTlNone
     , roundedTlSm
+    , roundedTlXl
     , roundedTr
+    , roundedTr2xl
+    , roundedTr3xl
     , roundedTrFull
     , roundedTrLg
     , roundedTrMd
     , roundedTrNone
     , roundedTrSm
+    , roundedTrXl
+    , roundedXl
     , rowAuto
     , rowEnd1
     , rowEnd2
@@ -10489,31 +10782,13 @@ module Svg.Tailwind exposing
     , rowEnd6
     , rowEnd7
     , rowEndAuto
-    , rowGap0
-    , rowGap1
-    , rowGap10
-    , rowGap12
-    , rowGap16
-    , rowGap2
-    , rowGap20
-    , rowGap24
-    , rowGap3
-    , rowGap32
-    , rowGap4
-    , rowGap40
-    , rowGap48
-    , rowGap5
-    , rowGap56
-    , rowGap6
-    , rowGap64
-    , rowGap8
-    , rowGapPx
     , rowSpan1
     , rowSpan2
     , rowSpan3
     , rowSpan4
     , rowSpan5
     , rowSpan6
+    , rowSpanFull
     , rowStart1
     , rowStart2
     , rowStart3
@@ -10574,13 +10849,18 @@ module Svg.Tailwind exposing
     , shadowXl
     , shadowXs
     , skewX0
+    , skewX1
     , skewX12
+    , skewX2
     , skewX3
     , skewX6
     , skewY0
+    , skewY1
     , skewY12
+    , skewY2
     , skewY3
     , skewY6
+    , slashedZero
     , smAbsolute
     , smAlignBaseline
     , smAlignBottom
@@ -10595,6 +10875,14 @@ module Svg.Tailwind exposing
     , smAnimateSpin
     , smAntialiased
     , smAppearanceNone
+    , smAutoColsAuto
+    , smAutoColsFr
+    , smAutoColsMax
+    , smAutoColsMin
+    , smAutoRowsAuto
+    , smAutoRowsFr
+    , smAutoRowsMax
+    , smAutoRowsMin
     , smBgAuto
     , smBgBlack
     , smBgBlue100
@@ -10888,25 +11176,6 @@ module Svg.Tailwind exposing
     , smColEnd8
     , smColEnd9
     , smColEndAuto
-    , smColGap0
-    , smColGap1
-    , smColGap10
-    , smColGap12
-    , smColGap16
-    , smColGap2
-    , smColGap20
-    , smColGap24
-    , smColGap3
-    , smColGap32
-    , smColGap4
-    , smColGap40
-    , smColGap48
-    , smColGap5
-    , smColGap56
-    , smColGap6
-    , smColGap64
-    , smColGap8
-    , smColGapPx
     , smColSpan1
     , smColSpan10
     , smColSpan11
@@ -10919,6 +11188,7 @@ module Svg.Tailwind exposing
     , smColSpan7
     , smColSpan8
     , smColSpan9
+    , smColSpanFull
     , smColStart1
     , smColStart10
     , smColStart11
@@ -10938,6 +11208,7 @@ module Svg.Tailwind exposing
     , smContentBetween
     , smContentCenter
     , smContentEnd
+    , smContentEvenly
     , smContentStart
     , smContents
     , smCursorAuto
@@ -10955,6 +11226,7 @@ module Svg.Tailwind exposing
     , smDelay500
     , smDelay700
     , smDelay75
+    , smDiagonalFractions
     , smDivideBlack
     , smDivideBlue100
     , smDivideBlue200
@@ -11407,13 +11679,22 @@ module Svg.Tailwind exposing
     , smFocusFromYellow800
     , smFocusFromYellow900
     , smFocusLineThrough
+    , smFocusNegRotate1
+    , smFocusNegRotate12
     , smFocusNegRotate180
+    , smFocusNegRotate2
+    , smFocusNegRotate3
     , smFocusNegRotate45
+    , smFocusNegRotate6
     , smFocusNegRotate90
+    , smFocusNegSkewX1
     , smFocusNegSkewX12
+    , smFocusNegSkewX2
     , smFocusNegSkewX3
     , smFocusNegSkewX6
+    , smFocusNegSkewY1
     , smFocusNegSkewY12
+    , smFocusNegSkewY2
     , smFocusNegSkewY3
     , smFocusNegSkewY6
     , smFocusNegTranslateX1
@@ -11463,7 +11744,9 @@ module Svg.Tailwind exposing
     , smFocusOpacity25
     , smFocusOpacity50
     , smFocusOpacity75
+    , smFocusOutlineBlack
     , smFocusOutlineNone
+    , smFocusOutlineWhite
     , smFocusPlaceholderBlackFocus
     , smFocusPlaceholderBlue100Focus
     , smFocusPlaceholderBlue200Focus
@@ -11564,8 +11847,13 @@ module Svg.Tailwind exposing
     , smFocusPlaceholderYellow800Focus
     , smFocusPlaceholderYellow900Focus
     , smFocusRotate0
+    , smFocusRotate1
+    , smFocusRotate12
     , smFocusRotate180
+    , smFocusRotate2
+    , smFocusRotate3
     , smFocusRotate45
+    , smFocusRotate6
     , smFocusRotate90
     , smFocusScale0
     , smFocusScale100
@@ -11608,11 +11896,15 @@ module Svg.Tailwind exposing
     , smFocusShadowXl
     , smFocusShadowXs
     , smFocusSkewX0
+    , smFocusSkewX1
     , smFocusSkewX12
+    , smFocusSkewX2
     , smFocusSkewX3
     , smFocusSkewX6
     , smFocusSkewY0
+    , smFocusSkewY1
     , smFocusSkewY12
+    , smFocusSkewY2
     , smFocusSkewY3
     , smFocusSkewY6
     , smFocusSrOnly
@@ -12460,13 +12752,22 @@ module Svg.Tailwind exposing
     , smHoverFromYellow800
     , smHoverFromYellow900
     , smHoverLineThrough
+    , smHoverNegRotate1
+    , smHoverNegRotate12
     , smHoverNegRotate180
+    , smHoverNegRotate2
+    , smHoverNegRotate3
     , smHoverNegRotate45
+    , smHoverNegRotate6
     , smHoverNegRotate90
+    , smHoverNegSkewX1
     , smHoverNegSkewX12
+    , smHoverNegSkewX2
     , smHoverNegSkewX3
     , smHoverNegSkewX6
+    , smHoverNegSkewY1
     , smHoverNegSkewY12
+    , smHoverNegSkewY2
     , smHoverNegSkewY3
     , smHoverNegSkewY6
     , smHoverNegTranslateX1
@@ -12516,8 +12817,13 @@ module Svg.Tailwind exposing
     , smHoverOpacity50
     , smHoverOpacity75
     , smHoverRotate0
+    , smHoverRotate1
+    , smHoverRotate12
     , smHoverRotate180
+    , smHoverRotate2
+    , smHoverRotate3
     , smHoverRotate45
+    , smHoverRotate6
     , smHoverRotate90
     , smHoverScale0
     , smHoverScale100
@@ -12560,11 +12866,15 @@ module Svg.Tailwind exposing
     , smHoverShadowXl
     , smHoverShadowXs
     , smHoverSkewX0
+    , smHoverSkewX1
     , smHoverSkewX12
+    , smHoverSkewX2
     , smHoverSkewX3
     , smHoverSkewX6
     , smHoverSkewY0
+    , smHoverSkewY1
     , smHoverSkewY12
+    , smHoverSkewY2
     , smHoverSkewY3
     , smHoverSkewY6
     , smHoverTextBlack
@@ -12919,6 +13229,16 @@ module Svg.Tailwind exposing
     , smJustifyCenter
     , smJustifyEnd
     , smJustifyEvenly
+    , smJustifyItemsAuto
+    , smJustifyItemsCenter
+    , smJustifyItemsEnd
+    , smJustifyItemsStart
+    , smJustifyItemsStretch
+    , smJustifySelfAuto
+    , smJustifySelfCenter
+    , smJustifySelfEnd
+    , smJustifySelfStart
+    , smJustifySelfStretch
     , smJustifyStart
     , smLeading10
     , smLeading3
@@ -12937,6 +13257,7 @@ module Svg.Tailwind exposing
     , smLeft0
     , smLeftAuto
     , smLineThrough
+    , smLiningNums
     , smListDecimal
     , smListDisc
     , smListInside
@@ -13232,13 +13553,22 @@ module Svg.Tailwind exposing
     , smNegMy64
     , smNegMy8
     , smNegMyPx
+    , smNegRotate1
+    , smNegRotate12
     , smNegRotate180
+    , smNegRotate2
+    , smNegRotate3
     , smNegRotate45
+    , smNegRotate6
     , smNegRotate90
+    , smNegSkewX1
     , smNegSkewX12
+    , smNegSkewX2
     , smNegSkewX3
     , smNegSkewX6
+    , smNegSkewY1
     , smNegSkewY12
+    , smNegSkewY2
     , smNegSkewY3
     , smNegSkewY6
     , smNegSpaceX1
@@ -13319,6 +13649,7 @@ module Svg.Tailwind exposing
     , smNegTranslateYPx
     , smNoUnderline
     , smNormalCase
+    , smNormalNums
     , smNotItalic
     , smNotSrOnly
     , smObjectBottom
@@ -13335,6 +13666,7 @@ module Svg.Tailwind exposing
     , smObjectRightTop
     , smObjectScaleDown
     , smObjectTop
+    , smOldstyleNums
     , smOpacity0
     , smOpacity100
     , smOpacity25
@@ -13355,6 +13687,7 @@ module Svg.Tailwind exposing
     , smOrderFirst
     , smOrderLast
     , smOrderNone
+    , smOrdinal
     , smOriginBottom
     , smOriginBottomLeft
     , smOriginBottomRight
@@ -13364,7 +13697,9 @@ module Svg.Tailwind exposing
     , smOriginTop
     , smOriginTopLeft
     , smOriginTopRight
+    , smOutlineBlack
     , smOutlineNone
+    , smOutlineWhite
     , smOverflowAuto
     , smOverflowHidden
     , smOverflowScroll
@@ -13443,6 +13778,23 @@ module Svg.Tailwind exposing
     , smPl64
     , smPl8
     , smPlPx
+    , smPlaceContentAround
+    , smPlaceContentBetween
+    , smPlaceContentCenter
+    , smPlaceContentEnd
+    , smPlaceContentEvenly
+    , smPlaceContentStart
+    , smPlaceContentStretch
+    , smPlaceItemsAuto
+    , smPlaceItemsCenter
+    , smPlaceItemsEnd
+    , smPlaceItemsStart
+    , smPlaceItemsStretch
+    , smPlaceSelfAuto
+    , smPlaceSelfCenter
+    , smPlaceSelfEnd
+    , smPlaceSelfStart
+    , smPlaceSelfStretch
     , smPlaceholderBlack
     , smPlaceholderBlue100
     , smPlaceholderBlue200
@@ -13563,6 +13915,7 @@ module Svg.Tailwind exposing
     , smPr64
     , smPr8
     , smPrPx
+    , smProportionalNums
     , smPt0
     , smPt1
     , smPt10
@@ -13628,63 +13981,95 @@ module Svg.Tailwind exposing
     , smRight0
     , smRightAuto
     , smRotate0
+    , smRotate1
+    , smRotate12
     , smRotate180
+    , smRotate2
+    , smRotate3
     , smRotate45
+    , smRotate6
     , smRotate90
     , smRounded
+    , smRounded2xl
+    , smRounded3xl
     , smRoundedB
+    , smRoundedB2xl
+    , smRoundedB3xl
     , smRoundedBFull
     , smRoundedBLg
     , smRoundedBMd
     , smRoundedBNone
     , smRoundedBSm
+    , smRoundedBXl
     , smRoundedBl
+    , smRoundedBl2xl
+    , smRoundedBl3xl
     , smRoundedBlFull
     , smRoundedBlLg
     , smRoundedBlMd
     , smRoundedBlNone
     , smRoundedBlSm
+    , smRoundedBlXl
     , smRoundedBr
+    , smRoundedBr2xl
+    , smRoundedBr3xl
     , smRoundedBrFull
     , smRoundedBrLg
     , smRoundedBrMd
     , smRoundedBrNone
     , smRoundedBrSm
+    , smRoundedBrXl
     , smRoundedFull
     , smRoundedL
+    , smRoundedL2xl
+    , smRoundedL3xl
     , smRoundedLFull
     , smRoundedLLg
     , smRoundedLMd
     , smRoundedLNone
     , smRoundedLSm
+    , smRoundedLXl
     , smRoundedLg
     , smRoundedMd
     , smRoundedNone
     , smRoundedR
+    , smRoundedR2xl
+    , smRoundedR3xl
     , smRoundedRFull
     , smRoundedRLg
     , smRoundedRMd
     , smRoundedRNone
     , smRoundedRSm
+    , smRoundedRXl
     , smRoundedSm
     , smRoundedT
+    , smRoundedT2xl
+    , smRoundedT3xl
     , smRoundedTFull
     , smRoundedTLg
     , smRoundedTMd
     , smRoundedTNone
     , smRoundedTSm
+    , smRoundedTXl
     , smRoundedTl
+    , smRoundedTl2xl
+    , smRoundedTl3xl
     , smRoundedTlFull
     , smRoundedTlLg
     , smRoundedTlMd
     , smRoundedTlNone
     , smRoundedTlSm
+    , smRoundedTlXl
     , smRoundedTr
+    , smRoundedTr2xl
+    , smRoundedTr3xl
     , smRoundedTrFull
     , smRoundedTrLg
     , smRoundedTrMd
     , smRoundedTrNone
     , smRoundedTrSm
+    , smRoundedTrXl
+    , smRoundedXl
     , smRowAuto
     , smRowEnd1
     , smRowEnd2
@@ -13694,31 +14079,13 @@ module Svg.Tailwind exposing
     , smRowEnd6
     , smRowEnd7
     , smRowEndAuto
-    , smRowGap0
-    , smRowGap1
-    , smRowGap10
-    , smRowGap12
-    , smRowGap16
-    , smRowGap2
-    , smRowGap20
-    , smRowGap24
-    , smRowGap3
-    , smRowGap32
-    , smRowGap4
-    , smRowGap40
-    , smRowGap48
-    , smRowGap5
-    , smRowGap56
-    , smRowGap6
-    , smRowGap64
-    , smRowGap8
-    , smRowGapPx
     , smRowSpan1
     , smRowSpan2
     , smRowSpan3
     , smRowSpan4
     , smRowSpan5
     , smRowSpan6
+    , smRowSpanFull
     , smRowStart1
     , smRowStart2
     , smRowStart3
@@ -13779,13 +14146,18 @@ module Svg.Tailwind exposing
     , smShadowXl
     , smShadowXs
     , smSkewX0
+    , smSkewX1
     , smSkewX12
+    , smSkewX2
     , smSkewX3
     , smSkewX6
     , smSkewY0
+    , smSkewY1
     , smSkewY12
+    , smSkewY2
     , smSkewY3
     , smSkewY6
+    , smSlashedZero
     , smSpaceX0
     , smSpaceX1
     , smSpaceX10
@@ -13827,6 +14199,7 @@ module Svg.Tailwind exposing
     , smSpaceYPx
     , smSpaceYReverse
     , smSrOnly
+    , smStackedFractions
     , smStatic
     , smSticky
     , smStroke0
@@ -13845,6 +14218,7 @@ module Svg.Tailwind exposing
     , smTableHeaderGroup
     , smTableRow
     , smTableRowGroup
+    , smTabularNums
     , smText2xl
     , smText3xl
     , smText4xl
@@ -14310,6 +14684,7 @@ module Svg.Tailwind exposing
     , spaceYPx
     , spaceYReverse
     , srOnly
+    , stackedFractions
     , static
     , sticky
     , stroke0
@@ -14328,6 +14703,7 @@ module Svg.Tailwind exposing
     , tableHeaderGroup
     , tableRow
     , tableRowGroup
+    , tabularNums
     , text2xl
     , text3xl
     , text4xl
@@ -14759,6 +15135,14 @@ module Svg.Tailwind exposing
     , xlAnimateSpin
     , xlAntialiased
     , xlAppearanceNone
+    , xlAutoColsAuto
+    , xlAutoColsFr
+    , xlAutoColsMax
+    , xlAutoColsMin
+    , xlAutoRowsAuto
+    , xlAutoRowsFr
+    , xlAutoRowsMax
+    , xlAutoRowsMin
     , xlBgAuto
     , xlBgBlack
     , xlBgBlue100
@@ -15052,25 +15436,6 @@ module Svg.Tailwind exposing
     , xlColEnd8
     , xlColEnd9
     , xlColEndAuto
-    , xlColGap0
-    , xlColGap1
-    , xlColGap10
-    , xlColGap12
-    , xlColGap16
-    , xlColGap2
-    , xlColGap20
-    , xlColGap24
-    , xlColGap3
-    , xlColGap32
-    , xlColGap4
-    , xlColGap40
-    , xlColGap48
-    , xlColGap5
-    , xlColGap56
-    , xlColGap6
-    , xlColGap64
-    , xlColGap8
-    , xlColGapPx
     , xlColSpan1
     , xlColSpan10
     , xlColSpan11
@@ -15083,6 +15448,7 @@ module Svg.Tailwind exposing
     , xlColSpan7
     , xlColSpan8
     , xlColSpan9
+    , xlColSpanFull
     , xlColStart1
     , xlColStart10
     , xlColStart11
@@ -15102,6 +15468,7 @@ module Svg.Tailwind exposing
     , xlContentBetween
     , xlContentCenter
     , xlContentEnd
+    , xlContentEvenly
     , xlContentStart
     , xlContents
     , xlCursorAuto
@@ -15119,6 +15486,7 @@ module Svg.Tailwind exposing
     , xlDelay500
     , xlDelay700
     , xlDelay75
+    , xlDiagonalFractions
     , xlDivideBlack
     , xlDivideBlue100
     , xlDivideBlue200
@@ -15571,13 +15939,22 @@ module Svg.Tailwind exposing
     , xlFocusFromYellow800
     , xlFocusFromYellow900
     , xlFocusLineThrough
+    , xlFocusNegRotate1
+    , xlFocusNegRotate12
     , xlFocusNegRotate180
+    , xlFocusNegRotate2
+    , xlFocusNegRotate3
     , xlFocusNegRotate45
+    , xlFocusNegRotate6
     , xlFocusNegRotate90
+    , xlFocusNegSkewX1
     , xlFocusNegSkewX12
+    , xlFocusNegSkewX2
     , xlFocusNegSkewX3
     , xlFocusNegSkewX6
+    , xlFocusNegSkewY1
     , xlFocusNegSkewY12
+    , xlFocusNegSkewY2
     , xlFocusNegSkewY3
     , xlFocusNegSkewY6
     , xlFocusNegTranslateX1
@@ -15627,7 +16004,9 @@ module Svg.Tailwind exposing
     , xlFocusOpacity25
     , xlFocusOpacity50
     , xlFocusOpacity75
+    , xlFocusOutlineBlack
     , xlFocusOutlineNone
+    , xlFocusOutlineWhite
     , xlFocusPlaceholderBlackFocus
     , xlFocusPlaceholderBlue100Focus
     , xlFocusPlaceholderBlue200Focus
@@ -15728,8 +16107,13 @@ module Svg.Tailwind exposing
     , xlFocusPlaceholderYellow800Focus
     , xlFocusPlaceholderYellow900Focus
     , xlFocusRotate0
+    , xlFocusRotate1
+    , xlFocusRotate12
     , xlFocusRotate180
+    , xlFocusRotate2
+    , xlFocusRotate3
     , xlFocusRotate45
+    , xlFocusRotate6
     , xlFocusRotate90
     , xlFocusScale0
     , xlFocusScale100
@@ -15772,11 +16156,15 @@ module Svg.Tailwind exposing
     , xlFocusShadowXl
     , xlFocusShadowXs
     , xlFocusSkewX0
+    , xlFocusSkewX1
     , xlFocusSkewX12
+    , xlFocusSkewX2
     , xlFocusSkewX3
     , xlFocusSkewX6
     , xlFocusSkewY0
+    , xlFocusSkewY1
     , xlFocusSkewY12
+    , xlFocusSkewY2
     , xlFocusSkewY3
     , xlFocusSkewY6
     , xlFocusSrOnly
@@ -16624,13 +17012,22 @@ module Svg.Tailwind exposing
     , xlHoverFromYellow800
     , xlHoverFromYellow900
     , xlHoverLineThrough
+    , xlHoverNegRotate1
+    , xlHoverNegRotate12
     , xlHoverNegRotate180
+    , xlHoverNegRotate2
+    , xlHoverNegRotate3
     , xlHoverNegRotate45
+    , xlHoverNegRotate6
     , xlHoverNegRotate90
+    , xlHoverNegSkewX1
     , xlHoverNegSkewX12
+    , xlHoverNegSkewX2
     , xlHoverNegSkewX3
     , xlHoverNegSkewX6
+    , xlHoverNegSkewY1
     , xlHoverNegSkewY12
+    , xlHoverNegSkewY2
     , xlHoverNegSkewY3
     , xlHoverNegSkewY6
     , xlHoverNegTranslateX1
@@ -16680,8 +17077,13 @@ module Svg.Tailwind exposing
     , xlHoverOpacity50
     , xlHoverOpacity75
     , xlHoverRotate0
+    , xlHoverRotate1
+    , xlHoverRotate12
     , xlHoverRotate180
+    , xlHoverRotate2
+    , xlHoverRotate3
     , xlHoverRotate45
+    , xlHoverRotate6
     , xlHoverRotate90
     , xlHoverScale0
     , xlHoverScale100
@@ -16724,11 +17126,15 @@ module Svg.Tailwind exposing
     , xlHoverShadowXl
     , xlHoverShadowXs
     , xlHoverSkewX0
+    , xlHoverSkewX1
     , xlHoverSkewX12
+    , xlHoverSkewX2
     , xlHoverSkewX3
     , xlHoverSkewX6
     , xlHoverSkewY0
+    , xlHoverSkewY1
     , xlHoverSkewY12
+    , xlHoverSkewY2
     , xlHoverSkewY3
     , xlHoverSkewY6
     , xlHoverTextBlack
@@ -17083,6 +17489,16 @@ module Svg.Tailwind exposing
     , xlJustifyCenter
     , xlJustifyEnd
     , xlJustifyEvenly
+    , xlJustifyItemsAuto
+    , xlJustifyItemsCenter
+    , xlJustifyItemsEnd
+    , xlJustifyItemsStart
+    , xlJustifyItemsStretch
+    , xlJustifySelfAuto
+    , xlJustifySelfCenter
+    , xlJustifySelfEnd
+    , xlJustifySelfStart
+    , xlJustifySelfStretch
     , xlJustifyStart
     , xlLeading10
     , xlLeading3
@@ -17101,6 +17517,7 @@ module Svg.Tailwind exposing
     , xlLeft0
     , xlLeftAuto
     , xlLineThrough
+    , xlLiningNums
     , xlListDecimal
     , xlListDisc
     , xlListInside
@@ -17396,13 +17813,22 @@ module Svg.Tailwind exposing
     , xlNegMy64
     , xlNegMy8
     , xlNegMyPx
+    , xlNegRotate1
+    , xlNegRotate12
     , xlNegRotate180
+    , xlNegRotate2
+    , xlNegRotate3
     , xlNegRotate45
+    , xlNegRotate6
     , xlNegRotate90
+    , xlNegSkewX1
     , xlNegSkewX12
+    , xlNegSkewX2
     , xlNegSkewX3
     , xlNegSkewX6
+    , xlNegSkewY1
     , xlNegSkewY12
+    , xlNegSkewY2
     , xlNegSkewY3
     , xlNegSkewY6
     , xlNegSpaceX1
@@ -17483,6 +17909,7 @@ module Svg.Tailwind exposing
     , xlNegTranslateYPx
     , xlNoUnderline
     , xlNormalCase
+    , xlNormalNums
     , xlNotItalic
     , xlNotSrOnly
     , xlObjectBottom
@@ -17499,6 +17926,7 @@ module Svg.Tailwind exposing
     , xlObjectRightTop
     , xlObjectScaleDown
     , xlObjectTop
+    , xlOldstyleNums
     , xlOpacity0
     , xlOpacity100
     , xlOpacity25
@@ -17519,6 +17947,7 @@ module Svg.Tailwind exposing
     , xlOrderFirst
     , xlOrderLast
     , xlOrderNone
+    , xlOrdinal
     , xlOriginBottom
     , xlOriginBottomLeft
     , xlOriginBottomRight
@@ -17528,7 +17957,9 @@ module Svg.Tailwind exposing
     , xlOriginTop
     , xlOriginTopLeft
     , xlOriginTopRight
+    , xlOutlineBlack
     , xlOutlineNone
+    , xlOutlineWhite
     , xlOverflowAuto
     , xlOverflowHidden
     , xlOverflowScroll
@@ -17607,6 +18038,23 @@ module Svg.Tailwind exposing
     , xlPl64
     , xlPl8
     , xlPlPx
+    , xlPlaceContentAround
+    , xlPlaceContentBetween
+    , xlPlaceContentCenter
+    , xlPlaceContentEnd
+    , xlPlaceContentEvenly
+    , xlPlaceContentStart
+    , xlPlaceContentStretch
+    , xlPlaceItemsAuto
+    , xlPlaceItemsCenter
+    , xlPlaceItemsEnd
+    , xlPlaceItemsStart
+    , xlPlaceItemsStretch
+    , xlPlaceSelfAuto
+    , xlPlaceSelfCenter
+    , xlPlaceSelfEnd
+    , xlPlaceSelfStart
+    , xlPlaceSelfStretch
     , xlPlaceholderBlack
     , xlPlaceholderBlue100
     , xlPlaceholderBlue200
@@ -17727,6 +18175,7 @@ module Svg.Tailwind exposing
     , xlPr64
     , xlPr8
     , xlPrPx
+    , xlProportionalNums
     , xlPt0
     , xlPt1
     , xlPt10
@@ -17792,63 +18241,95 @@ module Svg.Tailwind exposing
     , xlRight0
     , xlRightAuto
     , xlRotate0
+    , xlRotate1
+    , xlRotate12
     , xlRotate180
+    , xlRotate2
+    , xlRotate3
     , xlRotate45
+    , xlRotate6
     , xlRotate90
     , xlRounded
+    , xlRounded2xl
+    , xlRounded3xl
     , xlRoundedB
+    , xlRoundedB2xl
+    , xlRoundedB3xl
     , xlRoundedBFull
     , xlRoundedBLg
     , xlRoundedBMd
     , xlRoundedBNone
     , xlRoundedBSm
+    , xlRoundedBXl
     , xlRoundedBl
+    , xlRoundedBl2xl
+    , xlRoundedBl3xl
     , xlRoundedBlFull
     , xlRoundedBlLg
     , xlRoundedBlMd
     , xlRoundedBlNone
     , xlRoundedBlSm
+    , xlRoundedBlXl
     , xlRoundedBr
+    , xlRoundedBr2xl
+    , xlRoundedBr3xl
     , xlRoundedBrFull
     , xlRoundedBrLg
     , xlRoundedBrMd
     , xlRoundedBrNone
     , xlRoundedBrSm
+    , xlRoundedBrXl
     , xlRoundedFull
     , xlRoundedL
+    , xlRoundedL2xl
+    , xlRoundedL3xl
     , xlRoundedLFull
     , xlRoundedLLg
     , xlRoundedLMd
     , xlRoundedLNone
     , xlRoundedLSm
+    , xlRoundedLXl
     , xlRoundedLg
     , xlRoundedMd
     , xlRoundedNone
     , xlRoundedR
+    , xlRoundedR2xl
+    , xlRoundedR3xl
     , xlRoundedRFull
     , xlRoundedRLg
     , xlRoundedRMd
     , xlRoundedRNone
     , xlRoundedRSm
+    , xlRoundedRXl
     , xlRoundedSm
     , xlRoundedT
+    , xlRoundedT2xl
+    , xlRoundedT3xl
     , xlRoundedTFull
     , xlRoundedTLg
     , xlRoundedTMd
     , xlRoundedTNone
     , xlRoundedTSm
+    , xlRoundedTXl
     , xlRoundedTl
+    , xlRoundedTl2xl
+    , xlRoundedTl3xl
     , xlRoundedTlFull
     , xlRoundedTlLg
     , xlRoundedTlMd
     , xlRoundedTlNone
     , xlRoundedTlSm
+    , xlRoundedTlXl
     , xlRoundedTr
+    , xlRoundedTr2xl
+    , xlRoundedTr3xl
     , xlRoundedTrFull
     , xlRoundedTrLg
     , xlRoundedTrMd
     , xlRoundedTrNone
     , xlRoundedTrSm
+    , xlRoundedTrXl
+    , xlRoundedXl
     , xlRowAuto
     , xlRowEnd1
     , xlRowEnd2
@@ -17858,31 +18339,13 @@ module Svg.Tailwind exposing
     , xlRowEnd6
     , xlRowEnd7
     , xlRowEndAuto
-    , xlRowGap0
-    , xlRowGap1
-    , xlRowGap10
-    , xlRowGap12
-    , xlRowGap16
-    , xlRowGap2
-    , xlRowGap20
-    , xlRowGap24
-    , xlRowGap3
-    , xlRowGap32
-    , xlRowGap4
-    , xlRowGap40
-    , xlRowGap48
-    , xlRowGap5
-    , xlRowGap56
-    , xlRowGap6
-    , xlRowGap64
-    , xlRowGap8
-    , xlRowGapPx
     , xlRowSpan1
     , xlRowSpan2
     , xlRowSpan3
     , xlRowSpan4
     , xlRowSpan5
     , xlRowSpan6
+    , xlRowSpanFull
     , xlRowStart1
     , xlRowStart2
     , xlRowStart3
@@ -17943,13 +18406,18 @@ module Svg.Tailwind exposing
     , xlShadowXl
     , xlShadowXs
     , xlSkewX0
+    , xlSkewX1
     , xlSkewX12
+    , xlSkewX2
     , xlSkewX3
     , xlSkewX6
     , xlSkewY0
+    , xlSkewY1
     , xlSkewY12
+    , xlSkewY2
     , xlSkewY3
     , xlSkewY6
+    , xlSlashedZero
     , xlSpaceX0
     , xlSpaceX1
     , xlSpaceX10
@@ -17991,6 +18459,7 @@ module Svg.Tailwind exposing
     , xlSpaceYPx
     , xlSpaceYReverse
     , xlSrOnly
+    , xlStackedFractions
     , xlStatic
     , xlSticky
     , xlStroke0
@@ -18009,6 +18478,7 @@ module Svg.Tailwind exposing
     , xlTableHeaderGroup
     , xlTableRow
     , xlTableRowGroup
+    , xlTabularNums
     , xlText2xl
     , xlText3xl
     , xlText4xl
@@ -26846,6 +27316,21 @@ roundedLg =
     A.class "rounded-lg"
 
 
+roundedXl : Svg.Attribute msg
+roundedXl =
+    A.class "rounded-xl"
+
+
+rounded2xl : Svg.Attribute msg
+rounded2xl =
+    A.class "rounded-2xl"
+
+
+rounded3xl : Svg.Attribute msg
+rounded3xl =
+    A.class "rounded-3xl"
+
+
 roundedFull : Svg.Attribute msg
 roundedFull =
     A.class "rounded-full"
@@ -26949,6 +27434,66 @@ roundedBLg =
 roundedLLg : Svg.Attribute msg
 roundedLLg =
     A.class "rounded-l-lg"
+
+
+roundedTXl : Svg.Attribute msg
+roundedTXl =
+    A.class "rounded-t-xl"
+
+
+roundedRXl : Svg.Attribute msg
+roundedRXl =
+    A.class "rounded-r-xl"
+
+
+roundedBXl : Svg.Attribute msg
+roundedBXl =
+    A.class "rounded-b-xl"
+
+
+roundedLXl : Svg.Attribute msg
+roundedLXl =
+    A.class "rounded-l-xl"
+
+
+roundedT2xl : Svg.Attribute msg
+roundedT2xl =
+    A.class "rounded-t-2xl"
+
+
+roundedR2xl : Svg.Attribute msg
+roundedR2xl =
+    A.class "rounded-r-2xl"
+
+
+roundedB2xl : Svg.Attribute msg
+roundedB2xl =
+    A.class "rounded-b-2xl"
+
+
+roundedL2xl : Svg.Attribute msg
+roundedL2xl =
+    A.class "rounded-l-2xl"
+
+
+roundedT3xl : Svg.Attribute msg
+roundedT3xl =
+    A.class "rounded-t-3xl"
+
+
+roundedR3xl : Svg.Attribute msg
+roundedR3xl =
+    A.class "rounded-r-3xl"
+
+
+roundedB3xl : Svg.Attribute msg
+roundedB3xl =
+    A.class "rounded-b-3xl"
+
+
+roundedL3xl : Svg.Attribute msg
+roundedL3xl =
+    A.class "rounded-l-3xl"
 
 
 roundedTFull : Svg.Attribute msg
@@ -27069,6 +27614,66 @@ roundedBrLg =
 roundedBlLg : Svg.Attribute msg
 roundedBlLg =
     A.class "rounded-bl-lg"
+
+
+roundedTlXl : Svg.Attribute msg
+roundedTlXl =
+    A.class "rounded-tl-xl"
+
+
+roundedTrXl : Svg.Attribute msg
+roundedTrXl =
+    A.class "rounded-tr-xl"
+
+
+roundedBrXl : Svg.Attribute msg
+roundedBrXl =
+    A.class "rounded-br-xl"
+
+
+roundedBlXl : Svg.Attribute msg
+roundedBlXl =
+    A.class "rounded-bl-xl"
+
+
+roundedTl2xl : Svg.Attribute msg
+roundedTl2xl =
+    A.class "rounded-tl-2xl"
+
+
+roundedTr2xl : Svg.Attribute msg
+roundedTr2xl =
+    A.class "rounded-tr-2xl"
+
+
+roundedBr2xl : Svg.Attribute msg
+roundedBr2xl =
+    A.class "rounded-br-2xl"
+
+
+roundedBl2xl : Svg.Attribute msg
+roundedBl2xl =
+    A.class "rounded-bl-2xl"
+
+
+roundedTl3xl : Svg.Attribute msg
+roundedTl3xl =
+    A.class "rounded-tl-3xl"
+
+
+roundedTr3xl : Svg.Attribute msg
+roundedTr3xl =
+    A.class "rounded-tr-3xl"
+
+
+roundedBr3xl : Svg.Attribute msg
+roundedBr3xl =
+    A.class "rounded-br-3xl"
+
+
+roundedBl3xl : Svg.Attribute msg
+roundedBl3xl =
+    A.class "rounded-bl-3xl"
 
 
 roundedTlFull : Svg.Attribute msg
@@ -27416,6 +28021,91 @@ flexNoWrap =
     A.class "flex-no-wrap"
 
 
+placeItemsAuto : Svg.Attribute msg
+placeItemsAuto =
+    A.class "place-items-auto"
+
+
+placeItemsStart : Svg.Attribute msg
+placeItemsStart =
+    A.class "place-items-start"
+
+
+placeItemsEnd : Svg.Attribute msg
+placeItemsEnd =
+    A.class "place-items-end"
+
+
+placeItemsCenter : Svg.Attribute msg
+placeItemsCenter =
+    A.class "place-items-center"
+
+
+placeItemsStretch : Svg.Attribute msg
+placeItemsStretch =
+    A.class "place-items-stretch"
+
+
+placeContentCenter : Svg.Attribute msg
+placeContentCenter =
+    A.class "place-content-center"
+
+
+placeContentStart : Svg.Attribute msg
+placeContentStart =
+    A.class "place-content-start"
+
+
+placeContentEnd : Svg.Attribute msg
+placeContentEnd =
+    A.class "place-content-end"
+
+
+placeContentBetween : Svg.Attribute msg
+placeContentBetween =
+    A.class "place-content-between"
+
+
+placeContentAround : Svg.Attribute msg
+placeContentAround =
+    A.class "place-content-around"
+
+
+placeContentEvenly : Svg.Attribute msg
+placeContentEvenly =
+    A.class "place-content-evenly"
+
+
+placeContentStretch : Svg.Attribute msg
+placeContentStretch =
+    A.class "place-content-stretch"
+
+
+placeSelfAuto : Svg.Attribute msg
+placeSelfAuto =
+    A.class "place-self-auto"
+
+
+placeSelfStart : Svg.Attribute msg
+placeSelfStart =
+    A.class "place-self-start"
+
+
+placeSelfEnd : Svg.Attribute msg
+placeSelfEnd =
+    A.class "place-self-end"
+
+
+placeSelfCenter : Svg.Attribute msg
+placeSelfCenter =
+    A.class "place-self-center"
+
+
+placeSelfStretch : Svg.Attribute msg
+placeSelfStretch =
+    A.class "place-self-stretch"
+
+
 itemsStart : Svg.Attribute msg
 itemsStart =
     A.class "items-start"
@@ -27441,6 +28131,36 @@ itemsStretch =
     A.class "items-stretch"
 
 
+contentCenter : Svg.Attribute msg
+contentCenter =
+    A.class "content-center"
+
+
+contentStart : Svg.Attribute msg
+contentStart =
+    A.class "content-start"
+
+
+contentEnd : Svg.Attribute msg
+contentEnd =
+    A.class "content-end"
+
+
+contentBetween : Svg.Attribute msg
+contentBetween =
+    A.class "content-between"
+
+
+contentAround : Svg.Attribute msg
+contentAround =
+    A.class "content-around"
+
+
+contentEvenly : Svg.Attribute msg
+contentEvenly =
+    A.class "content-evenly"
+
+
 selfAuto : Svg.Attribute msg
 selfAuto =
     A.class "self-auto"
@@ -27464,6 +28184,31 @@ selfCenter =
 selfStretch : Svg.Attribute msg
 selfStretch =
     A.class "self-stretch"
+
+
+justifyItemsAuto : Svg.Attribute msg
+justifyItemsAuto =
+    A.class "justify-items-auto"
+
+
+justifyItemsStart : Svg.Attribute msg
+justifyItemsStart =
+    A.class "justify-items-start"
+
+
+justifyItemsEnd : Svg.Attribute msg
+justifyItemsEnd =
+    A.class "justify-items-end"
+
+
+justifyItemsCenter : Svg.Attribute msg
+justifyItemsCenter =
+    A.class "justify-items-center"
+
+
+justifyItemsStretch : Svg.Attribute msg
+justifyItemsStretch =
+    A.class "justify-items-stretch"
 
 
 justifyStart : Svg.Attribute msg
@@ -27496,29 +28241,29 @@ justifyEvenly =
     A.class "justify-evenly"
 
 
-contentCenter : Svg.Attribute msg
-contentCenter =
-    A.class "content-center"
+justifySelfAuto : Svg.Attribute msg
+justifySelfAuto =
+    A.class "justify-self-auto"
 
 
-contentStart : Svg.Attribute msg
-contentStart =
-    A.class "content-start"
+justifySelfStart : Svg.Attribute msg
+justifySelfStart =
+    A.class "justify-self-start"
 
 
-contentEnd : Svg.Attribute msg
-contentEnd =
-    A.class "content-end"
+justifySelfEnd : Svg.Attribute msg
+justifySelfEnd =
+    A.class "justify-self-end"
 
 
-contentBetween : Svg.Attribute msg
-contentBetween =
-    A.class "content-between"
+justifySelfCenter : Svg.Attribute msg
+justifySelfCenter =
+    A.class "justify-self-center"
 
 
-contentAround : Svg.Attribute msg
-contentAround =
-    A.class "content-around"
+justifySelfStretch : Svg.Attribute msg
+justifySelfStretch =
+    A.class "justify-self-stretch"
 
 
 flex1 : Svg.Attribute msg
@@ -29681,9 +30426,29 @@ outlineNone =
     A.class "outline-none"
 
 
+outlineWhite : Svg.Attribute msg
+outlineWhite =
+    A.class "outline-white"
+
+
+outlineBlack : Svg.Attribute msg
+outlineBlack =
+    A.class "outline-black"
+
+
 focusOutlineNone : Svg.Attribute msg
 focusOutlineNone =
     A.class "focus:outline-none"
+
+
+focusOutlineWhite : Svg.Attribute msg
+focusOutlineWhite =
+    A.class "focus:outline-white"
+
+
+focusOutlineBlack : Svg.Attribute msg
+focusOutlineBlack =
+    A.class "focus:outline-black"
 
 
 overflowAuto : Svg.Attribute msg
@@ -33356,6 +34121,51 @@ subpixelAntialiased =
     A.class "subpixel-antialiased"
 
 
+ordinal : Svg.Attribute msg
+ordinal =
+    A.class "ordinal"
+
+
+slashedZero : Svg.Attribute msg
+slashedZero =
+    A.class "slashed-zero"
+
+
+liningNums : Svg.Attribute msg
+liningNums =
+    A.class "lining-nums"
+
+
+oldstyleNums : Svg.Attribute msg
+oldstyleNums =
+    A.class "oldstyle-nums"
+
+
+proportionalNums : Svg.Attribute msg
+proportionalNums =
+    A.class "proportional-nums"
+
+
+tabularNums : Svg.Attribute msg
+tabularNums =
+    A.class "tabular-nums"
+
+
+diagonalFractions : Svg.Attribute msg
+diagonalFractions =
+    A.class "diagonal-fractions"
+
+
+stackedFractions : Svg.Attribute msg
+stackedFractions =
+    A.class "stacked-fractions"
+
+
+normalNums : Svg.Attribute msg
+normalNums =
+    A.class "normal-nums"
+
+
 trackingTighter : Svg.Attribute msg
 trackingTighter =
     A.class "tracking-tighter"
@@ -33861,101 +34671,6 @@ gapPx =
     A.class "gap-px"
 
 
-colGap0 : Svg.Attribute msg
-colGap0 =
-    A.class "col-gap-0"
-
-
-colGap1 : Svg.Attribute msg
-colGap1 =
-    A.class "col-gap-1"
-
-
-colGap2 : Svg.Attribute msg
-colGap2 =
-    A.class "col-gap-2"
-
-
-colGap3 : Svg.Attribute msg
-colGap3 =
-    A.class "col-gap-3"
-
-
-colGap4 : Svg.Attribute msg
-colGap4 =
-    A.class "col-gap-4"
-
-
-colGap5 : Svg.Attribute msg
-colGap5 =
-    A.class "col-gap-5"
-
-
-colGap6 : Svg.Attribute msg
-colGap6 =
-    A.class "col-gap-6"
-
-
-colGap8 : Svg.Attribute msg
-colGap8 =
-    A.class "col-gap-8"
-
-
-colGap10 : Svg.Attribute msg
-colGap10 =
-    A.class "col-gap-10"
-
-
-colGap12 : Svg.Attribute msg
-colGap12 =
-    A.class "col-gap-12"
-
-
-colGap16 : Svg.Attribute msg
-colGap16 =
-    A.class "col-gap-16"
-
-
-colGap20 : Svg.Attribute msg
-colGap20 =
-    A.class "col-gap-20"
-
-
-colGap24 : Svg.Attribute msg
-colGap24 =
-    A.class "col-gap-24"
-
-
-colGap32 : Svg.Attribute msg
-colGap32 =
-    A.class "col-gap-32"
-
-
-colGap40 : Svg.Attribute msg
-colGap40 =
-    A.class "col-gap-40"
-
-
-colGap48 : Svg.Attribute msg
-colGap48 =
-    A.class "col-gap-48"
-
-
-colGap56 : Svg.Attribute msg
-colGap56 =
-    A.class "col-gap-56"
-
-
-colGap64 : Svg.Attribute msg
-colGap64 =
-    A.class "col-gap-64"
-
-
-colGapPx : Svg.Attribute msg
-colGapPx =
-    A.class "col-gap-px"
-
-
 gapX0 : Svg.Attribute msg
 gapX0 =
     A.class "gap-x-0"
@@ -34049,101 +34764,6 @@ gapX64 =
 gapXPx : Svg.Attribute msg
 gapXPx =
     A.class "gap-x-px"
-
-
-rowGap0 : Svg.Attribute msg
-rowGap0 =
-    A.class "row-gap-0"
-
-
-rowGap1 : Svg.Attribute msg
-rowGap1 =
-    A.class "row-gap-1"
-
-
-rowGap2 : Svg.Attribute msg
-rowGap2 =
-    A.class "row-gap-2"
-
-
-rowGap3 : Svg.Attribute msg
-rowGap3 =
-    A.class "row-gap-3"
-
-
-rowGap4 : Svg.Attribute msg
-rowGap4 =
-    A.class "row-gap-4"
-
-
-rowGap5 : Svg.Attribute msg
-rowGap5 =
-    A.class "row-gap-5"
-
-
-rowGap6 : Svg.Attribute msg
-rowGap6 =
-    A.class "row-gap-6"
-
-
-rowGap8 : Svg.Attribute msg
-rowGap8 =
-    A.class "row-gap-8"
-
-
-rowGap10 : Svg.Attribute msg
-rowGap10 =
-    A.class "row-gap-10"
-
-
-rowGap12 : Svg.Attribute msg
-rowGap12 =
-    A.class "row-gap-12"
-
-
-rowGap16 : Svg.Attribute msg
-rowGap16 =
-    A.class "row-gap-16"
-
-
-rowGap20 : Svg.Attribute msg
-rowGap20 =
-    A.class "row-gap-20"
-
-
-rowGap24 : Svg.Attribute msg
-rowGap24 =
-    A.class "row-gap-24"
-
-
-rowGap32 : Svg.Attribute msg
-rowGap32 =
-    A.class "row-gap-32"
-
-
-rowGap40 : Svg.Attribute msg
-rowGap40 =
-    A.class "row-gap-40"
-
-
-rowGap48 : Svg.Attribute msg
-rowGap48 =
-    A.class "row-gap-48"
-
-
-rowGap56 : Svg.Attribute msg
-rowGap56 =
-    A.class "row-gap-56"
-
-
-rowGap64 : Svg.Attribute msg
-rowGap64 =
-    A.class "row-gap-64"
-
-
-rowGapPx : Svg.Attribute msg
-rowGapPx =
-    A.class "row-gap-px"
 
 
 gapY0 : Svg.Attribute msg
@@ -34326,6 +34946,26 @@ gridColsNone =
     A.class "grid-cols-none"
 
 
+autoColsAuto : Svg.Attribute msg
+autoColsAuto =
+    A.class "auto-cols-auto"
+
+
+autoColsMin : Svg.Attribute msg
+autoColsMin =
+    A.class "auto-cols-min"
+
+
+autoColsMax : Svg.Attribute msg
+autoColsMax =
+    A.class "auto-cols-max"
+
+
+autoColsFr : Svg.Attribute msg
+autoColsFr =
+    A.class "auto-cols-fr"
+
+
 colAuto : Svg.Attribute msg
 colAuto =
     A.class "col-auto"
@@ -34389,6 +35029,11 @@ colSpan11 =
 colSpan12 : Svg.Attribute msg
 colSpan12 =
     A.class "col-span-12"
+
+
+colSpanFull : Svg.Attribute msg
+colSpanFull =
+    A.class "col-span-full"
 
 
 colStart1 : Svg.Attribute msg
@@ -34566,6 +35211,26 @@ gridRowsNone =
     A.class "grid-rows-none"
 
 
+autoRowsAuto : Svg.Attribute msg
+autoRowsAuto =
+    A.class "auto-rows-auto"
+
+
+autoRowsMin : Svg.Attribute msg
+autoRowsMin =
+    A.class "auto-rows-min"
+
+
+autoRowsMax : Svg.Attribute msg
+autoRowsMax =
+    A.class "auto-rows-max"
+
+
+autoRowsFr : Svg.Attribute msg
+autoRowsFr =
+    A.class "auto-rows-fr"
+
+
 rowAuto : Svg.Attribute msg
 rowAuto =
     A.class "row-auto"
@@ -34599,6 +35264,11 @@ rowSpan5 =
 rowSpan6 : Svg.Attribute msg
 rowSpan6 =
     A.class "row-span-6"
+
+
+rowSpanFull : Svg.Attribute msg
+rowSpanFull =
+    A.class "row-span-full"
 
 
 rowStart1 : Svg.Attribute msg
@@ -35191,6 +35861,31 @@ rotate0 =
     A.class "rotate-0"
 
 
+rotate1 : Svg.Attribute msg
+rotate1 =
+    A.class "rotate-1"
+
+
+rotate2 : Svg.Attribute msg
+rotate2 =
+    A.class "rotate-2"
+
+
+rotate3 : Svg.Attribute msg
+rotate3 =
+    A.class "rotate-3"
+
+
+rotate6 : Svg.Attribute msg
+rotate6 =
+    A.class "rotate-6"
+
+
+rotate12 : Svg.Attribute msg
+rotate12 =
+    A.class "rotate-12"
+
+
 rotate45 : Svg.Attribute msg
 rotate45 =
     A.class "rotate-45"
@@ -35221,9 +35916,59 @@ negRotate45 =
     A.class "-rotate-45"
 
 
+negRotate12 : Svg.Attribute msg
+negRotate12 =
+    A.class "-rotate-12"
+
+
+negRotate6 : Svg.Attribute msg
+negRotate6 =
+    A.class "-rotate-6"
+
+
+negRotate3 : Svg.Attribute msg
+negRotate3 =
+    A.class "-rotate-3"
+
+
+negRotate2 : Svg.Attribute msg
+negRotate2 =
+    A.class "-rotate-2"
+
+
+negRotate1 : Svg.Attribute msg
+negRotate1 =
+    A.class "-rotate-1"
+
+
 hoverRotate0 : Svg.Attribute msg
 hoverRotate0 =
     A.class "hover:rotate-0"
+
+
+hoverRotate1 : Svg.Attribute msg
+hoverRotate1 =
+    A.class "hover:rotate-1"
+
+
+hoverRotate2 : Svg.Attribute msg
+hoverRotate2 =
+    A.class "hover:rotate-2"
+
+
+hoverRotate3 : Svg.Attribute msg
+hoverRotate3 =
+    A.class "hover:rotate-3"
+
+
+hoverRotate6 : Svg.Attribute msg
+hoverRotate6 =
+    A.class "hover:rotate-6"
+
+
+hoverRotate12 : Svg.Attribute msg
+hoverRotate12 =
+    A.class "hover:rotate-12"
 
 
 hoverRotate45 : Svg.Attribute msg
@@ -35256,9 +36001,59 @@ hoverNegRotate45 =
     A.class "hover:-rotate-45"
 
 
+hoverNegRotate12 : Svg.Attribute msg
+hoverNegRotate12 =
+    A.class "hover:-rotate-12"
+
+
+hoverNegRotate6 : Svg.Attribute msg
+hoverNegRotate6 =
+    A.class "hover:-rotate-6"
+
+
+hoverNegRotate3 : Svg.Attribute msg
+hoverNegRotate3 =
+    A.class "hover:-rotate-3"
+
+
+hoverNegRotate2 : Svg.Attribute msg
+hoverNegRotate2 =
+    A.class "hover:-rotate-2"
+
+
+hoverNegRotate1 : Svg.Attribute msg
+hoverNegRotate1 =
+    A.class "hover:-rotate-1"
+
+
 focusRotate0 : Svg.Attribute msg
 focusRotate0 =
     A.class "focus:rotate-0"
+
+
+focusRotate1 : Svg.Attribute msg
+focusRotate1 =
+    A.class "focus:rotate-1"
+
+
+focusRotate2 : Svg.Attribute msg
+focusRotate2 =
+    A.class "focus:rotate-2"
+
+
+focusRotate3 : Svg.Attribute msg
+focusRotate3 =
+    A.class "focus:rotate-3"
+
+
+focusRotate6 : Svg.Attribute msg
+focusRotate6 =
+    A.class "focus:rotate-6"
+
+
+focusRotate12 : Svg.Attribute msg
+focusRotate12 =
+    A.class "focus:rotate-12"
 
 
 focusRotate45 : Svg.Attribute msg
@@ -35289,6 +36084,31 @@ focusNegRotate90 =
 focusNegRotate45 : Svg.Attribute msg
 focusNegRotate45 =
     A.class "focus:-rotate-45"
+
+
+focusNegRotate12 : Svg.Attribute msg
+focusNegRotate12 =
+    A.class "focus:-rotate-12"
+
+
+focusNegRotate6 : Svg.Attribute msg
+focusNegRotate6 =
+    A.class "focus:-rotate-6"
+
+
+focusNegRotate3 : Svg.Attribute msg
+focusNegRotate3 =
+    A.class "focus:-rotate-3"
+
+
+focusNegRotate2 : Svg.Attribute msg
+focusNegRotate2 =
+    A.class "focus:-rotate-2"
+
+
+focusNegRotate1 : Svg.Attribute msg
+focusNegRotate1 =
+    A.class "focus:-rotate-1"
 
 
 translateX0 : Svg.Attribute msg
@@ -36526,6 +37346,16 @@ skewX0 =
     A.class "skew-x-0"
 
 
+skewX1 : Svg.Attribute msg
+skewX1 =
+    A.class "skew-x-1"
+
+
+skewX2 : Svg.Attribute msg
+skewX2 =
+    A.class "skew-x-2"
+
+
 skewX3 : Svg.Attribute msg
 skewX3 =
     A.class "skew-x-3"
@@ -36556,9 +37386,29 @@ negSkewX3 =
     A.class "-skew-x-3"
 
 
+negSkewX2 : Svg.Attribute msg
+negSkewX2 =
+    A.class "-skew-x-2"
+
+
+negSkewX1 : Svg.Attribute msg
+negSkewX1 =
+    A.class "-skew-x-1"
+
+
 skewY0 : Svg.Attribute msg
 skewY0 =
     A.class "skew-y-0"
+
+
+skewY1 : Svg.Attribute msg
+skewY1 =
+    A.class "skew-y-1"
+
+
+skewY2 : Svg.Attribute msg
+skewY2 =
+    A.class "skew-y-2"
 
 
 skewY3 : Svg.Attribute msg
@@ -36591,9 +37441,29 @@ negSkewY3 =
     A.class "-skew-y-3"
 
 
+negSkewY2 : Svg.Attribute msg
+negSkewY2 =
+    A.class "-skew-y-2"
+
+
+negSkewY1 : Svg.Attribute msg
+negSkewY1 =
+    A.class "-skew-y-1"
+
+
 hoverSkewX0 : Svg.Attribute msg
 hoverSkewX0 =
     A.class "hover:skew-x-0"
+
+
+hoverSkewX1 : Svg.Attribute msg
+hoverSkewX1 =
+    A.class "hover:skew-x-1"
+
+
+hoverSkewX2 : Svg.Attribute msg
+hoverSkewX2 =
+    A.class "hover:skew-x-2"
 
 
 hoverSkewX3 : Svg.Attribute msg
@@ -36626,9 +37496,29 @@ hoverNegSkewX3 =
     A.class "hover:-skew-x-3"
 
 
+hoverNegSkewX2 : Svg.Attribute msg
+hoverNegSkewX2 =
+    A.class "hover:-skew-x-2"
+
+
+hoverNegSkewX1 : Svg.Attribute msg
+hoverNegSkewX1 =
+    A.class "hover:-skew-x-1"
+
+
 hoverSkewY0 : Svg.Attribute msg
 hoverSkewY0 =
     A.class "hover:skew-y-0"
+
+
+hoverSkewY1 : Svg.Attribute msg
+hoverSkewY1 =
+    A.class "hover:skew-y-1"
+
+
+hoverSkewY2 : Svg.Attribute msg
+hoverSkewY2 =
+    A.class "hover:skew-y-2"
 
 
 hoverSkewY3 : Svg.Attribute msg
@@ -36661,9 +37551,29 @@ hoverNegSkewY3 =
     A.class "hover:-skew-y-3"
 
 
+hoverNegSkewY2 : Svg.Attribute msg
+hoverNegSkewY2 =
+    A.class "hover:-skew-y-2"
+
+
+hoverNegSkewY1 : Svg.Attribute msg
+hoverNegSkewY1 =
+    A.class "hover:-skew-y-1"
+
+
 focusSkewX0 : Svg.Attribute msg
 focusSkewX0 =
     A.class "focus:skew-x-0"
+
+
+focusSkewX1 : Svg.Attribute msg
+focusSkewX1 =
+    A.class "focus:skew-x-1"
+
+
+focusSkewX2 : Svg.Attribute msg
+focusSkewX2 =
+    A.class "focus:skew-x-2"
 
 
 focusSkewX3 : Svg.Attribute msg
@@ -36696,9 +37606,29 @@ focusNegSkewX3 =
     A.class "focus:-skew-x-3"
 
 
+focusNegSkewX2 : Svg.Attribute msg
+focusNegSkewX2 =
+    A.class "focus:-skew-x-2"
+
+
+focusNegSkewX1 : Svg.Attribute msg
+focusNegSkewX1 =
+    A.class "focus:-skew-x-1"
+
+
 focusSkewY0 : Svg.Attribute msg
 focusSkewY0 =
     A.class "focus:skew-y-0"
+
+
+focusSkewY1 : Svg.Attribute msg
+focusSkewY1 =
+    A.class "focus:skew-y-1"
+
+
+focusSkewY2 : Svg.Attribute msg
+focusSkewY2 =
+    A.class "focus:skew-y-2"
 
 
 focusSkewY3 : Svg.Attribute msg
@@ -36729,6 +37659,16 @@ focusNegSkewY6 =
 focusNegSkewY3 : Svg.Attribute msg
 focusNegSkewY3 =
     A.class "focus:-skew-y-3"
+
+
+focusNegSkewY2 : Svg.Attribute msg
+focusNegSkewY2 =
+    A.class "focus:-skew-y-2"
+
+
+focusNegSkewY1 : Svg.Attribute msg
+focusNegSkewY1 =
+    A.class "focus:-skew-y-1"
 
 
 transitionNone : Svg.Attribute msg
@@ -45286,6 +46226,21 @@ smRoundedLg =
     A.class "sm:rounded-lg"
 
 
+smRoundedXl : Svg.Attribute msg
+smRoundedXl =
+    A.class "sm:rounded-xl"
+
+
+smRounded2xl : Svg.Attribute msg
+smRounded2xl =
+    A.class "sm:rounded-2xl"
+
+
+smRounded3xl : Svg.Attribute msg
+smRounded3xl =
+    A.class "sm:rounded-3xl"
+
+
 smRoundedFull : Svg.Attribute msg
 smRoundedFull =
     A.class "sm:rounded-full"
@@ -45389,6 +46344,66 @@ smRoundedBLg =
 smRoundedLLg : Svg.Attribute msg
 smRoundedLLg =
     A.class "sm:rounded-l-lg"
+
+
+smRoundedTXl : Svg.Attribute msg
+smRoundedTXl =
+    A.class "sm:rounded-t-xl"
+
+
+smRoundedRXl : Svg.Attribute msg
+smRoundedRXl =
+    A.class "sm:rounded-r-xl"
+
+
+smRoundedBXl : Svg.Attribute msg
+smRoundedBXl =
+    A.class "sm:rounded-b-xl"
+
+
+smRoundedLXl : Svg.Attribute msg
+smRoundedLXl =
+    A.class "sm:rounded-l-xl"
+
+
+smRoundedT2xl : Svg.Attribute msg
+smRoundedT2xl =
+    A.class "sm:rounded-t-2xl"
+
+
+smRoundedR2xl : Svg.Attribute msg
+smRoundedR2xl =
+    A.class "sm:rounded-r-2xl"
+
+
+smRoundedB2xl : Svg.Attribute msg
+smRoundedB2xl =
+    A.class "sm:rounded-b-2xl"
+
+
+smRoundedL2xl : Svg.Attribute msg
+smRoundedL2xl =
+    A.class "sm:rounded-l-2xl"
+
+
+smRoundedT3xl : Svg.Attribute msg
+smRoundedT3xl =
+    A.class "sm:rounded-t-3xl"
+
+
+smRoundedR3xl : Svg.Attribute msg
+smRoundedR3xl =
+    A.class "sm:rounded-r-3xl"
+
+
+smRoundedB3xl : Svg.Attribute msg
+smRoundedB3xl =
+    A.class "sm:rounded-b-3xl"
+
+
+smRoundedL3xl : Svg.Attribute msg
+smRoundedL3xl =
+    A.class "sm:rounded-l-3xl"
 
 
 smRoundedTFull : Svg.Attribute msg
@@ -45509,6 +46524,66 @@ smRoundedBrLg =
 smRoundedBlLg : Svg.Attribute msg
 smRoundedBlLg =
     A.class "sm:rounded-bl-lg"
+
+
+smRoundedTlXl : Svg.Attribute msg
+smRoundedTlXl =
+    A.class "sm:rounded-tl-xl"
+
+
+smRoundedTrXl : Svg.Attribute msg
+smRoundedTrXl =
+    A.class "sm:rounded-tr-xl"
+
+
+smRoundedBrXl : Svg.Attribute msg
+smRoundedBrXl =
+    A.class "sm:rounded-br-xl"
+
+
+smRoundedBlXl : Svg.Attribute msg
+smRoundedBlXl =
+    A.class "sm:rounded-bl-xl"
+
+
+smRoundedTl2xl : Svg.Attribute msg
+smRoundedTl2xl =
+    A.class "sm:rounded-tl-2xl"
+
+
+smRoundedTr2xl : Svg.Attribute msg
+smRoundedTr2xl =
+    A.class "sm:rounded-tr-2xl"
+
+
+smRoundedBr2xl : Svg.Attribute msg
+smRoundedBr2xl =
+    A.class "sm:rounded-br-2xl"
+
+
+smRoundedBl2xl : Svg.Attribute msg
+smRoundedBl2xl =
+    A.class "sm:rounded-bl-2xl"
+
+
+smRoundedTl3xl : Svg.Attribute msg
+smRoundedTl3xl =
+    A.class "sm:rounded-tl-3xl"
+
+
+smRoundedTr3xl : Svg.Attribute msg
+smRoundedTr3xl =
+    A.class "sm:rounded-tr-3xl"
+
+
+smRoundedBr3xl : Svg.Attribute msg
+smRoundedBr3xl =
+    A.class "sm:rounded-br-3xl"
+
+
+smRoundedBl3xl : Svg.Attribute msg
+smRoundedBl3xl =
+    A.class "sm:rounded-bl-3xl"
 
 
 smRoundedTlFull : Svg.Attribute msg
@@ -45856,6 +46931,91 @@ smFlexNoWrap =
     A.class "sm:flex-no-wrap"
 
 
+smPlaceItemsAuto : Svg.Attribute msg
+smPlaceItemsAuto =
+    A.class "sm:place-items-auto"
+
+
+smPlaceItemsStart : Svg.Attribute msg
+smPlaceItemsStart =
+    A.class "sm:place-items-start"
+
+
+smPlaceItemsEnd : Svg.Attribute msg
+smPlaceItemsEnd =
+    A.class "sm:place-items-end"
+
+
+smPlaceItemsCenter : Svg.Attribute msg
+smPlaceItemsCenter =
+    A.class "sm:place-items-center"
+
+
+smPlaceItemsStretch : Svg.Attribute msg
+smPlaceItemsStretch =
+    A.class "sm:place-items-stretch"
+
+
+smPlaceContentCenter : Svg.Attribute msg
+smPlaceContentCenter =
+    A.class "sm:place-content-center"
+
+
+smPlaceContentStart : Svg.Attribute msg
+smPlaceContentStart =
+    A.class "sm:place-content-start"
+
+
+smPlaceContentEnd : Svg.Attribute msg
+smPlaceContentEnd =
+    A.class "sm:place-content-end"
+
+
+smPlaceContentBetween : Svg.Attribute msg
+smPlaceContentBetween =
+    A.class "sm:place-content-between"
+
+
+smPlaceContentAround : Svg.Attribute msg
+smPlaceContentAround =
+    A.class "sm:place-content-around"
+
+
+smPlaceContentEvenly : Svg.Attribute msg
+smPlaceContentEvenly =
+    A.class "sm:place-content-evenly"
+
+
+smPlaceContentStretch : Svg.Attribute msg
+smPlaceContentStretch =
+    A.class "sm:place-content-stretch"
+
+
+smPlaceSelfAuto : Svg.Attribute msg
+smPlaceSelfAuto =
+    A.class "sm:place-self-auto"
+
+
+smPlaceSelfStart : Svg.Attribute msg
+smPlaceSelfStart =
+    A.class "sm:place-self-start"
+
+
+smPlaceSelfEnd : Svg.Attribute msg
+smPlaceSelfEnd =
+    A.class "sm:place-self-end"
+
+
+smPlaceSelfCenter : Svg.Attribute msg
+smPlaceSelfCenter =
+    A.class "sm:place-self-center"
+
+
+smPlaceSelfStretch : Svg.Attribute msg
+smPlaceSelfStretch =
+    A.class "sm:place-self-stretch"
+
+
 smItemsStart : Svg.Attribute msg
 smItemsStart =
     A.class "sm:items-start"
@@ -45881,6 +47041,36 @@ smItemsStretch =
     A.class "sm:items-stretch"
 
 
+smContentCenter : Svg.Attribute msg
+smContentCenter =
+    A.class "sm:content-center"
+
+
+smContentStart : Svg.Attribute msg
+smContentStart =
+    A.class "sm:content-start"
+
+
+smContentEnd : Svg.Attribute msg
+smContentEnd =
+    A.class "sm:content-end"
+
+
+smContentBetween : Svg.Attribute msg
+smContentBetween =
+    A.class "sm:content-between"
+
+
+smContentAround : Svg.Attribute msg
+smContentAround =
+    A.class "sm:content-around"
+
+
+smContentEvenly : Svg.Attribute msg
+smContentEvenly =
+    A.class "sm:content-evenly"
+
+
 smSelfAuto : Svg.Attribute msg
 smSelfAuto =
     A.class "sm:self-auto"
@@ -45904,6 +47094,31 @@ smSelfCenter =
 smSelfStretch : Svg.Attribute msg
 smSelfStretch =
     A.class "sm:self-stretch"
+
+
+smJustifyItemsAuto : Svg.Attribute msg
+smJustifyItemsAuto =
+    A.class "sm:justify-items-auto"
+
+
+smJustifyItemsStart : Svg.Attribute msg
+smJustifyItemsStart =
+    A.class "sm:justify-items-start"
+
+
+smJustifyItemsEnd : Svg.Attribute msg
+smJustifyItemsEnd =
+    A.class "sm:justify-items-end"
+
+
+smJustifyItemsCenter : Svg.Attribute msg
+smJustifyItemsCenter =
+    A.class "sm:justify-items-center"
+
+
+smJustifyItemsStretch : Svg.Attribute msg
+smJustifyItemsStretch =
+    A.class "sm:justify-items-stretch"
 
 
 smJustifyStart : Svg.Attribute msg
@@ -45936,29 +47151,29 @@ smJustifyEvenly =
     A.class "sm:justify-evenly"
 
 
-smContentCenter : Svg.Attribute msg
-smContentCenter =
-    A.class "sm:content-center"
+smJustifySelfAuto : Svg.Attribute msg
+smJustifySelfAuto =
+    A.class "sm:justify-self-auto"
 
 
-smContentStart : Svg.Attribute msg
-smContentStart =
-    A.class "sm:content-start"
+smJustifySelfStart : Svg.Attribute msg
+smJustifySelfStart =
+    A.class "sm:justify-self-start"
 
 
-smContentEnd : Svg.Attribute msg
-smContentEnd =
-    A.class "sm:content-end"
+smJustifySelfEnd : Svg.Attribute msg
+smJustifySelfEnd =
+    A.class "sm:justify-self-end"
 
 
-smContentBetween : Svg.Attribute msg
-smContentBetween =
-    A.class "sm:content-between"
+smJustifySelfCenter : Svg.Attribute msg
+smJustifySelfCenter =
+    A.class "sm:justify-self-center"
 
 
-smContentAround : Svg.Attribute msg
-smContentAround =
-    A.class "sm:content-around"
+smJustifySelfStretch : Svg.Attribute msg
+smJustifySelfStretch =
+    A.class "sm:justify-self-stretch"
 
 
 smFlex1 : Svg.Attribute msg
@@ -48121,9 +49336,29 @@ smOutlineNone =
     A.class "sm:outline-none"
 
 
+smOutlineWhite : Svg.Attribute msg
+smOutlineWhite =
+    A.class "sm:outline-white"
+
+
+smOutlineBlack : Svg.Attribute msg
+smOutlineBlack =
+    A.class "sm:outline-black"
+
+
 smFocusOutlineNone : Svg.Attribute msg
 smFocusOutlineNone =
     A.class "sm:focus:outline-none"
+
+
+smFocusOutlineWhite : Svg.Attribute msg
+smFocusOutlineWhite =
+    A.class "sm:focus:outline-white"
+
+
+smFocusOutlineBlack : Svg.Attribute msg
+smFocusOutlineBlack =
+    A.class "sm:focus:outline-black"
 
 
 smOverflowAuto : Svg.Attribute msg
@@ -51796,6 +53031,51 @@ smSubpixelAntialiased =
     A.class "sm:subpixel-antialiased"
 
 
+smOrdinal : Svg.Attribute msg
+smOrdinal =
+    A.class "sm:ordinal"
+
+
+smSlashedZero : Svg.Attribute msg
+smSlashedZero =
+    A.class "sm:slashed-zero"
+
+
+smLiningNums : Svg.Attribute msg
+smLiningNums =
+    A.class "sm:lining-nums"
+
+
+smOldstyleNums : Svg.Attribute msg
+smOldstyleNums =
+    A.class "sm:oldstyle-nums"
+
+
+smProportionalNums : Svg.Attribute msg
+smProportionalNums =
+    A.class "sm:proportional-nums"
+
+
+smTabularNums : Svg.Attribute msg
+smTabularNums =
+    A.class "sm:tabular-nums"
+
+
+smDiagonalFractions : Svg.Attribute msg
+smDiagonalFractions =
+    A.class "sm:diagonal-fractions"
+
+
+smStackedFractions : Svg.Attribute msg
+smStackedFractions =
+    A.class "sm:stacked-fractions"
+
+
+smNormalNums : Svg.Attribute msg
+smNormalNums =
+    A.class "sm:normal-nums"
+
+
 smTrackingTighter : Svg.Attribute msg
 smTrackingTighter =
     A.class "sm:tracking-tighter"
@@ -52301,101 +53581,6 @@ smGapPx =
     A.class "sm:gap-px"
 
 
-smColGap0 : Svg.Attribute msg
-smColGap0 =
-    A.class "sm:col-gap-0"
-
-
-smColGap1 : Svg.Attribute msg
-smColGap1 =
-    A.class "sm:col-gap-1"
-
-
-smColGap2 : Svg.Attribute msg
-smColGap2 =
-    A.class "sm:col-gap-2"
-
-
-smColGap3 : Svg.Attribute msg
-smColGap3 =
-    A.class "sm:col-gap-3"
-
-
-smColGap4 : Svg.Attribute msg
-smColGap4 =
-    A.class "sm:col-gap-4"
-
-
-smColGap5 : Svg.Attribute msg
-smColGap5 =
-    A.class "sm:col-gap-5"
-
-
-smColGap6 : Svg.Attribute msg
-smColGap6 =
-    A.class "sm:col-gap-6"
-
-
-smColGap8 : Svg.Attribute msg
-smColGap8 =
-    A.class "sm:col-gap-8"
-
-
-smColGap10 : Svg.Attribute msg
-smColGap10 =
-    A.class "sm:col-gap-10"
-
-
-smColGap12 : Svg.Attribute msg
-smColGap12 =
-    A.class "sm:col-gap-12"
-
-
-smColGap16 : Svg.Attribute msg
-smColGap16 =
-    A.class "sm:col-gap-16"
-
-
-smColGap20 : Svg.Attribute msg
-smColGap20 =
-    A.class "sm:col-gap-20"
-
-
-smColGap24 : Svg.Attribute msg
-smColGap24 =
-    A.class "sm:col-gap-24"
-
-
-smColGap32 : Svg.Attribute msg
-smColGap32 =
-    A.class "sm:col-gap-32"
-
-
-smColGap40 : Svg.Attribute msg
-smColGap40 =
-    A.class "sm:col-gap-40"
-
-
-smColGap48 : Svg.Attribute msg
-smColGap48 =
-    A.class "sm:col-gap-48"
-
-
-smColGap56 : Svg.Attribute msg
-smColGap56 =
-    A.class "sm:col-gap-56"
-
-
-smColGap64 : Svg.Attribute msg
-smColGap64 =
-    A.class "sm:col-gap-64"
-
-
-smColGapPx : Svg.Attribute msg
-smColGapPx =
-    A.class "sm:col-gap-px"
-
-
 smGapX0 : Svg.Attribute msg
 smGapX0 =
     A.class "sm:gap-x-0"
@@ -52489,101 +53674,6 @@ smGapX64 =
 smGapXPx : Svg.Attribute msg
 smGapXPx =
     A.class "sm:gap-x-px"
-
-
-smRowGap0 : Svg.Attribute msg
-smRowGap0 =
-    A.class "sm:row-gap-0"
-
-
-smRowGap1 : Svg.Attribute msg
-smRowGap1 =
-    A.class "sm:row-gap-1"
-
-
-smRowGap2 : Svg.Attribute msg
-smRowGap2 =
-    A.class "sm:row-gap-2"
-
-
-smRowGap3 : Svg.Attribute msg
-smRowGap3 =
-    A.class "sm:row-gap-3"
-
-
-smRowGap4 : Svg.Attribute msg
-smRowGap4 =
-    A.class "sm:row-gap-4"
-
-
-smRowGap5 : Svg.Attribute msg
-smRowGap5 =
-    A.class "sm:row-gap-5"
-
-
-smRowGap6 : Svg.Attribute msg
-smRowGap6 =
-    A.class "sm:row-gap-6"
-
-
-smRowGap8 : Svg.Attribute msg
-smRowGap8 =
-    A.class "sm:row-gap-8"
-
-
-smRowGap10 : Svg.Attribute msg
-smRowGap10 =
-    A.class "sm:row-gap-10"
-
-
-smRowGap12 : Svg.Attribute msg
-smRowGap12 =
-    A.class "sm:row-gap-12"
-
-
-smRowGap16 : Svg.Attribute msg
-smRowGap16 =
-    A.class "sm:row-gap-16"
-
-
-smRowGap20 : Svg.Attribute msg
-smRowGap20 =
-    A.class "sm:row-gap-20"
-
-
-smRowGap24 : Svg.Attribute msg
-smRowGap24 =
-    A.class "sm:row-gap-24"
-
-
-smRowGap32 : Svg.Attribute msg
-smRowGap32 =
-    A.class "sm:row-gap-32"
-
-
-smRowGap40 : Svg.Attribute msg
-smRowGap40 =
-    A.class "sm:row-gap-40"
-
-
-smRowGap48 : Svg.Attribute msg
-smRowGap48 =
-    A.class "sm:row-gap-48"
-
-
-smRowGap56 : Svg.Attribute msg
-smRowGap56 =
-    A.class "sm:row-gap-56"
-
-
-smRowGap64 : Svg.Attribute msg
-smRowGap64 =
-    A.class "sm:row-gap-64"
-
-
-smRowGapPx : Svg.Attribute msg
-smRowGapPx =
-    A.class "sm:row-gap-px"
 
 
 smGapY0 : Svg.Attribute msg
@@ -52766,6 +53856,26 @@ smGridColsNone =
     A.class "sm:grid-cols-none"
 
 
+smAutoColsAuto : Svg.Attribute msg
+smAutoColsAuto =
+    A.class "sm:auto-cols-auto"
+
+
+smAutoColsMin : Svg.Attribute msg
+smAutoColsMin =
+    A.class "sm:auto-cols-min"
+
+
+smAutoColsMax : Svg.Attribute msg
+smAutoColsMax =
+    A.class "sm:auto-cols-max"
+
+
+smAutoColsFr : Svg.Attribute msg
+smAutoColsFr =
+    A.class "sm:auto-cols-fr"
+
+
 smColAuto : Svg.Attribute msg
 smColAuto =
     A.class "sm:col-auto"
@@ -52829,6 +53939,11 @@ smColSpan11 =
 smColSpan12 : Svg.Attribute msg
 smColSpan12 =
     A.class "sm:col-span-12"
+
+
+smColSpanFull : Svg.Attribute msg
+smColSpanFull =
+    A.class "sm:col-span-full"
 
 
 smColStart1 : Svg.Attribute msg
@@ -53006,6 +54121,26 @@ smGridRowsNone =
     A.class "sm:grid-rows-none"
 
 
+smAutoRowsAuto : Svg.Attribute msg
+smAutoRowsAuto =
+    A.class "sm:auto-rows-auto"
+
+
+smAutoRowsMin : Svg.Attribute msg
+smAutoRowsMin =
+    A.class "sm:auto-rows-min"
+
+
+smAutoRowsMax : Svg.Attribute msg
+smAutoRowsMax =
+    A.class "sm:auto-rows-max"
+
+
+smAutoRowsFr : Svg.Attribute msg
+smAutoRowsFr =
+    A.class "sm:auto-rows-fr"
+
+
 smRowAuto : Svg.Attribute msg
 smRowAuto =
     A.class "sm:row-auto"
@@ -53039,6 +54174,11 @@ smRowSpan5 =
 smRowSpan6 : Svg.Attribute msg
 smRowSpan6 =
     A.class "sm:row-span-6"
+
+
+smRowSpanFull : Svg.Attribute msg
+smRowSpanFull =
+    A.class "sm:row-span-full"
 
 
 smRowStart1 : Svg.Attribute msg
@@ -53631,6 +54771,31 @@ smRotate0 =
     A.class "sm:rotate-0"
 
 
+smRotate1 : Svg.Attribute msg
+smRotate1 =
+    A.class "sm:rotate-1"
+
+
+smRotate2 : Svg.Attribute msg
+smRotate2 =
+    A.class "sm:rotate-2"
+
+
+smRotate3 : Svg.Attribute msg
+smRotate3 =
+    A.class "sm:rotate-3"
+
+
+smRotate6 : Svg.Attribute msg
+smRotate6 =
+    A.class "sm:rotate-6"
+
+
+smRotate12 : Svg.Attribute msg
+smRotate12 =
+    A.class "sm:rotate-12"
+
+
 smRotate45 : Svg.Attribute msg
 smRotate45 =
     A.class "sm:rotate-45"
@@ -53661,9 +54826,59 @@ smNegRotate45 =
     A.class "sm:-rotate-45"
 
 
+smNegRotate12 : Svg.Attribute msg
+smNegRotate12 =
+    A.class "sm:-rotate-12"
+
+
+smNegRotate6 : Svg.Attribute msg
+smNegRotate6 =
+    A.class "sm:-rotate-6"
+
+
+smNegRotate3 : Svg.Attribute msg
+smNegRotate3 =
+    A.class "sm:-rotate-3"
+
+
+smNegRotate2 : Svg.Attribute msg
+smNegRotate2 =
+    A.class "sm:-rotate-2"
+
+
+smNegRotate1 : Svg.Attribute msg
+smNegRotate1 =
+    A.class "sm:-rotate-1"
+
+
 smHoverRotate0 : Svg.Attribute msg
 smHoverRotate0 =
     A.class "sm:hover:rotate-0"
+
+
+smHoverRotate1 : Svg.Attribute msg
+smHoverRotate1 =
+    A.class "sm:hover:rotate-1"
+
+
+smHoverRotate2 : Svg.Attribute msg
+smHoverRotate2 =
+    A.class "sm:hover:rotate-2"
+
+
+smHoverRotate3 : Svg.Attribute msg
+smHoverRotate3 =
+    A.class "sm:hover:rotate-3"
+
+
+smHoverRotate6 : Svg.Attribute msg
+smHoverRotate6 =
+    A.class "sm:hover:rotate-6"
+
+
+smHoverRotate12 : Svg.Attribute msg
+smHoverRotate12 =
+    A.class "sm:hover:rotate-12"
 
 
 smHoverRotate45 : Svg.Attribute msg
@@ -53696,9 +54911,59 @@ smHoverNegRotate45 =
     A.class "sm:hover:-rotate-45"
 
 
+smHoverNegRotate12 : Svg.Attribute msg
+smHoverNegRotate12 =
+    A.class "sm:hover:-rotate-12"
+
+
+smHoverNegRotate6 : Svg.Attribute msg
+smHoverNegRotate6 =
+    A.class "sm:hover:-rotate-6"
+
+
+smHoverNegRotate3 : Svg.Attribute msg
+smHoverNegRotate3 =
+    A.class "sm:hover:-rotate-3"
+
+
+smHoverNegRotate2 : Svg.Attribute msg
+smHoverNegRotate2 =
+    A.class "sm:hover:-rotate-2"
+
+
+smHoverNegRotate1 : Svg.Attribute msg
+smHoverNegRotate1 =
+    A.class "sm:hover:-rotate-1"
+
+
 smFocusRotate0 : Svg.Attribute msg
 smFocusRotate0 =
     A.class "sm:focus:rotate-0"
+
+
+smFocusRotate1 : Svg.Attribute msg
+smFocusRotate1 =
+    A.class "sm:focus:rotate-1"
+
+
+smFocusRotate2 : Svg.Attribute msg
+smFocusRotate2 =
+    A.class "sm:focus:rotate-2"
+
+
+smFocusRotate3 : Svg.Attribute msg
+smFocusRotate3 =
+    A.class "sm:focus:rotate-3"
+
+
+smFocusRotate6 : Svg.Attribute msg
+smFocusRotate6 =
+    A.class "sm:focus:rotate-6"
+
+
+smFocusRotate12 : Svg.Attribute msg
+smFocusRotate12 =
+    A.class "sm:focus:rotate-12"
 
 
 smFocusRotate45 : Svg.Attribute msg
@@ -53729,6 +54994,31 @@ smFocusNegRotate90 =
 smFocusNegRotate45 : Svg.Attribute msg
 smFocusNegRotate45 =
     A.class "sm:focus:-rotate-45"
+
+
+smFocusNegRotate12 : Svg.Attribute msg
+smFocusNegRotate12 =
+    A.class "sm:focus:-rotate-12"
+
+
+smFocusNegRotate6 : Svg.Attribute msg
+smFocusNegRotate6 =
+    A.class "sm:focus:-rotate-6"
+
+
+smFocusNegRotate3 : Svg.Attribute msg
+smFocusNegRotate3 =
+    A.class "sm:focus:-rotate-3"
+
+
+smFocusNegRotate2 : Svg.Attribute msg
+smFocusNegRotate2 =
+    A.class "sm:focus:-rotate-2"
+
+
+smFocusNegRotate1 : Svg.Attribute msg
+smFocusNegRotate1 =
+    A.class "sm:focus:-rotate-1"
 
 
 smTranslateX0 : Svg.Attribute msg
@@ -54966,6 +56256,16 @@ smSkewX0 =
     A.class "sm:skew-x-0"
 
 
+smSkewX1 : Svg.Attribute msg
+smSkewX1 =
+    A.class "sm:skew-x-1"
+
+
+smSkewX2 : Svg.Attribute msg
+smSkewX2 =
+    A.class "sm:skew-x-2"
+
+
 smSkewX3 : Svg.Attribute msg
 smSkewX3 =
     A.class "sm:skew-x-3"
@@ -54996,9 +56296,29 @@ smNegSkewX3 =
     A.class "sm:-skew-x-3"
 
 
+smNegSkewX2 : Svg.Attribute msg
+smNegSkewX2 =
+    A.class "sm:-skew-x-2"
+
+
+smNegSkewX1 : Svg.Attribute msg
+smNegSkewX1 =
+    A.class "sm:-skew-x-1"
+
+
 smSkewY0 : Svg.Attribute msg
 smSkewY0 =
     A.class "sm:skew-y-0"
+
+
+smSkewY1 : Svg.Attribute msg
+smSkewY1 =
+    A.class "sm:skew-y-1"
+
+
+smSkewY2 : Svg.Attribute msg
+smSkewY2 =
+    A.class "sm:skew-y-2"
 
 
 smSkewY3 : Svg.Attribute msg
@@ -55031,9 +56351,29 @@ smNegSkewY3 =
     A.class "sm:-skew-y-3"
 
 
+smNegSkewY2 : Svg.Attribute msg
+smNegSkewY2 =
+    A.class "sm:-skew-y-2"
+
+
+smNegSkewY1 : Svg.Attribute msg
+smNegSkewY1 =
+    A.class "sm:-skew-y-1"
+
+
 smHoverSkewX0 : Svg.Attribute msg
 smHoverSkewX0 =
     A.class "sm:hover:skew-x-0"
+
+
+smHoverSkewX1 : Svg.Attribute msg
+smHoverSkewX1 =
+    A.class "sm:hover:skew-x-1"
+
+
+smHoverSkewX2 : Svg.Attribute msg
+smHoverSkewX2 =
+    A.class "sm:hover:skew-x-2"
 
 
 smHoverSkewX3 : Svg.Attribute msg
@@ -55066,9 +56406,29 @@ smHoverNegSkewX3 =
     A.class "sm:hover:-skew-x-3"
 
 
+smHoverNegSkewX2 : Svg.Attribute msg
+smHoverNegSkewX2 =
+    A.class "sm:hover:-skew-x-2"
+
+
+smHoverNegSkewX1 : Svg.Attribute msg
+smHoverNegSkewX1 =
+    A.class "sm:hover:-skew-x-1"
+
+
 smHoverSkewY0 : Svg.Attribute msg
 smHoverSkewY0 =
     A.class "sm:hover:skew-y-0"
+
+
+smHoverSkewY1 : Svg.Attribute msg
+smHoverSkewY1 =
+    A.class "sm:hover:skew-y-1"
+
+
+smHoverSkewY2 : Svg.Attribute msg
+smHoverSkewY2 =
+    A.class "sm:hover:skew-y-2"
 
 
 smHoverSkewY3 : Svg.Attribute msg
@@ -55101,9 +56461,29 @@ smHoverNegSkewY3 =
     A.class "sm:hover:-skew-y-3"
 
 
+smHoverNegSkewY2 : Svg.Attribute msg
+smHoverNegSkewY2 =
+    A.class "sm:hover:-skew-y-2"
+
+
+smHoverNegSkewY1 : Svg.Attribute msg
+smHoverNegSkewY1 =
+    A.class "sm:hover:-skew-y-1"
+
+
 smFocusSkewX0 : Svg.Attribute msg
 smFocusSkewX0 =
     A.class "sm:focus:skew-x-0"
+
+
+smFocusSkewX1 : Svg.Attribute msg
+smFocusSkewX1 =
+    A.class "sm:focus:skew-x-1"
+
+
+smFocusSkewX2 : Svg.Attribute msg
+smFocusSkewX2 =
+    A.class "sm:focus:skew-x-2"
 
 
 smFocusSkewX3 : Svg.Attribute msg
@@ -55136,9 +56516,29 @@ smFocusNegSkewX3 =
     A.class "sm:focus:-skew-x-3"
 
 
+smFocusNegSkewX2 : Svg.Attribute msg
+smFocusNegSkewX2 =
+    A.class "sm:focus:-skew-x-2"
+
+
+smFocusNegSkewX1 : Svg.Attribute msg
+smFocusNegSkewX1 =
+    A.class "sm:focus:-skew-x-1"
+
+
 smFocusSkewY0 : Svg.Attribute msg
 smFocusSkewY0 =
     A.class "sm:focus:skew-y-0"
+
+
+smFocusSkewY1 : Svg.Attribute msg
+smFocusSkewY1 =
+    A.class "sm:focus:skew-y-1"
+
+
+smFocusSkewY2 : Svg.Attribute msg
+smFocusSkewY2 =
+    A.class "sm:focus:skew-y-2"
 
 
 smFocusSkewY3 : Svg.Attribute msg
@@ -55169,6 +56569,16 @@ smFocusNegSkewY6 =
 smFocusNegSkewY3 : Svg.Attribute msg
 smFocusNegSkewY3 =
     A.class "sm:focus:-skew-y-3"
+
+
+smFocusNegSkewY2 : Svg.Attribute msg
+smFocusNegSkewY2 =
+    A.class "sm:focus:-skew-y-2"
+
+
+smFocusNegSkewY1 : Svg.Attribute msg
+smFocusNegSkewY1 =
+    A.class "sm:focus:-skew-y-1"
 
 
 smTransitionNone : Svg.Attribute msg
@@ -63726,6 +65136,21 @@ mdRoundedLg =
     A.class "md:rounded-lg"
 
 
+mdRoundedXl : Svg.Attribute msg
+mdRoundedXl =
+    A.class "md:rounded-xl"
+
+
+mdRounded2xl : Svg.Attribute msg
+mdRounded2xl =
+    A.class "md:rounded-2xl"
+
+
+mdRounded3xl : Svg.Attribute msg
+mdRounded3xl =
+    A.class "md:rounded-3xl"
+
+
 mdRoundedFull : Svg.Attribute msg
 mdRoundedFull =
     A.class "md:rounded-full"
@@ -63829,6 +65254,66 @@ mdRoundedBLg =
 mdRoundedLLg : Svg.Attribute msg
 mdRoundedLLg =
     A.class "md:rounded-l-lg"
+
+
+mdRoundedTXl : Svg.Attribute msg
+mdRoundedTXl =
+    A.class "md:rounded-t-xl"
+
+
+mdRoundedRXl : Svg.Attribute msg
+mdRoundedRXl =
+    A.class "md:rounded-r-xl"
+
+
+mdRoundedBXl : Svg.Attribute msg
+mdRoundedBXl =
+    A.class "md:rounded-b-xl"
+
+
+mdRoundedLXl : Svg.Attribute msg
+mdRoundedLXl =
+    A.class "md:rounded-l-xl"
+
+
+mdRoundedT2xl : Svg.Attribute msg
+mdRoundedT2xl =
+    A.class "md:rounded-t-2xl"
+
+
+mdRoundedR2xl : Svg.Attribute msg
+mdRoundedR2xl =
+    A.class "md:rounded-r-2xl"
+
+
+mdRoundedB2xl : Svg.Attribute msg
+mdRoundedB2xl =
+    A.class "md:rounded-b-2xl"
+
+
+mdRoundedL2xl : Svg.Attribute msg
+mdRoundedL2xl =
+    A.class "md:rounded-l-2xl"
+
+
+mdRoundedT3xl : Svg.Attribute msg
+mdRoundedT3xl =
+    A.class "md:rounded-t-3xl"
+
+
+mdRoundedR3xl : Svg.Attribute msg
+mdRoundedR3xl =
+    A.class "md:rounded-r-3xl"
+
+
+mdRoundedB3xl : Svg.Attribute msg
+mdRoundedB3xl =
+    A.class "md:rounded-b-3xl"
+
+
+mdRoundedL3xl : Svg.Attribute msg
+mdRoundedL3xl =
+    A.class "md:rounded-l-3xl"
 
 
 mdRoundedTFull : Svg.Attribute msg
@@ -63949,6 +65434,66 @@ mdRoundedBrLg =
 mdRoundedBlLg : Svg.Attribute msg
 mdRoundedBlLg =
     A.class "md:rounded-bl-lg"
+
+
+mdRoundedTlXl : Svg.Attribute msg
+mdRoundedTlXl =
+    A.class "md:rounded-tl-xl"
+
+
+mdRoundedTrXl : Svg.Attribute msg
+mdRoundedTrXl =
+    A.class "md:rounded-tr-xl"
+
+
+mdRoundedBrXl : Svg.Attribute msg
+mdRoundedBrXl =
+    A.class "md:rounded-br-xl"
+
+
+mdRoundedBlXl : Svg.Attribute msg
+mdRoundedBlXl =
+    A.class "md:rounded-bl-xl"
+
+
+mdRoundedTl2xl : Svg.Attribute msg
+mdRoundedTl2xl =
+    A.class "md:rounded-tl-2xl"
+
+
+mdRoundedTr2xl : Svg.Attribute msg
+mdRoundedTr2xl =
+    A.class "md:rounded-tr-2xl"
+
+
+mdRoundedBr2xl : Svg.Attribute msg
+mdRoundedBr2xl =
+    A.class "md:rounded-br-2xl"
+
+
+mdRoundedBl2xl : Svg.Attribute msg
+mdRoundedBl2xl =
+    A.class "md:rounded-bl-2xl"
+
+
+mdRoundedTl3xl : Svg.Attribute msg
+mdRoundedTl3xl =
+    A.class "md:rounded-tl-3xl"
+
+
+mdRoundedTr3xl : Svg.Attribute msg
+mdRoundedTr3xl =
+    A.class "md:rounded-tr-3xl"
+
+
+mdRoundedBr3xl : Svg.Attribute msg
+mdRoundedBr3xl =
+    A.class "md:rounded-br-3xl"
+
+
+mdRoundedBl3xl : Svg.Attribute msg
+mdRoundedBl3xl =
+    A.class "md:rounded-bl-3xl"
 
 
 mdRoundedTlFull : Svg.Attribute msg
@@ -64296,6 +65841,91 @@ mdFlexNoWrap =
     A.class "md:flex-no-wrap"
 
 
+mdPlaceItemsAuto : Svg.Attribute msg
+mdPlaceItemsAuto =
+    A.class "md:place-items-auto"
+
+
+mdPlaceItemsStart : Svg.Attribute msg
+mdPlaceItemsStart =
+    A.class "md:place-items-start"
+
+
+mdPlaceItemsEnd : Svg.Attribute msg
+mdPlaceItemsEnd =
+    A.class "md:place-items-end"
+
+
+mdPlaceItemsCenter : Svg.Attribute msg
+mdPlaceItemsCenter =
+    A.class "md:place-items-center"
+
+
+mdPlaceItemsStretch : Svg.Attribute msg
+mdPlaceItemsStretch =
+    A.class "md:place-items-stretch"
+
+
+mdPlaceContentCenter : Svg.Attribute msg
+mdPlaceContentCenter =
+    A.class "md:place-content-center"
+
+
+mdPlaceContentStart : Svg.Attribute msg
+mdPlaceContentStart =
+    A.class "md:place-content-start"
+
+
+mdPlaceContentEnd : Svg.Attribute msg
+mdPlaceContentEnd =
+    A.class "md:place-content-end"
+
+
+mdPlaceContentBetween : Svg.Attribute msg
+mdPlaceContentBetween =
+    A.class "md:place-content-between"
+
+
+mdPlaceContentAround : Svg.Attribute msg
+mdPlaceContentAround =
+    A.class "md:place-content-around"
+
+
+mdPlaceContentEvenly : Svg.Attribute msg
+mdPlaceContentEvenly =
+    A.class "md:place-content-evenly"
+
+
+mdPlaceContentStretch : Svg.Attribute msg
+mdPlaceContentStretch =
+    A.class "md:place-content-stretch"
+
+
+mdPlaceSelfAuto : Svg.Attribute msg
+mdPlaceSelfAuto =
+    A.class "md:place-self-auto"
+
+
+mdPlaceSelfStart : Svg.Attribute msg
+mdPlaceSelfStart =
+    A.class "md:place-self-start"
+
+
+mdPlaceSelfEnd : Svg.Attribute msg
+mdPlaceSelfEnd =
+    A.class "md:place-self-end"
+
+
+mdPlaceSelfCenter : Svg.Attribute msg
+mdPlaceSelfCenter =
+    A.class "md:place-self-center"
+
+
+mdPlaceSelfStretch : Svg.Attribute msg
+mdPlaceSelfStretch =
+    A.class "md:place-self-stretch"
+
+
 mdItemsStart : Svg.Attribute msg
 mdItemsStart =
     A.class "md:items-start"
@@ -64321,6 +65951,36 @@ mdItemsStretch =
     A.class "md:items-stretch"
 
 
+mdContentCenter : Svg.Attribute msg
+mdContentCenter =
+    A.class "md:content-center"
+
+
+mdContentStart : Svg.Attribute msg
+mdContentStart =
+    A.class "md:content-start"
+
+
+mdContentEnd : Svg.Attribute msg
+mdContentEnd =
+    A.class "md:content-end"
+
+
+mdContentBetween : Svg.Attribute msg
+mdContentBetween =
+    A.class "md:content-between"
+
+
+mdContentAround : Svg.Attribute msg
+mdContentAround =
+    A.class "md:content-around"
+
+
+mdContentEvenly : Svg.Attribute msg
+mdContentEvenly =
+    A.class "md:content-evenly"
+
+
 mdSelfAuto : Svg.Attribute msg
 mdSelfAuto =
     A.class "md:self-auto"
@@ -64344,6 +66004,31 @@ mdSelfCenter =
 mdSelfStretch : Svg.Attribute msg
 mdSelfStretch =
     A.class "md:self-stretch"
+
+
+mdJustifyItemsAuto : Svg.Attribute msg
+mdJustifyItemsAuto =
+    A.class "md:justify-items-auto"
+
+
+mdJustifyItemsStart : Svg.Attribute msg
+mdJustifyItemsStart =
+    A.class "md:justify-items-start"
+
+
+mdJustifyItemsEnd : Svg.Attribute msg
+mdJustifyItemsEnd =
+    A.class "md:justify-items-end"
+
+
+mdJustifyItemsCenter : Svg.Attribute msg
+mdJustifyItemsCenter =
+    A.class "md:justify-items-center"
+
+
+mdJustifyItemsStretch : Svg.Attribute msg
+mdJustifyItemsStretch =
+    A.class "md:justify-items-stretch"
 
 
 mdJustifyStart : Svg.Attribute msg
@@ -64376,29 +66061,29 @@ mdJustifyEvenly =
     A.class "md:justify-evenly"
 
 
-mdContentCenter : Svg.Attribute msg
-mdContentCenter =
-    A.class "md:content-center"
+mdJustifySelfAuto : Svg.Attribute msg
+mdJustifySelfAuto =
+    A.class "md:justify-self-auto"
 
 
-mdContentStart : Svg.Attribute msg
-mdContentStart =
-    A.class "md:content-start"
+mdJustifySelfStart : Svg.Attribute msg
+mdJustifySelfStart =
+    A.class "md:justify-self-start"
 
 
-mdContentEnd : Svg.Attribute msg
-mdContentEnd =
-    A.class "md:content-end"
+mdJustifySelfEnd : Svg.Attribute msg
+mdJustifySelfEnd =
+    A.class "md:justify-self-end"
 
 
-mdContentBetween : Svg.Attribute msg
-mdContentBetween =
-    A.class "md:content-between"
+mdJustifySelfCenter : Svg.Attribute msg
+mdJustifySelfCenter =
+    A.class "md:justify-self-center"
 
 
-mdContentAround : Svg.Attribute msg
-mdContentAround =
-    A.class "md:content-around"
+mdJustifySelfStretch : Svg.Attribute msg
+mdJustifySelfStretch =
+    A.class "md:justify-self-stretch"
 
 
 mdFlex1 : Svg.Attribute msg
@@ -66561,9 +68246,29 @@ mdOutlineNone =
     A.class "md:outline-none"
 
 
+mdOutlineWhite : Svg.Attribute msg
+mdOutlineWhite =
+    A.class "md:outline-white"
+
+
+mdOutlineBlack : Svg.Attribute msg
+mdOutlineBlack =
+    A.class "md:outline-black"
+
+
 mdFocusOutlineNone : Svg.Attribute msg
 mdFocusOutlineNone =
     A.class "md:focus:outline-none"
+
+
+mdFocusOutlineWhite : Svg.Attribute msg
+mdFocusOutlineWhite =
+    A.class "md:focus:outline-white"
+
+
+mdFocusOutlineBlack : Svg.Attribute msg
+mdFocusOutlineBlack =
+    A.class "md:focus:outline-black"
 
 
 mdOverflowAuto : Svg.Attribute msg
@@ -70236,6 +71941,51 @@ mdSubpixelAntialiased =
     A.class "md:subpixel-antialiased"
 
 
+mdOrdinal : Svg.Attribute msg
+mdOrdinal =
+    A.class "md:ordinal"
+
+
+mdSlashedZero : Svg.Attribute msg
+mdSlashedZero =
+    A.class "md:slashed-zero"
+
+
+mdLiningNums : Svg.Attribute msg
+mdLiningNums =
+    A.class "md:lining-nums"
+
+
+mdOldstyleNums : Svg.Attribute msg
+mdOldstyleNums =
+    A.class "md:oldstyle-nums"
+
+
+mdProportionalNums : Svg.Attribute msg
+mdProportionalNums =
+    A.class "md:proportional-nums"
+
+
+mdTabularNums : Svg.Attribute msg
+mdTabularNums =
+    A.class "md:tabular-nums"
+
+
+mdDiagonalFractions : Svg.Attribute msg
+mdDiagonalFractions =
+    A.class "md:diagonal-fractions"
+
+
+mdStackedFractions : Svg.Attribute msg
+mdStackedFractions =
+    A.class "md:stacked-fractions"
+
+
+mdNormalNums : Svg.Attribute msg
+mdNormalNums =
+    A.class "md:normal-nums"
+
+
 mdTrackingTighter : Svg.Attribute msg
 mdTrackingTighter =
     A.class "md:tracking-tighter"
@@ -70741,101 +72491,6 @@ mdGapPx =
     A.class "md:gap-px"
 
 
-mdColGap0 : Svg.Attribute msg
-mdColGap0 =
-    A.class "md:col-gap-0"
-
-
-mdColGap1 : Svg.Attribute msg
-mdColGap1 =
-    A.class "md:col-gap-1"
-
-
-mdColGap2 : Svg.Attribute msg
-mdColGap2 =
-    A.class "md:col-gap-2"
-
-
-mdColGap3 : Svg.Attribute msg
-mdColGap3 =
-    A.class "md:col-gap-3"
-
-
-mdColGap4 : Svg.Attribute msg
-mdColGap4 =
-    A.class "md:col-gap-4"
-
-
-mdColGap5 : Svg.Attribute msg
-mdColGap5 =
-    A.class "md:col-gap-5"
-
-
-mdColGap6 : Svg.Attribute msg
-mdColGap6 =
-    A.class "md:col-gap-6"
-
-
-mdColGap8 : Svg.Attribute msg
-mdColGap8 =
-    A.class "md:col-gap-8"
-
-
-mdColGap10 : Svg.Attribute msg
-mdColGap10 =
-    A.class "md:col-gap-10"
-
-
-mdColGap12 : Svg.Attribute msg
-mdColGap12 =
-    A.class "md:col-gap-12"
-
-
-mdColGap16 : Svg.Attribute msg
-mdColGap16 =
-    A.class "md:col-gap-16"
-
-
-mdColGap20 : Svg.Attribute msg
-mdColGap20 =
-    A.class "md:col-gap-20"
-
-
-mdColGap24 : Svg.Attribute msg
-mdColGap24 =
-    A.class "md:col-gap-24"
-
-
-mdColGap32 : Svg.Attribute msg
-mdColGap32 =
-    A.class "md:col-gap-32"
-
-
-mdColGap40 : Svg.Attribute msg
-mdColGap40 =
-    A.class "md:col-gap-40"
-
-
-mdColGap48 : Svg.Attribute msg
-mdColGap48 =
-    A.class "md:col-gap-48"
-
-
-mdColGap56 : Svg.Attribute msg
-mdColGap56 =
-    A.class "md:col-gap-56"
-
-
-mdColGap64 : Svg.Attribute msg
-mdColGap64 =
-    A.class "md:col-gap-64"
-
-
-mdColGapPx : Svg.Attribute msg
-mdColGapPx =
-    A.class "md:col-gap-px"
-
-
 mdGapX0 : Svg.Attribute msg
 mdGapX0 =
     A.class "md:gap-x-0"
@@ -70929,101 +72584,6 @@ mdGapX64 =
 mdGapXPx : Svg.Attribute msg
 mdGapXPx =
     A.class "md:gap-x-px"
-
-
-mdRowGap0 : Svg.Attribute msg
-mdRowGap0 =
-    A.class "md:row-gap-0"
-
-
-mdRowGap1 : Svg.Attribute msg
-mdRowGap1 =
-    A.class "md:row-gap-1"
-
-
-mdRowGap2 : Svg.Attribute msg
-mdRowGap2 =
-    A.class "md:row-gap-2"
-
-
-mdRowGap3 : Svg.Attribute msg
-mdRowGap3 =
-    A.class "md:row-gap-3"
-
-
-mdRowGap4 : Svg.Attribute msg
-mdRowGap4 =
-    A.class "md:row-gap-4"
-
-
-mdRowGap5 : Svg.Attribute msg
-mdRowGap5 =
-    A.class "md:row-gap-5"
-
-
-mdRowGap6 : Svg.Attribute msg
-mdRowGap6 =
-    A.class "md:row-gap-6"
-
-
-mdRowGap8 : Svg.Attribute msg
-mdRowGap8 =
-    A.class "md:row-gap-8"
-
-
-mdRowGap10 : Svg.Attribute msg
-mdRowGap10 =
-    A.class "md:row-gap-10"
-
-
-mdRowGap12 : Svg.Attribute msg
-mdRowGap12 =
-    A.class "md:row-gap-12"
-
-
-mdRowGap16 : Svg.Attribute msg
-mdRowGap16 =
-    A.class "md:row-gap-16"
-
-
-mdRowGap20 : Svg.Attribute msg
-mdRowGap20 =
-    A.class "md:row-gap-20"
-
-
-mdRowGap24 : Svg.Attribute msg
-mdRowGap24 =
-    A.class "md:row-gap-24"
-
-
-mdRowGap32 : Svg.Attribute msg
-mdRowGap32 =
-    A.class "md:row-gap-32"
-
-
-mdRowGap40 : Svg.Attribute msg
-mdRowGap40 =
-    A.class "md:row-gap-40"
-
-
-mdRowGap48 : Svg.Attribute msg
-mdRowGap48 =
-    A.class "md:row-gap-48"
-
-
-mdRowGap56 : Svg.Attribute msg
-mdRowGap56 =
-    A.class "md:row-gap-56"
-
-
-mdRowGap64 : Svg.Attribute msg
-mdRowGap64 =
-    A.class "md:row-gap-64"
-
-
-mdRowGapPx : Svg.Attribute msg
-mdRowGapPx =
-    A.class "md:row-gap-px"
 
 
 mdGapY0 : Svg.Attribute msg
@@ -71206,6 +72766,26 @@ mdGridColsNone =
     A.class "md:grid-cols-none"
 
 
+mdAutoColsAuto : Svg.Attribute msg
+mdAutoColsAuto =
+    A.class "md:auto-cols-auto"
+
+
+mdAutoColsMin : Svg.Attribute msg
+mdAutoColsMin =
+    A.class "md:auto-cols-min"
+
+
+mdAutoColsMax : Svg.Attribute msg
+mdAutoColsMax =
+    A.class "md:auto-cols-max"
+
+
+mdAutoColsFr : Svg.Attribute msg
+mdAutoColsFr =
+    A.class "md:auto-cols-fr"
+
+
 mdColAuto : Svg.Attribute msg
 mdColAuto =
     A.class "md:col-auto"
@@ -71269,6 +72849,11 @@ mdColSpan11 =
 mdColSpan12 : Svg.Attribute msg
 mdColSpan12 =
     A.class "md:col-span-12"
+
+
+mdColSpanFull : Svg.Attribute msg
+mdColSpanFull =
+    A.class "md:col-span-full"
 
 
 mdColStart1 : Svg.Attribute msg
@@ -71446,6 +73031,26 @@ mdGridRowsNone =
     A.class "md:grid-rows-none"
 
 
+mdAutoRowsAuto : Svg.Attribute msg
+mdAutoRowsAuto =
+    A.class "md:auto-rows-auto"
+
+
+mdAutoRowsMin : Svg.Attribute msg
+mdAutoRowsMin =
+    A.class "md:auto-rows-min"
+
+
+mdAutoRowsMax : Svg.Attribute msg
+mdAutoRowsMax =
+    A.class "md:auto-rows-max"
+
+
+mdAutoRowsFr : Svg.Attribute msg
+mdAutoRowsFr =
+    A.class "md:auto-rows-fr"
+
+
 mdRowAuto : Svg.Attribute msg
 mdRowAuto =
     A.class "md:row-auto"
@@ -71479,6 +73084,11 @@ mdRowSpan5 =
 mdRowSpan6 : Svg.Attribute msg
 mdRowSpan6 =
     A.class "md:row-span-6"
+
+
+mdRowSpanFull : Svg.Attribute msg
+mdRowSpanFull =
+    A.class "md:row-span-full"
 
 
 mdRowStart1 : Svg.Attribute msg
@@ -72071,6 +73681,31 @@ mdRotate0 =
     A.class "md:rotate-0"
 
 
+mdRotate1 : Svg.Attribute msg
+mdRotate1 =
+    A.class "md:rotate-1"
+
+
+mdRotate2 : Svg.Attribute msg
+mdRotate2 =
+    A.class "md:rotate-2"
+
+
+mdRotate3 : Svg.Attribute msg
+mdRotate3 =
+    A.class "md:rotate-3"
+
+
+mdRotate6 : Svg.Attribute msg
+mdRotate6 =
+    A.class "md:rotate-6"
+
+
+mdRotate12 : Svg.Attribute msg
+mdRotate12 =
+    A.class "md:rotate-12"
+
+
 mdRotate45 : Svg.Attribute msg
 mdRotate45 =
     A.class "md:rotate-45"
@@ -72101,9 +73736,59 @@ mdNegRotate45 =
     A.class "md:-rotate-45"
 
 
+mdNegRotate12 : Svg.Attribute msg
+mdNegRotate12 =
+    A.class "md:-rotate-12"
+
+
+mdNegRotate6 : Svg.Attribute msg
+mdNegRotate6 =
+    A.class "md:-rotate-6"
+
+
+mdNegRotate3 : Svg.Attribute msg
+mdNegRotate3 =
+    A.class "md:-rotate-3"
+
+
+mdNegRotate2 : Svg.Attribute msg
+mdNegRotate2 =
+    A.class "md:-rotate-2"
+
+
+mdNegRotate1 : Svg.Attribute msg
+mdNegRotate1 =
+    A.class "md:-rotate-1"
+
+
 mdHoverRotate0 : Svg.Attribute msg
 mdHoverRotate0 =
     A.class "md:hover:rotate-0"
+
+
+mdHoverRotate1 : Svg.Attribute msg
+mdHoverRotate1 =
+    A.class "md:hover:rotate-1"
+
+
+mdHoverRotate2 : Svg.Attribute msg
+mdHoverRotate2 =
+    A.class "md:hover:rotate-2"
+
+
+mdHoverRotate3 : Svg.Attribute msg
+mdHoverRotate3 =
+    A.class "md:hover:rotate-3"
+
+
+mdHoverRotate6 : Svg.Attribute msg
+mdHoverRotate6 =
+    A.class "md:hover:rotate-6"
+
+
+mdHoverRotate12 : Svg.Attribute msg
+mdHoverRotate12 =
+    A.class "md:hover:rotate-12"
 
 
 mdHoverRotate45 : Svg.Attribute msg
@@ -72136,9 +73821,59 @@ mdHoverNegRotate45 =
     A.class "md:hover:-rotate-45"
 
 
+mdHoverNegRotate12 : Svg.Attribute msg
+mdHoverNegRotate12 =
+    A.class "md:hover:-rotate-12"
+
+
+mdHoverNegRotate6 : Svg.Attribute msg
+mdHoverNegRotate6 =
+    A.class "md:hover:-rotate-6"
+
+
+mdHoverNegRotate3 : Svg.Attribute msg
+mdHoverNegRotate3 =
+    A.class "md:hover:-rotate-3"
+
+
+mdHoverNegRotate2 : Svg.Attribute msg
+mdHoverNegRotate2 =
+    A.class "md:hover:-rotate-2"
+
+
+mdHoverNegRotate1 : Svg.Attribute msg
+mdHoverNegRotate1 =
+    A.class "md:hover:-rotate-1"
+
+
 mdFocusRotate0 : Svg.Attribute msg
 mdFocusRotate0 =
     A.class "md:focus:rotate-0"
+
+
+mdFocusRotate1 : Svg.Attribute msg
+mdFocusRotate1 =
+    A.class "md:focus:rotate-1"
+
+
+mdFocusRotate2 : Svg.Attribute msg
+mdFocusRotate2 =
+    A.class "md:focus:rotate-2"
+
+
+mdFocusRotate3 : Svg.Attribute msg
+mdFocusRotate3 =
+    A.class "md:focus:rotate-3"
+
+
+mdFocusRotate6 : Svg.Attribute msg
+mdFocusRotate6 =
+    A.class "md:focus:rotate-6"
+
+
+mdFocusRotate12 : Svg.Attribute msg
+mdFocusRotate12 =
+    A.class "md:focus:rotate-12"
 
 
 mdFocusRotate45 : Svg.Attribute msg
@@ -72169,6 +73904,31 @@ mdFocusNegRotate90 =
 mdFocusNegRotate45 : Svg.Attribute msg
 mdFocusNegRotate45 =
     A.class "md:focus:-rotate-45"
+
+
+mdFocusNegRotate12 : Svg.Attribute msg
+mdFocusNegRotate12 =
+    A.class "md:focus:-rotate-12"
+
+
+mdFocusNegRotate6 : Svg.Attribute msg
+mdFocusNegRotate6 =
+    A.class "md:focus:-rotate-6"
+
+
+mdFocusNegRotate3 : Svg.Attribute msg
+mdFocusNegRotate3 =
+    A.class "md:focus:-rotate-3"
+
+
+mdFocusNegRotate2 : Svg.Attribute msg
+mdFocusNegRotate2 =
+    A.class "md:focus:-rotate-2"
+
+
+mdFocusNegRotate1 : Svg.Attribute msg
+mdFocusNegRotate1 =
+    A.class "md:focus:-rotate-1"
 
 
 mdTranslateX0 : Svg.Attribute msg
@@ -73406,6 +75166,16 @@ mdSkewX0 =
     A.class "md:skew-x-0"
 
 
+mdSkewX1 : Svg.Attribute msg
+mdSkewX1 =
+    A.class "md:skew-x-1"
+
+
+mdSkewX2 : Svg.Attribute msg
+mdSkewX2 =
+    A.class "md:skew-x-2"
+
+
 mdSkewX3 : Svg.Attribute msg
 mdSkewX3 =
     A.class "md:skew-x-3"
@@ -73436,9 +75206,29 @@ mdNegSkewX3 =
     A.class "md:-skew-x-3"
 
 
+mdNegSkewX2 : Svg.Attribute msg
+mdNegSkewX2 =
+    A.class "md:-skew-x-2"
+
+
+mdNegSkewX1 : Svg.Attribute msg
+mdNegSkewX1 =
+    A.class "md:-skew-x-1"
+
+
 mdSkewY0 : Svg.Attribute msg
 mdSkewY0 =
     A.class "md:skew-y-0"
+
+
+mdSkewY1 : Svg.Attribute msg
+mdSkewY1 =
+    A.class "md:skew-y-1"
+
+
+mdSkewY2 : Svg.Attribute msg
+mdSkewY2 =
+    A.class "md:skew-y-2"
 
 
 mdSkewY3 : Svg.Attribute msg
@@ -73471,9 +75261,29 @@ mdNegSkewY3 =
     A.class "md:-skew-y-3"
 
 
+mdNegSkewY2 : Svg.Attribute msg
+mdNegSkewY2 =
+    A.class "md:-skew-y-2"
+
+
+mdNegSkewY1 : Svg.Attribute msg
+mdNegSkewY1 =
+    A.class "md:-skew-y-1"
+
+
 mdHoverSkewX0 : Svg.Attribute msg
 mdHoverSkewX0 =
     A.class "md:hover:skew-x-0"
+
+
+mdHoverSkewX1 : Svg.Attribute msg
+mdHoverSkewX1 =
+    A.class "md:hover:skew-x-1"
+
+
+mdHoverSkewX2 : Svg.Attribute msg
+mdHoverSkewX2 =
+    A.class "md:hover:skew-x-2"
 
 
 mdHoverSkewX3 : Svg.Attribute msg
@@ -73506,9 +75316,29 @@ mdHoverNegSkewX3 =
     A.class "md:hover:-skew-x-3"
 
 
+mdHoverNegSkewX2 : Svg.Attribute msg
+mdHoverNegSkewX2 =
+    A.class "md:hover:-skew-x-2"
+
+
+mdHoverNegSkewX1 : Svg.Attribute msg
+mdHoverNegSkewX1 =
+    A.class "md:hover:-skew-x-1"
+
+
 mdHoverSkewY0 : Svg.Attribute msg
 mdHoverSkewY0 =
     A.class "md:hover:skew-y-0"
+
+
+mdHoverSkewY1 : Svg.Attribute msg
+mdHoverSkewY1 =
+    A.class "md:hover:skew-y-1"
+
+
+mdHoverSkewY2 : Svg.Attribute msg
+mdHoverSkewY2 =
+    A.class "md:hover:skew-y-2"
 
 
 mdHoverSkewY3 : Svg.Attribute msg
@@ -73541,9 +75371,29 @@ mdHoverNegSkewY3 =
     A.class "md:hover:-skew-y-3"
 
 
+mdHoverNegSkewY2 : Svg.Attribute msg
+mdHoverNegSkewY2 =
+    A.class "md:hover:-skew-y-2"
+
+
+mdHoverNegSkewY1 : Svg.Attribute msg
+mdHoverNegSkewY1 =
+    A.class "md:hover:-skew-y-1"
+
+
 mdFocusSkewX0 : Svg.Attribute msg
 mdFocusSkewX0 =
     A.class "md:focus:skew-x-0"
+
+
+mdFocusSkewX1 : Svg.Attribute msg
+mdFocusSkewX1 =
+    A.class "md:focus:skew-x-1"
+
+
+mdFocusSkewX2 : Svg.Attribute msg
+mdFocusSkewX2 =
+    A.class "md:focus:skew-x-2"
 
 
 mdFocusSkewX3 : Svg.Attribute msg
@@ -73576,9 +75426,29 @@ mdFocusNegSkewX3 =
     A.class "md:focus:-skew-x-3"
 
 
+mdFocusNegSkewX2 : Svg.Attribute msg
+mdFocusNegSkewX2 =
+    A.class "md:focus:-skew-x-2"
+
+
+mdFocusNegSkewX1 : Svg.Attribute msg
+mdFocusNegSkewX1 =
+    A.class "md:focus:-skew-x-1"
+
+
 mdFocusSkewY0 : Svg.Attribute msg
 mdFocusSkewY0 =
     A.class "md:focus:skew-y-0"
+
+
+mdFocusSkewY1 : Svg.Attribute msg
+mdFocusSkewY1 =
+    A.class "md:focus:skew-y-1"
+
+
+mdFocusSkewY2 : Svg.Attribute msg
+mdFocusSkewY2 =
+    A.class "md:focus:skew-y-2"
 
 
 mdFocusSkewY3 : Svg.Attribute msg
@@ -73609,6 +75479,16 @@ mdFocusNegSkewY6 =
 mdFocusNegSkewY3 : Svg.Attribute msg
 mdFocusNegSkewY3 =
     A.class "md:focus:-skew-y-3"
+
+
+mdFocusNegSkewY2 : Svg.Attribute msg
+mdFocusNegSkewY2 =
+    A.class "md:focus:-skew-y-2"
+
+
+mdFocusNegSkewY1 : Svg.Attribute msg
+mdFocusNegSkewY1 =
+    A.class "md:focus:-skew-y-1"
 
 
 mdTransitionNone : Svg.Attribute msg
@@ -82166,6 +84046,21 @@ lgRoundedLg =
     A.class "lg:rounded-lg"
 
 
+lgRoundedXl : Svg.Attribute msg
+lgRoundedXl =
+    A.class "lg:rounded-xl"
+
+
+lgRounded2xl : Svg.Attribute msg
+lgRounded2xl =
+    A.class "lg:rounded-2xl"
+
+
+lgRounded3xl : Svg.Attribute msg
+lgRounded3xl =
+    A.class "lg:rounded-3xl"
+
+
 lgRoundedFull : Svg.Attribute msg
 lgRoundedFull =
     A.class "lg:rounded-full"
@@ -82269,6 +84164,66 @@ lgRoundedBLg =
 lgRoundedLLg : Svg.Attribute msg
 lgRoundedLLg =
     A.class "lg:rounded-l-lg"
+
+
+lgRoundedTXl : Svg.Attribute msg
+lgRoundedTXl =
+    A.class "lg:rounded-t-xl"
+
+
+lgRoundedRXl : Svg.Attribute msg
+lgRoundedRXl =
+    A.class "lg:rounded-r-xl"
+
+
+lgRoundedBXl : Svg.Attribute msg
+lgRoundedBXl =
+    A.class "lg:rounded-b-xl"
+
+
+lgRoundedLXl : Svg.Attribute msg
+lgRoundedLXl =
+    A.class "lg:rounded-l-xl"
+
+
+lgRoundedT2xl : Svg.Attribute msg
+lgRoundedT2xl =
+    A.class "lg:rounded-t-2xl"
+
+
+lgRoundedR2xl : Svg.Attribute msg
+lgRoundedR2xl =
+    A.class "lg:rounded-r-2xl"
+
+
+lgRoundedB2xl : Svg.Attribute msg
+lgRoundedB2xl =
+    A.class "lg:rounded-b-2xl"
+
+
+lgRoundedL2xl : Svg.Attribute msg
+lgRoundedL2xl =
+    A.class "lg:rounded-l-2xl"
+
+
+lgRoundedT3xl : Svg.Attribute msg
+lgRoundedT3xl =
+    A.class "lg:rounded-t-3xl"
+
+
+lgRoundedR3xl : Svg.Attribute msg
+lgRoundedR3xl =
+    A.class "lg:rounded-r-3xl"
+
+
+lgRoundedB3xl : Svg.Attribute msg
+lgRoundedB3xl =
+    A.class "lg:rounded-b-3xl"
+
+
+lgRoundedL3xl : Svg.Attribute msg
+lgRoundedL3xl =
+    A.class "lg:rounded-l-3xl"
 
 
 lgRoundedTFull : Svg.Attribute msg
@@ -82389,6 +84344,66 @@ lgRoundedBrLg =
 lgRoundedBlLg : Svg.Attribute msg
 lgRoundedBlLg =
     A.class "lg:rounded-bl-lg"
+
+
+lgRoundedTlXl : Svg.Attribute msg
+lgRoundedTlXl =
+    A.class "lg:rounded-tl-xl"
+
+
+lgRoundedTrXl : Svg.Attribute msg
+lgRoundedTrXl =
+    A.class "lg:rounded-tr-xl"
+
+
+lgRoundedBrXl : Svg.Attribute msg
+lgRoundedBrXl =
+    A.class "lg:rounded-br-xl"
+
+
+lgRoundedBlXl : Svg.Attribute msg
+lgRoundedBlXl =
+    A.class "lg:rounded-bl-xl"
+
+
+lgRoundedTl2xl : Svg.Attribute msg
+lgRoundedTl2xl =
+    A.class "lg:rounded-tl-2xl"
+
+
+lgRoundedTr2xl : Svg.Attribute msg
+lgRoundedTr2xl =
+    A.class "lg:rounded-tr-2xl"
+
+
+lgRoundedBr2xl : Svg.Attribute msg
+lgRoundedBr2xl =
+    A.class "lg:rounded-br-2xl"
+
+
+lgRoundedBl2xl : Svg.Attribute msg
+lgRoundedBl2xl =
+    A.class "lg:rounded-bl-2xl"
+
+
+lgRoundedTl3xl : Svg.Attribute msg
+lgRoundedTl3xl =
+    A.class "lg:rounded-tl-3xl"
+
+
+lgRoundedTr3xl : Svg.Attribute msg
+lgRoundedTr3xl =
+    A.class "lg:rounded-tr-3xl"
+
+
+lgRoundedBr3xl : Svg.Attribute msg
+lgRoundedBr3xl =
+    A.class "lg:rounded-br-3xl"
+
+
+lgRoundedBl3xl : Svg.Attribute msg
+lgRoundedBl3xl =
+    A.class "lg:rounded-bl-3xl"
 
 
 lgRoundedTlFull : Svg.Attribute msg
@@ -82736,6 +84751,91 @@ lgFlexNoWrap =
     A.class "lg:flex-no-wrap"
 
 
+lgPlaceItemsAuto : Svg.Attribute msg
+lgPlaceItemsAuto =
+    A.class "lg:place-items-auto"
+
+
+lgPlaceItemsStart : Svg.Attribute msg
+lgPlaceItemsStart =
+    A.class "lg:place-items-start"
+
+
+lgPlaceItemsEnd : Svg.Attribute msg
+lgPlaceItemsEnd =
+    A.class "lg:place-items-end"
+
+
+lgPlaceItemsCenter : Svg.Attribute msg
+lgPlaceItemsCenter =
+    A.class "lg:place-items-center"
+
+
+lgPlaceItemsStretch : Svg.Attribute msg
+lgPlaceItemsStretch =
+    A.class "lg:place-items-stretch"
+
+
+lgPlaceContentCenter : Svg.Attribute msg
+lgPlaceContentCenter =
+    A.class "lg:place-content-center"
+
+
+lgPlaceContentStart : Svg.Attribute msg
+lgPlaceContentStart =
+    A.class "lg:place-content-start"
+
+
+lgPlaceContentEnd : Svg.Attribute msg
+lgPlaceContentEnd =
+    A.class "lg:place-content-end"
+
+
+lgPlaceContentBetween : Svg.Attribute msg
+lgPlaceContentBetween =
+    A.class "lg:place-content-between"
+
+
+lgPlaceContentAround : Svg.Attribute msg
+lgPlaceContentAround =
+    A.class "lg:place-content-around"
+
+
+lgPlaceContentEvenly : Svg.Attribute msg
+lgPlaceContentEvenly =
+    A.class "lg:place-content-evenly"
+
+
+lgPlaceContentStretch : Svg.Attribute msg
+lgPlaceContentStretch =
+    A.class "lg:place-content-stretch"
+
+
+lgPlaceSelfAuto : Svg.Attribute msg
+lgPlaceSelfAuto =
+    A.class "lg:place-self-auto"
+
+
+lgPlaceSelfStart : Svg.Attribute msg
+lgPlaceSelfStart =
+    A.class "lg:place-self-start"
+
+
+lgPlaceSelfEnd : Svg.Attribute msg
+lgPlaceSelfEnd =
+    A.class "lg:place-self-end"
+
+
+lgPlaceSelfCenter : Svg.Attribute msg
+lgPlaceSelfCenter =
+    A.class "lg:place-self-center"
+
+
+lgPlaceSelfStretch : Svg.Attribute msg
+lgPlaceSelfStretch =
+    A.class "lg:place-self-stretch"
+
+
 lgItemsStart : Svg.Attribute msg
 lgItemsStart =
     A.class "lg:items-start"
@@ -82761,6 +84861,36 @@ lgItemsStretch =
     A.class "lg:items-stretch"
 
 
+lgContentCenter : Svg.Attribute msg
+lgContentCenter =
+    A.class "lg:content-center"
+
+
+lgContentStart : Svg.Attribute msg
+lgContentStart =
+    A.class "lg:content-start"
+
+
+lgContentEnd : Svg.Attribute msg
+lgContentEnd =
+    A.class "lg:content-end"
+
+
+lgContentBetween : Svg.Attribute msg
+lgContentBetween =
+    A.class "lg:content-between"
+
+
+lgContentAround : Svg.Attribute msg
+lgContentAround =
+    A.class "lg:content-around"
+
+
+lgContentEvenly : Svg.Attribute msg
+lgContentEvenly =
+    A.class "lg:content-evenly"
+
+
 lgSelfAuto : Svg.Attribute msg
 lgSelfAuto =
     A.class "lg:self-auto"
@@ -82784,6 +84914,31 @@ lgSelfCenter =
 lgSelfStretch : Svg.Attribute msg
 lgSelfStretch =
     A.class "lg:self-stretch"
+
+
+lgJustifyItemsAuto : Svg.Attribute msg
+lgJustifyItemsAuto =
+    A.class "lg:justify-items-auto"
+
+
+lgJustifyItemsStart : Svg.Attribute msg
+lgJustifyItemsStart =
+    A.class "lg:justify-items-start"
+
+
+lgJustifyItemsEnd : Svg.Attribute msg
+lgJustifyItemsEnd =
+    A.class "lg:justify-items-end"
+
+
+lgJustifyItemsCenter : Svg.Attribute msg
+lgJustifyItemsCenter =
+    A.class "lg:justify-items-center"
+
+
+lgJustifyItemsStretch : Svg.Attribute msg
+lgJustifyItemsStretch =
+    A.class "lg:justify-items-stretch"
 
 
 lgJustifyStart : Svg.Attribute msg
@@ -82816,29 +84971,29 @@ lgJustifyEvenly =
     A.class "lg:justify-evenly"
 
 
-lgContentCenter : Svg.Attribute msg
-lgContentCenter =
-    A.class "lg:content-center"
+lgJustifySelfAuto : Svg.Attribute msg
+lgJustifySelfAuto =
+    A.class "lg:justify-self-auto"
 
 
-lgContentStart : Svg.Attribute msg
-lgContentStart =
-    A.class "lg:content-start"
+lgJustifySelfStart : Svg.Attribute msg
+lgJustifySelfStart =
+    A.class "lg:justify-self-start"
 
 
-lgContentEnd : Svg.Attribute msg
-lgContentEnd =
-    A.class "lg:content-end"
+lgJustifySelfEnd : Svg.Attribute msg
+lgJustifySelfEnd =
+    A.class "lg:justify-self-end"
 
 
-lgContentBetween : Svg.Attribute msg
-lgContentBetween =
-    A.class "lg:content-between"
+lgJustifySelfCenter : Svg.Attribute msg
+lgJustifySelfCenter =
+    A.class "lg:justify-self-center"
 
 
-lgContentAround : Svg.Attribute msg
-lgContentAround =
-    A.class "lg:content-around"
+lgJustifySelfStretch : Svg.Attribute msg
+lgJustifySelfStretch =
+    A.class "lg:justify-self-stretch"
 
 
 lgFlex1 : Svg.Attribute msg
@@ -85001,9 +87156,29 @@ lgOutlineNone =
     A.class "lg:outline-none"
 
 
+lgOutlineWhite : Svg.Attribute msg
+lgOutlineWhite =
+    A.class "lg:outline-white"
+
+
+lgOutlineBlack : Svg.Attribute msg
+lgOutlineBlack =
+    A.class "lg:outline-black"
+
+
 lgFocusOutlineNone : Svg.Attribute msg
 lgFocusOutlineNone =
     A.class "lg:focus:outline-none"
+
+
+lgFocusOutlineWhite : Svg.Attribute msg
+lgFocusOutlineWhite =
+    A.class "lg:focus:outline-white"
+
+
+lgFocusOutlineBlack : Svg.Attribute msg
+lgFocusOutlineBlack =
+    A.class "lg:focus:outline-black"
 
 
 lgOverflowAuto : Svg.Attribute msg
@@ -88676,6 +90851,51 @@ lgSubpixelAntialiased =
     A.class "lg:subpixel-antialiased"
 
 
+lgOrdinal : Svg.Attribute msg
+lgOrdinal =
+    A.class "lg:ordinal"
+
+
+lgSlashedZero : Svg.Attribute msg
+lgSlashedZero =
+    A.class "lg:slashed-zero"
+
+
+lgLiningNums : Svg.Attribute msg
+lgLiningNums =
+    A.class "lg:lining-nums"
+
+
+lgOldstyleNums : Svg.Attribute msg
+lgOldstyleNums =
+    A.class "lg:oldstyle-nums"
+
+
+lgProportionalNums : Svg.Attribute msg
+lgProportionalNums =
+    A.class "lg:proportional-nums"
+
+
+lgTabularNums : Svg.Attribute msg
+lgTabularNums =
+    A.class "lg:tabular-nums"
+
+
+lgDiagonalFractions : Svg.Attribute msg
+lgDiagonalFractions =
+    A.class "lg:diagonal-fractions"
+
+
+lgStackedFractions : Svg.Attribute msg
+lgStackedFractions =
+    A.class "lg:stacked-fractions"
+
+
+lgNormalNums : Svg.Attribute msg
+lgNormalNums =
+    A.class "lg:normal-nums"
+
+
 lgTrackingTighter : Svg.Attribute msg
 lgTrackingTighter =
     A.class "lg:tracking-tighter"
@@ -89181,101 +91401,6 @@ lgGapPx =
     A.class "lg:gap-px"
 
 
-lgColGap0 : Svg.Attribute msg
-lgColGap0 =
-    A.class "lg:col-gap-0"
-
-
-lgColGap1 : Svg.Attribute msg
-lgColGap1 =
-    A.class "lg:col-gap-1"
-
-
-lgColGap2 : Svg.Attribute msg
-lgColGap2 =
-    A.class "lg:col-gap-2"
-
-
-lgColGap3 : Svg.Attribute msg
-lgColGap3 =
-    A.class "lg:col-gap-3"
-
-
-lgColGap4 : Svg.Attribute msg
-lgColGap4 =
-    A.class "lg:col-gap-4"
-
-
-lgColGap5 : Svg.Attribute msg
-lgColGap5 =
-    A.class "lg:col-gap-5"
-
-
-lgColGap6 : Svg.Attribute msg
-lgColGap6 =
-    A.class "lg:col-gap-6"
-
-
-lgColGap8 : Svg.Attribute msg
-lgColGap8 =
-    A.class "lg:col-gap-8"
-
-
-lgColGap10 : Svg.Attribute msg
-lgColGap10 =
-    A.class "lg:col-gap-10"
-
-
-lgColGap12 : Svg.Attribute msg
-lgColGap12 =
-    A.class "lg:col-gap-12"
-
-
-lgColGap16 : Svg.Attribute msg
-lgColGap16 =
-    A.class "lg:col-gap-16"
-
-
-lgColGap20 : Svg.Attribute msg
-lgColGap20 =
-    A.class "lg:col-gap-20"
-
-
-lgColGap24 : Svg.Attribute msg
-lgColGap24 =
-    A.class "lg:col-gap-24"
-
-
-lgColGap32 : Svg.Attribute msg
-lgColGap32 =
-    A.class "lg:col-gap-32"
-
-
-lgColGap40 : Svg.Attribute msg
-lgColGap40 =
-    A.class "lg:col-gap-40"
-
-
-lgColGap48 : Svg.Attribute msg
-lgColGap48 =
-    A.class "lg:col-gap-48"
-
-
-lgColGap56 : Svg.Attribute msg
-lgColGap56 =
-    A.class "lg:col-gap-56"
-
-
-lgColGap64 : Svg.Attribute msg
-lgColGap64 =
-    A.class "lg:col-gap-64"
-
-
-lgColGapPx : Svg.Attribute msg
-lgColGapPx =
-    A.class "lg:col-gap-px"
-
-
 lgGapX0 : Svg.Attribute msg
 lgGapX0 =
     A.class "lg:gap-x-0"
@@ -89369,101 +91494,6 @@ lgGapX64 =
 lgGapXPx : Svg.Attribute msg
 lgGapXPx =
     A.class "lg:gap-x-px"
-
-
-lgRowGap0 : Svg.Attribute msg
-lgRowGap0 =
-    A.class "lg:row-gap-0"
-
-
-lgRowGap1 : Svg.Attribute msg
-lgRowGap1 =
-    A.class "lg:row-gap-1"
-
-
-lgRowGap2 : Svg.Attribute msg
-lgRowGap2 =
-    A.class "lg:row-gap-2"
-
-
-lgRowGap3 : Svg.Attribute msg
-lgRowGap3 =
-    A.class "lg:row-gap-3"
-
-
-lgRowGap4 : Svg.Attribute msg
-lgRowGap4 =
-    A.class "lg:row-gap-4"
-
-
-lgRowGap5 : Svg.Attribute msg
-lgRowGap5 =
-    A.class "lg:row-gap-5"
-
-
-lgRowGap6 : Svg.Attribute msg
-lgRowGap6 =
-    A.class "lg:row-gap-6"
-
-
-lgRowGap8 : Svg.Attribute msg
-lgRowGap8 =
-    A.class "lg:row-gap-8"
-
-
-lgRowGap10 : Svg.Attribute msg
-lgRowGap10 =
-    A.class "lg:row-gap-10"
-
-
-lgRowGap12 : Svg.Attribute msg
-lgRowGap12 =
-    A.class "lg:row-gap-12"
-
-
-lgRowGap16 : Svg.Attribute msg
-lgRowGap16 =
-    A.class "lg:row-gap-16"
-
-
-lgRowGap20 : Svg.Attribute msg
-lgRowGap20 =
-    A.class "lg:row-gap-20"
-
-
-lgRowGap24 : Svg.Attribute msg
-lgRowGap24 =
-    A.class "lg:row-gap-24"
-
-
-lgRowGap32 : Svg.Attribute msg
-lgRowGap32 =
-    A.class "lg:row-gap-32"
-
-
-lgRowGap40 : Svg.Attribute msg
-lgRowGap40 =
-    A.class "lg:row-gap-40"
-
-
-lgRowGap48 : Svg.Attribute msg
-lgRowGap48 =
-    A.class "lg:row-gap-48"
-
-
-lgRowGap56 : Svg.Attribute msg
-lgRowGap56 =
-    A.class "lg:row-gap-56"
-
-
-lgRowGap64 : Svg.Attribute msg
-lgRowGap64 =
-    A.class "lg:row-gap-64"
-
-
-lgRowGapPx : Svg.Attribute msg
-lgRowGapPx =
-    A.class "lg:row-gap-px"
 
 
 lgGapY0 : Svg.Attribute msg
@@ -89646,6 +91676,26 @@ lgGridColsNone =
     A.class "lg:grid-cols-none"
 
 
+lgAutoColsAuto : Svg.Attribute msg
+lgAutoColsAuto =
+    A.class "lg:auto-cols-auto"
+
+
+lgAutoColsMin : Svg.Attribute msg
+lgAutoColsMin =
+    A.class "lg:auto-cols-min"
+
+
+lgAutoColsMax : Svg.Attribute msg
+lgAutoColsMax =
+    A.class "lg:auto-cols-max"
+
+
+lgAutoColsFr : Svg.Attribute msg
+lgAutoColsFr =
+    A.class "lg:auto-cols-fr"
+
+
 lgColAuto : Svg.Attribute msg
 lgColAuto =
     A.class "lg:col-auto"
@@ -89709,6 +91759,11 @@ lgColSpan11 =
 lgColSpan12 : Svg.Attribute msg
 lgColSpan12 =
     A.class "lg:col-span-12"
+
+
+lgColSpanFull : Svg.Attribute msg
+lgColSpanFull =
+    A.class "lg:col-span-full"
 
 
 lgColStart1 : Svg.Attribute msg
@@ -89886,6 +91941,26 @@ lgGridRowsNone =
     A.class "lg:grid-rows-none"
 
 
+lgAutoRowsAuto : Svg.Attribute msg
+lgAutoRowsAuto =
+    A.class "lg:auto-rows-auto"
+
+
+lgAutoRowsMin : Svg.Attribute msg
+lgAutoRowsMin =
+    A.class "lg:auto-rows-min"
+
+
+lgAutoRowsMax : Svg.Attribute msg
+lgAutoRowsMax =
+    A.class "lg:auto-rows-max"
+
+
+lgAutoRowsFr : Svg.Attribute msg
+lgAutoRowsFr =
+    A.class "lg:auto-rows-fr"
+
+
 lgRowAuto : Svg.Attribute msg
 lgRowAuto =
     A.class "lg:row-auto"
@@ -89919,6 +91994,11 @@ lgRowSpan5 =
 lgRowSpan6 : Svg.Attribute msg
 lgRowSpan6 =
     A.class "lg:row-span-6"
+
+
+lgRowSpanFull : Svg.Attribute msg
+lgRowSpanFull =
+    A.class "lg:row-span-full"
 
 
 lgRowStart1 : Svg.Attribute msg
@@ -90511,6 +92591,31 @@ lgRotate0 =
     A.class "lg:rotate-0"
 
 
+lgRotate1 : Svg.Attribute msg
+lgRotate1 =
+    A.class "lg:rotate-1"
+
+
+lgRotate2 : Svg.Attribute msg
+lgRotate2 =
+    A.class "lg:rotate-2"
+
+
+lgRotate3 : Svg.Attribute msg
+lgRotate3 =
+    A.class "lg:rotate-3"
+
+
+lgRotate6 : Svg.Attribute msg
+lgRotate6 =
+    A.class "lg:rotate-6"
+
+
+lgRotate12 : Svg.Attribute msg
+lgRotate12 =
+    A.class "lg:rotate-12"
+
+
 lgRotate45 : Svg.Attribute msg
 lgRotate45 =
     A.class "lg:rotate-45"
@@ -90541,9 +92646,59 @@ lgNegRotate45 =
     A.class "lg:-rotate-45"
 
 
+lgNegRotate12 : Svg.Attribute msg
+lgNegRotate12 =
+    A.class "lg:-rotate-12"
+
+
+lgNegRotate6 : Svg.Attribute msg
+lgNegRotate6 =
+    A.class "lg:-rotate-6"
+
+
+lgNegRotate3 : Svg.Attribute msg
+lgNegRotate3 =
+    A.class "lg:-rotate-3"
+
+
+lgNegRotate2 : Svg.Attribute msg
+lgNegRotate2 =
+    A.class "lg:-rotate-2"
+
+
+lgNegRotate1 : Svg.Attribute msg
+lgNegRotate1 =
+    A.class "lg:-rotate-1"
+
+
 lgHoverRotate0 : Svg.Attribute msg
 lgHoverRotate0 =
     A.class "lg:hover:rotate-0"
+
+
+lgHoverRotate1 : Svg.Attribute msg
+lgHoverRotate1 =
+    A.class "lg:hover:rotate-1"
+
+
+lgHoverRotate2 : Svg.Attribute msg
+lgHoverRotate2 =
+    A.class "lg:hover:rotate-2"
+
+
+lgHoverRotate3 : Svg.Attribute msg
+lgHoverRotate3 =
+    A.class "lg:hover:rotate-3"
+
+
+lgHoverRotate6 : Svg.Attribute msg
+lgHoverRotate6 =
+    A.class "lg:hover:rotate-6"
+
+
+lgHoverRotate12 : Svg.Attribute msg
+lgHoverRotate12 =
+    A.class "lg:hover:rotate-12"
 
 
 lgHoverRotate45 : Svg.Attribute msg
@@ -90576,9 +92731,59 @@ lgHoverNegRotate45 =
     A.class "lg:hover:-rotate-45"
 
 
+lgHoverNegRotate12 : Svg.Attribute msg
+lgHoverNegRotate12 =
+    A.class "lg:hover:-rotate-12"
+
+
+lgHoverNegRotate6 : Svg.Attribute msg
+lgHoverNegRotate6 =
+    A.class "lg:hover:-rotate-6"
+
+
+lgHoverNegRotate3 : Svg.Attribute msg
+lgHoverNegRotate3 =
+    A.class "lg:hover:-rotate-3"
+
+
+lgHoverNegRotate2 : Svg.Attribute msg
+lgHoverNegRotate2 =
+    A.class "lg:hover:-rotate-2"
+
+
+lgHoverNegRotate1 : Svg.Attribute msg
+lgHoverNegRotate1 =
+    A.class "lg:hover:-rotate-1"
+
+
 lgFocusRotate0 : Svg.Attribute msg
 lgFocusRotate0 =
     A.class "lg:focus:rotate-0"
+
+
+lgFocusRotate1 : Svg.Attribute msg
+lgFocusRotate1 =
+    A.class "lg:focus:rotate-1"
+
+
+lgFocusRotate2 : Svg.Attribute msg
+lgFocusRotate2 =
+    A.class "lg:focus:rotate-2"
+
+
+lgFocusRotate3 : Svg.Attribute msg
+lgFocusRotate3 =
+    A.class "lg:focus:rotate-3"
+
+
+lgFocusRotate6 : Svg.Attribute msg
+lgFocusRotate6 =
+    A.class "lg:focus:rotate-6"
+
+
+lgFocusRotate12 : Svg.Attribute msg
+lgFocusRotate12 =
+    A.class "lg:focus:rotate-12"
 
 
 lgFocusRotate45 : Svg.Attribute msg
@@ -90609,6 +92814,31 @@ lgFocusNegRotate90 =
 lgFocusNegRotate45 : Svg.Attribute msg
 lgFocusNegRotate45 =
     A.class "lg:focus:-rotate-45"
+
+
+lgFocusNegRotate12 : Svg.Attribute msg
+lgFocusNegRotate12 =
+    A.class "lg:focus:-rotate-12"
+
+
+lgFocusNegRotate6 : Svg.Attribute msg
+lgFocusNegRotate6 =
+    A.class "lg:focus:-rotate-6"
+
+
+lgFocusNegRotate3 : Svg.Attribute msg
+lgFocusNegRotate3 =
+    A.class "lg:focus:-rotate-3"
+
+
+lgFocusNegRotate2 : Svg.Attribute msg
+lgFocusNegRotate2 =
+    A.class "lg:focus:-rotate-2"
+
+
+lgFocusNegRotate1 : Svg.Attribute msg
+lgFocusNegRotate1 =
+    A.class "lg:focus:-rotate-1"
 
 
 lgTranslateX0 : Svg.Attribute msg
@@ -91846,6 +94076,16 @@ lgSkewX0 =
     A.class "lg:skew-x-0"
 
 
+lgSkewX1 : Svg.Attribute msg
+lgSkewX1 =
+    A.class "lg:skew-x-1"
+
+
+lgSkewX2 : Svg.Attribute msg
+lgSkewX2 =
+    A.class "lg:skew-x-2"
+
+
 lgSkewX3 : Svg.Attribute msg
 lgSkewX3 =
     A.class "lg:skew-x-3"
@@ -91876,9 +94116,29 @@ lgNegSkewX3 =
     A.class "lg:-skew-x-3"
 
 
+lgNegSkewX2 : Svg.Attribute msg
+lgNegSkewX2 =
+    A.class "lg:-skew-x-2"
+
+
+lgNegSkewX1 : Svg.Attribute msg
+lgNegSkewX1 =
+    A.class "lg:-skew-x-1"
+
+
 lgSkewY0 : Svg.Attribute msg
 lgSkewY0 =
     A.class "lg:skew-y-0"
+
+
+lgSkewY1 : Svg.Attribute msg
+lgSkewY1 =
+    A.class "lg:skew-y-1"
+
+
+lgSkewY2 : Svg.Attribute msg
+lgSkewY2 =
+    A.class "lg:skew-y-2"
 
 
 lgSkewY3 : Svg.Attribute msg
@@ -91911,9 +94171,29 @@ lgNegSkewY3 =
     A.class "lg:-skew-y-3"
 
 
+lgNegSkewY2 : Svg.Attribute msg
+lgNegSkewY2 =
+    A.class "lg:-skew-y-2"
+
+
+lgNegSkewY1 : Svg.Attribute msg
+lgNegSkewY1 =
+    A.class "lg:-skew-y-1"
+
+
 lgHoverSkewX0 : Svg.Attribute msg
 lgHoverSkewX0 =
     A.class "lg:hover:skew-x-0"
+
+
+lgHoverSkewX1 : Svg.Attribute msg
+lgHoverSkewX1 =
+    A.class "lg:hover:skew-x-1"
+
+
+lgHoverSkewX2 : Svg.Attribute msg
+lgHoverSkewX2 =
+    A.class "lg:hover:skew-x-2"
 
 
 lgHoverSkewX3 : Svg.Attribute msg
@@ -91946,9 +94226,29 @@ lgHoverNegSkewX3 =
     A.class "lg:hover:-skew-x-3"
 
 
+lgHoverNegSkewX2 : Svg.Attribute msg
+lgHoverNegSkewX2 =
+    A.class "lg:hover:-skew-x-2"
+
+
+lgHoverNegSkewX1 : Svg.Attribute msg
+lgHoverNegSkewX1 =
+    A.class "lg:hover:-skew-x-1"
+
+
 lgHoverSkewY0 : Svg.Attribute msg
 lgHoverSkewY0 =
     A.class "lg:hover:skew-y-0"
+
+
+lgHoverSkewY1 : Svg.Attribute msg
+lgHoverSkewY1 =
+    A.class "lg:hover:skew-y-1"
+
+
+lgHoverSkewY2 : Svg.Attribute msg
+lgHoverSkewY2 =
+    A.class "lg:hover:skew-y-2"
 
 
 lgHoverSkewY3 : Svg.Attribute msg
@@ -91981,9 +94281,29 @@ lgHoverNegSkewY3 =
     A.class "lg:hover:-skew-y-3"
 
 
+lgHoverNegSkewY2 : Svg.Attribute msg
+lgHoverNegSkewY2 =
+    A.class "lg:hover:-skew-y-2"
+
+
+lgHoverNegSkewY1 : Svg.Attribute msg
+lgHoverNegSkewY1 =
+    A.class "lg:hover:-skew-y-1"
+
+
 lgFocusSkewX0 : Svg.Attribute msg
 lgFocusSkewX0 =
     A.class "lg:focus:skew-x-0"
+
+
+lgFocusSkewX1 : Svg.Attribute msg
+lgFocusSkewX1 =
+    A.class "lg:focus:skew-x-1"
+
+
+lgFocusSkewX2 : Svg.Attribute msg
+lgFocusSkewX2 =
+    A.class "lg:focus:skew-x-2"
 
 
 lgFocusSkewX3 : Svg.Attribute msg
@@ -92016,9 +94336,29 @@ lgFocusNegSkewX3 =
     A.class "lg:focus:-skew-x-3"
 
 
+lgFocusNegSkewX2 : Svg.Attribute msg
+lgFocusNegSkewX2 =
+    A.class "lg:focus:-skew-x-2"
+
+
+lgFocusNegSkewX1 : Svg.Attribute msg
+lgFocusNegSkewX1 =
+    A.class "lg:focus:-skew-x-1"
+
+
 lgFocusSkewY0 : Svg.Attribute msg
 lgFocusSkewY0 =
     A.class "lg:focus:skew-y-0"
+
+
+lgFocusSkewY1 : Svg.Attribute msg
+lgFocusSkewY1 =
+    A.class "lg:focus:skew-y-1"
+
+
+lgFocusSkewY2 : Svg.Attribute msg
+lgFocusSkewY2 =
+    A.class "lg:focus:skew-y-2"
 
 
 lgFocusSkewY3 : Svg.Attribute msg
@@ -92049,6 +94389,16 @@ lgFocusNegSkewY6 =
 lgFocusNegSkewY3 : Svg.Attribute msg
 lgFocusNegSkewY3 =
     A.class "lg:focus:-skew-y-3"
+
+
+lgFocusNegSkewY2 : Svg.Attribute msg
+lgFocusNegSkewY2 =
+    A.class "lg:focus:-skew-y-2"
+
+
+lgFocusNegSkewY1 : Svg.Attribute msg
+lgFocusNegSkewY1 =
+    A.class "lg:focus:-skew-y-1"
 
 
 lgTransitionNone : Svg.Attribute msg
@@ -100606,6 +102956,21 @@ xlRoundedLg =
     A.class "xl:rounded-lg"
 
 
+xlRoundedXl : Svg.Attribute msg
+xlRoundedXl =
+    A.class "xl:rounded-xl"
+
+
+xlRounded2xl : Svg.Attribute msg
+xlRounded2xl =
+    A.class "xl:rounded-2xl"
+
+
+xlRounded3xl : Svg.Attribute msg
+xlRounded3xl =
+    A.class "xl:rounded-3xl"
+
+
 xlRoundedFull : Svg.Attribute msg
 xlRoundedFull =
     A.class "xl:rounded-full"
@@ -100709,6 +103074,66 @@ xlRoundedBLg =
 xlRoundedLLg : Svg.Attribute msg
 xlRoundedLLg =
     A.class "xl:rounded-l-lg"
+
+
+xlRoundedTXl : Svg.Attribute msg
+xlRoundedTXl =
+    A.class "xl:rounded-t-xl"
+
+
+xlRoundedRXl : Svg.Attribute msg
+xlRoundedRXl =
+    A.class "xl:rounded-r-xl"
+
+
+xlRoundedBXl : Svg.Attribute msg
+xlRoundedBXl =
+    A.class "xl:rounded-b-xl"
+
+
+xlRoundedLXl : Svg.Attribute msg
+xlRoundedLXl =
+    A.class "xl:rounded-l-xl"
+
+
+xlRoundedT2xl : Svg.Attribute msg
+xlRoundedT2xl =
+    A.class "xl:rounded-t-2xl"
+
+
+xlRoundedR2xl : Svg.Attribute msg
+xlRoundedR2xl =
+    A.class "xl:rounded-r-2xl"
+
+
+xlRoundedB2xl : Svg.Attribute msg
+xlRoundedB2xl =
+    A.class "xl:rounded-b-2xl"
+
+
+xlRoundedL2xl : Svg.Attribute msg
+xlRoundedL2xl =
+    A.class "xl:rounded-l-2xl"
+
+
+xlRoundedT3xl : Svg.Attribute msg
+xlRoundedT3xl =
+    A.class "xl:rounded-t-3xl"
+
+
+xlRoundedR3xl : Svg.Attribute msg
+xlRoundedR3xl =
+    A.class "xl:rounded-r-3xl"
+
+
+xlRoundedB3xl : Svg.Attribute msg
+xlRoundedB3xl =
+    A.class "xl:rounded-b-3xl"
+
+
+xlRoundedL3xl : Svg.Attribute msg
+xlRoundedL3xl =
+    A.class "xl:rounded-l-3xl"
 
 
 xlRoundedTFull : Svg.Attribute msg
@@ -100829,6 +103254,66 @@ xlRoundedBrLg =
 xlRoundedBlLg : Svg.Attribute msg
 xlRoundedBlLg =
     A.class "xl:rounded-bl-lg"
+
+
+xlRoundedTlXl : Svg.Attribute msg
+xlRoundedTlXl =
+    A.class "xl:rounded-tl-xl"
+
+
+xlRoundedTrXl : Svg.Attribute msg
+xlRoundedTrXl =
+    A.class "xl:rounded-tr-xl"
+
+
+xlRoundedBrXl : Svg.Attribute msg
+xlRoundedBrXl =
+    A.class "xl:rounded-br-xl"
+
+
+xlRoundedBlXl : Svg.Attribute msg
+xlRoundedBlXl =
+    A.class "xl:rounded-bl-xl"
+
+
+xlRoundedTl2xl : Svg.Attribute msg
+xlRoundedTl2xl =
+    A.class "xl:rounded-tl-2xl"
+
+
+xlRoundedTr2xl : Svg.Attribute msg
+xlRoundedTr2xl =
+    A.class "xl:rounded-tr-2xl"
+
+
+xlRoundedBr2xl : Svg.Attribute msg
+xlRoundedBr2xl =
+    A.class "xl:rounded-br-2xl"
+
+
+xlRoundedBl2xl : Svg.Attribute msg
+xlRoundedBl2xl =
+    A.class "xl:rounded-bl-2xl"
+
+
+xlRoundedTl3xl : Svg.Attribute msg
+xlRoundedTl3xl =
+    A.class "xl:rounded-tl-3xl"
+
+
+xlRoundedTr3xl : Svg.Attribute msg
+xlRoundedTr3xl =
+    A.class "xl:rounded-tr-3xl"
+
+
+xlRoundedBr3xl : Svg.Attribute msg
+xlRoundedBr3xl =
+    A.class "xl:rounded-br-3xl"
+
+
+xlRoundedBl3xl : Svg.Attribute msg
+xlRoundedBl3xl =
+    A.class "xl:rounded-bl-3xl"
 
 
 xlRoundedTlFull : Svg.Attribute msg
@@ -101176,6 +103661,91 @@ xlFlexNoWrap =
     A.class "xl:flex-no-wrap"
 
 
+xlPlaceItemsAuto : Svg.Attribute msg
+xlPlaceItemsAuto =
+    A.class "xl:place-items-auto"
+
+
+xlPlaceItemsStart : Svg.Attribute msg
+xlPlaceItemsStart =
+    A.class "xl:place-items-start"
+
+
+xlPlaceItemsEnd : Svg.Attribute msg
+xlPlaceItemsEnd =
+    A.class "xl:place-items-end"
+
+
+xlPlaceItemsCenter : Svg.Attribute msg
+xlPlaceItemsCenter =
+    A.class "xl:place-items-center"
+
+
+xlPlaceItemsStretch : Svg.Attribute msg
+xlPlaceItemsStretch =
+    A.class "xl:place-items-stretch"
+
+
+xlPlaceContentCenter : Svg.Attribute msg
+xlPlaceContentCenter =
+    A.class "xl:place-content-center"
+
+
+xlPlaceContentStart : Svg.Attribute msg
+xlPlaceContentStart =
+    A.class "xl:place-content-start"
+
+
+xlPlaceContentEnd : Svg.Attribute msg
+xlPlaceContentEnd =
+    A.class "xl:place-content-end"
+
+
+xlPlaceContentBetween : Svg.Attribute msg
+xlPlaceContentBetween =
+    A.class "xl:place-content-between"
+
+
+xlPlaceContentAround : Svg.Attribute msg
+xlPlaceContentAround =
+    A.class "xl:place-content-around"
+
+
+xlPlaceContentEvenly : Svg.Attribute msg
+xlPlaceContentEvenly =
+    A.class "xl:place-content-evenly"
+
+
+xlPlaceContentStretch : Svg.Attribute msg
+xlPlaceContentStretch =
+    A.class "xl:place-content-stretch"
+
+
+xlPlaceSelfAuto : Svg.Attribute msg
+xlPlaceSelfAuto =
+    A.class "xl:place-self-auto"
+
+
+xlPlaceSelfStart : Svg.Attribute msg
+xlPlaceSelfStart =
+    A.class "xl:place-self-start"
+
+
+xlPlaceSelfEnd : Svg.Attribute msg
+xlPlaceSelfEnd =
+    A.class "xl:place-self-end"
+
+
+xlPlaceSelfCenter : Svg.Attribute msg
+xlPlaceSelfCenter =
+    A.class "xl:place-self-center"
+
+
+xlPlaceSelfStretch : Svg.Attribute msg
+xlPlaceSelfStretch =
+    A.class "xl:place-self-stretch"
+
+
 xlItemsStart : Svg.Attribute msg
 xlItemsStart =
     A.class "xl:items-start"
@@ -101201,6 +103771,36 @@ xlItemsStretch =
     A.class "xl:items-stretch"
 
 
+xlContentCenter : Svg.Attribute msg
+xlContentCenter =
+    A.class "xl:content-center"
+
+
+xlContentStart : Svg.Attribute msg
+xlContentStart =
+    A.class "xl:content-start"
+
+
+xlContentEnd : Svg.Attribute msg
+xlContentEnd =
+    A.class "xl:content-end"
+
+
+xlContentBetween : Svg.Attribute msg
+xlContentBetween =
+    A.class "xl:content-between"
+
+
+xlContentAround : Svg.Attribute msg
+xlContentAround =
+    A.class "xl:content-around"
+
+
+xlContentEvenly : Svg.Attribute msg
+xlContentEvenly =
+    A.class "xl:content-evenly"
+
+
 xlSelfAuto : Svg.Attribute msg
 xlSelfAuto =
     A.class "xl:self-auto"
@@ -101224,6 +103824,31 @@ xlSelfCenter =
 xlSelfStretch : Svg.Attribute msg
 xlSelfStretch =
     A.class "xl:self-stretch"
+
+
+xlJustifyItemsAuto : Svg.Attribute msg
+xlJustifyItemsAuto =
+    A.class "xl:justify-items-auto"
+
+
+xlJustifyItemsStart : Svg.Attribute msg
+xlJustifyItemsStart =
+    A.class "xl:justify-items-start"
+
+
+xlJustifyItemsEnd : Svg.Attribute msg
+xlJustifyItemsEnd =
+    A.class "xl:justify-items-end"
+
+
+xlJustifyItemsCenter : Svg.Attribute msg
+xlJustifyItemsCenter =
+    A.class "xl:justify-items-center"
+
+
+xlJustifyItemsStretch : Svg.Attribute msg
+xlJustifyItemsStretch =
+    A.class "xl:justify-items-stretch"
 
 
 xlJustifyStart : Svg.Attribute msg
@@ -101256,29 +103881,29 @@ xlJustifyEvenly =
     A.class "xl:justify-evenly"
 
 
-xlContentCenter : Svg.Attribute msg
-xlContentCenter =
-    A.class "xl:content-center"
+xlJustifySelfAuto : Svg.Attribute msg
+xlJustifySelfAuto =
+    A.class "xl:justify-self-auto"
 
 
-xlContentStart : Svg.Attribute msg
-xlContentStart =
-    A.class "xl:content-start"
+xlJustifySelfStart : Svg.Attribute msg
+xlJustifySelfStart =
+    A.class "xl:justify-self-start"
 
 
-xlContentEnd : Svg.Attribute msg
-xlContentEnd =
-    A.class "xl:content-end"
+xlJustifySelfEnd : Svg.Attribute msg
+xlJustifySelfEnd =
+    A.class "xl:justify-self-end"
 
 
-xlContentBetween : Svg.Attribute msg
-xlContentBetween =
-    A.class "xl:content-between"
+xlJustifySelfCenter : Svg.Attribute msg
+xlJustifySelfCenter =
+    A.class "xl:justify-self-center"
 
 
-xlContentAround : Svg.Attribute msg
-xlContentAround =
-    A.class "xl:content-around"
+xlJustifySelfStretch : Svg.Attribute msg
+xlJustifySelfStretch =
+    A.class "xl:justify-self-stretch"
 
 
 xlFlex1 : Svg.Attribute msg
@@ -103441,9 +106066,29 @@ xlOutlineNone =
     A.class "xl:outline-none"
 
 
+xlOutlineWhite : Svg.Attribute msg
+xlOutlineWhite =
+    A.class "xl:outline-white"
+
+
+xlOutlineBlack : Svg.Attribute msg
+xlOutlineBlack =
+    A.class "xl:outline-black"
+
+
 xlFocusOutlineNone : Svg.Attribute msg
 xlFocusOutlineNone =
     A.class "xl:focus:outline-none"
+
+
+xlFocusOutlineWhite : Svg.Attribute msg
+xlFocusOutlineWhite =
+    A.class "xl:focus:outline-white"
+
+
+xlFocusOutlineBlack : Svg.Attribute msg
+xlFocusOutlineBlack =
+    A.class "xl:focus:outline-black"
 
 
 xlOverflowAuto : Svg.Attribute msg
@@ -107116,6 +109761,51 @@ xlSubpixelAntialiased =
     A.class "xl:subpixel-antialiased"
 
 
+xlOrdinal : Svg.Attribute msg
+xlOrdinal =
+    A.class "xl:ordinal"
+
+
+xlSlashedZero : Svg.Attribute msg
+xlSlashedZero =
+    A.class "xl:slashed-zero"
+
+
+xlLiningNums : Svg.Attribute msg
+xlLiningNums =
+    A.class "xl:lining-nums"
+
+
+xlOldstyleNums : Svg.Attribute msg
+xlOldstyleNums =
+    A.class "xl:oldstyle-nums"
+
+
+xlProportionalNums : Svg.Attribute msg
+xlProportionalNums =
+    A.class "xl:proportional-nums"
+
+
+xlTabularNums : Svg.Attribute msg
+xlTabularNums =
+    A.class "xl:tabular-nums"
+
+
+xlDiagonalFractions : Svg.Attribute msg
+xlDiagonalFractions =
+    A.class "xl:diagonal-fractions"
+
+
+xlStackedFractions : Svg.Attribute msg
+xlStackedFractions =
+    A.class "xl:stacked-fractions"
+
+
+xlNormalNums : Svg.Attribute msg
+xlNormalNums =
+    A.class "xl:normal-nums"
+
+
 xlTrackingTighter : Svg.Attribute msg
 xlTrackingTighter =
     A.class "xl:tracking-tighter"
@@ -107621,101 +110311,6 @@ xlGapPx =
     A.class "xl:gap-px"
 
 
-xlColGap0 : Svg.Attribute msg
-xlColGap0 =
-    A.class "xl:col-gap-0"
-
-
-xlColGap1 : Svg.Attribute msg
-xlColGap1 =
-    A.class "xl:col-gap-1"
-
-
-xlColGap2 : Svg.Attribute msg
-xlColGap2 =
-    A.class "xl:col-gap-2"
-
-
-xlColGap3 : Svg.Attribute msg
-xlColGap3 =
-    A.class "xl:col-gap-3"
-
-
-xlColGap4 : Svg.Attribute msg
-xlColGap4 =
-    A.class "xl:col-gap-4"
-
-
-xlColGap5 : Svg.Attribute msg
-xlColGap5 =
-    A.class "xl:col-gap-5"
-
-
-xlColGap6 : Svg.Attribute msg
-xlColGap6 =
-    A.class "xl:col-gap-6"
-
-
-xlColGap8 : Svg.Attribute msg
-xlColGap8 =
-    A.class "xl:col-gap-8"
-
-
-xlColGap10 : Svg.Attribute msg
-xlColGap10 =
-    A.class "xl:col-gap-10"
-
-
-xlColGap12 : Svg.Attribute msg
-xlColGap12 =
-    A.class "xl:col-gap-12"
-
-
-xlColGap16 : Svg.Attribute msg
-xlColGap16 =
-    A.class "xl:col-gap-16"
-
-
-xlColGap20 : Svg.Attribute msg
-xlColGap20 =
-    A.class "xl:col-gap-20"
-
-
-xlColGap24 : Svg.Attribute msg
-xlColGap24 =
-    A.class "xl:col-gap-24"
-
-
-xlColGap32 : Svg.Attribute msg
-xlColGap32 =
-    A.class "xl:col-gap-32"
-
-
-xlColGap40 : Svg.Attribute msg
-xlColGap40 =
-    A.class "xl:col-gap-40"
-
-
-xlColGap48 : Svg.Attribute msg
-xlColGap48 =
-    A.class "xl:col-gap-48"
-
-
-xlColGap56 : Svg.Attribute msg
-xlColGap56 =
-    A.class "xl:col-gap-56"
-
-
-xlColGap64 : Svg.Attribute msg
-xlColGap64 =
-    A.class "xl:col-gap-64"
-
-
-xlColGapPx : Svg.Attribute msg
-xlColGapPx =
-    A.class "xl:col-gap-px"
-
-
 xlGapX0 : Svg.Attribute msg
 xlGapX0 =
     A.class "xl:gap-x-0"
@@ -107809,101 +110404,6 @@ xlGapX64 =
 xlGapXPx : Svg.Attribute msg
 xlGapXPx =
     A.class "xl:gap-x-px"
-
-
-xlRowGap0 : Svg.Attribute msg
-xlRowGap0 =
-    A.class "xl:row-gap-0"
-
-
-xlRowGap1 : Svg.Attribute msg
-xlRowGap1 =
-    A.class "xl:row-gap-1"
-
-
-xlRowGap2 : Svg.Attribute msg
-xlRowGap2 =
-    A.class "xl:row-gap-2"
-
-
-xlRowGap3 : Svg.Attribute msg
-xlRowGap3 =
-    A.class "xl:row-gap-3"
-
-
-xlRowGap4 : Svg.Attribute msg
-xlRowGap4 =
-    A.class "xl:row-gap-4"
-
-
-xlRowGap5 : Svg.Attribute msg
-xlRowGap5 =
-    A.class "xl:row-gap-5"
-
-
-xlRowGap6 : Svg.Attribute msg
-xlRowGap6 =
-    A.class "xl:row-gap-6"
-
-
-xlRowGap8 : Svg.Attribute msg
-xlRowGap8 =
-    A.class "xl:row-gap-8"
-
-
-xlRowGap10 : Svg.Attribute msg
-xlRowGap10 =
-    A.class "xl:row-gap-10"
-
-
-xlRowGap12 : Svg.Attribute msg
-xlRowGap12 =
-    A.class "xl:row-gap-12"
-
-
-xlRowGap16 : Svg.Attribute msg
-xlRowGap16 =
-    A.class "xl:row-gap-16"
-
-
-xlRowGap20 : Svg.Attribute msg
-xlRowGap20 =
-    A.class "xl:row-gap-20"
-
-
-xlRowGap24 : Svg.Attribute msg
-xlRowGap24 =
-    A.class "xl:row-gap-24"
-
-
-xlRowGap32 : Svg.Attribute msg
-xlRowGap32 =
-    A.class "xl:row-gap-32"
-
-
-xlRowGap40 : Svg.Attribute msg
-xlRowGap40 =
-    A.class "xl:row-gap-40"
-
-
-xlRowGap48 : Svg.Attribute msg
-xlRowGap48 =
-    A.class "xl:row-gap-48"
-
-
-xlRowGap56 : Svg.Attribute msg
-xlRowGap56 =
-    A.class "xl:row-gap-56"
-
-
-xlRowGap64 : Svg.Attribute msg
-xlRowGap64 =
-    A.class "xl:row-gap-64"
-
-
-xlRowGapPx : Svg.Attribute msg
-xlRowGapPx =
-    A.class "xl:row-gap-px"
 
 
 xlGapY0 : Svg.Attribute msg
@@ -108086,6 +110586,26 @@ xlGridColsNone =
     A.class "xl:grid-cols-none"
 
 
+xlAutoColsAuto : Svg.Attribute msg
+xlAutoColsAuto =
+    A.class "xl:auto-cols-auto"
+
+
+xlAutoColsMin : Svg.Attribute msg
+xlAutoColsMin =
+    A.class "xl:auto-cols-min"
+
+
+xlAutoColsMax : Svg.Attribute msg
+xlAutoColsMax =
+    A.class "xl:auto-cols-max"
+
+
+xlAutoColsFr : Svg.Attribute msg
+xlAutoColsFr =
+    A.class "xl:auto-cols-fr"
+
+
 xlColAuto : Svg.Attribute msg
 xlColAuto =
     A.class "xl:col-auto"
@@ -108149,6 +110669,11 @@ xlColSpan11 =
 xlColSpan12 : Svg.Attribute msg
 xlColSpan12 =
     A.class "xl:col-span-12"
+
+
+xlColSpanFull : Svg.Attribute msg
+xlColSpanFull =
+    A.class "xl:col-span-full"
 
 
 xlColStart1 : Svg.Attribute msg
@@ -108326,6 +110851,26 @@ xlGridRowsNone =
     A.class "xl:grid-rows-none"
 
 
+xlAutoRowsAuto : Svg.Attribute msg
+xlAutoRowsAuto =
+    A.class "xl:auto-rows-auto"
+
+
+xlAutoRowsMin : Svg.Attribute msg
+xlAutoRowsMin =
+    A.class "xl:auto-rows-min"
+
+
+xlAutoRowsMax : Svg.Attribute msg
+xlAutoRowsMax =
+    A.class "xl:auto-rows-max"
+
+
+xlAutoRowsFr : Svg.Attribute msg
+xlAutoRowsFr =
+    A.class "xl:auto-rows-fr"
+
+
 xlRowAuto : Svg.Attribute msg
 xlRowAuto =
     A.class "xl:row-auto"
@@ -108359,6 +110904,11 @@ xlRowSpan5 =
 xlRowSpan6 : Svg.Attribute msg
 xlRowSpan6 =
     A.class "xl:row-span-6"
+
+
+xlRowSpanFull : Svg.Attribute msg
+xlRowSpanFull =
+    A.class "xl:row-span-full"
 
 
 xlRowStart1 : Svg.Attribute msg
@@ -108951,6 +111501,31 @@ xlRotate0 =
     A.class "xl:rotate-0"
 
 
+xlRotate1 : Svg.Attribute msg
+xlRotate1 =
+    A.class "xl:rotate-1"
+
+
+xlRotate2 : Svg.Attribute msg
+xlRotate2 =
+    A.class "xl:rotate-2"
+
+
+xlRotate3 : Svg.Attribute msg
+xlRotate3 =
+    A.class "xl:rotate-3"
+
+
+xlRotate6 : Svg.Attribute msg
+xlRotate6 =
+    A.class "xl:rotate-6"
+
+
+xlRotate12 : Svg.Attribute msg
+xlRotate12 =
+    A.class "xl:rotate-12"
+
+
 xlRotate45 : Svg.Attribute msg
 xlRotate45 =
     A.class "xl:rotate-45"
@@ -108981,9 +111556,59 @@ xlNegRotate45 =
     A.class "xl:-rotate-45"
 
 
+xlNegRotate12 : Svg.Attribute msg
+xlNegRotate12 =
+    A.class "xl:-rotate-12"
+
+
+xlNegRotate6 : Svg.Attribute msg
+xlNegRotate6 =
+    A.class "xl:-rotate-6"
+
+
+xlNegRotate3 : Svg.Attribute msg
+xlNegRotate3 =
+    A.class "xl:-rotate-3"
+
+
+xlNegRotate2 : Svg.Attribute msg
+xlNegRotate2 =
+    A.class "xl:-rotate-2"
+
+
+xlNegRotate1 : Svg.Attribute msg
+xlNegRotate1 =
+    A.class "xl:-rotate-1"
+
+
 xlHoverRotate0 : Svg.Attribute msg
 xlHoverRotate0 =
     A.class "xl:hover:rotate-0"
+
+
+xlHoverRotate1 : Svg.Attribute msg
+xlHoverRotate1 =
+    A.class "xl:hover:rotate-1"
+
+
+xlHoverRotate2 : Svg.Attribute msg
+xlHoverRotate2 =
+    A.class "xl:hover:rotate-2"
+
+
+xlHoverRotate3 : Svg.Attribute msg
+xlHoverRotate3 =
+    A.class "xl:hover:rotate-3"
+
+
+xlHoverRotate6 : Svg.Attribute msg
+xlHoverRotate6 =
+    A.class "xl:hover:rotate-6"
+
+
+xlHoverRotate12 : Svg.Attribute msg
+xlHoverRotate12 =
+    A.class "xl:hover:rotate-12"
 
 
 xlHoverRotate45 : Svg.Attribute msg
@@ -109016,9 +111641,59 @@ xlHoverNegRotate45 =
     A.class "xl:hover:-rotate-45"
 
 
+xlHoverNegRotate12 : Svg.Attribute msg
+xlHoverNegRotate12 =
+    A.class "xl:hover:-rotate-12"
+
+
+xlHoverNegRotate6 : Svg.Attribute msg
+xlHoverNegRotate6 =
+    A.class "xl:hover:-rotate-6"
+
+
+xlHoverNegRotate3 : Svg.Attribute msg
+xlHoverNegRotate3 =
+    A.class "xl:hover:-rotate-3"
+
+
+xlHoverNegRotate2 : Svg.Attribute msg
+xlHoverNegRotate2 =
+    A.class "xl:hover:-rotate-2"
+
+
+xlHoverNegRotate1 : Svg.Attribute msg
+xlHoverNegRotate1 =
+    A.class "xl:hover:-rotate-1"
+
+
 xlFocusRotate0 : Svg.Attribute msg
 xlFocusRotate0 =
     A.class "xl:focus:rotate-0"
+
+
+xlFocusRotate1 : Svg.Attribute msg
+xlFocusRotate1 =
+    A.class "xl:focus:rotate-1"
+
+
+xlFocusRotate2 : Svg.Attribute msg
+xlFocusRotate2 =
+    A.class "xl:focus:rotate-2"
+
+
+xlFocusRotate3 : Svg.Attribute msg
+xlFocusRotate3 =
+    A.class "xl:focus:rotate-3"
+
+
+xlFocusRotate6 : Svg.Attribute msg
+xlFocusRotate6 =
+    A.class "xl:focus:rotate-6"
+
+
+xlFocusRotate12 : Svg.Attribute msg
+xlFocusRotate12 =
+    A.class "xl:focus:rotate-12"
 
 
 xlFocusRotate45 : Svg.Attribute msg
@@ -109049,6 +111724,31 @@ xlFocusNegRotate90 =
 xlFocusNegRotate45 : Svg.Attribute msg
 xlFocusNegRotate45 =
     A.class "xl:focus:-rotate-45"
+
+
+xlFocusNegRotate12 : Svg.Attribute msg
+xlFocusNegRotate12 =
+    A.class "xl:focus:-rotate-12"
+
+
+xlFocusNegRotate6 : Svg.Attribute msg
+xlFocusNegRotate6 =
+    A.class "xl:focus:-rotate-6"
+
+
+xlFocusNegRotate3 : Svg.Attribute msg
+xlFocusNegRotate3 =
+    A.class "xl:focus:-rotate-3"
+
+
+xlFocusNegRotate2 : Svg.Attribute msg
+xlFocusNegRotate2 =
+    A.class "xl:focus:-rotate-2"
+
+
+xlFocusNegRotate1 : Svg.Attribute msg
+xlFocusNegRotate1 =
+    A.class "xl:focus:-rotate-1"
 
 
 xlTranslateX0 : Svg.Attribute msg
@@ -110286,6 +112986,16 @@ xlSkewX0 =
     A.class "xl:skew-x-0"
 
 
+xlSkewX1 : Svg.Attribute msg
+xlSkewX1 =
+    A.class "xl:skew-x-1"
+
+
+xlSkewX2 : Svg.Attribute msg
+xlSkewX2 =
+    A.class "xl:skew-x-2"
+
+
 xlSkewX3 : Svg.Attribute msg
 xlSkewX3 =
     A.class "xl:skew-x-3"
@@ -110316,9 +113026,29 @@ xlNegSkewX3 =
     A.class "xl:-skew-x-3"
 
 
+xlNegSkewX2 : Svg.Attribute msg
+xlNegSkewX2 =
+    A.class "xl:-skew-x-2"
+
+
+xlNegSkewX1 : Svg.Attribute msg
+xlNegSkewX1 =
+    A.class "xl:-skew-x-1"
+
+
 xlSkewY0 : Svg.Attribute msg
 xlSkewY0 =
     A.class "xl:skew-y-0"
+
+
+xlSkewY1 : Svg.Attribute msg
+xlSkewY1 =
+    A.class "xl:skew-y-1"
+
+
+xlSkewY2 : Svg.Attribute msg
+xlSkewY2 =
+    A.class "xl:skew-y-2"
 
 
 xlSkewY3 : Svg.Attribute msg
@@ -110351,9 +113081,29 @@ xlNegSkewY3 =
     A.class "xl:-skew-y-3"
 
 
+xlNegSkewY2 : Svg.Attribute msg
+xlNegSkewY2 =
+    A.class "xl:-skew-y-2"
+
+
+xlNegSkewY1 : Svg.Attribute msg
+xlNegSkewY1 =
+    A.class "xl:-skew-y-1"
+
+
 xlHoverSkewX0 : Svg.Attribute msg
 xlHoverSkewX0 =
     A.class "xl:hover:skew-x-0"
+
+
+xlHoverSkewX1 : Svg.Attribute msg
+xlHoverSkewX1 =
+    A.class "xl:hover:skew-x-1"
+
+
+xlHoverSkewX2 : Svg.Attribute msg
+xlHoverSkewX2 =
+    A.class "xl:hover:skew-x-2"
 
 
 xlHoverSkewX3 : Svg.Attribute msg
@@ -110386,9 +113136,29 @@ xlHoverNegSkewX3 =
     A.class "xl:hover:-skew-x-3"
 
 
+xlHoverNegSkewX2 : Svg.Attribute msg
+xlHoverNegSkewX2 =
+    A.class "xl:hover:-skew-x-2"
+
+
+xlHoverNegSkewX1 : Svg.Attribute msg
+xlHoverNegSkewX1 =
+    A.class "xl:hover:-skew-x-1"
+
+
 xlHoverSkewY0 : Svg.Attribute msg
 xlHoverSkewY0 =
     A.class "xl:hover:skew-y-0"
+
+
+xlHoverSkewY1 : Svg.Attribute msg
+xlHoverSkewY1 =
+    A.class "xl:hover:skew-y-1"
+
+
+xlHoverSkewY2 : Svg.Attribute msg
+xlHoverSkewY2 =
+    A.class "xl:hover:skew-y-2"
 
 
 xlHoverSkewY3 : Svg.Attribute msg
@@ -110421,9 +113191,29 @@ xlHoverNegSkewY3 =
     A.class "xl:hover:-skew-y-3"
 
 
+xlHoverNegSkewY2 : Svg.Attribute msg
+xlHoverNegSkewY2 =
+    A.class "xl:hover:-skew-y-2"
+
+
+xlHoverNegSkewY1 : Svg.Attribute msg
+xlHoverNegSkewY1 =
+    A.class "xl:hover:-skew-y-1"
+
+
 xlFocusSkewX0 : Svg.Attribute msg
 xlFocusSkewX0 =
     A.class "xl:focus:skew-x-0"
+
+
+xlFocusSkewX1 : Svg.Attribute msg
+xlFocusSkewX1 =
+    A.class "xl:focus:skew-x-1"
+
+
+xlFocusSkewX2 : Svg.Attribute msg
+xlFocusSkewX2 =
+    A.class "xl:focus:skew-x-2"
 
 
 xlFocusSkewX3 : Svg.Attribute msg
@@ -110456,9 +113246,29 @@ xlFocusNegSkewX3 =
     A.class "xl:focus:-skew-x-3"
 
 
+xlFocusNegSkewX2 : Svg.Attribute msg
+xlFocusNegSkewX2 =
+    A.class "xl:focus:-skew-x-2"
+
+
+xlFocusNegSkewX1 : Svg.Attribute msg
+xlFocusNegSkewX1 =
+    A.class "xl:focus:-skew-x-1"
+
+
 xlFocusSkewY0 : Svg.Attribute msg
 xlFocusSkewY0 =
     A.class "xl:focus:skew-y-0"
+
+
+xlFocusSkewY1 : Svg.Attribute msg
+xlFocusSkewY1 =
+    A.class "xl:focus:skew-y-1"
+
+
+xlFocusSkewY2 : Svg.Attribute msg
+xlFocusSkewY2 =
+    A.class "xl:focus:skew-y-2"
 
 
 xlFocusSkewY3 : Svg.Attribute msg
@@ -110489,6 +113299,16 @@ xlFocusNegSkewY6 =
 xlFocusNegSkewY3 : Svg.Attribute msg
 xlFocusNegSkewY3 =
     A.class "xl:focus:-skew-y-3"
+
+
+xlFocusNegSkewY2 : Svg.Attribute msg
+xlFocusNegSkewY2 =
+    A.class "xl:focus:-skew-y-2"
+
+
+xlFocusNegSkewY1 : Svg.Attribute msg
+xlFocusNegSkewY1 =
+    A.class "xl:focus:-skew-y-1"
 
 
 xlTransitionNone : Svg.Attribute msg
