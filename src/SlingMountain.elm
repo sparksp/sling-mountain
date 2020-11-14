@@ -425,8 +425,8 @@ viewScenarios (Model { embed, todo, width, showCompleted, showRemaining, showDis
 
 viewTitle : Html Msg
 viewTitle =
-    Html.nav [ TW.text3xl, TW.mdText4xl, TW.mb2, TW.fontTitle ]
-        [ Html.span [ TW.textGray700, TW.text2xl, TW.mdText3xl ] [ Html.text "#" ]
+    Html.nav [ TW.text3xl, TW.mdText4xl, TW.leadingNormal, TW.mb2, TW.fontTitle ]
+        [ Html.span [ TW.textGray700, TW.text2xl, TW.mdText3xl, TW.leadingNormal ] [ Html.text "#" ]
         , Html.text "SlingMountain"
         ]
 
