@@ -70,7 +70,7 @@ getScenarios =
         |> Scenario.withLink (Scenario.Youtube "6s1OR4RycfU")
     , Scenario.build "Group Abseil"
         [ Html.p [] [ Html.text "Rig a group abseil with both a static and a safety line. The static line must be rigged so that it can be released in an emergency." ] ]
-        |> Scenario.withLink (Scenario.Youtube "WOnyBfdFuMY")
+        |> Scenario.withLink (Scenario.Youtube "NsiIX2ak1RU")
     , Scenario.build "Group bottom belay"
         [ Html.p [] [ Html.text "Rig a climb ready for a novice group to belay from the bottom of the crag." ] ]
         |> Scenario.withLink (Scenario.Youtube "eaApvRKwqSE")
