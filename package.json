@@ -11,11 +11,7 @@
   },
   "homepage": "https://github.com/sparksp/sling-mountain#readme",
   "scripts": {
-    "clean:cache": "rimraf .cache",
-    "clean:dist": "rimraf dist",
-    "clean:elm": "rimraf elm-stuff",
-    "clean": "run-p clean:cache clean:dist clean:elm ;",
-    "prebuild": "run-s clean ;",
+    "prebuild": "rimraf dist",
     "build": "parcel build src/index.html",
     "dev": "parcel src/index.html",
     "lint:format": "find src tests review/src -name *.elm ! -name Tailwind.elm | xargs elm-format --yes",
