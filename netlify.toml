@@ -2,6 +2,9 @@
     publish = "dist/"
     command = "yarn run build"
 
+[build.environment]
+    ELM_HOME = "$NETLIFY_BUILD_BASE/cache/elm"
+
 [[redirects]]
     from = "/*"
     to = "/index.html"
