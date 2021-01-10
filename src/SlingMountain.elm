@@ -78,7 +78,7 @@ type Msg
     | SetEmbed Embed
     | SetShow ( ShowSection, Bool )
     | LinkClicked Browser.UrlRequest
-    | UrlChanged Url.Url
+    | UrlChanged Url
 
 
 application : List Scenario -> Program Flags Model Msg
