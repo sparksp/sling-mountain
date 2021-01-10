@@ -30,7 +30,7 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
       - name: Add yarn bin to path
-        run: echo ::add-path::$(yarn bin)
+        run: yarn bin >> $GITHUB_PATH
       - name: Build elm
         run: elm make src/Main.elm --output /dev/null
       - name: Run elm-test
@@ -61,7 +61,7 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
       - name: Add yarn bin to path
-        run: echo ::add-path::$(yarn bin)
+        run: yarn bin >> $GITHUB_PATH
       - name: Run elm-review
         uses: sparksp/elm-review-action@v1
         env:
