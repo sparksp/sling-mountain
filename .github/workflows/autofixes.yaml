@@ -33,7 +33,7 @@ jobs:
       - name: elm-tooling install
         run: npx --no-install elm-tooling install
       - name: Run elm-format
-        run: npx elm-format --yes
+        run: npx elm-format src/ tests/ --yes
       - name: Apply elm-review fixes
         id: elm-review
         run: yes | npx elm-review --fix-all
