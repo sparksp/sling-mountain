@@ -27,9 +27,9 @@
     "watcherGlob": "**"
   },
   "devDependencies": {
-    "elm-hot": "^1.1.5",
-    "elm-review": "^2.4.0",
-    "elm-test": "^0.19.1-revision4",
+    "elm-hot": "^1.1.6",
+    "elm-review": "^2.4.1",
+    "elm-test": "^0.19.1-revision6",
     "elm-tooling": "^1.1.0",
     "elm-types": "^0.0.2",
     "node-elm-compiler": "^5.0.5",
