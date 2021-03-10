@@ -33,10 +33,10 @@ jobs:
       - name: elm-tooling install
         run: npx --no-install elm-tooling install
       - name: Run elm-format
-        run: npx elm-format src/ tests/ --yes
+        run: npx --no-install elm-format src/ tests/ --yes
       - name: Apply elm-review fixes
         id: elm-review
-        run: yes | npx elm-review --fix-all
+        run: yes | npx --no-install elm-review --fix-all
         continue-on-error: true
       - uses: peter-evans/create-pull-request@v3
         with:
