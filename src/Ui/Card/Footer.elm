@@ -12,7 +12,7 @@ module Ui.Card.Footer exposing
 import Html exposing (Html)
 import Html.Attributes as Attr
 import Html.Events as Events
-import Html.Tailwind as TW
+import Tailwind as TW
 import Ui.Card.Action as Action exposing (Action)
 
 
@@ -75,17 +75,22 @@ viewHelper link_ actions =
             actions
 
         Link { href, text } ->
-            [ Html.nav [ TW.bgTransparent, TW.borderT, TW.px3, TW.flex ]
+            [ Html.nav
+                [ Attr.class TW.bgTransparent
+                , Attr.class TW.borderT
+                , Attr.class TW.px3
+                , Attr.class TW.flex
+                ]
                 (Html.a
                     [ Attr.href href
                     , Attr.title text
-                    , TW.block
-                    , TW.flex1
-                    , TW.hoverTextGray800
-                    , TW.px3
-                    , TW.py2
-                    , TW.textGray500
-                    , TW.textLeft
+                    , Attr.class TW.block
+                    , Attr.class TW.flex1
+                    , Attr.class TW.hoverTextGray800
+                    , Attr.class TW.px3
+                    , Attr.class TW.py2
+                    , Attr.class TW.textGray500
+                    , Attr.class TW.textLeft
                     ]
                     [ Html.text text
                     ]
@@ -94,17 +99,22 @@ viewHelper link_ actions =
             ]
 
         Button { text, onClick } ->
-            [ Html.figure [ TW.bgTransparent, TW.borderT, TW.px3, TW.flex ]
+            [ Html.figure
+                [ Attr.class TW.bgTransparent
+                , Attr.class TW.borderT
+                , Attr.class TW.px3
+                , Attr.class TW.flex
+                ]
                 (Html.button
                     [ Events.onClick onClick
                     , Attr.title text
-                    , TW.block
-                    , TW.hoverTextGray800
-                    , TW.px3
-                    , TW.py2
-                    , TW.textGray500
-                    , TW.wFull
-                    , TW.textLeft
+                    , Attr.class TW.block
+                    , Attr.class TW.hoverTextGray800
+                    , Attr.class TW.px3
+                    , Attr.class TW.py2
+                    , Attr.class TW.textGray500
+                    , Attr.class TW.wFull
+                    , Attr.class TW.textLeft
                     ]
                     [ Html.text text
                     ]
@@ -113,14 +123,25 @@ viewHelper link_ actions =
             ]
 
         Figure { attributes, content } ->
-            [ Html.figure (TW.borderT :: attributes) content
+            [ Html.figure (Attr.class TW.borderT :: attributes) content
             ]
 
         Image { src, alt } ->
-            [ Html.figure [ TW.bgTransparent, TW.borderT ]
+            [ Html.figure
+                [ Attr.class TW.bgTransparent
+                , Attr.class TW.borderT
+                ]
                 [ Html.img [ Attr.src src, Attr.alt alt ] []
                 ]
             ]
 
         Action { parent, action } ->
-            viewHelper parent (Action.view [ TW.px3, TW.py2, TW.h6 ] action :: actions)
+            viewHelper parent
+                (Action.view
+                    [ Attr.class TW.px3
+                    , Attr.class TW.py2
+                    , Attr.class TW.h6
+                    ]
+                    action
+                    :: actions
+                )

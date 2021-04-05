@@ -1,9 +1,10 @@
 module Main exposing (main)
 
 import Html
-import Html.Tailwind as TW
+import Html.Attributes as Attr
 import Scenario exposing (Scenario)
 import SlingMountain
+import Tailwind as TW
 
 
 main : Program SlingMountain.Flags SlingMountain.Model SlingMountain.Msg
@@ -45,7 +46,7 @@ getScenarios =
         |> Scenario.withLink (Scenario.Youtube "EjDNpYw4l34")
     , Scenario.build "Clip Stick Skills"
         [ Html.p [] [ Html.text "Using your clip stick..." ]
-        , Html.ol [ TW.listDecimal, TW.listInside ]
+        , Html.ol [ Attr.class TW.listDecimal, Attr.class TW.listInside ]
             [ Html.li [] [ Html.text "Put the first quickdraw in, with the rope attached." ]
             , Html.li [] [ Html.text "Put the rope into a quickdraw that's already up." ]
             , Html.li [] [ Html.text "Pull the rope down leaving it in the first quickdraw." ]

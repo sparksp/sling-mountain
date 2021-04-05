@@ -3,9 +3,9 @@ const elmTailwind = require('postcss-elm-tailwind')(
     { elmFile: 'src/Html/Tailwind.elm'
     , elmModuleName: 'Html.Tailwind'
     , formats:
-        { svg:
-            { elmFile: 'src/Svg/Tailwind.elm'
-            , elmModuleName: 'Svg.Tailwind'
+        { string:
+            { elmFile: "src/Tailwind.elm"
+            , elmModuleName: "Tailwind"
             }
         }
     , nameStyle: 'camel'

@@ -9,8 +9,8 @@ module Ui.Card.Action exposing
 import Html exposing (Html)
 import Html.Attributes as Attr
 import Html.Events as Events
-import Html.Tailwind as TW
-import Svg.Tailwind as STW
+import Svg.Attributes
+import Tailwind as TW
 import Ui.Icons as Icons
 
 
@@ -40,11 +40,11 @@ view attributes action =
     let
         baseAttributes : List (Html.Attribute msg)
         baseAttributes =
-            TW.flex
-                :: TW.flexRow
-                :: TW.itemsCenter
-                :: TW.boxContent
-                :: TW.textGray600
+            Attr.class TW.flex
+                :: Attr.class TW.flexRow
+                :: Attr.class TW.itemsCenter
+                :: Attr.class TW.boxContent
+                :: Attr.class TW.textGray600
                 :: attributes
     in
     case action of
@@ -52,24 +52,36 @@ view attributes action =
             Html.button
                 (Events.onClick options.onClick
                     :: Attr.title options.text
-                    :: TW.hoverTextBlack
+                    :: Attr.class TW.hoverTextBlack
                     :: baseAttributes
                 )
-                [ options.icon [ STW.h4, STW.w4 ] ]
+                [ options.icon
+                    [ Svg.Attributes.class TW.h4
+                    , Svg.Attributes.class TW.w4
+                    ]
+                ]
 
         Icon options ->
             Html.div
                 (Attr.title options.text
-                    :: TW.cursorNotAllowed
+                    :: Attr.class TW.cursorNotAllowed
                     :: baseAttributes
                 )
-                [ options.icon [ STW.h4, STW.w4 ] ]
+                [ options.icon
+                    [ Svg.Attributes.class TW.h4
+                    , Svg.Attributes.class TW.w4
+                    ]
+                ]
 
         Link options ->
             Html.a
                 (Attr.title options.text
                     :: Attr.href options.href
-                    :: TW.hoverTextGray900
+                    :: Attr.class TW.hoverTextGray900
                     :: baseAttributes
                 )
-                [ options.icon [ STW.h4, STW.w4 ] ]
+                [ options.icon
+                    [ Svg.Attributes.class TW.h4
+                    , Svg.Attributes.class TW.w4
+                    ]
+                ]

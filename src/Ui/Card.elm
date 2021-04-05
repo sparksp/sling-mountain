@@ -2,7 +2,7 @@ module Ui.Card exposing (Card, view)
 
 import Html exposing (Html)
 import Html.Attributes as Attr
-import Html.Tailwind as TW
+import Tailwind as TW
 import Ui.Card.Footer as Footer exposing (Footer)
 import Ui.Card.Frame as Frame exposing (Frame)
 import Ui.Card.Title as Title exposing (Title)
@@ -21,37 +21,37 @@ view ({ frame, body } as card) =
     let
         baseAttributes : List (Html.Attribute msg)
         baseAttributes =
-            [ TW.bgWhite
-            , TW.my3
-            , TW.overflowHidden
-            , TW.smRounded
-            , TW.wFull
+            [ Attr.class TW.bgWhite
+            , Attr.class TW.my3
+            , Attr.class TW.overflowHidden
+            , Attr.class TW.smRounded
+            , Attr.class TW.wFull
             ]
 
         ( element, attributes ) =
             case frame of
                 Frame.Default ->
                     ( Html.div
-                    , TW.shadowSm
+                    , Attr.class TW.shadowSm
                         :: baseAttributes
                     )
 
                 Frame.Primary ->
                     ( Html.main_
                     , Attr.id "current"
-                        :: TW.shadowLg
+                        :: Attr.class TW.shadowLg
                         :: baseAttributes
                     )
 
                 Frame.Active ->
                     ( Html.div
-                    , TW.shadowSm
-                        :: TW.hoverShadowLg
-                        :: TW.smHoverTranslateX1
-                        :: TW.smTransform
-                        :: TW.transitionAll
-                        :: TW.duration150
-                        :: TW.easeInOut
+                    , Attr.class TW.shadowSm
+                        :: Attr.class TW.hoverShadowLg
+                        :: Attr.class TW.smHoverTranslateX1
+                        :: Attr.class TW.smTransform
+                        :: Attr.class TW.transitionAll
+                        :: Attr.class TW.duration150
+                        :: Attr.class TW.easeInOut
                         :: baseAttributes
                     )
     in
@@ -70,11 +70,11 @@ withBody body =
 
         _ ->
             [ Html.div
-                [ TW.textGray700
-                , TW.textBase
-                , TW.px4
-                , TW.smPx6
-                , TW.mb3
+                [ Attr.class TW.textGray700
+                , Attr.class TW.textBase
+                , Attr.class TW.px4
+                , Attr.class TW.smPx6
+                , Attr.class TW.mb3
                 ]
                 body
             ]

@@ -11,7 +11,6 @@ import Html exposing (Html)
 import Html.Attributes as Attr
 import Html.Events as Events
 import Html.Keyed as Keyed
-import Html.Tailwind as TW
 import Json.Decode as Decode
 import Json.Encode as Encode
 import Ports
@@ -19,7 +18,8 @@ import Random
 import SHA1
 import Scenario exposing (Scenario)
 import Svg exposing (Attribute)
-import Svg.Tailwind as STW
+import Svg.Attributes
+import Tailwind as TW
 import Task
 import TodoList exposing (TodoList)
 import Ui.Card as Card
@@ -358,11 +358,11 @@ view model =
     { title = documentTitle model
     , body =
         [ Html.div
-            [ TW.flex
-            , TW.flexCol
-            , TW.itemsCenter
-            , TW.mdPx3
-            , TW.py3
+            [ Attr.class TW.flex
+            , Attr.class TW.flexCol
+            , Attr.class TW.itemsCenter
+            , Attr.class TW.mdPx3
+            , Attr.class TW.py3
             ]
             [ viewTitle
             , viewScenarios model
@@ -420,13 +420,25 @@ viewScenarios (Model { embed, todo, width, showCompleted, showRemaining, showDis
             { options = options
             , show = ( ShowInformation, showInformation )
             }
-        |> Keyed.node "div" [ TW.smMaxWLg, TW.wFull ]
+        |> Keyed.node "div" [ Attr.class TW.smMaxWLg, Attr.class TW.wFull ]
 
 
 viewTitle : Html Msg
 viewTitle =
-    Html.nav [ TW.text3xl, TW.mdText4xl, TW.leadingNormal, TW.mb2, TW.fontTitle ]
-        [ Html.span [ TW.textGray700, TW.text2xl, TW.mdText3xl, TW.leadingNormal ] [ Html.text "#" ]
+    Html.nav
+        [ Attr.class TW.text3xl
+        , Attr.class TW.mdText4xl
+        , Attr.class TW.leadingNormal
+        , Attr.class TW.mb2
+        , Attr.class TW.fontTitle
+        ]
+        [ Html.span
+            [ Attr.class TW.textGray700
+            , Attr.class TW.text2xl
+            , Attr.class TW.mdText3xl
+            , Attr.class TW.leadingNormal
+            ]
+            [ Html.text "#" ]
         , Html.text "SlingMountain"
         ]
 
@@ -440,12 +452,20 @@ viewInformationList { options, show } =
             , title =
                 Title.static Icons.info "Phill Sparks"
                     |> Title.withActions
-                        [ Action.link { icon = Icons.instagram, href = "https://www.instagram.com/sparksphill/", text = "Phill Sparks on Instagram" }
+                        [ Action.link
+                            { icon = Icons.instagram
+                            , href = "https://www.instagram.com/sparksphill/"
+                            , text = "Phill Sparks on Instagram"
+                            }
                         ]
             , body =
                 [ Html.p [] [ Html.text "Phill Sparks is a Climbing Instructor based in the Midlands. He built this site to choose random things to practice and to quickly find the videos that explain those techniques." ]
                 ]
-            , footer = Footer.image { src = "/img/phill-sparks.jpg", alt = "Photo of Phill Sparks standing at the top of a crag, wearing an orange coat and waving." }
+            , footer =
+                Footer.image
+                    { src = "/img/phill-sparks.jpg"
+                    , alt = "Photo of Phill Sparks standing at the top of a crag, wearing an orange coat and waving."
+                    }
             }
           )
         , ( "get-in-touch"
@@ -453,13 +473,22 @@ viewInformationList { options, show } =
             , title =
                 Title.static Icons.inboxCheck "Get in touch"
                     |> Title.withActions
-                        [ Action.link { icon = Icons.bug, href = "https://github.com/sparksp/sling-mountain/issues", text = "Report a bug" }
+                        [ Action.link
+                            { icon = Icons.bug
+                            , href = "https://github.com/sparksp/sling-mountain/issues"
+                            , text = "Report a bug"
+                            }
                         ]
             , body =
                 [ Html.div []
-                    [ Html.p [ TW.mb2 ]
+                    [ Html.p [ Attr.class TW.mb2 ]
                         [ Html.text "Please get in touch with Phill if you have any suggestions for the website. If you find any bugs or typos please "
-                        , Html.a [ Attr.href "https://github.com/sparksp/sling-mountain/issues", Attr.title "Report issues on GitHub", TW.hoverTextBlack ] [ Html.text "report them on GitHub" ]
+                        , Html.a
+                            [ Attr.href "https://github.com/sparksp/sling-mountain/issues"
+                            , Attr.title "Report issues on GitHub"
+                            , Attr.class TW.hoverTextBlack
+                            ]
+                            [ Html.text "report them on GitHub" ]
                         , Html.text " where you can also find the code for this site."
                         ]
                     , Html.p []
@@ -513,24 +542,36 @@ viewInformationList { options, show } =
             , body =
                 [ Html.ul []
                     [ Html.li []
-                        [ Icons.chevronRight [ STW.h4, STW.w4, STW.my1, STW.mr1, STW.floatLeft ]
+                        [ Icons.chevronRight
+                            [ Svg.Attributes.class TW.h4
+                            , Svg.Attributes.class TW.w4
+                            , Svg.Attributes.class TW.my1
+                            , Svg.Attributes.class TW.mr1
+                            , Svg.Attributes.class TW.floatLeft
+                            ]
                         , Html.text "Icons designed by "
                         , Html.a
                             [ Attr.href "https://www.zondicons.com/"
                             , Attr.title "Zondicons"
-                            , TW.hoverTextBlack
+                            , Attr.class TW.hoverTextBlack
                             ]
                             [ Html.text "Steve Schoger from Zondicons"
                             ]
                         , Html.text "."
                         ]
                     , Html.li []
-                        [ Icons.chevronRight [ STW.h4, STW.w4, STW.my1, STW.mr1, STW.floatLeft ]
+                        [ Icons.chevronRight
+                            [ Svg.Attributes.class TW.h4
+                            , Svg.Attributes.class TW.w4
+                            , Svg.Attributes.class TW.my1
+                            , Svg.Attributes.class TW.mr1
+                            , Svg.Attributes.class TW.floatLeft
+                            ]
                         , Html.text "Icons designed by "
                         , Html.a
                             [ Attr.href "https://www.flaticon.com/authors/pixel-perfect"
                             , Attr.title "Pixel Perfect"
-                            , TW.hoverTextBlack
+                            , Attr.class TW.hoverTextBlack
                             ]
                             [ Html.text "Pixel Perfect from Flaticon."
                             ]
@@ -573,35 +614,56 @@ viewHeading heading { count, show } =
     let
         iconAttr : List (Attribute msg)
         iconAttr =
-            [ STW.h4
-            , STW.w4
-            , STW.transitionTransform
-            , STW.easeInOut
-            , STW.duration200
-            , STW.transform
+            [ Svg.Attributes.class TW.h4
+            , Svg.Attributes.class TW.w4
+            , Svg.Attributes.class TW.transitionTransform
+            , Svg.Attributes.class TW.easeInOut
+            , Svg.Attributes.class TW.duration200
+            , Svg.Attributes.class TW.transform
             ]
 
         icon : Html msg
         icon =
             if Tuple.second show then
-                Icons.chevronRight (STW.rotate90 :: iconAttr)
+                Icons.chevronRight (Svg.Attributes.class TW.rotate90 :: iconAttr)
 
             else
                 Icons.chevronRight iconAttr
     in
-    Html.h2 [ TW.mt6, TW.mb3, TW.flex, TW.flexRow, TW.textGray600, TW.fontTitle ]
-        [ Html.span [ TW.flex1, TW.borderGray400, TW.borderB, TW.mAuto, TW.mr2 ] []
+    Html.h2
+        [ Attr.class TW.mt6
+        , Attr.class TW.mb3
+        , Attr.class TW.flex
+        , Attr.class TW.flexRow
+        , Attr.class TW.textGray600
+        , Attr.class TW.fontTitle
+        ]
+        [ Html.span
+            [ Attr.class TW.flex1
+            , Attr.class TW.borderGray400
+            , Attr.class TW.borderB
+            , Attr.class TW.mAuto
+            , Attr.class TW.mr2
+            ]
+            []
         , Html.button
             [ Events.onClick (SetShow (Tuple.mapSecond not show))
-            , TW.flex
-            , TW.flexRow
-            , TW.itemsCenter
-            , TW.hoverTextGray800
+            , Attr.class TW.flex
+            , Attr.class TW.flexRow
+            , Attr.class TW.itemsCenter
+            , Attr.class TW.hoverTextGray800
             ]
             [ Html.span [] [ icon ]
             , Html.text (heading ++ " (" ++ String.fromInt count ++ ")")
             ]
-        , Html.span [ TW.flex1, TW.borderGray400, TW.borderB, TW.mAuto, TW.ml2 ] []
+        , Html.span
+            [ Attr.class TW.flex1
+            , Attr.class TW.borderGray400
+            , Attr.class TW.borderB
+            , Attr.class TW.mAuto
+            , Attr.class TW.ml2
+            ]
+            []
         ]
 
 
@@ -632,15 +694,15 @@ viewRestoreAllCompletedButton : ( Key, Html Msg )
 viewRestoreAllCompletedButton =
     ( "restore-all-completed"
     , Html.div
-        [ TW.flex
-        , TW.flexRow
-        , TW.justifyCenter
+        [ Attr.class TW.flex
+        , Attr.class TW.flexRow
+        , Attr.class TW.justifyCenter
         ]
         [ Html.button
             [ Events.onClick RestoreAllCompleted
-            , TW.textGray600
-            , TW.hoverTextGray800
-            , TW.wFull
+            , Attr.class TW.textGray600
+            , Attr.class TW.hoverTextGray800
+            , Attr.class TW.wFull
             ]
             [ Html.text "Restore All Completed Scenarios"
             ]
@@ -652,15 +714,15 @@ viewRestoreAllDisabledButton : ( Key, Html Msg )
 viewRestoreAllDisabledButton =
     ( "restore-all-completed"
     , Html.div
-        [ TW.flex
-        , TW.flexRow
-        , TW.justifyCenter
+        [ Attr.class TW.flex
+        , Attr.class TW.flexRow
+        , Attr.class TW.justifyCenter
         ]
         [ Html.button
             [ Events.onClick RestoreAllDisabled
-            , TW.textGray600
-            , TW.hoverTextGray800
-            , TW.wFull
+            , Attr.class TW.textGray600
+            , Attr.class TW.hoverTextGray800
+            , Attr.class TW.wFull
             ]
             [ Html.text "Restore All Disabled Scenarios"
             ]
@@ -861,12 +923,17 @@ youtubeFooterButton youtubeId =
 youtubeFooterEmbed : Int -> String -> Footer msg
 youtubeFooterEmbed maxWidth youtubeId =
     Footer.figure
-        { attributes = [ TW.bgBlack, TW.transitionColors, TW.duration300, TW.easeIn ]
+        { attributes =
+            [ Attr.class TW.bgBlack
+            , Attr.class TW.transitionColors
+            , Attr.class TW.duration300
+            , Attr.class TW.easeIn
+            ]
         , content =
             [ Html.div
-                [ TW.flex
-                , TW.flexCol
-                , TW.itemsCenter
+                [ Attr.class TW.flex
+                , Attr.class TW.flexCol
+                , Attr.class TW.itemsCenter
                 ]
                 [ Embed.Youtube.fromString youtubeId
                     |> Embed.Youtube.attributes
