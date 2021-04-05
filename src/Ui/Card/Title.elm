@@ -7,10 +7,10 @@ module Ui.Card.Title exposing
     , withActions
     )
 
-import Html exposing (Html)
-import Html.Attributes as Attr
-import Html.Events as Events
-import Svg.Attributes
+import Html.Styled as Html exposing (Html)
+import Html.Styled.Attributes as Attr
+import Html.Styled.Events as Events
+import Svg.Styled.Attributes as SvgAttributes
 import Tailwind as TW
 import Ui.Card.Action as Action exposing (Action)
 import Ui.Icons as Icons
@@ -108,11 +108,11 @@ view title_ =
                         :: buttonPadding
                     )
                     [ icon
-                        [ Svg.Attributes.class TW.h4
-                        , Svg.Attributes.class TW.w4
-                        , Svg.Attributes.class TW.floatLeft
-                        , Svg.Attributes.class TW.mr2
-                        , Svg.Attributes.class TW.mt1
+                        [ SvgAttributes.class TW.h4
+                        , SvgAttributes.class TW.w4
+                        , SvgAttributes.class TW.floatLeft
+                        , SvgAttributes.class TW.mr2
+                        , SvgAttributes.class TW.mt1
                         ]
                     , Html.span [ Attr.class TW.textGray900 ] [ Html.text text ]
                     ]
@@ -127,11 +127,11 @@ view title_ =
                         :: buttonPadding
                     )
                     [ icon
-                        [ Svg.Attributes.class TW.h4
-                        , Svg.Attributes.class TW.w4
-                        , Svg.Attributes.class TW.floatLeft
-                        , Svg.Attributes.class TW.mr2
-                        , Svg.Attributes.class TW.mt1
+                        [ SvgAttributes.class TW.h4
+                        , SvgAttributes.class TW.w4
+                        , SvgAttributes.class TW.floatLeft
+                        , SvgAttributes.class TW.mr2
+                        , SvgAttributes.class TW.mt1
                         ]
                     , Html.span [ Attr.class TW.textGray900 ] [ Html.text text ]
                     ]
@@ -141,11 +141,11 @@ view title_ =
                 Html.p buttonPadding
                     [ Html.span [ Attr.class TW.textGray900 ]
                         [ icon
-                            [ Svg.Attributes.class TW.h4
-                            , Svg.Attributes.class TW.w4
-                            , Svg.Attributes.class TW.floatLeft
-                            , Svg.Attributes.class TW.mr2
-                            , Svg.Attributes.class TW.mt1
+                            [ SvgAttributes.class TW.h4
+                            , SvgAttributes.class TW.w4
+                            , SvgAttributes.class TW.floatLeft
+                            , SvgAttributes.class TW.mr2
+                            , SvgAttributes.class TW.mt1
                             ]
                         , Html.span [ Attr.class TW.textGray900 ] [ Html.text text ]
                         ]

@@ -6,10 +6,10 @@ module Ui.Card.Action exposing
     , view
     )
 
-import Html exposing (Html)
-import Html.Attributes as Attr
-import Html.Events as Events
-import Svg.Attributes
+import Html.Styled as Html exposing (Html)
+import Html.Styled.Attributes as Attr
+import Html.Styled.Events as Events
+import Svg.Styled.Attributes as SvgAttributes
 import Tailwind as TW
 import Ui.Icons as Icons
 
@@ -56,8 +56,8 @@ view attributes action =
                     :: baseAttributes
                 )
                 [ options.icon
-                    [ Svg.Attributes.class TW.h4
-                    , Svg.Attributes.class TW.w4
+                    [ SvgAttributes.class TW.h4
+                    , SvgAttributes.class TW.w4
                     ]
                 ]
 
@@ -68,8 +68,8 @@ view attributes action =
                     :: baseAttributes
                 )
                 [ options.icon
-                    [ Svg.Attributes.class TW.h4
-                    , Svg.Attributes.class TW.w4
+                    [ SvgAttributes.class TW.h4
+                    , SvgAttributes.class TW.w4
                     ]
                 ]
 
@@ -81,7 +81,7 @@ view attributes action =
                     :: baseAttributes
                 )
                 [ options.icon
-                    [ Svg.Attributes.class TW.h4
-                    , Svg.Attributes.class TW.w4
+                    [ SvgAttributes.class TW.h4
+                    , SvgAttributes.class TW.w4
                     ]
                 ]

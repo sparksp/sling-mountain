@@ -1,7 +1,7 @@
 module Ui.Card exposing (Card, view)
 
-import Html exposing (Html)
-import Html.Attributes as Attr
+import Html.Styled as Html exposing (Html)
+import Html.Styled.Attributes as Attr
 import Tailwind as TW
 import Ui.Card.Footer as Footer exposing (Footer)
 import Ui.Card.Frame as Frame exposing (Frame)

@@ -9,9 +9,9 @@ module Ui.Card.Footer exposing
     , withAction
     )
 
-import Html exposing (Html)
-import Html.Attributes as Attr
-import Html.Events as Events
+import Html.Styled as Html exposing (Html)
+import Html.Styled.Attributes as Attr
+import Html.Styled.Events as Events
 import Tailwind as TW
 import Ui.Card.Action as Action exposing (Action)
 

@@ -1,7 +1,7 @@
 module Main exposing (main)
 
-import Html
-import Html.Attributes as Attr
+import Html.Styled as Html
+import Html.Styled.Attributes as Attr
 import Scenario exposing (Scenario)
 import SlingMountain
 import Tailwind as TW

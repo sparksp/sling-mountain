@@ -7,18 +7,18 @@ import Browser.Navigation as Nav
 import Embed exposing (Embed)
 import Embed.Youtube
 import Embed.Youtube.Attributes
-import Html exposing (Html)
-import Html.Attributes as Attr
-import Html.Events as Events
-import Html.Keyed as Keyed
+import Html.Styled as Html exposing (Html)
+import Html.Styled.Attributes as Attr
+import Html.Styled.Events as Events
+import Html.Styled.Keyed as Keyed
 import Json.Decode as Decode
 import Json.Encode as Encode
 import Ports
 import Random
 import SHA1
 import Scenario exposing (Scenario)
-import Svg exposing (Attribute)
-import Svg.Attributes
+import Svg.Styled as Svg
+import Svg.Styled.Attributes as SvgAttributes
 import Tailwind as TW
 import Task
 import TodoList exposing (TodoList)
@@ -367,6 +367,7 @@ view model =
             [ viewTitle
             , viewScenarios model
             ]
+            |> Html.toUnstyled
         ]
     }
 
@@ -543,11 +544,11 @@ viewInformationList { options, show } =
                 [ Html.ul []
                     [ Html.li []
                         [ Icons.chevronRight
-                            [ Svg.Attributes.class TW.h4
-                            , Svg.Attributes.class TW.w4
-                            , Svg.Attributes.class TW.my1
-                            , Svg.Attributes.class TW.mr1
-                            , Svg.Attributes.class TW.floatLeft
+                            [ SvgAttributes.class TW.h4
+                            , SvgAttributes.class TW.w4
+                            , SvgAttributes.class TW.my1
+                            , SvgAttributes.class TW.mr1
+                            , SvgAttributes.class TW.floatLeft
                             ]
                         , Html.text "Icons designed by "
                         , Html.a
@@ -561,11 +562,11 @@ viewInformationList { options, show } =
                         ]
                     , Html.li []
                         [ Icons.chevronRight
-                            [ Svg.Attributes.class TW.h4
-                            , Svg.Attributes.class TW.w4
-                            , Svg.Attributes.class TW.my1
-                            , Svg.Attributes.class TW.mr1
-                            , Svg.Attributes.class TW.floatLeft
+                            [ SvgAttributes.class TW.h4
+                            , SvgAttributes.class TW.w4
+                            , SvgAttributes.class TW.my1
+                            , SvgAttributes.class TW.mr1
+                            , SvgAttributes.class TW.floatLeft
                             ]
                         , Html.text "Icons designed by "
                         , Html.a
@@ -612,20 +613,20 @@ viewHeading :
     -> Html Msg
 viewHeading heading { count, show } =
     let
-        iconAttr : List (Attribute msg)
+        iconAttr : List (Svg.Attribute msg)
         iconAttr =
-            [ Svg.Attributes.class TW.h4
-            , Svg.Attributes.class TW.w4
-            , Svg.Attributes.class TW.transitionTransform
-            , Svg.Attributes.class TW.easeInOut
-            , Svg.Attributes.class TW.duration200
-            , Svg.Attributes.class TW.transform
+            [ SvgAttributes.class TW.h4
+            , SvgAttributes.class TW.w4
+            , SvgAttributes.class TW.transitionTransform
+            , SvgAttributes.class TW.easeInOut
+            , SvgAttributes.class TW.duration200
+            , SvgAttributes.class TW.transform
             ]
 
         icon : Html msg
         icon =
             if Tuple.second show then
-                Icons.chevronRight (Svg.Attributes.class TW.rotate90 :: iconAttr)
+                Icons.chevronRight (SvgAttributes.class TW.rotate90 :: iconAttr)
 
             else
                 Icons.chevronRight iconAttr
@@ -941,6 +942,7 @@ youtubeFooterEmbed maxWidth youtubeId =
                         , Embed.Youtube.Attributes.height (maxWidth * 288 // 512)
                         ]
                     |> Embed.Youtube.toHtml
+                    |> Html.fromUnstyled
                 ]
             ]
         }
