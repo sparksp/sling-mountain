@@ -7,11 +7,13 @@ module Ui.Card.Title exposing
     , withActions
     )
 
+import Css
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attr
 import Html.Styled.Events as Events
 import Svg.Styled.Attributes as SvgAttributes
-import Tailwind as TW
+import Tailwind.Breakpoints as Breakpoints
+import Tailwind.Utilities as Tw
 import Ui.Card.Action as Action exposing (Action)
 import Ui.Icons as Icons
 
@@ -83,71 +85,85 @@ view title_ =
     let
         buttonPadding : List (Html.Attribute msg)
         buttonPadding =
-            [ Attr.class TW.px3
-            , Attr.class TW.py3
-            , Attr.class TW.wFull
+            [ Attr.css
+                [ Tw.px_3
+                , Tw.py_3
+                , Tw.w_full
+                ]
             ]
     in
     Html.div
-        [ Attr.class TW.flex
-        , Attr.class TW.flexRow
-        , Attr.class TW.itemsStart
-        , Attr.class TW.fontBold
-        , Attr.class TW.leading6
-        , Attr.class TW.px1
-        , Attr.class TW.smPx3
-        , Attr.class TW.textXl
+        [ Attr.css
+            [ Tw.flex
+            , Tw.flex_row
+            , Tw.items_start
+            , Tw.font_bold
+            , Tw.leading_6
+            , Tw.px_1
+            , Breakpoints.sm [ Tw.px_3 ]
+            , Tw.text_xl
+            ]
         ]
         (case title_ of
             Button { actions, icon, onClick, text } ->
                 Html.button
                     (Events.onClick onClick
-                        :: Attr.class TW.hoverTextBlack
-                        :: Attr.class TW.textGray600
-                        :: Attr.class TW.textLeft
+                        :: Attr.css
+                            [ Css.hover [ Tw.text_black ]
+                            , Tw.text_gray_600
+                            , Tw.text_left
+                            ]
                         :: buttonPadding
                     )
                     [ icon
-                        [ SvgAttributes.class TW.h4
-                        , SvgAttributes.class TW.w4
-                        , SvgAttributes.class TW.floatLeft
-                        , SvgAttributes.class TW.mr2
-                        , SvgAttributes.class TW.mt1
+                        [ SvgAttributes.css
+                            [ Tw.h_4
+                            , Tw.w_4
+                            , Tw.float_left
+                            , Tw.mr_2
+                            , Tw.mt_1
+                            ]
                         ]
-                    , Html.span [ Attr.class TW.textGray900 ] [ Html.text text ]
+                    , Html.span [ Attr.css [ Tw.text_gray_900 ] ] [ Html.text text ]
                     ]
                     :: viewActions actions
 
             Link { actions, icon, href, text } ->
                 Html.a
                     (Attr.href href
-                        :: Attr.class TW.hoverTextBlack
-                        :: Attr.class TW.textGray600
-                        :: Attr.class TW.textLeft
+                        :: Attr.css
+                            [ Css.hover [ Tw.text_black ]
+                            , Tw.text_gray_600
+                            , Tw.text_left
+                            ]
                         :: buttonPadding
                     )
                     [ icon
-                        [ SvgAttributes.class TW.h4
-                        , SvgAttributes.class TW.w4
-                        , SvgAttributes.class TW.floatLeft
-                        , SvgAttributes.class TW.mr2
-                        , SvgAttributes.class TW.mt1
+                        [ SvgAttributes.css
+                            [ Tw.h_4
+                            , Tw.w_4
+                            , Tw.float_left
+                            , Tw.mr_2
+                            , Tw.mt_1
+                            ]
                         ]
-                    , Html.span [ Attr.class TW.textGray900 ] [ Html.text text ]
+                    , Html.span [ Attr.css [ Tw.text_gray_900 ] ] [ Html.text text ]
                     ]
                     :: viewActions actions
 
             Static { icon, text, actions } ->
                 Html.p buttonPadding
-                    [ Html.span [ Attr.class TW.textGray900 ]
+                    [ Html.span [ Attr.css [ Tw.text_gray_900 ] ]
                         [ icon
-                            [ SvgAttributes.class TW.h4
-                            , SvgAttributes.class TW.w4
-                            , SvgAttributes.class TW.floatLeft
-                            , SvgAttributes.class TW.mr2
-                            , SvgAttributes.class TW.mt1
+                            [ SvgAttributes.css
+                                [ Tw.h_4
+                                , Tw.w_4
+                                , Tw.float_left
+                                , Tw.mr_2
+                                , Tw.mt_1
+                                ]
                             ]
-                        , Html.span [ Attr.class TW.textGray900 ] [ Html.text text ]
+                        , Html.span [ Attr.css [ Tw.text_gray_900 ] ] [ Html.text text ]
                         ]
                     ]
                     :: viewActions actions
@@ -160,4 +176,4 @@ view title_ =
 
 viewActions : List (Action msg) -> List (Html msg)
 viewActions actions =
-    List.map (Action.view [ Attr.class TW.p3, Attr.class TW.h6 ]) actions
+    List.map (Action.view [ Attr.css [ Tw.p_3, Tw.h_6 ] ]) actions

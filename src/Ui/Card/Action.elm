@@ -6,11 +6,12 @@ module Ui.Card.Action exposing
     , view
     )
 
+import Css
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attr
 import Html.Styled.Events as Events
 import Svg.Styled.Attributes as SvgAttributes
-import Tailwind as TW
+import Tailwind.Utilities as Tw
 import Ui.Icons as Icons
 
 
@@ -40,11 +41,13 @@ view attributes action =
     let
         baseAttributes : List (Html.Attribute msg)
         baseAttributes =
-            Attr.class TW.flex
-                :: Attr.class TW.flexRow
-                :: Attr.class TW.itemsCenter
-                :: Attr.class TW.boxContent
-                :: Attr.class TW.textGray600
+            Attr.css
+                [ Tw.flex
+                , Tw.flex_row
+                , Tw.items_center
+                , Tw.box_content
+                , Tw.text_gray_600
+                ]
                 :: attributes
     in
     case action of
@@ -52,24 +55,22 @@ view attributes action =
             Html.button
                 (Events.onClick options.onClick
                     :: Attr.title options.text
-                    :: Attr.class TW.hoverTextBlack
+                    :: Attr.css [ Css.hover [ Tw.text_black ] ]
                     :: baseAttributes
                 )
                 [ options.icon
-                    [ SvgAttributes.class TW.h4
-                    , SvgAttributes.class TW.w4
+                    [ SvgAttributes.css [ Tw.h_4, Tw.w_4 ]
                     ]
                 ]
 
         Icon options ->
             Html.div
                 (Attr.title options.text
-                    :: Attr.class TW.cursorNotAllowed
+                    :: Attr.css [ Tw.cursor_not_allowed ]
                     :: baseAttributes
                 )
                 [ options.icon
-                    [ SvgAttributes.class TW.h4
-                    , SvgAttributes.class TW.w4
+                    [ SvgAttributes.css [ Tw.h_4, Tw.w_4 ]
                     ]
                 ]
 
@@ -77,11 +78,10 @@ view attributes action =
             Html.a
                 (Attr.title options.text
                     :: Attr.href options.href
-                    :: Attr.class TW.hoverTextGray900
+                    :: Attr.css [ Css.hover [ Tw.text_gray_900 ] ]
                     :: baseAttributes
                 )
                 [ options.icon
-                    [ SvgAttributes.class TW.h4
-                    , SvgAttributes.class TW.w4
+                    [ SvgAttributes.css [ Tw.h_4, Tw.w_4 ]
                     ]
                 ]

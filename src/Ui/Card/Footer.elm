@@ -9,10 +9,11 @@ module Ui.Card.Footer exposing
     , withAction
     )
 
+import Css
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attr
 import Html.Styled.Events as Events
-import Tailwind as TW
+import Tailwind.Utilities as Tw
 import Ui.Card.Action as Action exposing (Action)
 
 
@@ -76,21 +77,25 @@ viewHelper link_ actions =
 
         Link { href, text } ->
             [ Html.nav
-                [ Attr.class TW.bgTransparent
-                , Attr.class TW.borderT
-                , Attr.class TW.px3
-                , Attr.class TW.flex
+                [ Attr.css
+                    [ Tw.bg_transparent
+                    , Tw.border_t
+                    , Tw.px_3
+                    , Tw.flex
+                    ]
                 ]
                 (Html.a
                     [ Attr.href href
                     , Attr.title text
-                    , Attr.class TW.block
-                    , Attr.class TW.flex1
-                    , Attr.class TW.hoverTextGray800
-                    , Attr.class TW.px3
-                    , Attr.class TW.py2
-                    , Attr.class TW.textGray500
-                    , Attr.class TW.textLeft
+                    , Attr.css
+                        [ Tw.block
+                        , Tw.flex_1
+                        , Css.hover [ Tw.text_gray_800 ]
+                        , Tw.px_3
+                        , Tw.py_2
+                        , Tw.text_gray_500
+                        , Tw.text_left
+                        ]
                     ]
                     [ Html.text text
                     ]
@@ -100,21 +105,25 @@ viewHelper link_ actions =
 
         Button { text, onClick } ->
             [ Html.figure
-                [ Attr.class TW.bgTransparent
-                , Attr.class TW.borderT
-                , Attr.class TW.px3
-                , Attr.class TW.flex
+                [ Attr.css
+                    [ Tw.bg_transparent
+                    , Tw.border_t
+                    , Tw.px_3
+                    , Tw.flex
+                    ]
                 ]
                 (Html.button
                     [ Events.onClick onClick
                     , Attr.title text
-                    , Attr.class TW.block
-                    , Attr.class TW.hoverTextGray800
-                    , Attr.class TW.px3
-                    , Attr.class TW.py2
-                    , Attr.class TW.textGray500
-                    , Attr.class TW.wFull
-                    , Attr.class TW.textLeft
+                    , Attr.css
+                        [ Tw.block
+                        , Css.hover [ Tw.text_gray_800 ]
+                        , Tw.px_3
+                        , Tw.py_2
+                        , Tw.text_gray_500
+                        , Tw.w_full
+                        , Tw.text_left
+                        ]
                     ]
                     [ Html.text text
                     ]
@@ -123,13 +132,15 @@ viewHelper link_ actions =
             ]
 
         Figure { attributes, content } ->
-            [ Html.figure (Attr.class TW.borderT :: attributes) content
+            [ Html.figure (Attr.css [ Tw.border_t ] :: attributes) content
             ]
 
         Image { src, alt } ->
             [ Html.figure
-                [ Attr.class TW.bgTransparent
-                , Attr.class TW.borderT
+                [ Attr.css
+                    [ Tw.bg_transparent
+                    , Tw.border_t
+                    ]
                 ]
                 [ Html.img [ Attr.src src, Attr.alt alt ] []
                 ]
@@ -138,9 +149,11 @@ viewHelper link_ actions =
         Action { parent, action } ->
             viewHelper parent
                 (Action.view
-                    [ Attr.class TW.px3
-                    , Attr.class TW.py2
-                    , Attr.class TW.h6
+                    [ Attr.css
+                        [ Tw.px_3
+                        , Tw.py_2
+                        , Tw.h_6
+                        ]
                     ]
                     action
                     :: actions
