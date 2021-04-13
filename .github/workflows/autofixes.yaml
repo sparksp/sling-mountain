@@ -20,11 +20,13 @@ jobs:
         with:
           path: node_modules
           key: ${{ runner.os }}-node_modules-${{ hashFiles('yarn.lock') }}
+          restore-keys: ${{ runner.os }}-node_modules
       - uses: actions/cache@v2
         id: elm-cache
         with:
           path: ~/.elm
           key: ${{ runner.os }}-elm--home-${{ hashFiles('**/elm.json', 'elm-tooling.json') }}
+          restore-keys: ${{ runner.os }}-elm--home
       - name: Install dependencies
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         env:
