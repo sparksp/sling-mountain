@@ -1,8 +1,10 @@
 module Ui.Card exposing (Card, view)
 
-import Html exposing (Html)
-import Html.Attributes as Attr
-import Html.Tailwind as TW
+import Css
+import Html.Styled as Html exposing (Html)
+import Html.Styled.Attributes as Attr
+import Tailwind.Breakpoints as Breakpoints
+import Tailwind.Utilities as Tw
 import Ui.Card.Footer as Footer exposing (Footer)
 import Ui.Card.Frame as Frame exposing (Frame)
 import Ui.Card.Title as Title exposing (Title)
@@ -21,37 +23,40 @@ view ({ frame, body } as card) =
     let
         baseAttributes : List (Html.Attribute msg)
         baseAttributes =
-            [ TW.bgWhite
-            , TW.my3
-            , TW.overflowHidden
-            , TW.smRounded
-            , TW.wFull
+            [ Attr.css
+                [ Tw.bg_white
+                , Tw.my_3
+                , Tw.overflow_hidden
+                , Breakpoints.sm [ Tw.rounded ]
+                , Tw.w_full
+                ]
             ]
 
         ( element, attributes ) =
             case frame of
                 Frame.Default ->
                     ( Html.div
-                    , TW.shadowSm
+                    , Attr.css [ Tw.shadow_sm ]
                         :: baseAttributes
                     )
 
                 Frame.Primary ->
                     ( Html.main_
                     , Attr.id "current"
-                        :: TW.shadowLg
+                        :: Attr.css [ Tw.shadow_lg ]
                         :: baseAttributes
                     )
 
                 Frame.Active ->
                     ( Html.div
-                    , TW.shadowSm
-                        :: TW.hoverShadowLg
-                        :: TW.smHoverTranslateX1
-                        :: TW.smTransform
-                        :: TW.transitionAll
-                        :: TW.duration150
-                        :: TW.easeInOut
+                    , Attr.css
+                        [ Tw.shadow_sm
+                        , Css.hover [ Tw.shadow_lg ]
+                        , Breakpoints.sm [ Css.hover [ Tw.translate_x_1 ], Tw.transform ]
+                        , Tw.transition_all
+                        , Tw.duration_150
+                        , Tw.ease_in_out
+                        ]
                         :: baseAttributes
                     )
     in
@@ -70,11 +75,13 @@ withBody body =
 
         _ ->
             [ Html.div
-                [ TW.textGray700
-                , TW.textBase
-                , TW.px4
-                , TW.smPx6
-                , TW.mb3
+                [ Attr.css
+                    [ Tw.text_gray_700
+                    , Tw.text_base
+                    , Tw.px_4
+                    , Breakpoints.sm [ Tw.px_6 ]
+                    , Tw.mb_3
+                    ]
                 ]
                 body
             ]

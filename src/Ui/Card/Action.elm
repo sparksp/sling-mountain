@@ -6,11 +6,12 @@ module Ui.Card.Action exposing
     , view
     )
 
-import Html exposing (Html)
-import Html.Attributes as Attr
-import Html.Events as Events
-import Html.Tailwind as TW
-import Svg.Tailwind as STW
+import Css
+import Html.Styled as Html exposing (Html)
+import Html.Styled.Attributes as Attr
+import Html.Styled.Events as Events
+import Svg.Styled.Attributes as SvgAttributes
+import Tailwind.Utilities as Tw
 import Ui.Icons as Icons
 
 
@@ -40,11 +41,13 @@ view attributes action =
     let
         baseAttributes : List (Html.Attribute msg)
         baseAttributes =
-            TW.flex
-                :: TW.flexRow
-                :: TW.itemsCenter
-                :: TW.boxContent
-                :: TW.textGray600
+            Attr.css
+                [ Tw.flex
+                , Tw.flex_row
+                , Tw.items_center
+                , Tw.box_content
+                , Tw.text_gray_600
+                ]
                 :: attributes
     in
     case action of
@@ -52,24 +55,33 @@ view attributes action =
             Html.button
                 (Events.onClick options.onClick
                     :: Attr.title options.text
-                    :: TW.hoverTextBlack
+                    :: Attr.css [ Css.hover [ Tw.text_black ] ]
                     :: baseAttributes
                 )
-                [ options.icon [ STW.h4, STW.w4 ] ]
+                [ options.icon
+                    [ SvgAttributes.css [ Tw.h_4, Tw.w_4 ]
+                    ]
+                ]
 
         Icon options ->
             Html.div
                 (Attr.title options.text
-                    :: TW.cursorNotAllowed
+                    :: Attr.css [ Tw.cursor_not_allowed ]
                     :: baseAttributes
                 )
-                [ options.icon [ STW.h4, STW.w4 ] ]
+                [ options.icon
+                    [ SvgAttributes.css [ Tw.h_4, Tw.w_4 ]
+                    ]
+                ]
 
         Link options ->
             Html.a
                 (Attr.title options.text
                     :: Attr.href options.href
-                    :: TW.hoverTextGray900
+                    :: Attr.css [ Css.hover [ Tw.text_gray_900 ] ]
                     :: baseAttributes
                 )
-                [ options.icon [ STW.h4, STW.w4 ] ]
+                [ options.icon
+                    [ SvgAttributes.css [ Tw.h_4, Tw.w_4 ]
+                    ]
+                ]

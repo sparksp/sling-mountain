@@ -7,11 +7,13 @@ module Ui.Card.Title exposing
     , withActions
     )
 
-import Html exposing (Html)
-import Html.Attributes as Attr
-import Html.Events as Events
-import Html.Tailwind as TW
-import Svg.Tailwind as STW
+import Css
+import Html.Styled as Html exposing (Html)
+import Html.Styled.Attributes as Attr
+import Html.Styled.Events as Events
+import Svg.Styled.Attributes as SvgAttributes
+import Tailwind.Breakpoints as Breakpoints
+import Tailwind.Utilities as Tw
 import Ui.Card.Action as Action exposing (Action)
 import Ui.Icons as Icons
 
@@ -83,53 +85,85 @@ view title_ =
     let
         buttonPadding : List (Html.Attribute msg)
         buttonPadding =
-            [ TW.px3
-            , TW.py3
-            , TW.wFull
+            [ Attr.css
+                [ Tw.px_3
+                , Tw.py_3
+                , Tw.w_full
+                ]
             ]
     in
     Html.div
-        [ TW.flex
-        , TW.flexRow
-        , TW.itemsStart
-        , TW.fontBold
-        , TW.leading6
-        , TW.px1
-        , TW.smPx3
-        , TW.textXl
+        [ Attr.css
+            [ Tw.flex
+            , Tw.flex_row
+            , Tw.items_start
+            , Tw.font_bold
+            , Tw.leading_6
+            , Tw.px_1
+            , Breakpoints.sm [ Tw.px_3 ]
+            , Tw.text_xl
+            ]
         ]
         (case title_ of
             Button { actions, icon, onClick, text } ->
                 Html.button
                     (Events.onClick onClick
-                        :: TW.hoverTextBlack
-                        :: TW.textGray600
-                        :: TW.textLeft
+                        :: Attr.css
+                            [ Css.hover [ Tw.text_black ]
+                            , Tw.text_gray_600
+                            , Tw.text_left
+                            ]
                         :: buttonPadding
                     )
-                    [ icon [ STW.h4, STW.w4, STW.floatLeft, STW.mr2, STW.mt1 ]
-                    , Html.span [ TW.textGray900 ] [ Html.text text ]
+                    [ icon
+                        [ SvgAttributes.css
+                            [ Tw.h_4
+                            , Tw.w_4
+                            , Tw.float_left
+                            , Tw.mr_2
+                            , Tw.mt_1
+                            ]
+                        ]
+                    , Html.span [ Attr.css [ Tw.text_gray_900 ] ] [ Html.text text ]
                     ]
                     :: viewActions actions
 
             Link { actions, icon, href, text } ->
                 Html.a
                     (Attr.href href
-                        :: TW.hoverTextBlack
-                        :: TW.textGray600
-                        :: TW.textLeft
+                        :: Attr.css
+                            [ Css.hover [ Tw.text_black ]
+                            , Tw.text_gray_600
+                            , Tw.text_left
+                            ]
                         :: buttonPadding
                     )
-                    [ icon [ STW.h4, STW.w4, STW.floatLeft, STW.mr2, STW.mt1 ]
-                    , Html.span [ TW.textGray900 ] [ Html.text text ]
+                    [ icon
+                        [ SvgAttributes.css
+                            [ Tw.h_4
+                            , Tw.w_4
+                            , Tw.float_left
+                            , Tw.mr_2
+                            , Tw.mt_1
+                            ]
+                        ]
+                    , Html.span [ Attr.css [ Tw.text_gray_900 ] ] [ Html.text text ]
                     ]
                     :: viewActions actions
 
             Static { icon, text, actions } ->
                 Html.p buttonPadding
-                    [ Html.span [ TW.textGray900 ]
-                        [ icon [ STW.h4, STW.w4, STW.floatLeft, STW.mr2, STW.mt1 ]
-                        , Html.span [ TW.textGray900 ] [ Html.text text ]
+                    [ Html.span [ Attr.css [ Tw.text_gray_900 ] ]
+                        [ icon
+                            [ SvgAttributes.css
+                                [ Tw.h_4
+                                , Tw.w_4
+                                , Tw.float_left
+                                , Tw.mr_2
+                                , Tw.mt_1
+                                ]
+                            ]
+                        , Html.span [ Attr.css [ Tw.text_gray_900 ] ] [ Html.text text ]
                         ]
                     ]
                     :: viewActions actions
@@ -142,4 +176,4 @@ view title_ =
 
 viewActions : List (Action msg) -> List (Html msg)
 viewActions actions =
-    List.map (Action.view [ TW.p3, TW.h6 ]) actions
+    List.map (Action.view [ Attr.css [ Tw.p_3, Tw.h_6 ] ]) actions

@@ -9,10 +9,11 @@ module Ui.Card.Footer exposing
     , withAction
     )
 
-import Html exposing (Html)
-import Html.Attributes as Attr
-import Html.Events as Events
-import Html.Tailwind as TW
+import Css
+import Html.Styled as Html exposing (Html)
+import Html.Styled.Attributes as Attr
+import Html.Styled.Events as Events
+import Tailwind.Utilities as Tw
 import Ui.Card.Action as Action exposing (Action)
 
 
@@ -75,17 +76,26 @@ viewHelper link_ actions =
             actions
 
         Link { href, text } ->
-            [ Html.nav [ TW.bgTransparent, TW.borderT, TW.px3, TW.flex ]
+            [ Html.nav
+                [ Attr.css
+                    [ Tw.bg_transparent
+                    , Tw.border_t
+                    , Tw.px_3
+                    , Tw.flex
+                    ]
+                ]
                 (Html.a
                     [ Attr.href href
                     , Attr.title text
-                    , TW.block
-                    , TW.flex1
-                    , TW.hoverTextGray800
-                    , TW.px3
-                    , TW.py2
-                    , TW.textGray500
-                    , TW.textLeft
+                    , Attr.css
+                        [ Tw.block
+                        , Tw.flex_1
+                        , Css.hover [ Tw.text_gray_800 ]
+                        , Tw.px_3
+                        , Tw.py_2
+                        , Tw.text_gray_500
+                        , Tw.text_left
+                        ]
                     ]
                     [ Html.text text
                     ]
@@ -94,17 +104,26 @@ viewHelper link_ actions =
             ]
 
         Button { text, onClick } ->
-            [ Html.figure [ TW.bgTransparent, TW.borderT, TW.px3, TW.flex ]
+            [ Html.figure
+                [ Attr.css
+                    [ Tw.bg_transparent
+                    , Tw.border_t
+                    , Tw.px_3
+                    , Tw.flex
+                    ]
+                ]
                 (Html.button
                     [ Events.onClick onClick
                     , Attr.title text
-                    , TW.block
-                    , TW.hoverTextGray800
-                    , TW.px3
-                    , TW.py2
-                    , TW.textGray500
-                    , TW.wFull
-                    , TW.textLeft
+                    , Attr.css
+                        [ Tw.block
+                        , Css.hover [ Tw.text_gray_800 ]
+                        , Tw.px_3
+                        , Tw.py_2
+                        , Tw.text_gray_500
+                        , Tw.w_full
+                        , Tw.text_left
+                        ]
                     ]
                     [ Html.text text
                     ]
@@ -113,14 +132,29 @@ viewHelper link_ actions =
             ]
 
         Figure { attributes, content } ->
-            [ Html.figure (TW.borderT :: attributes) content
+            [ Html.figure (Attr.css [ Tw.border_t ] :: attributes) content
             ]
 
         Image { src, alt } ->
-            [ Html.figure [ TW.bgTransparent, TW.borderT ]
+            [ Html.figure
+                [ Attr.css
+                    [ Tw.bg_transparent
+                    , Tw.border_t
+                    ]
+                ]
                 [ Html.img [ Attr.src src, Attr.alt alt ] []
                 ]
             ]
 
         Action { parent, action } ->
-            viewHelper parent (Action.view [ TW.px3, TW.py2, TW.h6 ] action :: actions)
+            viewHelper parent
+                (Action.view
+                    [ Attr.css
+                        [ Tw.px_3
+                        , Tw.py_2
+                        , Tw.h_6
+                        ]
+                    ]
+                    action
+                    :: actions
+                )

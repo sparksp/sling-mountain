@@ -1,6 +1,6 @@
 module Scenario exposing (Link(..), Scenario, build, mapBody, mapLink, mapTitle, withLink)
 
-import Html exposing (Html)
+import Html.Styled exposing (Html)
 
 
 type Link
