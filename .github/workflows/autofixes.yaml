@@ -20,11 +20,13 @@ jobs:
         with:
           path: node_modules
           key: ${{ runner.os }}-node_modules-${{ hashFiles('yarn.lock') }}
+          restore-keys: ${{ runner.os }}-node_modules
       - uses: actions/cache@v2
         id: elm-cache
         with:
           path: ~/.elm
           key: ${{ runner.os }}-elm--home-${{ hashFiles('**/elm.json', 'elm-tooling.json') }}
+          restore-keys: ${{ runner.os }}-elm--home
       - name: Install dependencies
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         env:
@@ -41,8 +43,49 @@ jobs:
       - uses: peter-evans/create-pull-request@v3
         with:
           commit-message: 'Apply elm-review fixes'
-          branch: fixes/${{ steps.extract_branch.outputs.branch }}
+          branch: fixes-${{ steps.extract_branch.outputs.branch }}
           title: "Apply elm-review fixes"
           body: "*This is an automated pull request because elm-review found problems that could be fixed automatically.*"
+          reviewers: sparksp
+          assignees: sparksp
+
+  elm-tailwind-modules:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      - name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch
+      - uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('yarn.lock') }}
+          restore-keys: ${{ runner.os }}-node_modules
+      - uses: actions/cache@v2
+        id: elm-cache
+        with:
+          path: ~/.elm
+          key: ${{ runner.os }}-elm--home-${{ hashFiles('**/elm.json', 'elm-tooling.json') }}
+          restore-keys: ${{ runner.os }}-elm--home
+      - name: Install dependencies
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        env:
+          NO_ELM_TOOLING_INSTALL: 1
+        run: yarn install --frozen-lockfile
+      - name: elm-tooling install
+        run: npx --no-install elm-tooling install
+      - name: Update Elm Tailwind modules
+        run: yarn run gen:tailwind
+      - uses: peter-evans/create-pull-request@v3
+        with:
+          commit-message: 'Apply elm-review fixes'
+          branch: ${{ steps.extract_branch.outputs.branch }}-tailwind
+          title: "Update Elm Tailwind modules"
+          body: "*This is an automated pull request to update elm-tailwind-modules.*"
           reviewers: sparksp
           assignees: sparksp
