@@ -17,7 +17,6 @@ jobs:
           key: ${{ runner.os }}-node_modules-${{ hashFiles('yarn.lock') }}
           restore-keys: ${{ runner.os }}-node_modules
       - uses: actions/cache@v2
-        id: elm-cache
         with:
           path: ~/.elm
           key: ${{ runner.os }}-elm--home-${{ hashFiles('**/elm.json', 'elm-tooling.json') }}
@@ -46,7 +45,6 @@ jobs:
           key: ${{ runner.os }}-node_modules-${{ hashFiles('yarn.lock') }}
           restore-keys: ${{ runner.os }}-node_modules
       - uses: actions/cache@v2
-        id: elm-cache
         with:
           path: ~/.elm
           key: ${{ runner.os }}-elm--home-${{ hashFiles('**/elm.json', 'elm-tooling.json') }}
@@ -58,11 +56,7 @@ jobs:
         run: yarn install --frozen-lockfile
       - name: elm-tooling install
         run: npx --no-install elm-tooling install
-      - name: Add yarn bin to path
-        run: yarn bin >> $GITHUB_PATH
       - name: Run elm-review
-        uses: sparksp/elm-review-action@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx --no-install elm-review
       - name: Run elm-format
-        uses: sparksp/elm-format-action@v1
+        run: npx --no-install elm-format --validate src/ tests/ review/src/
