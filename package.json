@@ -32,7 +32,7 @@
     "elm-hot": "^1.1.6",
     "elm-review": "^2.5.1",
     "elm-tailwind-modules": "^0.3.2",
-    "elm-test": "^0.19.1-revision6",
+    "elm-test": "^0.19.1-revision7",
     "elm-tooling": "^1.3.0",
     "elm-types": "^0.0.2",
     "node-elm-compiler": "^5.0.6",
