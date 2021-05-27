@@ -28,7 +28,7 @@
     "watcherGlob": "**"
   },
   "devDependencies": {
-    "autoprefixer": "^10.2.5",
+    "autoprefixer": "^10.2.6",
     "elm-hot": "^1.1.6",
     "elm-review": "^2.5.1",
     "elm-tailwind-modules": "^0.3.2",
