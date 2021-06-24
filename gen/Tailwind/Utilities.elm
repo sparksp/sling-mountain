@@ -7787,10 +7787,6 @@ globalStyles =
         [ Css.property "background-color" "transparent"
         , Css.property "background-image" "none"
         ]
-    , Css.Global.selector "button:focus"
-        [ Css.property "outline" "1px dotted"
-        , Css.property "outline" "5px auto -webkit-focus-ring-color"
-        ]
     , Css.Global.selector "fieldset"
         [ Css.property "margin" "0"
         , Css.property "padding" "0"
