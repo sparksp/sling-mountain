@@ -97,7 +97,7 @@ getScenarios =
         [ Html.p [] [ Html.text "You are sport climbing with someone who does not know how to thread the chains. Set up the lower-off so that they are not climbing on the fixed hardware but can easily remove your equipment and lower-off without having to untie from the rope." ] ]
         |> Scenario.withLink (Scenario.Youtube "7wMnCI91V-Y")
     , Scenario.build "Personal Abseil"
-        [ Html.p [] [ Html.text "You and your partner have just finished a single pitch trad route, but your partner was not able to get all of the year out. Set up a fixed rope using three anchors so that you can abseil down and get the gear back." ] ]
+        [ Html.p [] [ Html.text "You and your partner have just finished a single pitch trad route, but your partner was not able to get all of the gear out. Set up a fixed rope using three anchors so that you can abseil down and get the gear back." ] ]
         |> Scenario.withLink (Scenario.Youtube "LEaB0TBOwhg")
     , Scenario.build "Quad Belay Setup"
         [ Html.p [] [ Html.text "Setup a Quad Belay using a 240cm sling between two pieces of gear." ]
