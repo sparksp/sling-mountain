@@ -361,7 +361,7 @@
     "@parcel/transformer-raw" "2.0.0-beta.3.1"
     "@parcel/transformer-react-refresh-wrap" "2.0.0-beta.3.1"
 
-"@parcel/core@2.0.0-beta.3.1", "@parcel/core@^2.0.0-beta.3.1":
+"@parcel/core@2.0.0-beta.3.1":
   version "2.0.0-beta.3.1"
   resolved "https://registry.yarnpkg.com/@parcel/core/-/core-2.0.0-beta.3.1.tgz#69695805d567a1d73b70c8f6dfcc33ff6c1a9570"
   integrity sha512-Rkp92SBcVyr5qlPEoV7gVzNRYstHxo6ah4NadSdNN0QzXtcLUGkrAPXBGJpjlifXqXogyz0D3QjAaPBpk6p/8Q==
@@ -377,6 +377,36 @@
     "@parcel/types" "2.0.0-beta.3.1"
     "@parcel/utils" "2.0.0-beta.3.1"
     "@parcel/workers" "2.0.0-beta.3.1"
+    abortcontroller-polyfill "^1.1.9"
+    base-x "^3.0.8"
+    browserslist "^4.6.6"
+    clone "^2.1.1"
+    dotenv "^7.0.0"
+    dotenv-expand "^5.1.0"
+    json-source-map "^0.6.1"
+    json5 "^1.0.1"
+    micromatch "^4.0.2"
+    nullthrows "^1.1.1"
+    querystring "^0.2.0"
+    semver "^5.4.1"
+
+"@parcel/core@^2.0.0-nightly.750":
+  version "2.0.0-nightly.750"
+  resolved "https://registry.yarnpkg.com/@parcel/core/-/core-2.0.0-nightly.750.tgz#5c848a6c46c50eb43d537d6ed87be36bba31ba85"
+  integrity sha512-1CneXSe/yuFYcfZRcoyGFGKyHZ6J3nwUW29sGEsLxnwtZ3k08/L9OwRZYP7d+I0/tcdptIIhUeUmxgwedK4q/w==
+  dependencies:
+    "@parcel/cache" "2.0.0-nightly.752+8d50ec65"
+    "@parcel/diagnostic" "2.0.0-nightly.752+8d50ec65"
+    "@parcel/events" "2.0.0-nightly.752+8d50ec65"
+    "@parcel/fs" "2.0.0-nightly.752+8d50ec65"
+    "@parcel/hash" "2.0.0-nightly.2374+8d50ec65"
+    "@parcel/logger" "2.0.0-nightly.752+8d50ec65"
+    "@parcel/package-manager" "2.0.0-nightly.752+8d50ec65"
+    "@parcel/plugin" "2.0.0-nightly.752+8d50ec65"
+    "@parcel/source-map" "2.0.0-rc.4"
+    "@parcel/types" "2.0.0-nightly.752+8d50ec65"
+    "@parcel/utils" "2.0.0-nightly.752+8d50ec65"
+    "@parcel/workers" "2.0.0-nightly.752+8d50ec65"
     abortcontroller-polyfill "^1.1.9"
     base-x "^3.0.8"
     browserslist "^4.6.6"
@@ -685,7 +715,7 @@
   dependencies:
     "@parcel/types" "2.0.0-beta.3.1"
 
-"@parcel/plugin@^2.0.0-beta.1":
+"@parcel/plugin@2.0.0-nightly.752+8d50ec65", "@parcel/plugin@^2.0.0-beta.1":
   version "2.0.0-nightly.752"
   resolved "https://registry.yarnpkg.com/@parcel/plugin/-/plugin-2.0.0-nightly.752.tgz#2e343a000031320aa3258f6686c965c9a033e43a"
   integrity sha512-jXykjgtMXlbg/ji+nW137fT9EHiM8eK4q0HrtilWvWHKXjqUwew5WhAxKPfvcGGql7hT61nW4t7czHhQ6ZZ/3g==
