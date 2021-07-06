@@ -369,6 +369,36 @@
     querystring "^0.2.0"
     semver "^5.4.1"
 
+"@parcel/core@2.0.0-nightly.752":
+  version "2.0.0-nightly.752"
+  resolved "https://registry.yarnpkg.com/@parcel/core/-/core-2.0.0-nightly.752.tgz#890d1f471bb985d4a4216a2a45cabad885af6293"
+  integrity sha512-qV5j7/oX3AzHCfL4RikCdW/QghgaTSdjYsu9bqLuIS+kXaxBkHWV7FpU68rTZHMiVwlpJgScItDuZHRlwqddWw==
+  dependencies:
+    "@parcel/cache" "2.0.0-nightly.754+aaf0e237"
+    "@parcel/diagnostic" "2.0.0-nightly.754+aaf0e237"
+    "@parcel/events" "2.0.0-nightly.754+aaf0e237"
+    "@parcel/fs" "2.0.0-nightly.754+aaf0e237"
+    "@parcel/hash" "2.0.0-nightly.2376+aaf0e237"
+    "@parcel/logger" "2.0.0-nightly.754+aaf0e237"
+    "@parcel/package-manager" "2.0.0-nightly.754+aaf0e237"
+    "@parcel/plugin" "2.0.0-nightly.754+aaf0e237"
+    "@parcel/source-map" "2.0.0-rc.4"
+    "@parcel/types" "2.0.0-nightly.754+aaf0e237"
+    "@parcel/utils" "2.0.0-nightly.754+aaf0e237"
+    "@parcel/workers" "2.0.0-nightly.754+aaf0e237"
+    abortcontroller-polyfill "^1.1.9"
+    base-x "^3.0.8"
+    browserslist "^4.6.6"
+    clone "^2.1.1"
+    dotenv "^7.0.0"
+    dotenv-expand "^5.1.0"
+    json-source-map "^0.6.1"
+    json5 "^1.0.1"
+    micromatch "^4.0.2"
+    nullthrows "^1.1.1"
+    querystring "^0.2.0"
+    semver "^5.4.1"
+
 "@parcel/diagnostic@2.0.0-beta.3.1":
   version "2.0.0-beta.3.1"
   resolved "https://registry.yarnpkg.com/@parcel/diagnostic/-/diagnostic-2.0.0-beta.3.1.tgz#8eac31dfe1af057313db00eed2756b14933c366a"
@@ -664,7 +694,7 @@
   dependencies:
     "@parcel/types" "2.0.0-beta.3.1"
 
-"@parcel/plugin@^2.0.0-beta.1":
+"@parcel/plugin@2.0.0-nightly.754+aaf0e237", "@parcel/plugin@^2.0.0-beta.1":
   version "2.0.0-nightly.754"
   resolved "https://registry.yarnpkg.com/@parcel/plugin/-/plugin-2.0.0-nightly.754.tgz#bb1f316ca13da61c2c24b5997c35e6655d354225"
   integrity sha512-MAzHFVghKP6s2hmo3jDx3lP0o5bK4T4DB084Doat0mMky3sXerWirLd0F5hCehWHRVyvHS7hCY8scZtnu5Ojzg==
