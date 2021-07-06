@@ -377,6 +377,14 @@
     json-source-map "^0.6.1"
     nullthrows "^1.1.1"
 
+"@parcel/diagnostic@2.0.0-nightly.474+a23db0bb":
+  version "2.0.0-nightly.474"
+  resolved "https://registry.yarnpkg.com/@parcel/diagnostic/-/diagnostic-2.0.0-nightly.474.tgz#79f6f7f1ba05fbdfdcb5a601a17036f7a1372a5c"
+  integrity sha512-wXperaJVkYsfASH1O2gvpmm73PPN24g1+mg5YUCpKQK7LPcRihmsaK7XTZcO+Qz80P/3D1a3AO/tLtIGq6bW4w==
+  dependencies:
+    json-source-map "^0.6.1"
+    nullthrows "^1.1.1"
+
 "@parcel/diagnostic@2.0.0-nightly.754+aaf0e237":
   version "2.0.0-nightly.754"
   resolved "https://registry.yarnpkg.com/@parcel/diagnostic/-/diagnostic-2.0.0-nightly.754.tgz#575872040ffab00d5b8bbd22a88baa9ca9d5a17e"
@@ -664,6 +672,13 @@
   dependencies:
     "@parcel/types" "2.0.0-beta.3.1"
 
+"@parcel/plugin@2.0.0-nightly.474+a23db0bb":
+  version "2.0.0-nightly.474"
+  resolved "https://registry.yarnpkg.com/@parcel/plugin/-/plugin-2.0.0-nightly.474.tgz#d0fdb85849055e7f9acfaeda1a544f1f8b3f5e2e"
+  integrity sha512-O5dLbaC0O4Yrx+ZyL2M5bAq5fMW91p0duniQ7n2zfrl9K3WpXpBIqjDeDehn3qFOFtjq7JP1+/bT5pX8SmRHNw==
+  dependencies:
+    "@parcel/types" "2.0.0-nightly.474+a23db0bb"
+
 "@parcel/plugin@^2.0.0-beta.1":
   version "2.0.0-nightly.754"
   resolved "https://registry.yarnpkg.com/@parcel/plugin/-/plugin-2.0.0-nightly.754.tgz#bb1f316ca13da61c2c24b5997c35e6655d354225"
@@ -782,17 +797,15 @@
     postcss-value-parser "^4.1.0"
     semver "^5.4.1"
 
-"@parcel/transformer-elm@2.0.0-beta.3.1":
-  version "2.0.0-beta.3.1"
-  resolved "https://registry.yarnpkg.com/@parcel/transformer-elm/-/transformer-elm-2.0.0-beta.3.1.tgz#c5fc2eebf9967f736e3119708b153e3788a83ddc"
-  integrity sha512-n8pNTitGBWNZELrU93qg8GDkTR974V0bkSerK27BqaYTLgmefLcxmtwD6+WGL+Z1bNzHYDRUSF8ZMmIQN8AIOQ==
+"@parcel/transformer-elm@2.0.0-nightly.2096":
+  version "2.0.0-nightly.2096"
+  resolved "https://registry.yarnpkg.com/@parcel/transformer-elm/-/transformer-elm-2.0.0-nightly.2096.tgz#ee0c4726c6d1f98d74d7dfca8e5f35054b238b34"
+  integrity sha512-JiObXtn/2rquKj3y3ieVx+YwcOZTJfPnLLhN+qa7nmNSgZFiByAchd/es9DDlc/NCk0SnaWQ61IU5O8bti45eQ==
   dependencies:
-    "@parcel/diagnostic" "2.0.0-beta.3.1"
-    "@parcel/plugin" "2.0.0-beta.3.1"
+    "@parcel/diagnostic" "2.0.0-nightly.474+a23db0bb"
+    "@parcel/plugin" "2.0.0-nightly.474+a23db0bb"
     command-exists "^1.2.8"
     cross-spawn "^7.0.3"
-    elm-hot "^1.1.5"
-    node-elm-compiler "^5.0.5"
     nullthrows "^1.1.1"
     terser "^5.2.1"
 
@@ -880,6 +893,11 @@
   version "2.0.0-beta.3.1"
   resolved "https://registry.yarnpkg.com/@parcel/types/-/types-2.0.0-beta.3.1.tgz#0bc5255a4454c198d58403b84a66f059106e1610"
   integrity sha512-8Cmh5/43LZ7wQeqawFMenZ/CCh+YAbyRuwBBApMCDLU3+RSpajUYyTpqa1HZVV8FggQb8E0xvPkmUbj/UHz/gw==
+
+"@parcel/types@2.0.0-nightly.474+a23db0bb":
+  version "2.0.0-nightly.474"
+  resolved "https://registry.yarnpkg.com/@parcel/types/-/types-2.0.0-nightly.474.tgz#840f4a4c01d61f8c3d093ded415fa8903b2ae893"
+  integrity sha512-3zcBpQoYylY6V8eoPupzNjpcLnnAUmsuUK9RXJQ6QHrgB8C9dYb/yLCuiO5Vb4UgexQvv9URcO/CA1uZVdBXqg==
 
 "@parcel/types@2.0.0-nightly.754+aaf0e237":
   version "2.0.0-nightly.754"
@@ -2402,7 +2420,7 @@ elliptic@^6.5.3:
     minimalistic-assert "^1.0.1"
     minimalistic-crypto-utils "^1.0.1"
 
-elm-hot@^1.1.5, elm-hot@^1.1.6:
+elm-hot@^1.1.6:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/elm-hot/-/elm-hot-1.1.6.tgz#93e3962b40670e65f0a3640951b3add2702bfd0e"
   integrity sha512-zYZJlfs7Gt4BdjA+D+857K+XAWzwwySJmXCgFpHW1dIEfaHSZCIPYPf7/jinZBLfKRkOAlKzI32AA84DY50g7Q==
@@ -4194,7 +4212,7 @@ node-addon-api@^3.0.2:
   resolved "https://registry.yarnpkg.com/node-addon-api/-/node-addon-api-3.2.1.tgz#81325e0a2117789c0128dab65e7e38f07ceba161"
   integrity sha512-mmcei9JghVNDYydghQmeDX8KoAm0FAiYyIcUt/N4nhyAipB17pllZQDOJD2fotxABnt4Mdz+dKTO7eftLg4d0A==
 
-node-elm-compiler@^5.0.5, node-elm-compiler@^5.0.6:
+node-elm-compiler@^5.0.6:
   version "5.0.6"
   resolved "https://registry.yarnpkg.com/node-elm-compiler/-/node-elm-compiler-5.0.6.tgz#d4a6e6c9d9a26dba4211ccd2aeae7d5e34057f0c"
   integrity sha512-DWTRQR8b54rvschcZRREdsz7K84lnS8A6YJu8du3QLQ8f204SJbyTaA6NzYYbfUG97OTRKRv/0KZl82cTfpLhA==
