@@ -361,7 +361,7 @@
     "@parcel/transformer-raw" "2.0.0-beta.3.1"
     "@parcel/transformer-react-refresh-wrap" "2.0.0-beta.3.1"
 
-"@parcel/core@2.0.0-beta.3.1", "@parcel/core@>=2.0.0-beta.3.1 <2.0.0-nightly":
+"@parcel/core@2.0.0-beta.3.1":
   version "2.0.0-beta.3.1"
   resolved "https://registry.yarnpkg.com/@parcel/core/-/core-2.0.0-beta.3.1.tgz#69695805d567a1d73b70c8f6dfcc33ff6c1a9570"
   integrity sha512-Rkp92SBcVyr5qlPEoV7gVzNRYstHxo6ah4NadSdNN0QzXtcLUGkrAPXBGJpjlifXqXogyz0D3QjAaPBpk6p/8Q==
@@ -803,7 +803,7 @@
     postcss-value-parser "^4.1.0"
     semver "^5.4.1"
 
-"@parcel/transformer-elm@>=2.0.0-beta.3.1 <2.0.0-nightly":
+"@parcel/transformer-elm@2.0.0-beta.3.1":
   version "2.0.0-beta.3.1"
   resolved "https://registry.yarnpkg.com/@parcel/transformer-elm/-/transformer-elm-2.0.0-beta.3.1.tgz#c5fc2eebf9967f736e3119708b153e3788a83ddc"
   integrity sha512-n8pNTitGBWNZELrU93qg8GDkTR974V0bkSerK27BqaYTLgmefLcxmtwD6+WGL+Z1bNzHYDRUSF8ZMmIQN8AIOQ==
@@ -4568,7 +4568,7 @@ parcel-reporter-static-files-copy@^1.3.0:
   dependencies:
     "@parcel/plugin" "^2.0.0-beta.1"
 
-"parcel@>=2.0.0-beta.3.1 <2.0.0-nightly":
+parcel@2.0.0-beta.3.1:
   version "2.0.0-beta.3.1"
   resolved "https://registry.yarnpkg.com/parcel/-/parcel-2.0.0-beta.3.1.tgz#64284ee21f74fa53d825cbec3634ff1932fe8e36"
   integrity sha512-jwNwDM/OILzzBAIMZZ/b+PA5DFQ+4ZTaINliSslyY/ZOfwjjkHMlmMddyj6iogLq+n74LE8pBGn3+V5ej4CH1Q==
