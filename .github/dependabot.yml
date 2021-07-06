@@ -12,6 +12,11 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+    ignore:
+      - dependency-name: "parcel"
+        versions: ["^2.0.0-nightly.0"]
+      - dependency-name: "@parcel/*"
+        versions: ["^2.0.0-nightly.0"]
 
   # Maintain dependencies for Elm
   - package-ecosystem: "elm"
