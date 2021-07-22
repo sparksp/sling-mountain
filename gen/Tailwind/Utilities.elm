@@ -3161,6 +3161,7 @@ module Tailwind.Utilities exposing
     , select_none
     , select_text
     , self_auto
+    , self_baseline
     , self_center
     , self_end
     , self_start
@@ -6993,6 +6994,7 @@ This module contains
 @docs select_none
 @docs select_text
 @docs self_auto
+@docs self_baseline
 @docs self_center
 @docs self_end
 @docs self_start
@@ -7852,6 +7854,9 @@ globalStyles =
     , Css.Global.selector "img,\nvideo"
         [ Css.property "max-width" "100%"
         , Css.property "height" "auto"
+        ]
+    , Css.Global.selector "[hidden]"
+        [ Css.property "display" "none"
         ]
     , Css.Global.selector "*, ::before, ::after"
         [ Css.property "--tw-border-opacity" "1"
@@ -64893,6 +64898,22 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 self_auto : Css.Style
 self_auto =
     Css.property "align-self" "auto"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.self-baseline {
+  align-self: baseline
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+self_baseline : Css.Style
+self_baseline =
+    Css.property "align-self" "baseline"
 
 
 {-| This class has the effect of following css declaration:
