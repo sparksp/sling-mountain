@@ -29,7 +29,7 @@
   "devDependencies": {
     "@parcel/core": "2.0.0-beta.3.1",
     "@parcel/transformer-elm": "2.0.0-beta.3.1",
-    "autoprefixer": "^10.3.5",
+    "autoprefixer": "^10.3.6",
     "elm": "^0.19.1-5",
     "elm-hot": "^1.1.6",
     "elm-review": "^2.6.0",
