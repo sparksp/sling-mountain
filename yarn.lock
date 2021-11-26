@@ -4257,10 +4257,10 @@ pako@~1.0.5:
   resolved "https://registry.yarnpkg.com/pako/-/pako-1.0.11.tgz#6c9599d340d54dfd3946380252a35705a6b992bf"
   integrity sha512-4hLB8Py4zZce5s4yd9XzopqwVv/yGNhV1Bl8NTmCq1763HeK2+EwVTv+leGeL13Dnh2wfbqowVPXCIO0z4taYw==
 
-parcel-reporter-static-files-copy@^1.3.1:
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/parcel-reporter-static-files-copy/-/parcel-reporter-static-files-copy-1.3.1.tgz#a3ec98ca870507d94c7280f4416ff3b9912e7745"
-  integrity sha512-ieXqE+PsbsKQbsy0nZ6yQas8ILEet9I0oYlp7zduil3lM+KLN6BkDWkTtOw4CgaMixzcnCEVkRCYl/j32KNeIg==
+parcel-reporter-static-files-copy@^1.3.2:
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/parcel-reporter-static-files-copy/-/parcel-reporter-static-files-copy-1.3.2.tgz#8e89fa9e9880ac4ff42b423f87c6454b4995f26b"
+  integrity sha512-2TCDw+4J5fN2Ms3XUIdITLsjq5zJUpEvSRWunhSMzG235M4zTkvntLsC7qdvRvHMqoH1cHiY3PUJwbXMuB/f2g==
 
 parcel@2.0.0-beta.3.1:
   version "2.0.0-beta.3.1"
