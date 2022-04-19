@@ -18,8 +18,8 @@
     "lint:format": "elm-format src/ tests/ --yes",
     "lint:review": "elm-review",
     "lint": "run-s lint:format lint:review ;",
-    "test": "elm-test",
-    "test:watch": "elm-test --watch",
+    "test": "elm-test-rs",
+    "test:watch": "elm-test-rs --watch",
     "all": "run-s gen:tailwind build test lint ;"
   },
   "staticFiles": {
@@ -34,8 +34,7 @@
     "elm-hot": "^1.1.6",
     "elm-review": "^2.7.1",
     "elm-tailwind-modules": "^0.3.2",
-    "elm-test": "^0.19.1-revision7",
-    "elm-tooling": "^1.5.0",
+    "elm-tooling": "^1.8.0",
     "elm-types": "^0.0.2",
     "node-elm-compiler": "^5.0.6",
     "npm-run-all": "^4.1.5",
