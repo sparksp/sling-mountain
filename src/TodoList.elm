@@ -434,7 +434,13 @@ type alias DecoderData v =
 
 decoderDataDecoder : Decode.Decoder (DecoderData String)
 decoderDataDecoder =
-    Decode.map3 DecoderData
+    Decode.map3
+        (\currentValue completedValue disabledValue ->
+            { current = currentValue
+            , completed = completedValue
+            , disabled = disabledValue
+            }
+        )
         (Decode.field "current" (Decode.nullable Decode.string))
         (Decode.field "completed" (Decode.list Decode.string))
         (Decode.field "disabled" (Decode.list Decode.string))
