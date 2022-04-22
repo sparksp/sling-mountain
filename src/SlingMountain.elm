@@ -182,9 +182,7 @@ update msg (Model model) =
         Disable key ->
             updateAndSaveTodo (TodoList.disable key model.todo)
                 ( Model { model | embed = Embed.step model.embed }
-                , Cmd.batch
-                    [ Task.attempt GotViewport (Dom.getViewportOf "current")
-                    ]
+                , Task.attempt GotViewport (Dom.getViewportOf "current")
                 )
 
         Restore key ->
