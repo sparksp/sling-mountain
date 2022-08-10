@@ -4,6 +4,7 @@
 
 [build.environment]
     ELM_HOME = "$NETLIFY_BUILD_BASE/cache/elm"
+    YARN_VERSION = "1.22.19"
 
 [[redirects]]
     from = "/*"
