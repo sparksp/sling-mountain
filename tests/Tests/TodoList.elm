@@ -140,7 +140,9 @@ skipTest =
                     |> Expect.all
                         [ TodoList.current >> Expect.notEqual Nothing
                         , TodoList.current >> Expect.notEqual initialCurrent
-                        , TodoList.remaining >> contains initialCurrent >> Expect.true "Remaining must contain initial current"
+                        , (TodoList.remaining >> contains initialCurrent)
+                            >> Expect.equal True
+                            >> Expect.onFail "Remaining must contain initial current"
                         , TodoList.disabled >> Expect.equal []
                         , TodoList.completed >> Expect.equal []
                         ]
