@@ -1662,10 +1662,10 @@ elm-review@^2.7.6:
     which "^2.0.2"
     wrap-ansi "^6.2.0"
 
-elm-tailwind-modules@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/elm-tailwind-modules/-/elm-tailwind-modules-0.4.0.tgz#3ee96c226965fe3d6ad0b50895294e1219eef8d1"
-  integrity sha512-nqYQMEJxa/7fFvKBzTl0PUfrZiC+uiN9zmAqSQRWG2a3GueXvqqiOq+pn+jH7rHbWMOsFzPiVIbyfZPj3Sgt0Q==
+elm-tailwind-modules@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/elm-tailwind-modules/-/elm-tailwind-modules-0.4.1.tgz#2e18a62a353b19eb551893daf8cce77af389b771"
+  integrity sha512-0gTUbzlMevzsem0i2OhtKFpwRPUj+DuSPr6oeU1Ple6Zxfy283vlxLzQOVtIgfxfgh2q1fPCDDvm5q8KjKIMHg==
   dependencies:
     chalk "^4.1.1"
     commander "^7.2.0"
