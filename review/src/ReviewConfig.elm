@@ -1,6 +1,8 @@
 module ReviewConfig exposing (config)
 
-import Documentation.ReadmeLinksPointToCurrentVersion
+import Docs.NoMissing exposing (exposedModules, onlyExposed)
+import Docs.ReviewAtDocs
+import Docs.ReviewLinksAndSections
 import NoAlways
 import NoBooleanCase
 import NoDebug.Log
@@ -39,7 +41,12 @@ import Vendor.NoFullyAppliedPrefixOperator as NoFullyAppliedPrefixOperator
 
 config : List Rule
 config =
-    [ Documentation.ReadmeLinksPointToCurrentVersion.rule
+    [ Docs.NoMissing.rule
+        { document = onlyExposed
+        , from = exposedModules
+        }
+    , Docs.ReviewLinksAndSections.rule
+    , Docs.ReviewAtDocs.rule
     , NoAlways.rule
     , NoBooleanCase.rule
     , NoDebug.Log.rule
