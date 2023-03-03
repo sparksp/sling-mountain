@@ -41,7 +41,7 @@
     "parcel": "^2.8.0",
     "parcel-reporter-static-files-copy": "^1.5.0",
     "postcss": "^8.4.21",
-    "rimraf": "^4.1.3",
+    "rimraf": "^4.2.0",
     "tailwindcss": "^2.2.19",
     "typescript": "^4.9.5"
   },
