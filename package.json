@@ -43,7 +43,7 @@
     "postcss": "^8.4.21",
     "rimraf": "^4.4.1",
     "tailwindcss": "^2.2.19",
-    "typescript": "^5.0.2"
+    "typescript": "^5.0.4"
   },
   "dependencies": {}
 }
