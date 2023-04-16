@@ -36,7 +36,7 @@ jobs:
       - name: Apply elm-review fixes
         run: npx --no-install elm-review --fix-all-without-prompt
         continue-on-error: true
-      - uses: peter-evans/create-pull-request@v4
+      - uses: peter-evans/create-pull-request@v5
         with:
           commit-message: 'Apply elm-review fixes'
           branch: fixes-${{ steps.extract_branch.outputs.branch }}
@@ -74,7 +74,7 @@ jobs:
         run: npx --no-install elm-tooling install
       - name: Update Elm Tailwind modules
         run: yarn run gen:tailwind
-      - uses: peter-evans/create-pull-request@v4
+      - uses: peter-evans/create-pull-request@v5
         with:
           commit-message: 'Update Elm Tailwind modules'
           branch: ${{ steps.extract_branch.outputs.branch }}-tailwind
