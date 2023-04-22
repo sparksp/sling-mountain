@@ -22,6 +22,7 @@ import Scenario exposing (Scenario)
 import Svg.Styled as Svg
 import Svg.Styled.Attributes as SvgAttributes
 import Tailwind.Breakpoints as Breakpoints
+import Tailwind.Theme as TwTheme
 import Tailwind.Utilities as Tw
 import Task
 import TodoList exposing (TodoList)
@@ -368,7 +369,7 @@ view model =
                 ]
             ]
             [ importTitleFont
-            , Css.Global.global (Css.Global.body [ Tw.bg_gray_300 ] :: Tw.globalStyles)
+            , Css.Global.global (Css.Global.body [ Tw.bg_color TwTheme.gray_200 ] :: Tw.globalStyles)
             , viewTitle
             , viewScenarios model
             ]
@@ -451,7 +452,7 @@ viewTitle =
         ]
         [ Html.span
             [ Attr.css
-                [ Tw.text_gray_700
+                [ Tw.text_color TwTheme.gray_700
                 , Tw.text_2xl
                 , Breakpoints.md [ Tw.text_3xl ]
                 , Tw.leading_normal
@@ -505,7 +506,7 @@ viewInformationList { options, show } =
                         , Html.a
                             [ Attr.href "https://github.com/sparksp/sling-mountain/issues"
                             , Attr.title "Report issues on GitHub"
-                            , Attr.css [ Css.hover [ Tw.text_black ] ]
+                            , Attr.css [ Css.hover [ Tw.text_color TwTheme.black ] ]
                             ]
                             [ Html.text "report them on GitHub" ]
                         , Html.text " where you can also find the code for this site."
@@ -574,7 +575,7 @@ viewInformationList { options, show } =
                         , Html.a
                             [ Attr.href "https://www.zondicons.com/"
                             , Attr.title "Zondicons"
-                            , Attr.css [ Css.hover [ Tw.text_black ] ]
+                            , Attr.css [ Css.hover [ Tw.text_color TwTheme.black ] ]
                             ]
                             [ Html.text "Steve Schoger from Zondicons"
                             ]
@@ -594,7 +595,7 @@ viewInformationList { options, show } =
                         , Html.a
                             [ Attr.href "https://www.flaticon.com/authors/pixel-perfect"
                             , Attr.title "Pixel Perfect"
-                            , Attr.css [ Css.hover [ Tw.text_black ] ]
+                            , Attr.css [ Css.hover [ Tw.text_color TwTheme.black ] ]
                             ]
                             [ Html.text "Pixel Perfect from Flaticon."
                             ]
@@ -661,14 +662,14 @@ viewHeading heading { count, show } =
             , Tw.mb_3
             , Tw.flex
             , Tw.flex_row
-            , Tw.text_gray_600
+            , Tw.text_color TwTheme.gray_600
             , Tw.font_title
             ]
         ]
         [ Html.span
             [ Attr.css
                 [ Tw.flex_1
-                , Tw.border_gray_400
+                , Tw.border_color TwTheme.gray_400
                 , Tw.border_b
                 , Tw.m_auto
                 , Tw.mr_2
@@ -681,7 +682,7 @@ viewHeading heading { count, show } =
                 [ Tw.flex
                 , Tw.flex_row
                 , Tw.items_center
-                , Css.hover [ Tw.text_gray_800 ]
+                , Css.hover [ Tw.text_color TwTheme.gray_800 ]
                 ]
             ]
             [ Html.span [] [ icon ]
@@ -690,7 +691,7 @@ viewHeading heading { count, show } =
         , Html.span
             [ Attr.css
                 [ Tw.flex_1
-                , Tw.border_gray_400
+                , Tw.border_color TwTheme.gray_400
                 , Tw.border_b
                 , Tw.m_auto
                 , Tw.ml_2
@@ -736,8 +737,8 @@ viewRestoreAllCompletedButton =
         [ Html.button
             [ Events.onClick RestoreAllCompleted
             , Attr.css
-                [ Tw.text_gray_600
-                , Css.hover [ Tw.text_gray_800 ]
+                [ Tw.text_color TwTheme.gray_600
+                , Css.hover [ Tw.text_color TwTheme.gray_800 ]
                 , Tw.w_full
                 ]
             ]
@@ -760,8 +761,8 @@ viewRestoreAllDisabledButton =
         [ Html.button
             [ Events.onClick RestoreAllDisabled
             , Attr.css
-                [ Tw.text_gray_600
-                , Css.hover [ Tw.text_gray_800 ]
+                [ Tw.text_color TwTheme.gray_600
+                , Css.hover [ Tw.text_color TwTheme.gray_800 ]
                 , Tw.w_full
                 ]
             ]
@@ -966,7 +967,7 @@ youtubeFooterEmbed maxWidth youtubeId =
     Footer.figure
         { attributes =
             [ Attr.css
-                [ Tw.bg_black
+                [ Tw.bg_color TwTheme.black
                 , Tw.transition_colors
                 , Tw.duration_300
                 , Tw.ease_in

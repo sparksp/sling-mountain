@@ -13,6 +13,7 @@ import Css
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attr
 import Html.Styled.Events as Events
+import Tailwind.Theme as TwTheme
 import Tailwind.Utilities as Tw
 import Ui.Card.Action as Action exposing (Action)
 
@@ -78,7 +79,7 @@ viewHelper link_ actions =
         Link { href, text } ->
             [ Html.nav
                 [ Attr.css
-                    [ Tw.bg_transparent
+                    [ Tw.bg_color TwTheme.transparent
                     , Tw.border_t
                     , Tw.px_3
                     , Tw.flex
@@ -90,10 +91,10 @@ viewHelper link_ actions =
                     , Attr.css
                         [ Tw.block
                         , Tw.flex_1
-                        , Css.hover [ Tw.text_gray_800 ]
+                        , Css.hover [ Tw.text_color TwTheme.gray_800 ]
                         , Tw.px_3
                         , Tw.py_2
-                        , Tw.text_gray_500
+                        , Tw.text_color TwTheme.gray_500
                         , Tw.text_left
                         ]
                     ]
@@ -106,7 +107,7 @@ viewHelper link_ actions =
         Button { text, onClick } ->
             [ Html.figure
                 [ Attr.css
-                    [ Tw.bg_transparent
+                    [ Tw.bg_color TwTheme.transparent
                     , Tw.border_t
                     , Tw.px_3
                     , Tw.flex
@@ -117,10 +118,10 @@ viewHelper link_ actions =
                     , Attr.title text
                     , Attr.css
                         [ Tw.block
-                        , Css.hover [ Tw.text_gray_800 ]
+                        , Css.hover [ Tw.text_color TwTheme.gray_800 ]
                         , Tw.px_3
                         , Tw.py_2
-                        , Tw.text_gray_500
+                        , Tw.text_color TwTheme.gray_500
                         , Tw.w_full
                         , Tw.text_left
                         ]
@@ -138,7 +139,7 @@ viewHelper link_ actions =
         Image { src, alt } ->
             [ Html.figure
                 [ Attr.css
-                    [ Tw.bg_transparent
+                    [ Tw.bg_color TwTheme.transparent
                     , Tw.border_t
                     ]
                 ]

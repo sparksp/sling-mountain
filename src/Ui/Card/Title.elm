@@ -13,6 +13,7 @@ import Html.Styled.Attributes as Attr
 import Html.Styled.Events as Events
 import Svg.Styled.Attributes as SvgAttributes
 import Tailwind.Breakpoints as Breakpoints
+import Tailwind.Theme as TwTheme
 import Tailwind.Utilities as Tw
 import Ui.Card.Action as Action exposing (Action)
 import Ui.Icons as Icons
@@ -109,8 +110,8 @@ view title_ =
                 Html.button
                     (Events.onClick onClick
                         :: Attr.css
-                            [ Css.hover [ Tw.text_black ]
-                            , Tw.text_gray_600
+                            [ Css.hover [ Tw.text_color TwTheme.black ]
+                            , Tw.text_color TwTheme.gray_600
                             , Tw.text_left
                             ]
                         :: buttonPadding
@@ -124,7 +125,7 @@ view title_ =
                             , Tw.mt_1
                             ]
                         ]
-                    , Html.span [ Attr.css [ Tw.text_gray_900 ] ] [ Html.text text ]
+                    , Html.span [ Attr.css [ Tw.text_color TwTheme.gray_900 ] ] [ Html.text text ]
                     ]
                     :: viewActions actions
 
@@ -132,8 +133,8 @@ view title_ =
                 Html.a
                     (Attr.href href
                         :: Attr.css
-                            [ Css.hover [ Tw.text_black ]
-                            , Tw.text_gray_600
+                            [ Css.hover [ Tw.text_color TwTheme.black ]
+                            , Tw.text_color TwTheme.gray_600
                             , Tw.text_left
                             ]
                         :: buttonPadding
@@ -147,13 +148,13 @@ view title_ =
                             , Tw.mt_1
                             ]
                         ]
-                    , Html.span [ Attr.css [ Tw.text_gray_900 ] ] [ Html.text text ]
+                    , Html.span [ Attr.css [ Tw.text_color TwTheme.gray_900 ] ] [ Html.text text ]
                     ]
                     :: viewActions actions
 
             Static { icon, text, actions } ->
                 Html.p buttonPadding
-                    [ Html.span [ Attr.css [ Tw.text_gray_900 ] ]
+                    [ Html.span [ Attr.css [ Tw.text_color TwTheme.gray_900 ] ]
                         [ icon
                             [ SvgAttributes.css
                                 [ Tw.h_4
@@ -163,7 +164,7 @@ view title_ =
                                 , Tw.mt_1
                                 ]
                             ]
-                        , Html.span [ Attr.css [ Tw.text_gray_900 ] ] [ Html.text text ]
+                        , Html.span [ Attr.css [ Tw.text_color TwTheme.gray_900 ] ] [ Html.text text ]
                         ]
                     ]
                     :: viewActions actions

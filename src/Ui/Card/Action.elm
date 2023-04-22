@@ -11,6 +11,7 @@ import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attr
 import Html.Styled.Events as Events
 import Svg.Styled.Attributes as SvgAttributes
+import Tailwind.Theme as TwTheme
 import Tailwind.Utilities as Tw
 import Ui.Icons as Icons
 
@@ -46,7 +47,7 @@ view attributes action =
                 , Tw.flex_row
                 , Tw.items_center
                 , Tw.box_content
-                , Tw.text_gray_600
+                , Tw.text_color TwTheme.gray_600
                 ]
                 :: attributes
     in
@@ -55,7 +56,7 @@ view attributes action =
             Html.button
                 (Events.onClick options.onClick
                     :: Attr.title options.text
-                    :: Attr.css [ Css.hover [ Tw.text_black ] ]
+                    :: Attr.css [ Css.hover [ Tw.text_color TwTheme.black ] ]
                     :: baseAttributes
                 )
                 [ options.icon
@@ -78,7 +79,7 @@ view attributes action =
             Html.a
                 (Attr.title options.text
                     :: Attr.href options.href
-                    :: Attr.css [ Css.hover [ Tw.text_gray_900 ] ]
+                    :: Attr.css [ Css.hover [ Tw.text_color TwTheme.gray_900 ] ]
                     :: baseAttributes
                 )
                 [ options.icon
