@@ -369,7 +369,7 @@ view model =
                 ]
             ]
             [ importTitleFont
-            , Css.Global.global (Css.Global.body [ Tw.bg_color TwTheme.gray_300 ] :: Tw.globalStyles)
+            , Css.Global.global (Css.Global.body [ Tw.bg_color TwTheme.gray_200 ] :: Tw.globalStyles)
             , viewTitle
             , viewScenarios model
             ]
