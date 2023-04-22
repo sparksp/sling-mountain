@@ -1153,7 +1153,7 @@ color-name@1.1.3:
   resolved "https://registry.yarnpkg.com/color-name/-/color-name-1.1.3.tgz#a7d0558bd89c42f795dd42328f740831ca53bc25"
   integrity sha512-72fSenhMw2HZMTVHeCA9KCmpEIbzWiQsjN+BHcBbS9vr1mtt+vJjPdksIBNUmKAW8TFUDPJK5SUU3QhE9NEXDw==
 
-color-name@^1.0.0, color-name@~1.1.4:
+color-name@^1.0.0, color-name@^1.1.4, color-name@~1.1.4:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/color-name/-/color-name-1.1.4.tgz#c2a09a87acbde69543de6f63fa3995c826c536a2"
   integrity sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==
@@ -1472,12 +1472,13 @@ elm-review@^2.10.1:
     which "^2.0.2"
     wrap-ansi "^6.2.0"
 
-elm-tailwind-modules@^0.4.1:
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/elm-tailwind-modules/-/elm-tailwind-modules-0.4.1.tgz#2e18a62a353b19eb551893daf8cce77af389b771"
-  integrity sha512-0gTUbzlMevzsem0i2OhtKFpwRPUj+DuSPr6oeU1Ple6Zxfy283vlxLzQOVtIgfxfgh2q1fPCDDvm5q8KjKIMHg==
+elm-tailwind-modules@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/elm-tailwind-modules/-/elm-tailwind-modules-0.5.0.tgz#e47607397239f5b5df9335bbd5b7400144d52ec5"
+  integrity sha512-Ad03E6lZwB2Fa+OoLTSzlRKOIzO+T5jTgTOHl53WREmNZPxcaJ+1acwdM/7RJrTkTfvoXi241pdfzzOBQX5r2A==
   dependencies:
     chalk "^4.1.1"
+    color-name "^1.1.4"
     commander "^7.2.0"
     css-what "^5.0.0"
     deep-equal "^2.0.3"
