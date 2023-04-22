@@ -4,6 +4,7 @@ import Css
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attr
 import Tailwind.Breakpoints as Breakpoints
+import Tailwind.Theme as TwTheme
 import Tailwind.Utilities as Tw
 import Ui.Card.Footer as Footer exposing (Footer)
 import Ui.Card.Frame as Frame exposing (Frame)
@@ -24,7 +25,7 @@ view ({ frame, body } as card) =
         baseAttributes : List (Html.Attribute msg)
         baseAttributes =
             [ Attr.css
-                [ Tw.bg_white
+                [ Tw.bg_color TwTheme.white
                 , Tw.my_3
                 , Tw.overflow_hidden
                 , Breakpoints.sm [ Tw.rounded ]
@@ -76,7 +77,7 @@ withBody body =
         _ ->
             [ Html.div
                 [ Attr.css
-                    [ Tw.text_gray_700
+                    [ Tw.text_color TwTheme.gray_700
                     , Tw.text_base
                     , Tw.px_4
                     , Breakpoints.sm [ Tw.px_6 ]
