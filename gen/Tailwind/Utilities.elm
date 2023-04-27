@@ -9946,6 +9946,9 @@ globalStyles =
         , Css.property "--tw-pan-y" " "
         , Css.property "--tw-pinch-zoom" " "
         , Css.property "--tw-scroll-snap-strictness" "proximity"
+        , Css.property "--tw-gradient-from-position" " "
+        , Css.property "--tw-gradient-via-position" " "
+        , Css.property "--tw-gradient-to-position" " "
         , Css.property "--tw-ordinal" " "
         , Css.property "--tw-slashed-zero" " "
         , Css.property "--tw-numeric-figure" " "
@@ -9992,6 +9995,9 @@ globalStyles =
         , Css.property "--tw-pan-y" " "
         , Css.property "--tw-pinch-zoom" " "
         , Css.property "--tw-scroll-snap-strictness" "proximity"
+        , Css.property "--tw-gradient-from-position" " "
+        , Css.property "--tw-gradient-via-position" " "
+        , Css.property "--tw-gradient-to-position" " "
         , Css.property "--tw-ordinal" " "
         , Css.property "--tw-slashed-zero" " "
         , Css.property "--tw-numeric-figure" " "
@@ -94199,9 +94205,7 @@ fill_color color =
 ```css
 .from-yellow-950 {
     --tw-gradient-from: <color> var(--tw-gradient-from-position);
-    --tw-gradient-from-position:  ;
-    --tw-gradient-to: <color>  var(--tw-gradient-from-position);
-    --tw-gradient-to-position:  ;
+    --tw-gradient-to: <color> var(--tw-gradient-to-position);
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to)
 }
 ```
@@ -94215,10 +94219,8 @@ from_color : Color -> Css.Style
 from_color color =
     Css.batch
         [ Tw.propertyWithColor "--tw-gradient-from" (\c -> "" ++ c ++ " var(--tw-gradient-from-position)") Nothing color
-        , Css.property "--tw-gradient-from-position" " "
         , Tw.withOpacity (Tw.Opacity "0") color
-            |> Tw.propertyWithColor "--tw-gradient-to" (\c -> "" ++ c ++ "  var(--tw-gradient-from-position)") Nothing
-        , Css.property "--tw-gradient-to-position" " "
+            |> Tw.propertyWithColor "--tw-gradient-to" (\c -> "" ++ c ++ " var(--tw-gradient-to-position)") Nothing
         , Css.property "--tw-gradient-stops" "var(--tw-gradient-from), var(--tw-gradient-to)"
         ]
 
@@ -94362,8 +94364,7 @@ text_color color =
 
 ```css
 .to-yellow-950 {
-    --tw-gradient-to: <color> var(--tw-gradient-to-position);
-    --tw-gradient-to-position:  
+    --tw-gradient-to: <color> var(--tw-gradient-to-position)
 }
 ```
 
@@ -94374,19 +94375,14 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 -}
 to_color : Color -> Css.Style
 to_color color =
-    Css.batch
-        [ Tw.propertyWithColor "--tw-gradient-to" (\c -> "" ++ c ++ " var(--tw-gradient-to-position)") Nothing color
-        , Css.property "--tw-gradient-to-position" " "
-        ]
+    Tw.propertyWithColor "--tw-gradient-to" (\c -> "" ++ c ++ " var(--tw-gradient-to-position)") Nothing color
 
 
 {-| This class has effects of css declarations similar to the following:
 
 ```css
 .via-yellow-950 {
-    --tw-gradient-via-position:  ;
     --tw-gradient-to: <color>  var(--tw-gradient-to-position);
-    --tw-gradient-to-position:  ;
     --tw-gradient-stops: var(--tw-gradient-from), <color> var(--tw-gradient-via-position), var(--tw-gradient-to)
 }
 ```
@@ -94399,9 +94395,7 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 via_color : Color -> Css.Style
 via_color color =
     Css.batch
-        [ Css.property "--tw-gradient-via-position" " "
-        , Tw.withOpacity (Tw.Opacity "0") color
+        [ Tw.withOpacity (Tw.Opacity "0") color
             |> Tw.propertyWithColor "--tw-gradient-to" (\c -> "" ++ c ++ "  var(--tw-gradient-to-position)") Nothing
-        , Css.property "--tw-gradient-to-position" " "
         , Tw.propertyWithColor "--tw-gradient-stops" (\c -> "var(--tw-gradient-from), " ++ c ++ " var(--tw-gradient-via-position), var(--tw-gradient-to)") Nothing color
         ]
