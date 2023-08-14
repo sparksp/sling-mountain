@@ -19,7 +19,6 @@ all =
         , disableTest
         , emptyTest
         , encodeTests
-        , isCurrentTests
         , pickTest
         , restoreTests
         , describe "restoreAllCompleted" restoreAllCompletedTests
@@ -196,48 +195,6 @@ completeTest =
                         , TodoList.disabled >> Expect.equal []
                         , TodoList.completed >> Expect.equal [ ( "b", 2 ) ]
                         ]
-        ]
-
-
-isCurrentTests : Test
-isCurrentTests =
-    describe "isCurrent"
-        [ test "with an empty list is False" <|
-            \() ->
-                TodoList.empty
-                    |> TodoList.isCurrent "key"
-                    |> Expect.equal False
-        , test "with current is True" <|
-            \() ->
-                let
-                    ( initialTodoList, _ ) =
-                        [ ( "a", 1 ) ]
-                            |> seed 0 (TodoList.chooseFromList "")
-                in
-                initialTodoList
-                    |> TodoList.isCurrent "a"
-                    |> Expect.equal True
-        , test "with not current is False" <|
-            \() ->
-                let
-                    ( initialTodoList, _ ) =
-                        [ ( "a", 1 ) ]
-                            |> seed 0 (TodoList.chooseFromList "")
-                in
-                initialTodoList
-                    |> TodoList.isCurrent "b"
-                    |> Expect.equal False
-        , test "with list all complete is False" <|
-            \() ->
-                let
-                    ( completeTodoList, _ ) =
-                        [ ( "a", 1 ) ]
-                            |> seed 0 (TodoList.chooseFromList "")
-                            |> step TodoList.complete
-                in
-                completeTodoList
-                    |> TodoList.isCurrent "a"
-                    |> Expect.equal False
         ]
 
 
