@@ -11,7 +11,6 @@ module TodoList exposing
     , disabled
     , empty
     , encoder
-    , isCurrent
     , pick
     , remaining
     , restore
@@ -209,16 +208,6 @@ restoreAllDisabled list =
 
                 head :: rest ->
                     Todo { current = head, remaining = rest, completed = data.completed, disabled = [] }
-
-
-isCurrent : comparable -> TodoList comparable v -> Bool
-isCurrent key list =
-    case list of
-        Todo data ->
-            Tuple.first data.current == key
-
-        AllDone _ ->
-            False
 
 
 current : TodoList comparable v -> Maybe ( comparable, v )
