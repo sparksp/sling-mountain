@@ -60,3 +60,39 @@ jobs:
         run: npx --no-install elm-review
       - name: Run elm-format
         run: npx --no-install elm-format --validate src/ tests/ review/src/
+
+  elm-tailwind-modules:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch
+      - uses: actions/cache@v3
+        id: yarn-cache
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('yarn.lock') }}
+          restore-keys: ${{ runner.os }}-node_modules
+      - uses: actions/cache@v3
+        with:
+          path: ~/.elm
+          key: ${{ runner.os }}-elm--home-${{ hashFiles('**/elm.json', 'elm-tooling.json') }}
+          restore-keys: ${{ runner.os }}-elm--home
+      - name: Install dependencies
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        env:
+          NO_ELM_TOOLING_INSTALL: 1
+        run: yarn install --frozen-lockfile
+      - name: elm-tooling install
+        run: npx --no-install elm-tooling install
+      - name: Update Elm Tailwind modules
+        run: yarn run gen:tailwind
+      - name: Check if there are changes
+        id: changes
+        run: echo "changed=$(git status --porcelain | wc -l)" >> $GITHUB_OUTPUT
+      - name: Report changes
+        if: steps.changes.outputs.changed == 1
+        run: echo "::error::Unstaged changes detected - it is likely that the Elm Tailwind Modules need updating."
