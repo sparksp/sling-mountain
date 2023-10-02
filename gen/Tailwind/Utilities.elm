@@ -9852,6 +9852,8 @@ globalStyles =
         ]
     , Css.Global.selector "button,\ninput,\noptgroup,\nselect,\ntextarea"
         [ Css.property "font-family" "inherit"
+        , Css.property "font-feature-settings" "inherit"
+        , Css.property "font-variation-settings" "inherit"
         , Css.property "font-size" "100%"
         , Css.property "font-weight" "inherit"
         , Css.property "line-height" "inherit"
@@ -9907,6 +9909,9 @@ globalStyles =
         [ Css.property "list-style" "none"
         , Css.property "margin" "0"
         , Css.property "padding" "0"
+        ]
+    , Css.Global.selector "dialog"
+        [ Css.property "padding" "0"
         ]
     , Css.Global.selector "textarea"
         [ Css.property "resize" "vertical"
