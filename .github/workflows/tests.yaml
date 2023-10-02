@@ -95,4 +95,7 @@ jobs:
         run: echo "changed=$(git status --porcelain | wc -l)" >> $GITHUB_OUTPUT
       - name: Report changes
         if: steps.changes.outputs.changed == 1
-        run: echo "::error::Unstaged changes detected - it is likely that the Elm Tailwind Modules need updating."
+        run: |
+          echo "::error::Unstaged changes detected - it is likely that the Elm Tailwind Modules need updating."
+          git status --porcelain
+          exit 1
