@@ -97,4 +97,5 @@ jobs:
         if: steps.changes.outputs.changed == 1
         run: |
           echo "::error::Unstaged changes detected - it is likely that the Elm Tailwind Modules need updating."
+          git status --porcelain
           exit 1
