@@ -9828,6 +9828,8 @@ globalStyles =
         ]
     , Css.Global.selector "code,\nkbd,\nsamp,\npre"
         [ Css.property "font-family" "Menlo, Monaco, Consolas, \"Liberation Mono\", \"Courier New\", monospace"
+        , Css.property "font-feature-settings" "normal"
+        , Css.property "font-variation-settings" "normal"
         , Css.property "font-size" "1em"
         ]
     , Css.Global.selector "small"
