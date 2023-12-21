@@ -17,6 +17,7 @@ module Tailwind.Utilities exposing
     , animate_pulse
     , animate_spin
     , antialiased
+    , appearance_auto
     , appearance_none
     , aspect_auto
     , aspect_square
@@ -71,16 +72,22 @@ module Tailwind.Utilities exposing
     , backdrop_opacity_0
     , backdrop_opacity_10
     , backdrop_opacity_100
+    , backdrop_opacity_15
     , backdrop_opacity_20
     , backdrop_opacity_25
     , backdrop_opacity_30
+    , backdrop_opacity_35
     , backdrop_opacity_40
+    , backdrop_opacity_45
     , backdrop_opacity_5
     , backdrop_opacity_50
+    , backdrop_opacity_55
     , backdrop_opacity_60
+    , backdrop_opacity_65
     , backdrop_opacity_70
     , backdrop_opacity_75
     , backdrop_opacity_80
+    , backdrop_opacity_85
     , backdrop_opacity_90
     , backdrop_opacity_95
     , backdrop_saturate_0
@@ -197,16 +204,22 @@ module Tailwind.Utilities exposing
     , bg_opacity_0
     , bg_opacity_10
     , bg_opacity_100
+    , bg_opacity_15
     , bg_opacity_20
     , bg_opacity_25
     , bg_opacity_30
+    , bg_opacity_35
     , bg_opacity_40
+    , bg_opacity_45
     , bg_opacity_5
     , bg_opacity_50
+    , bg_opacity_55
     , bg_opacity_60
+    , bg_opacity_65
     , bg_opacity_70
     , bg_opacity_75
     , bg_opacity_80
+    , bg_opacity_85
     , bg_opacity_90
     , bg_opacity_95
     , bg_origin_border
@@ -265,16 +278,22 @@ module Tailwind.Utilities exposing
     , border_opacity_0
     , border_opacity_10
     , border_opacity_100
+    , border_opacity_15
     , border_opacity_20
     , border_opacity_25
     , border_opacity_30
+    , border_opacity_35
     , border_opacity_40
+    , border_opacity_45
     , border_opacity_5
     , border_opacity_50
+    , border_opacity_55
     , border_opacity_60
+    , border_opacity_65
     , border_opacity_70
     , border_opacity_75
     , border_opacity_80
+    , border_opacity_85
     , border_opacity_90
     , border_opacity_95
     , border_r
@@ -501,9 +520,11 @@ module Tailwind.Utilities exposing
     , caption_top
     , caret_color
     , clear_both
+    , clear_end
     , clear_left
     , clear_none
     , clear_right
+    , clear_start
     , col_auto
     , col_end_1
     , col_end_10
@@ -661,16 +682,22 @@ module Tailwind.Utilities exposing
     , divide_opacity_0
     , divide_opacity_10
     , divide_opacity_100
+    , divide_opacity_15
     , divide_opacity_20
     , divide_opacity_25
     , divide_opacity_30
+    , divide_opacity_35
     , divide_opacity_40
+    , divide_opacity_45
     , divide_opacity_5
     , divide_opacity_50
+    , divide_opacity_55
     , divide_opacity_60
+    , divide_opacity_65
     , divide_opacity_70
     , divide_opacity_75
     , divide_opacity_80
+    , divide_opacity_85
     , divide_opacity_90
     , divide_opacity_95
     , divide_solid
@@ -770,9 +797,11 @@ module Tailwind.Utilities exposing
     , flex_shrink_0
     , flex_wrap
     , flex_wrap_reverse
+    , float_end
     , float_left
     , float_none
     , float_right
+    , float_start
     , flow_root
     , font_black
     , font_bold
@@ -787,6 +816,8 @@ module Tailwind.Utilities exposing
     , font_serif
     , font_thin
     , font_title
+    , forced_color_adjust_auto
+    , forced_color_adjust_none
     , from_0pct
     , from_100pct
     , from_10pct
@@ -930,18 +961,26 @@ module Tailwind.Utilities exposing
     , grid_cols_8
     , grid_cols_9
     , grid_cols_none
+    , grid_cols_subgrid
     , grid_flow_col
     , grid_flow_col_dense
     , grid_flow_dense
     , grid_flow_row
     , grid_flow_row_dense
     , grid_rows_1
+    , grid_rows_10
+    , grid_rows_11
+    , grid_rows_12
     , grid_rows_2
     , grid_rows_3
     , grid_rows_4
     , grid_rows_5
     , grid_rows_6
+    , grid_rows_7
+    , grid_rows_8
+    , grid_rows_9
     , grid_rows_none
+    , grid_rows_subgrid
     , grow
     , grow_0
     , h_0
@@ -994,12 +1033,15 @@ module Tailwind.Utilities exposing
     , h_9
     , h_96
     , h_auto
+    , h_dvh
     , h_fit
     , h_full
+    , h_lvh
     , h_max
     , h_min
     , h_px
     , h_screen
+    , h_svh
     , hidden
     , hue_rotate_0
     , hue_rotate_15
@@ -1351,20 +1393,56 @@ module Tailwind.Utilities exposing
     , max_h_80
     , max_h_9
     , max_h_96
+    , max_h_dvh
     , max_h_fit
     , max_h_full
+    , max_h_lvh
     , max_h_max
     , max_h_min
     , max_h_none
     , max_h_px
     , max_h_screen
+    , max_h_svh
     , max_w_0
+    , max_w_0_dot_5
+    , max_w_1
+    , max_w_10
+    , max_w_11
+    , max_w_12
+    , max_w_14
+    , max_w_16
+    , max_w_1_dot_5
+    , max_w_2
+    , max_w_20
+    , max_w_24
+    , max_w_28
+    , max_w_2_dot_5
     , max_w_2xl
+    , max_w_3
+    , max_w_32
+    , max_w_36
+    , max_w_3_dot_5
     , max_w_3xl
+    , max_w_4
+    , max_w_40
+    , max_w_44
+    , max_w_48
     , max_w_4xl
+    , max_w_5
+    , max_w_52
+    , max_w_56
     , max_w_5xl
+    , max_w_6
+    , max_w_60
+    , max_w_64
     , max_w_6xl
+    , max_w_7
+    , max_w_72
     , max_w_7xl
+    , max_w_8
+    , max_w_80
+    , max_w_9
+    , max_w_96
     , max_w_fit
     , max_w_full
     , max_w_lg
@@ -1373,6 +1451,7 @@ module Tailwind.Utilities exposing
     , max_w_min
     , max_w_none
     , max_w_prose
+    , max_w_px
     , max_w_screen_2xl
     , max_w_screen_lg
     , max_w_screen_md
@@ -1454,16 +1533,87 @@ module Tailwind.Utilities exposing
     , me_auto
     , me_px
     , min_h_0
+    , min_h_0_dot_5
+    , min_h_1
+    , min_h_10
+    , min_h_11
+    , min_h_12
+    , min_h_14
+    , min_h_16
+    , min_h_1_dot_5
+    , min_h_2
+    , min_h_20
+    , min_h_24
+    , min_h_28
+    , min_h_2_dot_5
+    , min_h_3
+    , min_h_32
+    , min_h_36
+    , min_h_3_dot_5
+    , min_h_4
+    , min_h_40
+    , min_h_44
+    , min_h_48
+    , min_h_5
+    , min_h_52
+    , min_h_56
+    , min_h_6
+    , min_h_60
+    , min_h_64
+    , min_h_7
+    , min_h_72
+    , min_h_8
+    , min_h_80
+    , min_h_9
+    , min_h_96
+    , min_h_dvh
     , min_h_fit
     , min_h_full
+    , min_h_lvh
     , min_h_max
     , min_h_min
+    , min_h_px
     , min_h_screen
+    , min_h_svh
     , min_w_0
+    , min_w_0_dot_5
+    , min_w_1
+    , min_w_10
+    , min_w_11
+    , min_w_12
+    , min_w_14
+    , min_w_16
+    , min_w_1_dot_5
+    , min_w_2
+    , min_w_20
+    , min_w_24
+    , min_w_28
+    , min_w_2_dot_5
+    , min_w_3
+    , min_w_32
+    , min_w_36
+    , min_w_3_dot_5
+    , min_w_4
+    , min_w_40
+    , min_w_44
+    , min_w_48
+    , min_w_5
+    , min_w_52
+    , min_w_56
+    , min_w_6
+    , min_w_60
+    , min_w_64
+    , min_w_7
+    , min_w_72
+    , min_w_8
+    , min_w_80
+    , min_w_9
+    , min_w_96
     , min_w_fit
     , min_w_full
     , min_w_max
     , min_w_min
+    , min_w_px
     , mix_blend_color
     , mix_blend_color_burn
     , mix_blend_color_dodge
@@ -3012,16 +3162,22 @@ module Tailwind.Utilities exposing
     , opacity_0
     , opacity_10
     , opacity_100
+    , opacity_15
     , opacity_20
     , opacity_25
     , opacity_30
+    , opacity_35
     , opacity_40
+    , opacity_45
     , opacity_5
     , opacity_50
+    , opacity_55
     , opacity_60
+    , opacity_65
     , opacity_70
     , opacity_75
     , opacity_80
+    , opacity_85
     , opacity_90
     , opacity_95
     , order_1
@@ -3253,16 +3409,22 @@ module Tailwind.Utilities exposing
     , placeholder_opacity_0
     , placeholder_opacity_10
     , placeholder_opacity_100
+    , placeholder_opacity_15
     , placeholder_opacity_20
     , placeholder_opacity_25
     , placeholder_opacity_30
+    , placeholder_opacity_35
     , placeholder_opacity_40
+    , placeholder_opacity_45
     , placeholder_opacity_5
     , placeholder_opacity_50
+    , placeholder_opacity_55
     , placeholder_opacity_60
+    , placeholder_opacity_65
     , placeholder_opacity_70
     , placeholder_opacity_75
     , placeholder_opacity_80
+    , placeholder_opacity_85
     , placeholder_opacity_90
     , placeholder_opacity_95
     , pointer_events_auto
@@ -3508,16 +3670,22 @@ module Tailwind.Utilities exposing
     , ring_opacity_0
     , ring_opacity_10
     , ring_opacity_100
+    , ring_opacity_15
     , ring_opacity_20
     , ring_opacity_25
     , ring_opacity_30
+    , ring_opacity_35
     , ring_opacity_40
+    , ring_opacity_45
     , ring_opacity_5
     , ring_opacity_50
+    , ring_opacity_55
     , ring_opacity_60
+    , ring_opacity_65
     , ring_opacity_70
     , ring_opacity_75
     , ring_opacity_80
+    , ring_opacity_85
     , ring_opacity_90
     , ring_opacity_95
     , rotate_0
@@ -3666,27 +3834,45 @@ module Tailwind.Utilities exposing
     , rounded_xl
     , row_auto
     , row_end_1
+    , row_end_10
+    , row_end_11
+    , row_end_12
+    , row_end_13
     , row_end_2
     , row_end_3
     , row_end_4
     , row_end_5
     , row_end_6
     , row_end_7
+    , row_end_8
+    , row_end_9
     , row_end_auto
     , row_span_1
+    , row_span_10
+    , row_span_11
+    , row_span_12
     , row_span_2
     , row_span_3
     , row_span_4
     , row_span_5
     , row_span_6
+    , row_span_7
+    , row_span_8
+    , row_span_9
     , row_span_full
     , row_start_1
+    , row_start_10
+    , row_start_11
+    , row_start_12
+    , row_start_13
     , row_start_2
     , row_start_3
     , row_start_4
     , row_start_5
     , row_start_6
     , row_start_7
+    , row_start_8
+    , row_start_9
     , row_start_auto
     , saturate_0
     , saturate_100
@@ -4378,6 +4564,72 @@ module Tailwind.Utilities exposing
     , shadow_xl
     , shrink
     , shrink_0
+    , size_0
+    , size_0_dot_5
+    , size_1
+    , size_10
+    , size_10over12
+    , size_11
+    , size_11over12
+    , size_12
+    , size_14
+    , size_16
+    , size_1_dot_5
+    , size_1over12
+    , size_1over2
+    , size_1over3
+    , size_1over4
+    , size_1over5
+    , size_1over6
+    , size_2
+    , size_20
+    , size_24
+    , size_28
+    , size_2_dot_5
+    , size_2over12
+    , size_2over3
+    , size_2over4
+    , size_2over5
+    , size_2over6
+    , size_3
+    , size_32
+    , size_36
+    , size_3_dot_5
+    , size_3over12
+    , size_3over4
+    , size_3over5
+    , size_3over6
+    , size_4
+    , size_40
+    , size_44
+    , size_48
+    , size_4over12
+    , size_4over5
+    , size_4over6
+    , size_5
+    , size_52
+    , size_56
+    , size_5over12
+    , size_5over6
+    , size_6
+    , size_60
+    , size_64
+    , size_6over12
+    , size_7
+    , size_72
+    , size_7over12
+    , size_8
+    , size_80
+    , size_8over12
+    , size_9
+    , size_96
+    , size_9over12
+    , size_auto
+    , size_fit
+    , size_full
+    , size_max
+    , size_min
+    , size_px
     , skew_x_0
     , skew_x_1
     , skew_x_12
@@ -4545,6 +4797,7 @@ module Tailwind.Utilities exposing
     , text_4xl
     , text_5xl
     , text_6xl
+    , text_balance
     , text_base
     , text_center
     , text_clip
@@ -4554,24 +4807,33 @@ module Tailwind.Utilities exposing
     , text_justify
     , text_left
     , text_lg
+    , text_nowrap
     , text_opacity_0
     , text_opacity_10
     , text_opacity_100
+    , text_opacity_15
     , text_opacity_20
     , text_opacity_25
     , text_opacity_30
+    , text_opacity_35
     , text_opacity_40
+    , text_opacity_45
     , text_opacity_5
     , text_opacity_50
+    , text_opacity_55
     , text_opacity_60
+    , text_opacity_65
     , text_opacity_70
     , text_opacity_75
     , text_opacity_80
+    , text_opacity_85
     , text_opacity_90
     , text_opacity_95
+    , text_pretty
     , text_right
     , text_sm
     , text_start
+    , text_wrap
     , text_xl
     , text_xs
     , to_0pct
@@ -4843,12 +5105,15 @@ module Tailwind.Utilities exposing
     , w_96
     , w_9over12
     , w_auto
+    , w_dvw
     , w_fit
     , w_full
+    , w_lvw
     , w_max
     , w_min
     , w_px
     , w_screen
+    , w_svw
     , whitespace_break_spaces
     , whitespace_normal
     , whitespace_nowrap
@@ -4898,6 +5163,7 @@ This module contains
 @docs animate_pulse
 @docs animate_spin
 @docs antialiased
+@docs appearance_auto
 @docs appearance_none
 @docs aspect_auto
 @docs aspect_square
@@ -4952,16 +5218,22 @@ This module contains
 @docs backdrop_opacity_0
 @docs backdrop_opacity_10
 @docs backdrop_opacity_100
+@docs backdrop_opacity_15
 @docs backdrop_opacity_20
 @docs backdrop_opacity_25
 @docs backdrop_opacity_30
+@docs backdrop_opacity_35
 @docs backdrop_opacity_40
+@docs backdrop_opacity_45
 @docs backdrop_opacity_5
 @docs backdrop_opacity_50
+@docs backdrop_opacity_55
 @docs backdrop_opacity_60
+@docs backdrop_opacity_65
 @docs backdrop_opacity_70
 @docs backdrop_opacity_75
 @docs backdrop_opacity_80
+@docs backdrop_opacity_85
 @docs backdrop_opacity_90
 @docs backdrop_opacity_95
 @docs backdrop_saturate_0
@@ -5078,16 +5350,22 @@ This module contains
 @docs bg_opacity_0
 @docs bg_opacity_10
 @docs bg_opacity_100
+@docs bg_opacity_15
 @docs bg_opacity_20
 @docs bg_opacity_25
 @docs bg_opacity_30
+@docs bg_opacity_35
 @docs bg_opacity_40
+@docs bg_opacity_45
 @docs bg_opacity_5
 @docs bg_opacity_50
+@docs bg_opacity_55
 @docs bg_opacity_60
+@docs bg_opacity_65
 @docs bg_opacity_70
 @docs bg_opacity_75
 @docs bg_opacity_80
+@docs bg_opacity_85
 @docs bg_opacity_90
 @docs bg_opacity_95
 @docs bg_origin_border
@@ -5146,16 +5424,22 @@ This module contains
 @docs border_opacity_0
 @docs border_opacity_10
 @docs border_opacity_100
+@docs border_opacity_15
 @docs border_opacity_20
 @docs border_opacity_25
 @docs border_opacity_30
+@docs border_opacity_35
 @docs border_opacity_40
+@docs border_opacity_45
 @docs border_opacity_5
 @docs border_opacity_50
+@docs border_opacity_55
 @docs border_opacity_60
+@docs border_opacity_65
 @docs border_opacity_70
 @docs border_opacity_75
 @docs border_opacity_80
+@docs border_opacity_85
 @docs border_opacity_90
 @docs border_opacity_95
 @docs border_r
@@ -5382,9 +5666,11 @@ This module contains
 @docs caption_top
 @docs caret_color
 @docs clear_both
+@docs clear_end
 @docs clear_left
 @docs clear_none
 @docs clear_right
+@docs clear_start
 @docs col_auto
 @docs col_end_1
 @docs col_end_10
@@ -5542,16 +5828,22 @@ This module contains
 @docs divide_opacity_0
 @docs divide_opacity_10
 @docs divide_opacity_100
+@docs divide_opacity_15
 @docs divide_opacity_20
 @docs divide_opacity_25
 @docs divide_opacity_30
+@docs divide_opacity_35
 @docs divide_opacity_40
+@docs divide_opacity_45
 @docs divide_opacity_5
 @docs divide_opacity_50
+@docs divide_opacity_55
 @docs divide_opacity_60
+@docs divide_opacity_65
 @docs divide_opacity_70
 @docs divide_opacity_75
 @docs divide_opacity_80
+@docs divide_opacity_85
 @docs divide_opacity_90
 @docs divide_opacity_95
 @docs divide_solid
@@ -5651,9 +5943,11 @@ This module contains
 @docs flex_shrink_0
 @docs flex_wrap
 @docs flex_wrap_reverse
+@docs float_end
 @docs float_left
 @docs float_none
 @docs float_right
+@docs float_start
 @docs flow_root
 @docs font_black
 @docs font_bold
@@ -5668,6 +5962,8 @@ This module contains
 @docs font_serif
 @docs font_thin
 @docs font_title
+@docs forced_color_adjust_auto
+@docs forced_color_adjust_none
 @docs from_0pct
 @docs from_100pct
 @docs from_10pct
@@ -5811,18 +6107,26 @@ This module contains
 @docs grid_cols_8
 @docs grid_cols_9
 @docs grid_cols_none
+@docs grid_cols_subgrid
 @docs grid_flow_col
 @docs grid_flow_col_dense
 @docs grid_flow_dense
 @docs grid_flow_row
 @docs grid_flow_row_dense
 @docs grid_rows_1
+@docs grid_rows_10
+@docs grid_rows_11
+@docs grid_rows_12
 @docs grid_rows_2
 @docs grid_rows_3
 @docs grid_rows_4
 @docs grid_rows_5
 @docs grid_rows_6
+@docs grid_rows_7
+@docs grid_rows_8
+@docs grid_rows_9
 @docs grid_rows_none
+@docs grid_rows_subgrid
 @docs grow
 @docs grow_0
 @docs h_0
@@ -5875,12 +6179,15 @@ This module contains
 @docs h_9
 @docs h_96
 @docs h_auto
+@docs h_dvh
 @docs h_fit
 @docs h_full
+@docs h_lvh
 @docs h_max
 @docs h_min
 @docs h_px
 @docs h_screen
+@docs h_svh
 @docs hidden
 @docs hue_rotate_0
 @docs hue_rotate_15
@@ -6232,20 +6539,56 @@ This module contains
 @docs max_h_80
 @docs max_h_9
 @docs max_h_96
+@docs max_h_dvh
 @docs max_h_fit
 @docs max_h_full
+@docs max_h_lvh
 @docs max_h_max
 @docs max_h_min
 @docs max_h_none
 @docs max_h_px
 @docs max_h_screen
+@docs max_h_svh
 @docs max_w_0
+@docs max_w_0_dot_5
+@docs max_w_1
+@docs max_w_10
+@docs max_w_11
+@docs max_w_12
+@docs max_w_14
+@docs max_w_16
+@docs max_w_1_dot_5
+@docs max_w_2
+@docs max_w_20
+@docs max_w_24
+@docs max_w_28
+@docs max_w_2_dot_5
 @docs max_w_2xl
+@docs max_w_3
+@docs max_w_32
+@docs max_w_36
+@docs max_w_3_dot_5
 @docs max_w_3xl
+@docs max_w_4
+@docs max_w_40
+@docs max_w_44
+@docs max_w_48
 @docs max_w_4xl
+@docs max_w_5
+@docs max_w_52
+@docs max_w_56
 @docs max_w_5xl
+@docs max_w_6
+@docs max_w_60
+@docs max_w_64
 @docs max_w_6xl
+@docs max_w_7
+@docs max_w_72
 @docs max_w_7xl
+@docs max_w_8
+@docs max_w_80
+@docs max_w_9
+@docs max_w_96
 @docs max_w_fit
 @docs max_w_full
 @docs max_w_lg
@@ -6254,6 +6597,7 @@ This module contains
 @docs max_w_min
 @docs max_w_none
 @docs max_w_prose
+@docs max_w_px
 @docs max_w_screen_2xl
 @docs max_w_screen_lg
 @docs max_w_screen_md
@@ -6335,16 +6679,87 @@ This module contains
 @docs me_auto
 @docs me_px
 @docs min_h_0
+@docs min_h_0_dot_5
+@docs min_h_1
+@docs min_h_10
+@docs min_h_11
+@docs min_h_12
+@docs min_h_14
+@docs min_h_16
+@docs min_h_1_dot_5
+@docs min_h_2
+@docs min_h_20
+@docs min_h_24
+@docs min_h_28
+@docs min_h_2_dot_5
+@docs min_h_3
+@docs min_h_32
+@docs min_h_36
+@docs min_h_3_dot_5
+@docs min_h_4
+@docs min_h_40
+@docs min_h_44
+@docs min_h_48
+@docs min_h_5
+@docs min_h_52
+@docs min_h_56
+@docs min_h_6
+@docs min_h_60
+@docs min_h_64
+@docs min_h_7
+@docs min_h_72
+@docs min_h_8
+@docs min_h_80
+@docs min_h_9
+@docs min_h_96
+@docs min_h_dvh
 @docs min_h_fit
 @docs min_h_full
+@docs min_h_lvh
 @docs min_h_max
 @docs min_h_min
+@docs min_h_px
 @docs min_h_screen
+@docs min_h_svh
 @docs min_w_0
+@docs min_w_0_dot_5
+@docs min_w_1
+@docs min_w_10
+@docs min_w_11
+@docs min_w_12
+@docs min_w_14
+@docs min_w_16
+@docs min_w_1_dot_5
+@docs min_w_2
+@docs min_w_20
+@docs min_w_24
+@docs min_w_28
+@docs min_w_2_dot_5
+@docs min_w_3
+@docs min_w_32
+@docs min_w_36
+@docs min_w_3_dot_5
+@docs min_w_4
+@docs min_w_40
+@docs min_w_44
+@docs min_w_48
+@docs min_w_5
+@docs min_w_52
+@docs min_w_56
+@docs min_w_6
+@docs min_w_60
+@docs min_w_64
+@docs min_w_7
+@docs min_w_72
+@docs min_w_8
+@docs min_w_80
+@docs min_w_9
+@docs min_w_96
 @docs min_w_fit
 @docs min_w_full
 @docs min_w_max
 @docs min_w_min
+@docs min_w_px
 @docs mix_blend_color
 @docs mix_blend_color_burn
 @docs mix_blend_color_dodge
@@ -7893,16 +8308,22 @@ This module contains
 @docs opacity_0
 @docs opacity_10
 @docs opacity_100
+@docs opacity_15
 @docs opacity_20
 @docs opacity_25
 @docs opacity_30
+@docs opacity_35
 @docs opacity_40
+@docs opacity_45
 @docs opacity_5
 @docs opacity_50
+@docs opacity_55
 @docs opacity_60
+@docs opacity_65
 @docs opacity_70
 @docs opacity_75
 @docs opacity_80
+@docs opacity_85
 @docs opacity_90
 @docs opacity_95
 @docs order_1
@@ -8134,16 +8555,22 @@ This module contains
 @docs placeholder_opacity_0
 @docs placeholder_opacity_10
 @docs placeholder_opacity_100
+@docs placeholder_opacity_15
 @docs placeholder_opacity_20
 @docs placeholder_opacity_25
 @docs placeholder_opacity_30
+@docs placeholder_opacity_35
 @docs placeholder_opacity_40
+@docs placeholder_opacity_45
 @docs placeholder_opacity_5
 @docs placeholder_opacity_50
+@docs placeholder_opacity_55
 @docs placeholder_opacity_60
+@docs placeholder_opacity_65
 @docs placeholder_opacity_70
 @docs placeholder_opacity_75
 @docs placeholder_opacity_80
+@docs placeholder_opacity_85
 @docs placeholder_opacity_90
 @docs placeholder_opacity_95
 @docs pointer_events_auto
@@ -8389,16 +8816,22 @@ This module contains
 @docs ring_opacity_0
 @docs ring_opacity_10
 @docs ring_opacity_100
+@docs ring_opacity_15
 @docs ring_opacity_20
 @docs ring_opacity_25
 @docs ring_opacity_30
+@docs ring_opacity_35
 @docs ring_opacity_40
+@docs ring_opacity_45
 @docs ring_opacity_5
 @docs ring_opacity_50
+@docs ring_opacity_55
 @docs ring_opacity_60
+@docs ring_opacity_65
 @docs ring_opacity_70
 @docs ring_opacity_75
 @docs ring_opacity_80
+@docs ring_opacity_85
 @docs ring_opacity_90
 @docs ring_opacity_95
 @docs rotate_0
@@ -8547,27 +8980,45 @@ This module contains
 @docs rounded_xl
 @docs row_auto
 @docs row_end_1
+@docs row_end_10
+@docs row_end_11
+@docs row_end_12
+@docs row_end_13
 @docs row_end_2
 @docs row_end_3
 @docs row_end_4
 @docs row_end_5
 @docs row_end_6
 @docs row_end_7
+@docs row_end_8
+@docs row_end_9
 @docs row_end_auto
 @docs row_span_1
+@docs row_span_10
+@docs row_span_11
+@docs row_span_12
 @docs row_span_2
 @docs row_span_3
 @docs row_span_4
 @docs row_span_5
 @docs row_span_6
+@docs row_span_7
+@docs row_span_8
+@docs row_span_9
 @docs row_span_full
 @docs row_start_1
+@docs row_start_10
+@docs row_start_11
+@docs row_start_12
+@docs row_start_13
 @docs row_start_2
 @docs row_start_3
 @docs row_start_4
 @docs row_start_5
 @docs row_start_6
 @docs row_start_7
+@docs row_start_8
+@docs row_start_9
 @docs row_start_auto
 @docs saturate_0
 @docs saturate_100
@@ -9259,6 +9710,72 @@ This module contains
 @docs shadow_xl
 @docs shrink
 @docs shrink_0
+@docs size_0
+@docs size_0_dot_5
+@docs size_1
+@docs size_10
+@docs size_10over12
+@docs size_11
+@docs size_11over12
+@docs size_12
+@docs size_14
+@docs size_16
+@docs size_1_dot_5
+@docs size_1over12
+@docs size_1over2
+@docs size_1over3
+@docs size_1over4
+@docs size_1over5
+@docs size_1over6
+@docs size_2
+@docs size_20
+@docs size_24
+@docs size_28
+@docs size_2_dot_5
+@docs size_2over12
+@docs size_2over3
+@docs size_2over4
+@docs size_2over5
+@docs size_2over6
+@docs size_3
+@docs size_32
+@docs size_36
+@docs size_3_dot_5
+@docs size_3over12
+@docs size_3over4
+@docs size_3over5
+@docs size_3over6
+@docs size_4
+@docs size_40
+@docs size_44
+@docs size_48
+@docs size_4over12
+@docs size_4over5
+@docs size_4over6
+@docs size_5
+@docs size_52
+@docs size_56
+@docs size_5over12
+@docs size_5over6
+@docs size_6
+@docs size_60
+@docs size_64
+@docs size_6over12
+@docs size_7
+@docs size_72
+@docs size_7over12
+@docs size_8
+@docs size_80
+@docs size_8over12
+@docs size_9
+@docs size_96
+@docs size_9over12
+@docs size_auto
+@docs size_fit
+@docs size_full
+@docs size_max
+@docs size_min
+@docs size_px
 @docs skew_x_0
 @docs skew_x_1
 @docs skew_x_12
@@ -9426,6 +9943,7 @@ This module contains
 @docs text_4xl
 @docs text_5xl
 @docs text_6xl
+@docs text_balance
 @docs text_base
 @docs text_center
 @docs text_clip
@@ -9435,24 +9953,33 @@ This module contains
 @docs text_justify
 @docs text_left
 @docs text_lg
+@docs text_nowrap
 @docs text_opacity_0
 @docs text_opacity_10
 @docs text_opacity_100
+@docs text_opacity_15
 @docs text_opacity_20
 @docs text_opacity_25
 @docs text_opacity_30
+@docs text_opacity_35
 @docs text_opacity_40
+@docs text_opacity_45
 @docs text_opacity_5
 @docs text_opacity_50
+@docs text_opacity_55
 @docs text_opacity_60
+@docs text_opacity_65
 @docs text_opacity_70
 @docs text_opacity_75
 @docs text_opacity_80
+@docs text_opacity_85
 @docs text_opacity_90
 @docs text_opacity_95
+@docs text_pretty
 @docs text_right
 @docs text_sm
 @docs text_start
+@docs text_wrap
 @docs text_xl
 @docs text_xs
 @docs to_0pct
@@ -9724,12 +10251,15 @@ This module contains
 @docs w_96
 @docs w_9over12
 @docs w_auto
+@docs w_dvw
 @docs w_fit
 @docs w_full
+@docs w_lvw
 @docs w_max
 @docs w_min
 @docs w_px
 @docs w_screen
+@docs w_svw
 @docs whitespace_break_spaces
 @docs whitespace_normal
 @docs whitespace_nowrap
@@ -9794,7 +10324,7 @@ globalStyles =
     , Css.Global.selector "::before,\n::after"
         [ Css.property "--tw-content" "''"
         ]
-    , Css.Global.selector "html"
+    , Css.Global.selector "html,\n:host"
         [ Css.property "line-height" "1.5"
         , Css.property "-webkit-text-size-adjust" "100%"
         , Css.property "-moz-tab-size" "4"
@@ -9802,6 +10332,7 @@ globalStyles =
         , Css.property "font-family" "system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\""
         , Css.property "font-feature-settings" "normal"
         , Css.property "font-variation-settings" "normal"
+        , Css.property "-webkit-tap-highlight-color" "transparent"
         ]
     , Css.Global.selector "body"
         [ Css.property "margin" "0"
@@ -10345,6 +10876,22 @@ antialiased =
         [ Css.property "-webkit-font-smoothing" "antialiased"
         , Css.property "-moz-osx-font-smoothing" "grayscale"
         ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.appearance-auto {
+    appearance: auto
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+appearance_auto : Css.Style
+appearance_auto =
+    Css.property "appearance" "auto"
 
 
 {-| This class has the effect of following css declaration:
@@ -11374,6 +11921,26 @@ backdrop_opacity_100 =
 {-| This class has the effect of following css declaration:
 
 ```css
+.backdrop-opacity-15 {
+    --tw-backdrop-opacity: opacity(0.15);
+    backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+backdrop_opacity_15 : Css.Style
+backdrop_opacity_15 =
+    Css.batch
+        [ Css.property "--tw-backdrop-opacity" "opacity(0.15)"
+        , Css.property "backdrop-filter" "var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
 .backdrop-opacity-20 {
     --tw-backdrop-opacity: opacity(0.2);
     backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)
@@ -11434,6 +12001,26 @@ backdrop_opacity_30 =
 {-| This class has the effect of following css declaration:
 
 ```css
+.backdrop-opacity-35 {
+    --tw-backdrop-opacity: opacity(0.35);
+    backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+backdrop_opacity_35 : Css.Style
+backdrop_opacity_35 =
+    Css.batch
+        [ Css.property "--tw-backdrop-opacity" "opacity(0.35)"
+        , Css.property "backdrop-filter" "var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
 .backdrop-opacity-40 {
     --tw-backdrop-opacity: opacity(0.4);
     backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)
@@ -11447,6 +12034,26 @@ backdrop_opacity_40 : Css.Style
 backdrop_opacity_40 =
     Css.batch
         [ Css.property "--tw-backdrop-opacity" "opacity(0.4)"
+        , Css.property "backdrop-filter" "var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.backdrop-opacity-45 {
+    --tw-backdrop-opacity: opacity(0.45);
+    backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+backdrop_opacity_45 : Css.Style
+backdrop_opacity_45 =
+    Css.batch
+        [ Css.property "--tw-backdrop-opacity" "opacity(0.45)"
         , Css.property "backdrop-filter" "var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)"
         ]
 
@@ -11494,6 +12101,26 @@ backdrop_opacity_50 =
 {-| This class has the effect of following css declaration:
 
 ```css
+.backdrop-opacity-55 {
+    --tw-backdrop-opacity: opacity(0.55);
+    backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+backdrop_opacity_55 : Css.Style
+backdrop_opacity_55 =
+    Css.batch
+        [ Css.property "--tw-backdrop-opacity" "opacity(0.55)"
+        , Css.property "backdrop-filter" "var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
 .backdrop-opacity-60 {
     --tw-backdrop-opacity: opacity(0.6);
     backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)
@@ -11507,6 +12134,26 @@ backdrop_opacity_60 : Css.Style
 backdrop_opacity_60 =
     Css.batch
         [ Css.property "--tw-backdrop-opacity" "opacity(0.6)"
+        , Css.property "backdrop-filter" "var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.backdrop-opacity-65 {
+    --tw-backdrop-opacity: opacity(0.65);
+    backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+backdrop_opacity_65 : Css.Style
+backdrop_opacity_65 =
+    Css.batch
+        [ Css.property "--tw-backdrop-opacity" "opacity(0.65)"
         , Css.property "backdrop-filter" "var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)"
         ]
 
@@ -11567,6 +12214,26 @@ backdrop_opacity_80 : Css.Style
 backdrop_opacity_80 =
     Css.batch
         [ Css.property "--tw-backdrop-opacity" "opacity(0.8)"
+        , Css.property "backdrop-filter" "var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.backdrop-opacity-85 {
+    --tw-backdrop-opacity: opacity(0.85);
+    backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+backdrop_opacity_85 : Css.Style
+backdrop_opacity_85 =
+    Css.batch
+        [ Css.property "--tw-backdrop-opacity" "opacity(0.85)"
         , Css.property "backdrop-filter" "var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)"
         ]
 
@@ -13450,6 +14117,22 @@ bg_opacity_100 =
 {-| This class has the effect of following css declaration:
 
 ```css
+.bg-opacity-15 {
+    --tw-bg-opacity: 0.15
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+bg_opacity_15 : Css.Style
+bg_opacity_15 =
+    Css.property "--tw-bg-opacity" "0.15"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
 .bg-opacity-20 {
     --tw-bg-opacity: 0.2
 }
@@ -13498,6 +14181,22 @@ bg_opacity_30 =
 {-| This class has the effect of following css declaration:
 
 ```css
+.bg-opacity-35 {
+    --tw-bg-opacity: 0.35
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+bg_opacity_35 : Css.Style
+bg_opacity_35 =
+    Css.property "--tw-bg-opacity" "0.35"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
 .bg-opacity-40 {
     --tw-bg-opacity: 0.4
 }
@@ -13509,6 +14208,22 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 bg_opacity_40 : Css.Style
 bg_opacity_40 =
     Css.property "--tw-bg-opacity" "0.4"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.bg-opacity-45 {
+    --tw-bg-opacity: 0.45
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+bg_opacity_45 : Css.Style
+bg_opacity_45 =
+    Css.property "--tw-bg-opacity" "0.45"
 
 
 {-| This class has the effect of following css declaration:
@@ -13546,6 +14261,22 @@ bg_opacity_50 =
 {-| This class has the effect of following css declaration:
 
 ```css
+.bg-opacity-55 {
+    --tw-bg-opacity: 0.55
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+bg_opacity_55 : Css.Style
+bg_opacity_55 =
+    Css.property "--tw-bg-opacity" "0.55"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
 .bg-opacity-60 {
     --tw-bg-opacity: 0.6
 }
@@ -13557,6 +14288,22 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 bg_opacity_60 : Css.Style
 bg_opacity_60 =
     Css.property "--tw-bg-opacity" "0.6"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.bg-opacity-65 {
+    --tw-bg-opacity: 0.65
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+bg_opacity_65 : Css.Style
+bg_opacity_65 =
+    Css.property "--tw-bg-opacity" "0.65"
 
 
 {-| This class has the effect of following css declaration:
@@ -13605,6 +14352,22 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 bg_opacity_80 : Css.Style
 bg_opacity_80 =
     Css.property "--tw-bg-opacity" "0.8"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.bg-opacity-85 {
+    --tw-bg-opacity: 0.85
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+bg_opacity_85 : Css.Style
+bg_opacity_85 =
+    Css.property "--tw-bg-opacity" "0.85"
 
 
 {-| This class has the effect of following css declaration:
@@ -14510,6 +15273,22 @@ border_opacity_100 =
 {-| This class has the effect of following css declaration:
 
 ```css
+.border-opacity-15 {
+    --tw-border-opacity: 0.15
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+border_opacity_15 : Css.Style
+border_opacity_15 =
+    Css.property "--tw-border-opacity" "0.15"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
 .border-opacity-20 {
     --tw-border-opacity: 0.2
 }
@@ -14558,6 +15337,22 @@ border_opacity_30 =
 {-| This class has the effect of following css declaration:
 
 ```css
+.border-opacity-35 {
+    --tw-border-opacity: 0.35
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+border_opacity_35 : Css.Style
+border_opacity_35 =
+    Css.property "--tw-border-opacity" "0.35"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
 .border-opacity-40 {
     --tw-border-opacity: 0.4
 }
@@ -14569,6 +15364,22 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 border_opacity_40 : Css.Style
 border_opacity_40 =
     Css.property "--tw-border-opacity" "0.4"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.border-opacity-45 {
+    --tw-border-opacity: 0.45
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+border_opacity_45 : Css.Style
+border_opacity_45 =
+    Css.property "--tw-border-opacity" "0.45"
 
 
 {-| This class has the effect of following css declaration:
@@ -14606,6 +15417,22 @@ border_opacity_50 =
 {-| This class has the effect of following css declaration:
 
 ```css
+.border-opacity-55 {
+    --tw-border-opacity: 0.55
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+border_opacity_55 : Css.Style
+border_opacity_55 =
+    Css.property "--tw-border-opacity" "0.55"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
 .border-opacity-60 {
     --tw-border-opacity: 0.6
 }
@@ -14617,6 +15444,22 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 border_opacity_60 : Css.Style
 border_opacity_60 =
     Css.property "--tw-border-opacity" "0.6"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.border-opacity-65 {
+    --tw-border-opacity: 0.65
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+border_opacity_65 : Css.Style
+border_opacity_65 =
+    Css.property "--tw-border-opacity" "0.65"
 
 
 {-| This class has the effect of following css declaration:
@@ -14665,6 +15508,22 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 border_opacity_80 : Css.Style
 border_opacity_80 =
     Css.property "--tw-border-opacity" "0.8"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.border-opacity-85 {
+    --tw-border-opacity: 0.85
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+border_opacity_85 : Css.Style
+border_opacity_85 =
+    Css.property "--tw-border-opacity" "0.85"
 
 
 {-| This class has the effect of following css declaration:
@@ -18768,6 +19627,22 @@ clear_both =
 {-| This class has the effect of following css declaration:
 
 ```css
+.clear-end {
+    clear: inline-end
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+clear_end : Css.Style
+clear_end =
+    Css.property "clear" "inline-end"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
 .clear-left {
     clear: left
 }
@@ -18811,6 +19686,22 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 clear_right : Css.Style
 clear_right =
     Css.property "clear" "right"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.clear-start {
+    clear: inline-start
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+clear_start : Css.Style
+clear_start =
+    Css.property "clear" "inline-start"
 
 
 {-| This class has the effect of following css declaration:
@@ -21387,6 +22278,26 @@ divide_opacity_100 =
 {-| This class has the effect of following css declaration:
 
 ```css
+.divide-opacity-15 > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 0.15
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+divide_opacity_15 : Css.Style
+divide_opacity_15 =
+    Css.Global.children
+        [ Css.Global.selector ":not([hidden]) ~ :not([hidden])"
+            [ Css.property "--tw-divide-opacity" "0.15"
+            ]
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
 .divide-opacity-20 > :not([hidden]) ~ :not([hidden]) {
     --tw-divide-opacity: 0.2
 }
@@ -21447,6 +22358,26 @@ divide_opacity_30 =
 {-| This class has the effect of following css declaration:
 
 ```css
+.divide-opacity-35 > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 0.35
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+divide_opacity_35 : Css.Style
+divide_opacity_35 =
+    Css.Global.children
+        [ Css.Global.selector ":not([hidden]) ~ :not([hidden])"
+            [ Css.property "--tw-divide-opacity" "0.35"
+            ]
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
 .divide-opacity-40 > :not([hidden]) ~ :not([hidden]) {
     --tw-divide-opacity: 0.4
 }
@@ -21460,6 +22391,26 @@ divide_opacity_40 =
     Css.Global.children
         [ Css.Global.selector ":not([hidden]) ~ :not([hidden])"
             [ Css.property "--tw-divide-opacity" "0.4"
+            ]
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.divide-opacity-45 > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 0.45
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+divide_opacity_45 : Css.Style
+divide_opacity_45 =
+    Css.Global.children
+        [ Css.Global.selector ":not([hidden]) ~ :not([hidden])"
+            [ Css.property "--tw-divide-opacity" "0.45"
             ]
         ]
 
@@ -21507,6 +22458,26 @@ divide_opacity_50 =
 {-| This class has the effect of following css declaration:
 
 ```css
+.divide-opacity-55 > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 0.55
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+divide_opacity_55 : Css.Style
+divide_opacity_55 =
+    Css.Global.children
+        [ Css.Global.selector ":not([hidden]) ~ :not([hidden])"
+            [ Css.property "--tw-divide-opacity" "0.55"
+            ]
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
 .divide-opacity-60 > :not([hidden]) ~ :not([hidden]) {
     --tw-divide-opacity: 0.6
 }
@@ -21520,6 +22491,26 @@ divide_opacity_60 =
     Css.Global.children
         [ Css.Global.selector ":not([hidden]) ~ :not([hidden])"
             [ Css.property "--tw-divide-opacity" "0.6"
+            ]
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.divide-opacity-65 > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 0.65
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+divide_opacity_65 : Css.Style
+divide_opacity_65 =
+    Css.Global.children
+        [ Css.Global.selector ":not([hidden]) ~ :not([hidden])"
+            [ Css.property "--tw-divide-opacity" "0.65"
             ]
         ]
 
@@ -21580,6 +22571,26 @@ divide_opacity_80 =
     Css.Global.children
         [ Css.Global.selector ":not([hidden]) ~ :not([hidden])"
             [ Css.property "--tw-divide-opacity" "0.8"
+            ]
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.divide-opacity-85 > :not([hidden]) ~ :not([hidden]) {
+    --tw-divide-opacity: 0.85
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+divide_opacity_85 : Css.Style
+divide_opacity_85 =
+    Css.Global.children
+        [ Css.Global.selector ":not([hidden]) ~ :not([hidden])"
+            [ Css.property "--tw-divide-opacity" "0.85"
             ]
         ]
 
@@ -23283,6 +24294,22 @@ flex_wrap_reverse =
 {-| This class has the effect of following css declaration:
 
 ```css
+.float-end {
+    float: inline-end
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+float_end : Css.Style
+float_end =
+    Css.property "float" "inline-end"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
 .float-left {
     float: left
 }
@@ -23326,6 +24353,22 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 float_right : Css.Style
 float_right =
     Css.property "float" "right"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.float-start {
+    float: inline-start
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+float_start : Css.Style
+float_start =
+    Css.property "float" "inline-start"
 
 
 {-| This class has the effect of following css declaration:
@@ -23550,6 +24593,38 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 font_title : Css.Style
 font_title =
     Css.property "font-family" "Graduate, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\""
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.forced-color-adjust-auto {
+    forced-color-adjust: auto
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+forced_color_adjust_auto : Css.Style
+forced_color_adjust_auto =
+    Css.property "forced-color-adjust" "auto"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.forced-color-adjust-none {
+    forced-color-adjust: none
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+forced_color_adjust_none : Css.Style
+forced_color_adjust_none =
+    Css.property "forced-color-adjust" "none"
 
 
 {-| This class has the effect of following css declaration:
@@ -25835,6 +26910,22 @@ grid_cols_none =
 {-| This class has the effect of following css declaration:
 
 ```css
+.grid-cols-subgrid {
+    grid-template-columns: subgrid
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+grid_cols_subgrid : Css.Style
+grid_cols_subgrid =
+    Css.property "grid-template-columns" "subgrid"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
 .grid-flow-col {
     grid-auto-flow: column
 }
@@ -25931,6 +27022,54 @@ grid_rows_1 =
 {-| This class has the effect of following css declaration:
 
 ```css
+.grid-rows-10 {
+    grid-template-rows: repeat(10, minmax(0, 1fr))
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+grid_rows_10 : Css.Style
+grid_rows_10 =
+    Css.property "grid-template-rows" "repeat(10, minmax(0, 1fr))"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.grid-rows-11 {
+    grid-template-rows: repeat(11, minmax(0, 1fr))
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+grid_rows_11 : Css.Style
+grid_rows_11 =
+    Css.property "grid-template-rows" "repeat(11, minmax(0, 1fr))"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.grid-rows-12 {
+    grid-template-rows: repeat(12, minmax(0, 1fr))
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+grid_rows_12 : Css.Style
+grid_rows_12 =
+    Css.property "grid-template-rows" "repeat(12, minmax(0, 1fr))"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
 .grid-rows-2 {
     grid-template-rows: repeat(2, minmax(0, 1fr))
 }
@@ -26011,6 +27150,54 @@ grid_rows_6 =
 {-| This class has the effect of following css declaration:
 
 ```css
+.grid-rows-7 {
+    grid-template-rows: repeat(7, minmax(0, 1fr))
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+grid_rows_7 : Css.Style
+grid_rows_7 =
+    Css.property "grid-template-rows" "repeat(7, minmax(0, 1fr))"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.grid-rows-8 {
+    grid-template-rows: repeat(8, minmax(0, 1fr))
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+grid_rows_8 : Css.Style
+grid_rows_8 =
+    Css.property "grid-template-rows" "repeat(8, minmax(0, 1fr))"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.grid-rows-9 {
+    grid-template-rows: repeat(9, minmax(0, 1fr))
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+grid_rows_9 : Css.Style
+grid_rows_9 =
+    Css.property "grid-template-rows" "repeat(9, minmax(0, 1fr))"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
 .grid-rows-none {
     grid-template-rows: none
 }
@@ -26022,6 +27209,22 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 grid_rows_none : Css.Style
 grid_rows_none =
     Css.property "grid-template-rows" "none"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.grid-rows-subgrid {
+    grid-template-rows: subgrid
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+grid_rows_subgrid : Css.Style
+grid_rows_subgrid =
+    Css.property "grid-template-rows" "subgrid"
 
 
 {-| This class has the effect of following css declaration:
@@ -26859,6 +28062,22 @@ h_auto =
 {-| This class has the effect of following css declaration:
 
 ```css
+.h-dvh {
+    height: 100dvh
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+h_dvh : Css.Style
+h_dvh =
+    Css.property "height" "100dvh"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
 .h-fit {
     height: fit-content
 }
@@ -26886,6 +28105,22 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 h_full : Css.Style
 h_full =
     Css.property "height" "100%"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.h-lvh {
+    height: 100lvh
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+h_lvh : Css.Style
+h_lvh =
+    Css.property "height" "100lvh"
 
 
 {-| This class has the effect of following css declaration:
@@ -26950,6 +28185,22 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 h_screen : Css.Style
 h_screen =
     Css.property "height" "100vh"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.h-svh {
+    height: 100svh
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+h_svh : Css.Style
+h_svh =
+    Css.property "height" "100svh"
 
 
 {-| This class has the effect of following css declaration:
@@ -33007,6 +34258,22 @@ max_h_96 =
 {-| This class has the effect of following css declaration:
 
 ```css
+.max-h-dvh {
+    max-height: 100dvh
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+max_h_dvh : Css.Style
+max_h_dvh =
+    Css.property "max-height" "100dvh"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
 .max-h-fit {
     max-height: fit-content
 }
@@ -33034,6 +34301,22 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 max_h_full : Css.Style
 max_h_full =
     Css.property "max-height" "100%"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.max-h-lvh {
+    max-height: 100lvh
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+max_h_lvh : Css.Style
+max_h_lvh =
+    Css.property "max-height" "100lvh"
 
 
 {-| This class has the effect of following css declaration:
@@ -33119,8 +34402,24 @@ max_h_screen =
 {-| This class has the effect of following css declaration:
 
 ```css
+.max-h-svh {
+    max-height: 100svh
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+max_h_svh : Css.Style
+max_h_svh =
+    Css.property "max-height" "100svh"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
 .max-w-0 {
-    max-width: 0rem
+    max-width: 0px
 }
 ```
 
@@ -33129,7 +34428,215 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 -}
 max_w_0 : Css.Style
 max_w_0 =
-    Css.property "max-width" "0rem"
+    Css.property "max-width" "0px"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.max-w-0\.5 {
+    max-width: 0.125rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+max_w_0_dot_5 : Css.Style
+max_w_0_dot_5 =
+    Css.property "max-width" "0.125rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.max-w-1 {
+    max-width: 0.25rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+max_w_1 : Css.Style
+max_w_1 =
+    Css.property "max-width" "0.25rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.max-w-10 {
+    max-width: 2.5rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+max_w_10 : Css.Style
+max_w_10 =
+    Css.property "max-width" "2.5rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.max-w-11 {
+    max-width: 2.75rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+max_w_11 : Css.Style
+max_w_11 =
+    Css.property "max-width" "2.75rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.max-w-12 {
+    max-width: 3rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+max_w_12 : Css.Style
+max_w_12 =
+    Css.property "max-width" "3rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.max-w-14 {
+    max-width: 3.5rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+max_w_14 : Css.Style
+max_w_14 =
+    Css.property "max-width" "3.5rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.max-w-16 {
+    max-width: 4rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+max_w_16 : Css.Style
+max_w_16 =
+    Css.property "max-width" "4rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.max-w-1\.5 {
+    max-width: 0.375rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+max_w_1_dot_5 : Css.Style
+max_w_1_dot_5 =
+    Css.property "max-width" "0.375rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.max-w-2 {
+    max-width: 0.5rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+max_w_2 : Css.Style
+max_w_2 =
+    Css.property "max-width" "0.5rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.max-w-20 {
+    max-width: 5rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+max_w_20 : Css.Style
+max_w_20 =
+    Css.property "max-width" "5rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.max-w-24 {
+    max-width: 6rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+max_w_24 : Css.Style
+max_w_24 =
+    Css.property "max-width" "6rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.max-w-28 {
+    max-width: 7rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+max_w_28 : Css.Style
+max_w_28 =
+    Css.property "max-width" "7rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.max-w-2\.5 {
+    max-width: 0.625rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+max_w_2_dot_5 : Css.Style
+max_w_2_dot_5 =
+    Css.property "max-width" "0.625rem"
 
 
 {-| This class has the effect of following css declaration:
@@ -33151,6 +34658,70 @@ max_w_2xl =
 {-| This class has the effect of following css declaration:
 
 ```css
+.max-w-3 {
+    max-width: 0.75rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+max_w_3 : Css.Style
+max_w_3 =
+    Css.property "max-width" "0.75rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.max-w-32 {
+    max-width: 8rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+max_w_32 : Css.Style
+max_w_32 =
+    Css.property "max-width" "8rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.max-w-36 {
+    max-width: 9rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+max_w_36 : Css.Style
+max_w_36 =
+    Css.property "max-width" "9rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.max-w-3\.5 {
+    max-width: 0.875rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+max_w_3_dot_5 : Css.Style
+max_w_3_dot_5 =
+    Css.property "max-width" "0.875rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
 .max-w-3xl {
     max-width: 48rem
 }
@@ -33162,6 +34733,70 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 max_w_3xl : Css.Style
 max_w_3xl =
     Css.property "max-width" "48rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.max-w-4 {
+    max-width: 1rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+max_w_4 : Css.Style
+max_w_4 =
+    Css.property "max-width" "1rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.max-w-40 {
+    max-width: 10rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+max_w_40 : Css.Style
+max_w_40 =
+    Css.property "max-width" "10rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.max-w-44 {
+    max-width: 11rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+max_w_44 : Css.Style
+max_w_44 =
+    Css.property "max-width" "11rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.max-w-48 {
+    max-width: 12rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+max_w_48 : Css.Style
+max_w_48 =
+    Css.property "max-width" "12rem"
 
 
 {-| This class has the effect of following css declaration:
@@ -33183,6 +34818,54 @@ max_w_4xl =
 {-| This class has the effect of following css declaration:
 
 ```css
+.max-w-5 {
+    max-width: 1.25rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+max_w_5 : Css.Style
+max_w_5 =
+    Css.property "max-width" "1.25rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.max-w-52 {
+    max-width: 13rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+max_w_52 : Css.Style
+max_w_52 =
+    Css.property "max-width" "13rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.max-w-56 {
+    max-width: 14rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+max_w_56 : Css.Style
+max_w_56 =
+    Css.property "max-width" "14rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
 .max-w-5xl {
     max-width: 64rem
 }
@@ -33194,6 +34877,54 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 max_w_5xl : Css.Style
 max_w_5xl =
     Css.property "max-width" "64rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.max-w-6 {
+    max-width: 1.5rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+max_w_6 : Css.Style
+max_w_6 =
+    Css.property "max-width" "1.5rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.max-w-60 {
+    max-width: 15rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+max_w_60 : Css.Style
+max_w_60 =
+    Css.property "max-width" "15rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.max-w-64 {
+    max-width: 16rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+max_w_64 : Css.Style
+max_w_64 =
+    Css.property "max-width" "16rem"
 
 
 {-| This class has the effect of following css declaration:
@@ -33215,6 +34946,38 @@ max_w_6xl =
 {-| This class has the effect of following css declaration:
 
 ```css
+.max-w-7 {
+    max-width: 1.75rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+max_w_7 : Css.Style
+max_w_7 =
+    Css.property "max-width" "1.75rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.max-w-72 {
+    max-width: 18rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+max_w_72 : Css.Style
+max_w_72 =
+    Css.property "max-width" "18rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
 .max-w-7xl {
     max-width: 80rem
 }
@@ -33226,6 +34989,70 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 max_w_7xl : Css.Style
 max_w_7xl =
     Css.property "max-width" "80rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.max-w-8 {
+    max-width: 2rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+max_w_8 : Css.Style
+max_w_8 =
+    Css.property "max-width" "2rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.max-w-80 {
+    max-width: 20rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+max_w_80 : Css.Style
+max_w_80 =
+    Css.property "max-width" "20rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.max-w-9 {
+    max-width: 2.25rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+max_w_9 : Css.Style
+max_w_9 =
+    Css.property "max-width" "2.25rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.max-w-96 {
+    max-width: 24rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+max_w_96 : Css.Style
+max_w_96 =
+    Css.property "max-width" "24rem"
 
 
 {-| This class has the effect of following css declaration:
@@ -33354,6 +35181,22 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 max_w_prose : Css.Style
 max_w_prose =
     Css.property "max-width" "65ch"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.max-w-px {
+    max-width: 1px
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+max_w_px : Css.Style
+max_w_px =
+    Css.property "max-width" "1px"
 
 
 {-| This class has the effect of following css declaration:
@@ -34655,6 +36498,550 @@ min_h_0 =
 {-| This class has the effect of following css declaration:
 
 ```css
+.min-h-0\.5 {
+    min-height: 0.125rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_h_0_dot_5 : Css.Style
+min_h_0_dot_5 =
+    Css.property "min-height" "0.125rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-h-1 {
+    min-height: 0.25rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_h_1 : Css.Style
+min_h_1 =
+    Css.property "min-height" "0.25rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-h-10 {
+    min-height: 2.5rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_h_10 : Css.Style
+min_h_10 =
+    Css.property "min-height" "2.5rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-h-11 {
+    min-height: 2.75rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_h_11 : Css.Style
+min_h_11 =
+    Css.property "min-height" "2.75rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-h-12 {
+    min-height: 3rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_h_12 : Css.Style
+min_h_12 =
+    Css.property "min-height" "3rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-h-14 {
+    min-height: 3.5rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_h_14 : Css.Style
+min_h_14 =
+    Css.property "min-height" "3.5rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-h-16 {
+    min-height: 4rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_h_16 : Css.Style
+min_h_16 =
+    Css.property "min-height" "4rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-h-1\.5 {
+    min-height: 0.375rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_h_1_dot_5 : Css.Style
+min_h_1_dot_5 =
+    Css.property "min-height" "0.375rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-h-2 {
+    min-height: 0.5rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_h_2 : Css.Style
+min_h_2 =
+    Css.property "min-height" "0.5rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-h-20 {
+    min-height: 5rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_h_20 : Css.Style
+min_h_20 =
+    Css.property "min-height" "5rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-h-24 {
+    min-height: 6rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_h_24 : Css.Style
+min_h_24 =
+    Css.property "min-height" "6rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-h-28 {
+    min-height: 7rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_h_28 : Css.Style
+min_h_28 =
+    Css.property "min-height" "7rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-h-2\.5 {
+    min-height: 0.625rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_h_2_dot_5 : Css.Style
+min_h_2_dot_5 =
+    Css.property "min-height" "0.625rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-h-3 {
+    min-height: 0.75rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_h_3 : Css.Style
+min_h_3 =
+    Css.property "min-height" "0.75rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-h-32 {
+    min-height: 8rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_h_32 : Css.Style
+min_h_32 =
+    Css.property "min-height" "8rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-h-36 {
+    min-height: 9rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_h_36 : Css.Style
+min_h_36 =
+    Css.property "min-height" "9rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-h-3\.5 {
+    min-height: 0.875rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_h_3_dot_5 : Css.Style
+min_h_3_dot_5 =
+    Css.property "min-height" "0.875rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-h-4 {
+    min-height: 1rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_h_4 : Css.Style
+min_h_4 =
+    Css.property "min-height" "1rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-h-40 {
+    min-height: 10rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_h_40 : Css.Style
+min_h_40 =
+    Css.property "min-height" "10rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-h-44 {
+    min-height: 11rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_h_44 : Css.Style
+min_h_44 =
+    Css.property "min-height" "11rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-h-48 {
+    min-height: 12rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_h_48 : Css.Style
+min_h_48 =
+    Css.property "min-height" "12rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-h-5 {
+    min-height: 1.25rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_h_5 : Css.Style
+min_h_5 =
+    Css.property "min-height" "1.25rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-h-52 {
+    min-height: 13rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_h_52 : Css.Style
+min_h_52 =
+    Css.property "min-height" "13rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-h-56 {
+    min-height: 14rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_h_56 : Css.Style
+min_h_56 =
+    Css.property "min-height" "14rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-h-6 {
+    min-height: 1.5rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_h_6 : Css.Style
+min_h_6 =
+    Css.property "min-height" "1.5rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-h-60 {
+    min-height: 15rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_h_60 : Css.Style
+min_h_60 =
+    Css.property "min-height" "15rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-h-64 {
+    min-height: 16rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_h_64 : Css.Style
+min_h_64 =
+    Css.property "min-height" "16rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-h-7 {
+    min-height: 1.75rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_h_7 : Css.Style
+min_h_7 =
+    Css.property "min-height" "1.75rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-h-72 {
+    min-height: 18rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_h_72 : Css.Style
+min_h_72 =
+    Css.property "min-height" "18rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-h-8 {
+    min-height: 2rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_h_8 : Css.Style
+min_h_8 =
+    Css.property "min-height" "2rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-h-80 {
+    min-height: 20rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_h_80 : Css.Style
+min_h_80 =
+    Css.property "min-height" "20rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-h-9 {
+    min-height: 2.25rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_h_9 : Css.Style
+min_h_9 =
+    Css.property "min-height" "2.25rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-h-96 {
+    min-height: 24rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_h_96 : Css.Style
+min_h_96 =
+    Css.property "min-height" "24rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-h-dvh {
+    min-height: 100dvh
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_h_dvh : Css.Style
+min_h_dvh =
+    Css.property "min-height" "100dvh"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
 .min-h-fit {
     min-height: fit-content
 }
@@ -34682,6 +37069,22 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 min_h_full : Css.Style
 min_h_full =
     Css.property "min-height" "100%"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-h-lvh {
+    min-height: 100lvh
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_h_lvh : Css.Style
+min_h_lvh =
+    Css.property "min-height" "100lvh"
 
 
 {-| This class has the effect of following css declaration:
@@ -34719,6 +37122,22 @@ min_h_min =
 {-| This class has the effect of following css declaration:
 
 ```css
+.min-h-px {
+    min-height: 1px
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_h_px : Css.Style
+min_h_px =
+    Css.property "min-height" "1px"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
 .min-h-screen {
     min-height: 100vh
 }
@@ -34735,6 +37154,22 @@ min_h_screen =
 {-| This class has the effect of following css declaration:
 
 ```css
+.min-h-svh {
+    min-height: 100svh
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_h_svh : Css.Style
+min_h_svh =
+    Css.property "min-height" "100svh"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
 .min-w-0 {
     min-width: 0px
 }
@@ -34746,6 +37181,534 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 min_w_0 : Css.Style
 min_w_0 =
     Css.property "min-width" "0px"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-w-0\.5 {
+    min-width: 0.125rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_w_0_dot_5 : Css.Style
+min_w_0_dot_5 =
+    Css.property "min-width" "0.125rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-w-1 {
+    min-width: 0.25rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_w_1 : Css.Style
+min_w_1 =
+    Css.property "min-width" "0.25rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-w-10 {
+    min-width: 2.5rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_w_10 : Css.Style
+min_w_10 =
+    Css.property "min-width" "2.5rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-w-11 {
+    min-width: 2.75rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_w_11 : Css.Style
+min_w_11 =
+    Css.property "min-width" "2.75rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-w-12 {
+    min-width: 3rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_w_12 : Css.Style
+min_w_12 =
+    Css.property "min-width" "3rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-w-14 {
+    min-width: 3.5rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_w_14 : Css.Style
+min_w_14 =
+    Css.property "min-width" "3.5rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-w-16 {
+    min-width: 4rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_w_16 : Css.Style
+min_w_16 =
+    Css.property "min-width" "4rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-w-1\.5 {
+    min-width: 0.375rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_w_1_dot_5 : Css.Style
+min_w_1_dot_5 =
+    Css.property "min-width" "0.375rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-w-2 {
+    min-width: 0.5rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_w_2 : Css.Style
+min_w_2 =
+    Css.property "min-width" "0.5rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-w-20 {
+    min-width: 5rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_w_20 : Css.Style
+min_w_20 =
+    Css.property "min-width" "5rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-w-24 {
+    min-width: 6rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_w_24 : Css.Style
+min_w_24 =
+    Css.property "min-width" "6rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-w-28 {
+    min-width: 7rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_w_28 : Css.Style
+min_w_28 =
+    Css.property "min-width" "7rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-w-2\.5 {
+    min-width: 0.625rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_w_2_dot_5 : Css.Style
+min_w_2_dot_5 =
+    Css.property "min-width" "0.625rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-w-3 {
+    min-width: 0.75rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_w_3 : Css.Style
+min_w_3 =
+    Css.property "min-width" "0.75rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-w-32 {
+    min-width: 8rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_w_32 : Css.Style
+min_w_32 =
+    Css.property "min-width" "8rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-w-36 {
+    min-width: 9rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_w_36 : Css.Style
+min_w_36 =
+    Css.property "min-width" "9rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-w-3\.5 {
+    min-width: 0.875rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_w_3_dot_5 : Css.Style
+min_w_3_dot_5 =
+    Css.property "min-width" "0.875rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-w-4 {
+    min-width: 1rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_w_4 : Css.Style
+min_w_4 =
+    Css.property "min-width" "1rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-w-40 {
+    min-width: 10rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_w_40 : Css.Style
+min_w_40 =
+    Css.property "min-width" "10rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-w-44 {
+    min-width: 11rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_w_44 : Css.Style
+min_w_44 =
+    Css.property "min-width" "11rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-w-48 {
+    min-width: 12rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_w_48 : Css.Style
+min_w_48 =
+    Css.property "min-width" "12rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-w-5 {
+    min-width: 1.25rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_w_5 : Css.Style
+min_w_5 =
+    Css.property "min-width" "1.25rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-w-52 {
+    min-width: 13rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_w_52 : Css.Style
+min_w_52 =
+    Css.property "min-width" "13rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-w-56 {
+    min-width: 14rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_w_56 : Css.Style
+min_w_56 =
+    Css.property "min-width" "14rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-w-6 {
+    min-width: 1.5rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_w_6 : Css.Style
+min_w_6 =
+    Css.property "min-width" "1.5rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-w-60 {
+    min-width: 15rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_w_60 : Css.Style
+min_w_60 =
+    Css.property "min-width" "15rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-w-64 {
+    min-width: 16rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_w_64 : Css.Style
+min_w_64 =
+    Css.property "min-width" "16rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-w-7 {
+    min-width: 1.75rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_w_7 : Css.Style
+min_w_7 =
+    Css.property "min-width" "1.75rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-w-72 {
+    min-width: 18rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_w_72 : Css.Style
+min_w_72 =
+    Css.property "min-width" "18rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-w-8 {
+    min-width: 2rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_w_8 : Css.Style
+min_w_8 =
+    Css.property "min-width" "2rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-w-80 {
+    min-width: 20rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_w_80 : Css.Style
+min_w_80 =
+    Css.property "min-width" "20rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-w-9 {
+    min-width: 2.25rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_w_9 : Css.Style
+min_w_9 =
+    Css.property "min-width" "2.25rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-w-96 {
+    min-width: 24rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_w_96 : Css.Style
+min_w_96 =
+    Css.property "min-width" "24rem"
 
 
 {-| This class has the effect of following css declaration:
@@ -34810,6 +37773,22 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 min_w_min : Css.Style
 min_w_min =
     Css.property "min-width" "min-content"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.min-w-px {
+    min-width: 1px
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+min_w_px : Css.Style
+min_w_px =
+    Css.property "min-width" "1px"
 
 
 {-| This class has the effect of following css declaration:
@@ -61955,6 +64934,22 @@ opacity_100 =
 {-| This class has the effect of following css declaration:
 
 ```css
+.opacity-15 {
+    opacity: 0.15
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+opacity_15 : Css.Style
+opacity_15 =
+    Css.property "opacity" "0.15"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
 .opacity-20 {
     opacity: 0.2
 }
@@ -62003,6 +64998,22 @@ opacity_30 =
 {-| This class has the effect of following css declaration:
 
 ```css
+.opacity-35 {
+    opacity: 0.35
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+opacity_35 : Css.Style
+opacity_35 =
+    Css.property "opacity" "0.35"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
 .opacity-40 {
     opacity: 0.4
 }
@@ -62014,6 +65025,22 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 opacity_40 : Css.Style
 opacity_40 =
     Css.property "opacity" "0.4"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.opacity-45 {
+    opacity: 0.45
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+opacity_45 : Css.Style
+opacity_45 =
+    Css.property "opacity" "0.45"
 
 
 {-| This class has the effect of following css declaration:
@@ -62051,6 +65078,22 @@ opacity_50 =
 {-| This class has the effect of following css declaration:
 
 ```css
+.opacity-55 {
+    opacity: 0.55
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+opacity_55 : Css.Style
+opacity_55 =
+    Css.property "opacity" "0.55"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
 .opacity-60 {
     opacity: 0.6
 }
@@ -62062,6 +65105,22 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 opacity_60 : Css.Style
 opacity_60 =
     Css.property "opacity" "0.6"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.opacity-65 {
+    opacity: 0.65
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+opacity_65 : Css.Style
+opacity_65 =
+    Css.property "opacity" "0.65"
 
 
 {-| This class has the effect of following css declaration:
@@ -62110,6 +65169,22 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 opacity_80 : Css.Style
 opacity_80 =
     Css.property "opacity" "0.8"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.opacity-85 {
+    opacity: 0.85
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+opacity_85 : Css.Style
+opacity_85 =
+    Css.property "opacity" "0.85"
 
 
 {-| This class has the effect of following css declaration:
@@ -65793,6 +68868,24 @@ placeholder_opacity_100 =
 {-| This class has the effect of following css declaration:
 
 ```css
+.placeholder-opacity-15::placeholder {
+    --tw-placeholder-opacity: 0.15
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+placeholder_opacity_15 : Css.Style
+placeholder_opacity_15 =
+    Css.pseudoElement "placeholder"
+        [ Css.property "--tw-placeholder-opacity" "0.15"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
 .placeholder-opacity-20::placeholder {
     --tw-placeholder-opacity: 0.2
 }
@@ -65847,6 +68940,24 @@ placeholder_opacity_30 =
 {-| This class has the effect of following css declaration:
 
 ```css
+.placeholder-opacity-35::placeholder {
+    --tw-placeholder-opacity: 0.35
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+placeholder_opacity_35 : Css.Style
+placeholder_opacity_35 =
+    Css.pseudoElement "placeholder"
+        [ Css.property "--tw-placeholder-opacity" "0.35"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
 .placeholder-opacity-40::placeholder {
     --tw-placeholder-opacity: 0.4
 }
@@ -65859,6 +68970,24 @@ placeholder_opacity_40 : Css.Style
 placeholder_opacity_40 =
     Css.pseudoElement "placeholder"
         [ Css.property "--tw-placeholder-opacity" "0.4"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.placeholder-opacity-45::placeholder {
+    --tw-placeholder-opacity: 0.45
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+placeholder_opacity_45 : Css.Style
+placeholder_opacity_45 =
+    Css.pseudoElement "placeholder"
+        [ Css.property "--tw-placeholder-opacity" "0.45"
         ]
 
 
@@ -65901,6 +69030,24 @@ placeholder_opacity_50 =
 {-| This class has the effect of following css declaration:
 
 ```css
+.placeholder-opacity-55::placeholder {
+    --tw-placeholder-opacity: 0.55
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+placeholder_opacity_55 : Css.Style
+placeholder_opacity_55 =
+    Css.pseudoElement "placeholder"
+        [ Css.property "--tw-placeholder-opacity" "0.55"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
 .placeholder-opacity-60::placeholder {
     --tw-placeholder-opacity: 0.6
 }
@@ -65913,6 +69060,24 @@ placeholder_opacity_60 : Css.Style
 placeholder_opacity_60 =
     Css.pseudoElement "placeholder"
         [ Css.property "--tw-placeholder-opacity" "0.6"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.placeholder-opacity-65::placeholder {
+    --tw-placeholder-opacity: 0.65
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+placeholder_opacity_65 : Css.Style
+placeholder_opacity_65 =
+    Css.pseudoElement "placeholder"
+        [ Css.property "--tw-placeholder-opacity" "0.65"
         ]
 
 
@@ -65967,6 +69132,24 @@ placeholder_opacity_80 : Css.Style
 placeholder_opacity_80 =
     Css.pseudoElement "placeholder"
         [ Css.property "--tw-placeholder-opacity" "0.8"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.placeholder-opacity-85::placeholder {
+    --tw-placeholder-opacity: 0.85
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+placeholder_opacity_85 : Css.Style
+placeholder_opacity_85 =
+    Css.pseudoElement "placeholder"
+        [ Css.property "--tw-placeholder-opacity" "0.85"
         ]
 
 
@@ -70185,6 +73368,22 @@ ring_opacity_100 =
 {-| This class has the effect of following css declaration:
 
 ```css
+.ring-opacity-15 {
+    --tw-ring-opacity: 0.15
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+ring_opacity_15 : Css.Style
+ring_opacity_15 =
+    Css.property "--tw-ring-opacity" "0.15"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
 .ring-opacity-20 {
     --tw-ring-opacity: 0.2
 }
@@ -70233,6 +73432,22 @@ ring_opacity_30 =
 {-| This class has the effect of following css declaration:
 
 ```css
+.ring-opacity-35 {
+    --tw-ring-opacity: 0.35
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+ring_opacity_35 : Css.Style
+ring_opacity_35 =
+    Css.property "--tw-ring-opacity" "0.35"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
 .ring-opacity-40 {
     --tw-ring-opacity: 0.4
 }
@@ -70244,6 +73459,22 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 ring_opacity_40 : Css.Style
 ring_opacity_40 =
     Css.property "--tw-ring-opacity" "0.4"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.ring-opacity-45 {
+    --tw-ring-opacity: 0.45
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+ring_opacity_45 : Css.Style
+ring_opacity_45 =
+    Css.property "--tw-ring-opacity" "0.45"
 
 
 {-| This class has the effect of following css declaration:
@@ -70281,6 +73512,22 @@ ring_opacity_50 =
 {-| This class has the effect of following css declaration:
 
 ```css
+.ring-opacity-55 {
+    --tw-ring-opacity: 0.55
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+ring_opacity_55 : Css.Style
+ring_opacity_55 =
+    Css.property "--tw-ring-opacity" "0.55"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
 .ring-opacity-60 {
     --tw-ring-opacity: 0.6
 }
@@ -70292,6 +73539,22 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 ring_opacity_60 : Css.Style
 ring_opacity_60 =
     Css.property "--tw-ring-opacity" "0.6"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.ring-opacity-65 {
+    --tw-ring-opacity: 0.65
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+ring_opacity_65 : Css.Style
+ring_opacity_65 =
+    Css.property "--tw-ring-opacity" "0.65"
 
 
 {-| This class has the effect of following css declaration:
@@ -70340,6 +73603,22 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 ring_opacity_80 : Css.Style
 ring_opacity_80 =
     Css.property "--tw-ring-opacity" "0.8"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.ring-opacity-85 {
+    --tw-ring-opacity: 0.85
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+ring_opacity_85 : Css.Style
+ring_opacity_85 =
+    Css.property "--tw-ring-opacity" "0.85"
 
 
 {-| This class has the effect of following css declaration:
@@ -72965,6 +76244,70 @@ row_end_1 =
 {-| This class has the effect of following css declaration:
 
 ```css
+.row-end-10 {
+    grid-row-end: 10
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+row_end_10 : Css.Style
+row_end_10 =
+    Css.property "grid-row-end" "10"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.row-end-11 {
+    grid-row-end: 11
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+row_end_11 : Css.Style
+row_end_11 =
+    Css.property "grid-row-end" "11"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.row-end-12 {
+    grid-row-end: 12
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+row_end_12 : Css.Style
+row_end_12 =
+    Css.property "grid-row-end" "12"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.row-end-13 {
+    grid-row-end: 13
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+row_end_13 : Css.Style
+row_end_13 =
+    Css.property "grid-row-end" "13"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
 .row-end-2 {
     grid-row-end: 2
 }
@@ -73061,6 +76404,38 @@ row_end_7 =
 {-| This class has the effect of following css declaration:
 
 ```css
+.row-end-8 {
+    grid-row-end: 8
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+row_end_8 : Css.Style
+row_end_8 =
+    Css.property "grid-row-end" "8"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.row-end-9 {
+    grid-row-end: 9
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+row_end_9 : Css.Style
+row_end_9 =
+    Css.property "grid-row-end" "9"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
 .row-end-auto {
     grid-row-end: auto
 }
@@ -73088,6 +76463,54 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 row_span_1 : Css.Style
 row_span_1 =
     Css.property "grid-row" "span 1 / span 1"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.row-span-10 {
+    grid-row: span 10 / span 10
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+row_span_10 : Css.Style
+row_span_10 =
+    Css.property "grid-row" "span 10 / span 10"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.row-span-11 {
+    grid-row: span 11 / span 11
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+row_span_11 : Css.Style
+row_span_11 =
+    Css.property "grid-row" "span 11 / span 11"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.row-span-12 {
+    grid-row: span 12 / span 12
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+row_span_12 : Css.Style
+row_span_12 =
+    Css.property "grid-row" "span 12 / span 12"
 
 
 {-| This class has the effect of following css declaration:
@@ -73173,6 +76596,54 @@ row_span_6 =
 {-| This class has the effect of following css declaration:
 
 ```css
+.row-span-7 {
+    grid-row: span 7 / span 7
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+row_span_7 : Css.Style
+row_span_7 =
+    Css.property "grid-row" "span 7 / span 7"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.row-span-8 {
+    grid-row: span 8 / span 8
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+row_span_8 : Css.Style
+row_span_8 =
+    Css.property "grid-row" "span 8 / span 8"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.row-span-9 {
+    grid-row: span 9 / span 9
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+row_span_9 : Css.Style
+row_span_9 =
+    Css.property "grid-row" "span 9 / span 9"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
 .row-span-full {
     grid-row: 1 / -1
 }
@@ -73200,6 +76671,70 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 row_start_1 : Css.Style
 row_start_1 =
     Css.property "grid-row-start" "1"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.row-start-10 {
+    grid-row-start: 10
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+row_start_10 : Css.Style
+row_start_10 =
+    Css.property "grid-row-start" "10"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.row-start-11 {
+    grid-row-start: 11
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+row_start_11 : Css.Style
+row_start_11 =
+    Css.property "grid-row-start" "11"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.row-start-12 {
+    grid-row-start: 12
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+row_start_12 : Css.Style
+row_start_12 =
+    Css.property "grid-row-start" "12"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.row-start-13 {
+    grid-row-start: 13
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+row_start_13 : Css.Style
+row_start_13 =
+    Css.property "grid-row-start" "13"
 
 
 {-| This class has the effect of following css declaration:
@@ -73296,6 +76831,38 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 row_start_7 : Css.Style
 row_start_7 =
     Css.property "grid-row-start" "7"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.row-start-8 {
+    grid-row-start: 8
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+row_start_8 : Css.Style
+row_start_8 =
+    Css.property "grid-row-start" "8"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.row-start-9 {
+    grid-row-start: 9
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+row_start_9 : Css.Style
+row_start_9 =
+    Css.property "grid-row-start" "9"
 
 
 {-| This class has the effect of following css declaration:
@@ -85117,6 +88684,1326 @@ shrink_0 =
 {-| This class has the effect of following css declaration:
 
 ```css
+.size-0 {
+    width: 0px;
+    height: 0px
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_0 : Css.Style
+size_0 =
+    Css.batch
+        [ Css.property "width" "0px"
+        , Css.property "height" "0px"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-0\.5 {
+    width: 0.125rem;
+    height: 0.125rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_0_dot_5 : Css.Style
+size_0_dot_5 =
+    Css.batch
+        [ Css.property "width" "0.125rem"
+        , Css.property "height" "0.125rem"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-1 {
+    width: 0.25rem;
+    height: 0.25rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_1 : Css.Style
+size_1 =
+    Css.batch
+        [ Css.property "width" "0.25rem"
+        , Css.property "height" "0.25rem"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-10 {
+    width: 2.5rem;
+    height: 2.5rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_10 : Css.Style
+size_10 =
+    Css.batch
+        [ Css.property "width" "2.5rem"
+        , Css.property "height" "2.5rem"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-10\/12 {
+    width: 83.333333%;
+    height: 83.333333%
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_10over12 : Css.Style
+size_10over12 =
+    Css.batch
+        [ Css.property "width" "83.333333%"
+        , Css.property "height" "83.333333%"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-11 {
+    width: 2.75rem;
+    height: 2.75rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_11 : Css.Style
+size_11 =
+    Css.batch
+        [ Css.property "width" "2.75rem"
+        , Css.property "height" "2.75rem"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-11\/12 {
+    width: 91.666667%;
+    height: 91.666667%
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_11over12 : Css.Style
+size_11over12 =
+    Css.batch
+        [ Css.property "width" "91.666667%"
+        , Css.property "height" "91.666667%"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-12 {
+    width: 3rem;
+    height: 3rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_12 : Css.Style
+size_12 =
+    Css.batch
+        [ Css.property "width" "3rem"
+        , Css.property "height" "3rem"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-14 {
+    width: 3.5rem;
+    height: 3.5rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_14 : Css.Style
+size_14 =
+    Css.batch
+        [ Css.property "width" "3.5rem"
+        , Css.property "height" "3.5rem"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-16 {
+    width: 4rem;
+    height: 4rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_16 : Css.Style
+size_16 =
+    Css.batch
+        [ Css.property "width" "4rem"
+        , Css.property "height" "4rem"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-1\.5 {
+    width: 0.375rem;
+    height: 0.375rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_1_dot_5 : Css.Style
+size_1_dot_5 =
+    Css.batch
+        [ Css.property "width" "0.375rem"
+        , Css.property "height" "0.375rem"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-1\/12 {
+    width: 8.333333%;
+    height: 8.333333%
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_1over12 : Css.Style
+size_1over12 =
+    Css.batch
+        [ Css.property "width" "8.333333%"
+        , Css.property "height" "8.333333%"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-1\/2 {
+    width: 50%;
+    height: 50%
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_1over2 : Css.Style
+size_1over2 =
+    Css.batch
+        [ Css.property "width" "50%"
+        , Css.property "height" "50%"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-1\/3 {
+    width: 33.333333%;
+    height: 33.333333%
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_1over3 : Css.Style
+size_1over3 =
+    Css.batch
+        [ Css.property "width" "33.333333%"
+        , Css.property "height" "33.333333%"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-1\/4 {
+    width: 25%;
+    height: 25%
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_1over4 : Css.Style
+size_1over4 =
+    Css.batch
+        [ Css.property "width" "25%"
+        , Css.property "height" "25%"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-1\/5 {
+    width: 20%;
+    height: 20%
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_1over5 : Css.Style
+size_1over5 =
+    Css.batch
+        [ Css.property "width" "20%"
+        , Css.property "height" "20%"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-1\/6 {
+    width: 16.666667%;
+    height: 16.666667%
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_1over6 : Css.Style
+size_1over6 =
+    Css.batch
+        [ Css.property "width" "16.666667%"
+        , Css.property "height" "16.666667%"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-2 {
+    width: 0.5rem;
+    height: 0.5rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_2 : Css.Style
+size_2 =
+    Css.batch
+        [ Css.property "width" "0.5rem"
+        , Css.property "height" "0.5rem"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-20 {
+    width: 5rem;
+    height: 5rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_20 : Css.Style
+size_20 =
+    Css.batch
+        [ Css.property "width" "5rem"
+        , Css.property "height" "5rem"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-24 {
+    width: 6rem;
+    height: 6rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_24 : Css.Style
+size_24 =
+    Css.batch
+        [ Css.property "width" "6rem"
+        , Css.property "height" "6rem"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-28 {
+    width: 7rem;
+    height: 7rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_28 : Css.Style
+size_28 =
+    Css.batch
+        [ Css.property "width" "7rem"
+        , Css.property "height" "7rem"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-2\.5 {
+    width: 0.625rem;
+    height: 0.625rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_2_dot_5 : Css.Style
+size_2_dot_5 =
+    Css.batch
+        [ Css.property "width" "0.625rem"
+        , Css.property "height" "0.625rem"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-2\/12 {
+    width: 16.666667%;
+    height: 16.666667%
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_2over12 : Css.Style
+size_2over12 =
+    Css.batch
+        [ Css.property "width" "16.666667%"
+        , Css.property "height" "16.666667%"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-2\/3 {
+    width: 66.666667%;
+    height: 66.666667%
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_2over3 : Css.Style
+size_2over3 =
+    Css.batch
+        [ Css.property "width" "66.666667%"
+        , Css.property "height" "66.666667%"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-2\/4 {
+    width: 50%;
+    height: 50%
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_2over4 : Css.Style
+size_2over4 =
+    Css.batch
+        [ Css.property "width" "50%"
+        , Css.property "height" "50%"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-2\/5 {
+    width: 40%;
+    height: 40%
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_2over5 : Css.Style
+size_2over5 =
+    Css.batch
+        [ Css.property "width" "40%"
+        , Css.property "height" "40%"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-2\/6 {
+    width: 33.333333%;
+    height: 33.333333%
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_2over6 : Css.Style
+size_2over6 =
+    Css.batch
+        [ Css.property "width" "33.333333%"
+        , Css.property "height" "33.333333%"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-3 {
+    width: 0.75rem;
+    height: 0.75rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_3 : Css.Style
+size_3 =
+    Css.batch
+        [ Css.property "width" "0.75rem"
+        , Css.property "height" "0.75rem"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-32 {
+    width: 8rem;
+    height: 8rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_32 : Css.Style
+size_32 =
+    Css.batch
+        [ Css.property "width" "8rem"
+        , Css.property "height" "8rem"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-36 {
+    width: 9rem;
+    height: 9rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_36 : Css.Style
+size_36 =
+    Css.batch
+        [ Css.property "width" "9rem"
+        , Css.property "height" "9rem"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-3\.5 {
+    width: 0.875rem;
+    height: 0.875rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_3_dot_5 : Css.Style
+size_3_dot_5 =
+    Css.batch
+        [ Css.property "width" "0.875rem"
+        , Css.property "height" "0.875rem"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-3\/12 {
+    width: 25%;
+    height: 25%
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_3over12 : Css.Style
+size_3over12 =
+    Css.batch
+        [ Css.property "width" "25%"
+        , Css.property "height" "25%"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-3\/4 {
+    width: 75%;
+    height: 75%
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_3over4 : Css.Style
+size_3over4 =
+    Css.batch
+        [ Css.property "width" "75%"
+        , Css.property "height" "75%"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-3\/5 {
+    width: 60%;
+    height: 60%
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_3over5 : Css.Style
+size_3over5 =
+    Css.batch
+        [ Css.property "width" "60%"
+        , Css.property "height" "60%"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-3\/6 {
+    width: 50%;
+    height: 50%
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_3over6 : Css.Style
+size_3over6 =
+    Css.batch
+        [ Css.property "width" "50%"
+        , Css.property "height" "50%"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-4 {
+    width: 1rem;
+    height: 1rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_4 : Css.Style
+size_4 =
+    Css.batch
+        [ Css.property "width" "1rem"
+        , Css.property "height" "1rem"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-40 {
+    width: 10rem;
+    height: 10rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_40 : Css.Style
+size_40 =
+    Css.batch
+        [ Css.property "width" "10rem"
+        , Css.property "height" "10rem"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-44 {
+    width: 11rem;
+    height: 11rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_44 : Css.Style
+size_44 =
+    Css.batch
+        [ Css.property "width" "11rem"
+        , Css.property "height" "11rem"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-48 {
+    width: 12rem;
+    height: 12rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_48 : Css.Style
+size_48 =
+    Css.batch
+        [ Css.property "width" "12rem"
+        , Css.property "height" "12rem"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-4\/12 {
+    width: 33.333333%;
+    height: 33.333333%
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_4over12 : Css.Style
+size_4over12 =
+    Css.batch
+        [ Css.property "width" "33.333333%"
+        , Css.property "height" "33.333333%"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-4\/5 {
+    width: 80%;
+    height: 80%
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_4over5 : Css.Style
+size_4over5 =
+    Css.batch
+        [ Css.property "width" "80%"
+        , Css.property "height" "80%"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-4\/6 {
+    width: 66.666667%;
+    height: 66.666667%
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_4over6 : Css.Style
+size_4over6 =
+    Css.batch
+        [ Css.property "width" "66.666667%"
+        , Css.property "height" "66.666667%"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-5 {
+    width: 1.25rem;
+    height: 1.25rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_5 : Css.Style
+size_5 =
+    Css.batch
+        [ Css.property "width" "1.25rem"
+        , Css.property "height" "1.25rem"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-52 {
+    width: 13rem;
+    height: 13rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_52 : Css.Style
+size_52 =
+    Css.batch
+        [ Css.property "width" "13rem"
+        , Css.property "height" "13rem"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-56 {
+    width: 14rem;
+    height: 14rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_56 : Css.Style
+size_56 =
+    Css.batch
+        [ Css.property "width" "14rem"
+        , Css.property "height" "14rem"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-5\/12 {
+    width: 41.666667%;
+    height: 41.666667%
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_5over12 : Css.Style
+size_5over12 =
+    Css.batch
+        [ Css.property "width" "41.666667%"
+        , Css.property "height" "41.666667%"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-5\/6 {
+    width: 83.333333%;
+    height: 83.333333%
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_5over6 : Css.Style
+size_5over6 =
+    Css.batch
+        [ Css.property "width" "83.333333%"
+        , Css.property "height" "83.333333%"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-6 {
+    width: 1.5rem;
+    height: 1.5rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_6 : Css.Style
+size_6 =
+    Css.batch
+        [ Css.property "width" "1.5rem"
+        , Css.property "height" "1.5rem"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-60 {
+    width: 15rem;
+    height: 15rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_60 : Css.Style
+size_60 =
+    Css.batch
+        [ Css.property "width" "15rem"
+        , Css.property "height" "15rem"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-64 {
+    width: 16rem;
+    height: 16rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_64 : Css.Style
+size_64 =
+    Css.batch
+        [ Css.property "width" "16rem"
+        , Css.property "height" "16rem"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-6\/12 {
+    width: 50%;
+    height: 50%
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_6over12 : Css.Style
+size_6over12 =
+    Css.batch
+        [ Css.property "width" "50%"
+        , Css.property "height" "50%"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-7 {
+    width: 1.75rem;
+    height: 1.75rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_7 : Css.Style
+size_7 =
+    Css.batch
+        [ Css.property "width" "1.75rem"
+        , Css.property "height" "1.75rem"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-72 {
+    width: 18rem;
+    height: 18rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_72 : Css.Style
+size_72 =
+    Css.batch
+        [ Css.property "width" "18rem"
+        , Css.property "height" "18rem"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-7\/12 {
+    width: 58.333333%;
+    height: 58.333333%
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_7over12 : Css.Style
+size_7over12 =
+    Css.batch
+        [ Css.property "width" "58.333333%"
+        , Css.property "height" "58.333333%"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-8 {
+    width: 2rem;
+    height: 2rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_8 : Css.Style
+size_8 =
+    Css.batch
+        [ Css.property "width" "2rem"
+        , Css.property "height" "2rem"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-80 {
+    width: 20rem;
+    height: 20rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_80 : Css.Style
+size_80 =
+    Css.batch
+        [ Css.property "width" "20rem"
+        , Css.property "height" "20rem"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-8\/12 {
+    width: 66.666667%;
+    height: 66.666667%
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_8over12 : Css.Style
+size_8over12 =
+    Css.batch
+        [ Css.property "width" "66.666667%"
+        , Css.property "height" "66.666667%"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-9 {
+    width: 2.25rem;
+    height: 2.25rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_9 : Css.Style
+size_9 =
+    Css.batch
+        [ Css.property "width" "2.25rem"
+        , Css.property "height" "2.25rem"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-96 {
+    width: 24rem;
+    height: 24rem
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_96 : Css.Style
+size_96 =
+    Css.batch
+        [ Css.property "width" "24rem"
+        , Css.property "height" "24rem"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-9\/12 {
+    width: 75%;
+    height: 75%
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_9over12 : Css.Style
+size_9over12 =
+    Css.batch
+        [ Css.property "width" "75%"
+        , Css.property "height" "75%"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-auto {
+    width: auto;
+    height: auto
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_auto : Css.Style
+size_auto =
+    Css.batch
+        [ Css.property "width" "auto"
+        , Css.property "height" "auto"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-fit {
+    width: fit-content;
+    height: fit-content
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_fit : Css.Style
+size_fit =
+    Css.batch
+        [ Css.property "width" "fit-content"
+        , Css.property "height" "fit-content"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-full {
+    width: 100%;
+    height: 100%
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_full : Css.Style
+size_full =
+    Css.batch
+        [ Css.property "width" "100%"
+        , Css.property "height" "100%"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-max {
+    width: max-content;
+    height: max-content
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_max : Css.Style
+size_max =
+    Css.batch
+        [ Css.property "width" "max-content"
+        , Css.property "height" "max-content"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-min {
+    width: min-content;
+    height: min-content
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_min : Css.Style
+size_min =
+    Css.batch
+        [ Css.property "width" "min-content"
+        , Css.property "height" "min-content"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.size-px {
+    width: 1px;
+    height: 1px
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+size_px : Css.Style
+size_px =
+    Css.batch
+        [ Css.property "width" "1px"
+        , Css.property "height" "1px"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
 .skew-x-0 {
     --tw-skew-x: 0deg;
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
@@ -88423,6 +93310,22 @@ text_6xl =
 {-| This class has the effect of following css declaration:
 
 ```css
+.text-balance {
+    text-wrap: balance
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+text_balance : Css.Style
+text_balance =
+    Css.property "text-wrap" "balance"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
 .text-base {
     font-size: 1rem
 }
@@ -88551,6 +93454,22 @@ text_lg =
 {-| This class has the effect of following css declaration:
 
 ```css
+.text-nowrap {
+    text-wrap: nowrap
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+text_nowrap : Css.Style
+text_nowrap =
+    Css.property "text-wrap" "nowrap"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
 .text-opacity-0 {
     --tw-text-opacity: 0
 }
@@ -88594,6 +93513,22 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 text_opacity_100 : Css.Style
 text_opacity_100 =
     Css.property "--tw-text-opacity" "1"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.text-opacity-15 {
+    --tw-text-opacity: 0.15
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+text_opacity_15 : Css.Style
+text_opacity_15 =
+    Css.property "--tw-text-opacity" "0.15"
 
 
 {-| This class has the effect of following css declaration:
@@ -88647,6 +93582,22 @@ text_opacity_30 =
 {-| This class has the effect of following css declaration:
 
 ```css
+.text-opacity-35 {
+    --tw-text-opacity: 0.35
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+text_opacity_35 : Css.Style
+text_opacity_35 =
+    Css.property "--tw-text-opacity" "0.35"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
 .text-opacity-40 {
     --tw-text-opacity: 0.4
 }
@@ -88658,6 +93609,22 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 text_opacity_40 : Css.Style
 text_opacity_40 =
     Css.property "--tw-text-opacity" "0.4"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.text-opacity-45 {
+    --tw-text-opacity: 0.45
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+text_opacity_45 : Css.Style
+text_opacity_45 =
+    Css.property "--tw-text-opacity" "0.45"
 
 
 {-| This class has the effect of following css declaration:
@@ -88695,6 +93662,22 @@ text_opacity_50 =
 {-| This class has the effect of following css declaration:
 
 ```css
+.text-opacity-55 {
+    --tw-text-opacity: 0.55
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+text_opacity_55 : Css.Style
+text_opacity_55 =
+    Css.property "--tw-text-opacity" "0.55"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
 .text-opacity-60 {
     --tw-text-opacity: 0.6
 }
@@ -88706,6 +93689,22 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 text_opacity_60 : Css.Style
 text_opacity_60 =
     Css.property "--tw-text-opacity" "0.6"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.text-opacity-65 {
+    --tw-text-opacity: 0.65
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+text_opacity_65 : Css.Style
+text_opacity_65 =
+    Css.property "--tw-text-opacity" "0.65"
 
 
 {-| This class has the effect of following css declaration:
@@ -88759,6 +93758,22 @@ text_opacity_80 =
 {-| This class has the effect of following css declaration:
 
 ```css
+.text-opacity-85 {
+    --tw-text-opacity: 0.85
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+text_opacity_85 : Css.Style
+text_opacity_85 =
+    Css.property "--tw-text-opacity" "0.85"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
 .text-opacity-90 {
     --tw-text-opacity: 0.9
 }
@@ -88786,6 +93801,22 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 text_opacity_95 : Css.Style
 text_opacity_95 =
     Css.property "--tw-text-opacity" "0.95"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.text-pretty {
+    text-wrap: pretty
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+text_pretty : Css.Style
+text_pretty =
+    Css.property "text-wrap" "pretty"
 
 
 {-| This class has the effect of following css declaration:
@@ -88834,6 +93865,22 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 text_start : Css.Style
 text_start =
     Css.property "text-align" "start"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.text-wrap {
+    text-wrap: wrap
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+text_wrap : Css.Style
+text_wrap =
+    Css.property "text-wrap" "wrap"
 
 
 {-| This class has the effect of following css declaration:
@@ -93549,6 +98596,22 @@ w_auto =
 {-| This class has the effect of following css declaration:
 
 ```css
+.w-dvw {
+    width: 100dvw
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+w_dvw : Css.Style
+w_dvw =
+    Css.property "width" "100dvw"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
 .w-fit {
     width: fit-content
 }
@@ -93576,6 +98639,22 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 w_full : Css.Style
 w_full =
     Css.property "width" "100%"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.w-lvw {
+    width: 100lvw
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+w_lvw : Css.Style
+w_lvw =
+    Css.property "width" "100lvw"
 
 
 {-| This class has the effect of following css declaration:
@@ -93640,6 +98719,22 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 w_screen : Css.Style
 w_screen =
     Css.property "width" "100vw"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.w-svw {
+    width: 100svw
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+w_svw : Css.Style
+w_svw =
+    Css.property "width" "100svw"
 
 
 {-| This class has the effect of following css declaration:
