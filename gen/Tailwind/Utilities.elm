@@ -594,6 +594,14 @@ module Tailwind.Utilities exposing
     , columns_sm
     , columns_xl
     , columns_xs
+    , contain_content
+    , contain_inline_size
+    , contain_layout
+    , contain_none
+    , contain_paint
+    , contain_size
+    , contain_strict
+    , contain_style
     , container
     , content_around
     , content_baseline
@@ -1627,6 +1635,7 @@ module Tailwind.Utilities exposing
     , mix_blend_multiply
     , mix_blend_normal
     , mix_blend_overlay
+    , mix_blend_plus_darker
     , mix_blend_plus_lighter
     , mix_blend_saturation
     , mix_blend_screen
@@ -5740,6 +5749,14 @@ This module contains
 @docs columns_sm
 @docs columns_xl
 @docs columns_xs
+@docs contain_content
+@docs contain_inline_size
+@docs contain_layout
+@docs contain_none
+@docs contain_paint
+@docs contain_size
+@docs contain_strict
+@docs contain_style
 @docs container
 @docs content_around
 @docs content_baseline
@@ -6773,6 +6790,7 @@ This module contains
 @docs mix_blend_multiply
 @docs mix_blend_normal
 @docs mix_blend_overlay
+@docs mix_blend_plus_darker
 @docs mix_blend_plus_lighter
 @docs mix_blend_saturation
 @docs mix_blend_screen
@@ -10390,6 +10408,7 @@ globalStyles =
         , Css.property "font-size" "100%"
         , Css.property "font-weight" "inherit"
         , Css.property "line-height" "inherit"
+        , Css.property "letter-spacing" "inherit"
         , Css.property "color" "inherit"
         , Css.property "margin" "0"
         , Css.property "padding" "0"
@@ -10397,7 +10416,7 @@ globalStyles =
     , Css.Global.selector "button,\nselect"
         [ Css.property "text-transform" "none"
         ]
-    , Css.Global.selector "button,\n[type='button'],\n[type='reset'],\n[type='submit']"
+    , Css.Global.selector "button,\ninput:where([type='button']),\ninput:where([type='reset']),\ninput:where([type='submit'])"
         [ Css.property "-webkit-appearance" "button"
         , Css.property "background-color" "transparent"
         , Css.property "background-image" "none"
@@ -10518,6 +10537,10 @@ globalStyles =
         , Css.property "--tw-backdrop-opacity" " "
         , Css.property "--tw-backdrop-saturate" " "
         , Css.property "--tw-backdrop-sepia" " "
+        , Css.property "--tw-contain-size" " "
+        , Css.property "--tw-contain-layout" " "
+        , Css.property "--tw-contain-paint" " "
+        , Css.property "--tw-contain-style" " "
         ]
     , Css.Global.selector "::backdrop"
         [ Css.property "--tw-border-spacing-x" "0"
@@ -10567,6 +10590,10 @@ globalStyles =
         , Css.property "--tw-backdrop-opacity" " "
         , Css.property "--tw-backdrop-saturate" " "
         , Css.property "--tw-backdrop-sepia" " "
+        , Css.property "--tw-contain-size" " "
+        , Css.property "--tw-contain-layout" " "
+        , Css.property "--tw-contain-paint" " "
+        , Css.property "--tw-contain-style" " "
         ]
     ]
 
@@ -20806,6 +20833,154 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 columns_xs : Css.Style
 columns_xs =
     Css.property "columns" "20rem"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.contain-content {
+    contain: content
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+contain_content : Css.Style
+contain_content =
+    Css.property "contain" "content"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.contain-inline-size {
+    --tw-contain-size: inline-size;
+    contain: var(--tw-contain-size) var(--tw-contain-layout) var(--tw-contain-paint) var(--tw-contain-style)
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+contain_inline_size : Css.Style
+contain_inline_size =
+    Css.batch
+        [ Css.property "--tw-contain-size" "inline-size"
+        , Css.property "contain" "var(--tw-contain-size) var(--tw-contain-layout) var(--tw-contain-paint) var(--tw-contain-style)"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.contain-layout {
+    --tw-contain-layout: layout;
+    contain: var(--tw-contain-size) var(--tw-contain-layout) var(--tw-contain-paint) var(--tw-contain-style)
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+contain_layout : Css.Style
+contain_layout =
+    Css.batch
+        [ Css.property "--tw-contain-layout" "layout"
+        , Css.property "contain" "var(--tw-contain-size) var(--tw-contain-layout) var(--tw-contain-paint) var(--tw-contain-style)"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.contain-none {
+    contain: none
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+contain_none : Css.Style
+contain_none =
+    Css.property "contain" "none"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.contain-paint {
+    --tw-contain-paint: paint;
+    contain: var(--tw-contain-size) var(--tw-contain-layout) var(--tw-contain-paint) var(--tw-contain-style)
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+contain_paint : Css.Style
+contain_paint =
+    Css.batch
+        [ Css.property "--tw-contain-paint" "paint"
+        , Css.property "contain" "var(--tw-contain-size) var(--tw-contain-layout) var(--tw-contain-paint) var(--tw-contain-style)"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.contain-size {
+    --tw-contain-size: size;
+    contain: var(--tw-contain-size) var(--tw-contain-layout) var(--tw-contain-paint) var(--tw-contain-style)
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+contain_size : Css.Style
+contain_size =
+    Css.batch
+        [ Css.property "--tw-contain-size" "size"
+        , Css.property "contain" "var(--tw-contain-size) var(--tw-contain-layout) var(--tw-contain-paint) var(--tw-contain-style)"
+        ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.contain-strict {
+    contain: strict
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+contain_strict : Css.Style
+contain_strict =
+    Css.property "contain" "strict"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.contain-style {
+    --tw-contain-style: style;
+    contain: var(--tw-contain-size) var(--tw-contain-layout) var(--tw-contain-paint) var(--tw-contain-style)
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+contain_style : Css.Style
+contain_style =
+    Css.batch
+        [ Css.property "--tw-contain-style" "style"
+        , Css.property "contain" "var(--tw-contain-size) var(--tw-contain-layout) var(--tw-contain-paint) var(--tw-contain-style)"
+        ]
 
 
 {-| This class combines the effects of following css declarations:
@@ -37997,6 +38172,22 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 mix_blend_overlay : Css.Style
 mix_blend_overlay =
     Css.property "mix-blend-mode" "overlay"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.mix-blend-plus-darker {
+    mix-blend-mode: plus-darker
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+mix_blend_plus_darker : Css.Style
+mix_blend_plus_darker =
+    Css.property "mix-blend-mode" "plus-darker"
 
 
 {-| This class has the effect of following css declaration:
