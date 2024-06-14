@@ -1904,6 +1904,32 @@ module Tailwind.Utilities exposing
     , neg_bottom_96
     , neg_bottom_full
     , neg_bottom_px
+    , neg_col_end_1
+    , neg_col_end_10
+    , neg_col_end_11
+    , neg_col_end_12
+    , neg_col_end_13
+    , neg_col_end_2
+    , neg_col_end_3
+    , neg_col_end_4
+    , neg_col_end_5
+    , neg_col_end_6
+    , neg_col_end_7
+    , neg_col_end_8
+    , neg_col_end_9
+    , neg_col_start_1
+    , neg_col_start_10
+    , neg_col_start_11
+    , neg_col_start_12
+    , neg_col_start_13
+    , neg_col_start_2
+    , neg_col_start_3
+    , neg_col_start_4
+    , neg_col_start_5
+    , neg_col_start_6
+    , neg_col_start_7
+    , neg_col_start_8
+    , neg_col_start_9
     , neg_end_0
     , neg_end_0_dot_5
     , neg_end_1
@@ -2541,6 +2567,32 @@ module Tailwind.Utilities exposing
     , neg_rotate_45
     , neg_rotate_6
     , neg_rotate_90
+    , neg_row_end_1
+    , neg_row_end_10
+    , neg_row_end_11
+    , neg_row_end_12
+    , neg_row_end_13
+    , neg_row_end_2
+    , neg_row_end_3
+    , neg_row_end_4
+    , neg_row_end_5
+    , neg_row_end_6
+    , neg_row_end_7
+    , neg_row_end_8
+    , neg_row_end_9
+    , neg_row_start_1
+    , neg_row_start_10
+    , neg_row_start_11
+    , neg_row_start_12
+    , neg_row_start_13
+    , neg_row_start_2
+    , neg_row_start_3
+    , neg_row_start_4
+    , neg_row_start_5
+    , neg_row_start_6
+    , neg_row_start_7
+    , neg_row_start_8
+    , neg_row_start_9
     , neg_scale_0
     , neg_scale_100
     , neg_scale_105
@@ -7059,6 +7111,32 @@ This module contains
 @docs neg_bottom_96
 @docs neg_bottom_full
 @docs neg_bottom_px
+@docs neg_col_end_1
+@docs neg_col_end_10
+@docs neg_col_end_11
+@docs neg_col_end_12
+@docs neg_col_end_13
+@docs neg_col_end_2
+@docs neg_col_end_3
+@docs neg_col_end_4
+@docs neg_col_end_5
+@docs neg_col_end_6
+@docs neg_col_end_7
+@docs neg_col_end_8
+@docs neg_col_end_9
+@docs neg_col_start_1
+@docs neg_col_start_10
+@docs neg_col_start_11
+@docs neg_col_start_12
+@docs neg_col_start_13
+@docs neg_col_start_2
+@docs neg_col_start_3
+@docs neg_col_start_4
+@docs neg_col_start_5
+@docs neg_col_start_6
+@docs neg_col_start_7
+@docs neg_col_start_8
+@docs neg_col_start_9
 @docs neg_end_0
 @docs neg_end_0_dot_5
 @docs neg_end_1
@@ -7696,6 +7774,32 @@ This module contains
 @docs neg_rotate_45
 @docs neg_rotate_6
 @docs neg_rotate_90
+@docs neg_row_end_1
+@docs neg_row_end_10
+@docs neg_row_end_11
+@docs neg_row_end_12
+@docs neg_row_end_13
+@docs neg_row_end_2
+@docs neg_row_end_3
+@docs neg_row_end_4
+@docs neg_row_end_5
+@docs neg_row_end_6
+@docs neg_row_end_7
+@docs neg_row_end_8
+@docs neg_row_end_9
+@docs neg_row_start_1
+@docs neg_row_start_10
+@docs neg_row_start_11
+@docs neg_row_start_12
+@docs neg_row_start_13
+@docs neg_row_start_2
+@docs neg_row_start_3
+@docs neg_row_start_4
+@docs neg_row_start_5
+@docs neg_row_start_6
+@docs neg_row_start_7
+@docs neg_row_start_8
+@docs neg_row_start_9
 @docs neg_scale_0
 @docs neg_scale_100
 @docs neg_scale_105
@@ -42793,6 +42897,422 @@ neg_bottom_px =
 {-| This class has the effect of following css declaration:
 
 ```css
+.-col-end-1 {
+    grid-column-end: -1
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_col_end_1 : Css.Style
+neg_col_end_1 =
+    Css.property "grid-column-end" "-1"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-col-end-10 {
+    grid-column-end: -10
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_col_end_10 : Css.Style
+neg_col_end_10 =
+    Css.property "grid-column-end" "-10"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-col-end-11 {
+    grid-column-end: -11
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_col_end_11 : Css.Style
+neg_col_end_11 =
+    Css.property "grid-column-end" "-11"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-col-end-12 {
+    grid-column-end: -12
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_col_end_12 : Css.Style
+neg_col_end_12 =
+    Css.property "grid-column-end" "-12"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-col-end-13 {
+    grid-column-end: -13
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_col_end_13 : Css.Style
+neg_col_end_13 =
+    Css.property "grid-column-end" "-13"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-col-end-2 {
+    grid-column-end: -2
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_col_end_2 : Css.Style
+neg_col_end_2 =
+    Css.property "grid-column-end" "-2"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-col-end-3 {
+    grid-column-end: -3
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_col_end_3 : Css.Style
+neg_col_end_3 =
+    Css.property "grid-column-end" "-3"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-col-end-4 {
+    grid-column-end: -4
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_col_end_4 : Css.Style
+neg_col_end_4 =
+    Css.property "grid-column-end" "-4"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-col-end-5 {
+    grid-column-end: -5
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_col_end_5 : Css.Style
+neg_col_end_5 =
+    Css.property "grid-column-end" "-5"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-col-end-6 {
+    grid-column-end: -6
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_col_end_6 : Css.Style
+neg_col_end_6 =
+    Css.property "grid-column-end" "-6"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-col-end-7 {
+    grid-column-end: -7
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_col_end_7 : Css.Style
+neg_col_end_7 =
+    Css.property "grid-column-end" "-7"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-col-end-8 {
+    grid-column-end: -8
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_col_end_8 : Css.Style
+neg_col_end_8 =
+    Css.property "grid-column-end" "-8"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-col-end-9 {
+    grid-column-end: -9
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_col_end_9 : Css.Style
+neg_col_end_9 =
+    Css.property "grid-column-end" "-9"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-col-start-1 {
+    grid-column-start: -1
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_col_start_1 : Css.Style
+neg_col_start_1 =
+    Css.property "grid-column-start" "-1"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-col-start-10 {
+    grid-column-start: -10
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_col_start_10 : Css.Style
+neg_col_start_10 =
+    Css.property "grid-column-start" "-10"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-col-start-11 {
+    grid-column-start: -11
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_col_start_11 : Css.Style
+neg_col_start_11 =
+    Css.property "grid-column-start" "-11"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-col-start-12 {
+    grid-column-start: -12
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_col_start_12 : Css.Style
+neg_col_start_12 =
+    Css.property "grid-column-start" "-12"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-col-start-13 {
+    grid-column-start: -13
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_col_start_13 : Css.Style
+neg_col_start_13 =
+    Css.property "grid-column-start" "-13"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-col-start-2 {
+    grid-column-start: -2
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_col_start_2 : Css.Style
+neg_col_start_2 =
+    Css.property "grid-column-start" "-2"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-col-start-3 {
+    grid-column-start: -3
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_col_start_3 : Css.Style
+neg_col_start_3 =
+    Css.property "grid-column-start" "-3"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-col-start-4 {
+    grid-column-start: -4
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_col_start_4 : Css.Style
+neg_col_start_4 =
+    Css.property "grid-column-start" "-4"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-col-start-5 {
+    grid-column-start: -5
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_col_start_5 : Css.Style
+neg_col_start_5 =
+    Css.property "grid-column-start" "-5"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-col-start-6 {
+    grid-column-start: -6
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_col_start_6 : Css.Style
+neg_col_start_6 =
+    Css.property "grid-column-start" "-6"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-col-start-7 {
+    grid-column-start: -7
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_col_start_7 : Css.Style
+neg_col_start_7 =
+    Css.property "grid-column-start" "-7"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-col-start-8 {
+    grid-column-start: -8
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_col_start_8 : Css.Style
+neg_col_start_8 =
+    Css.property "grid-column-start" "-8"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-col-start-9 {
+    grid-column-start: -9
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_col_start_9 : Css.Style
+neg_col_start_9 =
+    Css.property "grid-column-start" "-9"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
 .-end-0 {
     inset-inline-end: -0px
 }
@@ -53656,6 +54176,422 @@ neg_rotate_90 =
         [ Css.property "--tw-rotate" "-90deg"
         , Css.property "transform" "translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))"
         ]
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-row-end-1 {
+    grid-row-end: -1
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_row_end_1 : Css.Style
+neg_row_end_1 =
+    Css.property "grid-row-end" "-1"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-row-end-10 {
+    grid-row-end: -10
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_row_end_10 : Css.Style
+neg_row_end_10 =
+    Css.property "grid-row-end" "-10"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-row-end-11 {
+    grid-row-end: -11
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_row_end_11 : Css.Style
+neg_row_end_11 =
+    Css.property "grid-row-end" "-11"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-row-end-12 {
+    grid-row-end: -12
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_row_end_12 : Css.Style
+neg_row_end_12 =
+    Css.property "grid-row-end" "-12"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-row-end-13 {
+    grid-row-end: -13
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_row_end_13 : Css.Style
+neg_row_end_13 =
+    Css.property "grid-row-end" "-13"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-row-end-2 {
+    grid-row-end: -2
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_row_end_2 : Css.Style
+neg_row_end_2 =
+    Css.property "grid-row-end" "-2"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-row-end-3 {
+    grid-row-end: -3
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_row_end_3 : Css.Style
+neg_row_end_3 =
+    Css.property "grid-row-end" "-3"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-row-end-4 {
+    grid-row-end: -4
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_row_end_4 : Css.Style
+neg_row_end_4 =
+    Css.property "grid-row-end" "-4"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-row-end-5 {
+    grid-row-end: -5
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_row_end_5 : Css.Style
+neg_row_end_5 =
+    Css.property "grid-row-end" "-5"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-row-end-6 {
+    grid-row-end: -6
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_row_end_6 : Css.Style
+neg_row_end_6 =
+    Css.property "grid-row-end" "-6"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-row-end-7 {
+    grid-row-end: -7
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_row_end_7 : Css.Style
+neg_row_end_7 =
+    Css.property "grid-row-end" "-7"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-row-end-8 {
+    grid-row-end: -8
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_row_end_8 : Css.Style
+neg_row_end_8 =
+    Css.property "grid-row-end" "-8"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-row-end-9 {
+    grid-row-end: -9
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_row_end_9 : Css.Style
+neg_row_end_9 =
+    Css.property "grid-row-end" "-9"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-row-start-1 {
+    grid-row-start: -1
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_row_start_1 : Css.Style
+neg_row_start_1 =
+    Css.property "grid-row-start" "-1"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-row-start-10 {
+    grid-row-start: -10
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_row_start_10 : Css.Style
+neg_row_start_10 =
+    Css.property "grid-row-start" "-10"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-row-start-11 {
+    grid-row-start: -11
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_row_start_11 : Css.Style
+neg_row_start_11 =
+    Css.property "grid-row-start" "-11"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-row-start-12 {
+    grid-row-start: -12
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_row_start_12 : Css.Style
+neg_row_start_12 =
+    Css.property "grid-row-start" "-12"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-row-start-13 {
+    grid-row-start: -13
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_row_start_13 : Css.Style
+neg_row_start_13 =
+    Css.property "grid-row-start" "-13"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-row-start-2 {
+    grid-row-start: -2
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_row_start_2 : Css.Style
+neg_row_start_2 =
+    Css.property "grid-row-start" "-2"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-row-start-3 {
+    grid-row-start: -3
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_row_start_3 : Css.Style
+neg_row_start_3 =
+    Css.property "grid-row-start" "-3"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-row-start-4 {
+    grid-row-start: -4
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_row_start_4 : Css.Style
+neg_row_start_4 =
+    Css.property "grid-row-start" "-4"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-row-start-5 {
+    grid-row-start: -5
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_row_start_5 : Css.Style
+neg_row_start_5 =
+    Css.property "grid-row-start" "-5"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-row-start-6 {
+    grid-row-start: -6
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_row_start_6 : Css.Style
+neg_row_start_6 =
+    Css.property "grid-row-start" "-6"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-row-start-7 {
+    grid-row-start: -7
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_row_start_7 : Css.Style
+neg_row_start_7 =
+    Css.property "grid-row-start" "-7"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-row-start-8 {
+    grid-row-start: -8
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_row_start_8 : Css.Style
+neg_row_start_8 =
+    Css.property "grid-row-start" "-8"
+
+
+{-| This class has the effect of following css declaration:
+
+```css
+.-row-start-9 {
+    grid-row-start: -9
+}
+```
+
+Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs)!
+
+-}
+neg_row_start_9 : Css.Style
+neg_row_start_9 =
+    Css.property "grid-row-start" "-9"
 
 
 {-| This class has the effect of following css declaration:
