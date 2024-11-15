@@ -100320,7 +100320,10 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 -}
 bg_color : Color -> Css.Style
 bg_color color =
-    Tw.propertyWithColor "background-color" (\c -> c) (Just "--tw-bg-opacity") color
+    Css.batch
+        [ Css.property "--tw-bg-opacity" "1"
+        , Tw.propertyWithColor "background-color" (\c -> c) (Just "--tw-bg-opacity, 1") color
+        ]
 
 
 {-| This class has effects of css declarations similar to the following:
@@ -100339,7 +100342,10 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 -}
 border_b_color : Color -> Css.Style
 border_b_color color =
-    Tw.propertyWithColor "border-bottom-color" (\c -> c) (Just "--tw-border-opacity") color
+    Css.batch
+        [ Css.property "--tw-border-opacity" "1"
+        , Tw.propertyWithColor "border-bottom-color" (\c -> c) (Just "--tw-border-opacity, 1") color
+        ]
 
 
 {-| This class has effects of css declarations similar to the following:
@@ -100358,7 +100364,10 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 -}
 border_color : Color -> Css.Style
 border_color color =
-    Tw.propertyWithColor "border-color" (\c -> c) (Just "--tw-border-opacity") color
+    Css.batch
+        [ Css.property "--tw-border-opacity" "1"
+        , Tw.propertyWithColor "border-color" (\c -> c) (Just "--tw-border-opacity, 1") color
+        ]
 
 
 {-| This class has effects of css declarations similar to the following:
@@ -100377,7 +100386,10 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 -}
 border_e_color : Color -> Css.Style
 border_e_color color =
-    Tw.propertyWithColor "border-inline-end-color" (\c -> c) (Just "--tw-border-opacity") color
+    Css.batch
+        [ Css.property "--tw-border-opacity" "1"
+        , Tw.propertyWithColor "border-inline-end-color" (\c -> c) (Just "--tw-border-opacity, 1") color
+        ]
 
 
 {-| This class has effects of css declarations similar to the following:
@@ -100396,7 +100408,10 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 -}
 border_l_color : Color -> Css.Style
 border_l_color color =
-    Tw.propertyWithColor "border-left-color" (\c -> c) (Just "--tw-border-opacity") color
+    Css.batch
+        [ Css.property "--tw-border-opacity" "1"
+        , Tw.propertyWithColor "border-left-color" (\c -> c) (Just "--tw-border-opacity, 1") color
+        ]
 
 
 {-| This class has effects of css declarations similar to the following:
@@ -100415,7 +100430,10 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 -}
 border_r_color : Color -> Css.Style
 border_r_color color =
-    Tw.propertyWithColor "border-right-color" (\c -> c) (Just "--tw-border-opacity") color
+    Css.batch
+        [ Css.property "--tw-border-opacity" "1"
+        , Tw.propertyWithColor "border-right-color" (\c -> c) (Just "--tw-border-opacity, 1") color
+        ]
 
 
 {-| This class has effects of css declarations similar to the following:
@@ -100434,7 +100452,10 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 -}
 border_s_color : Color -> Css.Style
 border_s_color color =
-    Tw.propertyWithColor "border-inline-start-color" (\c -> c) (Just "--tw-border-opacity") color
+    Css.batch
+        [ Css.property "--tw-border-opacity" "1"
+        , Tw.propertyWithColor "border-inline-start-color" (\c -> c) (Just "--tw-border-opacity, 1") color
+        ]
 
 
 {-| This class has effects of css declarations similar to the following:
@@ -100453,7 +100474,10 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 -}
 border_t_color : Color -> Css.Style
 border_t_color color =
-    Tw.propertyWithColor "border-top-color" (\c -> c) (Just "--tw-border-opacity") color
+    Css.batch
+        [ Css.property "--tw-border-opacity" "1"
+        , Tw.propertyWithColor "border-top-color" (\c -> c) (Just "--tw-border-opacity, 1") color
+        ]
 
 
 {-| This class has effects of css declarations similar to the following:
@@ -100474,8 +100498,9 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 border_x_color : Color -> Css.Style
 border_x_color color =
     Css.batch
-        [ Tw.propertyWithColor "border-left-color" (\c -> c) (Just "--tw-border-opacity") color
-        , Tw.propertyWithColor "border-right-color" (\c -> c) (Just "--tw-border-opacity") color
+        [ Css.property "--tw-border-opacity" "1"
+        , Tw.propertyWithColor "border-left-color" (\c -> c) (Just "--tw-border-opacity, 1") color
+        , Tw.propertyWithColor "border-right-color" (\c -> c) (Just "--tw-border-opacity, 1") color
         ]
 
 
@@ -100497,8 +100522,9 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 border_y_color : Color -> Css.Style
 border_y_color color =
     Css.batch
-        [ Tw.propertyWithColor "border-top-color" (\c -> c) (Just "--tw-border-opacity") color
-        , Tw.propertyWithColor "border-bottom-color" (\c -> c) (Just "--tw-border-opacity") color
+        [ Css.property "--tw-border-opacity" "1"
+        , Tw.propertyWithColor "border-top-color" (\c -> c) (Just "--tw-border-opacity, 1") color
+        , Tw.propertyWithColor "border-bottom-color" (\c -> c) (Just "--tw-border-opacity, 1") color
         ]
 
 
@@ -100556,7 +100582,8 @@ divide_color : Color -> Css.Style
 divide_color color =
     Css.Global.children
         [ Css.Global.selector ":not([hidden]) ~ :not([hidden])"
-            [ Tw.propertyWithColor "border-color" (\c -> c) (Just "--tw-divide-opacity") color
+            [ Css.property "--tw-divide-opacity" "1"
+            , Tw.propertyWithColor "border-color" (\c -> c) (Just "--tw-divide-opacity, 1") color
             ]
         ]
 
@@ -100639,7 +100666,8 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 placeholder_color : Color -> Css.Style
 placeholder_color color =
     Css.pseudoElement "placeholder"
-        [ Tw.propertyWithColor "color" (\c -> c) (Just "--tw-placeholder-opacity") color
+        [ Css.property "--tw-placeholder-opacity" "1"
+        , Tw.propertyWithColor "color" (\c -> c) (Just "--tw-placeholder-opacity, 1") color
         ]
 
 
@@ -100659,7 +100687,10 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 -}
 ring_color : Color -> Css.Style
 ring_color color =
-    Tw.propertyWithColor "--tw-ring-color" (\c -> c) (Just "--tw-ring-opacity") color
+    Css.batch
+        [ Css.property "--tw-ring-opacity" "1"
+        , Tw.propertyWithColor "--tw-ring-color" (\c -> c) (Just "--tw-ring-opacity, 1") color
+        ]
 
 
 {-| This class has effects of css declarations similar to the following:
@@ -100736,7 +100767,10 @@ Make sure to check out the [tailwind documentation](https://tailwindcss.com/docs
 -}
 text_color : Color -> Css.Style
 text_color color =
-    Tw.propertyWithColor "color" (\c -> c) (Just "--tw-text-opacity") color
+    Css.batch
+        [ Css.property "--tw-text-opacity" "1"
+        , Tw.propertyWithColor "color" (\c -> c) (Just "--tw-text-opacity, 1") color
+        ]
 
 
 {-| This class has effects of css declarations similar to the following:
