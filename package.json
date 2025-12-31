@@ -32,7 +32,7 @@
     "autoprefixer": "^10.4.23",
     "elm": "^0.19.1-6",
     "elm-hot": "^1.1.6",
-    "elm-review": "^2.13.4",
+    "elm-review": "^2.13.5",
     "elm-tailwind-modules": "^0.5.0",
     "elm-tooling": "^1.17.0",
     "elm-types": "^0.0.2",
