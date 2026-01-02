@@ -8,14 +8,10 @@ import Test exposing (Test, describe, test)
 all : Test
 all =
     describe "Embed"
-        [ describe "step"
+        [ describe "none"
             [ test "with None it is None" <|
                 \() ->
-                    Embed.step Embed.None
-                        |> Expect.equal Embed.None
-            , test "with One it is None" <|
-                \() ->
-                    Embed.step (Embed.One "key")
+                    Embed.none
                         |> Expect.equal Embed.None
             ]
         , describe "view"
