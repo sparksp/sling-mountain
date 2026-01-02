@@ -166,7 +166,7 @@ update : Msg -> Model -> ( Model, Cmd Msg )
 update msg (Model model) =
     case msg of
         Complete ->
-            ( Model { model | embed = Embed.step model.embed }
+            ( Model { model | embed = Embed.none }
             , Random.generate GotTodoList (TodoList.complete model.todo)
             )
 
@@ -176,13 +176,13 @@ update msg (Model model) =
             )
 
         DisableCurrent ->
-            ( Model { model | embed = Embed.step model.embed }
+            ( Model { model | embed = Embed.none }
             , Random.generate GotTodoList (TodoList.disableCurrent model.todo)
             )
 
         Disable key ->
             updateAndSaveTodo (TodoList.disable key model.todo)
-                ( Model { model | embed = Embed.step model.embed }
+                ( Model { model | embed = Embed.none }
                 , Task.attempt GotViewport (Dom.getViewportOf "current")
                 )
 
@@ -292,7 +292,7 @@ pick key (Model model) =
             TodoList.pick key model.todo
     in
     updateAndSaveTodo newTodo
-        ( Model { model | embed = Embed.step model.embed }
+        ( Model { model | embed = Embed.none }
         , Cmd.batch
             [ Task.attempt (\_ -> DomResult) (Dom.setViewport 0 0)
             , Task.attempt GotViewport (Dom.getViewportOf "current")

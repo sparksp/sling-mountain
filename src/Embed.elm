@@ -1,4 +1,4 @@
-module Embed exposing (Embed(..), map, step)
+module Embed exposing (Embed(..), map, none)
 
 
 type Embed
@@ -26,6 +26,6 @@ map { key, default, visible } embed =
                 default ()
 
 
-step : Embed -> Embed
-step _ =
+none : Embed
+none =
     None
