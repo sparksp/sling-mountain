@@ -30,25 +30,30 @@
     js-tokens "^4.0.0"
     picocolors "^1.0.0"
 
-"@elm_binaries/darwin_arm64@0.19.1-0":
-  version "0.19.1-0"
-  resolved "https://registry.yarnpkg.com/@elm_binaries/darwin_arm64/-/darwin_arm64-0.19.1-0.tgz#ea09fca7cdfedad3fa517267099d78d180f01098"
-  integrity sha512-mjbsH7BNHEAmoE2SCJFcfk5fIHwFIpxtSgnEAqMsVLpBUFoEtAeX+LQ+N0vSFJB3WAh73+QYx/xSluxxLcL6dA==
+"@elm_binaries/darwin_arm64@0.19.2-0":
+  version "0.19.2-0"
+  resolved "https://registry.yarnpkg.com/@elm_binaries/darwin_arm64/-/darwin_arm64-0.19.2-0.tgz#6dd4e68a34b1a8ac81fb73895cd0f25d424d79a7"
+  integrity sha512-vhgvWAgc+jkB/oSCqI0BK1w908ivNbV6OBWIGtJgbzAXFh6RYLcGdE04+X6CTLgj+u5ufl81lsnMG6lWEMzbJg==
 
-"@elm_binaries/darwin_x64@0.19.1-0":
-  version "0.19.1-0"
-  resolved "https://registry.yarnpkg.com/@elm_binaries/darwin_x64/-/darwin_x64-0.19.1-0.tgz#8c3254590804c35ee7b97b4d8a21a63318511c44"
-  integrity sha512-QGUtrZTPBzaxgi9al6nr+9313wrnUVHuijzUK39UsPS+pa+n6CmWyV/69sHZeX9qy6UfeugE0PzF3qcUiy2GDQ==
+"@elm_binaries/darwin_x64@0.19.2-0":
+  version "0.19.2-0"
+  resolved "https://registry.yarnpkg.com/@elm_binaries/darwin_x64/-/darwin_x64-0.19.2-0.tgz#c5e090d7872d89233e04bcfa68f2815f7cfbfd84"
+  integrity sha512-CQub4GhTa9nOHkUpi4eVGy34mxhfQOpVteLWkgsFwSHxXathKzNaOR9W7nVHR1iKEMBNcYJpXS2MoQognOUMkA==
 
-"@elm_binaries/linux_x64@0.19.1-0":
-  version "0.19.1-0"
-  resolved "https://registry.yarnpkg.com/@elm_binaries/linux_x64/-/linux_x64-0.19.1-0.tgz#95440341eee8f6bee2d88859b3bdd99f33ca88f0"
-  integrity sha512-T1ZrWVhg2kKAsi8caOd3vp/1A3e21VuCpSG63x8rDie50fHbCytTway9B8WHEdnBFv4mYWiA68dzGxYCiFmU2w==
+"@elm_binaries/linux_arm64@0.19.2-0":
+  version "0.19.2-0"
+  resolved "https://registry.yarnpkg.com/@elm_binaries/linux_arm64/-/linux_arm64-0.19.2-0.tgz#4297d17054157f44f611e428f0dbe41a7889be34"
+  integrity sha512-50LdOV2ddvgBqcgfVKC3yCKg3/3RQdkfE7Be5k7Zj2xYLALQolk3X2ualXUmXIbP6Zo1xYKymDAfa/M1PTF+dw==
 
-"@elm_binaries/win32_x64@0.19.1-0":
-  version "0.19.1-0"
-  resolved "https://registry.yarnpkg.com/@elm_binaries/win32_x64/-/win32_x64-0.19.1-0.tgz#3f8decfd6f5fbc46906f3f5d50561b6e5b33ac3a"
-  integrity sha512-yDleiXqSE9EcqKtd9SkC/4RIW8I71YsXzMPL79ub2bBPHjWTcoyyeBbYjoOB9SxSlArJ74HaoBApzT6hY7Zobg==
+"@elm_binaries/linux_x64@0.19.2-0":
+  version "0.19.2-0"
+  resolved "https://registry.yarnpkg.com/@elm_binaries/linux_x64/-/linux_x64-0.19.2-0.tgz#ccceb9472d573e65dc71f4152fac90375cee686d"
+  integrity sha512-03EXHZZBCEFcKKh2kKUGPsFysKXnHANYw2XubBwT3Vj/5uOI/doG0g8kij5ng8n50vma/pNwAWqvVQLSRDmPMA==
+
+"@elm_binaries/win32_x64@0.19.2-0":
+  version "0.19.2-0"
+  resolved "https://registry.yarnpkg.com/@elm_binaries/win32_x64/-/win32_x64-0.19.2-0.tgz#a828a2c3a9d2093b03c961b1be5466967ee1fb21"
+  integrity sha512-FCzv6KAlo/L2/FZe3rsIH5dgFfljlgKWpMUDxVgNm1mFKep4TeFEnwRlSUh7hFnKCDVyjUL9oNL+x4OwYr3KWg==
 
 "@isaacs/cliui@^8.0.2":
   version "8.0.2"
@@ -1786,25 +1791,26 @@ elm-tailwind-modules@^0.5.0:
     rollup "^2.45.2"
     tslib "^2.2.0"
 
-elm-tooling@^1.18.0:
-  version "1.18.0"
-  resolved "https://registry.yarnpkg.com/elm-tooling/-/elm-tooling-1.18.0.tgz#7aff23a65cd1fc133b93e5bfff0f6deac46aa449"
-  integrity sha512-8tY35aNpB6z+rtmix4VPZ+q+kGPyOx0xDId7YLqcPmsKSKoS0vuNVC80ixwRbIhLWVifNDkBB7SjSIgp5Z39Uw==
+elm-tooling@^1.20.0:
+  version "1.20.0"
+  resolved "https://registry.yarnpkg.com/elm-tooling/-/elm-tooling-1.20.0.tgz#23955c2a3d8ea5e679dcd7647f911d2c93f7d94b"
+  integrity sha512-mEuth6pm5Sd+uZNfyXJS6OgjT0UG1N6zdUf0j1pTl9SiEkvpB2bx454dAS8GKB8wi6c2+hq1u8AFSTeR0nuK9Q==
 
 elm-types@^0.0.2:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/elm-types/-/elm-types-0.0.2.tgz#762ce2f6317df9f31e80fcbe356743320436bd0b"
   integrity sha512-rs5bv1+HFX8iywIDUpJspU+tne5PKyANO4gmLBmVqcw/i+msHUP/TJut4Gfgsyj2jWUBa9gdMZbgok32TxFHTA==
 
-elm@^0.19.1-6:
-  version "0.19.1-6"
-  resolved "https://registry.yarnpkg.com/elm/-/elm-0.19.1-6.tgz#b6f51d0add8877de70592097a8f6efc4588c476a"
-  integrity sha512-mKYyierHICPdMx/vhiIacdPmTPnh889gjHOZ75ZAoCxo3lZmSWbGP8HMw78wyctJH0HwvTmeKhlYSWboQNYPeQ==
+elm@^0.19.2-0:
+  version "0.19.2-0"
+  resolved "https://registry.yarnpkg.com/elm/-/elm-0.19.2-0.tgz#c7c79f00c5bc55e2ff593576d047b5f6de77b504"
+  integrity sha512-a2N4WJ6ge+cXOemAgo6tu8gN17cIzzitYoPcJRpvbiPbay1+BfQAv9wyWtgTyR3YkrduN5oQwzLgSIaUBZwjYQ==
   optionalDependencies:
-    "@elm_binaries/darwin_arm64" "0.19.1-0"
-    "@elm_binaries/darwin_x64" "0.19.1-0"
-    "@elm_binaries/linux_x64" "0.19.1-0"
-    "@elm_binaries/win32_x64" "0.19.1-0"
+    "@elm_binaries/darwin_arm64" "0.19.2-0"
+    "@elm_binaries/darwin_x64" "0.19.2-0"
+    "@elm_binaries/linux_arm64" "0.19.2-0"
+    "@elm_binaries/linux_x64" "0.19.2-0"
+    "@elm_binaries/win32_x64" "0.19.2-0"
 
 emoji-regex@^8.0.0:
   version "8.0.0"
